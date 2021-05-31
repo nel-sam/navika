@@ -41,4 +41,70 @@ final List<Noun> nounWordBank = [
       plural: "",
     ),
   ),
+  Noun(
+    dictionary: "žena",
+    gender: GenderEnum.Feminine,
+    isAnimate: true,
+    nomativ: new DeclensionByCount(
+      singular: "žena",
+      plural: "žene",
+    ),
+    akusativ: new DeclensionByCount(
+      singular: "ženu",
+      plural: "žene",
+    ),
+    instrumental: new DeclensionByCount(
+      singular: "ženom",
+      plural: "ženama",
+    ),
+    lokativ: new DeclensionByCount(
+      singular: "ženi",
+      plural: "ženama",
+    ),
+    dativ: new DeclensionByCount(
+      singular: "",
+      plural: "",
+    ),
+    genitiv: new DeclensionByCount(
+      singular: "",
+      plural: "",
+    ),
+    vokativ: new DeclensionByCount(
+      singular: "",
+      plural: "",
+    ),
+  ),
+  Noun(
+    dictionary: "more",
+    gender: GenderEnum.Neuter,
+    isAnimate: false,
+    nomativ: new DeclensionByCount(
+      singular: "more",
+      plural: "mora",
+    ),
+    akusativ: new DeclensionByCount(
+      singular: "more",
+      plural: "mora",
+    ),
+    instrumental: new DeclensionByCount(
+      singular: "morem",
+      plural: "morima",
+    ),
+    lokativ: new DeclensionByCount(
+      singular: "moru",
+      plural: "morima",
+    ),
+    dativ: new DeclensionByCount(
+      singular: "",
+      plural: "",
+    ),
+    genitiv: new DeclensionByCount(
+      singular: "",
+      plural: "",
+    ),
+    vokativ: new DeclensionByCount(
+      singular: "",
+      plural: "",
+    ),
+  ),
 ];

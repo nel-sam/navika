@@ -9,6 +9,7 @@ class AdjectiveListItem extends StatefulWidget {
   Noun noun;
 
   bool isCorrect = false;
+  bool showHint = false;
 
   AdjectiveListItem(
       {required this.activeValue,
@@ -101,12 +102,26 @@ bool checkAnswer(
   return isCorrect;
 }
 
+IconData getGenderIcon(GenderEnum gender) {
+  if (gender == GenderEnum.Feminine) {
+    return Icons.female;
+  } else if (gender == GenderEnum.Masculine) {
+    return Icons.male;
+  } else {
+    return Icons.ac_unit;
+  }
+}
+
 class _AdjectiveListItemState extends State<AdjectiveListItem> {
   @override
   Widget build(BuildContext context) {
     return new Container(
       height: 50,
-      decoration: BoxDecoration(border: Border.all(color: Colors.grey)),
+      decoration: BoxDecoration(
+          border: Border.all(
+        color: widget.isCorrect ? Colors.blueGrey : Colors.red,
+      )),
+      margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
       child: Container(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -138,6 +153,19 @@ class _AdjectiveListItemState extends State<AdjectiveListItem> {
             Text(widget.isPlural
                 ? widget.noun.nomativ.plural
                 : widget.noun.nomativ.singular),
+            widget.showHint
+                ? Row(children: [
+                    Icon(getGenderIcon(widget.gender)),
+                    Text(widget.isPlural ? '2+' : '1'),
+                  ])
+                : Container(),
+            ElevatedButton(
+                onPressed: () => {
+                      setState(() {
+                        widget.showHint = !widget.showHint;
+                      })
+                    },
+                child: Icon(Icons.help))
           ],
         ),
       ),
