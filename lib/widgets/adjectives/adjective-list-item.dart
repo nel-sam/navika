@@ -108,7 +108,7 @@ IconData getGenderIcon(GenderEnum gender) {
   } else if (gender == GenderEnum.Masculine) {
     return Icons.male;
   } else {
-    return Icons.ac_unit;
+    return Icons.hide_source_outlined;
   }
 }
 
@@ -124,18 +124,23 @@ class _AdjectiveListItemState extends State<AdjectiveListItem> {
       margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
       child: Container(
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
+            Padding(
+              padding: EdgeInsets.fromLTRB(10, 0, 5, 0),
+            ),
             Text('To je '),
+            Padding(
+              padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+            ),
             Container(
-              margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
               child: DropdownButton(
                 value: widget.activeValue,
-                hint: Text(widget.activeValue),
+                //hint: Text(widget.activeValue),
                 iconSize: 24,
                 elevation: 16,
                 underline: Container(
-                  height: 2,
+                  height: 1,
                   color: widget.isCorrect ? Colors.blueGrey : Colors.red,
                 ),
                 onChanged: (String? newValue) {
@@ -150,22 +155,30 @@ class _AdjectiveListItemState extends State<AdjectiveListItem> {
                 items: getAdjectiveDropdownItems(widget.adjective),
               ),
             ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+            ),
             Text(widget.isPlural
                 ? widget.noun.nomativ.plural
                 : widget.noun.nomativ.singular),
+            Spacer(),
             widget.showHint
                 ? Row(children: [
                     Icon(getGenderIcon(widget.gender)),
                     Text(widget.isPlural ? '2+' : '1'),
                   ])
-                : Container(),
+                : Spacer(),
+            Spacer(),
             ElevatedButton(
                 onPressed: () => {
                       setState(() {
                         widget.showHint = !widget.showHint;
                       })
                     },
-                child: Icon(Icons.help))
+                child: Icon(Icons.help)),
+            Padding(
+              padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
+            ),
           ],
         ),
       ),

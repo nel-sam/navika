@@ -28,6 +28,51 @@ class _ExerciseSelectionState extends State<ExerciseSelection> {
               Text(AppLocalizations.of(context)!.adjectives),
             ],
           ),
+        ),
+        OutlinedButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => AdjectivesExercise()),
+            );
+          },
+          style: buttonStyle,
+          child: Column(
+            children: [
+              Icon(Icons.coffee),
+              Text(AppLocalizations.of(context)!.adjectives),
+            ],
+          ),
+        ),
+        OutlinedButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => AdjectivesExercise()),
+            );
+          },
+          style: buttonStyle,
+          child: Column(
+            children: [
+              Icon(Icons.coffee),
+              Text(AppLocalizations.of(context)!.adjectives),
+            ],
+          ),
+        ),
+        OutlinedButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => AdjectivesExercise()),
+            );
+          },
+          style: buttonStyle,
+          child: Column(
+            children: [
+              Icon(Icons.coffee),
+              Text(AppLocalizations.of(context)!.adjectives),
+            ],
+          ),
         )
       ],
     );
