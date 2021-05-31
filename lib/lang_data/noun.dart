@@ -29,8 +29,8 @@ final List<Noun> nounWordBank = [
       plural: "stolovima",
     ),
     dativ: new DeclensionByCount(
-      singular: "",
-      plural: "",
+      singular: "stolu",
+      plural: "stolovima",
     ),
     genitiv: new DeclensionByCount(
       singular: "",
@@ -62,8 +62,8 @@ final List<Noun> nounWordBank = [
       plural: "ženama",
     ),
     dativ: new DeclensionByCount(
-      singular: "",
-      plural: "",
+      singular: "ženi",
+      plural: "ženama",
     ),
     genitiv: new DeclensionByCount(
       singular: "",
@@ -95,8 +95,8 @@ final List<Noun> nounWordBank = [
       plural: "morima",
     ),
     dativ: new DeclensionByCount(
-      singular: "",
-      plural: "",
+      singular: "moru",
+      plural: "morima",
     ),
     genitiv: new DeclensionByCount(
       singular: "",
