@@ -106,36 +106,40 @@ class _AdjectiveListItemState extends State<AdjectiveListItem> {
   Widget build(BuildContext context) {
     return new Container(
       height: 50,
-      padding: EdgeInsets.all(10),
       decoration: BoxDecoration(border: Border.all(color: Colors.grey)),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Text('To je '),
-          DropdownButton(
-            value: widget.activeValue,
-            hint: Text(widget.activeValue),
-            iconSize: 24,
-            elevation: 16,
-            underline: Container(
-              height: 2,
-              color: widget.isCorrect ? Colors.blueGrey : Colors.red,
-            ),
-            onChanged: (String? newValue) {
-              setState(() {
-                bool isCorrect = checkAnswer(
-                    widget.adjective, widget.gender, widget.isPlural, newValue);
+      child: Container(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('To je '),
+            Container(
+              margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
+              child: DropdownButton(
+                value: widget.activeValue,
+                hint: Text(widget.activeValue),
+                iconSize: 24,
+                elevation: 16,
+                underline: Container(
+                  height: 2,
+                  color: widget.isCorrect ? Colors.blueGrey : Colors.red,
+                ),
+                onChanged: (String? newValue) {
+                  setState(() {
+                    bool isCorrect = checkAnswer(widget.adjective,
+                        widget.gender, widget.isPlural, newValue);
 
-                widget.activeValue = newValue != null ? newValue : "";
-                widget.isCorrect = isCorrect;
-              });
-            },
-            items: getAdjectiveDropdownItems(widget.adjective),
-          ),
-          Text(widget.isPlural
-              ? widget.noun.nomativ.plural
-              : widget.noun.nomativ.singular),
-        ],
+                    widget.activeValue = newValue != null ? newValue : "";
+                    widget.isCorrect = isCorrect;
+                  });
+                },
+                items: getAdjectiveDropdownItems(widget.adjective),
+              ),
+            ),
+            Text(widget.isPlural
+                ? widget.noun.nomativ.plural
+                : widget.noun.nomativ.singular),
+          ],
+        ),
       ),
     );
   }
