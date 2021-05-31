@@ -97,6 +97,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Navika'**
   String get appTitle;
+
+  /// No description provided for @adjectives.
+  ///
+  /// In en, this message translates to:
+  /// **'Adjectives'**
+  String get adjectives;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

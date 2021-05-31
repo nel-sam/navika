@@ -59,6 +59,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Adjectives`
+  String get adjectives {
+    return Intl.message(
+      'Adjectives',
+      name: 'adjectives',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

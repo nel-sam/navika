@@ -9,4 +9,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get appTitle => 'Navika';
+
+  @override
+  String get adjectives => 'Adjectives';
 }
