@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:navika/widgets/adjectives/adjectives.dart';
+import 'package:navika/widgets/adjectives/adjective-exercise.dart';
 
 class ExerciseSelection extends StatefulWidget {
   @override
