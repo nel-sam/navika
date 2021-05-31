@@ -1,11 +1,27 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:navika/widgets/exercise-selection/exercise-selection.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  MobileAds.instance.initialize();
+
   runApp(MyApp());
 }
+
+final BannerAd adBanner = BannerAd(
+  adUnitId: 'ca-app-pub-3940256099942544/2934735716', // TEST AD ID
+  // adUnitId: Platform.isIOS
+  //     ? 'ca-app-pub-8911581163547766/5161441469'
+  //     : 'ca-app-pub-8911581163547766/8506817770',
+  size: AdSize.banner,
+  request: AdRequest(),
+  listener: BannerAdListener(),
+);
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -42,14 +58,25 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
+    adBanner.load();
+
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[ExerciseSelection()],
+        child: ListView(
+          padding: const EdgeInsets.all(8),
+          shrinkWrap: true,
+          children: <Widget>[
+            Container(
+              alignment: Alignment.center,
+              child: AdWidget(ad: adBanner),
+              width: adBanner.size.width.toDouble(),
+              height: adBanner.size.height.toDouble(),
+            ),
+            ExerciseSelection(),
+          ],
         ),
       ),
     );

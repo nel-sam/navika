@@ -35,9 +35,7 @@ class _ExerciseSelectionState extends State<ExerciseSelection> {
         ExerciseButton(
             destination: Akusativ(), icon: Icons.arrow_forward, label: 'Dativ'),
         ExerciseButton(
-            destination: Akusativ(),
-            icon: Icons.coffee,
-            label: 'Genetiv'),
+            destination: Akusativ(), icon: Icons.coffee, label: 'Genetiv'),
         ExerciseButton(
             destination: Akusativ(),
             icon: Icons.call_rounded,
