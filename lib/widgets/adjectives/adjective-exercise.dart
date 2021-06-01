@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:navika/lang_data/word-bank.dart';
 import 'package:navika/models/models.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:navika/utilities/widget-helpers.dart';
 import 'package:navika/widgets/adjectives/adjective-list-item.dart';
 
 class AdjectiveNounPair {
@@ -48,7 +49,7 @@ class _AdjectivesExerciseState extends State<AdjectivesExercise> {
       });
     });
 
-    return listItems
+    return WidgetHelpers.shuffleList(listItems)
         .map(
           (e) => AdjectiveListItem(
               activeValue: e.activeValue,

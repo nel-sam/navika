@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:navika/lang_data/word-bank.dart';
 import 'package:navika/models/models.dart';
+import 'package:navika/utilities/widget-helpers.dart';
 
 import 'akuzativ-list-item.dart';
 
@@ -48,7 +49,7 @@ List<Widget> getListItems() {
     });
   });
 
-  return listItems
+  return WidgetHelpers.shuffleList(listItems)
       .map(
         (e) => AkuzativListItem(
             pronoun: e.possesivePronoun,

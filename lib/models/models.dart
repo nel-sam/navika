@@ -1,3 +1,5 @@
+import 'package:navika/utilities/widget-helpers.dart';
+
 class WordBank {
   final List<Noun> nouns;
   final List<DeclinableWord> adjectives;
@@ -75,8 +77,8 @@ class Noun {
     return isPlural ? declension.plural : declension.singular;
   }
 
-  List<String> GetUniqueDeclensions() {
-    return [
+  List GetUniqueDeclensions() {
+    return WidgetHelpers.shuffleList([
       this.dictionary,
       this.nominativ.singular,
       this.akuzativ.singular,
@@ -92,7 +94,7 @@ class Noun {
       this.dativ.plural,
       this.genitiv.plural,
       this.vokativ.plural,
-    ].toSet().toList().where((element) => element.length > 0).toList();
+    ].toSet().toList().where((element) => element.length > 0).toList());
   }
 }
 
@@ -119,8 +121,8 @@ class DeclinableWord {
     required this.vokativ,
   });
 
-  List<String> GetUniqueDeclensions() {
-    return [
+  List GetUniqueDeclensions() {
+    return WidgetHelpers.shuffleList([
       this.dictionary,
       this.nominativ.masculine.singular,
       this.nominativ.feminine.singular,
@@ -170,7 +172,7 @@ class DeclinableWord {
       this.vokativ.masculine.plural,
       this.vokativ.feminine.plural,
       this.vokativ.neuter.plural,
-    ].toSet().toList().where((element) => element.length > 0).toList();
+    ].toSet().toList().where((element) => element.length > 0).toList());
   }
 
   String GetDeclension(
