@@ -6,7 +6,7 @@ import 'package:navika/widgets/adjectives/adjective-list-item.dart';
 
 class AdjectiveNounPair {
   String activeValue;
-  Adjective adjective;
+  DeclinableWord adjective;
   GenderEnum gender;
   bool isPlural;
   Noun noun;

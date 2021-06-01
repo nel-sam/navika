@@ -12,11 +12,11 @@ final List<Noun> nounWordBank = [
     dictionary: "stol",
     gender: GenderEnum.Masculine,
     isAnimate: false,
-    nomativ: new DeclensionByCount(
+    nominativ: new DeclensionByCount(
       singular: "stol",
       plural: "stolovi",
     ),
-    akusativ: new DeclensionByCount(
+    akuzativ: new DeclensionByCount(
       singular: "stol",
       plural: "stolove",
     ),
@@ -45,11 +45,11 @@ final List<Noun> nounWordBank = [
     dictionary: "žena",
     gender: GenderEnum.Feminine,
     isAnimate: true,
-    nomativ: new DeclensionByCount(
+    nominativ: new DeclensionByCount(
       singular: "žena",
       plural: "žene",
     ),
-    akusativ: new DeclensionByCount(
+    akuzativ: new DeclensionByCount(
       singular: "ženu",
       plural: "žene",
     ),
@@ -78,11 +78,11 @@ final List<Noun> nounWordBank = [
     dictionary: "more",
     gender: GenderEnum.Neuter,
     isAnimate: false,
-    nomativ: new DeclensionByCount(
+    nominativ: new DeclensionByCount(
       singular: "more",
       plural: "mora",
     ),
-    akusativ: new DeclensionByCount(
+    akuzativ: new DeclensionByCount(
       singular: "more",
       plural: "mora",
     ),

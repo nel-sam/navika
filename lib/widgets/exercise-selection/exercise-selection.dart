@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/widgets/adjectives/adjective-exercise.dart';
-import 'package:navika/widgets/akusativ/akusativ.dart';
+import 'package:navika/widgets/akusativ/akuzativ.dart';
 import 'package:navika/widgets/exercise-selection/exercise-button.dart';
 
 class ExerciseSelection extends StatefulWidget {
@@ -19,25 +19,25 @@ class _ExerciseSelectionState extends State<ExerciseSelection> {
         ExerciseButton(
             destination: AdjectivesExercise(),
             icon: Icons.category_outlined,
-            label: '${AppLocalizations.of(context)!.adjectives} (Nomativ)'),
+            label: '${AppLocalizations.of(context)!.adjectives} (Nominativ)'),
         ExerciseButton(
-            destination: Akusativ(),
+            destination: Akuzativ(),
             icon: Icons.remove_red_eye_outlined,
-            label: 'Akusativ'),
+            label: 'Akuzativ'),
         ExerciseButton(
-            destination: Akusativ(),
+            destination: Akuzativ(),
             icon: Icons.handyman_outlined,
             label: 'Instrumental'),
         ExerciseButton(
-            destination: Akusativ(),
+            destination: Akuzativ(),
             icon: Icons.location_on_outlined,
             label: 'Lokativ'),
         ExerciseButton(
-            destination: Akusativ(), icon: Icons.arrow_forward, label: 'Dativ'),
+            destination: Akuzativ(), icon: Icons.arrow_forward, label: 'Dativ'),
         ExerciseButton(
-            destination: Akusativ(), icon: Icons.coffee, label: 'Genetiv'),
+            destination: Akuzativ(), icon: Icons.coffee, label: 'Genetiv'),
         ExerciseButton(
-            destination: Akusativ(),
+            destination: Akuzativ(),
             icon: Icons.call_rounded,
             label: 'Vokativ'),
       ],
