@@ -4,6 +4,7 @@ import 'package:navika/widgets/adjectives/adjective-exercise.dart';
 import 'package:navika/widgets/akusativ/akuzativ.dart';
 import 'package:navika/widgets/exercise-selection/exercise-button.dart';
 import 'package:navika/widgets/instrumental/instrumental.dart';
+import 'package:navika/widgets/lokativ/lokativ.dart';
 
 class ExerciseSelection extends StatefulWidget {
   @override
@@ -30,7 +31,7 @@ class _ExerciseSelectionState extends State<ExerciseSelection> {
             icon: Icons.handyman_outlined,
             label: 'Instrumental'),
         ExerciseButton(
-            destination: Akuzativ(),
+            destination: Lokativ(),
             icon: Icons.location_on_outlined,
             label: 'Lokativ'),
         ExerciseButton(

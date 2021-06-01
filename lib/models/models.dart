@@ -47,7 +47,7 @@ class Noun {
     required this.vokativ,
   });
 
-  String GetDeclension(bool isPlural, CaseTypeEnum caseType) {
+  String getDeclension(bool isPlural, CaseTypeEnum caseType) {
     DeclensionByCount declension;
 
     switch (caseType) {
@@ -77,7 +77,7 @@ class Noun {
     return isPlural ? declension.plural : declension.singular;
   }
 
-  List GetUniqueDeclensions() {
+  List getUniqueDeclensions() {
     return WidgetHelpers.shuffleList([
       this.dictionary,
       this.nominativ.singular,
@@ -121,7 +121,7 @@ class DeclinableWord {
     required this.vokativ,
   });
 
-  List GetUniqueDeclensions() {
+  List getUniqueDeclensions() {
     return WidgetHelpers.shuffleList([
       this.dictionary,
       this.nominativ.masculine.singular,
@@ -175,7 +175,7 @@ class DeclinableWord {
     ].toSet().toList().where((element) => element.length > 0).toList());
   }
 
-  String GetDeclension(
+  String getDeclension(
       GenderEnum gender, bool isPlural, CaseTypeEnum caseType, bool isAnimate) {
     Declension declension;
 

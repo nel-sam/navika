@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:navika/models/constants.dart';
 import 'package:navika/models/models.dart';
 
 class InstrumentalListItem extends StatefulWidget {
@@ -25,12 +26,12 @@ class InstrumentalListItem extends StatefulWidget {
     this.activeAdjValue = this.adjective.dictionary;
     this.activePronounValue = this.pronoun.dictionary;
     this.activeNounValue = this.noun.dictionary;
-    this.correctPronounValue = pronoun.GetDeclension(
+    this.correctPronounValue = pronoun.getDeclension(
         gender, isPlural, CaseTypeEnum.Instrumental, noun.isAnimate);
-    this.correctAdjValue = adjective.GetDeclension(
+    this.correctAdjValue = adjective.getDeclension(
         gender, isPlural, CaseTypeEnum.Instrumental, noun.isAnimate);
     this.correctNounValue =
-        noun.GetDeclension(isPlural, CaseTypeEnum.Instrumental);
+        noun.getDeclension(isPlural, CaseTypeEnum.Instrumental);
   }
 
   @override
@@ -38,14 +39,14 @@ class InstrumentalListItem extends StatefulWidget {
 }
 
 List<DropdownMenuItem<String>> getNounDropdownItems(Noun noun) {
-  var items = noun.GetUniqueDeclensions();
+  var items = noun.getUniqueDeclensions();
   return items
       .map((e) => DropdownMenuItem<String>(value: e, child: Text(e)))
       .toList();
 }
 
 List<DropdownMenuItem<String>> getDropdownItems(DeclinableWord word) {
-  var items = word.GetUniqueDeclensions();
+  var items = word.getUniqueDeclensions();
   return items
       .map((e) => DropdownMenuItem<String>(value: e, child: Text(e)))
       .toList();
@@ -60,14 +61,11 @@ class _InstrumentalListItemState extends State<InstrumentalListItem> {
 
   @override
   Widget build(BuildContext context) {
-    var correctColor = Colors.blueGrey;
-    var wrongColor = Colors.red;
-
     return new Container(
       height: 50,
       decoration: BoxDecoration(
           border: Border.all(
-        color: widget.isAllCorrect ? Colors.blueGrey : Colors.red,
+        color: widget.isAllCorrect ? CORRECT_COLOR : WRONG_COLOR,
       )),
       margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
       child: Container(
@@ -76,7 +74,7 @@ class _InstrumentalListItemState extends State<InstrumentalListItem> {
           children: [
             Padding(
               padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
-              child: Text('Govorim o '),
+              child: Text('Idem sa '),
             ),
             Padding(
               padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
@@ -86,12 +84,11 @@ class _InstrumentalListItemState extends State<InstrumentalListItem> {
                   iconSize: 24,
                   elevation: 16,
                   underline: Container(
-                    height: 1,
-                    color:
-                        widget.activePronounValue == widget.correctPronounValue
-                            ? correctColor
-                            : wrongColor,
-                  ),
+                      height: 1,
+                      color: widget.activePronounValue ==
+                              widget.correctPronounValue
+                          ? CORRECT_COLOR
+                          : WRONG_COLOR),
                   onChanged: (String? newPronValue) {
                     setState(() {
                       widget.activePronounValue =
@@ -113,8 +110,8 @@ class _InstrumentalListItemState extends State<InstrumentalListItem> {
                   underline: Container(
                     height: 1,
                     color: widget.activeAdjValue == widget.correctAdjValue
-                        ? correctColor
-                        : wrongColor,
+                        ? CORRECT_COLOR
+                        : WRONG_COLOR,
                   ),
                   onChanged: (String? newAdjValue) {
                     setState(() {
@@ -137,8 +134,8 @@ class _InstrumentalListItemState extends State<InstrumentalListItem> {
                   underline: Container(
                     height: 1,
                     color: widget.activeNounValue == widget.correctNounValue
-                        ? correctColor
-                        : wrongColor,
+                        ? CORRECT_COLOR
+                        : WRONG_COLOR,
                   ),
                   onChanged: (String? newNounValue) {
                     setState(() {

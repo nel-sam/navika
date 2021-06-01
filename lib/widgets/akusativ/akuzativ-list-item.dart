@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:navika/models/constants.dart';
 import 'package:navika/models/models.dart';
 
 class AkuzativListItem extends StatefulWidget {
@@ -25,11 +26,11 @@ class AkuzativListItem extends StatefulWidget {
     this.activeAdjValue = this.adjective.dictionary;
     this.activePronounValue = this.pronoun.dictionary;
     this.activeNounValue = this.noun.dictionary;
-    this.correctPronounValue = pronoun.GetDeclension(
+    this.correctPronounValue = pronoun.getDeclension(
         gender, isPlural, CaseTypeEnum.Akuzativ, noun.isAnimate);
-    this.correctAdjValue = adjective.GetDeclension(
+    this.correctAdjValue = adjective.getDeclension(
         gender, isPlural, CaseTypeEnum.Akuzativ, noun.isAnimate);
-    this.correctNounValue = noun.GetDeclension(isPlural, CaseTypeEnum.Akuzativ);
+    this.correctNounValue = noun.getDeclension(isPlural, CaseTypeEnum.Akuzativ);
   }
 
   @override
@@ -37,14 +38,14 @@ class AkuzativListItem extends StatefulWidget {
 }
 
 List<DropdownMenuItem<String>> getNounDropdownItems(Noun noun) {
-  var items = noun.GetUniqueDeclensions();
+  var items = noun.getUniqueDeclensions();
   return items
       .map((e) => DropdownMenuItem<String>(value: e, child: Text(e)))
       .toList();
 }
 
 List<DropdownMenuItem<String>> getDropdownItems(DeclinableWord word) {
-  var items = word.GetUniqueDeclensions();
+  var items = word.getUniqueDeclensions();
   return items
       .map((e) => DropdownMenuItem<String>(value: e, child: Text(e)))
       .toList();
@@ -59,14 +60,11 @@ class _AkuzativListItemState extends State<AkuzativListItem> {
 
   @override
   Widget build(BuildContext context) {
-    var correctColor = Colors.blueGrey;
-    var wrongColor = Colors.red;
-
     return new Container(
       height: 50,
       decoration: BoxDecoration(
           border: Border.all(
-        color: widget.isAllCorrect ? Colors.blueGrey : Colors.red,
+        color: widget.isAllCorrect ? CORRECT_COLOR : WRONG_COLOR,
       )),
       margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
       child: Container(
@@ -88,8 +86,8 @@ class _AkuzativListItemState extends State<AkuzativListItem> {
                     height: 1,
                     color:
                         widget.activePronounValue == widget.correctPronounValue
-                            ? correctColor
-                            : wrongColor,
+                            ? CORRECT_COLOR
+                            : WRONG_COLOR,
                   ),
                   onChanged: (String? newPronValue) {
                     setState(() {
@@ -112,8 +110,8 @@ class _AkuzativListItemState extends State<AkuzativListItem> {
                   underline: Container(
                     height: 1,
                     color: widget.activeAdjValue == widget.correctAdjValue
-                        ? correctColor
-                        : wrongColor,
+                        ? CORRECT_COLOR
+                        : WRONG_COLOR,
                   ),
                   onChanged: (String? newAdjValue) {
                     setState(() {
@@ -136,8 +134,8 @@ class _AkuzativListItemState extends State<AkuzativListItem> {
                   underline: Container(
                     height: 1,
                     color: widget.activeNounValue == widget.correctNounValue
-                        ? correctColor
-                        : wrongColor,
+                        ? CORRECT_COLOR
+                        : WRONG_COLOR,
                   ),
                   onChanged: (String? newNounValue) {
                     setState(() {

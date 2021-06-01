@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:navika/models/constants.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/utilities/widget-helpers.dart';
 
@@ -24,7 +25,7 @@ class AdjectiveListItem extends StatefulWidget {
 }
 
 List<DropdownMenuItem<String>> getAdjectiveDropdownItems(DeclinableWord adj) {
-  return adj.GetUniqueDeclensions()
+  return adj.getUniqueDeclensions()
       .map((e) => DropdownMenuItem<String>(value: e, child: Text(e)))
       .toList();
 }
@@ -32,7 +33,7 @@ List<DropdownMenuItem<String>> getAdjectiveDropdownItems(DeclinableWord adj) {
 bool checkAnswer(DeclinableWord adjective, GenderEnum gender, bool isPlural,
     String? newValue) {
   return newValue ==
-      adjective.GetDeclension(gender, isPlural, CaseTypeEnum.Nominativ, false);
+      adjective.getDeclension(gender, isPlural, CaseTypeEnum.Nominativ, false);
 }
 
 class _AdjectiveListItemState extends State<AdjectiveListItem> {
@@ -42,7 +43,7 @@ class _AdjectiveListItemState extends State<AdjectiveListItem> {
       height: 50,
       decoration: BoxDecoration(
           border: Border.all(
-        color: widget.isCorrect ? Colors.blueGrey : Colors.red,
+        color: widget.isCorrect ? CORRECT_COLOR : WRONG_COLOR,
       )),
       margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
       child: Container(
@@ -63,7 +64,7 @@ class _AdjectiveListItemState extends State<AdjectiveListItem> {
                 elevation: 16,
                 underline: Container(
                   height: 1,
-                  color: widget.isCorrect ? Colors.blueGrey : Colors.red,
+                  color: widget.isCorrect ? CORRECT_COLOR : WRONG_COLOR,
                 ),
                 onChanged: (String? newValue) {
                   setState(() {
