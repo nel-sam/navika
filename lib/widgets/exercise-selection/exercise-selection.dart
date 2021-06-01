@@ -3,6 +3,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/widgets/adjectives/adjective-exercise.dart';
 import 'package:navika/widgets/akusativ/akuzativ.dart';
 import 'package:navika/widgets/exercise-selection/exercise-button.dart';
+import 'package:navika/widgets/instrumental/instrumental.dart';
 
 class ExerciseSelection extends StatefulWidget {
   @override
@@ -25,7 +26,7 @@ class _ExerciseSelectionState extends State<ExerciseSelection> {
             icon: Icons.remove_red_eye_outlined,
             label: 'Akuzativ'),
         ExerciseButton(
-            destination: Akuzativ(),
+            destination: Instrumental(),
             icon: Icons.handyman_outlined,
             label: 'Instrumental'),
         ExerciseButton(

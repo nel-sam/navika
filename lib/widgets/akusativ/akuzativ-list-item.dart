@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:navika/models/models.dart';
-import 'package:navika/utilities/widget-helpers.dart';
 
 class AkuzativListItem extends StatefulWidget {
   DeclinableWord adjective;
