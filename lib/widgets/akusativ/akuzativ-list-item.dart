@@ -12,8 +12,10 @@ class AkuzativListItem extends StatefulWidget {
   String activeAdjValue = '';
   String activePronounValue = '';
   String activeNounValue = '';
-  bool isCorrect = false;
-  bool showHint = false;
+  String correctPronounValue = '';
+  String correctAdjValue = '';
+  String correctNounValue = '';
+  bool isAllCorrect = false;
 
   AkuzativListItem(
       {required this.adjective,
@@ -24,6 +26,11 @@ class AkuzativListItem extends StatefulWidget {
     this.activeAdjValue = this.adjective.dictionary;
     this.activePronounValue = this.pronoun.dictionary;
     this.activeNounValue = this.noun.dictionary;
+    this.correctPronounValue = pronoun.GetDeclension(
+        gender, isPlural, CaseTypeEnum.Akuzativ, noun.isAnimate);
+    this.correctAdjValue = adjective.GetDeclension(
+        gender, isPlural, CaseTypeEnum.Akuzativ, noun.isAnimate);
+    this.correctNounValue = noun.GetDeclension(isPlural, CaseTypeEnum.Akuzativ);
   }
 
   @override
@@ -44,34 +51,23 @@ List<DropdownMenuItem<String>> getDropdownItems(DeclinableWord word) {
       .toList();
 }
 
-bool checkAnswer(
-    DeclinableWord pronoun,
-    DeclinableWord adjective,
-    Noun noun,
-    GenderEnum gender,
-    bool isPlural,
-    String? newPronounValue,
-    String? newAdjValue,
-    String? newNounValue) {
-  var adjAnswer = adjective.GetDeclension(
-      gender, isPlural, CaseTypeEnum.Akuzativ, noun.isAnimate);
-  var pronounAnswer = pronoun.GetDeclension(
-      gender, isPlural, CaseTypeEnum.Akuzativ, noun.isAnimate);
-  var nounAnswer = noun.GetDeclension(isPlural, CaseTypeEnum.Akuzativ);
-
-  return newAdjValue == adjAnswer &&
-      newPronounValue == pronounAnswer &&
-      newNounValue == nounAnswer;
-}
-
 class _AkuzativListItemState extends State<AkuzativListItem> {
+  bool checkAnswer() {
+    return widget.activePronounValue == widget.correctPronounValue &&
+        widget.activeAdjValue == widget.correctAdjValue &&
+        widget.activeNounValue == widget.correctNounValue;
+  }
+
   @override
   Widget build(BuildContext context) {
+    var correctColor = Colors.blueGrey;
+    var wrongColor = Colors.red;
+
     return new Container(
       height: 50,
       decoration: BoxDecoration(
           border: Border.all(
-        color: widget.isCorrect ? Colors.blueGrey : Colors.red,
+        color: widget.isAllCorrect ? Colors.blueGrey : Colors.red,
       )),
       margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
       child: Container(
@@ -89,23 +85,18 @@ class _AkuzativListItemState extends State<AkuzativListItem> {
                   value: widget.activePronounValue,
                   iconSize: 24,
                   elevation: 16,
+                  underline: Container(
+                    height: 1,
+                    color:
+                        widget.activePronounValue == widget.correctPronounValue
+                            ? correctColor
+                            : wrongColor,
+                  ),
                   onChanged: (String? newPronValue) {
                     setState(() {
                       widget.activePronounValue =
                           newPronValue != null ? newPronValue : "";
-
-                      bool isCorrect = checkAnswer(
-                        widget.pronoun,
-                        widget.adjective,
-                        widget.noun,
-                        widget.gender,
-                        widget.isPlural,
-                        newPronValue,
-                        widget.activeAdjValue,
-                        widget.activeNounValue,
-                      );
-
-                      widget.isCorrect = isCorrect;
+                      widget.isAllCorrect = checkAnswer();
                     });
                   },
                   items: getDropdownItems(widget.pronoun),
@@ -119,23 +110,17 @@ class _AkuzativListItemState extends State<AkuzativListItem> {
                   value: widget.activeAdjValue,
                   iconSize: 24,
                   elevation: 16,
+                  underline: Container(
+                    height: 1,
+                    color: widget.activeAdjValue == widget.correctAdjValue
+                        ? correctColor
+                        : wrongColor,
+                  ),
                   onChanged: (String? newAdjValue) {
                     setState(() {
                       widget.activeAdjValue =
                           newAdjValue != null ? newAdjValue : "";
-
-                      bool isCorrect = checkAnswer(
-                        widget.pronoun,
-                        widget.adjective,
-                        widget.noun,
-                        widget.gender,
-                        widget.isPlural,
-                        widget.activePronounValue,
-                        newAdjValue,
-                        widget.activeNounValue,
-                      );
-
-                      widget.isCorrect = isCorrect;
+                      widget.isAllCorrect = checkAnswer();
                     });
                   },
                   items: getDropdownItems(widget.adjective),
@@ -149,23 +134,17 @@ class _AkuzativListItemState extends State<AkuzativListItem> {
                   value: widget.activeNounValue,
                   iconSize: 24,
                   elevation: 16,
+                  underline: Container(
+                    height: 1,
+                    color: widget.activeNounValue == widget.correctNounValue
+                        ? correctColor
+                        : wrongColor,
+                  ),
                   onChanged: (String? newNounValue) {
                     setState(() {
                       widget.activeNounValue =
                           newNounValue != null ? newNounValue : "";
-
-                      bool isCorrect = checkAnswer(
-                        widget.pronoun,
-                        widget.adjective,
-                        widget.noun,
-                        widget.gender,
-                        widget.isPlural,
-                        widget.activePronounValue,
-                        widget.activeAdjValue,
-                        newNounValue,
-                      );
-
-                      widget.isCorrect = isCorrect;
+                      widget.isAllCorrect = checkAnswer();
                     });
                   },
                   items: getNounDropdownItems(widget.noun),
