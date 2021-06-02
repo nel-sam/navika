@@ -10,8 +10,9 @@ class ExplanationPopupBase extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
+      contentTextStyle: TextStyle(color: Colors.black),
       title: Text(title),
-      content: new Column(
+      content: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

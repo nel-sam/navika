@@ -92,7 +92,7 @@ class _AdjectiveListItemState extends State<AdjectiveListItem> {
             widget.showHint
                 ? Row(children: [
                     Icon(WidgetHelpers.getGenderIcon(widget.gender)),
-                    Text(widget.isPlural ? '2+' : '1'),
+                    Icon(widget.isPlural ? PLURAL_ICON : SINGULAR_ICON),
                   ])
                 : Spacer(),
             Spacer(),

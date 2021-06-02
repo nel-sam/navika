@@ -79,6 +79,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Pronouns`
+  String get pronouns {
+    return Intl.message(
+      'Pronouns',
+      name: 'pronouns',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

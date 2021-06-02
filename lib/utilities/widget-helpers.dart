@@ -1,16 +1,17 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:navika/models/constants.dart';
 import 'package:navika/models/enums.dart';
 
 class WidgetHelpers {
   static IconData getGenderIcon(GenderEnum gender) {
     if (gender == GenderEnum.Feminine) {
-      return Icons.female;
+      return FEMINIE_ICON;
     } else if (gender == GenderEnum.Masculine) {
-      return Icons.male;
+      return MASCULINE_ICON;
     } else {
-      return Icons.hide_source_outlined;
+      return NEUTER_ICON;
     }
   }
 
