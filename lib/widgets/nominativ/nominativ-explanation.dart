@@ -9,19 +9,27 @@ class NominativExplanation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ExplanationPopupBase(
-      title: 'Nomitaiv',
-      content: Column(children: [
-        getAdjectiveTable(),
-        getPronounTable(context),
-      ]),
+      title: 'Nominativ',
+      content: OrientationBuilder(builder: (context, orientation) {
+        return GridView.count(
+            primary: false,
+            padding: const EdgeInsets.all(20),
+            crossAxisSpacing: 10,
+            mainAxisSpacing: 10,
+            crossAxisCount: orientation == Orientation.portrait ? 1 : 2,
+            children: [
+              getPronounTable(context),
+              getAdjTable(context),
+            ]);
+      }),
     );
   }
 
-  getPronounTable(BuildContext context) {
+  getAdjTable(BuildContext context) {
     return Column(
       children: [
         Padding(padding: EdgeInsets.all(10.0)),
-        Text(AppLocalizations.of(context)!.pronouns),
+        Text(AppLocalizations.of(context)!.adjectives),
         Table(
           border: TABLE_BORDERS,
           columnWidths: const <int, TableColumnWidth>{
@@ -87,56 +95,67 @@ class NominativExplanation extends StatelessWidget {
     );
   }
 
-  getAdjectiveTable() {
-    return Table(
-      border: TABLE_BORDERS,
-      columnWidths: const <int, TableColumnWidth>{
-        0: FlexColumnWidth(1),
-        1: FlexColumnWidth(1),
-        2: FlexColumnWidth(1),
-        4: FlexColumnWidth(1),
-      },
-      children: <TableRow>[
-        TableRow(
-          children: <Widget>[
-            Container(),
-            getIconCell(WidgetHelpers.getGenderIcon(GenderEnum.Masculine)),
-            getIconCell(WidgetHelpers.getGenderIcon(GenderEnum.Feminine)),
-            getIconCell(WidgetHelpers.getGenderIcon(GenderEnum.Neuter)),
+  getPronounTable(BuildContext context) {
+    return Column(
+      children: [
+        Padding(padding: EdgeInsets.all(10.0)),
+        Text(AppLocalizations.of(context)!.pronouns),
+        Table(
+          border: TABLE_BORDERS,
+          columnWidths: const <int, TableColumnWidth>{
+            0: FlexColumnWidth(1),
+            1: FlexColumnWidth(1),
+            2: FlexColumnWidth(1),
+            4: FlexColumnWidth(1),
+          },
+          children: <TableRow>[
+            TableRow(
+              children: <Widget>[
+                Container(),
+                getIconCell(WidgetHelpers.getGenderIcon(GenderEnum.Masculine)),
+                getIconCell(WidgetHelpers.getGenderIcon(GenderEnum.Feminine)),
+                getIconCell(WidgetHelpers.getGenderIcon(GenderEnum.Neuter)),
+              ],
+            ),
+            TableRow(children: [
+              getIconCell(SINGULAR_ICON),
+              getTextCell([TextSpan(text: 'Moj čaj')]),
+              getTextCell([
+                TextSpan(text: 'Moj'),
+                TextSpan(
+                    text: 'a', style: TextStyle(fontWeight: FontWeight.bold)),
+                TextSpan(text: ' karta'),
+              ]),
+              getTextCell([
+                TextSpan(text: 'Moj'),
+                TextSpan(
+                    text: 'e', style: TextStyle(fontWeight: FontWeight.bold)),
+                TextSpan(text: ' pismo'),
+              ]),
+            ]),
+            TableRow(children: [
+              getIconCell(PLURAL_ICON),
+              getTextCell([
+                TextSpan(text: 'Moj'),
+                TextSpan(
+                    text: 'i', style: TextStyle(fontWeight: FontWeight.bold)),
+                TextSpan(text: ' čajevi'),
+              ]),
+              getTextCell([
+                TextSpan(text: 'Moj'),
+                TextSpan(
+                    text: 'e', style: TextStyle(fontWeight: FontWeight.bold)),
+                TextSpan(text: ' karte'),
+              ]),
+              getTextCell([
+                TextSpan(text: 'Moj'),
+                TextSpan(
+                    text: 'a', style: TextStyle(fontWeight: FontWeight.bold)),
+                TextSpan(text: ' pisma'),
+              ]),
+            ]),
           ],
         ),
-        TableRow(children: [
-          getIconCell(SINGULAR_ICON),
-          getTextCell([TextSpan(text: 'Moj čaj')]),
-          getTextCell([
-            TextSpan(text: 'Moj'),
-            TextSpan(text: 'a', style: TextStyle(fontWeight: FontWeight.bold)),
-            TextSpan(text: ' karta'),
-          ]),
-          getTextCell([
-            TextSpan(text: 'Moj'),
-            TextSpan(text: 'e', style: TextStyle(fontWeight: FontWeight.bold)),
-            TextSpan(text: ' pismo'),
-          ]),
-        ]),
-        TableRow(children: [
-          getIconCell(PLURAL_ICON),
-          getTextCell([
-            TextSpan(text: 'Moj'),
-            TextSpan(text: 'i', style: TextStyle(fontWeight: FontWeight.bold)),
-            TextSpan(text: ' čajevi'),
-          ]),
-          getTextCell([
-            TextSpan(text: 'Moj'),
-            TextSpan(text: 'e', style: TextStyle(fontWeight: FontWeight.bold)),
-            TextSpan(text: ' karte'),
-          ]),
-          getTextCell([
-            TextSpan(text: 'Moj'),
-            TextSpan(text: 'a', style: TextStyle(fontWeight: FontWeight.bold)),
-            TextSpan(text: ' pisma'),
-          ]),
-        ]),
       ],
     );
   }

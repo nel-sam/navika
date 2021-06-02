@@ -9,24 +9,21 @@ class ExplanationPopupBase extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AlertDialog(
-      contentTextStyle: TextStyle(color: Colors.black),
-      title: Text(title),
-      content: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          content,
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(title),
+        actions: [
+          Center(
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Icon(Icons.close),
+            ),
+          )
         ],
       ),
-      actions: [
-        ElevatedButton(
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-          child: Text(AppLocalizations.of(context)!.close),
-        ),
-      ],
+      body: content,
     );
   }
 }
