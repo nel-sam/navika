@@ -18,7 +18,8 @@ const TABLE_BORDERS = TableBorder(
   bottom: TABLE_BORDER,
   //horizontalInside: TABLE_BORDER,
 );
-const SINGULAR_ICON = Icons.crop_square_outlined; //Text('1');
+const SINGULAR_ICON =
+    Icons.looks_one_outlined; // Icons.crop_square_outlined; //Text('1');
 // Icon(Icons.perm_identity, color: ICON_COLOR); //Text('1');
 // Icon(Icons.looks_one_outlined, color: ICON_COLOR); //Text('1');
 
