@@ -7,7 +7,7 @@ const TABLE_CELL_HEIGHT = 60.0;
 const CELL_TEXT_PADDING = 5.0;
 const TABLE_CELL_TEXT_STYLE = TextStyle(
   fontSize: 16.0,
-  color: Colors.black,
+  //color: Colors.black,
 );
 const TABLE_BORDER =
     BorderSide(width: 1, color: ICON_COLOR, style: BorderStyle.solid);

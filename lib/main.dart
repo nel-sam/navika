@@ -4,6 +4,8 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:navika/widgets/exercise-selection/exercise-selection.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
+import 'models/constants.dart';
+
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   MobileAds.instance.initialize();
@@ -38,8 +40,18 @@ class MyApp extends StatelessWidget {
         const Locale('es', ''),
       ],
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        brightness: Brightness.light,
       ),
+      darkTheme: ThemeData(
+        primarySwatch: Colors.blue,
+        primaryColor: Colors.black,
+        brightness: Brightness.dark,
+        backgroundColor: const Color(0xFF212121),
+        accentColor: Colors.white,
+        accentIconTheme: IconThemeData(color: Colors.black),
+        dividerColor: Colors.black12,
+      ),
+      themeMode: ThemeMode.dark,
       home: MyHomePage(title: 'Navika'),
     );
   }
