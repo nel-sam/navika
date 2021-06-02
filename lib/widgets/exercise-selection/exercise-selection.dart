@@ -4,6 +4,7 @@ import 'package:navika/widgets/adjectives/adjective-exercise.dart';
 import 'package:navika/widgets/akusativ/akuzativ.dart';
 import 'package:navika/widgets/dativ/dativ.dart';
 import 'package:navika/widgets/exercise-selection/exercise-button.dart';
+import 'package:navika/widgets/genitiv/genitiv.dart';
 import 'package:navika/widgets/instrumental/instrumental.dart';
 import 'package:navika/widgets/lokativ/lokativ.dart';
 
@@ -38,11 +39,11 @@ class _ExerciseSelectionState extends State<ExerciseSelection> {
         ExerciseButton(
             destination: Dativ(), icon: Icons.arrow_forward, label: 'Dativ'),
         ExerciseButton(
-            destination: Akuzativ(), icon: Icons.coffee, label: 'Genetiv'),
-        ExerciseButton(
-            destination: Akuzativ(),
-            icon: Icons.call_rounded,
-            label: 'Vokativ'),
+            destination: Genitiv(), icon: Icons.coffee, label: 'Genetiv'),
+        // ExerciseButton(
+        //     destination: Akuzativ(),
+        //     icon: Icons.call_rounded,
+        //     label: 'Vokativ'),
       ],
     );
   }

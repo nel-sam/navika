@@ -6,14 +6,14 @@ import 'package:navika/utilities/widget-helpers.dart';
 
 import 'instrumental-list-item.dart';
 
-class ExerciseItem {
+class InstrumentalExerciseItem {
   DeclinableWord possesivePronoun;
   DeclinableWord adjective;
   GenderEnum gender;
   bool isPlural;
   Noun noun;
 
-  ExerciseItem(
+  InstrumentalExerciseItem(
       {required this.possesivePronoun,
       required this.adjective,
       required this.gender,
@@ -29,18 +29,19 @@ class Instrumental extends StatefulWidget {
 }
 
 List<Widget> getListItems() {
-  List<ExerciseItem> listItems = List<ExerciseItem>.empty(growable: true);
+  List<InstrumentalExerciseItem> listItems =
+      List<InstrumentalExerciseItem>.empty(growable: true);
 
   wordBank.possesivePronouns.forEach((pp) {
     wordBank.adjectives.forEach((adj) {
       wordBank.nouns.forEach((noun) {
-        listItems.add(ExerciseItem(
+        listItems.add(InstrumentalExerciseItem(
             possesivePronoun: pp,
             adjective: adj,
             gender: noun.gender,
             isPlural: false,
             noun: noun));
-        listItems.add(ExerciseItem(
+        listItems.add(InstrumentalExerciseItem(
             possesivePronoun: pp,
             adjective: adj,
             gender: noun.gender,

@@ -6,14 +6,14 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/utilities/widget-helpers.dart';
 import 'package:navika/widgets/adjectives/adjective-list-item.dart';
 
-class AdjectiveNounPair {
+class AdjectiveExerciseItem {
   String activeValue;
   DeclinableWord adjective;
   GenderEnum gender;
   bool isPlural;
   Noun noun;
 
-  AdjectiveNounPair(
+  AdjectiveExerciseItem(
       {required this.activeValue,
       required this.adjective,
       required this.gender,
@@ -30,18 +30,18 @@ class AdjectivesExercise extends StatefulWidget {
 
 class _AdjectivesExerciseState extends State<AdjectivesExercise> {
   List<Widget> getListItems() {
-    List<AdjectiveNounPair> listItems =
-        List<AdjectiveNounPair>.empty(growable: true);
+    List<AdjectiveExerciseItem> listItems =
+        List<AdjectiveExerciseItem>.empty(growable: true);
 
     widget.bank.adjectives.forEach((adj) {
       widget.bank.nouns.forEach((noun) {
-        listItems.add(AdjectiveNounPair(
+        listItems.add(AdjectiveExerciseItem(
             activeValue: adj.dictionary,
             adjective: adj,
             noun: noun,
             isPlural: false,
             gender: noun.gender));
-        listItems.add(AdjectiveNounPair(
+        listItems.add(AdjectiveExerciseItem(
             activeValue: adj.dictionary,
             adjective: adj,
             noun: noun,

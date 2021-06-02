@@ -6,14 +6,14 @@ import 'package:navika/utilities/widget-helpers.dart';
 
 import 'dativ-list-item.dart';
 
-class ExerciseItem {
+class DativExerciseItem {
   DeclinableWord possesivePronoun;
   DeclinableWord adjective;
   GenderEnum gender;
   bool isPlural;
   Noun noun;
 
-  ExerciseItem(
+  DativExerciseItem(
       {required this.possesivePronoun,
       required this.adjective,
       required this.gender,
@@ -29,18 +29,18 @@ class Dativ extends StatefulWidget {
 }
 
 List<Widget> getListItems() {
-  List<ExerciseItem> listItems = List<ExerciseItem>.empty(growable: true);
+  List<DativExerciseItem> listItems = List<DativExerciseItem>.empty(growable: true);
 
   wordBank.possesivePronouns.forEach((pp) {
     wordBank.adjectives.forEach((adj) {
       wordBank.nouns.forEach((noun) {
-        listItems.add(ExerciseItem(
+        listItems.add(DativExerciseItem(
             possesivePronoun: pp,
             adjective: adj,
             gender: noun.gender,
             isPlural: false,
             noun: noun));
-        listItems.add(ExerciseItem(
+        listItems.add(DativExerciseItem(
             possesivePronoun: pp,
             adjective: adj,
             gender: noun.gender,
