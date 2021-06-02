@@ -1,3 +1,4 @@
+import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 
 /*
@@ -10,6 +11,7 @@ new DeclensionByCount(
 final List<Noun> nounWordBank = [
   Noun(
     dictionary: "stol",
+    category: WordCategoryEnum.FlatSurface,
     gender: GenderEnum.Masculine,
     isAnimate: false,
     nominativ: new DeclensionByCount(
@@ -33,16 +35,17 @@ final List<Noun> nounWordBank = [
       plural: "stolovima",
     ),
     genitiv: new DeclensionByCount(
-      singular: "",
-      plural: "",
+      singular: "stola",
+      plural: "stolova",
     ),
     vokativ: new DeclensionByCount(
-      singular: "",
-      plural: "",
+      singular: "stole",
+      plural: "stolovi",
     ),
   ),
   Noun(
     dictionary: "žena",
+    category: WordCategoryEnum.Human,
     gender: GenderEnum.Feminine,
     isAnimate: true,
     nominativ: new DeclensionByCount(
@@ -66,16 +69,17 @@ final List<Noun> nounWordBank = [
       plural: "ženama",
     ),
     genitiv: new DeclensionByCount(
-      singular: "",
-      plural: "",
+      singular: "žene",
+      plural: "žena",
     ),
     vokativ: new DeclensionByCount(
-      singular: "",
-      plural: "",
+      singular: "ženo",
+      plural: "žene",
     ),
   ),
   Noun(
     dictionary: "more",
+    category: WordCategoryEnum.Location,
     gender: GenderEnum.Neuter,
     isAnimate: false,
     nominativ: new DeclensionByCount(
@@ -99,12 +103,46 @@ final List<Noun> nounWordBank = [
       plural: "morima",
     ),
     genitiv: new DeclensionByCount(
-      singular: "",
-      plural: "",
+      singular: "more",
+      plural: "mora",
     ),
     vokativ: new DeclensionByCount(
-      singular: "",
-      plural: "",
+      singular: "moro",
+      plural: "more",
+    ),
+  ),
+  Noun(
+    dictionary: "ljubav",
+    category: WordCategoryEnum.Emotion,
+    gender: GenderEnum.Feminine,
+    isAnimate: false,
+    nominativ: new DeclensionByCount(
+      singular: "ljubav",
+      plural: "ljubavi",
+    ),
+    akuzativ: new DeclensionByCount(
+      singular: "ljubav",
+      plural: "ljubavi",
+    ),
+    instrumental: new DeclensionByCount(
+      singular: "ljubavi",
+      plural: "ljubavima",
+    ),
+    lokativ: new DeclensionByCount(
+      singular: "ljubavi",
+      plural: "ljubavima",
+    ),
+    dativ: new DeclensionByCount(
+      singular: "ljubavi",
+      plural: "ljubavima",
+    ),
+    genitiv: new DeclensionByCount(
+      singular: "ljubavi",
+      plural: "ljubavi",
+    ),
+    vokativ: new DeclensionByCount(
+      singular: "ljubavi",
+      plural: "ljubavi",
     ),
   ),
 ];

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/widgets/adjectives/adjective-exercise.dart';
 import 'package:navika/widgets/akusativ/akuzativ.dart';
+import 'package:navika/widgets/dativ/dativ.dart';
 import 'package:navika/widgets/exercise-selection/exercise-button.dart';
 import 'package:navika/widgets/instrumental/instrumental.dart';
 import 'package:navika/widgets/lokativ/lokativ.dart';
@@ -35,7 +36,7 @@ class _ExerciseSelectionState extends State<ExerciseSelection> {
             icon: Icons.location_on_outlined,
             label: 'Lokativ'),
         ExerciseButton(
-            destination: Akuzativ(), icon: Icons.arrow_forward, label: 'Dativ'),
+            destination: Dativ(), icon: Icons.arrow_forward, label: 'Dativ'),
         ExerciseButton(
             destination: Akuzativ(), icon: Icons.coffee, label: 'Genetiv'),
         ExerciseButton(

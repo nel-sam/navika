@@ -81,7 +81,7 @@ final List<DeclinableWord> adjectiveWordBank = [
     ),
     dativ: new Declension(
       masculine: new DeclensionByGender(singular: "hladnom", plural: "hladnim"),
-      feminine: new DeclensionByGender(singular: "hladnom", plural: "hladnim"),
+      feminine: new DeclensionByGender(singular: "hladnoj", plural: "hladnim"),
       neuter: new DeclensionByGender(singular: "hladnom", plural: "hladnim"),
     ),
     genitiv: new Declension(

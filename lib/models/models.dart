@@ -1,4 +1,5 @@
 import 'package:navika/utilities/widget-helpers.dart';
+import 'enums.dart';
 
 class WordBank {
   final List<Noun> nouns;
@@ -11,21 +12,12 @@ class WordBank {
       required this.possesivePronouns});
 }
 
-enum GenderEnum { Masculine, Feminine, Neuter }
-enum CaseTypeEnum {
-  Instrumental,
-  Nominativ,
-  Akuzativ,
-  Vokativ,
-  Lokativ,
-  Genitiv,
-  Dativ,
-}
-
 class Noun {
+  final WordCategoryEnum category;
   final GenderEnum gender;
-  final bool isAnimate;
   final String dictionary;
+  final bool isAnimate;
+
   final DeclensionByCount nominativ;
   final DeclensionByCount akuzativ;
   final DeclensionByCount instrumental;
@@ -35,6 +27,7 @@ class Noun {
   final DeclensionByCount vokativ;
 
   Noun({
+    required this.category,
     required this.dictionary,
     required this.gender,
     required this.isAnimate,
