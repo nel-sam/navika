@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:navika/models/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
+import 'package:navika/widgets/shared/answer-status-icon.dart';
 
 class LokativListItem extends StatefulWidget {
   DeclinableWord adjective;
@@ -72,6 +73,7 @@ class _LokativListItemState extends State<LokativListItem> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
+            AnswerStatusIcon(isCorrect: widget.isAllCorrect),
             Padding(
               padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
               child: Text('Govorim o '),

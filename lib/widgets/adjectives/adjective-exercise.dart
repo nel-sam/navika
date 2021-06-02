@@ -5,6 +5,8 @@ import 'package:navika/models/models.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/utilities/widget-helpers.dart';
 import 'package:navika/widgets/adjectives/adjective-list-item.dart';
+import 'package:navika/widgets/shared/explanation-button.dart';
+import 'adjective-explanation.dart';
 
 class AdjectiveExerciseItem {
   String activeValue;
@@ -67,6 +69,11 @@ class _AdjectivesExerciseState extends State<AdjectivesExercise> {
     return Scaffold(
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.adjectives),
+        actions: [
+          Center(
+            child: ExplanationButton(popupWidget: AdjectiveExplanation()),
+          )
+        ],
       ),
       body: Center(
         child: ListView(

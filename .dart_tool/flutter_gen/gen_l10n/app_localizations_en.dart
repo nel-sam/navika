@@ -12,4 +12,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get adjectives => 'Adjectives';
+
+  @override
+  String get close => 'Close';
 }

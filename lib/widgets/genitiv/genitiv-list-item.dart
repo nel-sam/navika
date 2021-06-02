@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:navika/models/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
+import 'package:navika/widgets/shared/answer-status-icon.dart';
 
 class GenitivListItem extends StatefulWidget {
   Noun noun1;
@@ -74,6 +75,7 @@ class _GenitivListItemState extends State<GenitivListItem> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
+            AnswerStatusIcon(isCorrect: widget.isAllCorrect),
             Padding(
               padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
               child: Text('To je '),

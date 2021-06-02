@@ -3,6 +3,7 @@ import 'package:navika/models/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/utilities/widget-helpers.dart';
+import 'package:navika/widgets/shared/answer-status-icon.dart';
 
 class AdjectiveListItem extends StatefulWidget {
   DeclinableWord adjective;
@@ -26,7 +27,8 @@ class AdjectiveListItem extends StatefulWidget {
 }
 
 List<DropdownMenuItem<String>> getAdjectiveDropdownItems(DeclinableWord adj) {
-  return adj.getUniqueDeclensions()
+  return adj
+      .getUniqueDeclensions()
       .map((e) => DropdownMenuItem<String>(value: e, child: Text(e)))
       .toList();
 }
@@ -51,32 +53,33 @@ class _AdjectiveListItemState extends State<AdjectiveListItem> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
+            AnswerStatusIcon(isCorrect: widget.isCorrect),
             Padding(
               padding: EdgeInsets.fromLTRB(10, 0, 5, 0),
+              child: Text('To je '),
             ),
-            Text('To je '),
             Padding(
               padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-            ),
-            Container(
-              child: DropdownButton(
-                value: widget.activeValue,
-                iconSize: 24,
-                elevation: 16,
-                underline: Container(
-                  height: 1,
-                  color: widget.isCorrect ? CORRECT_COLOR : WRONG_COLOR,
-                ),
-                onChanged: (String? newValue) {
-                  setState(() {
-                    bool isCorrect = checkAnswer(widget.adjective,
-                        widget.gender, widget.isPlural, newValue);
+              child: Container(
+                child: DropdownButton(
+                  value: widget.activeValue,
+                  iconSize: 24,
+                  elevation: 16,
+                  underline: Container(
+                    height: 1,
+                    color: widget.isCorrect ? CORRECT_COLOR : WRONG_COLOR,
+                  ),
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      bool isCorrect = checkAnswer(widget.adjective,
+                          widget.gender, widget.isPlural, newValue);
 
-                    widget.activeValue = newValue != null ? newValue : "";
-                    widget.isCorrect = isCorrect;
-                  });
-                },
-                items: getAdjectiveDropdownItems(widget.adjective),
+                      widget.activeValue = newValue != null ? newValue : "";
+                      widget.isCorrect = isCorrect;
+                    });
+                  },
+                  items: getAdjectiveDropdownItems(widget.adjective),
+                ),
               ),
             ),
             Padding(
