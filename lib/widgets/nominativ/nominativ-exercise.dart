@@ -4,18 +4,18 @@ import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/utilities/widget-helpers.dart';
-import 'package:navika/widgets/adjectives/adjective-list-item.dart';
+import 'package:navika/widgets/nominativ/nominativ-list-item.dart';
 import 'package:navika/widgets/shared/explanation-button.dart';
-import 'adjective-explanation.dart';
+import 'nominativ-explanation.dart';
 
-class AdjectiveExerciseItem {
+class NominativExerciseItem {
   String activeValue;
   DeclinableWord adjective;
   GenderEnum gender;
   bool isPlural;
   Noun noun;
 
-  AdjectiveExerciseItem(
+  NominativExerciseItem(
       {required this.activeValue,
       required this.adjective,
       required this.gender,
@@ -23,27 +23,27 @@ class AdjectiveExerciseItem {
       required this.noun});
 }
 
-class AdjectivesExercise extends StatefulWidget {
+class NominativExercise extends StatefulWidget {
   final WordBank bank = wordBank;
 
   @override
-  _AdjectivesExerciseState createState() => _AdjectivesExerciseState();
+  _NominativExerciseState createState() => _NominativExerciseState();
 }
 
-class _AdjectivesExerciseState extends State<AdjectivesExercise> {
+class _NominativExerciseState extends State<NominativExercise> {
   List<Widget> getListItems() {
-    List<AdjectiveExerciseItem> listItems =
-        List<AdjectiveExerciseItem>.empty(growable: true);
+    List<NominativExerciseItem> listItems =
+        List<NominativExerciseItem>.empty(growable: true);
 
     widget.bank.adjectives.forEach((adj) {
       widget.bank.nouns.forEach((noun) {
-        listItems.add(AdjectiveExerciseItem(
+        listItems.add(NominativExerciseItem(
             activeValue: adj.dictionary,
             adjective: adj,
             noun: noun,
             isPlural: false,
             gender: noun.gender));
-        listItems.add(AdjectiveExerciseItem(
+        listItems.add(NominativExerciseItem(
             activeValue: adj.dictionary,
             adjective: adj,
             noun: noun,
@@ -52,9 +52,26 @@ class _AdjectivesExerciseState extends State<AdjectivesExercise> {
       });
     });
 
+    widget.bank.possesivePronouns.forEach((pp) {
+      widget.bank.nouns.forEach((noun) {
+        listItems.add(NominativExerciseItem(
+            activeValue: pp.dictionary,
+            adjective: pp,
+            noun: noun,
+            isPlural: false,
+            gender: noun.gender));
+        listItems.add(NominativExerciseItem(
+            activeValue: pp.dictionary,
+            adjective: pp,
+            noun: noun,
+            isPlural: true,
+            gender: noun.gender));
+      });
+    });
+
     return WidgetHelpers.shuffleList(listItems)
         .map(
-          (e) => AdjectiveListItem(
+          (e) => NominativListItem(
               activeValue: e.activeValue,
               adjective: e.adjective,
               isPlural: e.isPlural,
@@ -68,10 +85,10 @@ class _AdjectivesExerciseState extends State<AdjectivesExercise> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppLocalizations.of(context)!.adjectives),
+        title: Text('Nominativ'),
         actions: [
           Center(
-            child: ExplanationButton(popupWidget: AdjectiveExplanation()),
+            child: ExplanationButton(popupWidget: NominativExplanation()),
           )
         ],
       ),

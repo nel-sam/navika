@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:navika/widgets/adjectives/adjective-exercise.dart';
 import 'package:navika/widgets/akusativ/akuzativ.dart';
 import 'package:navika/widgets/dativ/dativ.dart';
 import 'package:navika/widgets/exercise-selection/exercise-button.dart';
 import 'package:navika/widgets/genitiv/genitiv.dart';
 import 'package:navika/widgets/instrumental/instrumental.dart';
 import 'package:navika/widgets/lokativ/lokativ.dart';
+import 'package:navika/widgets/nominativ/nominativ-exercise.dart';
 
 class ExerciseSelection extends StatefulWidget {
   @override
@@ -21,9 +20,10 @@ class _ExerciseSelectionState extends State<ExerciseSelection> {
       shrinkWrap: true,
       children: <Widget>[
         ExerciseButton(
-            destination: AdjectivesExercise(),
-            icon: Icons.category_outlined,
-            label: '${AppLocalizations.of(context)!.adjectives} (Nominativ)'),
+          destination: NominativExercise(),
+          icon: Icons.category_outlined,
+          label: 'Nominativ',
+        ),
         ExerciseButton(
             destination: Akuzativ(),
             icon: Icons.remove_red_eye_outlined,

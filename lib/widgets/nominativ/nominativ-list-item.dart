@@ -5,7 +5,7 @@ import 'package:navika/models/models.dart';
 import 'package:navika/utilities/widget-helpers.dart';
 import 'package:navika/widgets/shared/answer-status-icon.dart';
 
-class AdjectiveListItem extends StatefulWidget {
+class NominativListItem extends StatefulWidget {
   DeclinableWord adjective;
   String activeValue;
   GenderEnum gender;
@@ -15,7 +15,7 @@ class AdjectiveListItem extends StatefulWidget {
   bool isCorrect = false;
   bool showHint = false;
 
-  AdjectiveListItem(
+  NominativListItem(
       {required this.activeValue,
       required this.adjective,
       required this.isPlural,
@@ -23,7 +23,7 @@ class AdjectiveListItem extends StatefulWidget {
       required this.noun});
 
   @override
-  _AdjectiveListItemState createState() => _AdjectiveListItemState();
+  _NominativListItemState createState() => _NominativListItemState();
 }
 
 List<DropdownMenuItem<String>> getAdjectiveDropdownItems(DeclinableWord adj) {
@@ -39,7 +39,7 @@ bool checkAnswer(DeclinableWord adjective, GenderEnum gender, bool isPlural,
       adjective.getDeclension(gender, isPlural, CaseTypeEnum.Nominativ, false);
 }
 
-class _AdjectiveListItemState extends State<AdjectiveListItem> {
+class _NominativListItemState extends State<NominativListItem> {
   @override
   Widget build(BuildContext context) {
     return new Container(

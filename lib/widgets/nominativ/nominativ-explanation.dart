@@ -5,13 +5,15 @@ import 'package:navika/models/enums.dart';
 import 'package:navika/utilities/widget-helpers.dart';
 import 'package:navika/widgets/shared/explanation-popup-base.dart';
 
-class AdjectiveExplanation extends StatelessWidget {
+class NominativExplanation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ExplanationPopupBase(
-      title: AppLocalizations.of(context)!.adjectives,
-      content:
-          Column(children: [getAdjectiveTable(), getPronounTable(context)]),
+      title: 'Nomitaiv',
+      content: Column(children: [
+        getAdjectiveTable(),
+        getPronounTable(context),
+      ]),
     );
   }
 
