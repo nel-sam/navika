@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:navika/models/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
+import 'package:navika/widgets/shared/case-drop-down.dart';
 import 'package:navika/widgets/shared/exercise-row-card.dart';
 
 class NominativListItem extends StatefulWidget {
@@ -27,54 +28,40 @@ List<DropdownMenuItem<String>> getAdjectiveDropdownItems(DeclinableWord adj) {
       .toList();
 }
 
-bool checkAnswer(DeclinableWord adjective, GenderEnum gender, bool isPlural,
-    String? newValue) {
-  return newValue ==
-      adjective.getDeclension(gender, isPlural, CaseTypeEnum.Nominativ, false);
-}
-
 class _NominativListItemState extends State<NominativListItem> {
-  bool isCorrect = false;
+  bool isAllCorrect = false;
   bool showHint = false;
-  late String activeValue;
+  late String activeAdjValue;
+  late String correctAdjValue;
 
   @protected
   @mustCallSuper
   void initState() {
     super.initState();
-    this.activeValue = widget.adjective.dictionary;
+    this.correctAdjValue = widget.adjective.getDeclension(widget.gender,
+        widget.isPlural, CaseTypeEnum.Nominativ, widget.noun.isAnimate);
+
+    this.activeAdjValue = widget.adjective.dictionary;
+  }
+
+  bool checkAnswer() {
+    return this.activeAdjValue == this.correctAdjValue;
   }
 
   @override
   Widget build(BuildContext context) {
     var sentenceContent = [
-      Padding(
-        padding: EdgeInsets.fromLTRB(10, 0, 5, 0),
-        child: Text('To je '),
-      ),
-      Padding(
-        padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-        child: Container(
-          child: DropdownButton(
-            value: this.activeValue,
-            iconSize: 24,
-            elevation: 16,
-            underline: Container(
-              height: 1,
-              color: this.isCorrect ? CORRECT_COLOR : WRONG_COLOR,
-            ),
-            onChanged: (String? newValue) {
-              setState(() {
-                bool isCorrect = checkAnswer(
-                    widget.adjective, widget.gender, widget.isPlural, newValue);
-
-                this.activeValue = newValue != null ? newValue : "";
-                this.isCorrect = isCorrect;
-              });
-            },
-            items: getAdjectiveDropdownItems(widget.adjective),
-          ),
-        ),
+      Text('To je '),
+      CaseDropDown(
+        activeValue: this.activeAdjValue,
+        correctValue: this.correctAdjValue,
+        dropDownOptions: getAdjectiveDropdownItems(widget.adjective),
+        onChanged: (String newVal) {
+          setState(() {
+            this.activeAdjValue = newVal;
+            this.isAllCorrect = checkAnswer();
+          });
+        },
       ),
       Padding(
         padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
@@ -85,7 +72,7 @@ class _NominativListItemState extends State<NominativListItem> {
     ];
 
     return ExerciseRowCard(
-      isAllCorrect: isCorrect,
+      isAllCorrect: isAllCorrect,
       isPlural: widget.isPlural,
       children: sentenceContent,
       gender: widget.gender,

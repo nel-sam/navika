@@ -29,7 +29,7 @@ List<DropdownMenuItem<String>> getNounDropdownItems(Noun noun) {
       .toList();
 }
 
-List<DropdownMenuItem<String>> getDropdownItems(DeclinableWord word) {
+List<DropdownMenuItem<String>> getAdjectiveDropdownItems(DeclinableWord word) {
   var items = word.getUniqueDeclensions();
   return items
       .map((e) => DropdownMenuItem<String>(value: e, child: Text(e)))
@@ -75,7 +75,7 @@ class _AkuzativListItemState extends State<AkuzativListItem> {
       CaseDropDown(
         activeValue: this.activePronounValue,
         correctValue: this.correctPronounValue,
-        dropDownOptions: getDropdownItems(widget.pronoun),
+        dropDownOptions: getAdjectiveDropdownItems(widget.pronoun),
         onChanged: (String newVal) {
           setState(() {
             this.activePronounValue = newVal;
@@ -86,7 +86,7 @@ class _AkuzativListItemState extends State<AkuzativListItem> {
       CaseDropDown(
         activeValue: this.activeAdjValue,
         correctValue: this.correctAdjValue,
-        dropDownOptions: getDropdownItems(widget.adjective),
+        dropDownOptions: getAdjectiveDropdownItems(widget.adjective),
         onChanged: (String newVal) {
           setState(() {
             this.activeAdjValue = newVal;

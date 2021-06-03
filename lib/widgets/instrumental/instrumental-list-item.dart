@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:navika/models/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
+import 'package:navika/widgets/shared/case-drop-down.dart';
 import 'package:navika/widgets/shared/exercise-row-card.dart';
 
 class InstrumentalListItem extends StatefulWidget {
@@ -29,7 +30,7 @@ List<DropdownMenuItem<String>> getNounDropdownItems(Noun noun) {
       .toList();
 }
 
-List<DropdownMenuItem<String>> getDropdownItems(DeclinableWord word) {
+List<DropdownMenuItem<String>> getAdjectiveDropdownItems(DeclinableWord word) {
   var items = word.getUniqueDeclensions();
   return items
       .map((e) => DropdownMenuItem<String>(value: e, child: Text(e)))
@@ -71,78 +72,39 @@ class _InstrumentalListItemState extends State<InstrumentalListItem> {
   @override
   Widget build(BuildContext context) {
     var sentenceContent = [
-      Padding(
-        padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
-        child: Text('Idem sa '),
+      Text('Idem sa '),
+      CaseDropDown(
+        activeValue: this.activePronounValue,
+        correctValue: this.correctPronounValue,
+        dropDownOptions: getAdjectiveDropdownItems(widget.pronoun),
+        onChanged: (String newVal) {
+          setState(() {
+            this.activePronounValue = newVal;
+            this.isAllCorrect = checkAnswer();
+          });
+        },
       ),
-      Padding(
-        padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
-        child: Container(
-          child: DropdownButton(
-            value: this.activePronounValue,
-            iconSize: 24,
-            elevation: 16,
-            underline: Container(
-                height: 1,
-                color: this.activePronounValue == this.correctPronounValue
-                    ? CORRECT_COLOR
-                    : WRONG_COLOR),
-            onChanged: (String? newPronValue) {
-              setState(() {
-                this.activePronounValue =
-                    newPronValue != null ? newPronValue : "";
-                this.isAllCorrect = checkAnswer();
-              });
-            },
-            items: getDropdownItems(widget.pronoun),
-          ),
-        ),
+      CaseDropDown(
+        activeValue: this.activeAdjValue,
+        correctValue: this.correctAdjValue,
+        dropDownOptions: getAdjectiveDropdownItems(widget.adjective),
+        onChanged: (String newVal) {
+          setState(() {
+            this.activeAdjValue = newVal;
+            this.isAllCorrect = checkAnswer();
+          });
+        },
       ),
-      Padding(
-        padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
-        child: Container(
-          child: DropdownButton(
-            value: this.activeAdjValue,
-            iconSize: 24,
-            elevation: 16,
-            underline: Container(
-              height: 1,
-              color: this.activeAdjValue == this.correctAdjValue
-                  ? CORRECT_COLOR
-                  : WRONG_COLOR,
-            ),
-            onChanged: (String? newAdjValue) {
-              setState(() {
-                this.activeAdjValue = newAdjValue != null ? newAdjValue : "";
-                this.isAllCorrect = checkAnswer();
-              });
-            },
-            items: getDropdownItems(widget.adjective),
-          ),
-        ),
-      ),
-      Padding(
-        padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
-        child: Container(
-          child: DropdownButton(
-            value: this.activeNounValue,
-            iconSize: 24,
-            elevation: 16,
-            underline: Container(
-              height: 1,
-              color: this.activeNounValue == this.correctNounValue
-                  ? CORRECT_COLOR
-                  : WRONG_COLOR,
-            ),
-            onChanged: (String? newNounValue) {
-              setState(() {
-                this.activeNounValue = newNounValue != null ? newNounValue : "";
-                this.isAllCorrect = checkAnswer();
-              });
-            },
-            items: getNounDropdownItems(widget.noun),
-          ),
-        ),
+      CaseDropDown(
+        activeValue: this.activeNounValue,
+        correctValue: this.correctNounValue,
+        dropDownOptions: getNounDropdownItems(widget.noun),
+        onChanged: (String newVal) {
+          setState(() {
+            this.activeNounValue = newVal;
+            this.isAllCorrect = checkAnswer();
+          });
+        },
       ),
     ];
 
