@@ -42,26 +42,29 @@ class NominativExplanation extends StatelessWidget {
             TableRow(
               children: <Widget>[
                 Container(),
-                getIconCell(WidgetHelpers.getGenderIcon(GenderEnum.Masculine)),
-                getIconCell(WidgetHelpers.getGenderIcon(GenderEnum.Feminine)),
-                getIconCell(WidgetHelpers.getGenderIcon(GenderEnum.Neuter)),
+                ExplanationIconCell(
+                    icon: WidgetHelpers.getGenderIcon(GenderEnum.Masculine)),
+                ExplanationIconCell(
+                    icon: WidgetHelpers.getGenderIcon(GenderEnum.Feminine)),
+                ExplanationIconCell(
+                    icon: WidgetHelpers.getGenderIcon(GenderEnum.Neuter)),
               ],
             ),
             TableRow(children: [
-              getIconCell(SINGULAR_ICON),
-              getTextCell([
+              ExplanationIconCell(icon: SINGULAR_ICON),
+              ExplanationTextCell(children: [
                 TextSpan(text: 'Mal'),
                 TextSpan(
                     text: 'i', style: TextStyle(fontWeight: FontWeight.bold)),
                 TextSpan(text: ' čaj'),
               ]),
-              getTextCell([
+              ExplanationTextCell(children: [
                 TextSpan(text: 'Mal'),
                 TextSpan(
                     text: 'a', style: TextStyle(fontWeight: FontWeight.bold)),
                 TextSpan(text: ' karta'),
               ]),
-              getTextCell([
+              ExplanationTextCell(children: [
                 TextSpan(text: 'Mal'),
                 TextSpan(
                     text: 'o', style: TextStyle(fontWeight: FontWeight.bold)),
@@ -69,20 +72,20 @@ class NominativExplanation extends StatelessWidget {
               ]),
             ]),
             TableRow(children: [
-              getIconCell(PLURAL_ICON),
-              getTextCell([
+              ExplanationIconCell(icon: PLURAL_ICON),
+              ExplanationTextCell(children: [
                 TextSpan(text: 'Mal'),
                 TextSpan(
                     text: 'i', style: TextStyle(fontWeight: FontWeight.bold)),
                 TextSpan(text: ' čajevi'),
               ]),
-              getTextCell([
+              ExplanationTextCell(children: [
                 TextSpan(text: 'Mal'),
                 TextSpan(
                     text: 'e', style: TextStyle(fontWeight: FontWeight.bold)),
                 TextSpan(text: ' karte'),
               ]),
-              getTextCell([
+              ExplanationTextCell(children: [
                 TextSpan(text: 'Mal'),
                 TextSpan(
                     text: 'a', style: TextStyle(fontWeight: FontWeight.bold)),
@@ -98,90 +101,115 @@ class NominativExplanation extends StatelessWidget {
   getPronounTable(BuildContext context) {
     return Column(
       children: [
-        Padding(padding: EdgeInsets.all(10.0)),
         Text(AppLocalizations.of(context)!.pronouns),
-        Table(
-          border: TABLE_BORDERS,
-          columnWidths: const <int, TableColumnWidth>{
-            0: FlexColumnWidth(1),
-            1: FlexColumnWidth(1),
-            2: FlexColumnWidth(1),
-            4: FlexColumnWidth(1),
-          },
-          children: <TableRow>[
-            TableRow(
-              children: <Widget>[
-                Container(),
-                getIconCell(WidgetHelpers.getGenderIcon(GenderEnum.Masculine)),
-                getIconCell(WidgetHelpers.getGenderIcon(GenderEnum.Feminine)),
-                getIconCell(WidgetHelpers.getGenderIcon(GenderEnum.Neuter)),
-              ],
-            ),
-            TableRow(children: [
-              getIconCell(SINGULAR_ICON),
-              getTextCell([TextSpan(text: 'Moj čaj')]),
-              getTextCell([
-                TextSpan(text: 'Moj'),
-                TextSpan(
-                    text: 'a', style: TextStyle(fontWeight: FontWeight.bold)),
-                TextSpan(text: ' karta'),
+        Padding(
+          padding: const EdgeInsets.all(5),
+          child: Table(
+            border: TABLE_BORDERS,
+            defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+            defaultColumnWidth: FlexColumnWidth(1),
+            columnWidths: const <int, TableColumnWidth>{
+              0: FixedColumnWidth(40),
+            },
+            children: <TableRow>[
+              TableRow(
+                children: <Widget>[
+                  Container(),
+                  ExplanationIconCell(
+                      icon: WidgetHelpers.getGenderIcon(GenderEnum.Masculine)),
+                  ExplanationIconCell(
+                      icon: WidgetHelpers.getGenderIcon(GenderEnum.Feminine)),
+                  ExplanationIconCell(
+                      icon: WidgetHelpers.getGenderIcon(GenderEnum.Neuter)),
+                ],
+              ),
+              TableRow(children: [
+                ExplanationIconCell(icon: SINGULAR_ICON),
+                ExplanationTextCell(children: [TextSpan(text: 'Moj čaj')]),
+                ExplanationTextCell(children: [
+                  TextSpan(text: 'Moj'),
+                  TextSpan(
+                      text: 'a', style: TextStyle(fontWeight: FontWeight.bold)),
+                  TextSpan(text: ' karta'),
+                ]),
+                ExplanationTextCell(children: [
+                  TextSpan(text: 'Moj'),
+                  TextSpan(
+                      text: 'e', style: TextStyle(fontWeight: FontWeight.bold)),
+                  TextSpan(text: ' pismo'),
+                ]),
               ]),
-              getTextCell([
-                TextSpan(text: 'Moj'),
-                TextSpan(
-                    text: 'e', style: TextStyle(fontWeight: FontWeight.bold)),
-                TextSpan(text: ' pismo'),
+              TableRow(children: [
+                ExplanationIconCell(icon: PLURAL_ICON),
+                ExplanationTextCell(children: [
+                  TextSpan(text: 'Moj'),
+                  TextSpan(
+                      text: 'i', style: TextStyle(fontWeight: FontWeight.bold)),
+                  TextSpan(text: ' čajevi'),
+                ]),
+                ExplanationTextCell(children: [
+                  TextSpan(text: 'Moj'),
+                  TextSpan(
+                      text: 'e', style: TextStyle(fontWeight: FontWeight.bold)),
+                  TextSpan(text: ' karte'),
+                ]),
+                ExplanationTextCell(children: [
+                  TextSpan(text: 'Moj'),
+                  TextSpan(
+                      text: 'a', style: TextStyle(fontWeight: FontWeight.bold)),
+                  TextSpan(text: ' pisma'),
+                ]),
               ]),
-            ]),
-            TableRow(children: [
-              getIconCell(PLURAL_ICON),
-              getTextCell([
-                TextSpan(text: 'Moj'),
-                TextSpan(
-                    text: 'i', style: TextStyle(fontWeight: FontWeight.bold)),
-                TextSpan(text: ' čajevi'),
-              ]),
-              getTextCell([
-                TextSpan(text: 'Moj'),
-                TextSpan(
-                    text: 'e', style: TextStyle(fontWeight: FontWeight.bold)),
-                TextSpan(text: ' karte'),
-              ]),
-              getTextCell([
-                TextSpan(text: 'Moj'),
-                TextSpan(
-                    text: 'a', style: TextStyle(fontWeight: FontWeight.bold)),
-                TextSpan(text: ' pisma'),
-              ]),
-            ]),
-          ],
+            ],
+          ),
         ),
       ],
     );
   }
+}
 
-  getTextCell(List<TextSpan> children) {
-    return TableCell(
-      child: Container(
-        height: TABLE_CELL_HEIGHT,
-        padding: EdgeInsets.all(CELL_TEXT_PADDING),
-        child: RichText(
-          text: TextSpan(
-            style: TABLE_CELL_TEXT_STYLE,
-            children: children,
+class ExplanationIconCell extends StatelessWidget {
+  final IconData icon;
+
+  const ExplanationIconCell({
+    Key? key,
+    required this.icon,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: TABLE_CELL_PADDING,
+      child: TableCell(
+        child: Container(
+          child: Icon(
+            icon,
+            color: ICON_COLOR,
           ),
         ),
       ),
     );
   }
+}
 
-  getIconCell(IconData icon) {
-    return TableCell(
-      child: Container(
-        height: TABLE_CELL_HEIGHT,
-        child: Icon(
-          icon,
-          color: ICON_COLOR,
+class ExplanationTextCell extends StatelessWidget {
+  final List<TextSpan> children;
+
+  const ExplanationTextCell({Key? key, required this.children})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: TABLE_CELL_PADDING,
+      child: TableCell(
+        child: Container(
+          child: RichText(
+            text: TextSpan(
+              style: TABLE_CELL_TEXT_STYLE,
+              children: children,
+            ),
+          ),
         ),
       ),
     );
