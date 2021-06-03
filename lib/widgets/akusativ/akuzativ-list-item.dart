@@ -44,9 +44,9 @@ class _AkuzativListItemState extends State<AkuzativListItem> {
     this.correctNounValue =
         widget.noun.getDeclension(widget.isPlural, CaseTypeEnum.Akuzativ);
 
-    this.activeAdjValue = widget.adjective.dictionary;
-    this.activePronounValue = widget.pronoun.dictionary;
-    this.activeNounValue = widget.noun.dictionary;
+    this.activeAdjValue = widget.adjective.getRandomDeclension();
+    this.activePronounValue = widget.pronoun.getRandomDeclension();
+    this.activeNounValue = widget.noun.getRandomDeclension();
   }
 
   bool checkAnswer() {

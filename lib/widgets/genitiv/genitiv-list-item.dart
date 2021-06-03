@@ -37,9 +37,9 @@ class _GenitivListItemState extends State<GenitivListItem> {
   @mustCallSuper
   void initState() {
     super.initState();
-    this.activeNoun1Value = widget.noun1.dictionary;
-    this.activePronounValue = widget.pronoun.dictionary;
-    this.activeNoun2Value = widget.noun2.dictionary;
+    this.activeNoun1Value = widget.noun1.getRandomDeclension();
+    this.activePronounValue = widget.pronoun.getRandomDeclension();
+    this.activeNoun2Value = widget.noun2.getRandomDeclension();
     this.correctPronounValue = widget.pronoun.getDeclension(widget.gender,
         widget.isPlural, CaseTypeEnum.Nominativ, widget.noun2.isAnimate);
     this.correctNoun1Value =

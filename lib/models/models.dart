@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:navika/utilities/widget-helpers.dart';
 import 'enums.dart';
 
@@ -70,6 +72,13 @@ class Noun {
     return isPlural ? declension.plural : declension.singular;
   }
 
+  String getRandomDeclension() {
+    final declensions = getUniqueDeclensions();
+    final random = new Random();
+    var index = random.nextInt(declensions.length - 1);
+    return declensions[index];
+  }
+
   List getUniqueDeclensions() {
     return WidgetHelpers.shuffleList([
       this.dictionary,
@@ -113,6 +122,13 @@ class DeclinableWord {
     required this.genitiv,
     required this.vokativ,
   });
+
+  String getRandomDeclension() {
+    final declensions = getUniqueDeclensions();
+    final random = new Random();
+    var index = random.nextInt(declensions.length - 1);
+    return declensions[index];
+  }
 
   List getUniqueDeclensions() {
     return WidgetHelpers.shuffleList([

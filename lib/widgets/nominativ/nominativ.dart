@@ -37,13 +37,13 @@ class _NominativExerciseState extends State<NominativExercise> {
     widget.bank.adjectives.forEach((adj) {
       widget.bank.nouns.forEach((noun) {
         listItems.add(NominativExerciseItem(
-            activeValue: adj.dictionary,
+            activeValue: adj.getRandomDeclension(),
             adjective: adj,
             noun: noun,
             isPlural: false,
             gender: noun.gender));
         listItems.add(NominativExerciseItem(
-            activeValue: adj.dictionary,
+            activeValue: adj.getRandomDeclension(),
             adjective: adj,
             noun: noun,
             isPlural: true,
@@ -54,13 +54,13 @@ class _NominativExerciseState extends State<NominativExercise> {
     widget.bank.possesivePronouns.forEach((pp) {
       widget.bank.nouns.forEach((noun) {
         listItems.add(NominativExerciseItem(
-            activeValue: pp.dictionary,
+            activeValue: pp.getRandomDeclension(),
             adjective: pp,
             noun: noun,
             isPlural: false,
             gender: noun.gender));
         listItems.add(NominativExerciseItem(
-            activeValue: pp.dictionary,
+            activeValue: pp.getRandomDeclension(),
             adjective: pp,
             noun: noun,
             isPlural: true,

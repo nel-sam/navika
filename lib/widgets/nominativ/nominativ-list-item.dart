@@ -38,8 +38,8 @@ class _NominativListItemState extends State<NominativListItem> {
         widget.isPlural, CaseTypeEnum.Nominativ, widget.noun.isAnimate);
     this.correctNounValue =
         widget.noun.getDeclension(widget.isPlural, CaseTypeEnum.Nominativ);
-    this.activeAdjValue = widget.adjective.dictionary;
-    this.activeNounValue = widget.noun.dictionary;
+    this.activeAdjValue = widget.adjective.getRandomDeclension();
+    this.activeNounValue = widget.noun.getRandomDeclension();
   }
 
   bool checkAnswer() {
