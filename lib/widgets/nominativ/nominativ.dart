@@ -71,7 +71,6 @@ class _NominativExerciseState extends State<NominativExercise> {
     return WidgetHelpers.shuffleList(listItems)
         .map(
           (e) => NominativListItem(
-              activeValue: e.activeValue,
               adjective: e.adjective,
               isPlural: e.isPlural,
               gender: e.gender,

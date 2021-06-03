@@ -86,7 +86,9 @@ class _DativListItemState extends State<DativListItem> {
               padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
               child: Container(
                 child: DropdownButton(
-                  value: this.activePronounValue,
+                  value: this.activePronounValue == ''
+                      ? widget.pronoun.dictionary
+                      : this.activePronounValue,
                   iconSize: 24,
                   elevation: 16,
                   underline: Container(
@@ -109,7 +111,9 @@ class _DativListItemState extends State<DativListItem> {
               padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
               child: Container(
                 child: DropdownButton(
-                  value: this.activeAdjValue,
+                  value: this.activeAdjValue == ''
+                      ? widget.adjective.dictionary
+                      : this.activeAdjValue,
                   iconSize: 24,
                   elevation: 16,
                   underline: Container(
@@ -133,7 +137,9 @@ class _DativListItemState extends State<DativListItem> {
               padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
               child: Container(
                 child: DropdownButton(
-                  value: this.activeNounValue,
+                  value: this.activeNounValue == ''
+                      ? widget.noun.dictionary
+                      : this.activeNounValue,
                   iconSize: 24,
                   elevation: 16,
                   underline: Container(

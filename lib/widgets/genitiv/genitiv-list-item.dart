@@ -86,7 +86,9 @@ class _GenitivListItemState extends State<GenitivListItem> {
               padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
               child: Container(
                 child: DropdownButton(
-                  value: this.activePronounValue,
+                  value: this.activePronounValue == ''
+                      ? widget.pronoun.dictionary
+                      : this.activePronounValue,
                   iconSize: 24,
                   elevation: 16,
                   underline: Container(
@@ -109,7 +111,9 @@ class _GenitivListItemState extends State<GenitivListItem> {
               padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
               child: Container(
                 child: DropdownButton(
-                  value: this.activeNoun1Value,
+                  value: this.activeNoun1Value == ''
+                      ? widget.noun1.dictionary
+                      : this.activeNoun1Value,
                   iconSize: 24,
                   elevation: 16,
                   underline: Container(
@@ -133,7 +137,9 @@ class _GenitivListItemState extends State<GenitivListItem> {
               padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
               child: Container(
                 child: DropdownButton(
-                  value: this.activeNoun2Value,
+                  value: this.activeNoun2Value == ''
+                      ? widget.noun2.dictionary
+                      : this.activeNoun2Value,
                   iconSize: 24,
                   elevation: 16,
                   underline: Container(

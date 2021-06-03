@@ -7,14 +7,12 @@ import 'package:navika/widgets/shared/answer-status-icon.dart';
 
 class NominativListItem extends StatefulWidget {
   final DeclinableWord adjective;
-  final String activeValue;
   final GenderEnum gender;
   final bool isPlural;
   final Noun noun;
 
   NominativListItem(
-      {required this.activeValue,
-      required this.adjective,
+      {required this.adjective,
       required this.isPlural,
       required this.gender,
       required this.noun});
@@ -41,10 +39,6 @@ class _NominativListItemState extends State<NominativListItem> {
   bool showHint = false;
   String activeValue = '';
 
-  _NominativListItemState() {
-    activeValue = widget.activeValue;
-  }
-
   @override
   Widget build(BuildContext context) {
     return new Container(
@@ -67,7 +61,9 @@ class _NominativListItemState extends State<NominativListItem> {
               padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
               child: Container(
                 child: DropdownButton(
-                  value: this.activeValue,
+                  value: this.activeValue == ''
+                      ? widget.adjective.dictionary
+                      : this.activeValue,
                   iconSize: 24,
                   elevation: 16,
                   underline: Container(
