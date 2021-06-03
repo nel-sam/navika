@@ -6,14 +6,11 @@ import 'package:navika/utilities/widget-helpers.dart';
 import 'package:navika/widgets/shared/answer-status-icon.dart';
 
 class NominativListItem extends StatefulWidget {
-  DeclinableWord adjective;
-  String activeValue;
-  GenderEnum gender;
-  bool isPlural;
-  Noun noun;
-
-  bool isCorrect = false;
-  bool showHint = false;
+  final DeclinableWord adjective;
+  final String activeValue;
+  final GenderEnum gender;
+  final bool isPlural;
+  final Noun noun;
 
   NominativListItem(
       {required this.activeValue,
@@ -40,20 +37,28 @@ bool checkAnswer(DeclinableWord adjective, GenderEnum gender, bool isPlural,
 }
 
 class _NominativListItemState extends State<NominativListItem> {
+  bool isCorrect = false;
+  bool showHint = false;
+  String activeValue = '';
+
+  _NominativListItemState() {
+    activeValue = widget.activeValue;
+  }
+
   @override
   Widget build(BuildContext context) {
     return new Container(
       height: 50,
       decoration: BoxDecoration(
           border: Border.all(
-        color: widget.isCorrect ? CORRECT_COLOR : WRONG_COLOR,
+        color: this.isCorrect ? CORRECT_COLOR : WRONG_COLOR,
       )),
       margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
       child: Container(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            AnswerStatusIcon(isCorrect: widget.isCorrect),
+            AnswerStatusIcon(isCorrect: this.isCorrect),
             Padding(
               padding: EdgeInsets.fromLTRB(10, 0, 5, 0),
               child: Text('To je '),
@@ -62,20 +67,20 @@ class _NominativListItemState extends State<NominativListItem> {
               padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
               child: Container(
                 child: DropdownButton(
-                  value: widget.activeValue,
+                  value: this.activeValue,
                   iconSize: 24,
                   elevation: 16,
                   underline: Container(
                     height: 1,
-                    color: widget.isCorrect ? CORRECT_COLOR : WRONG_COLOR,
+                    color: this.isCorrect ? CORRECT_COLOR : WRONG_COLOR,
                   ),
                   onChanged: (String? newValue) {
                     setState(() {
                       bool isCorrect = checkAnswer(widget.adjective,
                           widget.gender, widget.isPlural, newValue);
 
-                      widget.activeValue = newValue != null ? newValue : "";
-                      widget.isCorrect = isCorrect;
+                      this.activeValue = newValue != null ? newValue : "";
+                      this.isCorrect = isCorrect;
                     });
                   },
                   items: getAdjectiveDropdownItems(widget.adjective),
@@ -89,7 +94,7 @@ class _NominativListItemState extends State<NominativListItem> {
                 ? widget.noun.nominativ.plural
                 : widget.noun.nominativ.singular),
             Spacer(),
-            widget.showHint
+            this.showHint
                 ? Row(children: [
                     Icon(WidgetHelpers.getGenderIcon(widget.gender)),
                     Icon(widget.isPlural ? PLURAL_ICON : SINGULAR_ICON),
@@ -99,7 +104,7 @@ class _NominativListItemState extends State<NominativListItem> {
             ElevatedButton(
                 onPressed: () => {
                       setState(() {
-                        widget.showHint = !widget.showHint;
+                        this.showHint = !this.showHint;
                       })
                     },
                 child: Icon(Icons.help)),

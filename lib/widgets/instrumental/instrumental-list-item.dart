@@ -5,36 +5,18 @@ import 'package:navika/models/models.dart';
 import 'package:navika/widgets/shared/answer-status-icon.dart';
 
 class InstrumentalListItem extends StatefulWidget {
-  DeclinableWord adjective;
-  DeclinableWord pronoun;
-  GenderEnum gender;
-  bool isPlural;
-  Noun noun;
-
-  String activeAdjValue = '';
-  String activePronounValue = '';
-  String activeNounValue = '';
-  String correctPronounValue = '';
-  String correctAdjValue = '';
-  String correctNounValue = '';
-  bool isAllCorrect = false;
+  final DeclinableWord adjective;
+  final DeclinableWord pronoun;
+  final GenderEnum gender;
+  final bool isPlural;
+  final Noun noun;
 
   InstrumentalListItem(
       {required this.adjective,
       required this.isPlural,
       required this.pronoun,
       required this.gender,
-      required this.noun}) {
-    this.activeAdjValue = this.adjective.dictionary;
-    this.activePronounValue = this.pronoun.dictionary;
-    this.activeNounValue = this.noun.dictionary;
-    this.correctPronounValue = pronoun.getDeclension(
-        gender, isPlural, CaseTypeEnum.Instrumental, noun.isAnimate);
-    this.correctAdjValue = adjective.getDeclension(
-        gender, isPlural, CaseTypeEnum.Instrumental, noun.isAnimate);
-    this.correctNounValue =
-        noun.getDeclension(isPlural, CaseTypeEnum.Instrumental);
-  }
+      required this.noun});
 
   @override
   _InstrumentalListItemState createState() => _InstrumentalListItemState();
@@ -55,10 +37,30 @@ List<DropdownMenuItem<String>> getDropdownItems(DeclinableWord word) {
 }
 
 class _InstrumentalListItemState extends State<InstrumentalListItem> {
+  String activeAdjValue = '';
+  String activePronounValue = '';
+  String activeNounValue = '';
+  String correctPronounValue = '';
+  String correctAdjValue = '';
+  String correctNounValue = '';
+  bool isAllCorrect = false;
+
+  _InstrumentalListItemState() {
+    this.activeAdjValue = widget.adjective.dictionary;
+    this.activePronounValue = widget.pronoun.dictionary;
+    this.activeNounValue = widget.noun.dictionary;
+    this.correctPronounValue = widget.pronoun.getDeclension(widget.gender,
+        widget.isPlural, CaseTypeEnum.Instrumental, widget.noun.isAnimate);
+    this.correctAdjValue = widget.adjective.getDeclension(widget.gender,
+        widget.isPlural, CaseTypeEnum.Instrumental, widget.noun.isAnimate);
+    this.correctNounValue =
+        widget.noun.getDeclension(widget.isPlural, CaseTypeEnum.Instrumental);
+  }
+
   bool checkAnswer() {
-    return widget.activePronounValue == widget.correctPronounValue &&
-        widget.activeAdjValue == widget.correctAdjValue &&
-        widget.activeNounValue == widget.correctNounValue;
+    return this.activePronounValue == this.correctPronounValue &&
+        this.activeAdjValue == this.correctAdjValue &&
+        this.activeNounValue == this.correctNounValue;
   }
 
   @override
@@ -67,14 +69,14 @@ class _InstrumentalListItemState extends State<InstrumentalListItem> {
       height: 50,
       decoration: BoxDecoration(
           border: Border.all(
-        color: widget.isAllCorrect ? CORRECT_COLOR : WRONG_COLOR,
+        color: this.isAllCorrect ? CORRECT_COLOR : WRONG_COLOR,
       )),
       margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
       child: Container(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            AnswerStatusIcon(isCorrect: widget.isAllCorrect),
+            AnswerStatusIcon(isCorrect: this.isAllCorrect),
             Padding(
               padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
               child: Text('Idem sa '),
@@ -83,20 +85,19 @@ class _InstrumentalListItemState extends State<InstrumentalListItem> {
               padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
               child: Container(
                 child: DropdownButton(
-                  value: widget.activePronounValue,
+                  value: this.activePronounValue,
                   iconSize: 24,
                   elevation: 16,
                   underline: Container(
                       height: 1,
-                      color: widget.activePronounValue ==
-                              widget.correctPronounValue
+                      color: this.activePronounValue == this.correctPronounValue
                           ? CORRECT_COLOR
                           : WRONG_COLOR),
                   onChanged: (String? newPronValue) {
                     setState(() {
-                      widget.activePronounValue =
+                      this.activePronounValue =
                           newPronValue != null ? newPronValue : "";
-                      widget.isAllCorrect = checkAnswer();
+                      this.isAllCorrect = checkAnswer();
                     });
                   },
                   items: getDropdownItems(widget.pronoun),
@@ -107,20 +108,20 @@ class _InstrumentalListItemState extends State<InstrumentalListItem> {
               padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
               child: Container(
                 child: DropdownButton(
-                  value: widget.activeAdjValue,
+                  value: this.activeAdjValue,
                   iconSize: 24,
                   elevation: 16,
                   underline: Container(
                     height: 1,
-                    color: widget.activeAdjValue == widget.correctAdjValue
+                    color: this.activeAdjValue == this.correctAdjValue
                         ? CORRECT_COLOR
                         : WRONG_COLOR,
                   ),
                   onChanged: (String? newAdjValue) {
                     setState(() {
-                      widget.activeAdjValue =
+                      this.activeAdjValue =
                           newAdjValue != null ? newAdjValue : "";
-                      widget.isAllCorrect = checkAnswer();
+                      this.isAllCorrect = checkAnswer();
                     });
                   },
                   items: getDropdownItems(widget.adjective),
@@ -131,20 +132,20 @@ class _InstrumentalListItemState extends State<InstrumentalListItem> {
               padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
               child: Container(
                 child: DropdownButton(
-                  value: widget.activeNounValue,
+                  value: this.activeNounValue,
                   iconSize: 24,
                   elevation: 16,
                   underline: Container(
                     height: 1,
-                    color: widget.activeNounValue == widget.correctNounValue
+                    color: this.activeNounValue == this.correctNounValue
                         ? CORRECT_COLOR
                         : WRONG_COLOR,
                   ),
                   onChanged: (String? newNounValue) {
                     setState(() {
-                      widget.activeNounValue =
+                      this.activeNounValue =
                           newNounValue != null ? newNounValue : "";
-                      widget.isAllCorrect = checkAnswer();
+                      this.isAllCorrect = checkAnswer();
                     });
                   },
                   items: getNounDropdownItems(widget.noun),
@@ -152,7 +153,7 @@ class _InstrumentalListItemState extends State<InstrumentalListItem> {
               ),
             ),
             Row(children: [
-              //Icon(WidgetHelpers.getGenderIcon(widget.gender)),
+              //Icon(WidgetHelpers.getGenderIcon(this.gender)),
               Icon(widget.isPlural ? PLURAL_ICON : SINGULAR_ICON)
             ]),
           ],
