@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:navika/models/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/widgets/shared/case-drop-down.dart';

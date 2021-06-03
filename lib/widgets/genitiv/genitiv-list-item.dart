@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:navika/models/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
+import 'package:navika/widgets/shared/case-drop-down.dart';
 import 'package:navika/widgets/shared/exercise-row-card.dart';
 
 class GenitivListItem extends StatefulWidget {
@@ -70,87 +71,40 @@ class _GenitivListItemState extends State<GenitivListItem> {
   @override
   Widget build(BuildContext context) {
     var sentenceContent = [
-      Padding(
-        padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
-        child: Text('To je '),
+      Text('To je '),
+      CaseDropDown(
+        activeValue: this.activePronounValue,
+        correctValue: this.correctPronounValue,
+        dropDownOptions: getDropdownItems(widget.pronoun),
+        onChanged: (String newVal) {
+          setState(() {
+            this.activePronounValue = newVal;
+            this.isAllCorrect = checkAnswer();
+          });
+        },
       ),
-      Padding(
-        padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
-        child: Container(
-          child: DropdownButton(
-            value: this.activePronounValue == ''
-                ? widget.pronoun.dictionary
-                : this.activePronounValue,
-            iconSize: 24,
-            elevation: 16,
-            underline: Container(
-                height: 1,
-                color: this.activePronounValue == this.correctPronounValue
-                    ? CORRECT_COLOR
-                    : WRONG_COLOR),
-            onChanged: (String? newPronValue) {
-              setState(() {
-                this.activePronounValue =
-                    newPronValue != null ? newPronValue : "";
-                this.isAllCorrect = checkAnswer();
-              });
-            },
-            items: getDropdownItems(widget.pronoun),
-          ),
-        ),
+      CaseDropDown(
+        activeValue: this.activeNoun1Value,
+        correctValue: this.correctNoun1Value,
+        dropDownOptions: getNounDropdownItems(widget.noun1),
+        onChanged: (String newVal) {
+          setState(() {
+            this.activeNoun1Value = newVal;
+            this.isAllCorrect = checkAnswer();
+          });
+        },
       ),
-      Padding(
-        padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
-        child: Container(
-          child: DropdownButton(
-            value: this.activeNoun1Value == ''
-                ? widget.noun1.dictionary
-                : this.activeNoun1Value,
-            iconSize: 24,
-            elevation: 16,
-            underline: Container(
-              height: 1,
-              color: this.activeNoun1Value == this.correctNoun1Value
-                  ? CORRECT_COLOR
-                  : WRONG_COLOR,
-            ),
-            onChanged: (String? newNoun1Value) {
-              setState(() {
-                this.activeNoun1Value =
-                    newNoun1Value != null ? newNoun1Value : "";
-                this.isAllCorrect = checkAnswer();
-              });
-            },
-            items: getNounDropdownItems(widget.noun1),
-          ),
-        ),
+      CaseDropDown(
+        activeValue: this.activeNoun2Value,
+        correctValue: this.correctNoun2Value,
+        dropDownOptions: getNounDropdownItems(widget.noun2),
+        onChanged: (String newVal) {
+          setState(() {
+            this.activeNoun2Value = newVal;
+            this.isAllCorrect = checkAnswer();
+          });
+        },
       ),
-      Padding(
-        padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
-        child: Container(
-          child: DropdownButton(
-            value: this.activeNoun2Value == ''
-                ? widget.noun2.dictionary
-                : this.activeNoun2Value,
-            iconSize: 24,
-            elevation: 16,
-            underline: Container(
-              height: 1,
-              color: this.activeNoun2Value == this.correctNoun2Value
-                  ? CORRECT_COLOR
-                  : WRONG_COLOR,
-            ),
-            onChanged: (String? newNoun2Value) {
-              setState(() {
-                this.activeNoun2Value =
-                    newNoun2Value != null ? newNoun2Value : "";
-                this.isAllCorrect = checkAnswer();
-              });
-            },
-            items: getNounDropdownItems(widget.noun2),
-          ),
-        ),
-      )
     ];
 
     return ExerciseRowCard(
