@@ -153,7 +153,7 @@ class _LokativListItemState extends State<LokativListItem> {
             ),
             Row(children: [
               //Icon(WidgetHelpers.getGenderIcon(widget.gender)),
-              Text(widget.isPlural ? '2+' : '1 '),
+              Icon(widget.isPlural ? PLURAL_ICON : SINGULAR_ICON)
             ]),
           ],
         ),

@@ -5,37 +5,18 @@ import 'package:navika/models/models.dart';
 import 'package:navika/widgets/shared/answer-status-icon.dart';
 
 class GenitivListItem extends StatefulWidget {
-  Noun noun1;
-  Noun noun2;
-  bool isPlural;
-  GenderEnum gender;
-  DeclinableWord pronoun;
-
-  String activePronounValue = '';
-  String activeNoun1Value = '';
-  String activeNoun2Value = '';
-
-  String correctPronounValue = '';
-  String correctNoun2Value = '';
-  String correctNoun1Value = '';
-  bool isAllCorrect = false;
+  final Noun noun1;
+  final Noun noun2;
+  final bool isPlural;
+  final GenderEnum gender;
+  final DeclinableWord pronoun;
 
   GenitivListItem(
       {required this.noun1,
       required this.isPlural,
       required this.pronoun,
       required this.gender,
-      required this.noun2}) {
-    this.activeNoun1Value = this.noun1.dictionary;
-    this.activePronounValue = this.pronoun.dictionary;
-    this.activeNoun2Value = this.noun2.dictionary;
-    this.correctPronounValue = pronoun.getDeclension(
-        gender, isPlural, CaseTypeEnum.Nominativ, noun2.isAnimate);
-    this.correctNoun1Value =
-        noun1.getDeclension(isPlural, CaseTypeEnum.Nominativ);
-    this.correctNoun2Value =
-        noun2.getDeclension(isPlural, CaseTypeEnum.Genitiv);
-  }
+      required this.noun2});
 
   @override
   _GenitivListItemState createState() => _GenitivListItemState();
@@ -56,10 +37,31 @@ List<DropdownMenuItem<String>> getDropdownItems(DeclinableWord word) {
 }
 
 class _GenitivListItemState extends State<GenitivListItem> {
+  String activePronounValue = '';
+  String activeNoun1Value = '';
+  String activeNoun2Value = '';
+
+  String correctPronounValue = '';
+  String correctNoun2Value = '';
+  String correctNoun1Value = '';
+  bool isAllCorrect = false;
+
+  _GenitivListItemState() {
+    this.activeNoun1Value = widget.noun1.dictionary;
+    this.activePronounValue = widget.pronoun.dictionary;
+    this.activeNoun2Value = widget.noun2.dictionary;
+    this.correctPronounValue = widget.pronoun.getDeclension(widget.gender,
+        widget.isPlural, CaseTypeEnum.Nominativ, widget.noun2.isAnimate);
+    this.correctNoun1Value =
+        widget.noun1.getDeclension(widget.isPlural, CaseTypeEnum.Nominativ);
+    this.correctNoun2Value =
+        widget.noun2.getDeclension(widget.isPlural, CaseTypeEnum.Genitiv);
+  }
+
   bool checkAnswer() {
-    return widget.activePronounValue == widget.correctPronounValue &&
-        widget.activeNoun1Value == widget.correctNoun1Value &&
-        widget.activeNoun2Value == widget.correctNoun2Value;
+    return this.activePronounValue == this.correctPronounValue &&
+        this.activeNoun1Value == this.correctNoun1Value &&
+        this.activeNoun2Value == this.correctNoun2Value;
   }
 
   @override
@@ -68,14 +70,14 @@ class _GenitivListItemState extends State<GenitivListItem> {
       height: 50,
       decoration: BoxDecoration(
           border: Border.all(
-        color: widget.isAllCorrect ? CORRECT_COLOR : WRONG_COLOR,
+        color: this.isAllCorrect ? CORRECT_COLOR : WRONG_COLOR,
       )),
       margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
       child: Container(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            AnswerStatusIcon(isCorrect: widget.isAllCorrect),
+            AnswerStatusIcon(isCorrect: this.isAllCorrect),
             Padding(
               padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
               child: Text('To je '),
@@ -84,20 +86,19 @@ class _GenitivListItemState extends State<GenitivListItem> {
               padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
               child: Container(
                 child: DropdownButton(
-                  value: widget.activePronounValue,
+                  value: this.activePronounValue,
                   iconSize: 24,
                   elevation: 16,
                   underline: Container(
                       height: 1,
-                      color: widget.activePronounValue ==
-                              widget.correctPronounValue
+                      color: this.activePronounValue == this.correctPronounValue
                           ? CORRECT_COLOR
                           : WRONG_COLOR),
                   onChanged: (String? newPronValue) {
                     setState(() {
-                      widget.activePronounValue =
+                      this.activePronounValue =
                           newPronValue != null ? newPronValue : "";
-                      widget.isAllCorrect = checkAnswer();
+                      this.isAllCorrect = checkAnswer();
                     });
                   },
                   items: getDropdownItems(widget.pronoun),
@@ -108,20 +109,20 @@ class _GenitivListItemState extends State<GenitivListItem> {
               padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
               child: Container(
                 child: DropdownButton(
-                  value: widget.activeNoun1Value,
+                  value: this.activeNoun1Value,
                   iconSize: 24,
                   elevation: 16,
                   underline: Container(
                     height: 1,
-                    color: widget.activeNoun1Value == widget.correctNoun1Value
+                    color: this.activeNoun1Value == this.correctNoun1Value
                         ? CORRECT_COLOR
                         : WRONG_COLOR,
                   ),
                   onChanged: (String? newNoun1Value) {
                     setState(() {
-                      widget.activeNoun1Value =
+                      this.activeNoun1Value =
                           newNoun1Value != null ? newNoun1Value : "";
-                      widget.isAllCorrect = checkAnswer();
+                      this.isAllCorrect = checkAnswer();
                     });
                   },
                   items: getNounDropdownItems(widget.noun1),
@@ -132,20 +133,20 @@ class _GenitivListItemState extends State<GenitivListItem> {
               padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
               child: Container(
                 child: DropdownButton(
-                  value: widget.activeNoun2Value,
+                  value: this.activeNoun2Value,
                   iconSize: 24,
                   elevation: 16,
                   underline: Container(
                     height: 1,
-                    color: widget.activeNoun2Value == widget.correctNoun2Value
+                    color: this.activeNoun2Value == this.correctNoun2Value
                         ? CORRECT_COLOR
                         : WRONG_COLOR,
                   ),
                   onChanged: (String? newNoun2Value) {
                     setState(() {
-                      widget.activeNoun2Value =
+                      this.activeNoun2Value =
                           newNoun2Value != null ? newNoun2Value : "";
-                      widget.isAllCorrect = checkAnswer();
+                      this.isAllCorrect = checkAnswer();
                     });
                   },
                   items: getNounDropdownItems(widget.noun2),
@@ -153,8 +154,8 @@ class _GenitivListItemState extends State<GenitivListItem> {
               ),
             ),
             Row(children: [
-              //Icon(WidgetHelpers.getGenderIcon(widget.gender)),
-              Text(widget.isPlural ? '2+' : '1 '),
+              //Icon(WidgetHelpers.getGenderIcon(this.gender)),
+              Icon(widget.isPlural ? PLURAL_ICON : SINGULAR_ICON)
             ]),
           ],
         ),

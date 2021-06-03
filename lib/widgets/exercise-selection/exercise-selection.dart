@@ -5,7 +5,7 @@ import 'package:navika/widgets/exercise-selection/exercise-button.dart';
 import 'package:navika/widgets/genitiv/genitiv.dart';
 import 'package:navika/widgets/instrumental/instrumental.dart';
 import 'package:navika/widgets/lokativ/lokativ.dart';
-import 'package:navika/widgets/nominativ/nominativ-exercise.dart';
+import 'package:navika/widgets/nominativ/nominativ.dart';
 
 class ExerciseSelection extends StatefulWidget {
   @override
