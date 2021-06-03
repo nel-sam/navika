@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:navika/models/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
+import 'package:navika/utilities/widget-helpers.dart';
 import 'package:navika/widgets/shared/case-drop-down.dart';
 import 'package:navika/widgets/shared/exercise-row-card.dart';
 
@@ -21,20 +21,6 @@ class DativListItem extends StatefulWidget {
 
   @override
   _DativListItemState createState() => _DativListItemState();
-}
-
-List<DropdownMenuItem<String>> getNounDropdownItems(Noun noun) {
-  var items = noun.getUniqueDeclensions();
-  return items
-      .map((e) => DropdownMenuItem<String>(value: e, child: Text(e)))
-      .toList();
-}
-
-List<DropdownMenuItem<String>> getAdjectiveDropdownItems(DeclinableWord word) {
-  var items = word.getUniqueDeclensions();
-  return items
-      .map((e) => DropdownMenuItem<String>(value: e, child: Text(e)))
-      .toList();
 }
 
 class _DativListItemState extends State<DativListItem> {
@@ -82,7 +68,7 @@ class _DativListItemState extends State<DativListItem> {
       CaseDropDown(
         activeValue: this.activePronounValue,
         correctValue: this.correctPronounValue,
-        dropDownOptions: getAdjectiveDropdownItems(widget.pronoun),
+        dropDownOptions: WidgetHelpers.getDropdownItems(widget.pronoun),
         onChanged: (String newVal) {
           setState(() {
             this.activePronounValue = newVal;
@@ -93,7 +79,7 @@ class _DativListItemState extends State<DativListItem> {
       CaseDropDown(
         activeValue: this.activeAdjValue,
         correctValue: this.correctAdjValue,
-        dropDownOptions: getAdjectiveDropdownItems(widget.adjective),
+        dropDownOptions: WidgetHelpers.getDropdownItems(widget.adjective),
         onChanged: (String newVal) {
           setState(() {
             this.activeAdjValue = newVal;
@@ -104,7 +90,7 @@ class _DativListItemState extends State<DativListItem> {
       CaseDropDown(
         activeValue: this.activeNounValue,
         correctValue: this.correctNounValue,
-        dropDownOptions: getNounDropdownItems(widget.noun),
+        dropDownOptions: WidgetHelpers.getNounDropdownItems(widget.noun),
         onChanged: (String newVal) {
           setState(() {
             this.activeNounValue = newVal;

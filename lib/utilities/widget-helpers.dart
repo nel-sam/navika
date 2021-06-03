@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:navika/models/constants.dart';
 import 'package:navika/models/enums.dart';
+import 'package:navika/models/models.dart';
 
 class WidgetHelpers {
   static IconData getGenderIcon(GenderEnum gender) {
@@ -26,5 +27,19 @@ class WidgetHelpers {
     }
 
     return items;
+  }
+
+  static List<DropdownMenuItem<String>> getNounDropdownItems(Noun noun) {
+    var items = noun.getUniqueDeclensions();
+    return items
+        .map((e) => DropdownMenuItem<String>(value: e, child: Text(e)))
+        .toList();
+  }
+
+  static List<DropdownMenuItem<String>> getDropdownItems(DeclinableWord word) {
+    var items = word.getUniqueDeclensions();
+    return items
+        .map((e) => DropdownMenuItem<String>(value: e, child: Text(e)))
+        .toList();
   }
 }
