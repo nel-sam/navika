@@ -37,25 +37,23 @@ List<DropdownMenuItem<String>> getDropdownItems(DeclinableWord word) {
 }
 
 class _AkuzativListItemState extends State<AkuzativListItem> {
-  String activeAdjValue = '';
-  String activePronounValue = '';
-  String activeNounValue = '';
-  String correctPronounValue = '';
-  String correctAdjValue = '';
-  String correctNounValue = '';
+  late String activeAdjValue;
+  late String activePronounValue;
+  late String activeNounValue;
+  late String correctPronounValue;
+  late String correctAdjValue;
+  late String correctNounValue;
   bool isAllCorrect = false;
 
-  _AkuzativListItemState() {
+  @protected
+  @mustCallSuper
+  void initState() {
+    super.initState();
     this.activeAdjValue = widget.adjective.dictionary;
     this.activePronounValue = widget.pronoun.dictionary;
     this.activeNounValue = widget.noun.dictionary;
-    this.correctPronounValue = widget.pronoun.getDeclension(widget.gender,
-        widget.isPlural, CaseTypeEnum.Akuzativ, widget.noun.isAnimate);
-    this.correctAdjValue = widget.adjective.getDeclension(widget.gender,
-        widget.isPlural, CaseTypeEnum.Akuzativ, widget.noun.isAnimate);
-    this.correctNounValue =
-        widget.noun.getDeclension(widget.isPlural, CaseTypeEnum.Akuzativ);
   }
+
   bool checkAnswer() {
     return this.activePronounValue == this.correctPronounValue &&
         this.activeAdjValue == this.correctAdjValue &&
@@ -64,6 +62,13 @@ class _AkuzativListItemState extends State<AkuzativListItem> {
 
   @override
   Widget build(BuildContext context) {
+    this.correctPronounValue = widget.pronoun.getDeclension(widget.gender,
+        widget.isPlural, CaseTypeEnum.Akuzativ, widget.noun.isAnimate);
+    this.correctAdjValue = widget.adjective.getDeclension(widget.gender,
+        widget.isPlural, CaseTypeEnum.Akuzativ, widget.noun.isAnimate);
+    this.correctNounValue =
+        widget.noun.getDeclension(widget.isPlural, CaseTypeEnum.Akuzativ);
+
     return new Container(
       height: 50,
       decoration: BoxDecoration(
@@ -84,9 +89,7 @@ class _AkuzativListItemState extends State<AkuzativListItem> {
               padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
               child: Container(
                 child: DropdownButton(
-                  value: this.activePronounValue == ''
-                      ? widget.pronoun.dictionary
-                      : this.activePronounValue,
+                  value: this.activePronounValue,
                   iconSize: 24,
                   elevation: 16,
                   underline: Container(
@@ -110,9 +113,7 @@ class _AkuzativListItemState extends State<AkuzativListItem> {
               padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
               child: Container(
                 child: DropdownButton(
-                  value: this.activeAdjValue == ''
-                      ? widget.adjective.dictionary
-                      : this.activeAdjValue,
+                  value: this.activeAdjValue,
                   iconSize: 24,
                   elevation: 16,
                   underline: Container(
@@ -136,9 +137,7 @@ class _AkuzativListItemState extends State<AkuzativListItem> {
               padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
               child: Container(
                 child: DropdownButton(
-                  value: this.activeNounValue == ''
-                      ? widget.noun.dictionary
-                      : this.activeNounValue,
+                  value: this.activeNounValue,
                   iconSize: 24,
                   elevation: 16,
                   underline: Container(
