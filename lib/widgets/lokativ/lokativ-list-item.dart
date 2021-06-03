@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:navika/models/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
-import 'package:navika/widgets/shared/answer-status-icon.dart';
+import 'package:navika/widgets/shared/exercise-row-card.dart';
 
 class LokativListItem extends StatefulWidget {
   final DeclinableWord adjective;
@@ -70,101 +70,88 @@ class _LokativListItemState extends State<LokativListItem> {
 
   @override
   Widget build(BuildContext context) {
-    return new Container(
-      height: 50,
-      decoration: BoxDecoration(
-          border: Border.all(
-        color: this.isAllCorrect ? CORRECT_COLOR : WRONG_COLOR,
-      )),
-      margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
-      child: Container(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            AnswerStatusIcon(isCorrect: this.isAllCorrect),
-            Padding(
-              padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
-              child: Text('Govorim o '),
+    var sentenceContent = [
+      Padding(
+        padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
+        child: Text('Govorim o '),
+      ),
+      Padding(
+        padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
+        child: Container(
+          child: DropdownButton(
+            value: this.activePronounValue,
+            iconSize: 24,
+            elevation: 16,
+            underline: Container(
+              height: 1,
+              color: this.activePronounValue == this.correctPronounValue
+                  ? CORRECT_COLOR
+                  : WRONG_COLOR,
             ),
-            Padding(
-              padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
-              child: Container(
-                child: DropdownButton(
-                  value: this.activePronounValue,
-                  iconSize: 24,
-                  elevation: 16,
-                  underline: Container(
-                    height: 1,
-                    color: this.activePronounValue == this.correctPronounValue
-                        ? CORRECT_COLOR
-                        : WRONG_COLOR,
-                  ),
-                  onChanged: (String? newPronValue) {
-                    setState(() {
-                      this.activePronounValue =
-                          newPronValue != null ? newPronValue : "";
-                      this.isAllCorrect = checkAnswer();
-                    });
-                  },
-                  items: getDropdownItems(widget.pronoun),
-                ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
-              child: Container(
-                child: DropdownButton(
-                  value: this.activeAdjValue,
-                  iconSize: 24,
-                  elevation: 16,
-                  underline: Container(
-                    height: 1,
-                    color: this.activeAdjValue == this.correctAdjValue
-                        ? CORRECT_COLOR
-                        : WRONG_COLOR,
-                  ),
-                  onChanged: (String? newAdjValue) {
-                    setState(() {
-                      this.activeAdjValue =
-                          newAdjValue != null ? newAdjValue : "";
-                      this.isAllCorrect = checkAnswer();
-                    });
-                  },
-                  items: getDropdownItems(widget.adjective),
-                ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
-              child: Container(
-                child: DropdownButton(
-                  value: this.activeNounValue,
-                  iconSize: 24,
-                  elevation: 16,
-                  underline: Container(
-                    height: 1,
-                    color: this.activeNounValue == this.correctNounValue
-                        ? CORRECT_COLOR
-                        : WRONG_COLOR,
-                  ),
-                  onChanged: (String? newNounValue) {
-                    setState(() {
-                      this.activeNounValue =
-                          newNounValue != null ? newNounValue : "";
-                      this.isAllCorrect = checkAnswer();
-                    });
-                  },
-                  items: getNounDropdownItems(widget.noun),
-                ),
-              ),
-            ),
-            Row(children: [
-              //Icon(WidgetHelpers.getGenderIcon(this.gender)),
-              Icon(widget.isPlural ? PLURAL_ICON : SINGULAR_ICON)
-            ]),
-          ],
+            onChanged: (String? newPronValue) {
+              setState(() {
+                this.activePronounValue =
+                    newPronValue != null ? newPronValue : "";
+                this.isAllCorrect = checkAnswer();
+              });
+            },
+            items: getDropdownItems(widget.pronoun),
+          ),
         ),
       ),
+      Padding(
+        padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
+        child: Container(
+          child: DropdownButton(
+            value: this.activeAdjValue,
+            iconSize: 24,
+            elevation: 16,
+            underline: Container(
+              height: 1,
+              color: this.activeAdjValue == this.correctAdjValue
+                  ? CORRECT_COLOR
+                  : WRONG_COLOR,
+            ),
+            onChanged: (String? newAdjValue) {
+              setState(() {
+                this.activeAdjValue = newAdjValue != null ? newAdjValue : "";
+                this.isAllCorrect = checkAnswer();
+              });
+            },
+            items: getDropdownItems(widget.adjective),
+          ),
+        ),
+      ),
+      Padding(
+        padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
+        child: Container(
+          child: DropdownButton(
+            value: this.activeNounValue,
+            iconSize: 24,
+            elevation: 16,
+            underline: Container(
+              height: 1,
+              color: this.activeNounValue == this.correctNounValue
+                  ? CORRECT_COLOR
+                  : WRONG_COLOR,
+            ),
+            onChanged: (String? newNounValue) {
+              setState(() {
+                this.activeNounValue = newNounValue != null ? newNounValue : "";
+                this.isAllCorrect = checkAnswer();
+              });
+            },
+            items: getNounDropdownItems(widget.noun),
+          ),
+        ),
+      ),
+    ];
+
+    return ExerciseRowCard(
+      isAllCorrect: isAllCorrect,
+      isPlural: widget.isPlural,
+      children: sentenceContent,
+      gender: widget.gender,
     );
   }
 }

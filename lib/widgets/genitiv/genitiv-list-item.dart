@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:navika/models/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
-import 'package:navika/widgets/shared/answer-status-icon.dart';
+import 'package:navika/widgets/shared/exercise-row-card.dart';
 
 class GenitivListItem extends StatefulWidget {
   final Noun noun1;
@@ -69,106 +69,95 @@ class _GenitivListItemState extends State<GenitivListItem> {
 
   @override
   Widget build(BuildContext context) {
-    return new Container(
-      height: 50,
-      decoration: BoxDecoration(
-          border: Border.all(
-        color: this.isAllCorrect ? CORRECT_COLOR : WRONG_COLOR,
-      )),
-      margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
-      child: Container(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            AnswerStatusIcon(isCorrect: this.isAllCorrect),
-            Padding(
-              padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
-              child: Text('To je '),
-            ),
-            Padding(
-              padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
-              child: Container(
-                child: DropdownButton(
-                  value: this.activePronounValue == ''
-                      ? widget.pronoun.dictionary
-                      : this.activePronounValue,
-                  iconSize: 24,
-                  elevation: 16,
-                  underline: Container(
-                      height: 1,
-                      color: this.activePronounValue == this.correctPronounValue
-                          ? CORRECT_COLOR
-                          : WRONG_COLOR),
-                  onChanged: (String? newPronValue) {
-                    setState(() {
-                      this.activePronounValue =
-                          newPronValue != null ? newPronValue : "";
-                      this.isAllCorrect = checkAnswer();
-                    });
-                  },
-                  items: getDropdownItems(widget.pronoun),
-                ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
-              child: Container(
-                child: DropdownButton(
-                  value: this.activeNoun1Value == ''
-                      ? widget.noun1.dictionary
-                      : this.activeNoun1Value,
-                  iconSize: 24,
-                  elevation: 16,
-                  underline: Container(
-                    height: 1,
-                    color: this.activeNoun1Value == this.correctNoun1Value
-                        ? CORRECT_COLOR
-                        : WRONG_COLOR,
-                  ),
-                  onChanged: (String? newNoun1Value) {
-                    setState(() {
-                      this.activeNoun1Value =
-                          newNoun1Value != null ? newNoun1Value : "";
-                      this.isAllCorrect = checkAnswer();
-                    });
-                  },
-                  items: getNounDropdownItems(widget.noun1),
-                ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
-              child: Container(
-                child: DropdownButton(
-                  value: this.activeNoun2Value == ''
-                      ? widget.noun2.dictionary
-                      : this.activeNoun2Value,
-                  iconSize: 24,
-                  elevation: 16,
-                  underline: Container(
-                    height: 1,
-                    color: this.activeNoun2Value == this.correctNoun2Value
-                        ? CORRECT_COLOR
-                        : WRONG_COLOR,
-                  ),
-                  onChanged: (String? newNoun2Value) {
-                    setState(() {
-                      this.activeNoun2Value =
-                          newNoun2Value != null ? newNoun2Value : "";
-                      this.isAllCorrect = checkAnswer();
-                    });
-                  },
-                  items: getNounDropdownItems(widget.noun2),
-                ),
-              ),
-            ),
-            Row(children: [
-              //Icon(WidgetHelpers.getGenderIcon(this.gender)),
-              Icon(widget.isPlural ? PLURAL_ICON : SINGULAR_ICON)
-            ]),
-          ],
+    var sentenceContent = [
+      Padding(
+        padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
+        child: Text('To je '),
+      ),
+      Padding(
+        padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
+        child: Container(
+          child: DropdownButton(
+            value: this.activePronounValue == ''
+                ? widget.pronoun.dictionary
+                : this.activePronounValue,
+            iconSize: 24,
+            elevation: 16,
+            underline: Container(
+                height: 1,
+                color: this.activePronounValue == this.correctPronounValue
+                    ? CORRECT_COLOR
+                    : WRONG_COLOR),
+            onChanged: (String? newPronValue) {
+              setState(() {
+                this.activePronounValue =
+                    newPronValue != null ? newPronValue : "";
+                this.isAllCorrect = checkAnswer();
+              });
+            },
+            items: getDropdownItems(widget.pronoun),
+          ),
         ),
       ),
+      Padding(
+        padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
+        child: Container(
+          child: DropdownButton(
+            value: this.activeNoun1Value == ''
+                ? widget.noun1.dictionary
+                : this.activeNoun1Value,
+            iconSize: 24,
+            elevation: 16,
+            underline: Container(
+              height: 1,
+              color: this.activeNoun1Value == this.correctNoun1Value
+                  ? CORRECT_COLOR
+                  : WRONG_COLOR,
+            ),
+            onChanged: (String? newNoun1Value) {
+              setState(() {
+                this.activeNoun1Value =
+                    newNoun1Value != null ? newNoun1Value : "";
+                this.isAllCorrect = checkAnswer();
+              });
+            },
+            items: getNounDropdownItems(widget.noun1),
+          ),
+        ),
+      ),
+      Padding(
+        padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
+        child: Container(
+          child: DropdownButton(
+            value: this.activeNoun2Value == ''
+                ? widget.noun2.dictionary
+                : this.activeNoun2Value,
+            iconSize: 24,
+            elevation: 16,
+            underline: Container(
+              height: 1,
+              color: this.activeNoun2Value == this.correctNoun2Value
+                  ? CORRECT_COLOR
+                  : WRONG_COLOR,
+            ),
+            onChanged: (String? newNoun2Value) {
+              setState(() {
+                this.activeNoun2Value =
+                    newNoun2Value != null ? newNoun2Value : "";
+                this.isAllCorrect = checkAnswer();
+              });
+            },
+            items: getNounDropdownItems(widget.noun2),
+          ),
+        ),
+      )
+    ];
+
+    return ExerciseRowCard(
+      isAllCorrect: isAllCorrect,
+      isPlural: widget.isPlural,
+      children: sentenceContent,
+      gender: widget.gender,
     );
   }
 }
