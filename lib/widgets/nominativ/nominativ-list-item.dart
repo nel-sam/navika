@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:navika/models/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
-import 'package:navika/utilities/widget-helpers.dart';
-import 'package:navika/widgets/shared/answer-status-icon.dart';
 import 'package:navika/widgets/shared/exercise-row-card.dart';
 
 class NominativListItem extends StatefulWidget {
@@ -80,10 +78,10 @@ class _NominativListItemState extends State<NominativListItem> {
       ),
       Padding(
         padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+        child: Text(widget.isPlural
+            ? widget.noun.nominativ.plural
+            : widget.noun.nominativ.singular),
       ),
-      Text(widget.isPlural
-          ? widget.noun.nominativ.plural
-          : widget.noun.nominativ.singular),
     ];
 
     return ExerciseRowCard(
