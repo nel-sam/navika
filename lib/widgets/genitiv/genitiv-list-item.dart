@@ -37,16 +37,19 @@ List<DropdownMenuItem<String>> getDropdownItems(DeclinableWord word) {
 }
 
 class _GenitivListItemState extends State<GenitivListItem> {
-  String activePronounValue = '';
-  String activeNoun1Value = '';
-  String activeNoun2Value = '';
+  late String activePronounValue;
+  late String activeNoun1Value;
+  late String activeNoun2Value;
 
-  String correctPronounValue = '';
-  String correctNoun2Value = '';
-  String correctNoun1Value = '';
+  late String correctPronounValue;
+  late String correctNoun2Value;
+  late String correctNoun1Value;
   bool isAllCorrect = false;
 
-  _GenitivListItemState() {
+  @protected
+  @mustCallSuper
+  void initState() {
+    super.initState();
     this.activeNoun1Value = widget.noun1.dictionary;
     this.activePronounValue = widget.pronoun.dictionary;
     this.activeNoun2Value = widget.noun2.dictionary;

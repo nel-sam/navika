@@ -40,6 +40,7 @@ class _AkuzativListItemState extends State<AkuzativListItem> {
   late String activeAdjValue;
   late String activePronounValue;
   late String activeNounValue;
+
   late String correctPronounValue;
   late String correctAdjValue;
   late String correctNounValue;
@@ -49,6 +50,13 @@ class _AkuzativListItemState extends State<AkuzativListItem> {
   @mustCallSuper
   void initState() {
     super.initState();
+    this.correctPronounValue = widget.pronoun.getDeclension(widget.gender,
+        widget.isPlural, CaseTypeEnum.Akuzativ, widget.noun.isAnimate);
+    this.correctAdjValue = widget.adjective.getDeclension(widget.gender,
+        widget.isPlural, CaseTypeEnum.Akuzativ, widget.noun.isAnimate);
+    this.correctNounValue =
+        widget.noun.getDeclension(widget.isPlural, CaseTypeEnum.Akuzativ);
+
     this.activeAdjValue = widget.adjective.dictionary;
     this.activePronounValue = widget.pronoun.dictionary;
     this.activeNounValue = widget.noun.dictionary;
@@ -62,13 +70,6 @@ class _AkuzativListItemState extends State<AkuzativListItem> {
 
   @override
   Widget build(BuildContext context) {
-    this.correctPronounValue = widget.pronoun.getDeclension(widget.gender,
-        widget.isPlural, CaseTypeEnum.Akuzativ, widget.noun.isAnimate);
-    this.correctAdjValue = widget.adjective.getDeclension(widget.gender,
-        widget.isPlural, CaseTypeEnum.Akuzativ, widget.noun.isAnimate);
-    this.correctNounValue =
-        widget.noun.getDeclension(widget.isPlural, CaseTypeEnum.Akuzativ);
-
     return new Container(
       height: 50,
       decoration: BoxDecoration(

@@ -37,24 +37,29 @@ List<DropdownMenuItem<String>> getDropdownItems(DeclinableWord word) {
 }
 
 class _LokativListItemState extends State<LokativListItem> {
-  String activeAdjValue = '';
-  String activePronounValue = '';
-  String activeNounValue = '';
-  String correctPronounValue = '';
-  String correctAdjValue = '';
-  String correctNounValue = '';
+  late String activeAdjValue;
+  late String activePronounValue;
+  late String activeNounValue;
+
+  late String correctPronounValue;
+  late String correctAdjValue;
+  late String correctNounValue;
   bool isAllCorrect = false;
 
-  _LokativListItemState() {
-    this.activeAdjValue = widget.adjective.dictionary;
-    this.activePronounValue = widget.pronoun.dictionary;
-    this.activeNounValue = widget.noun.dictionary;
+  @protected
+  @mustCallSuper
+  void initState() {
+    super.initState();
     this.correctPronounValue = widget.pronoun.getDeclension(widget.gender,
         widget.isPlural, CaseTypeEnum.Lokativ, widget.noun.isAnimate);
     this.correctAdjValue = widget.adjective.getDeclension(widget.gender,
         widget.isPlural, CaseTypeEnum.Lokativ, widget.noun.isAnimate);
     this.correctNounValue =
         widget.noun.getDeclension(widget.isPlural, CaseTypeEnum.Lokativ);
+
+    this.activeAdjValue = widget.adjective.dictionary;
+    this.activePronounValue = widget.pronoun.dictionary;
+    this.activeNounValue = widget.noun.dictionary;
   }
 
   bool checkAnswer() {
@@ -85,9 +90,7 @@ class _LokativListItemState extends State<LokativListItem> {
               padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
               child: Container(
                 child: DropdownButton(
-                  value: this.activePronounValue == ''
-                      ? widget.pronoun.dictionary
-                      : this.activePronounValue,
+                  value: this.activePronounValue,
                   iconSize: 24,
                   elevation: 16,
                   underline: Container(
@@ -111,9 +114,7 @@ class _LokativListItemState extends State<LokativListItem> {
               padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
               child: Container(
                 child: DropdownButton(
-                  value: this.activeAdjValue == ''
-                      ? widget.adjective.dictionary
-                      : this.activeAdjValue,
+                  value: this.activeAdjValue,
                   iconSize: 24,
                   elevation: 16,
                   underline: Container(
@@ -137,9 +138,7 @@ class _LokativListItemState extends State<LokativListItem> {
               padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
               child: Container(
                 child: DropdownButton(
-                  value: this.activeNounValue == ''
-                      ? widget.noun.dictionary
-                      : this.activeNounValue,
+                  value: this.activeNounValue,
                   iconSize: 24,
                   elevation: 16,
                   underline: Container(

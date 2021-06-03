@@ -37,7 +37,14 @@ bool checkAnswer(DeclinableWord adjective, GenderEnum gender, bool isPlural,
 class _NominativListItemState extends State<NominativListItem> {
   bool isCorrect = false;
   bool showHint = false;
-  String activeValue = '';
+  late String activeValue;
+
+  @protected
+  @mustCallSuper
+  void initState() {
+    super.initState();
+    this.activeValue = widget.adjective.dictionary;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,9 +68,7 @@ class _NominativListItemState extends State<NominativListItem> {
               padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
               child: Container(
                 child: DropdownButton(
-                  value: this.activeValue == ''
-                      ? widget.adjective.dictionary
-                      : this.activeValue,
+                  value: this.activeValue,
                   iconSize: 24,
                   elevation: 16,
                   underline: Container(
