@@ -3,6 +3,8 @@ import 'package:navika/lang_data/word-bank.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/utilities/widget-helpers.dart';
+import 'package:navika/widgets/akusativ/akuzativ-explanation.dart';
+import 'package:navika/widgets/shared/explanation-button.dart';
 
 import 'akuzativ-list-item.dart';
 
@@ -29,7 +31,8 @@ class Akuzativ extends StatefulWidget {
 }
 
 List<Widget> getListItems() {
-  List<AkusativExerciseItem> listItems = List<AkusativExerciseItem>.empty(growable: true);
+  List<AkusativExerciseItem> listItems =
+      List<AkusativExerciseItem>.empty(growable: true);
 
   wordBank.possesivePronouns.forEach((pp) {
     wordBank.adjectives.forEach((adj) {
@@ -68,6 +71,11 @@ class _AkuzativState extends State<Akuzativ> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Akuzativ'),
+        actions: [
+          Center(
+            child: ExplanationButton(popupWidget: AkuzativExplanation()),
+          )
+        ],
       ),
       body: Center(
         child: ListView(

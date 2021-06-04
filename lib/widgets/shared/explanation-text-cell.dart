@@ -10,7 +10,7 @@ class ExplanationTextCell extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: TABLE_CELL_PADDING,
+      padding: TABLE_CELL_PADDING * 2,
       child: TableCell(
         child: Container(
           child: RichText(
