@@ -24,6 +24,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "adjectives": MessageLookupByLibrary.simpleMessage("Adjectives"),
         "appTitle": MessageLookupByLibrary.simpleMessage("Navika"),
         "close": MessageLookupByLibrary.simpleMessage("Close"),
-        "pronouns": MessageLookupByLibrary.simpleMessage("Pronouns")
+        "feminine": MessageLookupByLibrary.simpleMessage("Feminine"),
+        "masculine": MessageLookupByLibrary.simpleMessage("Masculine"),
+        "neuter": MessageLookupByLibrary.simpleMessage("Neuter"),
+        "plural": MessageLookupByLibrary.simpleMessage("Plural"),
+        "pronouns": MessageLookupByLibrary.simpleMessage("Pronouns"),
+        "singular": MessageLookupByLibrary.simpleMessage("Singular")
       };
 }

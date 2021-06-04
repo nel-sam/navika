@@ -89,6 +89,56 @@ class S {
       args: [],
     );
   }
+
+  /// `Plural`
+  String get plural {
+    return Intl.message(
+      'Plural',
+      name: 'plural',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Singular`
+  String get singular {
+    return Intl.message(
+      'Singular',
+      name: 'singular',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Masculine`
+  String get masculine {
+    return Intl.message(
+      'Masculine',
+      name: 'masculine',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Feminine`
+  String get feminine {
+    return Intl.message(
+      'Feminine',
+      name: 'feminine',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Neuter`
+  String get neuter {
+    return Intl.message(
+      'Neuter',
+      name: 'neuter',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

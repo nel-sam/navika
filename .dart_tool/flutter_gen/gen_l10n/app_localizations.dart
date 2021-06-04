@@ -115,6 +115,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Pronouns'**
   String get pronouns;
+
+  /// No description provided for @plural.
+  ///
+  /// In en, this message translates to:
+  /// **'Plural'**
+  String get plural;
+
+  /// No description provided for @singular.
+  ///
+  /// In en, this message translates to:
+  /// **'Singular'**
+  String get singular;
+
+  /// No description provided for @masculine.
+  ///
+  /// In en, this message translates to:
+  /// **'Masculine'**
+  String get masculine;
+
+  /// No description provided for @feminine.
+  ///
+  /// In en, this message translates to:
+  /// **'Feminine'**
+  String get feminine;
+
+  /// No description provided for @neuter.
+  ///
+  /// In en, this message translates to:
+  /// **'Neuter'**
+  String get neuter;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

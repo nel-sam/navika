@@ -2,5 +2,10 @@
     "appTitle": "Navika",
     "adjectives": "Adjectives",
     "close": "Close",
-    "pronouns": "Pronouns"
+    "pronouns": "Pronouns",
+    "plural": "Plural",
+    "singular": "Singular",
+    "masculine": "Masculine",
+    "feminine": "Feminine",
+    "neuter": "Neuter"
 }

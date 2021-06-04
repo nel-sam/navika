@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 const CORRECT_COLOR = Colors.green;
 const WRONG_COLOR = Colors.deepOrange;
 const ICON_COLOR = Colors.blue;
+const CARD_PADDING = 10.0;
 const DECLINED_LETTER_STYLE =
     TextStyle(fontStyle: FontStyle.italic, fontWeight: FontWeight.bold);
 const TABLE_CELL_HEIGHT = 60.0;
