@@ -29,7 +29,7 @@ class ExerciseButton extends StatelessWidget {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.fromLTRB(0, 40, 0, 0),
+              padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
               child: Icon(icon, size: 40.0),
             ),
             Text(

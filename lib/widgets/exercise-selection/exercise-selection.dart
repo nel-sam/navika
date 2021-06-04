@@ -17,12 +17,7 @@ class _ExerciseSelectionState extends State<ExerciseSelection> {
   Widget build(BuildContext context) {
     final isPortrait =
         MediaQuery.of(context).orientation == Orientation.portrait;
-    var size = MediaQuery.of(context).size;
-    /*24 is for notification bar on Android*/
-    final double itemHeight = isPortrait
-        ? (size.height - kToolbarHeight - 24) / 9
-        : (size.height - kToolbarHeight - 24) / 2;
-    final double itemWidth = size.width / 2;
+    final childAspectRatio = 3.4;
 
     var buttons = <Widget>[
       ExerciseButton(
@@ -54,7 +49,7 @@ class _ExerciseSelectionState extends State<ExerciseSelection> {
 
     return Expanded(
       child: GridView.count(
-        childAspectRatio: (itemWidth / itemHeight),
+        childAspectRatio: childAspectRatio,
         padding: const EdgeInsets.all(20),
         crossAxisSpacing: 10,
         crossAxisCount: isPortrait ? 1 : 2,
