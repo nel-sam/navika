@@ -68,6 +68,13 @@ List<Widget> getListItems() {
 class _AkuzativState extends State<Akuzativ> {
   @override
   Widget build(BuildContext context) {
+    final isPortrait =
+        MediaQuery.of(context).orientation == Orientation.portrait;
+    var size = MediaQuery.of(context).size;
+    /*24 is for notification bar on Android*/
+    final double itemHeight = (size.height - kToolbarHeight - 24) / 2;
+    final double itemWidth = size.width / 2;
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Akuzativ'),
@@ -77,12 +84,22 @@ class _AkuzativState extends State<Akuzativ> {
           )
         ],
       ),
-      body: Center(
-        child: ListView(
-          padding: const EdgeInsets.all(8),
-          children: getListItems(),
-        ),
-      ),
+      body: isPortrait
+          ? Center(
+              child: ListView(
+                padding: const EdgeInsets.all(8),
+                children: getListItems(),
+              ),
+            )
+          : Container(
+              child: GridView.count(
+                childAspectRatio: (itemWidth / itemHeight),
+                padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
+                crossAxisSpacing: 10,
+                crossAxisCount: 2,
+                children: getListItems(),
+              ),
+            ),
     );
   }
 }
