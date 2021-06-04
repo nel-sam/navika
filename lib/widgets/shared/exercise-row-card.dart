@@ -31,19 +31,24 @@ class ExerciseRowCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 120,
-      decoration: BoxDecoration(
-        border:
-            Border.all(color: this.isAllCorrect ? CORRECT_COLOR : WRONG_COLOR),
-        borderRadius: BorderRadius.all(Radius.circular(CELL_TEXT_PADDING)),
-      ),
-      margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
-      child: Column(
-        children: [
-          getHeader(context),
-          getBody(),
-        ],
+    final widthFactor =
+        MediaQuery.of(context).orientation == Orientation.portrait ? 1.0 : 0.65;
+    return FractionallySizedBox(
+      widthFactor: widthFactor,
+      child: Container(
+        height: 120,
+        decoration: BoxDecoration(
+          border: Border.all(
+              color: this.isAllCorrect ? CORRECT_COLOR : WRONG_COLOR),
+          borderRadius: BorderRadius.all(Radius.circular(CELL_TEXT_PADDING)),
+        ),
+        margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
+        child: Column(
+          children: [
+            getHeader(context),
+            getBody(),
+          ],
+        ),
       ),
     );
   }
