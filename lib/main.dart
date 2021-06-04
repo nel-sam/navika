@@ -73,9 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: ListView(
-          padding: const EdgeInsets.all(8),
-          shrinkWrap: true,
+        child: Column(
           children: <Widget>[
             Container(
               alignment: Alignment.center,

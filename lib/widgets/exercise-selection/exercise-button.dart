@@ -14,6 +14,9 @@ class ExerciseButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isPortrait =
+        MediaQuery.of(context).orientation == Orientation.portrait;
+
     return Padding(
       padding: const EdgeInsets.all(6),
       child: OutlinedButton(
@@ -23,11 +26,16 @@ class ExerciseButton extends StatelessWidget {
             MaterialPageRoute(builder: (context) => destination),
           );
         },
-        style: OutlinedButton.styleFrom(minimumSize: Size(300, 80)),
         child: Column(
           children: [
-            Icon(icon),
-            Text(label),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(0, 40, 0, 0),
+              child: Icon(icon, size: 40.0),
+            ),
+            Text(
+              label,
+              style: TextStyle(fontSize: 16),
+            ),
           ],
         ),
       ),
