@@ -9,10 +9,6 @@ const DECLINED_LETTER_STYLE =
 const TABLE_CELL_HEIGHT = 60.0;
 const CELL_TEXT_PADDING = 5.0;
 const TABLE_CELL_PADDING = EdgeInsets.all(10);
-const TABLE_CELL_TEXT_STYLE = TextStyle(
-  fontSize: 16.0,
-  //color: Colors.black,
-);
 const TABLE_BORDER =
     BorderSide(width: 1, color: Colors.grey, style: BorderStyle.solid);
 const TABLE_BORDERS = TableBorder(

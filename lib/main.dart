@@ -75,7 +75,9 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: WidgetHelpers.getAppBarColor(context),
         textTheme: WidgetHelpers.getAppBarTextTheme(context),
         iconTheme: WidgetHelpers.getAppBarIconTheme(context),
-        title: Text(widget.title),
+        title: Image(
+            width: 160,
+            image: AssetImage('assets/logo_small.png')), //Text(widget.title),
       ),
       body: Center(
         child: Column(
