@@ -58,7 +58,7 @@ class _LokativListItemState extends State<LokativListItem> {
   @override
   Widget build(BuildContext context) {
     var sentenceContent = [
-      Text('Govorim o '),
+      Text('Razgovoramo o '),
       CaseDropDown(
         activeValue: this.activePronounValue,
         correctValue: this.correctPronounValue,
