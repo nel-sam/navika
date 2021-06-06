@@ -3,6 +3,8 @@ import 'package:navika/lang_data/word-bank.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/utilities/widget-helpers.dart';
+import 'package:navika/widgets/genitiv/genitiv-explanation.dart';
+import 'package:navika/widgets/shared/explanation-button.dart';
 
 import 'genitiv-list-item.dart';
 
@@ -72,6 +74,11 @@ class _GenitivState extends State<Genitiv> {
         textTheme: WidgetHelpers.getAppBarTextTheme(context),
         iconTheme: WidgetHelpers.getAppBarIconTheme(context),
         title: Text('Genitiv'),
+        actions: [
+          Center(
+            child: ExplanationButton(popupWidget: GenitivExplanation()),
+          )
+        ],
       ),
       body: Center(
         child: ListView(

@@ -3,6 +3,8 @@ import 'package:navika/lang_data/word-bank.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/utilities/widget-helpers.dart';
+import 'package:navika/widgets/dativ/dativ-explanation.dart';
+import 'package:navika/widgets/shared/explanation-button.dart';
 
 import 'dativ-list-item.dart';
 
@@ -72,6 +74,11 @@ class _DativState extends State<Dativ> {
         textTheme: WidgetHelpers.getAppBarTextTheme(context),
         iconTheme: WidgetHelpers.getAppBarIconTheme(context),
         title: Text('Dativ'),
+        actions: [
+          Center(
+            child: ExplanationButton(popupWidget: DativExplanation()),
+          )
+        ],
       ),
       body: Center(
         child: ListView(

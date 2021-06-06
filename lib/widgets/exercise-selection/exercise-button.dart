@@ -14,9 +14,6 @@ class ExerciseButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isPortrait =
-        MediaQuery.of(context).orientation == Orientation.portrait;
-
     return Padding(
       padding: const EdgeInsets.all(6),
       child: OutlinedButton(
