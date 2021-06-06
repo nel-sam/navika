@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:navika/models/constants.dart';
+import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 
@@ -41,5 +41,27 @@ class WidgetHelpers {
     return items
         .map((e) => DropdownMenuItem<String>(value: e, child: Text(e)))
         .toList();
+  }
+
+  static bool isDarkTheme(BuildContext context) {
+    return MediaQuery.of(context).platformBrightness == Brightness.dark;
+  }
+
+  static TextTheme getAppBarTextTheme(BuildContext context) {
+    return isDarkTheme(context)
+        ? APP_BAR_TEXTTHEME_DARK
+        : APP_BAR_TEXTTHEME_LIGHT;
+  }
+
+  static IconThemeData getAppBarIconTheme(BuildContext context) {
+    return isDarkTheme(context)
+        ? APP_BAR_ICONTHEME_DARK
+        : APP_BAR_ICONTHEME_LIGHT;
+  }
+
+  static Color getAppBarColor(BuildContext context) {
+    var brightness = MediaQuery.of(context).platformBrightness;
+    bool darkModeOn = brightness == Brightness.dark;
+    return darkModeOn ? const Color(0xFF212121) : Colors.white;
   }
 }

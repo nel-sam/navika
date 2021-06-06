@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:navika/utilities/widget-helpers.dart';
+
+import '../../constants.dart';
 
 class ExplanationButton extends StatelessWidget {
   final Widget popupWidget;
@@ -13,7 +16,9 @@ class ExplanationButton extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: OutlinedButton(
-        style: OutlinedButton.styleFrom(primary: Colors.white),
+        style: OutlinedButton.styleFrom(
+            primary:
+                WidgetHelpers.isDarkTheme(context) ? Colors.white : ICON_COLOR),
         child: Icon(Icons.help_center_outlined),
         onPressed: () {
           showDialog(

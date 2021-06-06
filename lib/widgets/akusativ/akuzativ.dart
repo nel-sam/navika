@@ -77,6 +77,9 @@ class _AkuzativState extends State<Akuzativ> {
 
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: WidgetHelpers.getAppBarColor(context),
+        textTheme: WidgetHelpers.getAppBarTextTheme(context),
+        iconTheme: WidgetHelpers.getAppBarIconTheme(context),
         title: Text('Akuzativ'),
         actions: [
           Center(

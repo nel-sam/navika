@@ -28,17 +28,16 @@ const TABLE_BORDERS = TableBorder(
     style: BorderStyle.solid,
   ),
 );
-const SINGULAR_ICON =
-    Icons.looks_one_outlined; // Icons.crop_square_outlined; //Text('1');
-// Icon(Icons.perm_identity, color: ICON_COLOR); //Text('1');
-// Icon(Icons.looks_one_outlined, color: ICON_COLOR); //Text('1');
-
-const PLURAL_ICON = Icons.widgets_outlined; //Text('2+');
-//Icon(Icons.looks_two_outlined, color: ICON_COLOR); //Text('2+');
-// Icon(Icons.group_add_outlined, color: ICON_COLOR); //Text('2+');
-//scatter_plot_outlined
-//view_comfortable_rounded
+const SINGULAR_ICON = Icons.looks_one_outlined;
+const PLURAL_ICON = Icons.widgets_outlined;
 
 const MASCULINE_ICON = Icons.male;
 const FEMINIE_ICON = Icons.female;
 const NEUTER_ICON = Icons.hide_source_outlined;
+
+const APP_BAR_TEXTTHEME_DARK = TextTheme();
+const APP_BAR_TEXTTHEME_LIGHT = TextTheme(
+  headline6: TextStyle(color: Colors.black),
+);
+const APP_BAR_ICONTHEME_DARK = IconThemeData();
+const APP_BAR_ICONTHEME_LIGHT = IconThemeData(color: ICON_COLOR);

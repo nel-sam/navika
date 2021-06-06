@@ -29,7 +29,8 @@ class Genitiv extends StatefulWidget {
 }
 
 List<Widget> getListItems() {
-  List<GenitivExerciseItem> listItems = List<GenitivExerciseItem>.empty(growable: true);
+  List<GenitivExerciseItem> listItems =
+      List<GenitivExerciseItem>.empty(growable: true);
 
   wordBank.possesivePronouns.forEach((pp) {
     wordBank.nouns.forEach((noun1) {
@@ -67,6 +68,9 @@ class _GenitivState extends State<Genitiv> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: WidgetHelpers.getAppBarColor(context),
+        textTheme: WidgetHelpers.getAppBarTextTheme(context),
+        iconTheme: WidgetHelpers.getAppBarIconTheme(context),
         title: Text('Genitiv'),
       ),
       body: Center(

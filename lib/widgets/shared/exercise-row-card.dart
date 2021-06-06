@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:navika/models/constants.dart';
+import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/utilities/widget-helpers.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';

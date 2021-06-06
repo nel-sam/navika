@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:navika/models/constants.dart';
+import 'package:navika/constants.dart';
 
 class ExplanationIconCell extends StatelessWidget {
   final IconData icon;

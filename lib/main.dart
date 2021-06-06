@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:navika/utilities/widget-helpers.dart';
 import 'package:navika/widgets/exercise-selection/exercise-selection.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
@@ -39,6 +40,7 @@ class MyApp extends StatelessWidget {
       ],
       theme: ThemeData(
         brightness: Brightness.light,
+        primarySwatch: Colors.blue,
       ),
       darkTheme: ThemeData(
         primarySwatch: Colors.blue,
@@ -49,7 +51,7 @@ class MyApp extends StatelessWidget {
         accentIconTheme: IconThemeData(color: Colors.black),
         dividerColor: Colors.black12,
       ),
-      themeMode: ThemeMode.dark,
+      themeMode: ThemeMode.system,
       home: MyHomePage(title: 'Navika'),
     );
   }
@@ -70,6 +72,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: WidgetHelpers.getAppBarColor(context),
+        textTheme: WidgetHelpers.getAppBarTextTheme(context),
+        iconTheme: WidgetHelpers.getAppBarIconTheme(context),
         title: Text(widget.title),
       ),
       body: Center(

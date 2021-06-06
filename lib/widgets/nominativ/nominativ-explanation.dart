@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:navika/models/constants.dart';
+import 'package:navika/constants.dart';
 import 'package:navika/widgets/shared/explanation-popup-base.dart';
 import 'package:navika/widgets/shared/explanation-text-cell.dart';
 

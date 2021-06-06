@@ -68,6 +68,9 @@ class _LokativState extends State<Lokativ> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: WidgetHelpers.getAppBarColor(context),
+        textTheme: WidgetHelpers.getAppBarTextTheme(context),
+        iconTheme: WidgetHelpers.getAppBarIconTheme(context),
         title: Text('Lokativ'),
       ),
       body: Center(

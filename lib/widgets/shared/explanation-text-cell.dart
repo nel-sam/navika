@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:navika/models/constants.dart';
+import 'package:navika/constants.dart';
 
 class ExplanationTextCell extends StatelessWidget {
   final List<TextSpan> children;
@@ -15,7 +15,7 @@ class ExplanationTextCell extends StatelessWidget {
         child: Container(
           child: RichText(
             text: TextSpan(
-              style: TABLE_CELL_TEXT_STYLE,
+              //style: TABLE_CELL_TEXT_STYLE,
               children: children,
             ),
           ),

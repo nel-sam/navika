@@ -29,7 +29,8 @@ class Dativ extends StatefulWidget {
 }
 
 List<Widget> getListItems() {
-  List<DativExerciseItem> listItems = List<DativExerciseItem>.empty(growable: true);
+  List<DativExerciseItem> listItems =
+      List<DativExerciseItem>.empty(growable: true);
 
   wordBank.possesivePronouns.forEach((pp) {
     wordBank.adjectives.forEach((adj) {
@@ -67,6 +68,9 @@ class _DativState extends State<Dativ> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: WidgetHelpers.getAppBarColor(context),
+        textTheme: WidgetHelpers.getAppBarTextTheme(context),
+        iconTheme: WidgetHelpers.getAppBarIconTheme(context),
         title: Text('Dativ'),
       ),
       body: Center(
