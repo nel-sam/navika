@@ -27,7 +27,7 @@ class AkuzativExplanation extends StatelessWidget {
       masculinePlural: ExplanationTextCell(children: [
         TextSpan(text: 'Velik'),
         TextSpan(text: 'e', style: DECLINED_LETTER_STYLE),
-        TextSpan(text: ' mjesece'),
+        TextSpan(text: ' mjesece ADD ALIVE/NOT ALIVE'),
       ]),
       femininePlural: ExplanationTextCell(children: [
         TextSpan(text: 'Velik'),
