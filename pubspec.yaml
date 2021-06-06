@@ -35,7 +35,10 @@ flutter_icons:
   ios: true
   image_path: "assets/icon/icon.png"
 
+# flutter clean && flutter pub get && flutter pub run flutter_native_splash:create
 flutter_native_splash:
   color: "#ffffff"
+  image: assets/splash.png
+  color_dark: "#1a1a1a"
   android: true
   ios: true

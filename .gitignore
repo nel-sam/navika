@@ -41,5 +41,8 @@
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
 .dart_tool/chrome-device/*
 .dart_tool/flutter_build/*
-build/*
+build/**/*
 .flutter-plugins-dependencies
+.dart_tool/**/*
+.flutter-plugins
+.packages
