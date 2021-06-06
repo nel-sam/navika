@@ -1,1 +1,0 @@
- /Users/nelson/Source/nel-sam/navika/.dart_tool/flutter_gen/gen_l10n/app_localizations_en.dart /Users/nelson/Source/nel-sam/navika/.dart_tool/flutter_gen/gen_l10n/app_localizations.dart:  /Users/nelson/Source/nel-sam/navika/l10n.yaml /Users/nelson/Source/nel-sam/navika/lib/l10n/intl_en.arb
