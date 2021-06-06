@@ -3,6 +3,8 @@ import 'package:navika/lang_data/word-bank.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/utilities/widget-helpers.dart';
+import 'package:navika/widgets/instrumental/instrumental-explanation.dart';
+import 'package:navika/widgets/shared/explanation-button.dart';
 
 import 'instrumental-list-item.dart';
 
@@ -72,6 +74,11 @@ class _InstrumentalState extends State<Instrumental> {
         textTheme: WidgetHelpers.getAppBarTextTheme(context),
         iconTheme: WidgetHelpers.getAppBarIconTheme(context),
         title: Text('Instrumental'),
+        actions: [
+          Center(
+            child: ExplanationButton(popupWidget: InstrumentalExplanation()),
+          )
+        ],
       ),
       body: Center(
         child: ListView(

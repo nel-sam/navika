@@ -96,7 +96,7 @@ final List<DeclinableWord> adjectiveWordBank = [
     ),
   ),
   DeclinableWord(
-    dictionary: "vruće",
+    dictionary: "vruć",
     nominativ: new Declension(
       masculine: new DeclensionByGender(singular: "vrući", plural: "vrući"),
       feminine: new DeclensionByGender(singular: "vruća", plural: "vruće"),

@@ -3,6 +3,8 @@ import 'package:navika/lang_data/word-bank.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/utilities/widget-helpers.dart';
+import 'package:navika/widgets/lokativ/locativ-explanation.dart';
+import 'package:navika/widgets/shared/explanation-button.dart';
 
 import 'lokativ-list-item.dart';
 
@@ -72,6 +74,11 @@ class _LokativState extends State<Lokativ> {
         textTheme: WidgetHelpers.getAppBarTextTheme(context),
         iconTheme: WidgetHelpers.getAppBarIconTheme(context),
         title: Text('Lokativ'),
+        actions: [
+          Center(
+            child: ExplanationButton(popupWidget: LocativExplanation()),
+          )
+        ],
       ),
       body: Center(
         child: ListView(

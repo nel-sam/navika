@@ -11,13 +11,13 @@ class ExplanationTextCell extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: TABLE_CELL_PADDING * 2,
+      padding: TABLE_CELL_PADDING,
       child: TableCell(
         child: Container(
           child: RichText(
             text: TextSpan(
               style: TextStyle(
-                  fontSize: 18,
+                  fontSize: 16,
                   color: WidgetHelpers.isDarkTheme(context)
                       ? Colors.white
                       : Colors.black),

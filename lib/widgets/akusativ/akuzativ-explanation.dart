@@ -16,7 +16,8 @@ class AkuzativExplanation extends StatelessWidget {
       feminineSingular: ExplanationTextCell(children: [
         TextSpan(text: 'Velik'),
         TextSpan(text: 'u', style: DECLINED_LETTER_STYLE),
-        TextSpan(text: ' mačku'),
+        TextSpan(text: ' mačk'),
+        TextSpan(text: 'u', style: DECLINED_LETTER_STYLE),
       ]),
       neuterSingular: ExplanationTextCell(children: [
         TextSpan(text: 'Velik'),
@@ -31,12 +32,14 @@ class AkuzativExplanation extends StatelessWidget {
       femininePlural: ExplanationTextCell(children: [
         TextSpan(text: 'Velik'),
         TextSpan(text: 'e', style: DECLINED_LETTER_STYLE),
-        TextSpan(text: ' mačke'),
+        TextSpan(text: ' mačk'),
+        TextSpan(text: 'e', style: DECLINED_LETTER_STYLE),
       ]),
       neuterPlural: ExplanationTextCell(children: [
         TextSpan(text: 'Velik'),
         TextSpan(text: 'a', style: DECLINED_LETTER_STYLE),
-        TextSpan(text: ' sunca'),
+        TextSpan(text: ' sunc'),
+        TextSpan(text: 'a', style: DECLINED_LETTER_STYLE),
       ]),
       pronounMasculineSingular: ExplanationTextCell(children: [
         TextSpan(text: 'Moj mjesec'),
@@ -44,7 +47,8 @@ class AkuzativExplanation extends StatelessWidget {
       pronounFeminineSingular: ExplanationTextCell(children: [
         TextSpan(text: 'Moj'),
         TextSpan(text: 'u', style: DECLINED_LETTER_STYLE),
-        TextSpan(text: ' mačku'),
+        TextSpan(text: ' mačk'),
+        TextSpan(text: 'u', style: DECLINED_LETTER_STYLE),
       ]),
       pronounNeuterSingular: ExplanationTextCell(children: [
         TextSpan(text: 'Moj'),
@@ -59,12 +63,14 @@ class AkuzativExplanation extends StatelessWidget {
       pronounFemininePlural: ExplanationTextCell(children: [
         TextSpan(text: 'Moj'),
         TextSpan(text: 'e', style: DECLINED_LETTER_STYLE),
-        TextSpan(text: ' mačke'),
+        TextSpan(text: ' mačk'),
+        TextSpan(text: 'e', style: DECLINED_LETTER_STYLE),
       ]),
       pronounNeuterPlural: ExplanationTextCell(children: [
         TextSpan(text: 'Moj'),
+        TextSpan(text: 'e', style: DECLINED_LETTER_STYLE),
+        TextSpan(text: ' sunc'),
         TextSpan(text: 'a', style: DECLINED_LETTER_STYLE),
-        TextSpan(text: ' sunca'),
       ]),
     );
   }

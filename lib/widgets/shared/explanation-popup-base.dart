@@ -8,6 +8,7 @@ import 'package:navika/widgets/shared/explanation-text-cell.dart';
 
 class ExplanationPopupBase extends StatelessWidget {
   final String title;
+  final String note;
   final ExplanationTextCell feminineSingular;
   final ExplanationTextCell masculineSingular;
   final ExplanationTextCell neuterSingular;
@@ -23,6 +24,7 @@ class ExplanationPopupBase extends StatelessWidget {
 
   ExplanationPopupBase({
     required this.title,
+    this.note = '',
     required this.feminineSingular,
     required this.masculineSingular,
     required this.neuterSingular,
@@ -45,22 +47,11 @@ class ExplanationPopupBase extends StatelessWidget {
         textTheme: WidgetHelpers.getAppBarTextTheme(context),
         iconTheme: WidgetHelpers.getAppBarIconTheme(context),
         title: Text(title),
-        actions: [
-          // Padding(
-          //   padding: EdgeInsets.all(10.0),
-          //   child: ElevatedButton(
-          //     onPressed: () {
-          //       Navigator.of(context).pop();
-          //     },
-          //     child: Icon(Icons.close),
-          //   ),
-          // )
-        ],
       ),
       body: OrientationBuilder(builder: (context, orientation) {
         return GridView.count(
           primary: false,
-          padding: const EdgeInsets.all(20),
+          padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
           crossAxisSpacing: 10,
           crossAxisCount: orientation == Orientation.portrait ? 1 : 2,
           children: [
@@ -72,6 +63,8 @@ class ExplanationPopupBase extends StatelessWidget {
               pronounMasculinePlural,
               pronounFemininePlural,
               pronounNeuterPlural,
+              note,
+              context,
             ),
             getTable(
               AppLocalizations.of(context)!.adjectives,
@@ -81,6 +74,8 @@ class ExplanationPopupBase extends StatelessWidget {
               masculinePlural,
               femininePlural,
               neuterPlural,
+              note,
+              context,
             ),
           ],
         );
@@ -97,12 +92,17 @@ getTable(
   final ExplanationTextCell masculinePlural,
   final ExplanationTextCell femininePlural,
   final ExplanationTextCell neuterPlural,
+  String note,
+  BuildContext context,
 ) {
   return Column(
     children: [
       Padding(
-        padding: const EdgeInsets.fromLTRB(0, 40, 0, 10),
-        child: Text(title),
+        padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+        child: Text(
+          title,
+          style: TextStyle(fontSize: 18),
+        ),
       ),
       Table(
         border: TABLE_BORDERS,
@@ -140,6 +140,24 @@ getTable(
           ]),
         ],
       ),
+      note != ''
+          ? Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: RichText(
+                text: TextSpan(
+                  style: TextStyle(
+                      fontSize: 18,
+                      color: WidgetHelpers.isDarkTheme(context)
+                          ? Colors.white
+                          : Colors.black),
+                  children: [
+                    TextSpan(text: '*'),
+                    TextSpan(text: note, style: DECLINED_LETTER_STYLE)
+                  ],
+                ),
+              ),
+            )
+          : Container(),
     ],
   );
 }
