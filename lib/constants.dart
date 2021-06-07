@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+const BATCH_COUNT = 15; // TODO: Make this a setting
 const CORRECT_COLOR = Colors.green;
 const WRONG_COLOR = Colors.deepOrange;
 const ICON_COLOR = Colors.blue;

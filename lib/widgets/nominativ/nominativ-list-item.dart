@@ -6,8 +6,6 @@ import 'package:navika/widgets/shared/case-drop-down.dart';
 import 'package:navika/widgets/shared/exercise-row-card.dart';
 
 class NominativListItem extends StatefulWidget {
-  final Function onUpdateNoun;
-  final Function onUpdateAdj;
   final DeclinableWord adjective;
   final String correctAdjValue;
   final String correctNounValue;
@@ -20,8 +18,6 @@ class NominativListItem extends StatefulWidget {
 
   NominativListItem(
       {required this.adjective,
-      required this.onUpdateNoun,
-      required this.onUpdateAdj,
       required this.correctAdjValue,
       required this.correctNounValue,
       required this.activeAdjValue,
@@ -54,7 +50,6 @@ class _NominativListItemState extends State<NominativListItem> {
           setState(() {
             widget.activeAdjValue = newVal;
             isAllCorrect = checkAnswer();
-            widget.onUpdateAdj(newVal);
           });
         },
       ),
@@ -66,7 +61,6 @@ class _NominativListItemState extends State<NominativListItem> {
           setState(() {
             widget.activeNounValue = newVal;
             isAllCorrect = checkAnswer();
-            widget.onUpdateNoun(newVal);
           });
         },
       ),

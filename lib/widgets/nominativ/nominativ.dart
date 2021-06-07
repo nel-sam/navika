@@ -5,6 +5,8 @@ import 'package:navika/models/models.dart';
 import 'package:navika/utilities/widget-helpers.dart';
 import 'package:navika/widgets/nominativ/nominativ-list-item.dart';
 import 'package:navika/widgets/shared/explanation-button.dart';
+import 'package:navika/widgets/shared/refresh-button.dart';
+import '../../constants.dart';
 import 'nominativ-explanation.dart';
 
 class NominativExerciseItem {
@@ -76,25 +78,20 @@ List<Widget> getListItems(List<NominativExerciseItem> listItems) {
                 e.gender, e.isPlural, CaseTypeEnum.Nominativ, e.noun.isAnimate),
             correctNounValue:
                 e.noun.getDeclension(e.isPlural, CaseTypeEnum.Nominativ),
+            activeNounValue: e.activeNounValue,
+            activeAdjValue: e.activeAdjValue,
             adjective: e.adjective,
             isPlural: e.isPlural,
             gender: e.gender,
-            activeAdjValue: e.activeAdjValue,
-            activeNounValue: e.activeNounValue,
-            onUpdateAdj: (String newVal) {
-              e.activeAdjValue = newVal;
-            },
-            onUpdateNoun: (String newVal) {
-              e.activeNounValue = newVal;
-            },
             noun: e.noun),
       )
+      .take(BATCH_COUNT)
       .toList();
 }
 
+// ignore: must_be_immutable
 class NominativExercise extends StatefulWidget {
-  final WordBank bank = wordBank;
-  List<NominativExerciseItem> listItems = prepareData(wordBank);
+  var listItems = prepareData(wordBank);
 
   @override
   _NominativExerciseState createState() => _NominativExerciseState();
@@ -110,6 +107,13 @@ class _NominativExerciseState extends State<NominativExercise> {
         iconTheme: WidgetHelpers.getAppBarIconTheme(context),
         title: Text('Nominativ'),
         actions: [
+          Center(
+            child: RefreshButton(
+              refreshFunction: () => setState(() {
+                widget.listItems = prepareData(wordBank);
+              }),
+            ),
+          ),
           Center(
             child: ExplanationButton(popupWidget: NominativExplanation()),
           )
