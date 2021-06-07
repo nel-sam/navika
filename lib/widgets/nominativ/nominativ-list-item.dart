@@ -6,13 +6,26 @@ import 'package:navika/widgets/shared/case-drop-down.dart';
 import 'package:navika/widgets/shared/exercise-row-card.dart';
 
 class NominativListItem extends StatefulWidget {
+  final Function onUpdateNoun;
+  final Function onUpdateAdj;
   final DeclinableWord adjective;
+  final String correctAdjValue;
+  final String correctNounValue;
   final GenderEnum gender;
   final bool isPlural;
   final Noun noun;
 
+  String activeAdjValue;
+  String activeNounValue;
+
   NominativListItem(
       {required this.adjective,
+      required this.onUpdateNoun,
+      required this.onUpdateAdj,
+      required this.correctAdjValue,
+      required this.correctNounValue,
+      required this.activeAdjValue,
+      required this.activeNounValue,
       required this.isPlural,
       required this.gender,
       required this.noun});
@@ -22,54 +35,38 @@ class NominativListItem extends StatefulWidget {
 }
 
 class _NominativListItemState extends State<NominativListItem> {
-  bool isAllCorrect = false;
-  bool showHint = false;
-  late String activeAdjValue;
-  late String activeNounValue;
-
-  late String correctAdjValue;
-  late String correctNounValue;
-
-  @protected
-  @mustCallSuper
-  void initState() {
-    super.initState();
-    this.correctAdjValue = widget.adjective.getDeclension(widget.gender,
-        widget.isPlural, CaseTypeEnum.Nominativ, widget.noun.isAnimate);
-    this.correctNounValue =
-        widget.noun.getDeclension(widget.isPlural, CaseTypeEnum.Nominativ);
-    this.activeAdjValue = widget.adjective.getRandomDeclension();
-    this.activeNounValue = widget.noun.getRandomDeclension();
-  }
-
   bool checkAnswer() {
-    return this.activeAdjValue == this.correctAdjValue &&
-        this.activeNounValue == this.correctNounValue;
+    return widget.activeAdjValue == widget.correctAdjValue &&
+        widget.activeNounValue == widget.correctNounValue;
   }
 
   @override
   Widget build(BuildContext context) {
+    bool isAllCorrect = checkAnswer();
+
     var sentenceContent = [
       Text('To je '),
       CaseDropDown(
-        activeValue: this.activeAdjValue,
-        correctValue: this.correctAdjValue,
+        activeValue: widget.activeAdjValue,
+        correctValue: widget.correctAdjValue,
         dropDownOptions: WidgetHelpers.getDropdownItems(widget.adjective),
         onChanged: (String newVal) {
           setState(() {
-            this.activeAdjValue = newVal;
-            this.isAllCorrect = checkAnswer();
+            widget.activeAdjValue = newVal;
+            isAllCorrect = checkAnswer();
+            widget.onUpdateAdj(newVal);
           });
         },
       ),
       CaseDropDown(
-        activeValue: this.activeNounValue,
-        correctValue: this.correctNounValue,
+        activeValue: widget.activeNounValue,
+        correctValue: widget.correctNounValue,
         dropDownOptions: WidgetHelpers.getNounDropdownItems(widget.noun),
         onChanged: (String newVal) {
           setState(() {
-            this.activeNounValue = newVal;
-            this.isAllCorrect = checkAnswer();
+            widget.activeNounValue = newVal;
+            isAllCorrect = checkAnswer();
+            widget.onUpdateNoun(newVal);
           });
         },
       ),

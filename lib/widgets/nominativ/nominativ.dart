@@ -8,77 +8,99 @@ import 'package:navika/widgets/shared/explanation-button.dart';
 import 'nominativ-explanation.dart';
 
 class NominativExerciseItem {
-  String activeValue;
+  String activeAdjValue;
+  String activeNounValue;
   DeclinableWord adjective;
   GenderEnum gender;
   bool isPlural;
   Noun noun;
 
   NominativExerciseItem(
-      {required this.activeValue,
+      {required this.activeAdjValue,
+      required this.activeNounValue,
       required this.adjective,
       required this.gender,
       required this.isPlural,
       required this.noun});
 }
 
+List<NominativExerciseItem> prepareData(WordBank bank) {
+  List<NominativExerciseItem> listItems =
+      List<NominativExerciseItem>.empty(growable: true);
+
+  bank.adjectives.forEach((adj) {
+    bank.nouns.forEach((noun) {
+      listItems.add(NominativExerciseItem(
+          activeAdjValue: adj.getRandomDeclension(),
+          activeNounValue: noun.getRandomDeclension(),
+          adjective: adj,
+          noun: noun,
+          isPlural: false,
+          gender: noun.gender));
+      listItems.add(NominativExerciseItem(
+          activeAdjValue: adj.getRandomDeclension(),
+          activeNounValue: noun.getRandomDeclension(),
+          adjective: adj,
+          noun: noun,
+          isPlural: true,
+          gender: noun.gender));
+    });
+  });
+
+  bank.possesivePronouns.forEach((pp) {
+    bank.nouns.forEach((noun) {
+      listItems.add(NominativExerciseItem(
+          activeAdjValue: pp.getRandomDeclension(),
+          activeNounValue: noun.getRandomDeclension(),
+          adjective: pp,
+          noun: noun,
+          isPlural: false,
+          gender: noun.gender));
+      listItems.add(NominativExerciseItem(
+          activeAdjValue: pp.getRandomDeclension(),
+          activeNounValue: noun.getRandomDeclension(),
+          adjective: pp,
+          noun: noun,
+          isPlural: true,
+          gender: noun.gender));
+    });
+  });
+  return listItems;
+}
+
+List<Widget> getListItems(List<NominativExerciseItem> listItems) {
+  return WidgetHelpers.shuffleList(listItems)
+      .map(
+        (e) => NominativListItem(
+            correctAdjValue: e.adjective.getDeclension(
+                e.gender, e.isPlural, CaseTypeEnum.Nominativ, e.noun.isAnimate),
+            correctNounValue:
+                e.noun.getDeclension(e.isPlural, CaseTypeEnum.Nominativ),
+            adjective: e.adjective,
+            isPlural: e.isPlural,
+            gender: e.gender,
+            activeAdjValue: e.activeAdjValue,
+            activeNounValue: e.activeNounValue,
+            onUpdateAdj: (String newVal) {
+              e.activeAdjValue = newVal;
+            },
+            onUpdateNoun: (String newVal) {
+              e.activeNounValue = newVal;
+            },
+            noun: e.noun),
+      )
+      .toList();
+}
+
 class NominativExercise extends StatefulWidget {
   final WordBank bank = wordBank;
+  List<NominativExerciseItem> listItems = prepareData(wordBank);
 
   @override
   _NominativExerciseState createState() => _NominativExerciseState();
 }
 
 class _NominativExerciseState extends State<NominativExercise> {
-  List<Widget> getListItems() {
-    List<NominativExerciseItem> listItems =
-        List<NominativExerciseItem>.empty(growable: true);
-
-    widget.bank.adjectives.forEach((adj) {
-      widget.bank.nouns.forEach((noun) {
-        listItems.add(NominativExerciseItem(
-            activeValue: adj.getRandomDeclension(),
-            adjective: adj,
-            noun: noun,
-            isPlural: false,
-            gender: noun.gender));
-        listItems.add(NominativExerciseItem(
-            activeValue: adj.getRandomDeclension(),
-            adjective: adj,
-            noun: noun,
-            isPlural: true,
-            gender: noun.gender));
-      });
-    });
-
-    widget.bank.possesivePronouns.forEach((pp) {
-      widget.bank.nouns.forEach((noun) {
-        listItems.add(NominativExerciseItem(
-            activeValue: pp.getRandomDeclension(),
-            adjective: pp,
-            noun: noun,
-            isPlural: false,
-            gender: noun.gender));
-        listItems.add(NominativExerciseItem(
-            activeValue: pp.getRandomDeclension(),
-            adjective: pp,
-            noun: noun,
-            isPlural: true,
-            gender: noun.gender));
-      });
-    });
-
-    return WidgetHelpers.shuffleList(listItems)
-        .map(
-          (e) => NominativListItem(
-              adjective: e.adjective,
-              isPlural: e.isPlural,
-              gender: e.gender,
-              noun: e.noun),
-        )
-        .toList();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -96,7 +118,7 @@ class _NominativExerciseState extends State<NominativExercise> {
       body: Center(
         child: ListView(
           padding: const EdgeInsets.all(8),
-          children: getListItems(),
+          children: getListItems(widget.listItems),
         ),
       ),
     );
