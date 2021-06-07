@@ -2,16 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/widgets/shared/explanation-popup-base.dart';
 import 'package:navika/widgets/shared/explanation-text-cell.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AkuzativExplanation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ExplanationPopupBase(
       title: 'Akuzativ',
+      note: AppLocalizations.of(context)!.animateNominative,
       masculineSingular: ExplanationTextCell(children: [
         TextSpan(text: 'Velik'),
         TextSpan(text: 'i', style: DECLINED_LETTER_STYLE),
-        TextSpan(text: ' mjesec'),
+        TextSpan(text: ' mjesec/'),
+        TextSpan(text: 'Velik'),
+        TextSpan(text: 'og', style: DECLINED_LETTER_STYLE),
+        TextSpan(text: ' konj'),
+        TextSpan(text: 'a*', style: DECLINED_LETTER_STYLE),
       ]),
       feminineSingular: ExplanationTextCell(children: [
         TextSpan(text: 'Velik'),
@@ -22,12 +28,15 @@ class AkuzativExplanation extends StatelessWidget {
       neuterSingular: ExplanationTextCell(children: [
         TextSpan(text: 'Velik'),
         TextSpan(text: 'o', style: DECLINED_LETTER_STYLE),
+        TextSpan(text: ' sunce/'),
+        TextSpan(text: 'Vruć'),
+        TextSpan(text: 'e', style: DECLINED_LETTER_STYLE),
         TextSpan(text: ' sunce'),
       ]),
       masculinePlural: ExplanationTextCell(children: [
         TextSpan(text: 'Velik'),
         TextSpan(text: 'e', style: DECLINED_LETTER_STYLE),
-        TextSpan(text: ' mjesece ADD ALIVE/NOT ALIVE'),
+        TextSpan(text: ' mjesece'),
       ]),
       femininePlural: ExplanationTextCell(children: [
         TextSpan(text: 'Velik'),
@@ -42,7 +51,11 @@ class AkuzativExplanation extends StatelessWidget {
         TextSpan(text: 'a', style: DECLINED_LETTER_STYLE),
       ]),
       pronounMasculineSingular: ExplanationTextCell(children: [
-        TextSpan(text: 'Moj mjesec'),
+        TextSpan(text: 'Moj mjesec/'),
+        TextSpan(text: 'Moj'),
+        TextSpan(text: 'eg', style: DECLINED_LETTER_STYLE),
+        TextSpan(text: ' konj'),
+        TextSpan(text: 'a*', style: DECLINED_LETTER_STYLE),
       ]),
       pronounFeminineSingular: ExplanationTextCell(children: [
         TextSpan(text: 'Moj'),

@@ -46,3 +46,4 @@ build/**/*
 .dart_tool/**/*
 .flutter-plugins
 .packages
+ios/build/**/*

@@ -139,6 +139,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Alive masculine nouns + a, and adjectives + og/eg`
+  String get animateNominative {
+    return Intl.message(
+      'Alive masculine nouns + a, and adjectives + og/eg',
+      name: 'animateNominative',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

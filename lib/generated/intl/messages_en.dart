@@ -22,6 +22,8 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "adjectives": MessageLookupByLibrary.simpleMessage("Adjectives"),
+        "animateNominative": MessageLookupByLibrary.simpleMessage(
+            "Alive masculine nouns + a, and adjectives + og/eg"),
         "appTitle": MessageLookupByLibrary.simpleMessage("Navika"),
         "close": MessageLookupByLibrary.simpleMessage("Close"),
         "feminine": MessageLookupByLibrary.simpleMessage("Feminine"),

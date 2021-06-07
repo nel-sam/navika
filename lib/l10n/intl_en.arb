@@ -7,5 +7,6 @@
     "singular": "Singular",
     "masculine": "Masculine",
     "feminine": "Feminine",
-    "neuter": "Neuter"
+    "neuter": "Neuter",
+    "animateNominative": "Alive masculine nouns + a, and adjectives + og/eg"
 }

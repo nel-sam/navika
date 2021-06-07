@@ -38,8 +38,6 @@ class InstrumentalExplanation extends StatelessWidget {
         TextSpan(text: 'im', style: DECLINED_LETTER_STYLE),
         TextSpan(text: ' stolov'),
         TextSpan(text: 'ima', style: DECLINED_LETTER_STYLE),
-        TextSpan(text: '/čajev'),
-        TextSpan(text: 'ima', style: DECLINED_LETTER_STYLE),
       ]),
       femininePlural: ExplanationTextCell(children: [
         TextSpan(text: 'Velik'),
@@ -68,7 +66,7 @@ class InstrumentalExplanation extends StatelessWidget {
         TextSpan(text: 'om', style: DECLINED_LETTER_STYLE),
       ]),
       pronounNeuterSingular: ExplanationTextCell(children: [
-        TextSpan(text: 'Velik'),
+        TextSpan(text: 'Svoj'),
         TextSpan(text: 'im', style: DECLINED_LETTER_STYLE),
         TextSpan(text: ' jezer'),
         TextSpan(text: 'om', style: DECLINED_LETTER_STYLE),

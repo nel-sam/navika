@@ -138,4 +138,47 @@ final List<DeclinableWord> adjectiveWordBank = [
       neuter: new DeclensionByGender(singular: "", plural: ""),
     ),
   ),
+  DeclinableWord(
+    dictionary: "drug",
+    nominativ: new Declension(
+      masculine: new DeclensionByGender(singular: "drugi", plural: "drugi"),
+      feminine: new DeclensionByGender(singular: "druga", plural: "druge"),
+      neuter: new DeclensionByGender(singular: "drugo", plural: "druga"),
+    ),
+    akuzativ: new Declension(
+      masculine: new DeclensionByGender(singular: "drugi", plural: "druge"),
+      feminine: new DeclensionByGender(singular: "drugu", plural: "druge"),
+      neuter: new DeclensionByGender(singular: "drugo", plural: "druga"),
+    ),
+    akuzativAnimate: new Declension(
+      masculine: new DeclensionByGender(singular: "drugog", plural: "druge"),
+      feminine: new DeclensionByGender(singular: "drugu", plural: "druge"),
+      neuter: new DeclensionByGender(singular: "drugo", plural: "druga"),
+    ),
+    instrumental: new Declension(
+      masculine: new DeclensionByGender(singular: "drugim", plural: "drugim"),
+      feminine: new DeclensionByGender(singular: "drugom", plural: "drugim"),
+      neuter: new DeclensionByGender(singular: "drugim", plural: "drugim"),
+    ),
+    lokativ: new Declension(
+      masculine: new DeclensionByGender(singular: "drugom", plural: "drugim"),
+      feminine: new DeclensionByGender(singular: "drugoj", plural: "drugim"),
+      neuter: new DeclensionByGender(singular: "drugom", plural: "drugim"),
+    ),
+    dativ: new Declension(
+      masculine: new DeclensionByGender(singular: "drugom", plural: "drugim"),
+      feminine: new DeclensionByGender(singular: "drugoj", plural: "drugim"),
+      neuter: new DeclensionByGender(singular: "drugom", plural: "drugim"),
+    ),
+    genitiv: new Declension(
+      masculine: new DeclensionByGender(singular: "drugog", plural: "drugih"),
+      feminine: new DeclensionByGender(singular: "druge", plural: "drugih"),
+      neuter: new DeclensionByGender(singular: "druga", plural: "drugih"),
+    ),
+    vokativ: new Declension(
+      masculine: new DeclensionByGender(singular: "", plural: ""),
+      feminine: new DeclensionByGender(singular: "", plural: ""),
+      neuter: new DeclensionByGender(singular: "", plural: ""),
+    ),
+  ),
 ];
