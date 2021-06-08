@@ -5,90 +5,80 @@ import 'package:navika/utilities/widget-helpers.dart';
 import 'package:navika/widgets/shared/case-drop-down.dart';
 import 'package:navika/widgets/shared/exercise-row-card.dart';
 
+// ignore: must_be_immutable
 class InstrumentalListItem extends StatefulWidget {
   final DeclinableWord adjective;
   final DeclinableWord pronoun;
+  final String correctAdjValue;
+  final String correctPronounValue;
+  final String correctNounValue;
   final GenderEnum gender;
   final bool isPlural;
   final Noun noun;
 
+  String activeAdjValue;
+  String activePronounValue;
+  String activeNounValue;
+
   InstrumentalListItem(
       {required this.adjective,
+      required this.correctAdjValue,
+      required this.correctNounValue,
+      required this.correctPronounValue,
+      required this.activeAdjValue,
+      required this.activePronounValue,
+      required this.activeNounValue,
       required this.isPlural,
       required this.pronoun,
       required this.gender,
       required this.noun});
-
   @override
   _InstrumentalListItemState createState() => _InstrumentalListItemState();
 }
 
 class _InstrumentalListItemState extends State<InstrumentalListItem> {
-  late String activeAdjValue;
-  late String activePronounValue;
-  late String activeNounValue;
-
-  late String correctPronounValue;
-  late String correctAdjValue;
-  late String correctNounValue;
-  bool isAllCorrect = false;
-
-  @protected
-  @mustCallSuper
-  void initState() {
-    super.initState();
-    this.correctPronounValue = widget.pronoun.getDeclension(widget.gender,
-        widget.isPlural, CaseTypeEnum.Instrumental, widget.noun.isAnimate);
-    this.correctAdjValue = widget.adjective.getDeclension(widget.gender,
-        widget.isPlural, CaseTypeEnum.Instrumental, widget.noun.isAnimate);
-    this.correctNounValue =
-        widget.noun.getDeclension(widget.isPlural, CaseTypeEnum.Instrumental);
-
-    this.activeAdjValue = widget.adjective.getRandomDeclension();
-    this.activePronounValue = widget.pronoun.getRandomDeclension();
-    this.activeNounValue = widget.noun.getRandomDeclension();
-  }
-
   bool checkAnswer() {
-    return this.activePronounValue == this.correctPronounValue &&
-        this.activeAdjValue == this.correctAdjValue &&
-        this.activeNounValue == this.correctNounValue;
+    return widget.activePronounValue == widget.correctPronounValue &&
+        widget.activeAdjValue == widget.correctAdjValue &&
+        widget.activeNounValue == widget.correctNounValue;
   }
 
   @override
   Widget build(BuildContext context) {
+    bool isAllCorrect = checkAnswer();
+
     var sentenceContent = [
       Text('Idem sa '),
       CaseDropDown(
-        activeValue: this.activePronounValue,
-        correctValue: this.correctPronounValue,
+        activeValue: widget.activePronounValue,
+        correctValue: widget.correctPronounValue,
         dropDownOptions: WidgetHelpers.getDropdownItems(widget.pronoun),
         onChanged: (String newVal) {
           setState(() {
-            this.activePronounValue = newVal;
-            this.isAllCorrect = checkAnswer();
+            widget.activePronounValue = newVal;
+            isAllCorrect = checkAnswer();
           });
         },
       ),
       CaseDropDown(
-        activeValue: this.activeAdjValue,
-        correctValue: this.correctAdjValue,
+        activeValue: widget.activeAdjValue,
+        correctValue: widget.correctAdjValue,
         dropDownOptions: WidgetHelpers.getDropdownItems(widget.adjective),
         onChanged: (String newVal) {
           setState(() {
-            this.activeAdjValue = newVal;
-            this.isAllCorrect = checkAnswer();
+            widget.activeAdjValue = newVal;
+            isAllCorrect = checkAnswer();
           });
         },
       ),
       CaseDropDown(
-        activeValue: this.activeNounValue,
-        correctValue: this.correctNounValue,
+        activeValue: widget.activeNounValue,
+        correctValue: widget.correctNounValue,
         dropDownOptions: WidgetHelpers.getNounDropdownItems(widget.noun),
         onChanged: (String newVal) {
           setState(() {
-            this.activeNounValue = newVal;
-            this.isAllCorrect = checkAnswer();
+            widget.activeNounValue = newVal;
+            isAllCorrect = checkAnswer();
           });
         },
       ),

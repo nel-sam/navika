@@ -257,3 +257,20 @@ class DeclensionByGender {
     required this.plural,
   });
 }
+
+class PANExerciseItem {
+  String sentenceStarter;
+  DeclinableWord pronoun;
+  DeclinableWord adjective;
+  GenderEnum gender;
+  bool isPlural;
+  Noun noun;
+
+  PANExerciseItem(
+      {required this.sentenceStarter,
+      required this.pronoun,
+      required this.adjective,
+      required this.gender,
+      required this.isPlural,
+      required this.noun});
+}

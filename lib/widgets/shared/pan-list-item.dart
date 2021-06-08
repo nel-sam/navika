@@ -6,7 +6,8 @@ import 'package:navika/widgets/shared/case-drop-down.dart';
 import 'package:navika/widgets/shared/exercise-row-card.dart';
 
 // ignore: must_be_immutable
-class AkuzativListItem extends StatefulWidget {
+class PANListItem extends StatefulWidget {
+  final String sentenceStarter;
   final DeclinableWord adjective;
   final DeclinableWord pronoun;
   final String correctAdjValue;
@@ -20,8 +21,9 @@ class AkuzativListItem extends StatefulWidget {
   String activePronounValue;
   String activeNounValue;
 
-  AkuzativListItem(
-      {required this.adjective,
+  PANListItem(
+      {required this.sentenceStarter,
+      required this.adjective,
       required this.correctAdjValue,
       required this.correctNounValue,
       required this.correctPronounValue,
@@ -34,10 +36,10 @@ class AkuzativListItem extends StatefulWidget {
       required this.noun});
 
   @override
-  _AkuzativListItemState createState() => _AkuzativListItemState();
+  _PANListItemState createState() => _PANListItemState();
 }
 
-class _AkuzativListItemState extends State<AkuzativListItem> {
+class _PANListItemState extends State<PANListItem> {
   bool checkAnswer() {
     return widget.activePronounValue == widget.correctPronounValue &&
         widget.activeAdjValue == widget.correctAdjValue &&
@@ -49,7 +51,7 @@ class _AkuzativListItemState extends State<AkuzativListItem> {
     bool isAllCorrect = checkAnswer();
 
     var sentenceContent = [
-      Text('Ja vidim '),
+      Text(widget.sentenceStarter),
       CaseDropDown(
         activeValue: widget.activePronounValue,
         correctValue: widget.correctPronounValue,

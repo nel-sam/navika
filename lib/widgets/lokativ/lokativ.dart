@@ -5,64 +5,19 @@ import 'package:navika/models/models.dart';
 import 'package:navika/utilities/widget-helpers.dart';
 import 'package:navika/widgets/lokativ/locativ-explanation.dart';
 import 'package:navika/widgets/shared/explanation-button.dart';
+import 'package:navika/widgets/shared/refresh-button.dart';
 
-import 'lokativ-list-item.dart';
-
-class LokativExerciseItem {
-  DeclinableWord possesivePronoun;
-  DeclinableWord adjective;
-  GenderEnum gender;
-  bool isPlural;
-  Noun noun;
-
-  LokativExerciseItem(
-      {required this.possesivePronoun,
-      required this.adjective,
-      required this.gender,
-      required this.isPlural,
-      required this.noun});
-}
-
+// ignore: must_be_immutable
 class Lokativ extends StatefulWidget {
+  final sentenceStarters = ['Govorim o'];
   final WordBank bank = wordBank;
+  var listItems = WidgetHelpers.getPANCombos(
+    wordBank,
+    ['Govorim o'],
+  );
 
   @override
   _LokativState createState() => _LokativState();
-}
-
-List<Widget> getListItems() {
-  List<LokativExerciseItem> listItems =
-      List<LokativExerciseItem>.empty(growable: true);
-
-  wordBank.possesivePronouns.forEach((pp) {
-    wordBank.adjectives.forEach((adj) {
-      wordBank.nouns.forEach((noun) {
-        listItems.add(LokativExerciseItem(
-            possesivePronoun: pp,
-            adjective: adj,
-            gender: noun.gender,
-            isPlural: false,
-            noun: noun));
-        listItems.add(LokativExerciseItem(
-            possesivePronoun: pp,
-            adjective: adj,
-            gender: noun.gender,
-            isPlural: true,
-            noun: noun));
-      });
-    });
-  });
-
-  return WidgetHelpers.shuffleList(listItems)
-      .map(
-        (e) => LokativListItem(
-            pronoun: e.pronoun,
-            adjective: e.adjective,
-            isPlural: e.isPlural,
-            gender: e.gender,
-            noun: e.noun),
-      )
-      .toList();
 }
 
 class _LokativState extends State<Lokativ> {
@@ -76,6 +31,16 @@ class _LokativState extends State<Lokativ> {
         title: Text('Lokativ'),
         actions: [
           Center(
+            child: RefreshButton(
+              refreshFunction: () => setState(() {
+                widget.listItems = WidgetHelpers.getPANCombos(
+                  wordBank,
+                  widget.sentenceStarters,
+                );
+              }),
+            ),
+          ),
+          Center(
             child: ExplanationButton(popupWidget: LocativExplanation()),
           )
         ],
@@ -83,7 +48,8 @@ class _LokativState extends State<Lokativ> {
       body: Center(
         child: ListView(
           padding: const EdgeInsets.all(8),
-          children: getListItems(),
+          children: WidgetHelpers.getPANListItems(
+              widget.listItems, CaseTypeEnum.Lokativ),
         ),
       ),
     );

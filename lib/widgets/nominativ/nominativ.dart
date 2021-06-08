@@ -67,6 +67,7 @@ List<NominativExerciseItem> prepareData(WordBank bank) {
           gender: noun.gender));
     });
   });
+  
   return listItems;
 }
 

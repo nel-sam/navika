@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
+import 'package:navika/widgets/shared/pan-list-item.dart';
 
 class WidgetHelpers {
   static IconData getGenderIcon(GenderEnum gender) {
@@ -63,5 +64,59 @@ class WidgetHelpers {
     var brightness = MediaQuery.of(context).platformBrightness;
     bool darkModeOn = brightness == Brightness.dark;
     return darkModeOn ? const Color(0xFF212121) : Colors.white;
+  }
+
+  static List<PANExerciseItem> getPANCombos(
+      WordBank bank, List<String> sentenceStarters) {
+    var listItems = List<PANExerciseItem>.empty(growable: true);
+
+    sentenceStarters.forEach((starter) {
+      bank.possesivePronouns.forEach((pp) {
+        bank.adjectives.forEach((adj) {
+          bank.nouns.forEach((noun) {
+            listItems.add(PANExerciseItem(
+                sentenceStarter: starter,
+                pronoun: pp,
+                adjective: adj,
+                gender: noun.gender,
+                isPlural: false,
+                noun: noun));
+            listItems.add(PANExerciseItem(
+                sentenceStarter: starter,
+                pronoun: pp,
+                adjective: adj,
+                gender: noun.gender,
+                isPlural: true,
+                noun: noun));
+          });
+        });
+      });
+    });
+
+    return listItems;
+  }
+
+  static List<PANListItem> getPANListItems(
+      List<PANExerciseItem> listItems, CaseTypeEnum caseType) {
+    return WidgetHelpers.shuffleList(listItems)
+        .map(
+          (e) => PANListItem(
+              sentenceStarter: e.sentenceStarter,
+              correctPronounValue: e.pronoun.getDeclension(
+                  e.gender, e.isPlural, caseType, e.noun.isAnimate),
+              correctAdjValue: e.adjective.getDeclension(
+                  e.gender, e.isPlural, caseType, e.noun.isAnimate),
+              correctNounValue: e.noun.getDeclension(e.isPlural, caseType),
+              adjective: e.adjective,
+              activePronounValue: e.pronoun.getRandomDeclension(),
+              activeAdjValue: e.adjective.getRandomDeclension(),
+              activeNounValue: e.noun.getRandomDeclension(),
+              isPlural: e.isPlural,
+              pronoun: e.pronoun,
+              gender: e.gender,
+              noun: e.noun),
+        )
+        .take(BATCH_COUNT)
+        .toList();
   }
 }
