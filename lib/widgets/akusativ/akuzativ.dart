@@ -7,13 +7,16 @@ import 'package:navika/widgets/akusativ/akuzativ-explanation.dart';
 import 'package:navika/widgets/shared/explanation-button.dart';
 import 'package:navika/widgets/shared/refresh-button.dart';
 
+String getSentenceStarter(Noun noun, bool isPlural) {
+  return 'Ja vidim';
+}
+
 // ignore: must_be_immutable
 class Akuzativ extends StatefulWidget {
-  final sentenceStarters = ['Ja vidim'];
   final WordBank bank = wordBank;
   var listItems = WidgetHelpers.getPANCombos(
     wordBank,
-    ['Ja vidim'],
+    getSentenceStarter,
   );
 
   @override
@@ -42,7 +45,7 @@ class _AkuzativState extends State<Akuzativ> {
               refreshFunction: () => setState(() {
                 widget.listItems = WidgetHelpers.getPANCombos(
                   wordBank,
-                  widget.sentenceStarters,
+                  getSentenceStarter,
                 );
               }),
             ),

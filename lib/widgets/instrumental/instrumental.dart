@@ -7,28 +7,16 @@ import 'package:navika/widgets/instrumental/instrumental-explanation.dart';
 import 'package:navika/widgets/shared/explanation-button.dart';
 import 'package:navika/widgets/shared/refresh-button.dart';
 
-class InstrumentalExerciseItem {
-  DeclinableWord pronoun;
-  DeclinableWord adjective;
-  GenderEnum gender;
-  bool isPlural;
-  Noun noun;
-
-  InstrumentalExerciseItem(
-      {required this.pronoun,
-      required this.adjective,
-      required this.gender,
-      required this.isPlural,
-      required this.noun});
+String getSentenceStarter(Noun noun, bool isPlural) {
+  return 'Idem sa';
 }
 
 // ignore: must_be_immutable
 class Instrumental extends StatefulWidget {
-  final sentenceStarters = ['Idem sa'];
   final WordBank bank = wordBank;
   var listItems = WidgetHelpers.getPANCombos(
     wordBank,
-    ['Idem sa'],
+    getSentenceStarter,
   );
 
   @override
@@ -50,7 +38,7 @@ class _InstrumentalState extends State<Instrumental> {
               refreshFunction: () => setState(() {
                 widget.listItems = WidgetHelpers.getPANCombos(
                   wordBank,
-                  widget.sentenceStarters,
+                  getSentenceStarter,
                 );
               }),
             ),

@@ -7,13 +7,17 @@ import 'package:navika/widgets/lokativ/locativ-explanation.dart';
 import 'package:navika/widgets/shared/explanation-button.dart';
 import 'package:navika/widgets/shared/refresh-button.dart';
 
+String getSentenceStarter(Noun noun, bool isPlural) {
+  return 'Govorim o';
+}
+
 // ignore: must_be_immutable
 class Lokativ extends StatefulWidget {
   final sentenceStarters = ['Govorim o'];
   final WordBank bank = wordBank;
   var listItems = WidgetHelpers.getPANCombos(
     wordBank,
-    ['Govorim o'],
+    getSentenceStarter,
   );
 
   @override
@@ -35,7 +39,7 @@ class _LokativState extends State<Lokativ> {
               refreshFunction: () => setState(() {
                 widget.listItems = WidgetHelpers.getPANCombos(
                   wordBank,
-                  widget.sentenceStarters,
+                  getSentenceStarter,
                 );
               }),
             ),

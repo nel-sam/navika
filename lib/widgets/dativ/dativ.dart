@@ -6,63 +6,22 @@ import 'package:navika/utilities/widget-helpers.dart';
 import 'package:navika/widgets/dativ/dativ-explanation.dart';
 import 'package:navika/widgets/shared/explanation-button.dart';
 
-import 'dativ-list-item.dart';
-
-class DativExerciseItem {
-  DeclinableWord possesivePronoun;
-  DeclinableWord adjective;
-  GenderEnum gender;
-  bool isPlural;
-  Noun noun;
-
-  DativExerciseItem(
-      {required this.possesivePronoun,
-      required this.adjective,
-      required this.gender,
-      required this.isPlural,
-      required this.noun});
+String getSentenceStarter(Noun noun, bool isPlural) {
+  if (noun.isAnimate) return 'Daj ';
+  if (isPlural) return 'Slični su ';
+  return 'Slično je ';
 }
 
+// ignore: must_be_immutable
 class Dativ extends StatefulWidget {
   final WordBank bank = wordBank;
+  var listItems = WidgetHelpers.getPANCombos(
+    wordBank,
+    getSentenceStarter,
+  );
 
   @override
   _DativState createState() => _DativState();
-}
-
-List<Widget> getListItems() {
-  List<DativExerciseItem> listItems =
-      List<DativExerciseItem>.empty(growable: true);
-
-  wordBank.possesivePronouns.forEach((pp) {
-    wordBank.adjectives.forEach((adj) {
-      wordBank.nouns.forEach((noun) {
-        listItems.add(DativExerciseItem(
-            possesivePronoun: pp,
-            adjective: adj,
-            gender: noun.gender,
-            isPlural: false,
-            noun: noun));
-        listItems.add(DativExerciseItem(
-            possesivePronoun: pp,
-            adjective: adj,
-            gender: noun.gender,
-            isPlural: true,
-            noun: noun));
-      });
-    });
-  });
-
-  return WidgetHelpers.shuffleList(listItems)
-      .map(
-        (e) => DativListItem(
-            pronoun: e.pronoun,
-            adjective: e.adjective,
-            isPlural: e.isPlural,
-            gender: e.gender,
-            noun: e.noun),
-      )
-      .toList();
 }
 
 class _DativState extends State<Dativ> {
@@ -83,7 +42,8 @@ class _DativState extends State<Dativ> {
       body: Center(
         child: ListView(
           padding: const EdgeInsets.all(8),
-          children: getListItems(),
+          children: WidgetHelpers.getPANListItems(
+              widget.listItems, CaseTypeEnum.Dativ),
         ),
       ),
     );

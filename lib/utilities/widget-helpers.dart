@@ -67,22 +67,21 @@ class WidgetHelpers {
   }
 
   static List<PANExerciseItem> getPANCombos(
-      WordBank bank, List<String> sentenceStarters) {
+      WordBank bank, Function getSentenceStarters) {
     var listItems = List<PANExerciseItem>.empty(growable: true);
 
-    sentenceStarters.forEach((starter) {
       bank.possesivePronouns.forEach((pp) {
         bank.adjectives.forEach((adj) {
           bank.nouns.forEach((noun) {
             listItems.add(PANExerciseItem(
-                sentenceStarter: starter,
+                sentenceStarter: getSentenceStarters(noun, false),
                 pronoun: pp,
                 adjective: adj,
                 gender: noun.gender,
                 isPlural: false,
                 noun: noun));
             listItems.add(PANExerciseItem(
-                sentenceStarter: starter,
+                sentenceStarter: getSentenceStarters(noun, true),
                 pronoun: pp,
                 adjective: adj,
                 gender: noun.gender,
@@ -90,7 +89,6 @@ class WidgetHelpers {
                 noun: noun));
           });
         });
-      });
     });
 
     return listItems;
