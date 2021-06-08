@@ -36,7 +36,7 @@ final List<DeclinableWord> pronounWordBank = [
     genitiv: new Declension(
       masculine: new DeclensionByGender(singular: "", plural: ""),
       feminine: new DeclensionByGender(singular: "", plural: ""),
-      neuter: new DeclensionByGender(singular: "", plural: ""),
+      neuter: new DeclensionByGender(singular: "", plural: "mojih"),
     ),
     vokativ: new Declension(
       masculine: new DeclensionByGender(singular: "", plural: ""),

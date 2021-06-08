@@ -5,6 +5,7 @@ import 'package:navika/models/models.dart';
 import 'package:navika/utilities/widget-helpers.dart';
 import 'package:navika/widgets/dativ/dativ-explanation.dart';
 import 'package:navika/widgets/shared/explanation-button.dart';
+import 'package:navika/widgets/shared/refresh-button.dart';
 
 String getSentenceStarter(Noun noun, bool isPlural) {
   if (noun.isAnimate) return 'Daj ';
@@ -34,6 +35,16 @@ class _DativState extends State<Dativ> {
         iconTheme: WidgetHelpers.getAppBarIconTheme(context),
         title: Text('Dativ'),
         actions: [
+          Center(
+            child: RefreshButton(
+              refreshFunction: () => setState(() {
+                widget.listItems = WidgetHelpers.getPANCombos(
+                  wordBank,
+                  getSentenceStarter,
+                );
+              }),
+            ),
+          ),
           Center(
             child: ExplanationButton(popupWidget: DativExplanation()),
           )
