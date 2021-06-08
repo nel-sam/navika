@@ -5,6 +5,7 @@ import 'package:navika/utilities/widget-helpers.dart';
 import 'package:navika/widgets/shared/case-drop-down.dart';
 import 'package:navika/widgets/shared/exercise-row-card.dart';
 
+// ignore: must_be_immutable
 class NominativListItem extends StatefulWidget {
   final DeclinableWord adjective;
   final String correctAdjValue;

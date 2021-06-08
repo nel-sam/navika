@@ -5,46 +5,64 @@ import 'package:navika/models/models.dart';
 import 'package:navika/utilities/widget-helpers.dart';
 import 'package:navika/widgets/akusativ/akuzativ-explanation.dart';
 import 'package:navika/widgets/shared/explanation-button.dart';
+import 'package:navika/widgets/shared/refresh-button.dart';
 
+import '../../constants.dart';
 import 'akuzativ-list-item.dart';
 
 class AkusativExerciseItem {
-  DeclinableWord possesivePronoun;
+  DeclinableWord pronoun;
   DeclinableWord adjective;
   GenderEnum gender;
   bool isPlural;
   Noun noun;
 
   AkusativExerciseItem(
-      {required this.possesivePronoun,
+      {required this.pronoun,
       required this.adjective,
       required this.gender,
       required this.isPlural,
       required this.noun});
 }
 
-class Akuzativ extends StatefulWidget {
-  final WordBank bank = wordBank;
-
-  @override
-  _AkuzativState createState() => _AkuzativState();
+List<Widget> getListItems(List<AkusativExerciseItem> listItems) {
+  return WidgetHelpers.shuffleList(listItems)
+      .map(
+        (e) => AkuzativListItem(
+            correctPronounValue: e.pronoun.getDeclension(
+                e.gender, e.isPlural, CaseTypeEnum.Akuzativ, e.noun.isAnimate),
+            correctAdjValue: e.adjective.getDeclension(
+                e.gender, e.isPlural, CaseTypeEnum.Akuzativ, e.noun.isAnimate),
+            correctNounValue:
+                e.noun.getDeclension(e.isPlural, CaseTypeEnum.Akuzativ),
+            adjective: e.adjective,
+            activePronounValue: e.pronoun.getRandomDeclension(),
+            activeAdjValue: e.adjective.getRandomDeclension(),
+            activeNounValue: e.noun.getRandomDeclension(),
+            isPlural: e.isPlural,
+            pronoun: e.pronoun,
+            gender: e.gender,
+            noun: e.noun),
+      )
+      .take(BATCH_COUNT)
+      .toList();
 }
 
-List<Widget> getListItems() {
+List<AkusativExerciseItem> prepareData(WordBank bank) {
   List<AkusativExerciseItem> listItems =
       List<AkusativExerciseItem>.empty(growable: true);
 
-  wordBank.possesivePronouns.forEach((pp) {
-    wordBank.adjectives.forEach((adj) {
-      wordBank.nouns.forEach((noun) {
+  bank.possesivePronouns.forEach((pp) {
+    bank.adjectives.forEach((adj) {
+      bank.nouns.forEach((noun) {
         listItems.add(AkusativExerciseItem(
-            possesivePronoun: pp,
+            pronoun: pp,
             adjective: adj,
             gender: noun.gender,
             isPlural: false,
             noun: noun));
         listItems.add(AkusativExerciseItem(
-            possesivePronoun: pp,
+            pronoun: pp,
             adjective: adj,
             gender: noun.gender,
             isPlural: true,
@@ -52,17 +70,16 @@ List<Widget> getListItems() {
       });
     });
   });
+  return listItems;
+}
 
-  return WidgetHelpers.shuffleList(listItems)
-      .map(
-        (e) => AkuzativListItem(
-            pronoun: e.possesivePronoun,
-            adjective: e.adjective,
-            isPlural: e.isPlural,
-            gender: e.gender,
-            noun: e.noun),
-      )
-      .toList();
+// ignore: must_be_immutable
+class Akuzativ extends StatefulWidget {
+  final WordBank bank = wordBank;
+  var listItems = prepareData(wordBank);
+
+  @override
+  _AkuzativState createState() => _AkuzativState();
 }
 
 class _AkuzativState extends State<Akuzativ> {
@@ -83,6 +100,13 @@ class _AkuzativState extends State<Akuzativ> {
         title: Text('Akuzativ'),
         actions: [
           Center(
+            child: RefreshButton(
+              refreshFunction: () => setState(() {
+                widget.listItems = prepareData(wordBank);
+              }),
+            ),
+          ),
+          Center(
             child: ExplanationButton(popupWidget: AkuzativExplanation()),
           )
         ],
@@ -91,7 +115,7 @@ class _AkuzativState extends State<Akuzativ> {
           ? Center(
               child: ListView(
                 padding: const EdgeInsets.all(8),
-                children: getListItems(),
+                children: getListItems(widget.listItems),
               ),
             )
           : Container(
@@ -100,7 +124,7 @@ class _AkuzativState extends State<Akuzativ> {
                 padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
                 crossAxisSpacing: 10,
                 crossAxisCount: 2,
-                children: getListItems(),
+                children: getListItems(widget.listItems),
               ),
             ),
     );

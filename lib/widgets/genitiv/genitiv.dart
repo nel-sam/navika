@@ -56,7 +56,7 @@ List<Widget> getListItems() {
   return WidgetHelpers.shuffleList(listItems)
       .map(
         (e) => GenitivListItem(
-            pronoun: e.possesivePronoun,
+            pronoun: e.pronoun,
             noun1: e.noun1,
             isPlural: e.isPlural,
             gender: e.gender,
