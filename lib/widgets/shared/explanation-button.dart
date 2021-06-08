@@ -4,11 +4,13 @@ import 'package:navika/utilities/widget-helpers.dart';
 import '../../constants.dart';
 
 class ExplanationButton extends StatelessWidget {
+  final String textTitle;
   final Widget popupWidget;
 
   const ExplanationButton({
     Key? key,
     required this.popupWidget,
+    this.textTitle = '',
   }) : super(key: key);
 
   @override
@@ -19,7 +21,9 @@ class ExplanationButton extends StatelessWidget {
         style: OutlinedButton.styleFrom(
             primary:
                 WidgetHelpers.isDarkTheme(context) ? Colors.white : ICON_COLOR),
-        child: Icon(Icons.help_center_outlined),
+        child: this.textTitle != ''
+            ? Text(textTitle, style: TextStyle(color: ICON_COLOR))
+            : Icon(Icons.help_center_outlined),
         onPressed: () {
           showDialog(
             context: context,

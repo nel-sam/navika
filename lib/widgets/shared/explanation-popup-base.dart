@@ -3,12 +3,16 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/utilities/widget-helpers.dart';
+import 'package:navika/widgets/nominativ/nominativ-explanation.dart';
 import 'package:navika/widgets/shared/explanation-icon-cell.dart';
 import 'package:navika/widgets/shared/explanation-text-cell.dart';
+
+import 'explanation-button.dart';
 
 class ExplanationPopupBase extends StatelessWidget {
   final String title;
   final String note;
+  final bool showNomButton;
   final ExplanationTextCell feminineSingular;
   final ExplanationTextCell masculineSingular;
   final ExplanationTextCell neuterSingular;
@@ -25,6 +29,7 @@ class ExplanationPopupBase extends StatelessWidget {
   ExplanationPopupBase({
     required this.title,
     this.note = '',
+    this.showNomButton = true,
     required this.feminineSingular,
     required this.masculineSingular,
     required this.neuterSingular,
@@ -47,6 +52,16 @@ class ExplanationPopupBase extends StatelessWidget {
         textTheme: WidgetHelpers.getAppBarTextTheme(context),
         iconTheme: WidgetHelpers.getAppBarIconTheme(context),
         title: Text(title),
+        actions: showNomButton
+            ? [
+                Center(
+                  child: ExplanationButton(
+                    popupWidget: NominativExplanation(),
+                    textTitle: 'Nom',
+                  ),
+                )
+              ]
+            : [],
       ),
       body: OrientationBuilder(builder: (context, orientation) {
         return GridView.count(
