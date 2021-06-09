@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -15,10 +13,10 @@ void main() {
 }
 
 final BannerAd adBanner = BannerAd(
-  //adUnitId: 'ca-app-pub-3940256099942544/2934735716', // TEST AD ID
-  adUnitId: Platform.isIOS
-      ? 'ca-app-pub-8911581163547766/5161441469'
-      : 'ca-app-pub-8911581163547766/8506817770',
+  adUnitId: 'ca-app-pub-3940256099942544/2934735716', // TEST AD ID
+  // adUnitId: Platform.isIOS
+  //     ? 'ca-app-pub-8911581163547766/5161441469'
+  //     : 'ca-app-pub-8911581163547766/8506817770',
   size: AdSize.banner,
   request: AdRequest(),
   listener: BannerAdListener(),
@@ -85,6 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           children: <Widget>[
             Container(
+              color: Colors.grey,
               alignment: Alignment.center,
               child: AdWidget(ad: adBanner),
               width: adBanner.size.width.toDouble(),
