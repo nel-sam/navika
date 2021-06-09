@@ -50,7 +50,6 @@ class ExplanationPopupBase extends StatelessWidget {
       ),
       body: Column(
         children: [
-          Container(height: 30),
           getTable(
             AppLocalizations.of(context)!.pronouns,
             pronounMasculineSingular,
@@ -62,7 +61,6 @@ class ExplanationPopupBase extends StatelessWidget {
             note,
             context,
           ),
-          Container(height: 30),
           getTable(
             AppLocalizations.of(context)!.adjectives,
             masculineSingular,
@@ -93,65 +91,70 @@ getTable(
 ) {
   double firstColWidth = 20;
 
-  return Container(
-    margin: const EdgeInsets.all(5.0),
-    decoration: BoxDecoration(
-        border: Border.all(color: Colors.grey),
-        borderRadius: BorderRadius.all(Radius.circular(CELL_TEXT_PADDING))),
-    child: Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
-          child: Text(
-            title,
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-          ),
-        ),
-        Row(
+  return Column(
+    children: [
+      Container(height: CELL_TEXT_PADDING + 20),
+      Container(
+        margin: const EdgeInsets.all(5.0),
+        decoration: BoxDecoration(
+            border: Border.all(color: Colors.grey),
+            borderRadius: BorderRadius.all(Radius.circular(CELL_TEXT_PADDING))),
+        child: Column(
           children: [
-            Container(width: firstColWidth),
-            ExplanationIconCell(
-              icon: WidgetHelpers.getGenderIcon(GenderEnum.Masculine),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
+              child: Text(
+                title,
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
             ),
-            ExplanationIconCell(
-              icon: WidgetHelpers.getGenderIcon(GenderEnum.Feminine),
+            Row(
+              children: [
+                Container(width: firstColWidth),
+                ExplanationIconCell(
+                  icon: WidgetHelpers.getGenderIcon(GenderEnum.Masculine),
+                ),
+                ExplanationIconCell(
+                  icon: WidgetHelpers.getGenderIcon(GenderEnum.Feminine),
+                ),
+                ExplanationIconCell(
+                  icon: WidgetHelpers.getGenderIcon(GenderEnum.Neuter),
+                ),
+              ],
             ),
-            ExplanationIconCell(
-              icon: WidgetHelpers.getGenderIcon(GenderEnum.Neuter),
-            ),
+            Row(children: [
+              ExplanationIconCell(icon: SINGULAR_ICON, width: firstColWidth),
+              masculineSingular,
+              feminineSingular,
+              neuterSingular,
+            ]),
+            Row(children: [
+              ExplanationIconCell(icon: PLURAL_ICON, width: firstColWidth),
+              masculinePlural,
+              femininePlural,
+              neuterPlural,
+            ]),
+            note != ''
+                ? Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: RichText(
+                      text: TextSpan(
+                        style: TextStyle(
+                            fontSize: 18,
+                            color: WidgetHelpers.isDarkTheme(context)
+                                ? Colors.white
+                                : Colors.black),
+                        children: [
+                          TextSpan(text: '*'),
+                          TextSpan(text: note, style: DECLINED_LETTER_STYLE)
+                        ],
+                      ),
+                    ),
+                  )
+                : Container(),
           ],
         ),
-        Row(children: [
-          ExplanationIconCell(icon: SINGULAR_ICON, width: firstColWidth),
-          masculineSingular,
-          feminineSingular,
-          neuterSingular,
-        ]),
-        Row(children: [
-          ExplanationIconCell(icon: PLURAL_ICON, width: firstColWidth),
-          masculinePlural,
-          femininePlural,
-          neuterPlural,
-        ]),
-        note != ''
-            ? Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: RichText(
-                  text: TextSpan(
-                    style: TextStyle(
-                        fontSize: 18,
-                        color: WidgetHelpers.isDarkTheme(context)
-                            ? Colors.white
-                            : Colors.black),
-                    children: [
-                      TextSpan(text: '*'),
-                      TextSpan(text: note, style: DECLINED_LETTER_STYLE)
-                    ],
-                  ),
-                ),
-              )
-            : Container(),
-      ],
-    ),
+      ),
+    ],
   );
 }
