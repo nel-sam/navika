@@ -3,6 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/android.iml" filepath="$PROJECT_DIR$/.idea/modules/android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/android.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/android.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-718888520/android.google_mobile_ads.iml" filepath="$PROJECT_DIR$/.idea/modules/-718888520/android.google_mobile_ads.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/984600367/android.shared_preferences.iml" filepath="$PROJECT_DIR$/.idea/modules/984600367/android.shared_preferences.iml" />
     </modules>
   </component>
 </project>

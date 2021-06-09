@@ -33,6 +33,29 @@
 **/ios/ServiceDefinitions.json
 **/ios/Runner/GeneratedPluginRegistrant.*
 
+ # IntelliJ
+*.iml
+android/.idea/workspace.xml
+android/.idea/tasks.xml
+android/.idea/gradle.xml
+android/.idea/assetWizardSettings.xml
+android/.idea/dictionaries
+android/.idea/libraries
+# Android Studio 3 in .gitignore file.
+android/.idea/caches
+android/.idea/modules.xml
+# Comment next line if keeping position of elements in Navigation Editor is relevant for you
+android/.idea/navEditor.xml
+
+
+build/**/*
+.flutter-plugins-dependencies
+.dart_tool/**/*
+.flutter-plugins
+.packages
+ios/build/**/*
+**/android/.idea/*
+
 # Exceptions to above rules.
 !**/ios/**/default.mode1v3
 !**/ios/**/default.mode2v3
@@ -41,9 +64,3 @@
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
 .dart_tool/chrome-device/*
 .dart_tool/flutter_build/*
-build/**/*
-.flutter-plugins-dependencies
-.dart_tool/**/*
-.flutter-plugins
-.packages
-ios/build/**/*
