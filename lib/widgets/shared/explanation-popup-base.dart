@@ -3,16 +3,12 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/utilities/widget-helpers.dart';
-import 'package:navika/widgets/nominativ/nominativ-explanation.dart';
 import 'package:navika/widgets/shared/explanation-icon-cell.dart';
 import 'package:navika/widgets/shared/explanation-text-cell.dart';
-
-import 'explanation-button.dart';
 
 class ExplanationPopupBase extends StatelessWidget {
   final String title;
   final String note;
-  final bool showNomButton;
   final ExplanationTextCell feminineSingular;
   final ExplanationTextCell masculineSingular;
   final ExplanationTextCell neuterSingular;
@@ -29,7 +25,6 @@ class ExplanationPopupBase extends StatelessWidget {
   ExplanationPopupBase({
     required this.title,
     this.note = '',
-    this.showNomButton = true,
     required this.feminineSingular,
     required this.masculineSingular,
     required this.neuterSingular,
@@ -52,49 +47,33 @@ class ExplanationPopupBase extends StatelessWidget {
         textTheme: WidgetHelpers.getAppBarTextTheme(context),
         iconTheme: WidgetHelpers.getAppBarIconTheme(context),
         title: Text(title),
-        actions: showNomButton
-            ? [
-                Center(
-                  child: ExplanationButton(
-                    popupWidget: NominativExplanation(),
-                    textTitle: 'Nom',
-                  ),
-                )
-              ]
-            : [],
       ),
-      body: OrientationBuilder(builder: (context, orientation) {
-        return GridView.count(
-          primary: false,
-          padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
-          crossAxisSpacing: 10,
-          crossAxisCount: orientation == Orientation.portrait ? 1 : 2,
-          children: [
-            getTable(
-              AppLocalizations.of(context)!.pronouns,
-              pronounMasculineSingular,
-              pronounFeminineSingular,
-              pronounNeuterSingular,
-              pronounMasculinePlural,
-              pronounFemininePlural,
-              pronounNeuterPlural,
-              note,
-              context,
-            ),
-            getTable(
-              AppLocalizations.of(context)!.adjectives,
-              masculineSingular,
-              feminineSingular,
-              neuterSingular,
-              masculinePlural,
-              femininePlural,
-              neuterPlural,
-              note,
-              context,
-            ),
-          ],
-        );
-      }),
+      body: Column(
+        children: [
+          getTable(
+            AppLocalizations.of(context)!.pronouns,
+            pronounMasculineSingular,
+            pronounFeminineSingular,
+            pronounNeuterSingular,
+            pronounMasculinePlural,
+            pronounFemininePlural,
+            pronounNeuterPlural,
+            note,
+            context,
+          ),
+          getTable(
+            AppLocalizations.of(context)!.adjectives,
+            masculineSingular,
+            feminineSingular,
+            neuterSingular,
+            masculinePlural,
+            femininePlural,
+            neuterPlural,
+            note,
+            context,
+          ),
+        ],
+      ),
     );
   }
 }
@@ -113,47 +92,50 @@ getTable(
   return Column(
     children: [
       Padding(
-        padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+        padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
         child: Text(
           title,
           style: TextStyle(fontSize: 18),
         ),
       ),
-      Table(
-        border: TABLE_BORDERS,
-        defaultVerticalAlignment: TableCellVerticalAlignment.middle,
-        defaultColumnWidth: FlexColumnWidth(1),
-        columnWidths: const <int, TableColumnWidth>{
-          0: FixedColumnWidth(50),
-        },
-        children: <TableRow>[
-          TableRow(
-            children: <Widget>[
-              Container(),
-              ExplanationIconCell(
-                icon: WidgetHelpers.getGenderIcon(GenderEnum.Masculine),
-              ),
-              ExplanationIconCell(
-                icon: WidgetHelpers.getGenderIcon(GenderEnum.Feminine),
-              ),
-              ExplanationIconCell(
-                icon: WidgetHelpers.getGenderIcon(GenderEnum.Neuter),
-              ),
-            ],
-          ),
-          TableRow(children: [
-            ExplanationIconCell(icon: SINGULAR_ICON),
-            masculineSingular,
-            feminineSingular,
-            neuterSingular,
-          ]),
-          TableRow(children: [
-            ExplanationIconCell(icon: PLURAL_ICON),
-            masculinePlural,
-            femininePlural,
-            neuterPlural,
-          ]),
-        ],
+      Padding(
+        padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+        child: Table(
+          border: TABLE_BORDERS,
+          defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+          defaultColumnWidth: FlexColumnWidth(1),
+          columnWidths: const <int, TableColumnWidth>{
+            0: FixedColumnWidth(50),
+          },
+          children: <TableRow>[
+            TableRow(
+              children: <Widget>[
+                Container(),
+                ExplanationIconCell(
+                  icon: WidgetHelpers.getGenderIcon(GenderEnum.Masculine),
+                ),
+                ExplanationIconCell(
+                  icon: WidgetHelpers.getGenderIcon(GenderEnum.Feminine),
+                ),
+                ExplanationIconCell(
+                  icon: WidgetHelpers.getGenderIcon(GenderEnum.Neuter),
+                ),
+              ],
+            ),
+            TableRow(children: [
+              ExplanationIconCell(icon: SINGULAR_ICON),
+              masculineSingular,
+              feminineSingular,
+              neuterSingular,
+            ]),
+            TableRow(children: [
+              ExplanationIconCell(icon: PLURAL_ICON),
+              masculinePlural,
+              femininePlural,
+              neuterPlural,
+            ]),
+          ],
+        ),
       ),
       note != ''
           ? Padding(

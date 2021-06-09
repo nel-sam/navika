@@ -8,7 +8,6 @@ class NominativExplanation extends StatelessWidget {
   Widget build(BuildContext context) {
     return ExplanationPopupBase(
       title: 'Nominativ',
-      showNomButton: false,
       masculineSingular: ExplanationTextCell(children: [
         TextSpan(text: 'Mal'),
         TextSpan(text: 'i', style: DECLINED_LETTER_STYLE),
