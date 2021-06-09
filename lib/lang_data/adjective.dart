@@ -33,7 +33,7 @@ final List<DeclinableWord> adjectiveWordBank = [
     ),
     lokativ: new Declension(
       masculine: new DeclensionByGender(singular: "velikom", plural: "velikim"),
-      feminine: new DeclensionByGender(singular: "velikom", plural: "velikim"),
+      feminine: new DeclensionByGender(singular: "velikoj", plural: "velikim"),
       neuter: new DeclensionByGender(singular: "velikom", plural: "velikim"),
     ),
     dativ: new Declension(

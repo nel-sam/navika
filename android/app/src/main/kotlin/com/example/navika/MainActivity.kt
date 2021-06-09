@@ -1,4 +1,4 @@
-package com.example.navika
+package com.nrsdev.navika
 
 import io.flutter.embedding.android.FlutterActivity
 
