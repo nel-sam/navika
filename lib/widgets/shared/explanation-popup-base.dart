@@ -89,20 +89,19 @@ getTable(
   String note,
   BuildContext context,
 ) {
-  double firstColWidth = 20;
+  double firstColWidth = 15;
 
   return Column(
     children: [
-      Container(height: CELL_TEXT_PADDING + 20),
+      Container(height: CELL_TEXT_PADDING + 30),
       Container(
-        margin: const EdgeInsets.all(5.0),
         decoration: BoxDecoration(
-            border: Border.all(color: Colors.grey),
-            borderRadius: BorderRadius.all(Radius.circular(CELL_TEXT_PADDING))),
+          border: Border.all(color: Colors.grey),
+        ),
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
+              padding: const EdgeInsets.fromLTRB(0, 15, 0, 0),
               child: Text(
                 title,
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),

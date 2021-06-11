@@ -9,7 +9,7 @@ class ExplanationTextCell extends StatelessWidget {
   const ExplanationTextCell({
     Key? key,
     required this.children,
-    this.width = 100,
+    this.width = 90,
   }) : super(key: key);
 
   @override

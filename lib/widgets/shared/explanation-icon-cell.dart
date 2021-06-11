@@ -8,7 +8,7 @@ class ExplanationIconCell extends StatelessWidget {
   const ExplanationIconCell({
     Key? key,
     required this.icon,
-    this.width = 100,
+    this.width = 90,
   }) : super(key: key);
 
   @override
