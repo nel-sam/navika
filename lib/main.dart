@@ -7,6 +7,8 @@ import 'package:navika/utilities/widget-helpers.dart';
 import 'package:navika/widgets/exercise-selection/exercise-selection.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
+import 'constants.dart';
+
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   MobileAds.instance.initialize();
@@ -75,6 +77,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     return Scaffold(
       appBar: AppBar(
+        elevation: APPBAR_ELEVATION,
         backgroundColor: WidgetHelpers.getAppBarColor(context),
         textTheme: WidgetHelpers.getAppBarTextTheme(context),
         iconTheme: WidgetHelpers.getAppBarIconTheme(context),

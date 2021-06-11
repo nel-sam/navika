@@ -5,6 +5,7 @@ import 'package:navika/models/models.dart';
 import 'package:navika/utilities/widget-helpers.dart';
 import 'package:navika/widgets/shared/explanation-button.dart';
 import 'package:navika/widgets/shared/refresh-button.dart';
+import '../../constants.dart';
 import 'nominativ-explanation.dart';
 
 String getSentenceStarter(Noun noun, bool isPlural) {
@@ -28,6 +29,7 @@ class _NominativExerciseState extends State<NominativExercise> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: APPBAR_ELEVATION,
         backgroundColor: WidgetHelpers.getAppBarColor(context),
         textTheme: WidgetHelpers.getAppBarTextTheme(context),
         iconTheme: WidgetHelpers.getAppBarIconTheme(context),

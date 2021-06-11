@@ -7,6 +7,7 @@ import 'package:navika/widgets/genitiv/genitiv-explanation.dart';
 import 'package:navika/widgets/shared/explanation-button.dart';
 import 'package:navika/widgets/shared/refresh-button.dart';
 
+import '../../constants.dart';
 import 'genitiv-list-item.dart';
 
 class GenitivExerciseItem {
@@ -90,6 +91,7 @@ class _GenitivState extends State<Genitiv> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: APPBAR_ELEVATION,
         backgroundColor: WidgetHelpers.getAppBarColor(context),
         textTheme: WidgetHelpers.getAppBarTextTheme(context),
         iconTheme: WidgetHelpers.getAppBarIconTheme(context),

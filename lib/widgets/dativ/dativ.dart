@@ -7,6 +7,8 @@ import 'package:navika/widgets/dativ/dativ-explanation.dart';
 import 'package:navika/widgets/shared/explanation-button.dart';
 import 'package:navika/widgets/shared/refresh-button.dart';
 
+import '../../constants.dart';
+
 String getSentenceStarter(Noun noun, bool isPlural) {
   if (noun.isAnimate) return 'Daj ';
   if (isPlural) return 'Slični su ';
@@ -30,6 +32,7 @@ class _DativState extends State<Dativ> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: APPBAR_ELEVATION,
         backgroundColor: WidgetHelpers.getAppBarColor(context),
         textTheme: WidgetHelpers.getAppBarTextTheme(context),
         iconTheme: WidgetHelpers.getAppBarIconTheme(context),

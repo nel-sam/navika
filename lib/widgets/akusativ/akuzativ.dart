@@ -7,6 +7,8 @@ import 'package:navika/widgets/akusativ/akuzativ-explanation.dart';
 import 'package:navika/widgets/shared/explanation-button.dart';
 import 'package:navika/widgets/shared/refresh-button.dart';
 
+import '../../constants.dart';
+
 String getSentenceStarter(Noun noun, bool isPlural) {
   return 'Ja vidim';
 }
@@ -35,6 +37,7 @@ class _AkuzativState extends State<Akuzativ> {
 
     return Scaffold(
       appBar: AppBar(
+        elevation: APPBAR_ELEVATION,
         backgroundColor: WidgetHelpers.getAppBarColor(context),
         textTheme: WidgetHelpers.getAppBarTextTheme(context),
         iconTheme: WidgetHelpers.getAppBarIconTheme(context),
