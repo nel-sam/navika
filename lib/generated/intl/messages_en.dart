@@ -35,6 +35,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Genitive is used with prepositions and is used to show possession or origin."),
         "instrumentalDescription": MessageLookupByLibrary.simpleMessage(
             "Using things as tools, means of transport, or using something as a place to go through."),
+        "lokativDescription": MessageLookupByLibrary.simpleMessage(
+            "Lokativ is used when talking about the location where something happened, something is, or will be. It is also used to say \'about\' as in \'talking about something\'."),
         "masculine": MessageLookupByLibrary.simpleMessage("Masculine"),
         "neuter": MessageLookupByLibrary.simpleMessage("Neuter"),
         "nominativDescription": MessageLookupByLibrary.simpleMessage(

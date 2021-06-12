@@ -12,6 +12,7 @@
     "nominativDescription": "Nominativ is used when naming things and is indicates the subject of the sentence. When comparing two words, both are in the nominativ case.",
     "akuzativDescription": "Direct objects are in the accusative case. This case is also used to indicate a point of destination, when there is movement towards the destination.",
     "instrumentalDescription": "Using things as tools, means of transport, or using something as a place to go through.",
+    "lokativDescription": "Lokativ is used when talking about the location where something happened, something is, or will be. It is also used to say 'about' as in 'talking about something'.",
     "genitiveDescription": "Genitive is used with prepositions and is used to show possession or origin.",
     "pronouns_I": "I",
     "pronouns_You": "You",

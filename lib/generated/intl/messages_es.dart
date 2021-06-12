@@ -34,6 +34,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "El caso genitivo se usa con preposiciones e indica posesión u origin de algo."),
         "instrumentalDescription": MessageLookupByLibrary.simpleMessage(
             "Para indicar herramientas, formas de transporte, o indicar un lugar que se cruza."),
+        "lokativDescription": MessageLookupByLibrary.simpleMessage(
+            "Lokativ se usa cuando se habla de la ubicación donde algo ocurre, algo está ubicado, o estará ubicado. Tambíen se usa el Lokativ para decir \'sobre\' como en la frase \'hablando sobre un tema\'."),
         "masculine": MessageLookupByLibrary.simpleMessage("Masculino"),
         "neuter": MessageLookupByLibrary.simpleMessage("Neutro"),
         "nominativDescription": MessageLookupByLibrary.simpleMessage(

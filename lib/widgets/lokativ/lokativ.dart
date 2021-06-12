@@ -3,7 +3,7 @@ import 'package:navika/lang_data/word-bank.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/utilities/navika-helpers.dart';
-import 'package:navika/widgets/lokativ/locativ-explanation.dart';
+import 'package:navika/widgets/lokativ/lokativ-explanation.dart';
 import 'package:navika/widgets/shared/explanation-button.dart';
 import 'package:navika/widgets/shared/refresh-button.dart';
 
@@ -48,7 +48,7 @@ class _LokativState extends State<Lokativ> {
             ),
           ),
           Center(
-            child: ExplanationButton(popupWidget: LocativExplanation()),
+            child: ExplanationButton(popupWidget: LokativExplanation()),
           )
         ],
       ),

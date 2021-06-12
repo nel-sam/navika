@@ -180,6 +180,16 @@ class S {
     );
   }
 
+  /// `Lokativ is used when talking about the location where something happened, something is, or will be. It is also used to say 'about' as in 'talking about something'.`
+  String get lokativDescription {
+    return Intl.message(
+      'Lokativ is used when talking about the location where something happened, something is, or will be. It is also used to say \'about\' as in \'talking about something\'.',
+      name: 'lokativDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Genitive is used with prepositions and is used to show possession or origin.`
   String get genitiveDescription {
     return Intl.message(
