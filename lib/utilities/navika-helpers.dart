@@ -185,8 +185,9 @@ class N {
         return AppLocalizations.of(context)!.pronouns_We;
       case PronounEnum.You_Plural:
         return AppLocalizations.of(context)!.pronouns_You_Pl;
-      case PronounEnum.They_Masc:
       case PronounEnum.They_Ungendered:
+        return AppLocalizations.of(context)!.pronouns_They;
+      case PronounEnum.They_Masc:
         return AppLocalizations.of(context)!.pronouns_They_Mas;
       case PronounEnum.They_Fem:
         return AppLocalizations.of(context)!.pronouns_They_Fem;

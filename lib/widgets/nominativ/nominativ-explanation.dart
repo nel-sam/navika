@@ -123,58 +123,46 @@ Widget getPronounSection(BuildContext context) {
       PronounLine(
           pronoun: PronounEnum.I,
           text: NText([
-            N.NTextSpan('Da li '),
-            N.NTextSpan('me ', isBold: true),
-            N.NTextSpan('čuješ?\n'),
-            N.NTextSpan('Da li čuješ '),
-            N.NTextSpan('mene', isBold: true),
+            N.NTextSpan('Ja ', isBold: true),
+            N.NTextSpan('sam Azat'),
           ])),
       PronounLine(
           pronoun: PronounEnum.You,
           text: NText([
-            N.NTextSpan('Volim '),
-            N.NTextSpan('te\n', isBold: true),
-            N.NTextSpan('Ja volim '),
-            N.NTextSpan('tebe', isBold: true),
+            N.NTextSpan('Tko si '),
+            N.NTextSpan('ti', isBold: true),
           ])),
       PronounLine(
           pronoun: PronounEnum.He,
           text: NText([
-            N.NTextSpan('Ona '),
-            N.NTextSpan('ga ', isBold: true),
-            N.NTextSpan('voli\n'),
-            N.NTextSpan('Ona voli '),
-            N.NTextSpan('njega', isBold: true),
+            N.NTextSpan('Trčim brže nego '),
+            N.NTextSpan('on ', isBold: true),
+            N.NTextSpan('i ti'),
           ])),
       PronounLine(
           pronoun: PronounEnum.She,
           text: NText([
-            N.NTextSpan('Ja '),
-            N.NTextSpan('ju ', isBold: true),
-            N.NTextSpan('volim\n'),
-            N.NTextSpan('Ja volim '),
-            N.NTextSpan('nju', isBold: true),
+            N.NTextSpan('Ona ', isBold: true),
+            N.NTextSpan('uči hrvatski'),
           ])),
       PronounLine(
           pronoun: PronounEnum.We,
           text: NText([
-            N.NTextSpan('Oni znaju '),
-            N.NTextSpan('nas', isBold: true),
+            N.NTextSpan('Mi ', isBold: true),
+            N.NTextSpan('plivamo skoro kao vi'),
           ])),
       PronounLine(
           pronoun: PronounEnum.You_Plural,
           text: NText([
-            N.NTextSpan('Mi znamo '),
-            N.NTextSpan('vas', isBold: true),
+            N.NTextSpan('Da li '),
+            N.NTextSpan('vi ', isBold: true),
+            N.NTextSpan('pričate Engleski?'),
           ])),
       PronounLine(
           pronoun: PronounEnum.They_Ungendered,
           text: NText([
-            N.NTextSpan('Vi ne znate '),
-            N.NTextSpan('njih\n', isBold: true),
-            N.NTextSpan('Vi '),
-            N.NTextSpan('ih ', isBold: true),
-            N.NTextSpan('ne znate'),
+            N.NTextSpan('Oni ', isBold: true),
+            N.NTextSpan('plivaju u moru'),
           ])),
     ],
   );

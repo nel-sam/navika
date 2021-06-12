@@ -43,6 +43,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "pronouns_He": MessageLookupByLibrary.simpleMessage("Él"),
         "pronouns_I": MessageLookupByLibrary.simpleMessage("Yo"),
         "pronouns_She": MessageLookupByLibrary.simpleMessage("Élla"),
+        "pronouns_They": MessageLookupByLibrary.simpleMessage("Ellos"),
         "pronouns_They_Fem": MessageLookupByLibrary.simpleMessage("Ellas"),
         "pronouns_They_Mas": MessageLookupByLibrary.simpleMessage("Ellos"),
         "pronouns_We": MessageLookupByLibrary.simpleMessage("Nosotros"),

@@ -250,6 +250,16 @@ class S {
     );
   }
 
+  /// `They`
+  String get pronouns_They {
+    return Intl.message(
+      'They',
+      name: 'pronouns_They',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `They (Masc)`
   String get pronouns_They_Mas {
     return Intl.message(
