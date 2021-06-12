@@ -28,6 +28,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Sustantivos animados/vivos masculinos en singular + a, y sus adjetivos + og/eg. Los objectos no animados/vivos son igual al Nominativ"),
         "appTitle": MessageLookupByLibrary.simpleMessage("Navika"),
         "close": MessageLookupByLibrary.simpleMessage("Cerrar"),
+        "exampleSentences": MessageLookupByLibrary.simpleMessage("Ejemplos"),
         "feminine": MessageLookupByLibrary.simpleMessage("Femenino"),
         "genitiveDescription": MessageLookupByLibrary.simpleMessage(
             "El caso genitivo se usa con preposiciones e indica posesión u origin de algo."),
@@ -35,6 +36,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Para indicar herramientas, formas de transporte, o indicar un lugar que se cruza."),
         "masculine": MessageLookupByLibrary.simpleMessage("Masculino"),
         "neuter": MessageLookupByLibrary.simpleMessage("Neutro"),
+        "nominativDescription": MessageLookupByLibrary.simpleMessage(
+            "El nominativo se usa para nombrar cosas e indica el sujeto de la frase. Cuando se hace una comparación usando \'nego\', los dos sujectos deberían estar en nominativo."),
         "plural": MessageLookupByLibrary.simpleMessage("Plural"),
         "pronouns": MessageLookupByLibrary.simpleMessage("Pronombres"),
         "pronouns_He": MessageLookupByLibrary.simpleMessage("Él"),
@@ -46,6 +49,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "pronouns_You": MessageLookupByLibrary.simpleMessage("Tú"),
         "pronouns_You_Pl": MessageLookupByLibrary.simpleMessage("Ustedes"),
         "pronouns_oneself": MessageLookupByLibrary.simpleMessage("Uno mismo"),
+        "sameAsNom":
+            MessageLookupByLibrary.simpleMessage("Igual al caso nominativo"),
         "singular": MessageLookupByLibrary.simpleMessage("Singular")
       };
 }

@@ -80,7 +80,6 @@ Widget getDeclensionTable() {
         N.NTextSpan('a', isItalic: true, color: NEUTER_COLOR),
       ]),
     ],
-    note: '',
   );
 }
 

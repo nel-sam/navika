@@ -32,6 +32,7 @@ class AkuzativExplanation extends StatelessWidget {
 
 Widget getDeclensionTable(BuildContext context) {
   return DeclensionTable(
+    showSameAsNomNote: true,
     note: AppLocalizations.of(context)!.animateAkusativ,
     masculineSingular: [
       NText([
@@ -39,7 +40,7 @@ Widget getDeclensionTable(BuildContext context) {
         N.NTextSpan('og\n', isItalic: true, color: MASCULINE_COLOR),
         N.NTextSpan('prijatelj'),
         N.NTextSpan('a', isItalic: true, color: MASCULINE_COLOR),
-        N.NTextSpan('*\n'),
+        N.NTextSpan('**\n'),
       ]),
     ],
     masculinePlural: [
@@ -64,6 +65,7 @@ Widget getDeclensionTable(BuildContext context) {
         N.NTextSpan('e\n', isItalic: true, color: FEMININE_COLOR),
         N.NTextSpan('kuć'),
         N.NTextSpan('e', isItalic: true, color: FEMININE_COLOR),
+        N.NTextSpan('*'),
       ]),
     ],
     neuterSingular: [
@@ -72,6 +74,7 @@ Widget getDeclensionTable(BuildContext context) {
         N.NTextSpan('o\n', isItalic: true, color: NEUTER_COLOR),
         N.NTextSpan('mlijek'),
         N.NTextSpan('o', isItalic: true, color: NEUTER_COLOR),
+        N.NTextSpan('*'),
       ]),
     ],
     neuterPlural: [

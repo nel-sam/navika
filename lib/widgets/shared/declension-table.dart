@@ -14,6 +14,7 @@ class DeclensionTable extends StatelessWidget {
   final List<NText> masculinePlural;
   final List<NText> femininePlural;
   final List<NText> neuterPlural;
+  final bool showSameAsNomNote;
   final String note;
 
   const DeclensionTable({
@@ -24,7 +25,8 @@ class DeclensionTable extends StatelessWidget {
     required this.masculinePlural,
     required this.femininePlural,
     required this.neuterPlural,
-    required this.note,
+    this.note = '',
+    this.showSameAsNomNote = false,
   }) : super(key: key);
 
   @override
@@ -137,6 +139,32 @@ class DeclensionTable extends StatelessWidget {
                   ),
                 ),
               ]),
+              showSameAsNomNote
+                  ? Row(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(
+                              paddingAmount, paddingAmount, paddingAmount, 0),
+                          child: RichText(
+                            text: TextSpan(
+                              style: TextStyle(
+                                  fontSize: 12,
+                                  color: N.isDarkTheme(context)
+                                      ? Colors.white
+                                      : Colors.black),
+                              children: [
+                                TextSpan(text: '*'),
+                                TextSpan(
+                                    text:
+                                        AppLocalizations.of(context)!.sameAsNom,
+                                    style: DECLINED_LETTER_STYLE)
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    )
+                  : Container(),
               note != ''
                   ? Padding(
                       padding: const EdgeInsets.all(paddingAmount),
@@ -148,7 +176,7 @@ class DeclensionTable extends StatelessWidget {
                                   ? Colors.white
                                   : Colors.black),
                           children: [
-                            TextSpan(text: '*'),
+                            TextSpan(text: '**'),
                             TextSpan(text: note, style: DECLINED_LETTER_STYLE)
                           ],
                         ),

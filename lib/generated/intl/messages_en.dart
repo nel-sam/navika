@@ -28,6 +28,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Alive/animate masculine nouns in singular get + a, and their adjectives + og/eg. Inanimate objects stay the same as Nominativ"),
         "appTitle": MessageLookupByLibrary.simpleMessage("Navika"),
         "close": MessageLookupByLibrary.simpleMessage("Close"),
+        "exampleSentences":
+            MessageLookupByLibrary.simpleMessage("Example sentences"),
         "feminine": MessageLookupByLibrary.simpleMessage("Feminine"),
         "genitiveDescription": MessageLookupByLibrary.simpleMessage(
             "Genitive is used with prepositions and is used to show possession or origin."),
@@ -35,6 +37,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Using things as tools, means of transport, or using something as a place to go through."),
         "masculine": MessageLookupByLibrary.simpleMessage("Masculine"),
         "neuter": MessageLookupByLibrary.simpleMessage("Neuter"),
+        "nominativDescription": MessageLookupByLibrary.simpleMessage(
+            "Nominativ is used when naming things and is indicates the subject of the sentence. When comparing two words, both are in the nominativ case."),
         "plural": MessageLookupByLibrary.simpleMessage("Plural"),
         "pronouns": MessageLookupByLibrary.simpleMessage("Pronouns"),
         "pronouns_He": MessageLookupByLibrary.simpleMessage("He"),
@@ -47,6 +51,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "pronouns_You": MessageLookupByLibrary.simpleMessage("You"),
         "pronouns_You_Pl": MessageLookupByLibrary.simpleMessage("You (pl)"),
         "pronouns_oneself": MessageLookupByLibrary.simpleMessage("Oneself"),
+        "sameAsNom": MessageLookupByLibrary.simpleMessage(
+            "The same as in the nominative case"),
         "singular": MessageLookupByLibrary.simpleMessage("Singular")
       };
 }

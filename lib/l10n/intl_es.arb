@@ -9,6 +9,7 @@
     "feminine": "Femenino",
     "neuter": "Neutro",
     "animateAkusativ": "Sustantivos animados/vivos masculinos en singular + a, y sus adjetivos + og/eg. Los objectos no animados/vivos son igual al Nominativ",
+    "nominativDescription": "El nominativo se usa para nombrar cosas e indica el sujeto de la frase. Cuando se hace una comparación usando 'nego', los dos sujectos deberían estar en nominativo.",
     "akuzativDescription": "Los objetos directos deberían estar en el caso acusativo. También se usa para indicar un destino cuando hay movimiento hacia ese destino.",
     "instrumentalDescription": "Para indicar herramientas, formas de transporte, o indicar un lugar que se cruza.",
     "genitiveDescription": "El caso genitivo se usa con preposiciones e indica posesión u origin de algo.",
@@ -20,5 +21,7 @@
     "pronouns_You_Pl": "Ustedes",
     "pronouns_They_Mas": "Ellos",
     "pronouns_They_Fem": "Ellas",
-    "pronouns_oneself": "Uno mismo"
+    "pronouns_oneself": "Uno mismo",
+    "exampleSentences": "Ejemplos",
+    "sameAsNom": "Igual al caso nominativo"
 }

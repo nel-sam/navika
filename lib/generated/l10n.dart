@@ -150,6 +150,16 @@ class S {
     );
   }
 
+  /// `Nominativ is used when naming things and is indicates the subject of the sentence. When comparing two words, both are in the nominativ case.`
+  String get nominativDescription {
+    return Intl.message(
+      'Nominativ is used when naming things and is indicates the subject of the sentence. When comparing two words, both are in the nominativ case.',
+      name: 'nominativDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Direct objects are in the accusative case. This case is also used to indicate a point of destination, when there is movement towards the destination.`
   String get akuzativDescription {
     return Intl.message(
@@ -265,6 +275,26 @@ class S {
     return Intl.message(
       'Oneself',
       name: 'pronouns_oneself',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Example sentences`
+  String get exampleSentences {
+    return Intl.message(
+      'Example sentences',
+      name: 'exampleSentences',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The same as in the nominative case`
+  String get sameAsNom {
+    return Intl.message(
+      'The same as in the nominative case',
+      name: 'sameAsNom',
       desc: '',
       args: [],
     );

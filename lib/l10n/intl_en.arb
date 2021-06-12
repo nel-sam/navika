@@ -9,6 +9,7 @@
     "feminine": "Feminine",
     "neuter": "Neuter",
     "animateAkusativ": "Alive/animate masculine nouns in singular get + a, and their adjectives + og/eg. Inanimate objects stay the same as Nominativ",
+    "nominativDescription": "Nominativ is used when naming things and is indicates the subject of the sentence. When comparing two words, both are in the nominativ case.",
     "akuzativDescription": "Direct objects are in the accusative case. This case is also used to indicate a point of destination, when there is movement towards the destination.",
     "instrumentalDescription": "Using things as tools, means of transport, or using something as a place to go through.",
     "genitiveDescription": "Genitive is used with prepositions and is used to show possession or origin.",
@@ -20,5 +21,7 @@
     "pronouns_You_Pl": "You (pl)",
     "pronouns_They_Mas": "They (Masc)",
     "pronouns_They_Fem": "They (Fem)",
-    "pronouns_oneself": "Oneself"
+    "pronouns_oneself": "Oneself",
+    "exampleSentences": "Example sentences",
+    "sameAsNom": "The same as in the nominative case"
 }
