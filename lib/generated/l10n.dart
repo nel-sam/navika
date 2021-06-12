@@ -180,11 +180,21 @@ class S {
     );
   }
 
-  /// `Lokativ is used when talking about the location where something happened, something is, or will be. It is also used to say 'about' as in 'talking about something'.`
+  /// `Lokativ is used when talking about the location where something happened, something is, or will be. It is also used to say 'about' as in 'talking about something'. Dativ and Lokativ have the same declensions.`
   String get lokativDescription {
     return Intl.message(
-      'Lokativ is used when talking about the location where something happened, something is, or will be. It is also used to say \'about\' as in \'talking about something\'.',
+      'Lokativ is used when talking about the location where something happened, something is, or will be. It is also used to say \'about\' as in \'talking about something\'. Dativ and Lokativ have the same declensions.',
       name: 'lokativDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dativ indicates the indirect object and is used with giving, showing, or doing something to someone/something. Dativ and Lokativ have the same declensions.`
+  String get dativDescription {
+    return Intl.message(
+      'Dativ indicates the indirect object and is used with giving, showing, or doing something to someone/something. Dativ and Lokativ have the same declensions.',
+      name: 'dativDescription',
       desc: '',
       args: [],
     );

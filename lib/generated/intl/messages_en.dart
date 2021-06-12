@@ -28,6 +28,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Alive/animate masculine nouns in singular get + a, and their adjectives + og/eg. Inanimate objects stay the same as Nominativ"),
         "appTitle": MessageLookupByLibrary.simpleMessage("Navika"),
         "close": MessageLookupByLibrary.simpleMessage("Close"),
+        "dativDescription": MessageLookupByLibrary.simpleMessage(
+            "Dativ indicates the indirect object and is used with giving, showing, or doing something to someone/something. Dativ and Lokativ have the same declensions."),
         "exampleSentences":
             MessageLookupByLibrary.simpleMessage("Example sentences"),
         "feminine": MessageLookupByLibrary.simpleMessage("Feminine"),
@@ -36,7 +38,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "instrumentalDescription": MessageLookupByLibrary.simpleMessage(
             "Using things as tools, means of transport, or using something as a place to go through."),
         "lokativDescription": MessageLookupByLibrary.simpleMessage(
-            "Lokativ is used when talking about the location where something happened, something is, or will be. It is also used to say \'about\' as in \'talking about something\'."),
+            "Lokativ is used when talking about the location where something happened, something is, or will be. It is also used to say \'about\' as in \'talking about something\'. Dativ and Lokativ have the same declensions."),
         "masculine": MessageLookupByLibrary.simpleMessage("Masculine"),
         "neuter": MessageLookupByLibrary.simpleMessage("Neuter"),
         "nominativDescription": MessageLookupByLibrary.simpleMessage(

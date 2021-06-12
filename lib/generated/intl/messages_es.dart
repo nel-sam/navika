@@ -28,6 +28,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Sustantivos animados/vivos masculinos en singular + a, y sus adjetivos + og/eg. Los objectos no animados/vivos son igual al Nominativ"),
         "appTitle": MessageLookupByLibrary.simpleMessage("Navika"),
         "close": MessageLookupByLibrary.simpleMessage("Cerrar"),
+        "dativDescription": MessageLookupByLibrary.simpleMessage(
+            "Dativ indica el objecto indirecto y se usa para dar, mostrar, o hacer algo a alguien/algo. El dativ y el lokativ se declinan igual."),
         "exampleSentences": MessageLookupByLibrary.simpleMessage("Ejemplos"),
         "feminine": MessageLookupByLibrary.simpleMessage("Femenino"),
         "genitiveDescription": MessageLookupByLibrary.simpleMessage(
@@ -35,7 +37,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "instrumentalDescription": MessageLookupByLibrary.simpleMessage(
             "Para indicar herramientas, formas de transporte, o indicar un lugar que se cruza."),
         "lokativDescription": MessageLookupByLibrary.simpleMessage(
-            "Lokativ se usa cuando se habla de la ubicación donde algo ocurre, algo está ubicado, o estará ubicado. Tambíen se usa el Lokativ para decir \'sobre\' como en la frase \'hablando sobre un tema\'."),
+            "Lokativ se usa cuando se habla de la ubicación donde algo ocurre, algo está ubicado, o estará ubicado. Tambíen se usa el Lokativ para decir \'sobre\' como en la frase \'hablando sobre un tema\'. El dativ y el lokativ se declinan igual"),
         "masculine": MessageLookupByLibrary.simpleMessage("Masculino"),
         "neuter": MessageLookupByLibrary.simpleMessage("Neutro"),
         "nominativDescription": MessageLookupByLibrary.simpleMessage(
