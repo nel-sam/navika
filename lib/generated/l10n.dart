@@ -150,6 +150,16 @@ class S {
     );
   }
 
+  /// `Using things as tools, means of transport, or using something as a place to go through.`
+  String get instrumentalDescription {
+    return Intl.message(
+      'Using things as tools, means of transport, or using something as a place to go through.',
+      name: 'instrumentalDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Genitive is used with prepositions and is used to show possession or origin.`
   String get genitiveDescription {
     return Intl.message(

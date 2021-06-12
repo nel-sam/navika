@@ -9,5 +9,6 @@
     "feminine": "Feminine",
     "neuter": "Neuter",
     "animateNominative": "Alive masculine nouns + a, and adjectives + og/eg",
+    "instrumentalDescription": "Using things as tools, means of transport, or using something as a place to go through.",
     "genitiveDescription": "Genitive is used with prepositions and is used to show possession or origin."
 }

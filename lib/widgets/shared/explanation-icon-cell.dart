@@ -3,12 +3,12 @@ import 'package:navika/constants.dart';
 
 class ExplanationIconCell extends StatelessWidget {
   final IconData icon;
-  final double width;
+  final String tooltip;
 
   const ExplanationIconCell({
     Key? key,
     required this.icon,
-    this.width = 90,
+    required this.tooltip,
   }) : super(key: key);
 
   @override
@@ -16,10 +16,12 @@ class ExplanationIconCell extends StatelessWidget {
     return Padding(
       padding: TABLE_CELL_PADDING,
       child: Container(
-        width: width,
-        child: Icon(
-          icon,
-          color: ICON_COLOR,
+        child: Tooltip(
+          message: tooltip,
+          child: Icon(
+            icon,
+            color: ICON_COLOR,
+          ),
         ),
       ),
     );

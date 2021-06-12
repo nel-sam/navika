@@ -113,23 +113,38 @@ getTable(
                 Container(width: firstColWidth),
                 ExplanationIconCell(
                   icon: N.getGenderIcon(GenderEnum.Masculine),
+                  tooltip: AppLocalizations.of(context)!.masculine,
                 ),
                 ExplanationIconCell(
                   icon: N.getGenderIcon(GenderEnum.Feminine),
+                  tooltip: AppLocalizations.of(context)!.feminine,
                 ),
                 ExplanationIconCell(
                   icon: N.getGenderIcon(GenderEnum.Neuter),
+                  tooltip: AppLocalizations.of(context)!.neuter,
                 ),
               ],
             ),
             Row(children: [
-              ExplanationIconCell(icon: SINGULAR_ICON, width: firstColWidth),
+              Container(
+                width: firstColWidth,
+                child: ExplanationIconCell(
+                  icon: SINGULAR_ICON,
+                  tooltip: AppLocalizations.of(context)!.singular,
+                ),
+              ),
               masculineSingular,
               feminineSingular,
               neuterSingular,
             ]),
             Row(children: [
-              ExplanationIconCell(icon: PLURAL_ICON, width: firstColWidth),
+              Container(
+                width: firstColWidth,
+                child: ExplanationIconCell(
+                  icon: PLURAL_ICON,
+                  tooltip: AppLocalizations.of(context)!.plural,
+                ),
+              ),
               masculinePlural,
               femininePlural,
               neuterPlural,

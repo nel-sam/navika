@@ -9,5 +9,6 @@
     "feminine": "Femenino",
     "neuter": "Neutro",
     "animateNominative": "Sustantivo masculino + a, y adjetivos + og/eg",
+    "instrumentalDescription": "Para indicar herramientas, formas de transporte, o indicar un lugar que se cruza.",
     "genitiveDescription": "El caso genitivo se usa con preposiciones e indica posesión u origin de algo."
 }

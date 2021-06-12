@@ -18,25 +18,66 @@ class GenitivExplanation extends StatelessWidget {
           children: [
             getDescription(context),
             getPronounSection(context),
-            DeclensionTable(
-              masculineSingular: [
-                NText([
-                  N.NTextSpan('Lijep'),
-                  N.NTextSpan('og', isItalic: true, color: MASCULINE_COLOR)
-                ]),
-              ],
-              masculinePlural: [],
-              feminineSingular: [],
-              femininePlural: [],
-              neuterSingular: [],
-              neuterPlural: [],
-              note: '',
-            ),
+            getDeclensionTable(),
           ],
         ),
       ),
     );
   }
+}
+
+Widget getDeclensionTable() {
+  return DeclensionTable(
+    masculineSingular: [
+      NText([
+        N.NTextSpan('Lijep'),
+        N.NTextSpan('og ', isItalic: true, color: MASCULINE_COLOR),
+        N.NTextSpan('jezik'),
+        N.NTextSpan('a', isItalic: true, color: MASCULINE_COLOR),
+      ]),
+    ],
+    masculinePlural: [
+      NText([
+        N.NTextSpan('Lijep'),
+        N.NTextSpan('ih ', isItalic: true, color: MASCULINE_COLOR),
+        N.NTextSpan('jezik'),
+        N.NTextSpan('a', isItalic: true, color: MASCULINE_COLOR),
+      ]),
+    ],
+    feminineSingular: [
+      NText([
+        N.NTextSpan('Moj'),
+        N.NTextSpan('e ', isItalic: true, color: FEMININE_COLOR),
+        N.NTextSpan('kuć'),
+        N.NTextSpan('e', isItalic: true, color: FEMININE_COLOR),
+      ]),
+    ],
+    femininePlural: [
+      NText([
+        N.NTextSpan('Moj'),
+        N.NTextSpan('ih ', isItalic: true, color: FEMININE_COLOR),
+        N.NTextSpan('kuć'),
+        N.NTextSpan('e', isItalic: true, color: FEMININE_COLOR),
+      ]),
+    ],
+    neuterSingular: [
+      NText([
+        N.NTextSpan('Vruč'),
+        N.NTextSpan('eg ', isItalic: true, color: NEUTER_COLOR),
+        N.NTextSpan('mlijek'),
+        N.NTextSpan('a', isItalic: true, color: NEUTER_COLOR),
+      ]),
+    ],
+    neuterPlural: [
+      NText([
+        N.NTextSpan('Vruč'),
+        N.NTextSpan('ih ', isItalic: true, color: NEUTER_COLOR),
+        N.NTextSpan('mlijek'),
+        N.NTextSpan('a', isItalic: true, color: NEUTER_COLOR),
+      ]),
+    ],
+    note: '',
+  );
 }
 
 Widget getPronounSection(BuildContext context) {
@@ -47,48 +88,48 @@ Widget getPronounSection(BuildContext context) {
         children: [NSubHeader(text: AppLocalizations.of(context)!.pronouns)],
       ),
       Row(children: [
-        NText([N.NTextSpan('On pleše'), N.NTextSpan('mene', isBold: true)])
+        NText([N.NTextSpan('On pleše '), N.NTextSpan('mene', isBold: true)])
       ]),
       Row(children: [
-        NText([N.NTextSpan('Evo'), N.NTextSpan('me', isBold: true)])
+        NText([N.NTextSpan('Evo '), N.NTextSpan('me', isBold: true)])
       ]),
       Row(children: [
         NText([
-          N.NTextSpan('Nisam spavala zbog'),
+          N.NTextSpan('Nisam spavala zbog '),
           N.NTextSpan('tebe', isBold: true)
         ])
       ]),
       Row(children: [
-        NText([N.NTextSpan('Evo'), N.NTextSpan('te', isBold: true)])
+        NText([N.NTextSpan('Evo '), N.NTextSpan('te', isBold: true)])
       ]),
       Row(children: [
         NText(
-            [N.NTextSpan('Ona stoji iza'), N.NTextSpan('njega', isBold: true)])
+            [N.NTextSpan('Ona stoji iza '), N.NTextSpan('njega', isBold: true)])
       ]),
       Row(children: [
         NText([
-          N.NTextSpan('Nema'),
-          N.NTextSpan('ga', isBold: true),
+          N.NTextSpan('Nema '),
+          N.NTextSpan('ga ', isBold: true),
           N.NTextSpan('tu'),
         ])
       ]),
       Row(children: [
         NText(
-            [N.NTextSpan('Oni su išli bez'), N.NTextSpan('nas', isBold: true)])
+            [N.NTextSpan('Oni su išli bez '), N.NTextSpan('nas', isBold: true)])
       ]),
       Row(children: [
         NText([
-          N.NTextSpan('Moj brat stoji između nas i'),
+          N.NTextSpan('Moj brat stoji između nas i '),
           N.NTextSpan('vas', isBold: true)
         ])
       ]),
       Row(children: [
-        NText([N.NTextSpan('Bojim se'), N.NTextSpan('njih', isBold: true)])
+        NText([N.NTextSpan('Bojim se '), N.NTextSpan('njih', isBold: true)])
       ]),
       Row(children: [
         NText([
-          N.NTextSpan('Ja se'),
-          N.NTextSpan('ih', isBold: true),
+          N.NTextSpan('Ja se '),
+          N.NTextSpan('ih ', isBold: true),
           N.NTextSpan('ne bojim'),
         ])
       ]),

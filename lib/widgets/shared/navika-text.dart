@@ -10,7 +10,9 @@ class NText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SelectableText.rich(TextSpan(children: textSpans),
-        textAlign: TextAlign.start);
+    return Container(
+      child: SelectableText.rich(TextSpan(children: textSpans),
+          textAlign: TextAlign.start),
+    );
   }
 }

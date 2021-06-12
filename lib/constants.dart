@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 const double APPBAR_ELEVATION = 0;
-const BATCH_COUNT = 15; // TODO: Make this a setting
+const BATCH_COUNT = 15;
 const CORRECT_COLOR = Colors.green;
 const WRONG_COLOR = Colors.deepOrange;
 const ICON_COLOR = Colors.blue;
