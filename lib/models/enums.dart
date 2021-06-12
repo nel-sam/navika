@@ -33,3 +33,14 @@ enum TenseEnum {
   Future,
   Past,
 }
+
+enum PronounEnum {
+  I,
+  You,
+  He,
+  She,
+  We,
+  You_Plural,
+  They_Masc,
+  They_Fem,
+}

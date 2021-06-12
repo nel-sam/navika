@@ -5,6 +5,7 @@ import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/widgets/shared/pan-list-item.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class N {
   static IconData getGenderIcon(GenderEnum gender) {
@@ -96,7 +97,8 @@ class N {
 
   static List<PANListItem> getPANListItems(
       List<PANExerciseItem> listItems, CaseTypeEnum caseType) {
-    return N.shuffleList(listItems)
+    return N
+        .shuffleList(listItems)
         .map(
           (e) => PANListItem(
               sentenceStarter: e.sentenceStarter,
@@ -167,5 +169,26 @@ class N {
     }
 
     return TextSpan(text: text, style: textStyle);
+  }
+
+  static String getPronounLabel(PronounEnum pronoun, context) {
+    switch (pronoun) {
+      case PronounEnum.I:
+        return AppLocalizations.of(context)!.pronouns_I;
+      case PronounEnum.You:
+        return AppLocalizations.of(context)!.pronouns_You;
+      case PronounEnum.He:
+        return AppLocalizations.of(context)!.pronouns_He;
+      case PronounEnum.She:
+        return AppLocalizations.of(context)!.pronouns_She;
+      case PronounEnum.We:
+        return AppLocalizations.of(context)!.pronouns_We;
+      case PronounEnum.You_Plural:
+        return AppLocalizations.of(context)!.pronouns_You_Pl;
+      case PronounEnum.They_Masc:
+        return AppLocalizations.of(context)!.pronouns_They_Mas;
+      case PronounEnum.They_Fem:
+        return AppLocalizations.of(context)!.pronouns_They_Fem;
+    }
   }
 }

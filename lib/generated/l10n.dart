@@ -150,6 +150,16 @@ class S {
     );
   }
 
+  /// `Direct objects are in the accusative case. This case is also used to indicate a point of destination, when there is movement towards the destination.`
+  String get akuzativDescription {
+    return Intl.message(
+      'Direct objects are in the accusative case. This case is also used to indicate a point of destination, when there is movement towards the destination.',
+      name: 'akuzativDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Using things as tools, means of transport, or using something as a place to go through.`
   String get instrumentalDescription {
     return Intl.message(
@@ -165,6 +175,86 @@ class S {
     return Intl.message(
       'Genitive is used with prepositions and is used to show possession or origin.',
       name: 'genitiveDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `I`
+  String get pronouns_I {
+    return Intl.message(
+      'I',
+      name: 'pronouns_I',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You`
+  String get pronouns_You {
+    return Intl.message(
+      'You',
+      name: 'pronouns_You',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `He`
+  String get pronouns_He {
+    return Intl.message(
+      'He',
+      name: 'pronouns_He',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `She`
+  String get pronouns_She {
+    return Intl.message(
+      'She',
+      name: 'pronouns_She',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We`
+  String get pronouns_We {
+    return Intl.message(
+      'We',
+      name: 'pronouns_We',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You (pl)`
+  String get pronouns_You_Pl {
+    return Intl.message(
+      'You (pl)',
+      name: 'pronouns_You_Pl',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `They (mas)`
+  String get pronouns_They_Mas {
+    return Intl.message(
+      'They (mas)',
+      name: 'pronouns_They_Mas',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `They (Fem)`
+  String get pronouns_They_Fem {
+    return Intl.message(
+      'They (Fem)',
+      name: 'pronouns_They_Fem',
       desc: '',
       args: [],
     );

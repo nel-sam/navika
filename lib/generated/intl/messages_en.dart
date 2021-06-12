@@ -22,6 +22,8 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "adjectives": MessageLookupByLibrary.simpleMessage("Adjectives"),
+        "akuzativDescription": MessageLookupByLibrary.simpleMessage(
+            "Direct objects are in the accusative case. This case is also used to indicate a point of destination, when there is movement towards the destination."),
         "animateNominative": MessageLookupByLibrary.simpleMessage(
             "Alive masculine nouns + a, and adjectives + og/eg"),
         "appTitle": MessageLookupByLibrary.simpleMessage("Navika"),
@@ -35,6 +37,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "neuter": MessageLookupByLibrary.simpleMessage("Neuter"),
         "plural": MessageLookupByLibrary.simpleMessage("Plural"),
         "pronouns": MessageLookupByLibrary.simpleMessage("Pronouns"),
+        "pronouns_He": MessageLookupByLibrary.simpleMessage("He"),
+        "pronouns_I": MessageLookupByLibrary.simpleMessage("I"),
+        "pronouns_She": MessageLookupByLibrary.simpleMessage("She"),
+        "pronouns_They_Fem": MessageLookupByLibrary.simpleMessage("They (Fem)"),
+        "pronouns_They_Mas": MessageLookupByLibrary.simpleMessage("They (mas)"),
+        "pronouns_We": MessageLookupByLibrary.simpleMessage("We"),
+        "pronouns_You": MessageLookupByLibrary.simpleMessage("You"),
+        "pronouns_You_Pl": MessageLookupByLibrary.simpleMessage("You (pl)"),
         "singular": MessageLookupByLibrary.simpleMessage("Singular")
       };
 }

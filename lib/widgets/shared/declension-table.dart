@@ -29,7 +29,7 @@ class DeclensionTable extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const paddingAmount = 8.0;
+    const paddingAmount = 12.0;
     const colWidth = 100.0;
     const firstColWidth = 45.0;
 
@@ -47,10 +47,8 @@ class DeclensionTable extends StatelessWidget {
                   Container(
                     width: firstColWidth,
                     height: 10.0,
-                    color: Colors.blue,
                   ),
                   Container(
-                    color: Colors.red,
                     width: colWidth,
                     child: ExplanationIconCell(
                       icon: N.getGenderIcon(GenderEnum.Masculine),
@@ -58,7 +56,6 @@ class DeclensionTable extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    color: Colors.greenAccent,
                     width: colWidth,
                     child: ExplanationIconCell(
                       icon: N.getGenderIcon(GenderEnum.Feminine),
@@ -66,7 +63,6 @@ class DeclensionTable extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    color: Colors.brown,
                     width: colWidth,
                     child: ExplanationIconCell(
                       icon: N.getGenderIcon(GenderEnum.Neuter),
@@ -77,7 +73,6 @@ class DeclensionTable extends StatelessWidget {
               ),
               Row(children: [
                 Container(
-                  color: Colors.green,
                   width: firstColWidth,
                   child: ExplanationIconCell(
                     icon: SINGULAR_ICON,
@@ -85,7 +80,6 @@ class DeclensionTable extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  color: Colors.blueGrey,
                   width: colWidth,
                   child: Padding(
                     padding: const EdgeInsets.all(paddingAmount),
@@ -93,7 +87,6 @@ class DeclensionTable extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  color: Colors.deepPurple,
                   width: colWidth,
                   child: Padding(
                     padding: const EdgeInsets.all(paddingAmount),
@@ -101,7 +94,6 @@ class DeclensionTable extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  color: Colors.blueGrey,
                   width: colWidth,
                   child: Padding(
                     padding: const EdgeInsets.all(paddingAmount),
@@ -111,7 +103,6 @@ class DeclensionTable extends StatelessWidget {
               ]),
               Row(children: [
                 Container(
-                  color: Colors.amberAccent,
                   width: firstColWidth,
                   child: ExplanationIconCell(
                     icon: PLURAL_ICON,
@@ -119,7 +110,6 @@ class DeclensionTable extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  color: Colors.pinkAccent,
                   width: colWidth,
                   child: Padding(
                     padding: const EdgeInsets.all(paddingAmount),
@@ -129,7 +119,6 @@ class DeclensionTable extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  color: Colors.teal,
                   width: colWidth,
                   child: Padding(
                     padding: const EdgeInsets.all(paddingAmount),
@@ -139,7 +128,6 @@ class DeclensionTable extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  color: Colors.lightGreen,
                   width: colWidth,
                   child: Padding(
                     padding: const EdgeInsets.all(paddingAmount),

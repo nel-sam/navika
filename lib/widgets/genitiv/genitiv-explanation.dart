@@ -31,7 +31,7 @@ Widget getDeclensionTable() {
     masculineSingular: [
       NText([
         N.NTextSpan('Lijep'),
-        N.NTextSpan('og ', isItalic: true, color: MASCULINE_COLOR),
+        N.NTextSpan('og\n', isItalic: true, color: MASCULINE_COLOR),
         N.NTextSpan('jezik'),
         N.NTextSpan('a', isItalic: true, color: MASCULINE_COLOR),
       ]),
@@ -39,7 +39,7 @@ Widget getDeclensionTable() {
     masculinePlural: [
       NText([
         N.NTextSpan('Lijep'),
-        N.NTextSpan('ih ', isItalic: true, color: MASCULINE_COLOR),
+        N.NTextSpan('ih\n', isItalic: true, color: MASCULINE_COLOR),
         N.NTextSpan('jezik'),
         N.NTextSpan('a', isItalic: true, color: MASCULINE_COLOR),
       ]),
@@ -47,7 +47,7 @@ Widget getDeclensionTable() {
     feminineSingular: [
       NText([
         N.NTextSpan('Moj'),
-        N.NTextSpan('e ', isItalic: true, color: FEMININE_COLOR),
+        N.NTextSpan('e\n', isItalic: true, color: FEMININE_COLOR),
         N.NTextSpan('kuć'),
         N.NTextSpan('e', isItalic: true, color: FEMININE_COLOR),
       ]),
@@ -55,7 +55,7 @@ Widget getDeclensionTable() {
     femininePlural: [
       NText([
         N.NTextSpan('Moj'),
-        N.NTextSpan('ih ', isItalic: true, color: FEMININE_COLOR),
+        N.NTextSpan('ih\n', isItalic: true, color: FEMININE_COLOR),
         N.NTextSpan('kuć'),
         N.NTextSpan('e', isItalic: true, color: FEMININE_COLOR),
       ]),
@@ -63,7 +63,7 @@ Widget getDeclensionTable() {
     neuterSingular: [
       NText([
         N.NTextSpan('Vruč'),
-        N.NTextSpan('eg ', isItalic: true, color: NEUTER_COLOR),
+        N.NTextSpan('eg\n', isItalic: true, color: NEUTER_COLOR),
         N.NTextSpan('mlijek'),
         N.NTextSpan('a', isItalic: true, color: NEUTER_COLOR),
       ]),
@@ -71,7 +71,7 @@ Widget getDeclensionTable() {
     neuterPlural: [
       NText([
         N.NTextSpan('Vruč'),
-        N.NTextSpan('ih ', isItalic: true, color: NEUTER_COLOR),
+        N.NTextSpan('ih\n', isItalic: true, color: NEUTER_COLOR),
         N.NTextSpan('mlijek'),
         N.NTextSpan('a', isItalic: true, color: NEUTER_COLOR),
       ]),
