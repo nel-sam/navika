@@ -192,4 +192,38 @@ final List<Noun> nounWordBank = [
       plural: "ljubavi",
     ),
   ),
+  Noun(
+    dictionary: "telefon",
+    tags: [],
+    gender: GenderEnum.Masculine,
+    isAnimate: false,
+    nominativ: new DeclensionByCount(
+      singular: "telefon",
+      plural: "telefoni",
+    ),
+    akuzativ: new DeclensionByCount(
+      singular: "telefon",
+      plural: "telefone",
+    ),
+    instrumental: new DeclensionByCount(
+      singular: "telefonom",
+      plural: "telefonima",
+    ),
+    lokativ: new DeclensionByCount(
+      singular: "telefonu",
+      plural: "telefonima",
+    ),
+    dativ: new DeclensionByCount(
+      singular: "telefonu",
+      plural: "telefonima",
+    ),
+    genitiv: new DeclensionByCount(
+      singular: "telefona",
+      plural: "telefona",
+    ),
+    vokativ: new DeclensionByCount(
+      singular: "",
+      plural: "",
+    ),
+  ),
 ];

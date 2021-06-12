@@ -20,7 +20,6 @@ class LokativExplanation extends StatelessWidget {
           child: Column(
             children: [
               getDescription(context),
-              //getExampleSentences(context),
               getDeclensionTable(context),
               getPronounSection(context),
             ],
@@ -29,36 +28,6 @@ class LokativExplanation extends StatelessWidget {
       ),
     );
   }
-}
-
-Widget getExampleSentences(BuildContext context) {
-  // TODO: These are not in nominative
-  return Column(
-    children: [
-      NSubHeader(text: AppLocalizations.of(context)!.exampleSentences),
-      NText([
-        N.NTextSpan('Ja ', isBold: true),
-        N.NTextSpan('sam '),
-        N.NTextSpan('Denis', isBold: true),
-      ]),
-      NText([
-        N.NTextSpan('Moja '),
-        N.NTextSpan('žena ', isBold: true),
-        N.NTextSpan('je '),
-        N.NTextSpan('učiteljica', isBold: true),
-      ]),
-      NText([
-        N.NTextSpan('Bijelo ', isBold: true),
-        N.NTextSpan('kao '),
-        N.NTextSpan('mlijeko', isBold: true),
-      ]),
-      NText([
-        N.NTextSpan('Mlijeko ', isBold: true),
-        N.NTextSpan('je ukusnije nego '),
-        N.NTextSpan('limunada', isBold: true),
-      ]),
-    ],
-  );
 }
 
 Widget getDeclensionTable(BuildContext context) {

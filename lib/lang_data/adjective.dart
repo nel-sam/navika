@@ -42,9 +42,9 @@ final List<DeclinableWord> adjectiveWordBank = [
       neuter: new DeclensionByGender(singular: "velikom", plural: "velikim"),
     ),
     genitiv: new Declension(
-      masculine: new DeclensionByGender(singular: "", plural: ""),
-      feminine: new DeclensionByGender(singular: "", plural: ""),
-      neuter: new DeclensionByGender(singular: "", plural: ""),
+      masculine: new DeclensionByGender(singular: "velikog", plural: "velikih"),
+      feminine: new DeclensionByGender(singular: "velike", plural: "velikih"),
+      neuter: new DeclensionByGender(singular: "velikeg", plural: "velikih"),
     ),
     vokativ: new Declension(
       masculine: new DeclensionByGender(singular: "", plural: ""),
@@ -85,9 +85,9 @@ final List<DeclinableWord> adjectiveWordBank = [
       neuter: new DeclensionByGender(singular: "hladnom", plural: "hladnim"),
     ),
     genitiv: new Declension(
-      masculine: new DeclensionByGender(singular: "", plural: ""),
-      feminine: new DeclensionByGender(singular: "", plural: ""),
-      neuter: new DeclensionByGender(singular: "", plural: ""),
+      masculine: new DeclensionByGender(singular: "hladnog", plural: "hladnih"),
+      feminine: new DeclensionByGender(singular: "hladne", plural: "hladnih"),
+      neuter: new DeclensionByGender(singular: "hladneg", plural: "hladnih"),
     ),
     vokativ: new Declension(
       masculine: new DeclensionByGender(singular: "", plural: ""),
@@ -173,7 +173,7 @@ final List<DeclinableWord> adjectiveWordBank = [
     genitiv: new Declension(
       masculine: new DeclensionByGender(singular: "drugog", plural: "drugih"),
       feminine: new DeclensionByGender(singular: "druge", plural: "drugih"),
-      neuter: new DeclensionByGender(singular: "druga", plural: "drugih"),
+      neuter: new DeclensionByGender(singular: "drugeg", plural: "drugih"),
     ),
     vokativ: new Declension(
       masculine: new DeclensionByGender(singular: "", plural: ""),
