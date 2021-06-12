@@ -24,8 +24,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "adjectives": MessageLookupByLibrary.simpleMessage("Adjectives"),
         "akuzativDescription": MessageLookupByLibrary.simpleMessage(
             "Direct objects are in the accusative case. This case is also used to indicate a point of destination, when there is movement towards the destination."),
-        "animateNominative": MessageLookupByLibrary.simpleMessage(
-            "Alive masculine nouns + a, and adjectives + og/eg"),
+        "animateAkusativ": MessageLookupByLibrary.simpleMessage(
+            "Alive/animate masculine nouns in singular get + a, and their adjectives + og/eg. Inanimate objects stay the same as Nominativ"),
         "appTitle": MessageLookupByLibrary.simpleMessage("Navika"),
         "close": MessageLookupByLibrary.simpleMessage("Close"),
         "feminine": MessageLookupByLibrary.simpleMessage("Feminine"),
@@ -41,10 +41,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "pronouns_I": MessageLookupByLibrary.simpleMessage("I"),
         "pronouns_She": MessageLookupByLibrary.simpleMessage("She"),
         "pronouns_They_Fem": MessageLookupByLibrary.simpleMessage("They (Fem)"),
-        "pronouns_They_Mas": MessageLookupByLibrary.simpleMessage("They (mas)"),
+        "pronouns_They_Mas":
+            MessageLookupByLibrary.simpleMessage("They (Masc)"),
         "pronouns_We": MessageLookupByLibrary.simpleMessage("We"),
         "pronouns_You": MessageLookupByLibrary.simpleMessage("You"),
         "pronouns_You_Pl": MessageLookupByLibrary.simpleMessage("You (pl)"),
+        "pronouns_oneself": MessageLookupByLibrary.simpleMessage("Oneself"),
         "singular": MessageLookupByLibrary.simpleMessage("Singular")
       };
 }

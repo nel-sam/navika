@@ -14,39 +14,51 @@ class AkuzativExplanation extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: N.NavikaAppBar(Text('Akuzativ'), context, []),
-      body: Padding(
-        padding: EdgeInsets.all(20.0),
-        child: Column(
-          children: [
-            getDescription(context),
-            getPronounSection(context),
-            getDeclensionTable(),
-          ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.all(20.0),
+          child: Column(
+            children: [
+              getDescription(context),
+              getDeclensionTable(context),
+              getPronounSection(context),
+            ],
+          ),
         ),
       ),
     );
   }
 }
 
-Widget getDeclensionTable() {
+Widget getDeclensionTable(BuildContext context) {
   return DeclensionTable(
+    note: AppLocalizations.of(context)!.animateAkusativ,
     masculineSingular: [
       NText([
-        N.NTextSpan('Lijep'),
+        N.NTextSpan('Star'),
         N.NTextSpan('og\n', isItalic: true, color: MASCULINE_COLOR),
-        N.NTextSpan('jezik'),
+        N.NTextSpan('prijatelj'),
         N.NTextSpan('a', isItalic: true, color: MASCULINE_COLOR),
+        N.NTextSpan('*\n'),
       ]),
     ],
     masculinePlural: [
       NText([
-        N.NTextSpan('Lijep'),
-        N.NTextSpan('ih\n', isItalic: true, color: MASCULINE_COLOR),
-        N.NTextSpan('jezik'),
-        N.NTextSpan('a', isItalic: true, color: MASCULINE_COLOR),
+        N.NTextSpan('Star'),
+        N.NTextSpan('e\n', isItalic: true, color: MASCULINE_COLOR),
+        N.NTextSpan('prijatel'),
+        N.NTextSpan('e', isItalic: true, color: MASCULINE_COLOR),
       ]),
     ],
     feminineSingular: [
+      NText([
+        N.NTextSpan('Moj'),
+        N.NTextSpan('u\n', isItalic: true, color: FEMININE_COLOR),
+        N.NTextSpan('kuć'),
+        N.NTextSpan('u', isItalic: true, color: FEMININE_COLOR),
+      ]),
+    ],
+    femininePlural: [
       NText([
         N.NTextSpan('Moj'),
         N.NTextSpan('e\n', isItalic: true, color: FEMININE_COLOR),
@@ -54,31 +66,22 @@ Widget getDeclensionTable() {
         N.NTextSpan('e', isItalic: true, color: FEMININE_COLOR),
       ]),
     ],
-    femininePlural: [
-      NText([
-        N.NTextSpan('Moj'),
-        N.NTextSpan('ih\n', isItalic: true, color: FEMININE_COLOR),
-        N.NTextSpan('kuć'),
-        N.NTextSpan('e', isItalic: true, color: FEMININE_COLOR),
-      ]),
-    ],
     neuterSingular: [
       NText([
-        N.NTextSpan('Vruč'),
-        N.NTextSpan('eg\n', isItalic: true, color: NEUTER_COLOR),
+        N.NTextSpan('Topl'),
+        N.NTextSpan('o\n', isItalic: true, color: NEUTER_COLOR),
         N.NTextSpan('mlijek'),
-        N.NTextSpan('a', isItalic: true, color: NEUTER_COLOR),
+        N.NTextSpan('o', isItalic: true, color: NEUTER_COLOR),
       ]),
     ],
     neuterPlural: [
       NText([
-        N.NTextSpan('Vruč'),
-        N.NTextSpan('ih\n', isItalic: true, color: NEUTER_COLOR),
+        N.NTextSpan('Topl'),
+        N.NTextSpan('a\n', isItalic: true, color: NEUTER_COLOR),
         N.NTextSpan('mlijek'),
         N.NTextSpan('a', isItalic: true, color: NEUTER_COLOR),
       ]),
     ],
-    note: '',
   );
 }
 
@@ -109,8 +112,41 @@ Widget getPronounSection(BuildContext context) {
       PronounLine(
           pronoun: PronounEnum.He,
           text: NText([
+            N.NTextSpan('Ona '),
+            N.NTextSpan('ga ', isBold: true),
+            N.NTextSpan('voli\n'),
             N.NTextSpan('Ona voli '),
             N.NTextSpan('njega', isBold: true),
+          ])),
+      PronounLine(
+          pronoun: PronounEnum.She,
+          text: NText([
+            N.NTextSpan('Ja '),
+            N.NTextSpan('ju ', isBold: true),
+            N.NTextSpan('volim\n'),
+            N.NTextSpan('Ja volim '),
+            N.NTextSpan('nju', isBold: true),
+          ])),
+      PronounLine(
+          pronoun: PronounEnum.We,
+          text: NText([
+            N.NTextSpan('Oni znaju '),
+            N.NTextSpan('nas', isBold: true),
+          ])),
+      PronounLine(
+          pronoun: PronounEnum.You_Plural,
+          text: NText([
+            N.NTextSpan('Mi znamo '),
+            N.NTextSpan('vas', isBold: true),
+          ])),
+      PronounLine(
+          pronoun: PronounEnum.They_Ungendered,
+          text: NText([
+            N.NTextSpan('Vi ne znate '),
+            N.NTextSpan('njih\n', isBold: true),
+            N.NTextSpan('Vi '),
+            N.NTextSpan('ih ', isBold: true),
+            N.NTextSpan('ne znate'),
           ])),
     ],
   );

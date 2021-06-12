@@ -143,7 +143,7 @@ class DeclensionTable extends StatelessWidget {
                       child: RichText(
                         text: TextSpan(
                           style: TextStyle(
-                              fontSize: 18,
+                              fontSize: 12,
                               color: N.isDarkTheme(context)
                                   ? Colors.white
                                   : Colors.black),

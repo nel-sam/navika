@@ -140,11 +140,11 @@ class S {
     );
   }
 
-  /// `Alive masculine nouns + a, and adjectives + og/eg`
-  String get animateNominative {
+  /// `Alive/animate masculine nouns in singular get + a, and their adjectives + og/eg. Inanimate objects stay the same as Nominativ`
+  String get animateAkusativ {
     return Intl.message(
-      'Alive masculine nouns + a, and adjectives + og/eg',
-      name: 'animateNominative',
+      'Alive/animate masculine nouns in singular get + a, and their adjectives + og/eg. Inanimate objects stay the same as Nominativ',
+      name: 'animateAkusativ',
       desc: '',
       args: [],
     );
@@ -240,10 +240,10 @@ class S {
     );
   }
 
-  /// `They (mas)`
+  /// `They (Masc)`
   String get pronouns_They_Mas {
     return Intl.message(
-      'They (mas)',
+      'They (Masc)',
       name: 'pronouns_They_Mas',
       desc: '',
       args: [],
@@ -255,6 +255,16 @@ class S {
     return Intl.message(
       'They (Fem)',
       name: 'pronouns_They_Fem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Oneself`
+  String get pronouns_oneself {
+    return Intl.message(
+      'Oneself',
+      name: 'pronouns_oneself',
       desc: '',
       args: [],
     );

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:navika/models/enums.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/widgets/shared/declension-table.dart';
 import 'package:navika/widgets/shared/navika-subheader.dart';
 import 'package:navika/widgets/shared/navika-text.dart';
+import 'package:navika/widgets/shared/pronoun-line.dart';
 
 import '../../constants.dart';
 
@@ -12,14 +14,16 @@ class InstrumentalExplanation extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: N.NavikaAppBar(Text('Instrumental'), context, []),
-      body: Padding(
-        padding: EdgeInsets.all(20.0),
-        child: Column(
-          children: [
-            getDescription(context),
-            getPronounSection(context),
-            getDeclensionTable(),
-          ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.all(20.0),
+          child: Column(
+            children: [
+              getDescription(context),
+              getDeclensionTable(),
+              getPronounSection(context),
+            ],
+          ),
         ),
       ),
     );
@@ -87,48 +91,52 @@ Widget getPronounSection(BuildContext context) {
       Row(
         children: [NSubHeader(text: AppLocalizations.of(context)!.pronouns)],
       ),
-      Row(children: [
-        NText([N.NTextSpan('Ti ideš sa '), N.NTextSpan('mnom', isBold: true)])
-      ]),
-      Row(children: [
-        NText([
-          N.NTextSpan('Ja ću pjevati s '),
-          N.NTextSpan('tobom', isBold: true)
-        ])
-      ]),
-      Row(children: [
-        NText([
-          N.NTextSpan('Ja radim zajedno s '),
-          N.NTextSpan('njim', isBold: true)
-        ])
-      ]),
-      Row(children: [
-        NText([
-          N.NTextSpan('Josip će putovati s '),
-          N.NTextSpan('njom', isBold: true)
-        ])
-      ]),
-      Row(children: [
-        NText([
-          N.NTextSpan('Trabaš da ideš s '),
-          N.NTextSpan('nama', isBold: true)
-        ])
-      ]),
-      Row(children: [
-        NText([
-          N.NTextSpan('Ivan mora pričati s '),
-          N.NTextSpan('vama', isBold: true),
-        ])
-      ]),
-      Row(children: [
-        NText([
-          N.NTextSpan('Zoran želi ići s '),
-          N.NTextSpan('njima', isBold: true)
-        ])
-      ]),
-      Row(children: [
-        NText([N.NTextSpan('Sa '), N.NTextSpan('sobom', isBold: true)])
-      ]),
+      PronounLine(
+          pronoun: PronounEnum.I,
+          text: NText([
+            N.NTextSpan('Ti ideš sa '),
+            N.NTextSpan('mnom', isBold: true),
+          ])),
+      PronounLine(
+          pronoun: PronounEnum.You,
+          text: NText([
+            N.NTextSpan('Ja ću pjevati s '),
+            N.NTextSpan('tobom', isBold: true)
+          ])),
+      PronounLine(
+          pronoun: PronounEnum.He,
+          text: NText([
+            N.NTextSpan('Ja radim zajedno s '),
+            N.NTextSpan('njim', isBold: true)
+          ])),
+      PronounLine(
+          pronoun: PronounEnum.She,
+          text: NText([
+            N.NTextSpan('Josip će putovati s '),
+            N.NTextSpan('njom', isBold: true)
+          ])),
+      PronounLine(
+          pronoun: PronounEnum.We,
+          text: NText([
+            N.NTextSpan('Trabaš da ideš s '),
+            N.NTextSpan('nama', isBold: true)
+          ])),
+      PronounLine(
+          pronoun: PronounEnum.You_Plural,
+          text: NText([
+            N.NTextSpan('Ivan mora pričati s '),
+            N.NTextSpan('vama', isBold: true),
+          ])),
+      PronounLine(
+          pronoun: PronounEnum.They_Ungendered,
+          text: NText([
+            N.NTextSpan('Zoran želi ići s '),
+            N.NTextSpan('njima', isBold: true)
+          ])),
+      PronounLine(
+          pronoun: PronounEnum.Oneself,
+          text:
+              NText([N.NTextSpan('Sa '), N.NTextSpan('sobom', isBold: true)])),
     ],
   );
 }

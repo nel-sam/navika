@@ -186,9 +186,12 @@ class N {
       case PronounEnum.You_Plural:
         return AppLocalizations.of(context)!.pronouns_You_Pl;
       case PronounEnum.They_Masc:
+      case PronounEnum.They_Ungendered:
         return AppLocalizations.of(context)!.pronouns_They_Mas;
       case PronounEnum.They_Fem:
         return AppLocalizations.of(context)!.pronouns_They_Fem;
+      case PronounEnum.Oneself:
+        return AppLocalizations.of(context)!.pronouns_oneself;
     }
   }
 }

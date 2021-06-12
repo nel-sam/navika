@@ -41,6 +41,8 @@ enum PronounEnum {
   She,
   We,
   You_Plural,
+  They_Ungendered,
   They_Masc,
   They_Fem,
+  Oneself,
 }

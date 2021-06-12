@@ -33,7 +33,7 @@ class PronounLine extends StatelessWidget {
                     color: Colors.grey,
                   )),
                 ),
-                width: 50,
+                width: 100,
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
                   child: Align(

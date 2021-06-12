@@ -8,7 +8,7 @@
     "masculine": "Masculine",
     "feminine": "Feminine",
     "neuter": "Neuter",
-    "animateNominative": "Alive masculine nouns + a, and adjectives + og/eg",
+    "animateAkusativ": "Alive/animate masculine nouns in singular get + a, and their adjectives + og/eg. Inanimate objects stay the same as Nominativ",
     "akuzativDescription": "Direct objects are in the accusative case. This case is also used to indicate a point of destination, when there is movement towards the destination.",
     "instrumentalDescription": "Using things as tools, means of transport, or using something as a place to go through.",
     "genitiveDescription": "Genitive is used with prepositions and is used to show possession or origin.",
@@ -18,6 +18,7 @@
     "pronouns_She": "She",
     "pronouns_We": "We",
     "pronouns_You_Pl": "You (pl)",
-    "pronouns_They_Mas": "They (mas)",
-    "pronouns_They_Fem": "They (Fem)"
+    "pronouns_They_Mas": "They (Masc)",
+    "pronouns_They_Fem": "They (Fem)",
+    "pronouns_oneself": "Oneself"
 }
