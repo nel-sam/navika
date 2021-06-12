@@ -8,5 +8,6 @@
     "masculine": "Masculine",
     "feminine": "Feminine",
     "neuter": "Neuter",
-    "animateNominative": "Alive masculine nouns + a, and adjectives + og/eg"
+    "animateNominative": "Alive masculine nouns + a, and adjectives + og/eg",
+    "genitiveDescription": "Genitive is used with prepositions and is used to show possession or origin."
 }

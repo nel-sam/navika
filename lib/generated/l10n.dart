@@ -149,6 +149,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Genitive is used with prepositions and is used to show possession or origin.`
+  String get genitiveDescription {
+    return Intl.message(
+      'Genitive is used with prepositions and is used to show possession or origin.',
+      name: 'genitiveDescription',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

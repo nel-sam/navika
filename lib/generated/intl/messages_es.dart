@@ -27,6 +27,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "appTitle": MessageLookupByLibrary.simpleMessage("Navika"),
         "close": MessageLookupByLibrary.simpleMessage("Cerrar"),
         "feminine": MessageLookupByLibrary.simpleMessage("Femenino"),
+        "genitiveDescription": MessageLookupByLibrary.simpleMessage(
+            "El caso genitivo se usa con preposiciones e indica posesión u origin de algo."),
         "masculine": MessageLookupByLibrary.simpleMessage("Masculino"),
         "neuter": MessageLookupByLibrary.simpleMessage("Neutro"),
         "plural": MessageLookupByLibrary.simpleMessage("Plural"),
