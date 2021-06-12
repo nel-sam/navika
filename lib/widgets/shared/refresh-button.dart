@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:navika/utilities/widget-helpers.dart';
+import 'package:navika/utilities/navika-helpers.dart';
 
 import '../../constants.dart';
 
@@ -18,7 +18,7 @@ class RefreshButton extends StatelessWidget {
       child: OutlinedButton(
         style: OutlinedButton.styleFrom(
             primary:
-                WidgetHelpers.isDarkTheme(context) ? Colors.white : ICON_COLOR),
+                N.isDarkTheme(context) ? Colors.white : ICON_COLOR),
         child: Icon(Icons.refresh_outlined),
         onPressed: () {
           refreshFunction();

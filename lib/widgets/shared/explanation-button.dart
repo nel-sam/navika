@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:navika/utilities/widget-helpers.dart';
+import 'package:navika/utilities/navika-helpers.dart';
 
 import '../../constants.dart';
 
@@ -20,7 +20,7 @@ class ExplanationButton extends StatelessWidget {
       child: OutlinedButton(
         style: OutlinedButton.styleFrom(
             primary:
-                WidgetHelpers.isDarkTheme(context) ? Colors.white : ICON_COLOR),
+                N.isDarkTheme(context) ? Colors.white : ICON_COLOR),
         child: this.textTitle != ''
             ? Text(textTitle, style: TextStyle(color: ICON_COLOR))
             : Icon(Icons.help_center_outlined),

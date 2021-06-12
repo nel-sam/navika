@@ -6,10 +6,10 @@ import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/widgets/shared/pan-list-item.dart';
 
-class WidgetHelpers {
+class N {
   static IconData getGenderIcon(GenderEnum gender) {
     if (gender == GenderEnum.Feminine) {
-      return FEMINIE_ICON;
+      return FEMININE_ICON;
     } else if (gender == GenderEnum.Masculine) {
       return MASCULINE_ICON;
     } else {
@@ -96,7 +96,7 @@ class WidgetHelpers {
 
   static List<PANListItem> getPANListItems(
       List<PANExerciseItem> listItems, CaseTypeEnum caseType) {
-    return WidgetHelpers.shuffleList(listItems)
+    return N.shuffleList(listItems)
         .map(
           (e) => PANListItem(
               sentenceStarter: e.sentenceStarter,
@@ -122,5 +122,50 @@ class WidgetHelpers {
     final tenses = TenseEnum.values;
     var index = (new Random()).nextInt(tenses.length - 1);
     return tenses[index];
+  }
+
+  // ignore: non_constant_identifier_names
+  static AppBar NavikaAppBar(
+      Widget title, BuildContext context, List<Widget> actions) {
+    return AppBar(
+      elevation: APPBAR_ELEVATION,
+      backgroundColor: N.getAppBarColor(context),
+      textTheme: N.getAppBarTextTheme(context),
+      iconTheme: N.getAppBarIconTheme(context),
+      title: title,
+      actions: actions,
+    );
+  }
+
+  // ignore: non_constant_identifier_names
+  static TextSpan NTextSpan(String text,
+      {bool isBold = false,
+      bool isItalic = false,
+      Color color = Colors.transparent}) {
+    var textStyle;
+
+    if (isBold && isItalic && color != Colors.transparent) {
+      textStyle = TextStyle(
+        color: color,
+        fontWeight: FontWeight.bold,
+        fontStyle: FontStyle.italic,
+      );
+    } else if (isItalic && color != Colors.transparent) {
+      textStyle = TextStyle(
+        color: color,
+        fontStyle: FontStyle.italic,
+      );
+    } else if (isBold && color != Colors.transparent) {
+      textStyle = TextStyle(
+        color: color,
+        fontWeight: FontWeight.bold,
+      );
+    } else if (isBold) {
+      textStyle = TextStyle(
+        fontWeight: FontWeight.bold,
+      );
+    }
+
+    return TextSpan(text: text, style: textStyle);
   }
 }

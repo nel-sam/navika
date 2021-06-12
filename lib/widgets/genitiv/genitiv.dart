@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:navika/lang_data/word-bank.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
-import 'package:navika/utilities/widget-helpers.dart';
+import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/genitiv/genitiv-explanation.dart';
 import 'package:navika/widgets/shared/explanation-button.dart';
 import 'package:navika/widgets/shared/refresh-button.dart';
@@ -39,7 +39,7 @@ class Genitiv extends StatefulWidget {
 }
 
 List<GenitivListItem> getListItems(List<GenitivExerciseItem> listItems) {
-  return WidgetHelpers.shuffleList(listItems)
+  return N.shuffleList(listItems)
       .map(
         (e) => GenitivListItem(
             sentenceStarter: getSentenceStarter(e.noun2, e.isPlural),
@@ -92,9 +92,9 @@ class _GenitivState extends State<Genitiv> {
     return Scaffold(
       appBar: AppBar(
         elevation: APPBAR_ELEVATION,
-        backgroundColor: WidgetHelpers.getAppBarColor(context),
-        textTheme: WidgetHelpers.getAppBarTextTheme(context),
-        iconTheme: WidgetHelpers.getAppBarIconTheme(context),
+        backgroundColor: N.getAppBarColor(context),
+        textTheme: N.getAppBarTextTheme(context),
+        iconTheme: N.getAppBarIconTheme(context),
         title: Text('Genitiv'),
         actions: [
           Center(

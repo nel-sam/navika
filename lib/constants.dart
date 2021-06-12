@@ -30,8 +30,12 @@ const SINGULAR_ICON = Icons.looks_one_outlined;
 const PLURAL_ICON = Icons.widgets_outlined;
 
 const MASCULINE_ICON = Icons.male;
-const FEMINIE_ICON = Icons.female;
+const FEMININE_ICON = Icons.female;
 const NEUTER_ICON = Icons.hide_source_outlined;
+
+const MASCULINE_COLOR = Colors.blue;
+const FEMININE_COLOR = Colors.red;
+const NEUTER_COLOR = Colors.green;
 
 const APP_BAR_TEXTTHEME_DARK = TextTheme();
 const APP_BAR_TEXTTHEME_LIGHT = TextTheme(

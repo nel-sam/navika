@@ -3,11 +3,9 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:navika/utilities/widget-helpers.dart';
+import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/exercise-selection/exercise-selection.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
-
-import 'constants.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -76,15 +74,12 @@ class _MyHomePageState extends State<MyHomePage> {
     adBanner.load();
 
     return Scaffold(
-      appBar: AppBar(
-        elevation: APPBAR_ELEVATION,
-        backgroundColor: WidgetHelpers.getAppBarColor(context),
-        textTheme: WidgetHelpers.getAppBarTextTheme(context),
-        iconTheme: WidgetHelpers.getAppBarIconTheme(context),
-        title: Image(
-            width: 100,
-            image: AssetImage('assets/logo_small.png')), //Text(widget.title),
-      ),
+      appBar: N.NavikaAppBar(
+          Image(
+              width: 100,
+              image: AssetImage('assets/logo_small.png')), //Text(widget.title),
+          context,
+          []),
       body: Center(
         child: Column(
           children: <Widget>[

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:navika/lang_data/word-bank.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
-import 'package:navika/utilities/widget-helpers.dart';
+import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/akusativ/akuzativ-explanation.dart';
 import 'package:navika/widgets/shared/explanation-button.dart';
 import 'package:navika/widgets/shared/refresh-button.dart';
@@ -16,7 +16,7 @@ String getSentenceStarter(Noun noun, bool isPlural) {
 // ignore: must_be_immutable
 class Akuzativ extends StatefulWidget {
   final WordBank bank = wordBank;
-  var listItems = WidgetHelpers.getPANCombos(
+  var listItems = N.getPANCombos(
     wordBank,
     getSentenceStarter,
   );
@@ -38,15 +38,15 @@ class _AkuzativState extends State<Akuzativ> {
     return Scaffold(
       appBar: AppBar(
         elevation: APPBAR_ELEVATION,
-        backgroundColor: WidgetHelpers.getAppBarColor(context),
-        textTheme: WidgetHelpers.getAppBarTextTheme(context),
-        iconTheme: WidgetHelpers.getAppBarIconTheme(context),
+        backgroundColor: N.getAppBarColor(context),
+        textTheme: N.getAppBarTextTheme(context),
+        iconTheme: N.getAppBarIconTheme(context),
         title: Text('Akuzativ'),
         actions: [
           Center(
             child: RefreshButton(
               refreshFunction: () => setState(() {
-                widget.listItems = WidgetHelpers.getPANCombos(
+                widget.listItems = N.getPANCombos(
                   wordBank,
                   getSentenceStarter,
                 );
@@ -62,7 +62,7 @@ class _AkuzativState extends State<Akuzativ> {
           ? Center(
               child: ListView(
                 padding: const EdgeInsets.all(8),
-                children: WidgetHelpers.getPANListItems(
+                children: N.getPANListItems(
                     widget.listItems, CaseTypeEnum.Akuzativ),
               ),
             )
@@ -72,7 +72,7 @@ class _AkuzativState extends State<Akuzativ> {
                 padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
                 crossAxisSpacing: 10,
                 crossAxisCount: 2,
-                children: WidgetHelpers.getPANListItems(
+                children: N.getPANListItems(
                     widget.listItems, CaseTypeEnum.Akuzativ),
               ),
             ),

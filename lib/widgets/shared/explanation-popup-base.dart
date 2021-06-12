@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
-import 'package:navika/utilities/widget-helpers.dart';
+import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/shared/explanation-icon-cell.dart';
 import 'package:navika/widgets/shared/explanation-text-cell.dart';
 
@@ -44,9 +44,9 @@ class ExplanationPopupBase extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: APPBAR_ELEVATION,
-        backgroundColor: WidgetHelpers.getAppBarColor(context),
-        textTheme: WidgetHelpers.getAppBarTextTheme(context),
-        iconTheme: WidgetHelpers.getAppBarIconTheme(context),
+        backgroundColor: N.getAppBarColor(context),
+        textTheme: N.getAppBarTextTheme(context),
+        iconTheme: N.getAppBarIconTheme(context),
         title: Text(title),
       ),
       body: Column(
@@ -112,13 +112,13 @@ getTable(
               children: [
                 Container(width: firstColWidth),
                 ExplanationIconCell(
-                  icon: WidgetHelpers.getGenderIcon(GenderEnum.Masculine),
+                  icon: N.getGenderIcon(GenderEnum.Masculine),
                 ),
                 ExplanationIconCell(
-                  icon: WidgetHelpers.getGenderIcon(GenderEnum.Feminine),
+                  icon: N.getGenderIcon(GenderEnum.Feminine),
                 ),
                 ExplanationIconCell(
-                  icon: WidgetHelpers.getGenderIcon(GenderEnum.Neuter),
+                  icon: N.getGenderIcon(GenderEnum.Neuter),
                 ),
               ],
             ),
@@ -141,7 +141,7 @@ getTable(
                       text: TextSpan(
                         style: TextStyle(
                             fontSize: 18,
-                            color: WidgetHelpers.isDarkTheme(context)
+                            color: N.isDarkTheme(context)
                                 ? Colors.white
                                 : Colors.black),
                         children: [

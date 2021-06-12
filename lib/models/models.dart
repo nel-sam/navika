@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:navika/utilities/widget-helpers.dart';
+import 'package:navika/utilities/navika-helpers.dart';
 import 'enums.dart';
 
 class WordBank {
@@ -80,7 +80,7 @@ class Noun {
   }
 
   List getUniqueDeclensions() {
-    return WidgetHelpers.shuffleList([
+    return N.shuffleList([
       this.dictionary,
       this.nominativ.singular,
       this.akuzativ.singular,
@@ -131,7 +131,7 @@ class DeclinableWord {
   }
 
   List getUniqueDeclensions() {
-    return WidgetHelpers.shuffleList([
+    return N.shuffleList([
       this.dictionary,
       this.nominativ.masculine.singular,
       this.nominativ.feminine.singular,

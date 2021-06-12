@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
-import 'package:navika/utilities/widget-helpers.dart';
+import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/shared/case-drop-down.dart';
 import 'package:navika/widgets/shared/exercise-row-card.dart';
 
@@ -54,7 +54,7 @@ class _GenitivListItemState extends State<GenitivListItem> {
       CaseDropDown(
         activeValue: widget.activePronounValue,
         correctValue: widget.correctPronounValue,
-        dropDownOptions: WidgetHelpers.getDropdownItems(widget.pronoun),
+        dropDownOptions: N.getDropdownItems(widget.pronoun),
         onChanged: (String newVal) {
           setState(() {
             widget.activePronounValue = newVal;
@@ -65,7 +65,7 @@ class _GenitivListItemState extends State<GenitivListItem> {
       CaseDropDown(
         activeValue: widget.activeNoun1Value,
         correctValue: widget.correctNoun1Value,
-        dropDownOptions: WidgetHelpers.getNounDropdownItems(widget.noun1),
+        dropDownOptions: N.getNounDropdownItems(widget.noun1),
         onChanged: (String newVal) {
           setState(() {
             widget.activeNoun1Value = newVal;
@@ -76,7 +76,7 @@ class _GenitivListItemState extends State<GenitivListItem> {
       CaseDropDown(
         activeValue: widget.activeNoun2Value,
         correctValue: widget.correctNoun2Value,
-        dropDownOptions: WidgetHelpers.getNounDropdownItems(widget.noun2),
+        dropDownOptions: N.getNounDropdownItems(widget.noun2),
         onChanged: (String newVal) {
           setState(() {
             widget.activeNoun2Value = newVal;

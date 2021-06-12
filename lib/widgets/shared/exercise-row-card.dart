@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
-import 'package:navika/utilities/widget-helpers.dart';
+import 'package:navika/utilities/navika-helpers.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ExerciseRowCard extends StatelessWidget {
@@ -96,7 +96,7 @@ class ExerciseRowCard extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(
                       CARD_PADDING * 3, CARD_PADDING, 5, CARD_PADDING),
-                  child: Icon(WidgetHelpers.getGenderIcon(this.gender)),
+                  child: Icon(N.getGenderIcon(this.gender)),
                 ),
                 Text(getGenderString(context)),
               ],
