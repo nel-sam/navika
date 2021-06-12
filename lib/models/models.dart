@@ -15,7 +15,7 @@ class WordBank {
 }
 
 class Noun {
-  final WordCategoryEnum category;
+  final List<Tags> tags;
   final GenderEnum gender;
   final String dictionary;
   final bool isAnimate;
@@ -29,7 +29,7 @@ class Noun {
   final DeclensionByCount vokativ;
 
   Noun({
-    required this.category,
+    required this.tags,
     required this.dictionary,
     required this.gender,
     required this.isAnimate,

@@ -11,7 +11,11 @@ new DeclensionByCount(
 final List<Noun> nounWordBank = [
   Noun(
     dictionary: "stol",
-    category: WordCategoryEnum.FlatSurface,
+    tags: [
+      Tags.FlatSurface,
+      Tags.Furniture,
+      Tags.Portable,
+    ],
     gender: GenderEnum.Masculine,
     isAnimate: false,
     nominativ: new DeclensionByCount(
@@ -45,7 +49,10 @@ final List<Noun> nounWordBank = [
   ),
   Noun(
     dictionary: "žena",
-    category: WordCategoryEnum.Human,
+    tags: [
+      Tags.Human,
+      Tags.Adult,
+    ],
     gender: GenderEnum.Feminine,
     isAnimate: true,
     nominativ: new DeclensionByCount(
@@ -78,8 +85,48 @@ final List<Noun> nounWordBank = [
     ),
   ),
   Noun(
+    dictionary: "muškarac",
+    tags: [
+      Tags.Human,
+      Tags.Adult,
+    ],
+    gender: GenderEnum.Masculine,
+    isAnimate: true,
+    nominativ: new DeclensionByCount(
+      singular: "muškarac",
+      plural: "muškarci",
+    ),
+    akuzativ: new DeclensionByCount(
+      singular: "muškarac",
+      plural: "muškarce",
+    ),
+    instrumental: new DeclensionByCount(
+      singular: "muškarcem",
+      plural: "muškarcima",
+    ),
+    lokativ: new DeclensionByCount(
+      singular: "muškarcu",
+      plural: "muškarcima",
+    ),
+    dativ: new DeclensionByCount(
+      singular: "muškarca",
+      plural: "muškarcima",
+    ),
+    genitiv: new DeclensionByCount(
+      singular: "muškarca",
+      plural: "muškaraca",
+    ),
+    vokativ: new DeclensionByCount(
+      singular: "",
+      plural: "",
+    ),
+  ),
+  Noun(
     dictionary: "more",
-    category: WordCategoryEnum.Location,
+    tags: [
+      Tags.Location,
+      Tags.NaturalFeature,
+    ],
     gender: GenderEnum.Neuter,
     isAnimate: false,
     nominativ: new DeclensionByCount(
@@ -113,7 +160,7 @@ final List<Noun> nounWordBank = [
   ),
   Noun(
     dictionary: "ljubav",
-    category: WordCategoryEnum.Emotion,
+    tags: [Tags.Emotion],
     gender: GenderEnum.Feminine,
     isAnimate: false,
     nominativ: new DeclensionByCount(

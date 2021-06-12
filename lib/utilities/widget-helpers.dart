@@ -70,25 +70,25 @@ class WidgetHelpers {
       WordBank bank, Function getSentenceStarters) {
     var listItems = List<PANExerciseItem>.empty(growable: true);
 
-      bank.possesivePronouns.forEach((pp) {
-        bank.adjectives.forEach((adj) {
-          bank.nouns.forEach((noun) {
-            listItems.add(PANExerciseItem(
-                sentenceStarter: getSentenceStarters(noun, false),
-                pronoun: pp,
-                adjective: adj,
-                gender: noun.gender,
-                isPlural: false,
-                noun: noun));
-            listItems.add(PANExerciseItem(
-                sentenceStarter: getSentenceStarters(noun, true),
-                pronoun: pp,
-                adjective: adj,
-                gender: noun.gender,
-                isPlural: true,
-                noun: noun));
-          });
+    bank.possesivePronouns.forEach((pp) {
+      bank.adjectives.forEach((adj) {
+        bank.nouns.forEach((noun) {
+          listItems.add(PANExerciseItem(
+              sentenceStarter: getSentenceStarters(noun, false),
+              pronoun: pp,
+              adjective: adj,
+              gender: noun.gender,
+              isPlural: false,
+              noun: noun));
+          listItems.add(PANExerciseItem(
+              sentenceStarter: getSentenceStarters(noun, true),
+              pronoun: pp,
+              adjective: adj,
+              gender: noun.gender,
+              isPlural: true,
+              noun: noun));
         });
+      });
     });
 
     return listItems;
@@ -116,5 +116,11 @@ class WidgetHelpers {
         )
         .take(BATCH_COUNT)
         .toList();
+  }
+
+  static getRandomTense() {
+    final tenses = TenseEnum.values;
+    var index = (new Random()).nextInt(tenses.length - 1);
+    return tenses[index];
   }
 }

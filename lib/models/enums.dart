@@ -10,15 +10,26 @@ enum CaseTypeEnum {
   Dativ,
 }
 
-enum WordCategoryEnum {
+enum Tags {
   AnimateNonHuman,
+  NaturalFeature,
   FlatSurface,
+  Furniture,
+  Portable,
   Location,
   Activity,
   Vehicle,
   Emotion,
+  Adult,
   Drink,
   Thing,
   Human,
   Food,
+}
+
+enum TenseEnum {
+  Conditional,
+  Present,
+  Future,
+  Past,
 }

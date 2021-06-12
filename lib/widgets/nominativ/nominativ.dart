@@ -9,6 +9,33 @@ import '../../constants.dart';
 import 'nominativ-explanation.dart';
 
 String getSentenceStarter(Noun noun, bool isPlural) {
+  final tense = WidgetHelpers.getRandomTense();
+
+  if (noun.isAnimate && isPlural) {
+    if (tense == TenseEnum.Past || tense == TenseEnum.Conditional)
+      return noun.gender == GenderEnum.Feminine ? 'One su bile' : 'Oni su bili';
+
+    return noun.gender == GenderEnum.Feminine ? 'One su' : 'Oni su';
+  } else if (!noun.isAnimate && isPlural) {
+    if (tense == TenseEnum.Future || tense == TenseEnum.Conditional)
+      return 'To će biti';
+
+    return 'To su';
+  } else if (noun.isAnimate && !isPlural) {
+    if (tense == TenseEnum.Past || tense == TenseEnum.Conditional)
+      return noun.gender == GenderEnum.Feminine ? 'Ona će biti' : 'On će biti';
+
+    return noun.gender == GenderEnum.Feminine ? 'Ona je' : 'On su';
+  } else if (!noun.isAnimate && !isPlural) {
+    if (tense == TenseEnum.Past ||
+        tense == TenseEnum.Conditional) if (noun.gender == GenderEnum.Feminine)
+      return 'To je bila';
+    else if (noun.gender == GenderEnum.Masculine)
+      return 'To je bio';
+    else
+      return 'To je bilo';
+  }
+
   return 'To je';
 }
 
