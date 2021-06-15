@@ -15,10 +15,6 @@ class ExerciseSelection extends StatefulWidget {
 class _ExerciseSelectionState extends State<ExerciseSelection> {
   @override
   Widget build(BuildContext context) {
-    final isPortrait =
-        MediaQuery.of(context).orientation == Orientation.portrait;
-    final childAspectRatio = 3.4;
-
     var buttons = <Widget>[
       ExerciseButton(
         destination: NominativExercise(),
@@ -48,12 +44,10 @@ class _ExerciseSelectionState extends State<ExerciseSelection> {
     ];
 
     return Expanded(
-      child: GridView.count(
-        childAspectRatio: childAspectRatio,
-        padding: const EdgeInsets.all(20),
-        crossAxisSpacing: 10,
-        crossAxisCount: isPortrait ? 1 : 2,
-        children: buttons,
+      child: SingleChildScrollView(
+        child: Column(
+          children: buttons,
+        ),
       ),
     );
   }

@@ -55,14 +55,13 @@ class MyApp extends StatelessWidget {
         dividerColor: Colors.black12,
       ),
       themeMode: ThemeMode.system,
-      home: MyHomePage(title: 'Navika'),
+      home: MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, required this.title}) : super(key: key);
-  final String title;
+  MyHomePage({Key? key}) : super(key: key);
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -75,11 +74,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
     return Scaffold(
       appBar: N.NavikaAppBar(
-          Image(
-              width: 100,
-              image: AssetImage('assets/logo_small.png')), //Text(widget.title),
-          context,
-          []),
+          Image(width: 100, image: AssetImage('assets/logo_small.png')),
+          context, []),
       body: Center(
         child: Column(
           children: <Widget>[
