@@ -27,5 +27,9 @@
     "pronouns_oneself": "Oneself",
     "exampleSentences": "Example sentences",
     "sameAsNom": "The same as in the nominative case",
-    "grammarGuide": "Grammar Guide"
+    "grammarGuide": "Grammar Guide",
+    "home": "Home",
+    "refresh": "Refresh",
+    "next": "Next",
+    "previous": "Previous"
 }

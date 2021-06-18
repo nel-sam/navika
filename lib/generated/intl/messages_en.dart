@@ -36,15 +36,18 @@ class MessageLookup extends MessageLookupByLibrary {
         "genitiveDescription": MessageLookupByLibrary.simpleMessage(
             "Genitive is used with prepositions and is used to show possession or origin."),
         "grammarGuide": MessageLookupByLibrary.simpleMessage("Grammar Guide"),
+        "home": MessageLookupByLibrary.simpleMessage("Home"),
         "instrumentalDescription": MessageLookupByLibrary.simpleMessage(
             "Using things as tools, means of transport, or using something as a place to go through."),
         "lokativDescription": MessageLookupByLibrary.simpleMessage(
             "Lokativ is used when talking about the location where something happened, something is, or will be. It is also used to say \'about\' as in \'talking about something\'. Dativ and Lokativ have the same declensions."),
         "masculine": MessageLookupByLibrary.simpleMessage("Masculine"),
         "neuter": MessageLookupByLibrary.simpleMessage("Neuter"),
+        "next": MessageLookupByLibrary.simpleMessage("Next"),
         "nominativDescription": MessageLookupByLibrary.simpleMessage(
             "Nominativ is used when naming things and is indicates the subject of the sentence. When comparing two words, both are in the nominativ case."),
         "plural": MessageLookupByLibrary.simpleMessage("Plural"),
+        "previous": MessageLookupByLibrary.simpleMessage("Previous"),
         "pronouns": MessageLookupByLibrary.simpleMessage("Pronouns"),
         "pronouns_He": MessageLookupByLibrary.simpleMessage("He"),
         "pronouns_I": MessageLookupByLibrary.simpleMessage("I"),
@@ -57,6 +60,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "pronouns_You": MessageLookupByLibrary.simpleMessage("You"),
         "pronouns_You_Pl": MessageLookupByLibrary.simpleMessage("You (pl)"),
         "pronouns_oneself": MessageLookupByLibrary.simpleMessage("Oneself"),
+        "refresh": MessageLookupByLibrary.simpleMessage("Refresh"),
         "sameAsNom": MessageLookupByLibrary.simpleMessage(
             "The same as in the nominative case"),
         "singular": MessageLookupByLibrary.simpleMessage("Singular")

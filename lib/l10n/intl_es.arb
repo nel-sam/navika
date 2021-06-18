@@ -27,6 +27,10 @@
     "pronouns_oneself": "Uno mismo",
     "exampleSentences": "Ejemplos",
     "sameAsNom": "Igual al caso nominativo",
-    "grammarGuide": "Guía Gramatical"
+    "grammarGuide": "Guía Gramatical",
+    "home": "Inicio",
+    "refresh": "Reiniciar",
+    "next": "Siguiente",
+    "previous": "Anterior"
 
 }

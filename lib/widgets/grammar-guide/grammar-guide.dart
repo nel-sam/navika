@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:navika/widgets/grammar-guide/child-widgets/grammar-guide-footer.dart';
 import 'package:navika/widgets/grammar-guide/content/akusativ-content.dart';
 import 'package:navika/widgets/grammar-guide/content/dativ-content.dart';
 import 'package:navika/widgets/grammar-guide/content/genetiv-content.dart';
@@ -43,6 +44,7 @@ class _GrammarGuideState extends State<GrammarGuide> {
           ),
         ),
       ),
+      persistentFooterButtons: GrammarGuideFooterButtons(context),
     );
   }
 }

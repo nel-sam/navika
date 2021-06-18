@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+const double FOOTER_ICON_BOTTOM_PADDING = 12.0;
 const double APPBAR_ELEVATION = 0;
 const BATCH_COUNT = 15;
 const CORRECT_COLOR = Colors.green;
