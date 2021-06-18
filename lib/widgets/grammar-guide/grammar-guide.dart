@@ -19,7 +19,7 @@ const CasesInOrder = [
   CaseTypeEnum.Lokativ,
   CaseTypeEnum.Dativ,
   CaseTypeEnum.Genitiv,
-  CaseTypeEnum.Vokativ,
+  // CaseTypeEnum.Vokativ,
 ];
 
 class GrammarGuide extends StatefulWidget {
@@ -36,8 +36,8 @@ class GrammarGuide extends StatefulWidget {
 
 class _GrammarGuideState extends State<GrammarGuide> {
   late ScrollController controller;
-  late bool isAtTop = false;
-  late bool isAtBottom = false;
+  late bool isAtTop = getIsAtTop();
+  late bool isAtBottom = getIsAtBottom();
   late CaseTypeEnum currentCase;
 
   @override
@@ -46,18 +46,17 @@ class _GrammarGuideState extends State<GrammarGuide> {
     controller = ScrollController(
       initialScrollOffset: getScrollPoint(currentCase),
     );
+
     controller.addListener(scrollListener);
     super.initState();
   }
 
   bool getIsAtTop() {
-    return controller.offset <= controller.position.minScrollExtent &&
-        !controller.position.outOfRange;
+    return currentCase == CasesInOrder.first;
   }
 
   bool getIsAtBottom() {
-    return controller.offset >= controller.position.maxScrollExtent &&
-        !controller.position.outOfRange;
+    return currentCase == CasesInOrder.last;
   }
 
   scrollListener() {
