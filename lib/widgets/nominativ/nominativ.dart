@@ -6,7 +6,6 @@ import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/shared/footer.dart';
 
 import '../../constants.dart';
-import 'nominativ-explanation.dart';
 
 String getSentenceStarter(Noun noun, bool isPlural) {
   final tense = N.getRandomTense();
@@ -70,7 +69,6 @@ class _NominativExerciseState extends State<NominativExercise> {
       ),
       persistentFooterButtons: NavikaChildFooterButtons(
         context: context,
-        explanationWidget: NominativExplanation(),
         refreshFunction: () => setState(() {
           widget.listItems = N.getPANCombos(
             wordBank,

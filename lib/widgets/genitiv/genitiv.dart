@@ -3,7 +3,6 @@ import 'package:navika/lang_data/word-bank.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/utilities/navika-helpers.dart';
-import 'package:navika/widgets/genitiv/genitiv-explanation.dart';
 import 'package:navika/widgets/shared/footer.dart';
 
 import '../../constants.dart';
@@ -105,7 +104,6 @@ class _GenitivState extends State<Genitiv> {
       ),
       persistentFooterButtons: NavikaChildFooterButtons(
         context: context,
-        explanationWidget: GenitivExplanation(),
         refreshFunction: () => setState(() {
           widget.listItems = prepareData(wordBank);
         }),

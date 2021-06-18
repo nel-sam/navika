@@ -3,7 +3,6 @@ import 'package:navika/lang_data/word-bank.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/utilities/navika-helpers.dart';
-import 'package:navika/widgets/lokativ/lokativ-explanation.dart';
 import 'package:navika/widgets/shared/footer.dart';
 
 import '../../constants.dart';
@@ -44,7 +43,6 @@ class _LokativState extends State<Lokativ> {
       ),
       persistentFooterButtons: NavikaChildFooterButtons(
         context: context,
-        explanationWidget: LokativExplanation(),
         refreshFunction: () => setState(() {
           widget.listItems = N.getPANCombos(
             wordBank,

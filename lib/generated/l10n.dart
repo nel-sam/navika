@@ -329,6 +329,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Grammar Guide`
+  String get grammarGuide {
+    return Intl.message(
+      'Grammar Guide',
+      name: 'grammarGuide',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

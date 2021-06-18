@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/utilities/navika-helpers.dart';
+import 'package:navika/widgets/grammar-guide/grammar-guide.dart';
 
 // ignore: non_constant_identifier_names
 List<Widget> NavikaChildFooterButtons({
-  required Widget explanationWidget,
+  //required Widget explanationWidget, // TODO: Change this to scroll-point param
   required void Function() refreshFunction,
   required BuildContext context,
 }) {
@@ -43,7 +44,7 @@ List<Widget> NavikaChildFooterButtons({
             onPressed: () {
               showDialog(
                 context: context,
-                builder: (BuildContext context) => explanationWidget,
+                builder: (BuildContext context) => GrammarGuide(),
               );
             },
             color: iconColor,

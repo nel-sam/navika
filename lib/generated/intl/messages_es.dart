@@ -34,6 +34,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "feminine": MessageLookupByLibrary.simpleMessage("Femenino"),
         "genitiveDescription": MessageLookupByLibrary.simpleMessage(
             "El caso genitivo se usa con preposiciones e indica posesión u origin de algo."),
+        "grammarGuide": MessageLookupByLibrary.simpleMessage("Guía Gramatical"),
         "instrumentalDescription": MessageLookupByLibrary.simpleMessage(
             "Para indicar herramientas, formas de transporte, o indicar un lugar que se cruza."),
         "lokativDescription": MessageLookupByLibrary.simpleMessage(

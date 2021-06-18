@@ -35,6 +35,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "feminine": MessageLookupByLibrary.simpleMessage("Feminine"),
         "genitiveDescription": MessageLookupByLibrary.simpleMessage(
             "Genitive is used with prepositions and is used to show possession or origin."),
+        "grammarGuide": MessageLookupByLibrary.simpleMessage("Grammar Guide"),
         "instrumentalDescription": MessageLookupByLibrary.simpleMessage(
             "Using things as tools, means of transport, or using something as a place to go through."),
         "lokativDescription": MessageLookupByLibrary.simpleMessage(
