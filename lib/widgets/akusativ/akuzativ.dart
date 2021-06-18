@@ -4,8 +4,7 @@ import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/akusativ/akuzativ-explanation.dart';
-import 'package:navika/widgets/shared/explanation-button.dart';
-import 'package:navika/widgets/shared/refresh-button.dart';
+import 'package:navika/widgets/shared/footer.dart';
 
 import '../../constants.dart';
 
@@ -42,28 +41,13 @@ class _AkuzativState extends State<Akuzativ> {
         textTheme: N.getAppBarTextTheme(context),
         iconTheme: N.getAppBarIconTheme(context),
         title: Text('Akuzativ'),
-        actions: [
-          Center(
-            child: RefreshButton(
-              refreshFunction: () => setState(() {
-                widget.listItems = N.getPANCombos(
-                  wordBank,
-                  getSentenceStarter,
-                );
-              }),
-            ),
-          ),
-          Center(
-            child: ExplanationButton(popupWidget: AkuzativExplanation()),
-          )
-        ],
       ),
       body: isPortrait
           ? Center(
               child: ListView(
                 padding: const EdgeInsets.all(8),
-                children: N.getPANListItems(
-                    widget.listItems, CaseTypeEnum.Akuzativ),
+                children:
+                    N.getPANListItems(widget.listItems, CaseTypeEnum.Akuzativ),
               ),
             )
           : Container(
@@ -72,10 +56,20 @@ class _AkuzativState extends State<Akuzativ> {
                 padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
                 crossAxisSpacing: 10,
                 crossAxisCount: 2,
-                children: N.getPANListItems(
-                    widget.listItems, CaseTypeEnum.Akuzativ),
+                children:
+                    N.getPANListItems(widget.listItems, CaseTypeEnum.Akuzativ),
               ),
             ),
+      persistentFooterButtons: NavikaChildFooterButtons(
+        context: context,
+        explanationWidget: AkuzativExplanation(),
+        refreshFunction: () => setState(() {
+          widget.listItems = N.getPANCombos(
+            wordBank,
+            getSentenceStarter,
+          );
+        }),
+      ),
     );
   }
 }

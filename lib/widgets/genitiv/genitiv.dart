@@ -4,8 +4,7 @@ import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/genitiv/genitiv-explanation.dart';
-import 'package:navika/widgets/shared/explanation-button.dart';
-import 'package:navika/widgets/shared/refresh-button.dart';
+import 'package:navika/widgets/shared/footer.dart';
 
 import '../../constants.dart';
 import 'genitiv-list-item.dart';
@@ -39,7 +38,8 @@ class Genitiv extends StatefulWidget {
 }
 
 List<GenitivListItem> getListItems(List<GenitivExerciseItem> listItems) {
-  return N.shuffleList(listItems)
+  return N
+      .shuffleList(listItems)
       .map(
         (e) => GenitivListItem(
             sentenceStarter: getSentenceStarter(e.noun2, e.isPlural),
@@ -96,24 +96,19 @@ class _GenitivState extends State<Genitiv> {
         textTheme: N.getAppBarTextTheme(context),
         iconTheme: N.getAppBarIconTheme(context),
         title: Text('Genitiv'),
-        actions: [
-          Center(
-            child: RefreshButton(
-              refreshFunction: () => setState(() {
-                widget.listItems = prepareData(wordBank);
-              }),
-            ),
-          ),
-          Center(
-            child: ExplanationButton(popupWidget: GenitivExplanation()),
-          )
-        ],
       ),
       body: Center(
         child: ListView(
           padding: const EdgeInsets.all(8),
           children: getListItems(widget.listItems),
         ),
+      ),
+      persistentFooterButtons: NavikaChildFooterButtons(
+        context: context,
+        explanationWidget: GenitivExplanation(),
+        refreshFunction: () => setState(() {
+          widget.listItems = prepareData(wordBank);
+        }),
       ),
     );
   }

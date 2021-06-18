@@ -4,8 +4,7 @@ import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/dativ/dativ-explanation.dart';
-import 'package:navika/widgets/shared/explanation-button.dart';
-import 'package:navika/widgets/shared/refresh-button.dart';
+import 'package:navika/widgets/shared/footer.dart';
 
 import '../../constants.dart';
 
@@ -37,28 +36,22 @@ class _DativState extends State<Dativ> {
         textTheme: N.getAppBarTextTheme(context),
         iconTheme: N.getAppBarIconTheme(context),
         title: Text('Dativ'),
-        actions: [
-          Center(
-            child: RefreshButton(
-              refreshFunction: () => setState(() {
-                widget.listItems = N.getPANCombos(
-                  wordBank,
-                  getSentenceStarter,
-                );
-              }),
-            ),
-          ),
-          Center(
-            child: ExplanationButton(popupWidget: DativExplanation()),
-          )
-        ],
       ),
       body: Center(
         child: ListView(
           padding: const EdgeInsets.all(8),
-          children: N.getPANListItems(
-              widget.listItems, CaseTypeEnum.Dativ),
+          children: N.getPANListItems(widget.listItems, CaseTypeEnum.Dativ),
         ),
+      ),
+      persistentFooterButtons: NavikaChildFooterButtons(
+        context: context,
+        explanationWidget: DativExplanation(),
+        refreshFunction: () => setState(() {
+          widget.listItems = N.getPANCombos(
+            wordBank,
+            getSentenceStarter,
+          );
+        }),
       ),
     );
   }
