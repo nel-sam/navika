@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
+import 'package:navika/models/enums.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/widgets/grammar-guide/content/akusativ-content.dart';
@@ -11,66 +12,120 @@ import 'package:navika/widgets/grammar-guide/content/nominativ-content.dart';
 import 'package:navika/widgets/shared/home-button.dart';
 import 'package:navika/widgets/shared/navika-subheader.dart';
 
+const CasesInOrder = [
+  CaseTypeEnum.Nominativ,
+  CaseTypeEnum.Akuzativ,
+  CaseTypeEnum.Instrumental,
+  CaseTypeEnum.Lokativ,
+  CaseTypeEnum.Dativ,
+  CaseTypeEnum.Genitiv,
+  CaseTypeEnum.Vokativ,
+];
+
 class GrammarGuide extends StatefulWidget {
-  const GrammarGuide({Key? key}) : super(key: key);
+  final CaseTypeEnum scrollToCase;
+
+  const GrammarGuide({
+    Key? key,
+    this.scrollToCase = CaseTypeEnum.Nominativ,
+  }) : super(key: key);
 
   @override
   _GrammarGuideState createState() => _GrammarGuideState();
 }
 
 class _GrammarGuideState extends State<GrammarGuide> {
-  late ScrollController _controller;
+  late ScrollController controller;
   late bool isAtTop = false;
   late bool isAtBottom = false;
-  final itemSize = 1000;
+  late CaseTypeEnum currentCase;
 
   @override
   void initState() {
-    _controller = ScrollController();
+    currentCase = widget.scrollToCase;
+    controller = ScrollController(
+      initialScrollOffset: getScrollPoint(currentCase),
+    );
+    controller.addListener(scrollListener);
     super.initState();
   }
 
-  _scrollListener() {
-    if (_controller.offset >= _controller.position.maxScrollExtent &&
-        !_controller.position.outOfRange) {
-      setState(() {
-        isAtBottom = true;
-      });
-    }
-    if (_controller.offset <= _controller.position.minScrollExtent &&
-        !_controller.position.outOfRange) {
+  bool getIsAtTop() {
+    return controller.offset <= controller.position.minScrollExtent &&
+        !controller.position.outOfRange;
+  }
+
+  bool getIsAtBottom() {
+    return controller.offset >= controller.position.maxScrollExtent &&
+        !controller.position.outOfRange;
+  }
+
+  scrollListener() {
+    if (getIsAtTop()) {
       setState(() {
         isAtTop = true;
       });
     }
+
+    if (getIsAtBottom()) {
+      setState(() {
+        isAtBottom = true;
+      });
+    }
+  }
+
+  double getScrollPoint(CaseTypeEnum caseType) {
+    switch (caseType) {
+      case CaseTypeEnum.Nominativ:
+        return 0;
+      case CaseTypeEnum.Akuzativ:
+        return 900;
+      case CaseTypeEnum.Instrumental:
+        return 1800;
+      case CaseTypeEnum.Lokativ:
+        return 0;
+      case CaseTypeEnum.Dativ:
+        return 0;
+      case CaseTypeEnum.Genitiv:
+        return 0;
+      case CaseTypeEnum.Vokativ:
+        return 0;
+    }
+  }
+
+  scrollTo(double point) {
+    controller.animateTo(point,
+        curve: Curves.linear, duration: Duration(milliseconds: 500));
   }
 
   _moveUp() {
     setState(() {
       isAtBottom = false;
+
+      final currentIndex = CasesInOrder.indexOf(currentCase);
+      final scrollPoint = getScrollPoint(CasesInOrder[currentIndex + 1]);
+      scrollTo(scrollPoint);
     });
-    _controller.animateTo(_controller.offset - itemSize,
-        curve: Curves.linear, duration: Duration(milliseconds: 500));
   }
 
   _moveDown() {
     setState(() {
       isAtTop = false;
-    });
 
-    _controller.animateTo(_controller.offset + itemSize,
-        curve: Curves.linear, duration: Duration(milliseconds: 500));
+      final currentIndex = CasesInOrder.indexOf(currentCase);
+      final scrollPoint = getScrollPoint(CasesInOrder[currentIndex - 1]);
+      scrollTo(scrollPoint);
+      scrollTo(scrollPoint);
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    _controller.addListener(_scrollListener);
-
     return Scaffold(
       appBar: N.NavikaAppBar(
           Text(AppLocalizations.of(context)!.grammarGuide), context, []),
       body: SingleChildScrollView(
-        controller: _controller,
+        controller: controller,
         child: Padding(
           padding: EdgeInsets.all(20.0),
           child: Column(
