@@ -34,11 +34,10 @@ List<Widget> NavikaChildFooterButtons({
           padding: const EdgeInsets.only(bottom: FOOTER_ICON_BOTTOM_PADDING),
           child: TextButton.icon(
             onPressed: () {
-              showDialog(
-                context: context,
-                builder: (BuildContext context) => GrammarGuide(
-                  scrollToCase: caseType,
-                ),
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => GrammarGuide(scrollToCase: caseType)),
               );
             },
             icon: Icon(
