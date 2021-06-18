@@ -34,15 +34,19 @@ class MessageLookup extends MessageLookupByLibrary {
         "feminine": MessageLookupByLibrary.simpleMessage("Femenino"),
         "genitiveDescription": MessageLookupByLibrary.simpleMessage(
             "El caso genitivo se usa con preposiciones e indica posesión u origin de algo."),
+        "grammarGuide": MessageLookupByLibrary.simpleMessage("Guía Gramatical"),
+        "home": MessageLookupByLibrary.simpleMessage("Inicio"),
         "instrumentalDescription": MessageLookupByLibrary.simpleMessage(
             "Para indicar herramientas, formas de transporte, o indicar un lugar que se cruza."),
         "lokativDescription": MessageLookupByLibrary.simpleMessage(
             "Lokativ se usa cuando se habla de la ubicación donde algo ocurre, algo está ubicado, o estará ubicado. Tambíen se usa el Lokativ para decir \'sobre\' como en la frase \'hablando sobre un tema\'. El dativ y el lokativ se declinan igual"),
         "masculine": MessageLookupByLibrary.simpleMessage("Masculino"),
         "neuter": MessageLookupByLibrary.simpleMessage("Neutro"),
+        "next": MessageLookupByLibrary.simpleMessage("Siguiente"),
         "nominativDescription": MessageLookupByLibrary.simpleMessage(
             "El nominativo se usa para nombrar cosas e indica el sujeto de la frase. Cuando se hace una comparación usando \'nego\', los dos sujectos deberían estar en nominativo."),
         "plural": MessageLookupByLibrary.simpleMessage("Plural"),
+        "previous": MessageLookupByLibrary.simpleMessage("Anterior"),
         "pronouns": MessageLookupByLibrary.simpleMessage("Pronombres"),
         "pronouns_He": MessageLookupByLibrary.simpleMessage("Él"),
         "pronouns_I": MessageLookupByLibrary.simpleMessage("Yo"),
@@ -54,6 +58,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "pronouns_You": MessageLookupByLibrary.simpleMessage("Tú"),
         "pronouns_You_Pl": MessageLookupByLibrary.simpleMessage("Ustedes"),
         "pronouns_oneself": MessageLookupByLibrary.simpleMessage("Uno mismo"),
+        "refresh": MessageLookupByLibrary.simpleMessage("Reiniciar"),
         "sameAsNom":
             MessageLookupByLibrary.simpleMessage("Igual al caso nominativo"),
         "singular": MessageLookupByLibrary.simpleMessage("Singular")

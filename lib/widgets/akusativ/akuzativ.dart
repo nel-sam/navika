@@ -3,7 +3,6 @@ import 'package:navika/lang_data/word-bank.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/utilities/navika-helpers.dart';
-import 'package:navika/widgets/akusativ/akuzativ-explanation.dart';
 import 'package:navika/widgets/shared/footer.dart';
 
 import '../../constants.dart';
@@ -62,7 +61,7 @@ class _AkuzativState extends State<Akuzativ> {
             ),
       persistentFooterButtons: NavikaChildFooterButtons(
         context: context,
-        explanationWidget: AkuzativExplanation(),
+        caseType: CaseTypeEnum.Akuzativ,
         refreshFunction: () => setState(() {
           widget.listItems = N.getPANCombos(
             wordBank,

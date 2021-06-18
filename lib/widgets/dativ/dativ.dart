@@ -3,7 +3,6 @@ import 'package:navika/lang_data/word-bank.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/utilities/navika-helpers.dart';
-import 'package:navika/widgets/dativ/dativ-explanation.dart';
 import 'package:navika/widgets/shared/footer.dart';
 
 import '../../constants.dart';
@@ -45,7 +44,7 @@ class _DativState extends State<Dativ> {
       ),
       persistentFooterButtons: NavikaChildFooterButtons(
         context: context,
-        explanationWidget: DativExplanation(),
+        caseType: CaseTypeEnum.Dativ,
         refreshFunction: () => setState(() {
           widget.listItems = N.getPANCombos(
             wordBank,

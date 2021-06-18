@@ -1,34 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:navika/widgets/shared/declension-table.dart';
+import 'package:navika/widgets/grammar-guide/child-widgets/declension-table.dart';
 import 'package:navika/widgets/shared/navika-subheader.dart';
 import 'package:navika/widgets/shared/navika-text.dart';
-import 'package:navika/widgets/shared/pronoun-line.dart';
+import 'package:navika/widgets/grammar-guide/child-widgets/pronoun-line.dart';
 
-import '../../constants.dart';
-
-class NominativExplanation extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: N.NavikaAppBar(Text('Nominativ'), context, []),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.all(20.0),
-          child: Column(
-            children: [
-              getDescription(context),
-              getExampleSentences(context),
-              getDeclensionTable(context),
-              getPronounSection(context),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
+// ignore: non_constant_identifier_names
+Widget NominativGrammarGuideContent(BuildContext context) {
+  return Column(
+    children: [
+      getDescription(context),
+      getExampleSentences(context),
+      getDeclensionTable(context),
+      getPronounSection(context),
+    ],
+  );
 }
 
 Widget getExampleSentences(BuildContext context) {

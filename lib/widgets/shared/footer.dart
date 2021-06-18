@@ -1,55 +1,51 @@
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
+import 'package:navika/models/enums.dart';
 import 'package:navika/utilities/navika-helpers.dart';
+import 'package:navika/widgets/grammar-guide/grammar-guide.dart';
+import 'package:navika/widgets/shared/home-button.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 // ignore: non_constant_identifier_names
 List<Widget> NavikaChildFooterButtons({
-  required Widget explanationWidget,
+  required CaseTypeEnum caseType,
   required void Function() refreshFunction,
   required BuildContext context,
 }) {
   final Color iconColor = N.isDarkTheme(context) ? Colors.white : ICON_COLOR;
-  const double bottomPadding = 12.0;
 
   return [
     Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         Padding(
-          padding: const EdgeInsets.only(bottom: bottomPadding),
-          child: IconButton(
+          padding: const EdgeInsets.only(bottom: FOOTER_ICON_BOTTOM_PADDING),
+          child: TextButton.icon(
             onPressed: refreshFunction,
-            color: iconColor,
             icon: Icon(
               Icons.refresh_outlined,
+              color: iconColor,
             ),
+            label: Text(AppLocalizations.of(context)!.refresh),
           ),
         ),
+        HomeButton(context),
         Padding(
-          padding: const EdgeInsets.only(bottom: bottomPadding),
-          child: IconButton(
-            onPressed: () {
-              Navigator.popUntil(context, ModalRoute.withName('/'));
-            },
-            color: iconColor,
-            icon: Icon(
-              Icons.home,
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(bottom: bottomPadding),
-          child: IconButton(
+          padding: const EdgeInsets.only(bottom: FOOTER_ICON_BOTTOM_PADDING),
+          child: TextButton.icon(
             onPressed: () {
               showDialog(
                 context: context,
-                builder: (BuildContext context) => explanationWidget,
+                builder: (BuildContext context) => GrammarGuide(
+                  scrollToCase: caseType,
+                ),
               );
             },
-            color: iconColor,
             icon: Icon(
               Icons.help_center_outlined,
+              color: iconColor,
             ),
+            label: Text(AppLocalizations.of(context)!.grammarGuide),
           ),
         ),
       ],

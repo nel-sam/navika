@@ -3,8 +3,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/utilities/navika-helpers.dart';
-import 'package:navika/widgets/shared/explanation-icon-cell.dart';
-import 'package:navika/widgets/shared/explanation-text-cell.dart';
+import 'package:navika/widgets/grammar-guide/child-widgets/explanation-icon-cell.dart';
+import 'package:navika/widgets/grammar-guide/child-widgets/explanation-text-cell.dart';
 
 class ExplanationPopupBase extends StatelessWidget {
   final String title;

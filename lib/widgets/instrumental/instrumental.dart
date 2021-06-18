@@ -3,7 +3,6 @@ import 'package:navika/lang_data/word-bank.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/utilities/navika-helpers.dart';
-import 'package:navika/widgets/instrumental/instrumental-explanation.dart';
 import 'package:navika/widgets/shared/footer.dart';
 
 import '../../constants.dart';
@@ -44,7 +43,7 @@ class _InstrumentalState extends State<Instrumental> {
       ),
       persistentFooterButtons: NavikaChildFooterButtons(
         context: context,
-        explanationWidget: InstrumentalExplanation(),
+        caseType: CaseTypeEnum.Instrumental,
         refreshFunction: () => setState(() {
           widget.listItems = N.getPANCombos(
             wordBank,
