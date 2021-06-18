@@ -79,17 +79,17 @@ class _GrammarGuideState extends State<GrammarGuide> {
       case CaseTypeEnum.Nominativ:
         return 0;
       case CaseTypeEnum.Akuzativ:
-        return 900;
+        return 810;
       case CaseTypeEnum.Instrumental:
-        return 1800;
+        return 1600;
       case CaseTypeEnum.Lokativ:
-        return 0;
+        return 2300;
       case CaseTypeEnum.Dativ:
-        return 0;
+        return 3025;
       case CaseTypeEnum.Genitiv:
-        return 0;
+        return 3790;
       case CaseTypeEnum.Vokativ:
-        return 0;
+        return 5000;
     }
   }
 
@@ -103,7 +103,9 @@ class _GrammarGuideState extends State<GrammarGuide> {
       isAtBottom = false;
 
       final currentIndex = CasesInOrder.indexOf(currentCase);
-      final scrollPoint = getScrollPoint(CasesInOrder[currentIndex + 1]);
+      currentCase = CasesInOrder[currentIndex - 1];
+      final scrollPoint = getScrollPoint(currentCase);
+
       scrollTo(scrollPoint);
     });
   }
@@ -113,8 +115,9 @@ class _GrammarGuideState extends State<GrammarGuide> {
       isAtTop = false;
 
       final currentIndex = CasesInOrder.indexOf(currentCase);
-      final scrollPoint = getScrollPoint(CasesInOrder[currentIndex - 1]);
-      scrollTo(scrollPoint);
+      currentCase = CasesInOrder[currentIndex + 1];
+      final scrollPoint = getScrollPoint(currentCase);
+
       scrollTo(scrollPoint);
     });
   }

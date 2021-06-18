@@ -43,6 +43,7 @@ class _InstrumentalState extends State<Instrumental> {
       ),
       persistentFooterButtons: NavikaChildFooterButtons(
         context: context,
+        caseType: CaseTypeEnum.Instrumental,
         refreshFunction: () => setState(() {
           widget.listItems = N.getPANCombos(
             wordBank,

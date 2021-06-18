@@ -69,6 +69,7 @@ class _NominativExerciseState extends State<NominativExercise> {
       ),
       persistentFooterButtons: NavikaChildFooterButtons(
         context: context,
+        caseType: CaseTypeEnum.Nominativ,
         refreshFunction: () => setState(() {
           widget.listItems = N.getPANCombos(
             wordBank,

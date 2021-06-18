@@ -61,6 +61,7 @@ class _AkuzativState extends State<Akuzativ> {
             ),
       persistentFooterButtons: NavikaChildFooterButtons(
         context: context,
+        caseType: CaseTypeEnum.Akuzativ,
         refreshFunction: () => setState(() {
           widget.listItems = N.getPANCombos(
             wordBank,

@@ -43,6 +43,7 @@ class _LokativState extends State<Lokativ> {
       ),
       persistentFooterButtons: NavikaChildFooterButtons(
         context: context,
+        caseType: CaseTypeEnum.Lokativ,
         refreshFunction: () => setState(() {
           widget.listItems = N.getPANCombos(
             wordBank,

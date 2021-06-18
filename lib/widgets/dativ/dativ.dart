@@ -44,6 +44,7 @@ class _DativState extends State<Dativ> {
       ),
       persistentFooterButtons: NavikaChildFooterButtons(
         context: context,
+        caseType: CaseTypeEnum.Dativ,
         refreshFunction: () => setState(() {
           widget.listItems = N.getPANCombos(
             wordBank,

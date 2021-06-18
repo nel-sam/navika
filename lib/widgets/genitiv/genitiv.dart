@@ -104,6 +104,7 @@ class _GenitivState extends State<Genitiv> {
       ),
       persistentFooterButtons: NavikaChildFooterButtons(
         context: context,
+        caseType: CaseTypeEnum.Genitiv,
         refreshFunction: () => setState(() {
           widget.listItems = prepareData(wordBank);
         }),
