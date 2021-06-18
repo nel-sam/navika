@@ -3,10 +3,10 @@ import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:navika/widgets/shared/declension-table.dart';
+import 'package:navika/widgets/grammar-guide/child-widgets/declension-table.dart';
 import 'package:navika/widgets/shared/navika-subheader.dart';
 import 'package:navika/widgets/shared/navika-text.dart';
-import 'package:navika/widgets/shared/pronoun-line.dart';
+import 'package:navika/widgets/grammar-guide/child-widgets/pronoun-line.dart';
 
 // ignore: non_constant_identifier_names
 Widget InstrumentalGrammarGuideContent(BuildContext context) {

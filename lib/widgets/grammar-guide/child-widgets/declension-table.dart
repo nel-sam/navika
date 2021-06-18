@@ -4,8 +4,8 @@ import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/shared/navika-text.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../../constants.dart';
-import 'explanation-icon-cell.dart';
+import '../../../constants.dart';
+import '../child-widgets/explanation-icon-cell.dart';
 
 class DeclensionTable extends StatelessWidget {
   final List<NText> masculineSingular;
