@@ -74,22 +74,20 @@ class _GrammarGuideState extends State<GrammarGuide> {
   }
 
   double getScrollPoint(CaseTypeEnum caseType) {
-    switch (caseType) {
-      case CaseTypeEnum.Nominativ:
-        return 0;
-      case CaseTypeEnum.Akuzativ:
-        return 810;
-      case CaseTypeEnum.Instrumental:
-        return 1600;
-      case CaseTypeEnum.Lokativ:
-        return 2300;
-      case CaseTypeEnum.Dativ:
-        return 3025;
-      case CaseTypeEnum.Genitiv:
-        return 3790;
-      case CaseTypeEnum.Vokativ:
-        return 5000;
+    var sizeMap = <CaseTypeEnum, double>{
+      CaseTypeEnum.Nominativ: 810,
+      CaseTypeEnum.Akuzativ: 790,
+      CaseTypeEnum.Lokativ: 700,
+    };
+
+    double scrollPoint = 0;
+
+    for (final c in CasesInOrder) {
+      if (c == caseType) break;
+      scrollPoint += sizeMap[c]!;
     }
+
+    return scrollPoint;
   }
 
   scrollTo(double point) {
