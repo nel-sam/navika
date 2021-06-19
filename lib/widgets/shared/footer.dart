@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
-import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/grammar-guide/grammar-guide.dart';
+import 'package:navika/widgets/shared/footer-button.dart';
 import 'package:navika/widgets/shared/home-button.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -12,27 +12,23 @@ List<Widget> NavikaChildFooterButtons({
   required void Function() refreshFunction,
   required BuildContext context,
 }) {
-  final Color iconColor = N.isDarkTheme(context) ? Colors.white : ICON_COLOR;
-
   return [
     Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Padding(
           padding: const EdgeInsets.only(bottom: FOOTER_ICON_BOTTOM_PADDING),
-          child: TextButton.icon(
+          child: FooterButton(
             onPressed: refreshFunction,
-            icon: Icon(
-              Icons.refresh_outlined,
-              color: iconColor,
-            ),
-            label: Text(AppLocalizations.of(context)!.refresh),
+            icon: Icons.refresh_outlined,
+            text: AppLocalizations.of(context)!.refresh,
+            context: context,
           ),
         ),
         HomeButton(context),
         Padding(
           padding: const EdgeInsets.only(bottom: FOOTER_ICON_BOTTOM_PADDING),
-          child: TextButton.icon(
+          child: FooterButton(
             onPressed: () {
               Navigator.push(
                 context,
@@ -40,11 +36,9 @@ List<Widget> NavikaChildFooterButtons({
                     builder: (context) => GrammarGuide(scrollToCase: caseType)),
               );
             },
-            icon: Icon(
-              Icons.help_center_outlined,
-              color: iconColor,
-            ),
-            label: Text(AppLocalizations.of(context)!.grammarGuide),
+            icon: Icons.help_center_outlined,
+            text: AppLocalizations.of(context)!.grammarGuide,
+            context: context,
           ),
         ),
       ],

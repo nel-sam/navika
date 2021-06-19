@@ -10,6 +10,7 @@ import 'package:navika/widgets/grammar-guide/content/genetiv-content.dart';
 import 'package:navika/widgets/grammar-guide/content/instrumental-content.dart';
 import 'package:navika/widgets/grammar-guide/content/lokativ-content.dart';
 import 'package:navika/widgets/grammar-guide/content/nominativ-content.dart';
+import 'package:navika/widgets/shared/footer-button.dart';
 import 'package:navika/widgets/shared/home-button.dart';
 
 const double CONTENT_HEIGHT = 840.0;
@@ -188,26 +189,24 @@ class _GrammarGuideState extends State<GrammarGuide> {
             Padding(
               padding:
                   const EdgeInsets.only(bottom: FOOTER_ICON_BOTTOM_PADDING),
-              child: TextButton.icon(
-                onPressed: () {
-                  _moveUp();
-                },
-                icon: Icon(Icons.arrow_upward,
-                    color: isAtTop ? Colors.grey : ICON_COLOR),
-                label: Text(AppLocalizations.of(context)!.previous),
+              child: FooterButton(
+                disabled: isAtTop,
+                icon: Icons.arrow_upward,
+                text: AppLocalizations.of(context)!.previous,
+                onPressed: () => _moveUp(),
+                context: context,
               ),
             ),
             HomeButton(context),
             Padding(
               padding:
                   const EdgeInsets.only(bottom: FOOTER_ICON_BOTTOM_PADDING),
-              child: TextButton.icon(
-                onPressed: () {
-                  _moveDown();
-                },
-                icon: Icon(Icons.arrow_downward,
-                    color: isAtBottom ? Colors.grey : ICON_COLOR),
-                label: Text(AppLocalizations.of(context)!.next),
+              child: FooterButton(
+                disabled: isAtBottom,
+                onPressed: () => _moveDown(),
+                icon: Icons.arrow_downward,
+                text: AppLocalizations.of(context)!.next,
+                context: context,
               ),
             ),
           ],
