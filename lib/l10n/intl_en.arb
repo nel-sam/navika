@@ -31,5 +31,6 @@
     "home": "Home",
     "refresh": "Refresh",
     "next": "Next",
-    "previous": "Previous"
+    "previous": "Previous",
+    "recommendedVideo": "Play Recommended Video"
 }

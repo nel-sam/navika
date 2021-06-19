@@ -75,9 +75,12 @@ class _GrammarGuideState extends State<GrammarGuide> {
 
   double getScrollPoint(CaseTypeEnum caseType) {
     var sizeMap = <CaseTypeEnum, double>{
-      CaseTypeEnum.Nominativ: 810,
-      CaseTypeEnum.Akuzativ: 790,
-      CaseTypeEnum.Lokativ: 700,
+      CaseTypeEnum.Nominativ: 870,
+      CaseTypeEnum.Akuzativ: 860,
+      CaseTypeEnum.Instrumental: 770,
+      CaseTypeEnum.Lokativ: 720,
+      CaseTypeEnum.Dativ: 770,
+      CaseTypeEnum.Genitiv: 770,
     };
 
     double scrollPoint = 0;

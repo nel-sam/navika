@@ -4,6 +4,7 @@ import 'package:navika/models/enums.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/widgets/grammar-guide/child-widgets/declension-table.dart';
+import 'package:navika/widgets/grammar-guide/child-widgets/youtube-link.dart';
 import 'package:navika/widgets/shared/navika-subheader.dart';
 import 'package:navika/widgets/shared/navika-text.dart';
 import 'package:navika/widgets/grammar-guide/child-widgets/pronoun-line.dart';
@@ -160,7 +161,8 @@ Widget getPronounSection(BuildContext context) {
 Widget getDescription(BuildContext context) {
   return Column(
     children: [
-      NText([N.NTextSpan(AppLocalizations.of(context)!.nominativDescription)])
+      NText([N.NTextSpan(AppLocalizations.of(context)!.nominativDescription)]),
+      YouTubeLink(context, 'https://www.youtube.com/watch?v=Vj6nT2UTfH0')
     ],
   );
 }
