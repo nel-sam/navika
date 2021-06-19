@@ -40,7 +40,7 @@ class _AkuzativState extends State<Akuzativ> {
           padding: const EdgeInsets.all(8),
           children: [
             NavikaBanner(
-                imagePath: 'assets/banners/pay.jpg',
+                imagePath: CaseImagePaths[CaseTypeEnum.Akuzativ]!,
                 caseName: 'Akuzativ',
                 description: AppLocalizations.of(context)!.akuzativDescription,
                 icons: [

@@ -31,19 +31,14 @@ class ExerciseRowCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isPortrait =
-        MediaQuery.of(context).orientation == Orientation.portrait;
-    final screenWidth = MediaQuery.of(context).size.width;
-
     return Container(
       height: 120,
-      width: isPortrait ? screenWidth : screenWidth / 2 - 20,
       decoration: BoxDecoration(
         border:
             Border.all(color: this.isAllCorrect ? CORRECT_COLOR : WRONG_COLOR),
         borderRadius: BorderRadius.all(Radius.circular(CELL_TEXT_PADDING)),
       ),
-      margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
+      margin: EdgeInsets.only(top: 10),
       child: Column(
         children: [
           getHeader(context),
@@ -60,7 +55,7 @@ class ExerciseRowCard extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: children
-            .map<Widget>((c) => Padding(
+            .map((c) => Padding(
                   padding: const EdgeInsets.all(5),
                   child: c,
                 ))

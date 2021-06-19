@@ -41,7 +41,7 @@ class _LokativState extends State<Lokativ> {
           padding: const EdgeInsets.all(8),
           children: [
             NavikaBanner(
-                imagePath: 'assets/banners/ladies.jpg',
+                imagePath: CaseImagePaths[CaseTypeEnum.Lokativ]!,
                 caseName: 'Lokativ',
                 description: AppLocalizations.of(context)!.lokativDescription,
                 icons: [

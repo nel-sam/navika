@@ -46,3 +46,12 @@ enum PronounEnum {
   They_Fem,
   Oneself,
 }
+
+const CaseImagePaths = <CaseTypeEnum, String>{
+  CaseTypeEnum.Nominativ: 'assets/banners/seaside_city.jpg',
+  CaseTypeEnum.Akuzativ: 'assets/banners/pay.jpg',
+  CaseTypeEnum.Instrumental: 'assets/banners/vespa.jpg',
+  CaseTypeEnum.Lokativ: 'assets/banners/ladies.jpg',
+  CaseTypeEnum.Dativ: 'assets/banners/giving.jpg',
+  CaseTypeEnum.Genitiv: 'assets/banners/bosna.jpg',
+};

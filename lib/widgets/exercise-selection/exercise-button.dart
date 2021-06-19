@@ -6,11 +6,13 @@ class ExerciseButton extends StatelessWidget {
     required this.destination,
     required this.icon,
     required this.label,
+    required this.imagePath,
   }) : super(key: key);
 
   final Widget destination;
   final IconData icon;
   final String label;
+  final String imagePath;
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +21,12 @@ class ExerciseButton extends StatelessWidget {
       child: Container(
         height: 100,
         width: 370,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(imagePath),
+            fit: BoxFit.cover,
+          ),
+        ),
         child: OutlinedButton(
           onPressed: () {
             Navigator.push(

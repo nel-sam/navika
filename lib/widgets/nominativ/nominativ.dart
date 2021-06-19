@@ -67,7 +67,7 @@ class _NominativExerciseState extends State<NominativExercise> {
           padding: const EdgeInsets.all(8),
           children: [
             NavikaBanner(
-                imagePath: 'assets/banners/seaside_city.jpg',
+                imagePath: CaseImagePaths[CaseTypeEnum.Nominativ]!,
                 caseName: 'Nominativ',
                 description: AppLocalizations.of(context)!.nominativDescription,
                 icons: [

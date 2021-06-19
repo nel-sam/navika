@@ -102,7 +102,7 @@ class _GenitivState extends State<Genitiv> {
           padding: const EdgeInsets.all(8),
           children: [
             NavikaBanner(
-                imagePath: 'assets/banners/giving.jpg',
+                imagePath: CaseImagePaths[CaseTypeEnum.Genitiv]!,
                 caseName: 'Genitiv',
                 description: AppLocalizations.of(context)!.genitiveDescription,
                 icons: [

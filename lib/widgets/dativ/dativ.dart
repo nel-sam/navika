@@ -42,7 +42,7 @@ class _DativState extends State<Dativ> {
           padding: const EdgeInsets.all(8),
           children: [
             NavikaBanner(
-                imagePath: 'assets/banners/giving.jpg',
+                imagePath: CaseImagePaths[CaseTypeEnum.Dativ]!,
                 caseName: 'Dativ',
                 description: AppLocalizations.of(context)!.dativDescription,
                 icons: [

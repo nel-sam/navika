@@ -40,7 +40,7 @@ class _InstrumentalState extends State<Instrumental> {
           padding: const EdgeInsets.all(8),
           children: [
             NavikaBanner(
-                imagePath: 'assets/banners/vespa.jpg',
+                imagePath: CaseImagePaths[CaseTypeEnum.Instrumental]!,
                 caseName: 'Instrumental',
                 description:
                     AppLocalizations.of(context)!.instrumentalDescription,

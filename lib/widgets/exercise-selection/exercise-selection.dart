@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:navika/models/enums.dart';
 import 'package:navika/widgets/akusativ/akuzativ.dart';
 import 'package:navika/widgets/dativ/dativ.dart';
 import 'package:navika/widgets/exercise-selection/exercise-button.dart';
@@ -20,23 +21,35 @@ class _ExerciseSelectionState extends State<ExerciseSelection> {
         destination: NominativExercise(),
         icon: Icons.category_outlined,
         label: 'Nominativ',
+        imagePath: CaseImagePaths[CaseTypeEnum.Nominativ]!,
       ),
       ExerciseButton(
           destination: Akuzativ(),
           icon: Icons.remove_red_eye_outlined,
-          label: 'Akuzativ'),
+          label: 'Akuzativ',
+          imagePath: CaseImagePaths[CaseTypeEnum.Akuzativ]!),
       ExerciseButton(
           destination: Instrumental(),
           icon: Icons.handyman_outlined,
-          label: 'Instrumental'),
+          label: 'Instrumental',
+          imagePath: CaseImagePaths[CaseTypeEnum.Instrumental]!),
       ExerciseButton(
           destination: Lokativ(),
           icon: Icons.location_on_outlined,
-          label: 'Lokativ'),
+          label: 'Lokativ',
+          imagePath: CaseImagePaths[CaseTypeEnum.Lokativ]!),
       ExerciseButton(
-          destination: Dativ(), icon: Icons.arrow_forward, label: 'Dativ'),
+        destination: Dativ(),
+        icon: Icons.arrow_forward,
+        label: 'Dativ',
+        imagePath: CaseImagePaths[CaseTypeEnum.Dativ]!,
+      ),
       ExerciseButton(
-          destination: Genitiv(), icon: Icons.coffee, label: 'Genetiv'),
+        destination: Genitiv(),
+        icon: Icons.coffee,
+        label: 'Genetiv',
+        imagePath: CaseImagePaths[CaseTypeEnum.Genitiv]!,
+      ),
       // ExerciseButton(
       //     destination: Akuzativ(),
       //     icon: Icons.call_rounded,
