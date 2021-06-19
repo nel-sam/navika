@@ -16,11 +16,11 @@ Widget FooterButton({
         child: MaterialButton(
           child: Column(
             children: [
-              Icon(icon, color: disabled ? Colors.grey : ICON_COLOR),
+              Icon(icon, color: disabled ? Colors.grey : ACCENT_COLOR),
               Text(
                 text,
                 textAlign: TextAlign.center,
-                style: TextStyle(color: disabled ? Colors.grey : ICON_COLOR),
+                style: TextStyle(color: disabled ? Colors.grey : ACCENT_COLOR),
               ),
             ],
           ),

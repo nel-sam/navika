@@ -5,7 +5,7 @@ const double APPBAR_ELEVATION = 0;
 const BATCH_COUNT = 15;
 const CORRECT_COLOR = Colors.green;
 const WRONG_COLOR = Colors.deepOrange;
-const ICON_COLOR = Colors.blue;
+const ACCENT_COLOR = Colors.blue;
 const CARD_PADDING = 10.0;
 const DECLINED_LETTER_STYLE =
     TextStyle(fontStyle: FontStyle.italic, fontWeight: FontWeight.bold);
@@ -43,4 +43,4 @@ const APP_BAR_TEXTTHEME_LIGHT = TextTheme(
   headline6: TextStyle(color: Colors.black),
 );
 const APP_BAR_ICONTHEME_DARK = IconThemeData();
-const APP_BAR_ICONTHEME_LIGHT = IconThemeData(color: ICON_COLOR);
+const APP_BAR_ICONTHEME_LIGHT = IconThemeData(color: ACCENT_COLOR);

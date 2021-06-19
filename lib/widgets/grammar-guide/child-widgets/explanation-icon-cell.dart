@@ -20,7 +20,7 @@ class ExplanationIconCell extends StatelessWidget {
           message: tooltip,
           child: Icon(
             icon,
-            color: ICON_COLOR,
+            color: ACCENT_COLOR,
           ),
         ),
       ),

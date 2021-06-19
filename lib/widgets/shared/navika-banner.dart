@@ -36,7 +36,7 @@ Widget NavikaBanner({
                           padding: EdgeInsets.only(right: 5),
                           child: Icon(
                             icon,
-                            color: ICON_COLOR,
+                            color: ACCENT_COLOR,
                           )))
                       .toList()),
             ),

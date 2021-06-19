@@ -7,7 +7,7 @@ Widget SectionHeader(String text) {
     padding: const EdgeInsets.only(bottom: 12),
     child: Container(
       height: 40,
-      color: ICON_COLOR,
+      color: ACCENT_COLOR,
       child: Row(
         children: [
           Padding(
