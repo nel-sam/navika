@@ -12,6 +12,8 @@ import 'package:navika/widgets/grammar-guide/content/nominativ-content.dart';
 import 'package:navika/widgets/shared/home-button.dart';
 import 'package:navika/widgets/shared/navika-subheader.dart';
 
+const double CONTENT_HEIGHT = 850.0;
+
 const CasesInOrder = [
   CaseTypeEnum.Nominativ,
   CaseTypeEnum.Akuzativ,
@@ -74,13 +76,15 @@ class _GrammarGuideState extends State<GrammarGuide> {
   }
 
   double getScrollPoint(CaseTypeEnum caseType) {
+    // This is like this in case detecting widget
+    // height becomes easier in the future
     var sizeMap = <CaseTypeEnum, double>{
-      CaseTypeEnum.Nominativ: 870,
-      CaseTypeEnum.Akuzativ: 860,
-      CaseTypeEnum.Instrumental: 770,
-      CaseTypeEnum.Lokativ: 720,
-      CaseTypeEnum.Dativ: 770,
-      CaseTypeEnum.Genitiv: 770,
+      CaseTypeEnum.Nominativ: CONTENT_HEIGHT,
+      CaseTypeEnum.Akuzativ: CONTENT_HEIGHT,
+      CaseTypeEnum.Instrumental: CONTENT_HEIGHT,
+      CaseTypeEnum.Lokativ: CONTENT_HEIGHT,
+      CaseTypeEnum.Dativ: CONTENT_HEIGHT,
+      CaseTypeEnum.Genitiv: CONTENT_HEIGHT,
     };
 
     double scrollPoint = 0;
@@ -126,6 +130,18 @@ class _GrammarGuideState extends State<GrammarGuide> {
     });
   }
 
+  contentSection(Widget header, Widget content) {
+    return Container(
+      height: CONTENT_HEIGHT,
+      child: Column(
+        children: [
+          header,
+          content,
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -137,18 +153,30 @@ class _GrammarGuideState extends State<GrammarGuide> {
           padding: EdgeInsets.all(20.0),
           child: Column(
             children: [
-              NSubHeader(text: 'Nominativ'),
-              NominativGrammarGuideContent(context),
-              NSubHeader(text: 'Akusativ'),
-              AkusativGrammarGuideContent(context),
-              NSubHeader(text: 'Instrumental'),
-              InstrumentalGrammarGuideContent(context),
-              NSubHeader(text: 'Lokativ'),
-              LokativGrammarGuideContent(context),
-              NSubHeader(text: 'Dativ'),
-              DativGrammarGuideContent(context),
-              NSubHeader(text: 'Genetiv'),
-              GenetivGrammarGuideContent(context),
+              contentSection(
+                NSubHeader(text: 'Nominativ'),
+                NominativGrammarGuideContent(context),
+              ),
+              contentSection(
+                NSubHeader(text: 'Akusativ'),
+                AkusativGrammarGuideContent(context),
+              ),
+              contentSection(
+                NSubHeader(text: 'Instrumental'),
+                InstrumentalGrammarGuideContent(context),
+              ),
+              contentSection(
+                NSubHeader(text: 'Lokativ'),
+                LokativGrammarGuideContent(context),
+              ),
+              contentSection(
+                NSubHeader(text: 'Dativ'),
+                DativGrammarGuideContent(context),
+              ),
+              contentSection(
+                NSubHeader(text: 'Genetiv'),
+                GenetivGrammarGuideContent(context),
+              ),
             ],
           ),
         ),
