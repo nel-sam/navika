@@ -3,6 +3,7 @@ import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:navika/widgets/grammar-guide/child-widgets/section-header.dart';
 import 'package:navika/widgets/grammar-guide/content/akusativ-content.dart';
 import 'package:navika/widgets/grammar-guide/content/dativ-content.dart';
 import 'package:navika/widgets/grammar-guide/content/genetiv-content.dart';
@@ -10,9 +11,8 @@ import 'package:navika/widgets/grammar-guide/content/instrumental-content.dart';
 import 'package:navika/widgets/grammar-guide/content/lokativ-content.dart';
 import 'package:navika/widgets/grammar-guide/content/nominativ-content.dart';
 import 'package:navika/widgets/shared/home-button.dart';
-import 'package:navika/widgets/shared/navika-subheader.dart';
 
-const double CONTENT_HEIGHT = 850.0;
+const double CONTENT_HEIGHT = 840.0;
 
 const CasesInOrder = [
   CaseTypeEnum.Nominativ,
@@ -154,27 +154,27 @@ class _GrammarGuideState extends State<GrammarGuide> {
           child: Column(
             children: [
               contentSection(
-                NSubHeader(text: 'Nominativ'),
+                SectionHeader('Nominativ'),
                 NominativGrammarGuideContent(context),
               ),
               contentSection(
-                NSubHeader(text: 'Akusativ'),
+                SectionHeader('Akusativ'),
                 AkusativGrammarGuideContent(context),
               ),
               contentSection(
-                NSubHeader(text: 'Instrumental'),
+                SectionHeader('Instrumental'),
                 InstrumentalGrammarGuideContent(context),
               ),
               contentSection(
-                NSubHeader(text: 'Lokativ'),
+                SectionHeader('Lokativ'),
                 LokativGrammarGuideContent(context),
               ),
               contentSection(
-                NSubHeader(text: 'Dativ'),
+                SectionHeader('Dativ'),
                 DativGrammarGuideContent(context),
               ),
               contentSection(
-                NSubHeader(text: 'Genetiv'),
+                SectionHeader('Genetiv'),
                 GenetivGrammarGuideContent(context),
               ),
             ],

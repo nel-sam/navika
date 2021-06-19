@@ -5,7 +5,7 @@ import 'package:navika/utilities/navika-helpers.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/widgets/grammar-guide/child-widgets/declension-table.dart';
 import 'package:navika/widgets/grammar-guide/child-widgets/youtube-link.dart';
-import 'package:navika/widgets/shared/navika-subheader.dart';
+import 'package:navika/widgets/grammar-guide/child-widgets/navika-subheader.dart';
 import 'package:navika/widgets/shared/navika-text.dart';
 import 'package:navika/widgets/grammar-guide/child-widgets/pronoun-line.dart';
 

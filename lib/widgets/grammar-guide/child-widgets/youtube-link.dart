@@ -8,6 +8,15 @@ Widget YouTubeLink(BuildContext context, String url) {
     onPressed: () async {
       await canLaunch(url) ? await launch(url) : throw 'Could not launch $url';
     },
-    child: Text(AppLocalizations.of(context)!.recommendedVideo),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(right: 8.0),
+          child: Icon(Icons.ondemand_video),
+        ),
+        Text(AppLocalizations.of(context)!.recommendedVideo),
+      ],
+    ),
   );
 }
