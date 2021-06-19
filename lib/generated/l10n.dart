@@ -379,6 +379,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Play Recommended Video`
+  String get recommendedVideo {
+    return Intl.message(
+      'Play Recommended Video',
+      name: 'recommendedVideo',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

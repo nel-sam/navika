@@ -60,6 +60,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "pronouns_You": MessageLookupByLibrary.simpleMessage("You"),
         "pronouns_You_Pl": MessageLookupByLibrary.simpleMessage("You (pl)"),
         "pronouns_oneself": MessageLookupByLibrary.simpleMessage("Oneself"),
+        "recommendedVideo":
+            MessageLookupByLibrary.simpleMessage("Play Recommended Video"),
         "refresh": MessageLookupByLibrary.simpleMessage("Refresh"),
         "sameAsNom": MessageLookupByLibrary.simpleMessage(
             "The same as in the nominative case"),
