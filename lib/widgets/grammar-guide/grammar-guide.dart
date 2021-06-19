@@ -98,6 +98,8 @@ class _GrammarGuideState extends State<GrammarGuide> {
   }
 
   _moveUp() {
+    if (isAtTop) return;
+
     setState(() {
       isAtBottom = false;
 
@@ -110,6 +112,8 @@ class _GrammarGuideState extends State<GrammarGuide> {
   }
 
   _moveDown() {
+    if (isAtBottom) return;
+
     setState(() {
       isAtTop = false;
 
@@ -157,7 +161,7 @@ class _GrammarGuideState extends State<GrammarGuide> {
                   const EdgeInsets.only(bottom: FOOTER_ICON_BOTTOM_PADDING),
               child: TextButton.icon(
                 onPressed: () {
-                  if (!isAtTop) _moveUp();
+                  _moveUp();
                 },
                 icon: Icon(Icons.arrow_upward,
                     color: isAtTop ? Colors.grey : ICON_COLOR),
@@ -170,7 +174,7 @@ class _GrammarGuideState extends State<GrammarGuide> {
                   const EdgeInsets.only(bottom: FOOTER_ICON_BOTTOM_PADDING),
               child: TextButton.icon(
                 onPressed: () {
-                  if (!isAtBottom) _moveDown();
+                  _moveDown();
                 },
                 icon: Icon(Icons.arrow_downward,
                     color: isAtBottom ? Colors.grey : ICON_COLOR),
