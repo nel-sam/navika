@@ -40,6 +40,8 @@ class ExerciseRowCard extends StatelessWidget {
       ),
       margin: EdgeInsets.only(top: 10),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           getHeader(context),
           getBody(),
@@ -57,7 +59,7 @@ class ExerciseRowCard extends StatelessWidget {
         children: children
             .map((c) => Padding(
                   padding: const EdgeInsets.all(5),
-                  child: c,
+                  child: c
                 ))
             .toList(),
       ),
