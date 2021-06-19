@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:navika/constants.dart';
 import 'package:navika/lang_data/word-bank.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/shared/footer.dart';
-
-import '../../constants.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:navika/widgets/shared/navika-banner.dart';
 
 String getSentenceStarter(Noun noun, bool isPlural) {
   return 'Govorim o';
@@ -38,7 +39,17 @@ class _LokativState extends State<Lokativ> {
       body: Center(
         child: ListView(
           padding: const EdgeInsets.all(8),
-          children: N.getPANListItems(widget.listItems, CaseTypeEnum.Lokativ),
+          children: [
+            NavikaBanner(
+                imagePath: 'assets/banners/ladies.jpg',
+                caseName: 'Lokativ',
+                description: AppLocalizations.of(context)!.lokativDescription,
+                icons: [
+                  Icons.location_on_outlined,
+                  Icons.message,
+                ]),
+            ...N.getPANListItems(widget.listItems, CaseTypeEnum.Lokativ),
+          ],
         ),
       ),
       persistentFooterButtons: NavikaChildFooterButtons(

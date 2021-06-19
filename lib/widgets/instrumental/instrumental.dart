@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:navika/constants.dart';
 import 'package:navika/lang_data/word-bank.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/shared/footer.dart';
-
-import '../../constants.dart';
+import 'package:navika/widgets/shared/navika-banner.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 String getSentenceStarter(Noun noun, bool isPlural) {
   return 'Idem sa';
@@ -37,8 +38,19 @@ class _InstrumentalState extends State<Instrumental> {
       body: Center(
         child: ListView(
           padding: const EdgeInsets.all(8),
-          children:
-              N.getPANListItems(widget.listItems, CaseTypeEnum.Instrumental),
+          children: [
+            NavikaBanner(
+                imagePath: 'assets/banners/vespa.jpg',
+                caseName: 'Instrumental',
+                description:
+                    AppLocalizations.of(context)!.instrumentalDescription,
+                icons: [
+                  Icons.handyman_outlined,
+                  Icons.train,
+                  Icons.motorcycle,
+                ]),
+            ...N.getPANListItems(widget.listItems, CaseTypeEnum.Instrumental),
+          ],
         ),
       ),
       persistentFooterButtons: NavikaChildFooterButtons(

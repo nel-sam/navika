@@ -4,7 +4,7 @@ import 'package:navika/models/enums.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/widgets/grammar-guide/child-widgets/section-header.dart';
-import 'package:navika/widgets/grammar-guide/content/akusativ-content.dart';
+import 'package:navika/widgets/grammar-guide/content/akuzativ-content.dart';
 import 'package:navika/widgets/grammar-guide/content/dativ-content.dart';
 import 'package:navika/widgets/grammar-guide/content/genetiv-content.dart';
 import 'package:navika/widgets/grammar-guide/content/instrumental-content.dart';
@@ -159,8 +159,8 @@ class _GrammarGuideState extends State<GrammarGuide> {
                 NominativGrammarGuideContent(context),
               ),
               contentSection(
-                SectionHeader('Akusativ'),
-                AkusativGrammarGuideContent(context),
+                SectionHeader('Akuzativ'),
+                AkuzativGrammarGuideContent(context),
               ),
               contentSection(
                 SectionHeader('Instrumental'),

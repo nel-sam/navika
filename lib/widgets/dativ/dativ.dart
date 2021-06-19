@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:navika/constants.dart';
 import 'package:navika/lang_data/word-bank.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/shared/footer.dart';
-
-import '../../constants.dart';
+import 'package:navika/widgets/shared/navika-banner.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 String getSentenceStarter(Noun noun, bool isPlural) {
   if (noun.isAnimate) return 'Daj ';
@@ -39,7 +40,18 @@ class _DativState extends State<Dativ> {
       body: Center(
         child: ListView(
           padding: const EdgeInsets.all(8),
-          children: N.getPANListItems(widget.listItems, CaseTypeEnum.Dativ),
+          children: [
+            NavikaBanner(
+                imagePath: 'assets/banners/giving.jpg',
+                caseName: 'Dativ',
+                description: AppLocalizations.of(context)!.dativDescription,
+                icons: [
+                  Icons.person,
+                  Icons.arrow_forward,
+                  Icons.people,
+                ]),
+            ...N.getPANListItems(widget.listItems, CaseTypeEnum.Dativ),
+          ],
         ),
       ),
       persistentFooterButtons: NavikaChildFooterButtons(

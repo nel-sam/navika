@@ -141,10 +141,10 @@ class S {
   }
 
   /// `Alive/animate masculine nouns in singular get + a, and their adjectives + og/eg. Inanimate objects stay the same as Nominativ`
-  String get animateAkusativ {
+  String get animateAkuzativ {
     return Intl.message(
       'Alive/animate masculine nouns in singular get + a, and their adjectives + og/eg. Inanimate objects stay the same as Nominativ',
-      name: 'animateAkusativ',
+      name: 'animateAkuzativ',
       desc: '',
       args: [],
     );

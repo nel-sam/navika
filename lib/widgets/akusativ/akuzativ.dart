@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:navika/constants.dart';
 import 'package:navika/lang_data/word-bank.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/shared/footer.dart';
-
-import '../../constants.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:navika/widgets/shared/navika-banner.dart';
 
 String getSentenceStarter(Noun noun, bool isPlural) {
   return 'Ja vidim';
@@ -26,13 +27,6 @@ class Akuzativ extends StatefulWidget {
 class _AkuzativState extends State<Akuzativ> {
   @override
   Widget build(BuildContext context) {
-    final isPortrait =
-        MediaQuery.of(context).orientation == Orientation.portrait;
-    var size = MediaQuery.of(context).size;
-    /*24 is for notification bar on Android*/
-    final double itemHeight = (size.height - kToolbarHeight - 24) / 2;
-    final double itemWidth = size.width / 2;
-
     return Scaffold(
       appBar: AppBar(
         elevation: APPBAR_ELEVATION,
@@ -41,24 +35,24 @@ class _AkuzativState extends State<Akuzativ> {
         iconTheme: N.getAppBarIconTheme(context),
         title: Text('Akuzativ'),
       ),
-      body: isPortrait
-          ? Center(
-              child: ListView(
-                padding: const EdgeInsets.all(8),
-                children:
-                    N.getPANListItems(widget.listItems, CaseTypeEnum.Akuzativ),
-              ),
-            )
-          : Container(
-              child: GridView.count(
-                childAspectRatio: (itemWidth / itemHeight),
-                padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
-                crossAxisSpacing: 10,
-                crossAxisCount: 2,
-                children:
-                    N.getPANListItems(widget.listItems, CaseTypeEnum.Akuzativ),
-              ),
-            ),
+      body: Center(
+        child: ListView(
+          padding: const EdgeInsets.all(8),
+          children: [
+            NavikaBanner(
+                imagePath: 'assets/banners/pay.jpg',
+                caseName: 'Akuzativ',
+                description: AppLocalizations.of(context)!.akuzativDescription,
+                icons: [
+                  Icons.remove_red_eye_outlined,
+                  Icons.car_rental,
+                  Icons.arrow_forward,
+                  Icons.euro,
+                ]),
+            ...N.getPANListItems(widget.listItems, CaseTypeEnum.Akuzativ)
+          ],
+        ),
+      ),
       persistentFooterButtons: NavikaChildFooterButtons(
         context: context,
         caseType: CaseTypeEnum.Akuzativ,

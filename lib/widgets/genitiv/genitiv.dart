@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:navika/constants.dart';
 import 'package:navika/lang_data/word-bank.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/utilities/navika-helpers.dart';
+import 'package:navika/widgets/genitiv/genitiv-list-item.dart';
 import 'package:navika/widgets/shared/footer.dart';
-
-import '../../constants.dart';
-import 'genitiv-list-item.dart';
+import 'package:navika/widgets/shared/navika-banner.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class GenitivExerciseItem {
   DeclinableWord pronoun;
@@ -99,7 +100,16 @@ class _GenitivState extends State<Genitiv> {
       body: Center(
         child: ListView(
           padding: const EdgeInsets.all(8),
-          children: getListItems(widget.listItems),
+          children: [
+            NavikaBanner(
+                imagePath: 'assets/banners/giving.jpg',
+                caseName: 'Genitiv',
+                description: AppLocalizations.of(context)!.genitiveDescription,
+                icons: [
+                  Icons.coffee,
+                ]),
+            ...getListItems(widget.listItems),
+          ],
         ),
       ),
       persistentFooterButtons: NavikaChildFooterButtons(

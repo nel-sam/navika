@@ -10,7 +10,7 @@ import 'package:navika/widgets/shared/navika-text.dart';
 import 'package:navika/widgets/grammar-guide/child-widgets/pronoun-line.dart';
 
 // ignore: non_constant_identifier_names
-Widget AkusativGrammarGuideContent(BuildContext context) {
+Widget AkuzativGrammarGuideContent(BuildContext context) {
   return Column(
     children: [
       getDescription(context),
@@ -23,7 +23,7 @@ Widget AkusativGrammarGuideContent(BuildContext context) {
 Widget getDeclensionTable(BuildContext context) {
   return DeclensionTable(
     showSameAsNomNote: true,
-    note: AppLocalizations.of(context)!.animateAkusativ,
+    note: AppLocalizations.of(context)!.animateAkuzativ,
     masculineSingular: [
       NText([
         N.NTextSpan('Star'),

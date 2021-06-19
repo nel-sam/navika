@@ -24,7 +24,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "adjectives": MessageLookupByLibrary.simpleMessage("Adjetivos"),
         "akuzativDescription": MessageLookupByLibrary.simpleMessage(
             "Los objetos directos deberían estar en el caso acusativo. También se usa para indicar un destino cuando hay movimiento hacia ese destino."),
-        "animateAkusativ": MessageLookupByLibrary.simpleMessage(
+        "animateAkuzativ": MessageLookupByLibrary.simpleMessage(
             "Sustantivos animados/vivos masculinos en singular + a, y sus adjetivos + og/eg. Los objectos no animados/vivos son igual al Nominativ"),
         "appTitle": MessageLookupByLibrary.simpleMessage("Navika"),
         "close": MessageLookupByLibrary.simpleMessage("Cerrar"),
