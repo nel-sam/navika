@@ -42,8 +42,7 @@ List<GenitivListItem> getListItems(List<GenitivExerciseItem> listItems) {
       .shuffleList(listItems)
       .map(
         (e) => GenitivListItem(
-            sentenceStarter:
-                getSentenceStarter(e.noun2, e.isPlural, e.pronound),
+            sentenceStarter: getSentenceStarter(e.noun2, e.isPlural, e.pronoun),
             correctPronounValue: e.pronoun.getDeclension(e.gender, e.isPlural,
                 CaseTypeEnum.Nominativ, e.noun2.isAnimate),
             correctNoun1Value:

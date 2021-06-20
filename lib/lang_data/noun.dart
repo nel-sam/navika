@@ -432,38 +432,38 @@ final List<Noun> nounWordBank = [
       plural: '',
     ),
   ),
-  Noun(
-    dictionary: 'čovjek',
-    tags: [Tags.Human, Tags.Adult],
-    gender: GenderEnum.Masculine,
-    isAnimate: true,
-    nominativ: new DeclensionByCount(
-      singular: 'čovjek',
-      plural: 'ljudi',
-    ),
-    akuzativ: new DeclensionByCount(
-      singular: 'čovjeka',
-      plural: 'ljude',
-    ),
-    instrumental: new DeclensionByCount(
-      singular: 'čovjekom',
-      plural: 'ljudima',
-    ),
-    lokativ: new DeclensionByCount(
-      singular: 'čovjeku',
-      plural: 'ljudima',
-    ),
-    dativ: new DeclensionByCount(
-      singular: 'čovjeku',
-      plural: 'ljudima',
-    ),
-    genitiv: new DeclensionByCount(
-      singular: 'čovjeka',
-      plural: 'ljudi',
-    ),
-    vokativ: new DeclensionByCount(
-      singular: 'čovječe',
-      plural: 'ljudi',
-    ),
-  ),
+  // Noun(
+  //   dictionary: 'čovjek',
+  //   tags: [Tags.Human, Tags.Adult],
+  //   gender: GenderEnum.Masculine,
+  //   isAnimate: true,
+  //   nominativ: new DeclensionByCount(
+  //     singular: 'čovjek',
+  //     plural: 'ljudi',
+  //   ),
+  //   akuzativ: new DeclensionByCount(
+  //     singular: 'čovjeka',
+  //     plural: 'ljude',
+  //   ),
+  //   instrumental: new DeclensionByCount(
+  //     singular: 'čovjekom',
+  //     plural: 'ljudima',
+  //   ),
+  //   lokativ: new DeclensionByCount(
+  //     singular: 'čovjeku',
+  //     plural: 'ljudima',
+  //   ),
+  //   dativ: new DeclensionByCount(
+  //     singular: 'čovjeku',
+  //     plural: 'ljudima',
+  //   ),
+  //   genitiv: new DeclensionByCount(
+  //     singular: 'čovjeka',
+  //     plural: 'ljudi',
+  //   ),
+  //   vokativ: new DeclensionByCount(
+  //     singular: 'čovječe',
+  //     plural: 'ljudi',
+  //   ),
+  // ),
 ];
