@@ -15,6 +15,7 @@ enum Tags {
   NaturalFeature,
   FlatSurface,
   Furniture,
+  BodyPart,
   Portable,
   Location,
   Activity,

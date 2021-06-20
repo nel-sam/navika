@@ -9,6 +9,9 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/widgets/shared/navika-banner.dart';
 
 String getSentenceStarter(Noun noun, bool isPlural) {
+  if (noun.tags.contains(Tags.Location)) {
+    return 'Idemo na ';
+  }
   return 'Ja vidim';
 }
 
