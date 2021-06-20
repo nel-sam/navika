@@ -21,7 +21,7 @@ class _ExerciseSelectionState extends State<ExerciseSelection> {
     var buttons = <Widget>[
       ExerciseButton(
         destination: GrammarGuide(),
-        icon: Icons.book,
+        icon: Icons.menu_book,
         label: AppLocalizations.of(context)!.grammarGuide,
         imagePath: 'assets/banners/books.jpg',
       ),

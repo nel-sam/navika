@@ -327,43 +327,44 @@ final List<Noun> nounWordBank = [
       plural: 'muškarci',
     ),
   ),
-  Noun(
-    dictionary: 'more',
-    tags: [
-      Tags.Location,
-      Tags.NaturalFeature,
-    ],
-    gender: GenderEnum.Neuter,
-    isAnimate: false,
-    nominativ: new DeclensionByCount(
-      singular: 'more',
-      plural: 'mora',
-    ),
-    akuzativ: new DeclensionByCount(
-      singular: 'more',
-      plural: 'mora',
-    ),
-    instrumental: new DeclensionByCount(
-      singular: 'morem',
-      plural: 'morima',
-    ),
-    lokativ: new DeclensionByCount(
-      singular: 'moru',
-      plural: 'morima',
-    ),
-    dativ: new DeclensionByCount(
-      singular: 'moru',
-      plural: 'morima',
-    ),
-    genitiv: new DeclensionByCount(
-      singular: 'more',
-      plural: 'mora',
-    ),
-    vokativ: new DeclensionByCount(
-      singular: 'moro',
-      plural: 'more',
-    ),
-  ),
+  // TODO: Fix more declensions
+  // Noun(
+  //   dictionary: 'more',
+  //   tags: [
+  //     Tags.Location,
+  //     Tags.NaturalFeature,
+  //   ],
+  //   gender: GenderEnum.Neuter,
+  //   isAnimate: false,
+  //   nominativ: new DeclensionByCount(
+  //     singular: 'more',
+  //     plural: 'mora',
+  //   ),
+  //   akuzativ: new DeclensionByCount(
+  //     singular: 'more',
+  //     plural: 'mora',
+  //   ),
+  //   instrumental: new DeclensionByCount(
+  //     singular: 'morem',
+  //     plural: 'morima',
+  //   ),
+  //   lokativ: new DeclensionByCount(
+  //     singular: 'moru',
+  //     plural: 'morima',
+  //   ),
+  //   dativ: new DeclensionByCount(
+  //     singular: 'moru',
+  //     plural: 'morima',
+  //   ),
+  //   genitiv: new DeclensionByCount(
+  //     singular: 'mora',
+  //     plural: 'mora',
+  //   ),
+  //   vokativ: new DeclensionByCount(
+  //     singular: '',
+  //     plural: '',
+  //   ),
+  // ),
   Noun(
     dictionary: 'ljubav',
     tags: [Tags.Emotion],

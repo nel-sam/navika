@@ -14,7 +14,7 @@
     "instrumentalDescription": "Para indicar herramientas, formas de transporte, o indicar un lugar que se cruza.",
     "lokativDescription": "Lokativ se usa cuando se habla de la ubicación donde algo ocurre, algo está ubicado, o estará ubicado. Tambíen se usa el Lokativ para decir 'sobre' como en la frase 'hablando sobre un tema'. El dativ y el lokativ se declinan igual",
     "dativDescription": "Dativ indica el objecto indirecto y se usa para dar, mostrar, o hacer algo a alguien/algo. El dativ y el lokativ se declinan igual.",
-    "genitiveDescription": "El caso genitivo se usa con preposiciones e indica posesión u origin de algo.",
+    "genitiveDescription": "El caso genitivo se usa con preposiciones e indica posesión, origin, o falta de algo (nema, bez). Si se usa sin preposiciones, puede indicar el material de lo cual está hecho algo.",
     "pronouns_I": "Yo",
     "pronouns_You": "Tú",
     "pronouns_He": "Él",
