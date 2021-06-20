@@ -39,7 +39,7 @@ class _DativState extends State<Dativ> {
       ),
       body: Center(
         child: ListView(
-          padding: const EdgeInsets.all(8),
+          padding: EXERCISE_LIST_PADDING,
           children: [
             NavikaBanner(
                 imagePath: CaseImagePaths[CaseTypeEnum.Dativ]!,

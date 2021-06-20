@@ -19,7 +19,7 @@ class CaseDropDown extends StatelessWidget {
   Widget build(BuildContext context) {
     return DropdownButton(
       value: activeValue,
-      iconSize: 24,
+      iconSize: 0,
       underline: Container(
         height: 1,
         color: activeValue == correctValue ? CORRECT_COLOR : WRONG_COLOR,

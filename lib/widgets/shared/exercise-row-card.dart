@@ -31,21 +31,36 @@ class ExerciseRowCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 120,
-      decoration: BoxDecoration(
-        border:
-            Border.all(color: this.isAllCorrect ? CORRECT_COLOR : WRONG_COLOR),
-        borderRadius: BorderRadius.all(Radius.circular(CELL_TEXT_PADDING)),
-      ),
-      margin: EdgeInsets.only(top: 10),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          getHeader(context),
-          getBody(),
-        ],
+    final bgColor = N.isDarkTheme(context)
+        ? Theme.of(context).backgroundColor
+        : Colors.white;
+
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8.0),
+      child: Container(
+        height: 120,
+        decoration: BoxDecoration(
+          color: bgColor,
+          boxShadow: [
+            BoxShadow(
+              color: this.isAllCorrect
+                  ? CORRECT_COLOR.withOpacity(0.4)
+                  : WRONG_COLOR.withOpacity(0.4),
+              spreadRadius: 3,
+              blurRadius: 1,
+            ),
+          ],
+          //borderRadius: BorderRadius.all(Radius.circular(CELL_TEXT_PADDING)),
+        ),
+        margin: EdgeInsets.only(top: 10),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            getHeader(context),
+            getBody(),
+          ],
+        ),
       ),
     );
   }
@@ -57,60 +72,53 @@ class ExerciseRowCard extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: children
-            .map((c) => Padding(
-                  padding: const EdgeInsets.all(5),
-                  child: c
-                ))
+            .map((c) => Padding(padding: const EdgeInsets.all(5), child: c))
             .toList(),
       ),
     );
   }
 
-  Container getHeader(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: this.isAllCorrect ? CORRECT_COLOR : WRONG_COLOR,
-        border:
-            Border.all(color: this.isAllCorrect ? CORRECT_COLOR : WRONG_COLOR),
-        borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(CELL_TEXT_PADDING),
-            topRight: Radius.circular(CELL_TEXT_PADDING),
-            bottomLeft: Radius.circular(0),
-            bottomRight: Radius.circular(0)),
+  // ignore: non_constant_identifier_names
+  Widget IconTextPair(IconData icon, String text) {
+    const double padding = 10;
+    const double iconPadding = 4;
+
+    return Padding(
+      padding: const EdgeInsets.only(left: padding, right: padding),
+      child: Row(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(right: iconPadding),
+            child: Icon(
+              icon,
+              color: ACCENT_COLOR,
+            ),
+          ),
+          Text(text),
+        ],
       ),
+    );
+  }
+
+  Widget getHeader(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 12, left: 10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Padding(
-            padding: EdgeInsets.all(CARD_PADDING),
-            child: this.isAllCorrect
-                ? Icon(Icons.check_circle_outline)
-                : Icon(Icons.cancel_sharp),
+          this.isAllCorrect
+              ? Icon(Icons.check_circle_outline, color: CORRECT_COLOR)
+              : Icon(Icons.close_outlined, color: WRONG_COLOR),
+          IconTextPair(
+            N.getGenderIcon(this.gender),
+            getGenderString(context),
           ),
-          Row(children: [
-            Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(
-                      CARD_PADDING * 3, CARD_PADDING, 5, CARD_PADDING),
-                  child: Icon(N.getGenderIcon(this.gender)),
-                ),
-                Text(getGenderString(context)),
-              ],
-            ),
-            Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(
-                      CARD_PADDING * 3, CARD_PADDING, 5, CARD_PADDING),
-                  child: Icon(isPlural ? PLURAL_ICON : SINGULAR_ICON),
-                ),
-                Text(isPlural
-                    ? AppLocalizations.of(context)!.plural
-                    : AppLocalizations.of(context)!.singular),
-              ],
-            ),
-          ])
+          IconTextPair(
+            isPlural ? PLURAL_ICON : SINGULAR_ICON,
+            isPlural
+                ? AppLocalizations.of(context)!.plural
+                : AppLocalizations.of(context)!.singular,
+          ),
         ],
       ),
     );

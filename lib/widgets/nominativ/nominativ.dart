@@ -64,7 +64,7 @@ class _NominativExerciseState extends State<NominativExercise> {
       ),
       body: Center(
         child: ListView(
-          padding: const EdgeInsets.all(8),
+          padding: EXERCISE_LIST_PADDING,
           children: [
             NavikaBanner(
                 imagePath: CaseImagePaths[CaseTypeEnum.Nominativ]!,

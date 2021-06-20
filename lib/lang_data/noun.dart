@@ -45,7 +45,7 @@ final List<Noun> nounWordBank = [
   Noun(
     dictionary: 'Bosna',
     tags: [Tags.Location, Tags.Country],
-    gender: GenderEnum.Masculine,
+    gender: GenderEnum.Feminine,
     isAnimate: false,
     nominativ: new DeclensionByCount(
       singular: 'Bosna',
