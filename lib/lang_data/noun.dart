@@ -9,6 +9,74 @@ import 'package:navika/models/models.dart';
 
 final List<Noun> nounWordBank = [
   Noun(
+    dictionary: 'ananas',
+    tags: [Tags.Food, Tags.Portable],
+    gender: GenderEnum.Masculine,
+    isAnimate: false,
+    nominativ: new DeclensionByCount(
+      singular: 'ananas',
+      plural: 'ananasi',
+    ),
+    genitiv: new DeclensionByCount(
+      singular: 'ananasa',
+      plural: 'ananasa',
+    ),
+    dativ: new DeclensionByCount(
+      singular: 'ananasu',
+      plural: 'ananasima',
+    ),
+    akuzativ: new DeclensionByCount(
+      singular: 'ananas',
+      plural: 'ananase',
+    ),
+    lokativ: new DeclensionByCount(
+      singular: 'ananasu',
+      plural: 'ananasima',
+    ),
+    vokativ: new DeclensionByCount(
+      singular: 'ananase',
+      plural: 'ananasi',
+    ),
+    instrumental: new DeclensionByCount(
+      singular: 'ananasom',
+      plural: 'ananasima',
+    ),
+  ),
+  Noun(
+    dictionary: 'Bosna',
+    tags: [Tags.Location, Tags.Country],
+    gender: GenderEnum.Masculine,
+    isAnimate: false,
+    nominativ: new DeclensionByCount(
+      singular: 'Bosna',
+      plural: '',
+    ),
+    genitiv: new DeclensionByCount(
+      singular: 'Bosne',
+      plural: '',
+    ),
+    dativ: new DeclensionByCount(
+      singular: 'Bosni',
+      plural: '',
+    ),
+    akuzativ: new DeclensionByCount(
+      singular: 'Bosnu',
+      plural: '',
+    ),
+    lokativ: new DeclensionByCount(
+      singular: 'Bosni',
+      plural: '',
+    ),
+    vokativ: new DeclensionByCount(
+      singular: 'Bosno',
+      plural: '',
+    ),
+    instrumental: new DeclensionByCount(
+      singular: 'Bosnom',
+      plural: '',
+    ),
+  ),
+  Noun(
     dictionary: 'slik',
     tags: [Tags.Thing, Tags.Portable],
     gender: GenderEnum.Masculine,

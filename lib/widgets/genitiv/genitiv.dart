@@ -24,7 +24,7 @@ class GenitivExerciseItem {
       required this.noun2});
 }
 
-String getSentenceStarter(Noun noun, bool isPlural) {
+String getSentenceStarter(Noun noun, bool isPlural, DeclinableWord? pronoun) {
   if (isPlural) return 'To su';
   return 'To je';
 }
@@ -42,7 +42,8 @@ List<GenitivListItem> getListItems(List<GenitivExerciseItem> listItems) {
       .shuffleList(listItems)
       .map(
         (e) => GenitivListItem(
-            sentenceStarter: getSentenceStarter(e.noun2, e.isPlural),
+            sentenceStarter:
+                getSentenceStarter(e.noun2, e.isPlural, e.pronound),
             correctPronounValue: e.pronoun.getDeclension(e.gender, e.isPlural,
                 CaseTypeEnum.Nominativ, e.noun2.isAnimate),
             correctNoun1Value:
@@ -73,12 +74,15 @@ List<GenitivExerciseItem> prepareData(WordBank bank) {
             gender: noun2.gender,
             isPlural: false,
             noun2: noun2));
-        listItems.add(GenitivExerciseItem(
-            pronoun: pp,
-            noun1: noun1,
-            gender: noun2.gender,
-            isPlural: true,
-            noun2: noun2));
+
+        if (noun1.nominativ.plural != '' && noun2.nominativ.plural != '') {
+          listItems.add(GenitivExerciseItem(
+              pronoun: pp,
+              noun1: noun1,
+              gender: noun2.gender,
+              isPlural: true,
+              noun2: noun2));
+        }
       });
     });
   });

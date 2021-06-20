@@ -8,7 +8,7 @@ import 'package:navika/widgets/shared/footer.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/widgets/shared/navika-banner.dart';
 
-String getSentenceStarter(Noun noun, bool isPlural) {
+String getSentenceStarter(Noun noun, bool isPlural, DeclinableWord? pronoun) {
   return 'Govorim o';
 }
 

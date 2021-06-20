@@ -21,6 +21,7 @@ enum Tags {
   Activity,
   Vehicle,
   Emotion,
+  Country,
   Adult,
   Drink,
   Thing,

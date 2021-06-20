@@ -8,10 +8,10 @@
 // tiv:  tiv:
 // akuzativ genitiv lokativ vokativ
 
-nominativ: new DeclensionByCount(singular: 'slik', plural: 'slikovi',),
-genitiv: new DeclensionByCount(singular: 'slika', plural: 'slikova',),
-dativ: new DeclensionByCount(singular: 'sliku', plural: 'slikovima',),
-akuzativ: new DeclensionByCount(singular: 'slik', plural: 'slikove',),
-lokativ: new DeclensionByCount(singular: 'sliku', plural: 'slikovima',),
-vokativ: new DeclensionByCount(singular: 'sliče', plural: 'slikovi',),
-instrumental: new DeclensionByCount(singular: 'slikom', plural: 'slikovima',),
+nominativ: new DeclensionByCount(singular: 'ananas', plural: 'ananasi',),
+genitiv: new DeclensionByCount(singular: 'ananasa', plural: 'ananasa',),
+dativ: new DeclensionByCount(singular: 'ananasu', plural: 'ananasima',),
+akuzativ: new DeclensionByCount(singular: 'ananas', plural: 'ananase',),
+lokativ: new DeclensionByCount(singular: 'ananasu', plural: 'ananasima',),
+vokativ: new DeclensionByCount(singular: 'ananase', plural: 'ananasi',),
+instrumental: new DeclensionByCount(singular: 'ananasom', plural: 'ananasima',),

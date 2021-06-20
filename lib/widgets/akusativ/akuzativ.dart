@@ -8,11 +8,23 @@ import 'package:navika/widgets/shared/footer.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/widgets/shared/navika-banner.dart';
 
-String getSentenceStarter(Noun noun, bool isPlural) {
+String getSentenceStarter(Noun noun, bool isPlural, DeclinableWord? pronoun) {
   if (noun.tags.contains(Tags.Location)) {
     return 'Idemo na ';
   }
-  return 'Ja vidim';
+
+  if (noun.tags.contains(Tags.Food)) {
+    return N.coinFlip() ? 'Ću jesti ' : 'Želi ';
+  }
+
+  if (pronoun != null && pronoun.nominativ.masculine.singular != 'moj')
+    return N.coinFlip() ? 'Ja vidim' : 'Volim';
+
+  if (noun.tags.contains(Tags.Portable)) {
+    return 'Daj mi ';
+  }
+
+  return 'Vidimo ';
 }
 
 // ignore: must_be_immutable

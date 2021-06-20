@@ -31,6 +31,11 @@ class N {
     return items;
   }
 
+  static bool coinFlip() {
+    var result = (new Random()).nextInt(8) % 2 == 0;
+    return result;
+  }
+
   static List<DropdownMenuItem<String>> getNounDropdownItems(Noun noun) {
     var items = noun.getUniqueDeclensions();
     return items
@@ -75,19 +80,22 @@ class N {
       bank.adjectives.forEach((adj) {
         bank.nouns.forEach((noun) {
           listItems.add(PANExerciseItem(
-              sentenceStarter: getSentenceStarters(noun, false),
+              sentenceStarter: getSentenceStarters(noun, false, pp),
               pronoun: pp,
               adjective: adj,
               gender: noun.gender,
               isPlural: false,
               noun: noun));
-          listItems.add(PANExerciseItem(
-              sentenceStarter: getSentenceStarters(noun, true),
-              pronoun: pp,
-              adjective: adj,
-              gender: noun.gender,
-              isPlural: true,
-              noun: noun));
+
+          if (noun.nominativ.plural != '') {
+            listItems.add(PANExerciseItem(
+                sentenceStarter: getSentenceStarters(noun, true, pp),
+                pronoun: pp,
+                adjective: adj,
+                gender: noun.gender,
+                isPlural: true,
+                noun: noun));
+          }
         });
       });
     });
