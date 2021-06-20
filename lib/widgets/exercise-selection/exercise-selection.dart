@@ -4,9 +4,11 @@ import 'package:navika/widgets/akusativ/akuzativ.dart';
 import 'package:navika/widgets/dativ/dativ.dart';
 import 'package:navika/widgets/exercise-selection/exercise-button.dart';
 import 'package:navika/widgets/genitiv/genitiv.dart';
+import 'package:navika/widgets/grammar-guide/grammar-guide.dart';
 import 'package:navika/widgets/instrumental/instrumental.dart';
 import 'package:navika/widgets/lokativ/lokativ.dart';
 import 'package:navika/widgets/nominativ/nominativ.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ExerciseSelection extends StatefulWidget {
   @override
@@ -17,6 +19,12 @@ class _ExerciseSelectionState extends State<ExerciseSelection> {
   @override
   Widget build(BuildContext context) {
     var buttons = <Widget>[
+      ExerciseButton(
+        destination: GrammarGuide(),
+        icon: Icons.book,
+        label: AppLocalizations.of(context)!.grammarGuide,
+        imagePath: 'assets/banners/books.jpg',
+      ),
       ExerciseButton(
         destination: NominativExercise(),
         icon: Icons.category_outlined,

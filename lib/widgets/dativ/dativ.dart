@@ -9,7 +9,7 @@ import 'package:navika/widgets/shared/navika-banner.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 String getSentenceStarter(Noun noun, bool isPlural) {
-  if (noun.isAnimate) return 'Daj ';
+  if (noun.isAnimate) return 'Daj to ';
   if (isPlural) return 'Slični su ';
   return 'Slično je ';
 }

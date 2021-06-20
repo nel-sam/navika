@@ -85,6 +85,43 @@ final List<Noun> nounWordBank = [
     ),
   ),
   Noun(
+    dictionary: "sestra",
+    tags: [
+      Tags.Human,
+      Tags.Adult,
+    ],
+    gender: GenderEnum.Feminine,
+    isAnimate: true,
+    nominativ: new DeclensionByCount(
+      singular: "sestra",
+      plural: "sestre",
+    ),
+    akuzativ: new DeclensionByCount(
+      singular: "sestru",
+      plural: "sestre",
+    ),
+    instrumental: new DeclensionByCount(
+      singular: "sestrom",
+      plural: "sestrama",
+    ),
+    lokativ: new DeclensionByCount(
+      singular: "sestri",
+      plural: "sestrama",
+    ),
+    dativ: new DeclensionByCount(
+      singular: "sestri",
+      plural: "sestrama",
+    ),
+    genitiv: new DeclensionByCount(
+      singular: "sestre",
+      plural: "sestara",
+    ),
+    vokativ: new DeclensionByCount(
+      singular: "sestro",
+      plural: "sestre",
+    ),
+  ),
+  Noun(
     dictionary: "muškarac",
     tags: [
       Tags.Human,
@@ -97,7 +134,7 @@ final List<Noun> nounWordBank = [
       plural: "muškarci",
     ),
     akuzativ: new DeclensionByCount(
-      singular: "muškarac",
+      singular: "muškarca",
       plural: "muškarce",
     ),
     instrumental: new DeclensionByCount(
@@ -117,8 +154,8 @@ final List<Noun> nounWordBank = [
       plural: "muškaraca",
     ),
     vokativ: new DeclensionByCount(
-      singular: "",
-      plural: "",
+      singular: "muškarče",
+      plural: "muškarci",
     ),
   ),
   Noun(
@@ -224,6 +261,40 @@ final List<Noun> nounWordBank = [
     vokativ: new DeclensionByCount(
       singular: "",
       plural: "",
+    ),
+  ),
+  Noun(
+    dictionary: "čovjek",
+    tags: [Tags.Human, Tags.Adult],
+    gender: GenderEnum.Masculine,
+    isAnimate: true,
+    nominativ: new DeclensionByCount(
+      singular: "čovjek",
+      plural: "ljudi",
+    ),
+    akuzativ: new DeclensionByCount(
+      singular: "čovjeka",
+      plural: "ljude",
+    ),
+    instrumental: new DeclensionByCount(
+      singular: "čovjekom",
+      plural: "ljudima",
+    ),
+    lokativ: new DeclensionByCount(
+      singular: "čovjeku",
+      plural: "ljudima",
+    ),
+    dativ: new DeclensionByCount(
+      singular: "čovjeku",
+      plural: "ljudima",
+    ),
+    genitiv: new DeclensionByCount(
+      singular: "čovjeka",
+      plural: "ljudi",
+    ),
+    vokativ: new DeclensionByCount(
+      singular: "čovječe",
+      plural: "ljudi",
     ),
   ),
 ];
