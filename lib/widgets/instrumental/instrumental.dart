@@ -25,6 +25,8 @@ class Instrumental extends StatefulWidget {
 }
 
 class _InstrumentalState extends State<Instrumental> {
+  final ScrollController controller = ScrollController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,6 +39,7 @@ class _InstrumentalState extends State<Instrumental> {
       ),
       body: Center(
         child: ListView(
+          controller: controller,
           padding: EXERCISE_LIST_PADDING,
           children: [
             NavikaBanner(
@@ -61,6 +64,7 @@ class _InstrumentalState extends State<Instrumental> {
             wordBank,
             getSentenceStarter,
           );
+          N.scrollTo(0, controller);
         }),
       ),
     );

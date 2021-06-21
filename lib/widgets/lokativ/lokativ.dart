@@ -26,6 +26,8 @@ class Lokativ extends StatefulWidget {
 }
 
 class _LokativState extends State<Lokativ> {
+  final ScrollController controller = ScrollController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,6 +40,7 @@ class _LokativState extends State<Lokativ> {
       ),
       body: Center(
         child: ListView(
+          controller: controller,
           padding: EXERCISE_LIST_PADDING,
           children: [
             NavikaBanner(
@@ -60,6 +63,7 @@ class _LokativState extends State<Lokativ> {
             wordBank,
             getSentenceStarter,
           );
+          N.scrollTo(0, controller);
         }),
       ),
     );

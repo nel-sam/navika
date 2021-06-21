@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+const SCROLL_DURATION = Duration(milliseconds: 500);
 const EdgeInsets EXERCISE_LIST_PADDING = const EdgeInsets.only(bottom: 10);
 const double FOOTER_ICON_BOTTOM_PADDING = 0;
 const double APPBAR_ELEVATION = 0;

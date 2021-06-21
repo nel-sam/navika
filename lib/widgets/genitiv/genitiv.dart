@@ -38,27 +38,28 @@ class Genitiv extends StatefulWidget {
 }
 
 List<GenitivListItem> getListItems(List<GenitivExerciseItem> listItems) {
-  return N
-      .shuffleList(listItems)
-      .map(
-        (e) => GenitivListItem(
-            sentenceStarter: getSentenceStarter(e.noun2, e.isPlural, e.pronoun),
-            correctPronounValue: e.pronoun.getDeclension(e.gender, e.isPlural,
-                CaseTypeEnum.Nominativ, e.noun2.isAnimate),
-            correctNoun1Value:
-                e.noun1.getDeclension(e.isPlural, CaseTypeEnum.Nominativ),
-            correctNoun2Value:
-                e.noun2.getDeclension(e.isPlural, CaseTypeEnum.Genitiv),
-            activePronounValue: e.pronoun.getRandomDeclension(),
-            activeNoun1Value: e.noun1.getRandomDeclension(),
-            activeNoun2Value: e.noun2.getRandomDeclension(),
-            pronoun: e.pronoun,
-            noun1: e.noun1,
-            isPlural: e.isPlural,
-            gender: e.gender,
-            noun2: e.noun2),
-      )
-      .toList();
+  return N.shuffleList(listItems).map((e) {
+    final correctPronounValue = e.pronoun.getDeclension(
+        e.gender, e.isPlural, CaseTypeEnum.Nominativ, e.noun2.isAnimate);
+    final correctNoun1Value =
+        e.noun1.getDeclension(e.isPlural, CaseTypeEnum.Nominativ);
+    final correctNoun2Value =
+        e.noun2.getDeclension(e.isPlural, CaseTypeEnum.Genitiv);
+
+    return GenitivListItem(
+        sentenceStarter: getSentenceStarter(e.noun2, e.isPlural, e.pronoun),
+        correctPronounValue: correctPronounValue,
+        correctNoun1Value: correctNoun1Value,
+        correctNoun2Value: correctNoun2Value,
+        activePronounValue: e.pronoun.getRandomDeclension(correctPronounValue),
+        activeNoun1Value: e.noun1.getRandomDeclension(correctNoun1Value),
+        activeNoun2Value: e.noun2.getRandomDeclension(correctNoun2Value),
+        pronoun: e.pronoun,
+        noun1: e.noun1,
+        isPlural: e.isPlural,
+        gender: e.gender,
+        noun2: e.noun2);
+  }).toList();
 }
 
 List<GenitivExerciseItem> prepareData(WordBank bank) {
@@ -90,6 +91,8 @@ List<GenitivExerciseItem> prepareData(WordBank bank) {
 }
 
 class _GenitivState extends State<Genitiv> {
+  final ScrollController controller = ScrollController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -102,6 +105,7 @@ class _GenitivState extends State<Genitiv> {
       ),
       body: Center(
         child: ListView(
+          controller: controller,
           padding: EXERCISE_LIST_PADDING,
           children: [
             NavikaBanner(
@@ -120,6 +124,7 @@ class _GenitivState extends State<Genitiv> {
         caseType: CaseTypeEnum.Genitiv,
         refreshFunction: () => setState(() {
           widget.listItems = prepareData(wordBank);
+          N.scrollTo(0, controller);
         }),
       ),
     );

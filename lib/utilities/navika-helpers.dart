@@ -8,6 +8,11 @@ import 'package:navika/widgets/shared/pan-list-item.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class N {
+  static scrollTo(double point, controller) {
+    controller.animateTo(point,
+        curve: Curves.linear, duration: SCROLL_DURATION);
+  }
+
   static IconData getGenderIcon(GenderEnum gender) {
     if (gender == GenderEnum.Feminine) {
       return FEMININE_ICON;
@@ -107,23 +112,28 @@ class N {
       List<PANExerciseItem> listItems, CaseTypeEnum caseType) {
     return N
         .shuffleList(listItems)
-        .map(
-          (e) => PANListItem(
+        .map((e) {
+          final correctPronounValue = e.pronoun
+              .getDeclension(e.gender, e.isPlural, caseType, e.noun.isAnimate);
+          final correctAdjValue = e.adjective
+              .getDeclension(e.gender, e.isPlural, caseType, e.noun.isAnimate);
+          final correctNounValue = e.noun.getDeclension(e.isPlural, caseType);
+
+          return PANListItem(
               sentenceStarter: e.sentenceStarter,
-              correctPronounValue: e.pronoun.getDeclension(
-                  e.gender, e.isPlural, caseType, e.noun.isAnimate),
-              correctAdjValue: e.adjective.getDeclension(
-                  e.gender, e.isPlural, caseType, e.noun.isAnimate),
-              correctNounValue: e.noun.getDeclension(e.isPlural, caseType),
+              correctPronounValue: correctPronounValue,
+              correctAdjValue: correctAdjValue,
+              correctNounValue: correctNounValue,
               adjective: e.adjective,
-              activePronounValue: e.pronoun.getRandomDeclension(),
-              activeAdjValue: e.adjective.getRandomDeclension(),
-              activeNounValue: e.noun.getRandomDeclension(),
+              activePronounValue:
+                  e.pronoun.getRandomDeclension(correctPronounValue),
+              activeAdjValue: e.adjective.getRandomDeclension(correctAdjValue),
+              activeNounValue: e.noun.getRandomDeclension(correctNounValue),
               isPlural: e.isPlural,
               pronoun: e.pronoun,
               gender: e.gender,
-              noun: e.noun),
-        )
+              noun: e.noun);
+        })
         .take(BATCH_COUNT)
         .toList();
   }

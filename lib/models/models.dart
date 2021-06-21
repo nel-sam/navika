@@ -72,8 +72,9 @@ class Noun {
     return isPlural ? declension.plural : declension.singular;
   }
 
-  String getRandomDeclension() {
+  String getRandomDeclension(String avoid) {
     final declensions = getUniqueDeclensions();
+    declensions.remove(avoid);
     final random = new Random();
     var index = random.nextInt(declensions.length - 1);
     return declensions[index];
@@ -123,8 +124,9 @@ class DeclinableWord {
     required this.vokativ,
   });
 
-  String getRandomDeclension() {
+  String getRandomDeclension(String avoid) {
     final declensions = getUniqueDeclensions();
+    declensions.remove(avoid);
     final random = new Random();
     var index = random.nextInt(declensions.length - 1);
     return declensions[index];

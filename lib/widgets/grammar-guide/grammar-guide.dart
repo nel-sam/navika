@@ -98,11 +98,6 @@ class _GrammarGuideState extends State<GrammarGuide> {
     return scrollPoint;
   }
 
-  scrollTo(double point) {
-    controller.animateTo(point,
-        curve: Curves.linear, duration: Duration(milliseconds: 500));
-  }
-
   _moveUp() {
     if (isAtTop) return;
 
@@ -113,7 +108,7 @@ class _GrammarGuideState extends State<GrammarGuide> {
       currentCase = CasesInOrder[currentIndex - 1];
       final scrollPoint = getScrollPoint(currentCase);
 
-      scrollTo(scrollPoint);
+      N.scrollTo(scrollPoint, controller);
     });
   }
 
@@ -127,7 +122,7 @@ class _GrammarGuideState extends State<GrammarGuide> {
       currentCase = CasesInOrder[currentIndex + 1];
       final scrollPoint = getScrollPoint(currentCase);
 
-      scrollTo(scrollPoint);
+      N.scrollTo(scrollPoint, controller);
     });
   }
 

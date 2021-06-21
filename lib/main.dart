@@ -72,12 +72,10 @@ class _MyHomePageState extends State<MyHomePage> {
     adBanner.load();
 
     return Scaffold(
-      appBar: N.NavikaAppBar(
-          Image(width: 100, image: AssetImage('assets/logo_small.png')),
-          context, []),
+      appBar: N.NavikaAppBar(Text('Navika'), context, []),
       body: Center(
         child: Column(
-          children: <Widget>[
+          children: [
             Container(
               alignment: Alignment.center,
               child: AdWidget(ad: adBanner),

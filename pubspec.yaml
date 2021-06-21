@@ -29,7 +29,6 @@ flutter:
   generate: true
   uses-material-design: true
   assets:
-    - assets/logo_small.png
     - assets/banners/
 
 flutter_intl:

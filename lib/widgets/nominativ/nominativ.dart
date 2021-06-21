@@ -52,6 +52,8 @@ class NominativExercise extends StatefulWidget {
 }
 
 class _NominativExerciseState extends State<NominativExercise> {
+  final ScrollController controller = ScrollController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,6 +66,7 @@ class _NominativExerciseState extends State<NominativExercise> {
       ),
       body: Center(
         child: ListView(
+          controller: controller,
           padding: EXERCISE_LIST_PADDING,
           children: [
             NavikaBanner(
@@ -87,6 +90,7 @@ class _NominativExerciseState extends State<NominativExercise> {
             wordBank,
             getSentenceStarter,
           );
+          N.scrollTo(0, controller);
         }),
       ),
     );

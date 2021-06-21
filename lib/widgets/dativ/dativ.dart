@@ -27,6 +27,8 @@ class Dativ extends StatefulWidget {
 }
 
 class _DativState extends State<Dativ> {
+  final ScrollController controller = ScrollController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,6 +41,7 @@ class _DativState extends State<Dativ> {
       ),
       body: Center(
         child: ListView(
+          controller: controller,
           padding: EXERCISE_LIST_PADDING,
           children: [
             NavikaBanner(
@@ -62,6 +65,7 @@ class _DativState extends State<Dativ> {
             wordBank,
             getSentenceStarter,
           );
+          N.scrollTo(0, controller);
         }),
       ),
     );
