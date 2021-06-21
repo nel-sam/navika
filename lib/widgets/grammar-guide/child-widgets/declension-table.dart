@@ -32,7 +32,7 @@ class DeclensionTable extends StatelessWidget {
   Widget build(BuildContext context) {
     const paddingAmount = 12.0;
     const colWidth = 100.0;
-    const firstColWidth = 45.0;
+    const firstColWidth = 55.0;
 
     return Column(
       children: [
@@ -53,21 +53,21 @@ class DeclensionTable extends StatelessWidget {
                     width: colWidth,
                     child: ExplanationIconCell(
                       icon: N.getGenderIcon(GenderEnum.Masculine),
-                      tooltip: AppLocalizations.of(context)!.masculine,
+                      label: 'Masc.',
                     ),
                   ),
                   Container(
                     width: colWidth,
                     child: ExplanationIconCell(
                       icon: N.getGenderIcon(GenderEnum.Feminine),
-                      tooltip: AppLocalizations.of(context)!.feminine,
+                      label: 'Fem.',
                     ),
                   ),
                   Container(
                     width: colWidth,
                     child: ExplanationIconCell(
                       icon: N.getGenderIcon(GenderEnum.Neuter),
-                      tooltip: AppLocalizations.of(context)!.neuter,
+                      label: 'Neut.',
                     ),
                   ),
                 ],
@@ -77,7 +77,7 @@ class DeclensionTable extends StatelessWidget {
                   width: firstColWidth,
                   child: ExplanationIconCell(
                     icon: SINGULAR_ICON,
-                    tooltip: AppLocalizations.of(context)!.singular,
+                    label: 'Sing.',
                   ),
                 ),
                 Container(
@@ -107,7 +107,7 @@ class DeclensionTable extends StatelessWidget {
                   width: firstColWidth,
                   child: ExplanationIconCell(
                     icon: PLURAL_ICON,
-                    tooltip: AppLocalizations.of(context)!.plural,
+                    label: 'Pl.',
                   ),
                 ),
                 Container(

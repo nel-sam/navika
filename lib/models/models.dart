@@ -12,6 +12,19 @@ class WordBank {
       {required this.nouns,
       required this.adjectives,
       required this.possesivePronouns});
+
+  WordBank filterPronoun(String toFilter) {
+    var result = WordBank(
+        nouns: [...this.nouns],
+        adjectives: [...this.adjectives],
+        possesivePronouns: [...this.possesivePronouns]);
+
+    final svoj = result.possesivePronouns
+        .firstWhere((e) => e.nominativ.masculine.singular == toFilter);
+    result.possesivePronouns.remove(svoj);
+
+    return result;
+  }
 }
 
 class Noun {

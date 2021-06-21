@@ -13,7 +13,7 @@ import 'package:navika/widgets/grammar-guide/content/nominativ-content.dart';
 import 'package:navika/widgets/shared/footer-button.dart';
 import 'package:navika/widgets/shared/home-button.dart';
 
-const double CONTENT_HEIGHT = 870.0;
+const double CONTENT_HEIGHT = 890.0;
 
 const CasesInOrder = [
   CaseTypeEnum.Nominativ,

@@ -78,7 +78,7 @@ class N {
   }
 
   static List<PANExerciseItem> getPANCombos(
-      WordBank bank, Function getSentenceStarters) {
+      WordBank bank, Function getSentenceStarters,) {
     var listItems = List<PANExerciseItem>.empty(growable: true);
 
     bank.possesivePronouns.forEach((pp) {

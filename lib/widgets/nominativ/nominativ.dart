@@ -8,7 +8,7 @@ import 'package:navika/widgets/shared/footer.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/widgets/shared/navika-banner.dart';
 
-String getSentenceStarter(Noun noun, bool isPlural, DeclinableWord? pronoun) {
+String getSentenceStarter(Noun noun, bool isPlural, DeclinableWord pronoun) {
   final tense = N.getRandomTense();
 
   if (noun.isAnimate && isPlural) {
@@ -41,21 +41,21 @@ String getSentenceStarter(Noun noun, bool isPlural, DeclinableWord? pronoun) {
 
 // ignore: must_be_immutable
 class NominativExercise extends StatefulWidget {
-  final WordBank bank = wordBank;
-  var listItems = N.getPANCombos(
-    wordBank,
-    getSentenceStarter,
-  );
-
   @override
   _NominativExerciseState createState() => _NominativExerciseState();
 }
 
 class _NominativExerciseState extends State<NominativExercise> {
-  final ScrollController controller = ScrollController();
+  late ScrollController controller = ScrollController();
 
-  @override
   Widget build(BuildContext context) {
+    final WordBank bank = wordBank.filterPronoun('svoj');
+
+    var listItems = N.getPANCombos(
+      bank,
+      getSentenceStarter,
+    );
+
     return Scaffold(
       appBar: AppBar(
         elevation: APPBAR_ELEVATION,
@@ -78,7 +78,7 @@ class _NominativExerciseState extends State<NominativExercise> {
                   Icons.nature,
                   Icons.people,
                 ]),
-            ...N.getPANListItems(widget.listItems, CaseTypeEnum.Nominativ)
+            ...N.getPANListItems(listItems, CaseTypeEnum.Nominativ)
           ],
         ),
       ),
@@ -86,8 +86,8 @@ class _NominativExerciseState extends State<NominativExercise> {
         context: context,
         caseType: CaseTypeEnum.Nominativ,
         refreshFunction: () => setState(() {
-          widget.listItems = N.getPANCombos(
-            wordBank,
+          listItems = N.getPANCombos(
+            bank,
             getSentenceStarter,
           );
           N.scrollTo(0, controller);
