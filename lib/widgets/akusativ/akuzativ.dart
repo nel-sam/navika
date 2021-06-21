@@ -32,7 +32,7 @@ StaticSentenceParts getStaticSentenceStarter(
 }
 
 StaticSentenceParts getPersonalPronounSentenceStarter(
-    PersonalPronoun personalPronoun, Genders gender, bool isShortForm) {
+    PersonalPronoun personalPronoun, bool isShortForm) {
   final actualValue = isShortForm
       ? personalPronoun.nominativ.shortForm
       : personalPronoun.nominativ.general;

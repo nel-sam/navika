@@ -52,7 +52,7 @@ StaticSentenceParts getStaticSentenceStarter(
 }
 
 StaticSentenceParts getPersonalPronounSentenceStarter(
-    PersonalPronoun personalPronoun, Genders gender, bool isShortForm) {
+    PersonalPronoun personalPronoun, bool isShortForm) {
   String start = '';
   String end = '';
 
@@ -63,7 +63,9 @@ StaticSentenceParts getPersonalPronounSentenceStarter(
   if (N.coinFlip()) {
     start = 'To ' + verb;
   } else {
-    var ocupation = gender == Genders.Feminine ? 'učiteljica' : 'učitelj';
+    var ocupation = personalPronoun.gender == Genders.Feminine
+        ? (personalPronoun.isPlural ? 'učiteljice' : 'učiteljica')
+        : (personalPronoun.isPlural ? 'učitelji' : 'učitelj');
     end = '$verb $ocupation';
   }
 

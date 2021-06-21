@@ -91,22 +91,20 @@ class N {
   static List<PANExerciseItem> getPANCombos(
     WordBank bank,
     StaticSentenceParts Function(Noun, bool, Adjective) getStaticSentenceParts,
-    StaticSentenceParts Function(PersonalPronoun, Genders, bool)
+    StaticSentenceParts Function(PersonalPronoun, bool)
         getPersonalPronounSentenceStaticParts,
   ) {
     var listItems = List<PANExerciseItem>.empty(growable: true);
 
     bank.personalPronouns.forEach((persPronoun) {
-      final isPlural = N.coinFlip();
-      Genders gender = N.coinFlip() ? Genders.Feminine : Genders.Masculine;
-
+      final isPlural = persPronoun.isPlural;
       final staticParts =
-          getPersonalPronounSentenceStaticParts(persPronoun, gender, isPlural);
+          getPersonalPronounSentenceStaticParts(persPronoun, isPlural);
 
       listItems.add(PANExerciseItem(
         sentenceStarter: staticParts.start,
         sentenceEnder: staticParts.end,
-        gender: N.coinFlip() ? Genders.Feminine : Genders.Masculine,
+        gender: persPronoun.gender,
         isPlural: isPlural,
         personalPronoun: persPronoun,
       ));
@@ -141,8 +139,6 @@ class N {
         .take(BATCH_COUNT)
         .map((PANExerciseItem e) {
       if (e.personalPronoun != null) {
-        print('PersonalPronoun'); // TODO: Remove this logging
-
         final isShortForm = e.sentenceEnder != '';
         final correctPersonalPronounValue = e.personalPronoun!
             .getDeclension(caseType: caseType, isShortForm: isShortForm);
@@ -263,7 +259,7 @@ class N {
     switch (pronoun) {
       case 'ja':
         return 'sam';
-      case 'si':
+      case 'ti':
         return 'si';
       case 'mi':
         return 'smo';

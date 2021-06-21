@@ -20,7 +20,7 @@ StaticSentenceParts getStaticSentenceStarter(
 }
 
 StaticSentenceParts getPersonalPronounSentenceStarter(
-    PersonalPronoun personalPronoun, Genders gender, bool isShortForm) {
+    PersonalPronoun personalPronoun, bool isShortForm) {
   late String start = 'TEST';
 
   return StaticSentenceParts(start: start, end: '');
