@@ -1,12 +1,13 @@
 import 'package:navika/models/adjective.dart';
 import 'package:navika/models/noun.dart';
+import 'package:navika/models/personal-pronoun.dart';
 import 'enums.dart';
 
 class WordBank {
   final List<Noun> nouns;
   final List<Adjective> adjectives;
   final List<Adjective> possesivePronouns;
-  final List<Noun> personalPronouns;
+  final List<PersonalPronoun> personalPronouns;
 
   WordBank(
       {required this.nouns,
@@ -27,6 +28,20 @@ class WordBank {
     result.possesivePronouns.remove(svoj);
 
     return result;
+  }
+}
+
+class DeclensionPronoun {
+  final String general;
+  late String shortForm;
+
+  DeclensionPronoun({
+    required this.general,
+    this.shortForm = '',
+  }) {
+    if (this.shortForm == '') {
+      this.shortForm = this.general;
+    }
   }
 }
 
@@ -65,20 +80,22 @@ class DeclensionByGender {
 class PANExerciseItem {
   String sentenceStarter;
   String sentenceEnder;
+  Noun? noun;
   Adjective? pronoun;
   Adjective? adjective;
+  PersonalPronoun? personalPronoun;
   GenderEnum gender;
   bool isPlural;
-  Noun noun;
 
   PANExerciseItem({
     required this.sentenceStarter,
-    required this.sentenceEnder,
+    this.sentenceEnder = '',
+    this.noun,
     this.pronoun,
     this.adjective,
+    this.personalPronoun,
     required this.gender,
     required this.isPlural,
-    required this.noun,
   });
 }
 

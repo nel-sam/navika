@@ -3,6 +3,7 @@ import 'package:navika/constants.dart';
 import 'package:navika/lang_data/word-bank.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
+import 'package:navika/models/personal-pronoun.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/shared/footer.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -19,7 +20,7 @@ StaticSentenceParts getSentenceStarter(
 }
 
 StaticSentenceParts getPersonalPronounSentenceStarter(
-    Noun personalPronoun, bool isPlural) {
+    PersonalPronoun personalPronoun, bool isShortForm) {
   late String start = 'TEST';
 
   return StaticSentenceParts(start: start, end: '');

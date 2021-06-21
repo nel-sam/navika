@@ -6,6 +6,7 @@ import 'package:navika/models/adjective.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/models/noun.dart';
+import 'package:navika/models/personal-pronoun.dart';
 import 'package:navika/widgets/shared/pan-list-item.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -43,6 +44,14 @@ class N {
     return result;
   }
 
+  static List<DropdownMenuItem<String>> getPersonalPronounDropdownItems(
+      PersonalPronoun personalPronoun) {
+    var items = personalPronoun.getUniqueDeclensions();
+    return items
+        .map((e) => DropdownMenuItem<String>(value: e, child: Text(e)))
+        .toList();
+  }
+
   static List<DropdownMenuItem<String>> getNounDropdownItems(Noun noun) {
     var items = noun.getUniqueDeclensions();
     return items
@@ -50,7 +59,8 @@ class N {
         .toList();
   }
 
-  static List<DropdownMenuItem<String>> getDropdownItems(Adjective word) {
+  static List<DropdownMenuItem<String>> getAdjectiveDropdownItems(
+      Adjective word) {
     var items = word.getUniqueDeclensions();
     return items
         .map((e) => DropdownMenuItem<String>(value: e, child: Text(e)))
@@ -81,9 +91,8 @@ class N {
 
   static List<PANExerciseItem> getPANCombos(
     WordBank bank,
-    StaticSentenceParts Function(Noun, bool, Adjective)
-        getStaticSentenceParts,
-    StaticSentenceParts Function(Noun, bool)
+    StaticSentenceParts Function(Noun, bool, Adjective) getStaticSentenceParts,
+    StaticSentenceParts Function(PersonalPronoun, bool)
         getPersonalPronounSentenceStaticParts,
   ) {
     var listItems = List<PANExerciseItem>.empty(growable: true);
@@ -98,7 +107,7 @@ class N {
         sentenceEnder: staticParts.end,
         gender: N.coinFlip() ? GenderEnum.Feminine : GenderEnum.Masculine,
         isPlural: isPlural,
-        noun: persPronoun,
+        personalPronoun: persPronoun,
       ));
     });
 
@@ -130,25 +139,30 @@ class N {
         .shuffleList<PANExerciseItem>(listItems)
         .take(BATCH_COUNT)
         .map((PANExerciseItem e) {
-      final correctNounValue = e.noun.getDeclension(e.isPlural, caseType);
+      if (e.personalPronoun != null) {
+        print('PersonalPronoun'); // TODO: Remove this logging
 
-      if (e.noun.tags.contains(Tags.PersonalPronoun)) {
-        print('PersonalPronoun');
+        final isShortForm = e.sentenceEnder != '';
+        final correctPersonalPronounValue = e.personalPronoun!
+            .getDeclension(caseType: caseType, isShortForm: isShortForm);
+
         return PANListItem(
           sentenceStarter: e.sentenceStarter,
           sentenceEnder: e.sentenceEnder,
-          correctNounValue: correctNounValue,
-          activeNounValue: e.noun.dictionary,
+          correctPersonalPronounValue: correctPersonalPronounValue,
+          activePersonalPronounValue: e.personalPronoun!
+              .getRandomDeclension(correctPersonalPronounValue),
           isPlural: e.isPlural,
           gender: e.gender,
-          noun: e.noun,
+          personalPronoun: e.personalPronoun!,
         );
       }
 
+      final correctNounValue = e.noun!.getDeclension(e.isPlural, caseType);
       final correctPronounValue = e.pronoun!
-          .getDeclension(e.gender, e.isPlural, caseType, e.noun.isAnimate);
+          .getDeclension(e.gender, e.isPlural, caseType, e.noun!.isAnimate);
       final correctAdjValue = e.adjective!
-          .getDeclension(e.gender, e.isPlural, caseType, e.noun.isAnimate);
+          .getDeclension(e.gender, e.isPlural, caseType, e.noun!.isAnimate);
 
       return PANListItem(
           sentenceStarter: e.sentenceStarter,
@@ -160,11 +174,11 @@ class N {
           activePronounValue:
               e.pronoun!.getRandomDeclension(correctPronounValue),
           activeAdjValue: e.adjective!.getRandomDeclension(correctAdjValue),
-          activeNounValue: e.noun.getRandomDeclension(correctNounValue),
+          activeNounValue: e.noun!.getRandomDeclension(correctNounValue),
           isPlural: e.isPlural,
           pronoun: e.pronoun!,
           gender: e.gender,
-          noun: e.noun);
+          noun: e.noun!);
     }).toList();
   }
 

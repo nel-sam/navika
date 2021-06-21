@@ -3,6 +3,7 @@ import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/adjective.dart';
 import 'package:navika/models/noun.dart';
+import 'package:navika/models/personal-pronoun.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/shared/case-drop-down.dart';
 import 'package:navika/widgets/shared/exercise-row-card.dart';
@@ -11,31 +12,41 @@ import 'package:navika/widgets/shared/exercise-row-card.dart';
 class PANListItem extends StatefulWidget {
   final String sentenceStarter;
   final String sentenceEnder;
-  final Adjective? adjective;
+
   final Adjective? pronoun;
-  final String? correctAdjValue;
   final String? correctPronounValue;
-  final String correctNounValue;
+  String? activePronounValue;
+
+  final Adjective? adjective;
+  final String? correctAdjValue;
+  String? activeAdjValue;
+
+  final Noun? noun;
+  final String? correctNounValue;
+  String? activeNounValue;
+
+  final PersonalPronoun? personalPronoun;
+  final String? correctPersonalPronounValue;
+  String? activePersonalPronounValue;
+
   final GenderEnum gender;
   final bool isPlural;
-  final Noun noun;
-
-  String? activePronounValue;
-  String? activeAdjValue;
-  String activeNounValue;
 
   PANListItem({
-    this.pronoun,
-    this.adjective,
-    required this.noun,
-    this.activeAdjValue = '',
-    this.activePronounValue = '',
-    required this.activeNounValue,
-    this.correctAdjValue = '',
-    this.correctPronounValue = '',
-    required this.correctNounValue,
     required this.sentenceStarter,
     required this.sentenceEnder,
+    this.pronoun,
+    this.correctPronounValue = '',
+    this.activePronounValue = '',
+    this.adjective,
+    this.correctAdjValue = '',
+    this.activeAdjValue = '',
+    this.noun,
+    this.activeNounValue = '',
+    this.correctNounValue = '',
+    this.personalPronoun,
+    this.correctPersonalPronounValue = '',
+    this.activePersonalPronounValue = '',
     required this.isPlural,
     required this.gender,
   });
@@ -46,13 +57,10 @@ class PANListItem extends StatefulWidget {
 
 class _PANListItemState extends State<PANListItem> {
   bool checkAnswer() {
-    if (widget.noun.tags.contains(Tags.PersonalPronoun)) {
-      return widget.activeNounValue == widget.correctNounValue;
-    }
-
     return widget.activePronounValue == widget.correctPronounValue &&
         widget.activeAdjValue == widget.correctAdjValue &&
-        widget.activeNounValue == widget.correctNounValue;
+        widget.activeNounValue == widget.correctNounValue &&
+        widget.activePersonalPronounValue == widget.correctPersonalPronounValue;
   }
 
   @override
@@ -69,7 +77,7 @@ class _PANListItemState extends State<PANListItem> {
         CaseDropDown(
           activeValue: widget.activePronounValue!,
           correctValue: widget.correctPronounValue!,
-          dropDownOptions: N.getDropdownItems(widget.pronoun!),
+          dropDownOptions: N.getAdjectiveDropdownItems(widget.pronoun!),
           onChanged: (String newVal) {
             setState(() {
               widget.activePronounValue = newVal;
@@ -81,7 +89,7 @@ class _PANListItemState extends State<PANListItem> {
         CaseDropDown(
           activeValue: widget.activeAdjValue!,
           correctValue: widget.correctAdjValue!,
-          dropDownOptions: N.getDropdownItems(widget.adjective!),
+          dropDownOptions: N.getAdjectiveDropdownItems(widget.adjective!),
           onChanged: (String newVal) {
             setState(() {
               widget.activeAdjValue = newVal;
@@ -89,17 +97,30 @@ class _PANListItemState extends State<PANListItem> {
             });
           },
         ),
-      CaseDropDown(
-        activeValue: widget.activeNounValue,
-        correctValue: widget.correctNounValue,
-        dropDownOptions: N.getNounDropdownItems(widget.noun),
-        onChanged: (String newVal) {
-          setState(() {
-            widget.activeNounValue = newVal;
-            isAllCorrect = checkAnswer();
-          });
-        },
-      ),
+      if (widget.correctNounValue != '')
+        CaseDropDown(
+          activeValue: widget.activeNounValue!,
+          correctValue: widget.correctNounValue!,
+          dropDownOptions: N.getNounDropdownItems(widget.noun!),
+          onChanged: (String newVal) {
+            setState(() {
+              widget.activeNounValue = newVal;
+              isAllCorrect = checkAnswer();
+            });
+          },
+        ),
+      if (widget.correctPersonalPronounValue != '')
+        CaseDropDown(
+          activeValue: widget.activePersonalPronounValue!,
+          correctValue: widget.correctPersonalPronounValue!,
+          dropDownOptions: N.getPersonalPronounDropdownItems(widget.personalPronoun!),
+          onChanged: (String newVal) {
+            setState(() {
+              widget.activePersonalPronounValue = newVal;
+              isAllCorrect = checkAnswer();
+            });
+          },
+        ),
       if (widget.sentenceEnder != '')
         Text(
           widget.sentenceStarter,

@@ -5,6 +5,7 @@ import 'package:navika/models/adjective.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/models/noun.dart';
+import 'package:navika/models/personal-pronoun.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/shared/footer.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -30,10 +31,10 @@ StaticSentenceParts getSentenceStarter(
 }
 
 StaticSentenceParts getPersonalPronounSentenceStarter(
-    Noun personalPronoun, bool isPlural) {
-  final actualValue = isPlural
-      ? personalPronoun.nominativ.plural
-      : personalPronoun.nominativ.singular;
+    PersonalPronoun personalPronoun, bool isShortForm) {
+  final actualValue = isShortForm
+      ? personalPronoun.nominativ.shortForm
+      : personalPronoun.nominativ.general;
   String start = '';
 
   if (actualValue != 'mi' && N.coinFlip()) {

@@ -60,7 +60,7 @@ class _GenitivListItemState extends State<GenitivListItem> {
       CaseDropDown(
         activeValue: widget.activePronounValue,
         correctValue: widget.correctPronounValue,
-        dropDownOptions: N.getDropdownItems(widget.pronoun),
+        dropDownOptions: N.getAdjectiveDropdownItems(widget.pronoun),
         onChanged: (String newVal) {
           setState(() {
             widget.activePronounValue = newVal;

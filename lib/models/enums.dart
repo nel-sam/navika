@@ -16,7 +16,6 @@ enum CaseTypeEnum {
 }
 
 enum Tags {
-  PersonalPronoun,
   AnimateNonHuman,
   NaturalFeature,
   FlatSurface,
