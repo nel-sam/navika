@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:navika/models/enums.dart';
-import 'package:navika/models/models.dart';
+import 'package:navika/models/adjective.dart';
+import 'package:navika/models/noun.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/shared/case-drop-down.dart';
 import 'package:navika/widgets/shared/exercise-row-card.dart';
@@ -12,7 +13,7 @@ class GenitivListItem extends StatefulWidget {
   final Noun noun2;
   final bool isPlural;
   final GenderEnum gender;
-  final DeclinableWord pronoun;
+  final Adjective pronoun;
   final String sentenceStarter;
   final String sentenceEnder;
 

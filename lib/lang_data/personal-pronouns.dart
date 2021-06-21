@@ -1,5 +1,6 @@
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
+import 'package:navika/models/noun.dart';
 
 final List<Noun> personalPronounWordBank = [
   Noun(

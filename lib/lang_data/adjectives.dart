@@ -1,3 +1,4 @@
+import 'package:navika/models/adjective.dart';
 import 'package:navika/models/models.dart';
 
 /*
@@ -8,8 +9,8 @@ import 'package:navika/models/models.dart';
     )
 */
 
-final List<DeclinableWord> adjectiveWordBank = [
-  DeclinableWord(
+final List<Adjective> adjectiveWordBank = [
+  Adjective(
     dictionary: "velik",
     nominativ: new Declension(
       masculine: new DeclensionByGender(singular: "veliki", plural: "veliki"),
@@ -52,7 +53,7 @@ final List<DeclinableWord> adjectiveWordBank = [
       neuter: new DeclensionByGender(singular: "", plural: ""),
     ),
   ),
-  DeclinableWord(
+  Adjective(
     dictionary: "hladno",
     nominativ: new Declension(
       masculine: new DeclensionByGender(singular: "hladni", plural: "hladni"),
@@ -95,7 +96,7 @@ final List<DeclinableWord> adjectiveWordBank = [
       neuter: new DeclensionByGender(singular: "", plural: ""),
     ),
   ),
-  DeclinableWord(
+  Adjective(
     dictionary: "vruć",
     nominativ: new Declension(
       masculine: new DeclensionByGender(singular: "vrući", plural: "vrući"),
@@ -138,7 +139,7 @@ final List<DeclinableWord> adjectiveWordBank = [
       neuter: new DeclensionByGender(singular: "", plural: ""),
     ),
   ),
-  DeclinableWord(
+  Adjective(
     dictionary: "drug",
     nominativ: new Declension(
       masculine: new DeclensionByGender(singular: "drugi", plural: "drugi"),

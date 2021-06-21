@@ -2,8 +2,10 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
+import 'package:navika/models/adjective.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
+import 'package:navika/models/noun.dart';
 import 'package:navika/widgets/shared/pan-list-item.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -48,7 +50,7 @@ class N {
         .toList();
   }
 
-  static List<DropdownMenuItem<String>> getDropdownItems(DeclinableWord word) {
+  static List<DropdownMenuItem<String>> getDropdownItems(Adjective word) {
     var items = word.getUniqueDeclensions();
     return items
         .map((e) => DropdownMenuItem<String>(value: e, child: Text(e)))
@@ -79,7 +81,7 @@ class N {
 
   static List<PANExerciseItem> getPANCombos(
     WordBank bank,
-    StaticSentenceParts Function(Noun, bool, DeclinableWord)
+    StaticSentenceParts Function(Noun, bool, Adjective)
         getStaticSentenceParts,
     StaticSentenceParts Function(Noun, bool)
         getPersonalPronounSentenceStaticParts,

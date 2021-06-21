@@ -8,9 +8,11 @@ import 'package:navika/widgets/genitiv/genitiv-list-item.dart';
 import 'package:navika/widgets/shared/footer.dart';
 import 'package:navika/widgets/shared/navika-banner.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:navika/models/adjective.dart';
+import 'package:navika/models/noun.dart';
 
 class GenitivExerciseItem {
-  DeclinableWord pronoun;
+  Adjective pronoun;
   GenderEnum gender;
   bool isPlural;
   Noun noun1;
@@ -25,7 +27,7 @@ class GenitivExerciseItem {
 }
 
 StaticSentenceParts getSentenceStarter(
-    Noun noun, bool isPlural, DeclinableWord? pronoun) {
+    Noun noun, bool isPlural, Adjective? pronoun) {
   String start = '';
   if (isPlural) {
     start = 'To su';

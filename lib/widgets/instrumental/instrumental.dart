@@ -7,9 +7,11 @@ import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/shared/footer.dart';
 import 'package:navika/widgets/shared/navika-banner.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:navika/models/adjective.dart';
+import 'package:navika/models/noun.dart';
 
 StaticSentenceParts getSentenceStarter(
-    Noun noun, bool isPlural, DeclinableWord? pronoun) {
+    Noun noun, bool isPlural, Adjective? pronoun) {
   String start = '';
 
   start = 'Idem sa';

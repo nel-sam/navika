@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
-import 'package:navika/models/models.dart';
+import 'package:navika/models/adjective.dart';
+import 'package:navika/models/noun.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/shared/case-drop-down.dart';
 import 'package:navika/widgets/shared/exercise-row-card.dart';
@@ -10,8 +11,8 @@ import 'package:navika/widgets/shared/exercise-row-card.dart';
 class PANListItem extends StatefulWidget {
   final String sentenceStarter;
   final String sentenceEnder;
-  final DeclinableWord? adjective;
-  final DeclinableWord? pronoun;
+  final Adjective? adjective;
+  final Adjective? pronoun;
   final String? correctAdjValue;
   final String? correctPronounValue;
   final String correctNounValue;

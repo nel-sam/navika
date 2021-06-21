@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/lang_data/word-bank.dart';
+import 'package:navika/models/adjective.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
+import 'package:navika/models/noun.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/shared/footer.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/widgets/shared/navika-banner.dart';
 
 StaticSentenceParts getSentenceStarter(
-    Noun noun, bool isPlural, DeclinableWord? pronoun) {
+    Noun noun, bool isPlural, Adjective? pronoun) {
   String start = '';
 
   if (noun.tags.contains(Tags.Location)) {
