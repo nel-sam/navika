@@ -8,39 +8,41 @@ import 'package:navika/widgets/shared/footer.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/widgets/shared/navika-banner.dart';
 
-String getSentenceStarter(Noun noun, bool isPlural, DeclinableWord? pronoun) {
+StaticSentenceParts getSentenceStarter(
+    Noun noun, bool isPlural, DeclinableWord? pronoun) {
+  String start = '';
+
   if (noun.tags.contains(Tags.Location)) {
-    return 'Idemo na ';
+    start = 'Idemo na';
+  } else if (noun.tags.contains(Tags.Food)) {
+    start = N.coinFlip() ? 'Ću jesti' : 'Želi';
+  } else if (pronoun != null && pronoun.nominativ.masculine.singular != 'moj')
+    start = N.coinFlip() ? 'Ja vidim' : 'Volim';
+  else if (noun.tags.contains(Tags.Portable)) {
+    start = 'Daj mi';
+  } else {
+    start = 'Vidimo';
   }
 
-  if (noun.tags.contains(Tags.Food)) {
-    return N.coinFlip() ? 'Ću jesti ' : 'Želi ';
-  }
-
-  if (pronoun != null && pronoun.nominativ.masculine.singular != 'moj')
-    return N.coinFlip() ? 'Ja vidim' : 'Volim';
-
-  if (noun.tags.contains(Tags.Portable)) {
-    return 'Daj mi ';
-  }
-
-  return 'Vidimo ';
+  return StaticSentenceParts(start: start, end: '');
 }
 
-String getPersonalPronounSentenceStarter(Noun personalPronoun, bool isPlural) {
+StaticSentenceParts getPersonalPronounSentenceStarter(
+    Noun personalPronoun, bool isPlural) {
   final actualValue = isPlural
       ? personalPronoun.nominativ.plural
       : personalPronoun.nominativ.singular;
+  String start = '';
 
   if (actualValue != 'mi' && N.coinFlip()) {
-    return 'Mi vidimo';
+    start = 'Mi vidimo';
+  } else if (actualValue != 'ti' && N.coinFlip()) {
+    start = 'Daj to ';
+  } else {
+    start = 'Molim';
   }
 
-  if (actualValue != 'ti' && N.coinFlip()) {
-    return 'Daj to ';
-  }
-
-  return 'Molim';
+  return StaticSentenceParts(start: start, end: '');
 }
 
 // ignore: must_be_immutable

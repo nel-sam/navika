@@ -279,17 +279,27 @@ class DeclensionByGender {
 
 class PANExerciseItem {
   String sentenceStarter;
+  String sentenceEnder;
   DeclinableWord? pronoun;
   DeclinableWord? adjective;
   GenderEnum gender;
   bool isPlural;
   Noun noun;
 
-  PANExerciseItem(
-      {required this.sentenceStarter,
-      this.pronoun,
-      this.adjective,
-      required this.gender,
-      required this.isPlural,
-      required this.noun});
+  PANExerciseItem({
+    required this.sentenceStarter,
+    required this.sentenceEnder,
+    this.pronoun,
+    this.adjective,
+    required this.gender,
+    required this.isPlural,
+    required this.noun,
+  });
+}
+
+class StaticSentenceParts {
+  final String start;
+  final String end;
+
+  StaticSentenceParts({this.start = '', this.end = ''});
 }

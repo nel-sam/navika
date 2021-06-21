@@ -8,12 +8,17 @@ import 'package:navika/widgets/shared/footer.dart';
 import 'package:navika/widgets/shared/navika-banner.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-String getSentenceStarter(Noun noun, bool isPlural, DeclinableWord? pronoun) {
-  return 'Idem sa';
+StaticSentenceParts getSentenceStarter(
+    Noun noun, bool isPlural, DeclinableWord? pronoun) {
+  String start = '';
+
+  start = 'Idem sa';
+  return StaticSentenceParts(start: start, end: '');
 }
 
-String getPersonalPronounSentenceStarter(Noun personalPronoun, bool isPlural) {
-  return 'TEST';
+StaticSentenceParts getPersonalPronounSentenceStarter(
+    Noun personalPronoun, bool isPlural) {
+  return StaticSentenceParts(start: 'TEST', end: 'TEST');
 }
 
 // ignore: must_be_immutable

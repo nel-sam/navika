@@ -2,6 +2,7 @@ import 'package:navika/models/models.dart';
 
 final List<DeclinableWord> possesivePronounWordBank = [
   DeclinableWord(
+    // TODO: Create new class for PersonalPronouns to support short and long versions
     dictionary: 'moj',
     nominativ: new Declension(
       masculine: new DeclensionByGender(singular: 'moj', plural: 'moji'),

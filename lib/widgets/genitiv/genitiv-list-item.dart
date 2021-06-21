@@ -5,6 +5,7 @@ import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/shared/case-drop-down.dart';
 import 'package:navika/widgets/shared/exercise-row-card.dart';
 
+// TODO: Can Genitiv now use the standard PANListItem widget?
 // ignore: must_be_immutable
 class GenitivListItem extends StatefulWidget {
   final Noun noun1;
@@ -13,6 +14,8 @@ class GenitivListItem extends StatefulWidget {
   final GenderEnum gender;
   final DeclinableWord pronoun;
   final String sentenceStarter;
+  final String sentenceEnder;
+
   final String correctPronounValue;
   final String correctNoun1Value;
   final String correctNoun2Value;
@@ -21,19 +24,21 @@ class GenitivListItem extends StatefulWidget {
   String activePronounValue;
   String activeNoun2Value;
 
-  GenitivListItem(
-      {required this.noun1,
-      required this.sentenceStarter,
-      required this.correctPronounValue,
-      required this.correctNoun1Value,
-      required this.correctNoun2Value,
-      required this.activeNoun1Value,
-      required this.activePronounValue,
-      required this.activeNoun2Value,
-      required this.isPlural,
-      required this.pronoun,
-      required this.gender,
-      required this.noun2});
+  GenitivListItem({
+    required this.noun1,
+    required this.sentenceStarter,
+    this.sentenceEnder = '',
+    required this.correctPronounValue,
+    required this.correctNoun1Value,
+    required this.correctNoun2Value,
+    required this.activeNoun1Value,
+    required this.activePronounValue,
+    required this.activeNoun2Value,
+    required this.isPlural,
+    required this.pronoun,
+    required this.gender,
+    required this.noun2,
+  });
 
   @override
   _GenitivListItemState createState() => _GenitivListItemState();

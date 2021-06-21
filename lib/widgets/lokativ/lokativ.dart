@@ -8,12 +8,19 @@ import 'package:navika/widgets/shared/footer.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/widgets/shared/navika-banner.dart';
 
-String getSentenceStarter(Noun noun, bool isPlural, DeclinableWord? pronoun) {
-  return 'Govorim o';
+StaticSentenceParts getSentenceStarter(
+    Noun noun, bool isPlural, DeclinableWord? pronoun) {
+  String start = '';
+
+  start = 'Govorim o';
+  return StaticSentenceParts(start: start, end: '');
 }
 
-String getPersonalPronounSentenceStarter(Noun personalPronoun, bool isPlural) {
-  return 'TEST';
+StaticSentenceParts getPersonalPronounSentenceStarter(
+    Noun personalPronoun, bool isPlural) {
+  late String start = 'TEST';
+
+  return StaticSentenceParts(start: start, end: '');
 }
 
 // ignore: must_be_immutable

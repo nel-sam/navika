@@ -8,14 +8,24 @@ import 'package:navika/widgets/shared/footer.dart';
 import 'package:navika/widgets/shared/navika-banner.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-String getSentenceStarter(Noun noun, bool isPlural, DeclinableWord? pronoun) {
-  if (noun.isAnimate) return 'Daj to ';
-  if (isPlural) return 'Slični su ';
-  return 'Slično je ';
+StaticSentenceParts getSentenceStarter(
+    Noun noun, bool isPlural, DeclinableWord? pronoun) {
+  String start = '';
+
+  if (noun.isAnimate) {
+    start = 'Daj to ';
+  } else if (isPlural) {
+    start = 'Slični su ';
+  } else {
+    start = 'Slično je ';
+  }
+
+  return StaticSentenceParts(start: start, end: '');
 }
 
-String getPersonalPronounSentenceStarter(Noun personalPronoun, bool isPlural) {
-  return 'TEST';
+StaticSentenceParts getPersonalPronounSentenceStarter(
+    Noun personalPronoun, bool isPlural) {
+  return StaticSentenceParts(start: 'TEST', end: 'TEST');
 }
 
 // ignore: must_be_immutable

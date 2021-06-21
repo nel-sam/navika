@@ -8,43 +8,55 @@ import 'package:navika/widgets/shared/footer.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/widgets/shared/navika-banner.dart';
 
-String getSentenceStarter(Noun noun, bool isPlural, DeclinableWord pronoun) {
+StaticSentenceParts getSentenceStarter(
+    Noun noun, bool isPlural, DeclinableWord pronoun) {
   final tense = N.getRandomTense();
+  String start = '';
 
   if (noun.isAnimate && isPlural) {
-    if (tense == TenseEnum.Past || tense == TenseEnum.Conditional)
-      return noun.gender == GenderEnum.Feminine ? 'One su bile' : 'Oni su bili';
-
-    return noun.gender == GenderEnum.Feminine ? 'One su' : 'Oni su';
+    if (tense == TenseEnum.Past || tense == TenseEnum.Conditional) {
+      start =
+          noun.gender == GenderEnum.Feminine ? 'One su bile' : 'Oni su bili';
+    } else {
+      start = noun.gender == GenderEnum.Feminine ? 'One su' : 'Oni su';
+    }
   } else if (!noun.isAnimate && isPlural) {
     if (tense == TenseEnum.Future || tense == TenseEnum.Conditional)
-      return 'To će biti';
-
-    return 'To su';
+      start = 'To će biti';
+    else {
+      start = 'To su';
+    }
   } else if (noun.isAnimate && !isPlural) {
-    if (tense == TenseEnum.Past || tense == TenseEnum.Conditional)
-      return noun.gender == GenderEnum.Feminine ? 'Ona će biti' : 'On će biti';
-
-    return noun.gender == GenderEnum.Feminine ? 'Ona je' : 'On su';
+    if (tense == TenseEnum.Past || tense == TenseEnum.Conditional) {
+      start = noun.gender == GenderEnum.Feminine ? 'Ona će biti' : 'On će biti';
+    } else {
+      start = noun.gender == GenderEnum.Feminine ? 'Ona je' : 'On su';
+    }
   } else if (!noun.isAnimate && !isPlural) {
-    if (tense == TenseEnum.Past ||
-        tense == TenseEnum.Conditional) if (noun.gender == GenderEnum.Feminine)
-      return 'To je bila';
-    else if (noun.gender == GenderEnum.Masculine)
-      return 'To je bio';
-    else
-      return 'To je bilo';
+    if (tense == TenseEnum.Past || tense == TenseEnum.Conditional) {
+      if (noun.gender == GenderEnum.Feminine) {
+        start = 'To je bila';
+      } else if (noun.gender == GenderEnum.Masculine)
+        start = 'To je bio';
+      else
+        start = 'To je bilo';
+    }
+  } else {
+    start = 'To je';
   }
 
-  return 'To je';
+  return StaticSentenceParts(start: start, end: '');
 }
 
-String getPersonalPronounSentenceStarter(Noun personalPronoun, bool isPlural) {
+StaticSentenceParts getPersonalPronounSentenceStarter(
+    Noun personalPronoun, bool isPlural) {
+  String start = '';
   final verb = N.getBitiConjugationForPronoun(isPlural
       ? personalPronoun.nominativ.plural
       : personalPronoun.nominativ.singular);
 
-  return 'To ' + verb;
+  start = 'To ' + verb;
+  return StaticSentenceParts(start: start, end: '');
 }
 
 // ignore: must_be_immutable

@@ -24,9 +24,16 @@ class GenitivExerciseItem {
       required this.noun2});
 }
 
-String getSentenceStarter(Noun noun, bool isPlural, DeclinableWord? pronoun) {
-  if (isPlural) return 'To su';
-  return 'To je';
+StaticSentenceParts getSentenceStarter(
+    Noun noun, bool isPlural, DeclinableWord? pronoun) {
+  String start = '';
+  if (isPlural) {
+    start = 'To su';
+  } else {
+    start = 'To je';
+  }
+
+  return StaticSentenceParts(start: start, end: '');
 }
 
 // ignore: must_be_immutable
@@ -46,8 +53,11 @@ List<GenitivListItem> getListItems(List<GenitivExerciseItem> listItems) {
     final correctNoun2Value =
         e.noun2.getDeclension(e.isPlural, CaseTypeEnum.Genitiv);
 
+    final staticParts = getSentenceStarter(e.noun2, e.isPlural, e.pronoun);
+
     return GenitivListItem(
-        sentenceStarter: getSentenceStarter(e.noun2, e.isPlural, e.pronoun),
+        sentenceStarter: staticParts.start,
+        sentenceEnder: staticParts.end,
         correctPronounValue: correctPronounValue,
         correctNoun1Value: correctNoun1Value,
         correctNoun2Value: correctNoun2Value,

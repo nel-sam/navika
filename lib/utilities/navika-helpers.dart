@@ -79,29 +79,37 @@ class N {
 
   static List<PANExerciseItem> getPANCombos(
     WordBank bank,
-    Function(Noun, bool, DeclinableWord) getSentenceStarter,
-    Function(Noun, bool) getPersonalPronounSentenceStarter,
+    StaticSentenceParts Function(Noun, bool, DeclinableWord)
+        getStaticSentenceParts,
+    StaticSentenceParts Function(Noun, bool)
+        getPersonalPronounSentenceStaticParts,
   ) {
     var listItems = List<PANExerciseItem>.empty(growable: true);
 
     bank.personalPronouns.forEach((persPronoun) {
       final isPlural = N.coinFlip();
+      final staticParts =
+          getPersonalPronounSentenceStaticParts(persPronoun, isPlural);
 
       listItems.add(PANExerciseItem(
-          sentenceStarter:
-              getPersonalPronounSentenceStarter(persPronoun, isPlural),
-          gender: N.coinFlip() ? GenderEnum.Feminine : GenderEnum.Masculine,
-          isPlural: isPlural,
-          noun: persPronoun));
+        sentenceStarter: staticParts.start,
+        sentenceEnder: staticParts.end,
+        gender: N.coinFlip() ? GenderEnum.Feminine : GenderEnum.Masculine,
+        isPlural: isPlural,
+        noun: persPronoun,
+      ));
     });
 
     bank.possesivePronouns.forEach((possPronoun) {
       bank.adjectives.forEach((adj) {
         bank.nouns.forEach((noun) {
           final isPlural = noun.nominativ.plural != '' || N.coinFlip();
+          final staticParts =
+              getStaticSentenceParts(noun, isPlural, possPronoun);
 
           listItems.add(PANExerciseItem(
-              sentenceStarter: getSentenceStarter(noun, isPlural, possPronoun),
+              sentenceStarter: staticParts.start,
+              sentenceEnder: staticParts.end,
               pronoun: possPronoun,
               adjective: adj,
               gender: noun.gender,
@@ -125,12 +133,14 @@ class N {
       if (e.noun.tags.contains(Tags.PersonalPronoun)) {
         print('PersonalPronoun');
         return PANListItem(
-            sentenceStarter: e.sentenceStarter,
-            correctNounValue: correctNounValue,
-            activeNounValue: e.noun.dictionary,
-            isPlural: e.isPlural,
-            gender: e.gender,
-            noun: e.noun);
+          sentenceStarter: e.sentenceStarter,
+          sentenceEnder: e.sentenceEnder,
+          correctNounValue: correctNounValue,
+          activeNounValue: e.noun.dictionary,
+          isPlural: e.isPlural,
+          gender: e.gender,
+          noun: e.noun,
+        );
       }
 
       final correctPronounValue = e.pronoun!
@@ -140,6 +150,7 @@ class N {
 
       return PANListItem(
           sentenceStarter: e.sentenceStarter,
+          sentenceEnder: e.sentenceEnder,
           correctPronounValue: correctPronounValue,
           correctAdjValue: correctAdjValue,
           correctNounValue: correctNounValue,
