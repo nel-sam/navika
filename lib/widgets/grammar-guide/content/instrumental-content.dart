@@ -15,7 +15,7 @@ Widget InstrumentalGrammarGuideContent(BuildContext context) {
     children: [
       getDescription(context),
       getDeclensionTable(),
-      getPronounSection(context),
+      getPossesivePronounSection(context),
     ],
   );
 }
@@ -73,7 +73,7 @@ Widget getDeclensionTable() {
   );
 }
 
-Widget getPronounSection(BuildContext context) {
+Widget getPossesivePronounSection(BuildContext context) {
   return Column(
     mainAxisAlignment: MainAxisAlignment.start,
     children: [

@@ -14,7 +14,7 @@ Widget LokativGrammarGuideContent(BuildContext context) {
     children: [
       getDescription(context),
       getDeclensionTable(context),
-      getPronounSection(context),
+      getPossesivePronounSection(context),
     ],
   );
 }
@@ -72,7 +72,7 @@ Widget getDeclensionTable(BuildContext context) {
   );
 }
 
-Widget getPronounSection(BuildContext context) {
+Widget getPossesivePronounSection(BuildContext context) {
   return Column(
     mainAxisAlignment: MainAxisAlignment.start,
     children: [
