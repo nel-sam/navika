@@ -29,7 +29,7 @@ class PANListItem extends StatefulWidget {
   final String? correctPersonalPronounValue;
   String? activePersonalPronounValue;
 
-  final GenderEnum gender;
+  final Genders gender;
   final bool isPlural;
 
   PANListItem({
@@ -113,7 +113,8 @@ class _PANListItemState extends State<PANListItem> {
         CaseDropDown(
           activeValue: widget.activePersonalPronounValue!,
           correctValue: widget.correctPersonalPronounValue!,
-          dropDownOptions: N.getPersonalPronounDropdownItems(widget.personalPronoun!),
+          dropDownOptions:
+              N.getPersonalPronounDropdownItems(widget.personalPronoun!),
           onChanged: (String newVal) {
             setState(() {
               widget.activePersonalPronounValue = newVal;

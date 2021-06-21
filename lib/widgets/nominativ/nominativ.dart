@@ -11,17 +11,16 @@ import 'package:navika/widgets/shared/navika-banner.dart';
 import 'package:navika/models/adjective.dart';
 import 'package:navika/models/noun.dart';
 
-StaticSentenceParts getSentenceStarter(
+StaticSentenceParts getStaticSentenceStarter(
     Noun noun, bool isPlural, Adjective pronoun) {
   final tense = N.getRandomTense();
   String start = '';
 
   if (noun.isAnimate && isPlural) {
     if (tense == TenseEnum.Past || tense == TenseEnum.Conditional) {
-      start =
-          noun.gender == GenderEnum.Feminine ? 'One su bile' : 'Oni su bili';
+      start = noun.gender == Genders.Feminine ? 'One su bile' : 'Oni su bili';
     } else {
-      start = noun.gender == GenderEnum.Feminine ? 'One su' : 'Oni su';
+      start = noun.gender == Genders.Feminine ? 'One su' : 'Oni su';
     }
   } else if (!noun.isAnimate && isPlural) {
     if (tense == TenseEnum.Future || tense == TenseEnum.Conditional)
@@ -31,15 +30,15 @@ StaticSentenceParts getSentenceStarter(
     }
   } else if (noun.isAnimate && !isPlural) {
     if (tense == TenseEnum.Past || tense == TenseEnum.Conditional) {
-      start = noun.gender == GenderEnum.Feminine ? 'Ona će biti' : 'On će biti';
+      start = noun.gender == Genders.Feminine ? 'Ona će biti' : 'On će biti';
     } else {
-      start = noun.gender == GenderEnum.Feminine ? 'Ona je' : 'On su';
+      start = noun.gender == Genders.Feminine ? 'Ona je' : 'On su';
     }
   } else if (!noun.isAnimate && !isPlural) {
     if (tense == TenseEnum.Past || tense == TenseEnum.Conditional) {
-      if (noun.gender == GenderEnum.Feminine) {
+      if (noun.gender == Genders.Feminine) {
         start = 'To je bila';
-      } else if (noun.gender == GenderEnum.Masculine)
+      } else if (noun.gender == Genders.Masculine)
         start = 'To je bio';
       else
         start = 'To je bilo';
@@ -52,14 +51,22 @@ StaticSentenceParts getSentenceStarter(
 }
 
 StaticSentenceParts getPersonalPronounSentenceStarter(
-    PersonalPronoun personalPronoun, bool isShortForm) {
+    PersonalPronoun personalPronoun, Genders gender, bool isShortForm) {
   String start = '';
+  String end = '';
+
   final verb = N.getBitiConjugationForPronoun(isShortForm
       ? personalPronoun.nominativ.shortForm
       : personalPronoun.nominativ.general);
 
-  start = 'To ' + verb;
-  return StaticSentenceParts(start: start, end: '');
+  // if (N.coinFlip()) {
+  //   start = 'To ' + verb;
+  // } else {
+  var ocupation = gender == Genders.Feminine ? 'učiteljica' : 'učitelj';
+  end = '$verb $ocupation';
+  //}
+
+  return StaticSentenceParts(start: start, end: end);
 }
 
 // ignore: must_be_immutable
@@ -76,7 +83,7 @@ class _NominativExerciseState extends State<NominativExercise> {
 
     var listItems = N.getPANCombos(
       bank,
-      getSentenceStarter,
+      getStaticSentenceStarter,
       getPersonalPronounSentenceStarter,
     );
 
@@ -112,7 +119,7 @@ class _NominativExerciseState extends State<NominativExercise> {
         refreshFunction: () => setState(() {
           listItems = N.getPANCombos(
             bank,
-            getSentenceStarter,
+            getStaticSentenceStarter,
             getPersonalPronounSentenceStarter,
           );
           N.scrollTo(0, controller);

@@ -6,7 +6,7 @@ import 'package:navika/utilities/navika-helpers.dart';
 
 class Noun {
   final List<Tags> tags;
-  final GenderEnum gender;
+  final Genders gender;
   final String dictionary;
   final bool isAnimate;
 

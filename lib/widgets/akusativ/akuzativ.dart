@@ -11,7 +11,7 @@ import 'package:navika/widgets/shared/footer.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/widgets/shared/navika-banner.dart';
 
-StaticSentenceParts getSentenceStarter(
+StaticSentenceParts getStaticSentenceStarter(
     Noun noun, bool isPlural, Adjective? pronoun) {
   String start = '';
 
@@ -31,7 +31,7 @@ StaticSentenceParts getSentenceStarter(
 }
 
 StaticSentenceParts getPersonalPronounSentenceStarter(
-    PersonalPronoun personalPronoun, bool isShortForm) {
+    PersonalPronoun personalPronoun, Genders gender, bool isShortForm) {
   final actualValue = isShortForm
       ? personalPronoun.nominativ.shortForm
       : personalPronoun.nominativ.general;
@@ -52,7 +52,7 @@ StaticSentenceParts getPersonalPronounSentenceStarter(
 class Akuzativ extends StatefulWidget {
   final WordBank bank = wordBank;
   List<PANExerciseItem> listItems = N.getPANCombos(
-      wordBank, getSentenceStarter, getPersonalPronounSentenceStarter);
+      wordBank, getStaticSentenceStarter, getPersonalPronounSentenceStarter);
 
   @override
   _AkuzativState createState() => _AkuzativState();
@@ -96,7 +96,7 @@ class _AkuzativState extends State<Akuzativ> {
         refreshFunction: () => setState(() {
           widget.listItems = N.getPANCombos(
             wordBank,
-            getSentenceStarter,
+            getStaticSentenceStarter,
             getPersonalPronounSentenceStarter,
           );
           N.scrollTo(0, controller);

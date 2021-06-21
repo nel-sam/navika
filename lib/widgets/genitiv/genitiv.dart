@@ -13,7 +13,7 @@ import 'package:navika/models/noun.dart';
 
 class GenitivExerciseItem {
   Adjective pronoun;
-  GenderEnum gender;
+  Genders gender;
   bool isPlural;
   Noun noun1;
   Noun noun2;
@@ -26,7 +26,7 @@ class GenitivExerciseItem {
       required this.noun2});
 }
 
-StaticSentenceParts getSentenceStarter(
+StaticSentenceParts getStaticSentenceStarter(
     Noun noun, bool isPlural, Adjective? pronoun) {
   String start = '';
   if (isPlural) {
@@ -55,7 +55,8 @@ List<GenitivListItem> getListItems(List<GenitivExerciseItem> listItems) {
     final correctNoun2Value =
         e.noun2.getDeclension(e.isPlural, CaseTypeEnum.Genitiv);
 
-    final staticParts = getSentenceStarter(e.noun2, e.isPlural, e.pronoun);
+    final staticParts =
+        getStaticSentenceStarter(e.noun2, e.isPlural, e.pronoun);
 
     return GenitivListItem(
         sentenceStarter: staticParts.start,

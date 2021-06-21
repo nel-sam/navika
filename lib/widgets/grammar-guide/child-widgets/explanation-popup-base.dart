@@ -112,15 +112,15 @@ getTable(
               children: [
                 Container(width: firstColWidth),
                 ExplanationIconCell(
-                  icon: N.getGenderIcon(GenderEnum.Masculine),
+                  icon: N.getGenderIcon(Genders.Masculine),
                   label: AppLocalizations.of(context)!.masculine,
                 ),
                 ExplanationIconCell(
-                  icon: N.getGenderIcon(GenderEnum.Feminine),
+                  icon: N.getGenderIcon(Genders.Feminine),
                   label: AppLocalizations.of(context)!.feminine,
                 ),
                 ExplanationIconCell(
-                  icon: N.getGenderIcon(GenderEnum.Neuter),
+                  icon: N.getGenderIcon(Genders.Neuter),
                   label: AppLocalizations.of(context)!.neuter,
                 ),
               ],

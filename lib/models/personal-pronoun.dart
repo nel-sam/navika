@@ -7,7 +7,7 @@ import 'package:navika/utilities/navika-helpers.dart';
 class PersonalPronoun {
   final PronounEnum type;
   final bool isPlural;
-  final GenderEnum gender;
+  final Genders gender;
   final String dictionary;
 
   final DeclensionPronoun nominativ;

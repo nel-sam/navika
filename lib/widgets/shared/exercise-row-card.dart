@@ -8,7 +8,7 @@ class ExerciseRowCard extends StatelessWidget {
   final bool isAllCorrect;
   final List<Widget> children;
   final bool isPlural;
-  final GenderEnum gender;
+  final Genders gender;
 
   const ExerciseRowCard({
     Key? key,
@@ -20,12 +20,12 @@ class ExerciseRowCard extends StatelessWidget {
 
   String getGenderString(BuildContext context) {
     switch (gender) {
-      case GenderEnum.Masculine:
+      case Genders.Masculine:
         return AppLocalizations.of(context)!.masculine;
-      case GenderEnum.Feminine:
+      case Genders.Feminine:
         return AppLocalizations.of(context)!.feminine;
-      case GenderEnum.Neuter:
-      case GenderEnum.Unspecific:
+      case Genders.Neuter:
+      case Genders.Unspecific:
         return AppLocalizations.of(context)!.neuter;
     }
   }
@@ -51,7 +51,6 @@ class ExerciseRowCard extends StatelessWidget {
               blurRadius: 1,
             ),
           ],
-          //borderRadius: BorderRadius.all(Radius.circular(CELL_TEXT_PADDING)),
         ),
         margin: EdgeInsets.only(top: 10),
         child: Column(

@@ -12,7 +12,7 @@ final List<Noun> nounWordBank = [
   Noun(
     dictionary: 'ananas',
     tags: [Tags.Food, Tags.Portable],
-    gender: GenderEnum.Masculine,
+    gender: Genders.Masculine,
     isAnimate: false,
     nominativ: new DeclensionByCount(
       singular: 'ananas',
@@ -46,7 +46,7 @@ final List<Noun> nounWordBank = [
   Noun(
     dictionary: 'Bosna',
     tags: [Tags.Location, Tags.Country],
-    gender: GenderEnum.Feminine,
+    gender: Genders.Feminine,
     isAnimate: false,
     nominativ: new DeclensionByCount(
       singular: 'Bosna',
@@ -80,7 +80,7 @@ final List<Noun> nounWordBank = [
   Noun(
     dictionary: 'slik',
     tags: [Tags.Thing, Tags.Portable],
-    gender: GenderEnum.Masculine,
+    gender: Genders.Masculine,
     isAnimate: false,
     nominativ: new DeclensionByCount(
       singular: 'slik',
@@ -114,7 +114,7 @@ final List<Noun> nounWordBank = [
   Noun(
     dictionary: 'lice',
     tags: [Tags.BodyPart],
-    gender: GenderEnum.Neuter,
+    gender: Genders.Neuter,
     isAnimate: false,
     nominativ: new DeclensionByCount(
       singular: 'lice',
@@ -148,7 +148,7 @@ final List<Noun> nounWordBank = [
   Noun(
     dictionary: 'avion',
     tags: [Tags.Vehicle],
-    gender: GenderEnum.Masculine,
+    gender: Genders.Masculine,
     isAnimate: false,
     nominativ: new DeclensionByCount(
       singular: 'avion',
@@ -186,7 +186,7 @@ final List<Noun> nounWordBank = [
       Tags.Furniture,
       Tags.Portable,
     ],
-    gender: GenderEnum.Masculine,
+    gender: Genders.Masculine,
     isAnimate: false,
     nominativ: new DeclensionByCount(
       singular: 'stol',
@@ -223,7 +223,7 @@ final List<Noun> nounWordBank = [
       Tags.Human,
       Tags.Adult,
     ],
-    gender: GenderEnum.Feminine,
+    gender: Genders.Feminine,
     isAnimate: true,
     nominativ: new DeclensionByCount(
       singular: 'žena',
@@ -260,7 +260,7 @@ final List<Noun> nounWordBank = [
       Tags.Human,
       Tags.Adult,
     ],
-    gender: GenderEnum.Feminine,
+    gender: Genders.Feminine,
     isAnimate: true,
     nominativ: new DeclensionByCount(
       singular: 'sestra',
@@ -297,7 +297,7 @@ final List<Noun> nounWordBank = [
       Tags.Human,
       Tags.Adult,
     ],
-    gender: GenderEnum.Masculine,
+    gender: Genders.Masculine,
     isAnimate: true,
     nominativ: new DeclensionByCount(
       singular: 'muškarac',
@@ -369,7 +369,7 @@ final List<Noun> nounWordBank = [
   Noun(
     dictionary: 'ljubav',
     tags: [Tags.Emotion],
-    gender: GenderEnum.Feminine,
+    gender: Genders.Feminine,
     isAnimate: false,
     nominativ: new DeclensionByCount(
       singular: 'ljubav',
@@ -403,7 +403,7 @@ final List<Noun> nounWordBank = [
   Noun(
     dictionary: 'telefon',
     tags: [],
-    gender: GenderEnum.Masculine,
+    gender: Genders.Masculine,
     isAnimate: false,
     nominativ: new DeclensionByCount(
       singular: 'telefon',

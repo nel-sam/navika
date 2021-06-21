@@ -12,7 +12,7 @@ class GenitivListItem extends StatefulWidget {
   final Noun noun1;
   final Noun noun2;
   final bool isPlural;
-  final GenderEnum gender;
+  final Genders gender;
   final Adjective pronoun;
   final String sentenceStarter;
   final String sentenceEnder;

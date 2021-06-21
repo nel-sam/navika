@@ -11,7 +11,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/models/adjective.dart';
 import 'package:navika/models/noun.dart';
 
-StaticSentenceParts getSentenceStarter(
+StaticSentenceParts getStaticSentenceStarter(
     Noun noun, bool isPlural, Adjective? pronoun) {
   String start = '';
 
@@ -20,7 +20,7 @@ StaticSentenceParts getSentenceStarter(
 }
 
 StaticSentenceParts getPersonalPronounSentenceStarter(
-    PersonalPronoun personalPronoun, bool isShortForm) {
+    PersonalPronoun personalPronoun, Genders gender, bool isShortForm) {
   return StaticSentenceParts(start: 'TEST', end: 'TEST');
 }
 
@@ -29,7 +29,7 @@ class Instrumental extends StatefulWidget {
   final WordBank bank = wordBank;
   var listItems = N.getPANCombos(
     wordBank,
-    getSentenceStarter,
+    getStaticSentenceStarter,
     getPersonalPronounSentenceStarter,
   );
 
@@ -75,7 +75,7 @@ class _InstrumentalState extends State<Instrumental> {
         refreshFunction: () => setState(() {
           widget.listItems = N.getPANCombos(
             wordBank,
-            getSentenceStarter,
+            getStaticSentenceStarter,
             getPersonalPronounSentenceStarter,
           );
           N.scrollTo(0, controller);

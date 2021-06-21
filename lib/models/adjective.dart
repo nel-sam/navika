@@ -90,7 +90,7 @@ class Adjective {
   }
 
   String getDeclension(
-      GenderEnum gender, bool isPlural, CaseTypeEnum caseType, bool isAnimate) {
+      Genders gender, bool isPlural, CaseTypeEnum caseType, bool isAnimate) {
     Declension declension;
 
     switch (caseType) {
@@ -117,11 +117,11 @@ class Adjective {
         break;
     }
 
-    if (gender == GenderEnum.Masculine) {
+    if (gender == Genders.Masculine) {
       return isPlural
           ? declension.masculine.plural
           : declension.masculine.singular;
-    } else if (gender == GenderEnum.Feminine) {
+    } else if (gender == Genders.Feminine) {
       return isPlural
           ? declension.feminine.plural
           : declension.feminine.singular;

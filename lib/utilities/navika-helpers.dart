@@ -16,10 +16,10 @@ class N {
         curve: Curves.linear, duration: SCROLL_DURATION);
   }
 
-  static IconData getGenderIcon(GenderEnum gender) {
-    if (gender == GenderEnum.Feminine) {
+  static IconData getGenderIcon(Genders gender) {
+    if (gender == Genders.Feminine) {
       return FEMININE_ICON;
-    } else if (gender == GenderEnum.Masculine) {
+    } else if (gender == Genders.Masculine) {
       return MASCULINE_ICON;
     } else {
       return NEUTER_ICON;
@@ -92,20 +92,22 @@ class N {
   static List<PANExerciseItem> getPANCombos(
     WordBank bank,
     StaticSentenceParts Function(Noun, bool, Adjective) getStaticSentenceParts,
-    StaticSentenceParts Function(PersonalPronoun, bool)
+    StaticSentenceParts Function(PersonalPronoun, Genders, bool)
         getPersonalPronounSentenceStaticParts,
   ) {
     var listItems = List<PANExerciseItem>.empty(growable: true);
 
     bank.personalPronouns.forEach((persPronoun) {
       final isPlural = N.coinFlip();
+      Genders gender = N.coinFlip() ? Genders.Feminine : Genders.Masculine;
+
       final staticParts =
-          getPersonalPronounSentenceStaticParts(persPronoun, isPlural);
+          getPersonalPronounSentenceStaticParts(persPronoun, gender, isPlural);
 
       listItems.add(PANExerciseItem(
         sentenceStarter: staticParts.start,
         sentenceEnder: staticParts.end,
-        gender: N.coinFlip() ? GenderEnum.Feminine : GenderEnum.Masculine,
+        gender: N.coinFlip() ? Genders.Feminine : Genders.Masculine,
         isPlural: isPlural,
         personalPronoun: persPronoun,
       ));

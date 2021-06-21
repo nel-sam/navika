@@ -52,21 +52,21 @@ class DeclensionTable extends StatelessWidget {
                   Container(
                     width: colWidth,
                     child: ExplanationIconCell(
-                      icon: N.getGenderIcon(GenderEnum.Masculine),
+                      icon: N.getGenderIcon(Genders.Masculine),
                       label: 'Masc.',
                     ),
                   ),
                   Container(
                     width: colWidth,
                     child: ExplanationIconCell(
-                      icon: N.getGenderIcon(GenderEnum.Feminine),
+                      icon: N.getGenderIcon(Genders.Feminine),
                       label: 'Fem.',
                     ),
                   ),
                   Container(
                     width: colWidth,
                     child: ExplanationIconCell(
-                      icon: N.getGenderIcon(GenderEnum.Neuter),
+                      icon: N.getGenderIcon(Genders.Neuter),
                       label: 'Neut.',
                     ),
                   ),

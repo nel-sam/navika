@@ -1,4 +1,4 @@
-enum GenderEnum {
+enum Genders {
   Masculine,
   Feminine,
   Neuter,

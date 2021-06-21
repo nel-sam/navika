@@ -84,7 +84,7 @@ class PANExerciseItem {
   Adjective? pronoun;
   Adjective? adjective;
   PersonalPronoun? personalPronoun;
-  GenderEnum gender;
+  Genders gender;
   bool isPlural;
 
   PANExerciseItem({

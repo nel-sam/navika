@@ -7,7 +7,7 @@ final List<PersonalPronoun> personalPronounWordBank = [
     dictionary: 'ja',
     type: PronounEnum.I,
     isPlural: false,
-    gender: GenderEnum.Unspecific,
+    gender: Genders.Unspecific,
     nominativ: new DeclensionPronoun(
       general: 'ja',
     ),
