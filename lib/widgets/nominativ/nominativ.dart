@@ -39,6 +39,14 @@ String getSentenceStarter(Noun noun, bool isPlural, DeclinableWord pronoun) {
   return 'To je';
 }
 
+String getPersonalPronounSentenceStarter(Noun personalPronoun, bool isPlural) {
+  final verb = N.getBitiConjugationForPronoun(isPlural
+      ? personalPronoun.nominativ.plural
+      : personalPronoun.nominativ.singular);
+
+  return 'To ' + verb;
+}
+
 // ignore: must_be_immutable
 class NominativExercise extends StatefulWidget {
   @override
@@ -54,6 +62,7 @@ class _NominativExerciseState extends State<NominativExercise> {
     var listItems = N.getPANCombos(
       bank,
       getSentenceStarter,
+      getPersonalPronounSentenceStarter,
     );
 
     return Scaffold(
@@ -89,6 +98,7 @@ class _NominativExerciseState extends State<NominativExercise> {
           listItems = N.getPANCombos(
             bank,
             getSentenceStarter,
+            getPersonalPronounSentenceStarter,
           );
           N.scrollTo(0, controller);
         }),

@@ -1,4 +1,9 @@
-enum GenderEnum { Masculine, Feminine, Neuter }
+enum GenderEnum {
+  Masculine,
+  Feminine,
+  Neuter,
+  Unspecific,
+}
 
 enum CaseTypeEnum {
   Instrumental,
@@ -11,6 +16,7 @@ enum CaseTypeEnum {
 }
 
 enum Tags {
+  PersonalPronoun,
   AnimateNonHuman,
   NaturalFeature,
   FlatSurface,

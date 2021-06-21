@@ -12,12 +12,17 @@ String getSentenceStarter(Noun noun, bool isPlural, DeclinableWord? pronoun) {
   return 'Idem sa';
 }
 
+String getPersonalPronounSentenceStarter(Noun personalPronoun, bool isPlural) {
+  return 'TEST';
+}
+
 // ignore: must_be_immutable
 class Instrumental extends StatefulWidget {
   final WordBank bank = wordBank;
   var listItems = N.getPANCombos(
     wordBank,
     getSentenceStarter,
+    getPersonalPronounSentenceStarter,
   );
 
   @override
@@ -63,6 +68,7 @@ class _InstrumentalState extends State<Instrumental> {
           widget.listItems = N.getPANCombos(
             wordBank,
             getSentenceStarter,
+            getPersonalPronounSentenceStarter,
           );
           N.scrollTo(0, controller);
         }),

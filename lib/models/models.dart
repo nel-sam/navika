@@ -7,17 +7,21 @@ class WordBank {
   final List<Noun> nouns;
   final List<DeclinableWord> adjectives;
   final List<DeclinableWord> possesivePronouns;
+  final List<Noun> personalPronouns;
 
   WordBank(
       {required this.nouns,
       required this.adjectives,
-      required this.possesivePronouns});
+      required this.possesivePronouns,
+      required this.personalPronouns});
 
   WordBank filterPronoun(String toFilter) {
     var result = WordBank(
-        nouns: [...this.nouns],
-        adjectives: [...this.adjectives],
-        possesivePronouns: [...this.possesivePronouns]);
+      nouns: [...this.nouns],
+      adjectives: [...this.adjectives],
+      possesivePronouns: [...this.possesivePronouns],
+      personalPronouns: [...this.personalPronouns],
+    );
 
     final svoj = result.possesivePronouns
         .firstWhere((e) => e.nominativ.masculine.singular == toFilter);
@@ -275,16 +279,16 @@ class DeclensionByGender {
 
 class PANExerciseItem {
   String sentenceStarter;
-  DeclinableWord pronoun;
-  DeclinableWord adjective;
+  DeclinableWord? pronoun;
+  DeclinableWord? adjective;
   GenderEnum gender;
   bool isPlural;
   Noun noun;
 
   PANExerciseItem(
       {required this.sentenceStarter,
-      required this.pronoun,
-      required this.adjective,
+      this.pronoun,
+      this.adjective,
       required this.gender,
       required this.isPlural,
       required this.noun});

@@ -27,13 +27,27 @@ String getSentenceStarter(Noun noun, bool isPlural, DeclinableWord? pronoun) {
   return 'Vidimo ';
 }
 
+String getPersonalPronounSentenceStarter(Noun personalPronoun, bool isPlural) {
+  final actualValue = isPlural
+      ? personalPronoun.nominativ.plural
+      : personalPronoun.nominativ.singular;
+
+  if (actualValue != 'mi' && N.coinFlip()) {
+    return 'Mi vidimo';
+  }
+
+  if (actualValue != 'ti' && N.coinFlip()) {
+    return 'Daj to ';
+  }
+
+  return 'Molim';
+}
+
 // ignore: must_be_immutable
 class Akuzativ extends StatefulWidget {
   final WordBank bank = wordBank;
-  var listItems = N.getPANCombos(
-    wordBank,
-    getSentenceStarter,
-  );
+  List<PANExerciseItem> listItems = N.getPANCombos(
+      wordBank, getSentenceStarter, getPersonalPronounSentenceStarter);
 
   @override
   _AkuzativState createState() => _AkuzativState();
@@ -78,6 +92,7 @@ class _AkuzativState extends State<Akuzativ> {
           widget.listItems = N.getPANCombos(
             wordBank,
             getSentenceStarter,
+            getPersonalPronounSentenceStarter,
           );
           N.scrollTo(0, controller);
         }),

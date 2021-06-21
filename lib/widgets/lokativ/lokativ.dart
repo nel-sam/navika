@@ -12,6 +12,10 @@ String getSentenceStarter(Noun noun, bool isPlural, DeclinableWord? pronoun) {
   return 'Govorim o';
 }
 
+String getPersonalPronounSentenceStarter(Noun personalPronoun, bool isPlural) {
+  return 'TEST';
+}
+
 // ignore: must_be_immutable
 class Lokativ extends StatefulWidget {
   final sentenceStarters = ['Govorim o'];
@@ -19,6 +23,7 @@ class Lokativ extends StatefulWidget {
   var listItems = N.getPANCombos(
     wordBank,
     getSentenceStarter,
+    getPersonalPronounSentenceStarter,
   );
 
   @override
@@ -62,6 +67,7 @@ class _LokativState extends State<Lokativ> {
           widget.listItems = N.getPANCombos(
             wordBank,
             getSentenceStarter,
+            getPersonalPronounSentenceStarter,
           );
           N.scrollTo(0, controller);
         }),

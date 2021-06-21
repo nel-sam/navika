@@ -78,29 +78,35 @@ class N {
   }
 
   static List<PANExerciseItem> getPANCombos(
-      WordBank bank, Function getSentenceStarters,) {
+    WordBank bank,
+    Function(Noun, bool, DeclinableWord) getSentenceStarter,
+    Function(Noun, bool) getPersonalPronounSentenceStarter,
+  ) {
     var listItems = List<PANExerciseItem>.empty(growable: true);
 
-    bank.possesivePronouns.forEach((pp) {
+    bank.personalPronouns.forEach((persPronoun) {
+      final isPlural = N.coinFlip();
+
+      listItems.add(PANExerciseItem(
+          sentenceStarter:
+              getPersonalPronounSentenceStarter(persPronoun, isPlural),
+          gender: N.coinFlip() ? GenderEnum.Feminine : GenderEnum.Masculine,
+          isPlural: isPlural,
+          noun: persPronoun));
+    });
+
+    bank.possesivePronouns.forEach((possPronoun) {
       bank.adjectives.forEach((adj) {
         bank.nouns.forEach((noun) {
+          final isPlural = noun.nominativ.plural != '' || N.coinFlip();
+
           listItems.add(PANExerciseItem(
-              sentenceStarter: getSentenceStarters(noun, false, pp),
-              pronoun: pp,
+              sentenceStarter: getSentenceStarter(noun, isPlural, possPronoun),
+              pronoun: possPronoun,
               adjective: adj,
               gender: noun.gender,
-              isPlural: false,
+              isPlural: isPlural,
               noun: noun));
-
-          if (noun.nominativ.plural != '') {
-            listItems.add(PANExerciseItem(
-                sentenceStarter: getSentenceStarters(noun, true, pp),
-                pronoun: pp,
-                adjective: adj,
-                gender: noun.gender,
-                isPlural: true,
-                noun: noun));
-          }
         });
       });
     });
@@ -111,31 +117,42 @@ class N {
   static List<PANListItem> getPANListItems(
       List<PANExerciseItem> listItems, CaseTypeEnum caseType) {
     return N
-        .shuffleList(listItems)
-        .map((PANExerciseItem e) {
-          final correctPronounValue = e.pronoun
-              .getDeclension(e.gender, e.isPlural, caseType, e.noun.isAnimate);
-          final correctAdjValue = e.adjective
-              .getDeclension(e.gender, e.isPlural, caseType, e.noun.isAnimate);
-          final correctNounValue = e.noun.getDeclension(e.isPlural, caseType);
-
-          return PANListItem(
-              sentenceStarter: e.sentenceStarter,
-              correctPronounValue: correctPronounValue,
-              correctAdjValue: correctAdjValue,
-              correctNounValue: correctNounValue,
-              adjective: e.adjective,
-              activePronounValue:
-                  e.pronoun.getRandomDeclension(correctPronounValue),
-              activeAdjValue: e.adjective.getRandomDeclension(correctAdjValue),
-              activeNounValue: e.noun.getRandomDeclension(correctNounValue),
-              isPlural: e.isPlural,
-              pronoun: e.pronoun,
-              gender: e.gender,
-              noun: e.noun);
-        })
+        .shuffleList<PANExerciseItem>(listItems)
         .take(BATCH_COUNT)
-        .toList();
+        .map((PANExerciseItem e) {
+      final correctNounValue = e.noun.getDeclension(e.isPlural, caseType);
+
+      if (e.noun.tags.contains(Tags.PersonalPronoun)) {
+        print('PersonalPronoun');
+        return PANListItem(
+            sentenceStarter: e.sentenceStarter,
+            correctNounValue: correctNounValue,
+            activeNounValue: e.noun.dictionary,
+            isPlural: e.isPlural,
+            gender: e.gender,
+            noun: e.noun);
+      }
+
+      final correctPronounValue = e.pronoun!
+          .getDeclension(e.gender, e.isPlural, caseType, e.noun.isAnimate);
+      final correctAdjValue = e.adjective!
+          .getDeclension(e.gender, e.isPlural, caseType, e.noun.isAnimate);
+
+      return PANListItem(
+          sentenceStarter: e.sentenceStarter,
+          correctPronounValue: correctPronounValue,
+          correctAdjValue: correctAdjValue,
+          correctNounValue: correctNounValue,
+          adjective: e.adjective!,
+          activePronounValue:
+              e.pronoun!.getRandomDeclension(correctPronounValue),
+          activeAdjValue: e.adjective!.getRandomDeclension(correctAdjValue),
+          activeNounValue: e.noun.getRandomDeclension(correctNounValue),
+          isPlural: e.isPlural,
+          pronoun: e.pronoun!,
+          gender: e.gender,
+          noun: e.noun);
+    }).toList();
   }
 
   static getRandomTense() {
@@ -211,6 +228,27 @@ class N {
         return AppLocalizations.of(context)!.pronouns_They_Fem;
       case PronounEnum.Oneself:
         return AppLocalizations.of(context)!.pronouns_oneself;
+    }
+  }
+
+  static String getBitiConjugationForPronoun(String pronoun) {
+    switch (pronoun) {
+      case 'ja':
+        return 'sam';
+      case 'si':
+        return 'si';
+      case 'mi':
+        return 'smo';
+      case 'vi':
+        return 'ste';
+      case 'on':
+      case 'ona':
+        return 'je';
+      case 'oni':
+      case 'one':
+        return 'su';
+      default:
+        return '';
     }
   }
 }

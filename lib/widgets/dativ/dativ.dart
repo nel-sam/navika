@@ -14,12 +14,17 @@ String getSentenceStarter(Noun noun, bool isPlural, DeclinableWord? pronoun) {
   return 'Slično je ';
 }
 
+String getPersonalPronounSentenceStarter(Noun personalPronoun, bool isPlural) {
+  return 'TEST';
+}
+
 // ignore: must_be_immutable
 class Dativ extends StatefulWidget {
   final WordBank bank = wordBank;
   var listItems = N.getPANCombos(
     wordBank,
     getSentenceStarter,
+    getPersonalPronounSentenceStarter,
   );
 
   @override
@@ -64,6 +69,7 @@ class _DativState extends State<Dativ> {
           widget.listItems = N.getPANCombos(
             wordBank,
             getSentenceStarter,
+            getPersonalPronounSentenceStarter,
           );
           N.scrollTo(0, controller);
         }),

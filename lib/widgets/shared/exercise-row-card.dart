@@ -25,6 +25,7 @@ class ExerciseRowCard extends StatelessWidget {
       case GenderEnum.Feminine:
         return AppLocalizations.of(context)!.feminine;
       case GenderEnum.Neuter:
+      case GenderEnum.Unspecific:
         return AppLocalizations.of(context)!.neuter;
     }
   }
