@@ -35,7 +35,7 @@ class Adjective {
     return declensions[index];
   }
 
-  List getUniqueDeclensions() {
+  List<String> getUniqueDeclensions() {
     return N.shuffleList([
       this.dictionary,
       this.nominativ.masculine.singular,

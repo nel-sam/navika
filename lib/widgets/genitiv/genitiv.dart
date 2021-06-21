@@ -67,7 +67,7 @@ List<GenitivListItem> getListItems(List<GenitivExerciseItem> listItems) {
         activePronounValue: e.pronoun.getRandomDeclension(correctPronounValue),
         activeNoun1Value: e.noun1.getRandomDeclension(correctNoun1Value),
         activeNoun2Value: e.noun2.getRandomDeclension(correctNoun2Value),
-        pronoun: e.pronoun,
+        possPronoun: e.pronoun,
         noun1: e.noun1,
         isPlural: e.isPlural,
         gender: e.gender,

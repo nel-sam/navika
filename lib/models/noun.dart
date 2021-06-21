@@ -70,7 +70,7 @@ class Noun {
     return declensions[index];
   }
 
-  List getUniqueDeclensions() {
+  List<String> getUniqueDeclensions() {
     return N.shuffleList([
       this.dictionary,
       this.nominativ.singular,

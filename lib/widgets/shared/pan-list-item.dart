@@ -13,9 +13,9 @@ class PANListItem extends StatefulWidget {
   final String sentenceStarter;
   final String sentenceEnder;
 
-  final Adjective? pronoun;
-  final String? correctPronounValue;
-  String? activePronounValue;
+  final Adjective? possPronoun;
+  final String? correctPossPronounValue;
+  String? activePossPronounValue;
 
   final Adjective? adjective;
   final String? correctAdjValue;
@@ -35,9 +35,9 @@ class PANListItem extends StatefulWidget {
   PANListItem({
     required this.sentenceStarter,
     required this.sentenceEnder,
-    this.pronoun,
-    this.correctPronounValue = '',
-    this.activePronounValue = '',
+    this.possPronoun,
+    this.correctPossPronounValue = '',
+    this.activePossPronounValue = '',
     this.adjective,
     this.correctAdjValue = '',
     this.activeAdjValue = '',
@@ -57,7 +57,7 @@ class PANListItem extends StatefulWidget {
 
 class _PANListItemState extends State<PANListItem> {
   bool checkAnswer() {
-    return widget.activePronounValue == widget.correctPronounValue &&
+    return widget.activePossPronounValue == widget.correctPossPronounValue &&
         widget.activeAdjValue == widget.correctAdjValue &&
         widget.activeNounValue == widget.correctNounValue &&
         widget.activePersonalPronounValue == widget.correctPersonalPronounValue;
@@ -73,14 +73,14 @@ class _PANListItemState extends State<PANListItem> {
           widget.sentenceStarter,
           style: TextStyle(fontSize: EXERCISE_FONT_STYLE),
         ),
-      if (widget.correctPronounValue != '')
+      if (widget.correctPossPronounValue != '')
         CaseDropDown(
-          activeValue: widget.activePronounValue!,
-          correctValue: widget.correctPronounValue!,
-          dropDownOptions: N.getAdjectiveDropdownItems(widget.pronoun!),
+          activeValue: widget.activePossPronounValue!,
+          correctValue: widget.correctPossPronounValue!,
+          dropDownOptions: N.getDropdownItems(adjective: widget.possPronoun!),
           onChanged: (String newVal) {
             setState(() {
-              widget.activePronounValue = newVal;
+              widget.activePossPronounValue = newVal;
               isAllCorrect = checkAnswer();
             });
           },
@@ -89,7 +89,7 @@ class _PANListItemState extends State<PANListItem> {
         CaseDropDown(
           activeValue: widget.activeAdjValue!,
           correctValue: widget.correctAdjValue!,
-          dropDownOptions: N.getAdjectiveDropdownItems(widget.adjective!),
+          dropDownOptions: N.getDropdownItems(adjective: widget.adjective!),
           onChanged: (String newVal) {
             setState(() {
               widget.activeAdjValue = newVal;
@@ -101,7 +101,7 @@ class _PANListItemState extends State<PANListItem> {
         CaseDropDown(
           activeValue: widget.activeNounValue!,
           correctValue: widget.correctNounValue!,
-          dropDownOptions: N.getNounDropdownItems(widget.noun!),
+          dropDownOptions: N.getDropdownItems(noun: widget.noun!),
           onChanged: (String newVal) {
             setState(() {
               widget.activeNounValue = newVal;
@@ -114,7 +114,7 @@ class _PANListItemState extends State<PANListItem> {
           activeValue: widget.activePersonalPronounValue!,
           correctValue: widget.correctPersonalPronounValue!,
           dropDownOptions:
-              N.getPersonalPronounDropdownItems(widget.personalPronoun!),
+              N.getDropdownItems(personalPronoun: widget.personalPronoun!),
           onChanged: (String newVal) {
             setState(() {
               widget.activePersonalPronounValue = newVal;

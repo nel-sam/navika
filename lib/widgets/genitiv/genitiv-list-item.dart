@@ -13,7 +13,7 @@ class GenitivListItem extends StatefulWidget {
   final Noun noun2;
   final bool isPlural;
   final Genders gender;
-  final Adjective pronoun;
+  final Adjective possPronoun;
   final String sentenceStarter;
   final String sentenceEnder;
 
@@ -36,7 +36,7 @@ class GenitivListItem extends StatefulWidget {
     required this.activePronounValue,
     required this.activeNoun2Value,
     required this.isPlural,
-    required this.pronoun,
+    required this.possPronoun,
     required this.gender,
     required this.noun2,
   });
@@ -60,7 +60,7 @@ class _GenitivListItemState extends State<GenitivListItem> {
       CaseDropDown(
         activeValue: widget.activePronounValue,
         correctValue: widget.correctPronounValue,
-        dropDownOptions: N.getAdjectiveDropdownItems(widget.pronoun),
+        dropDownOptions: N.getDropdownItems(adjective: widget.possPronoun),
         onChanged: (String newVal) {
           setState(() {
             widget.activePronounValue = newVal;
@@ -71,7 +71,7 @@ class _GenitivListItemState extends State<GenitivListItem> {
       CaseDropDown(
         activeValue: widget.activeNoun1Value,
         correctValue: widget.correctNoun1Value,
-        dropDownOptions: N.getNounDropdownItems(widget.noun1),
+        dropDownOptions: N.getDropdownItems(noun: widget.noun1),
         onChanged: (String newVal) {
           setState(() {
             widget.activeNoun1Value = newVal;
@@ -82,7 +82,7 @@ class _GenitivListItemState extends State<GenitivListItem> {
       CaseDropDown(
         activeValue: widget.activeNoun2Value,
         correctValue: widget.correctNoun2Value,
-        dropDownOptions: N.getNounDropdownItems(widget.noun2),
+        dropDownOptions: N.getDropdownItems(noun: widget.noun2),
         onChanged: (String newVal) {
           setState(() {
             widget.activeNoun2Value = newVal;

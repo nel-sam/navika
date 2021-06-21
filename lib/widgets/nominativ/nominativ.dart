@@ -60,12 +60,12 @@ StaticSentenceParts getPersonalPronounSentenceStarter(
       ? personalPronoun.nominativ.shortForm
       : personalPronoun.nominativ.general);
 
-  // if (N.coinFlip()) {
-  //   start = 'To ' + verb;
-  // } else {
-  var ocupation = gender == Genders.Feminine ? 'učiteljica' : 'učitelj';
-  end = '$verb $ocupation';
-  //}
+  if (N.coinFlip()) {
+    start = 'To ' + verb;
+  } else {
+    var ocupation = gender == Genders.Feminine ? 'učiteljica' : 'učitelj';
+    end = '$verb $ocupation';
+  }
 
   return StaticSentenceParts(start: start, end: end);
 }

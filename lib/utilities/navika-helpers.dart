@@ -44,26 +44,25 @@ class N {
     return result;
   }
 
-  static List<DropdownMenuItem<String>> getPersonalPronounDropdownItems(
-      PersonalPronoun personalPronoun) {
-    var items = personalPronoun.getUniqueDeclensions();
-    return items
-        .map((e) => DropdownMenuItem<String>(value: e, child: Text(e)))
-        .toList();
-  }
+  static List<DropdownMenuItem<String>> getDropdownItems({
+    PersonalPronoun? personalPronoun,
+    Noun? noun,
+    Adjective? adjective,
+  }) {
+    List<String> items = List<String>.empty(growable: true);
 
-  static List<DropdownMenuItem<String>> getNounDropdownItems(Noun noun) {
-    var items = noun.getUniqueDeclensions();
-    return items
-        .map((e) => DropdownMenuItem<String>(value: e, child: Text(e)))
-        .toList();
-  }
+    if (personalPronoun != null)
+      items = personalPronoun.getUniqueDeclensions();
+    else if (noun != null)
+      items = noun.getUniqueDeclensions();
+    else
+      items = adjective!.getUniqueDeclensions();
 
-  static List<DropdownMenuItem<String>> getAdjectiveDropdownItems(
-      Adjective word) {
-    var items = word.getUniqueDeclensions();
     return items
-        .map((e) => DropdownMenuItem<String>(value: e, child: Text(e)))
+        .map((e) => DropdownMenuItem<String>(
+              value: e,
+              child: Text(e),
+            ))
         .toList();
   }
 
@@ -169,16 +168,16 @@ class N {
       return PANListItem(
           sentenceStarter: e.sentenceStarter,
           sentenceEnder: e.sentenceEnder,
-          correctPronounValue: correctPronounValue,
+          correctPossPronounValue: correctPronounValue,
           correctAdjValue: correctAdjValue,
           correctNounValue: correctNounValue,
           adjective: e.adjective!,
-          activePronounValue:
+          activePossPronounValue:
               e.pronoun!.getRandomDeclension(correctPronounValue),
           activeAdjValue: e.adjective!.getRandomDeclension(correctAdjValue),
           activeNounValue: e.noun!.getRandomDeclension(correctNounValue),
           isPlural: e.isPlural,
-          pronoun: e.pronoun!,
+          possPronoun: e.pronoun!,
           gender: e.gender,
           noun: e.noun!);
     }).toList();
