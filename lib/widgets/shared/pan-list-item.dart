@@ -124,7 +124,7 @@ class _PANListItemState extends State<PANListItem> {
         ),
       if (widget.sentenceEnder != '')
         Text(
-          widget.sentenceStarter,
+          widget.sentenceEnder,
           style: TextStyle(fontSize: EXERCISE_FONT_STYLE),
         ),
     ];

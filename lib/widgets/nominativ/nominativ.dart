@@ -15,6 +15,7 @@ StaticSentenceParts getStaticSentenceStarter(
     Noun noun, bool isPlural, Adjective pronoun) {
   final tense = N.getRandomTense();
   String start = '';
+  String end = '';
 
   if (noun.isAnimate && isPlural) {
     if (tense == TenseEnum.Past || tense == TenseEnum.Conditional) {
@@ -47,7 +48,7 @@ StaticSentenceParts getStaticSentenceStarter(
     start = 'To je';
   }
 
-  return StaticSentenceParts(start: start, end: '');
+  return StaticSentenceParts(start: start, end: end);
 }
 
 StaticSentenceParts getPersonalPronounSentenceStarter(

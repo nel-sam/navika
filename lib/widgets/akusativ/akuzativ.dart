@@ -14,6 +14,7 @@ import 'package:navika/widgets/shared/navika-banner.dart';
 StaticSentenceParts getStaticSentenceStarter(
     Noun noun, bool isPlural, Adjective? pronoun) {
   String start = '';
+  String end = '';
 
   if (noun.tags.contains(Tags.Location)) {
     start = 'Idemo na';
@@ -27,7 +28,7 @@ StaticSentenceParts getStaticSentenceStarter(
     start = 'Vidimo';
   }
 
-  return StaticSentenceParts(start: start, end: '');
+  return StaticSentenceParts(start: start, end: end);
 }
 
 StaticSentenceParts getPersonalPronounSentenceStarter(
@@ -36,6 +37,7 @@ StaticSentenceParts getPersonalPronounSentenceStarter(
       ? personalPronoun.nominativ.shortForm
       : personalPronoun.nominativ.general;
   String start = '';
+  String end = '';
 
   if (actualValue != 'mi' && N.coinFlip()) {
     start = 'Mi vidimo';
@@ -45,7 +47,7 @@ StaticSentenceParts getPersonalPronounSentenceStarter(
     start = 'Molim';
   }
 
-  return StaticSentenceParts(start: start, end: '');
+  return StaticSentenceParts(start: start, end: end);
 }
 
 // ignore: must_be_immutable
