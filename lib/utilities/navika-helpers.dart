@@ -23,7 +23,7 @@ class N {
     }
   }
 
-  static List shuffleList(List items) {
+  static List<T> shuffleList<T>(List<T> items) {
     var random = new Random();
 
     for (var i = items.length - 1; i > 0; i--) {
@@ -112,7 +112,7 @@ class N {
       List<PANExerciseItem> listItems, CaseTypeEnum caseType) {
     return N
         .shuffleList(listItems)
-        .map((e) {
+        .map((PANExerciseItem e) {
           final correctPronounValue = e.pronoun
               .getDeclension(e.gender, e.isPlural, caseType, e.noun.isAnimate);
           final correctAdjValue = e.adjective

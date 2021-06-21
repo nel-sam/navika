@@ -38,7 +38,7 @@ class Genitiv extends StatefulWidget {
 }
 
 List<GenitivListItem> getListItems(List<GenitivExerciseItem> listItems) {
-  return N.shuffleList(listItems).map((e) {
+  return N.shuffleList(listItems).map((GenitivExerciseItem e) {
     final correctPronounValue = e.pronoun.getDeclension(
         e.gender, e.isPlural, CaseTypeEnum.Nominativ, e.noun2.isAnimate);
     final correctNoun1Value =

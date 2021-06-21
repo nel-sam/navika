@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/utilities/navika-helpers.dart';
@@ -51,7 +52,10 @@ class _PANListItemState extends State<PANListItem> {
     bool isAllCorrect = checkAnswer();
 
     var sentenceContent = [
-      Text(widget.sentenceStarter),
+      Text(
+        widget.sentenceStarter,
+        style: TextStyle(fontSize: EXERCISE_FONT_STYLE),
+      ),
       CaseDropDown(
         activeValue: widget.activePronounValue,
         correctValue: widget.correctPronounValue,
