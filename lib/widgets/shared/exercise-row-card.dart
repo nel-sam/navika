@@ -80,11 +80,10 @@ class ExerciseRowCard extends StatelessWidget {
 
   // ignore: non_constant_identifier_names
   Widget IconTextPair(IconData icon, String text) {
-    const double padding = 10;
     const double iconPadding = 4;
 
-    return Padding(
-      padding: const EdgeInsets.only(left: padding, right: padding),
+    return Container(
+      width: 120,
       child: Row(
         children: [
           Padding(
@@ -106,9 +105,12 @@ class ExerciseRowCard extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          this.isAllCorrect
-              ? Icon(Icons.check_circle_outline, color: CORRECT_COLOR)
-              : Icon(Icons.close_outlined, color: WRONG_COLOR),
+          Padding(
+            padding: const EdgeInsets.only(right: 30),
+            child: this.isAllCorrect
+                ? Icon(Icons.check_circle_outline, color: CORRECT_COLOR)
+                : Icon(Icons.close_outlined, color: WRONG_COLOR),
+          ),
           IconTextPair(
             N.getGenderIcon(this.gender),
             getGenderString(context),
