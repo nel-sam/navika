@@ -17,7 +17,7 @@ final List<PersonalPronoun> personalPronounWordBank = [
     instrumental: new DeclensionPronoun(general: 'mnom'),
   ),
   PersonalPronoun(
-    dictionary: "ti",
+    dictionary: 'ti',
     type: PronounEnum.You,
     isPlural: false,
     gender: Genders.Unspecific,
@@ -30,7 +30,7 @@ final List<PersonalPronoun> personalPronounWordBank = [
     instrumental: new DeclensionPronoun(general: 'tobom'),
   ),
   PersonalPronoun(
-    dictionary: "on",
+    dictionary: 'on',
     type: PronounEnum.He,
     isPlural: false,
     gender: Genders.Masculine,
@@ -44,7 +44,7 @@ final List<PersonalPronoun> personalPronounWordBank = [
     instrumental: new DeclensionPronoun(general: 'njim'),
   ),
   PersonalPronoun(
-    dictionary: "ona",
+    dictionary: 'ona',
     type: PronounEnum.She,
     isPlural: false,
     gender: Genders.Feminine,
@@ -70,7 +70,7 @@ final List<PersonalPronoun> personalPronounWordBank = [
     instrumental: new DeclensionPronoun(general: 'nama'),
   ),
   PersonalPronoun(
-    dictionary: "vi",
+    dictionary: 'vi',
     type: PronounEnum.You_Plural,
     isPlural: true,
     gender: Genders.Unspecific,
@@ -83,7 +83,7 @@ final List<PersonalPronoun> personalPronounWordBank = [
     instrumental: new DeclensionPronoun(general: 'vama'),
   ),
   PersonalPronoun(
-    dictionary: "oni",
+    dictionary: 'oni',
     type: PronounEnum.They_Ungendered,
     isPlural: true,
     gender: Genders.Unspecific,
