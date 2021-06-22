@@ -78,8 +78,7 @@ class Nominativ extends StatefulWidget {
 
 class _NominativState extends State<Nominativ> {
   final title = 'Nominativ';
-  final WordBank bank = wordBank.filterPronoun('svoj');
-
+  final WordBank bank = wordBank.excludePronoun('svoj');
   var filterSet = ExerciseFilterSet();
 
   @override

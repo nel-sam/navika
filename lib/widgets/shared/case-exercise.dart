@@ -62,17 +62,24 @@ class _CaseExerciseState extends State<CaseExercise> {
       ),
       endDrawer: FilterDrawer(
         initalValues: widget.filterSet,
-        onFiltersSet: (ExerciseFilterSet filterSet) => setState(() {
-          //var filtered = widget.sourceData.filter(filterSet);
-          // listItems = N.getPANCombos(
-          //   filtered,
-          //   widget.getStaticSentenceParts,
-          //   widget.getPersonalPronounSentenceStaticParts,
-          // );
+        onFiltersSet: (ExerciseFilterSet newFilterSet) {
+          var filterChanged = widget.filterSet.adjectivesIncluded ==
+                  newFilterSet.adjectivesIncluded &&
+              widget.filterSet.nounsIncluded == newFilterSet.nounsIncluded &&
+              widget.filterSet.personalPronounsIncluded ==
+                  newFilterSet.personalPronounsIncluded &&
+              widget.filterSet.possessivePronounsIncluded ==
+                  newFilterSet.possessivePronounsIncluded;
 
-          //N.scrollTo(0, controller);
-          widget.onFilterSet(filterSet);
-        }),
+          if (filterChanged) {
+            Navigator.pop(context);
+            return;
+          }
+
+          setState(() {
+            widget.onFilterSet(newFilterSet);
+          });
+        },
       ),
       body: Center(
         child: ListView(
@@ -87,14 +94,7 @@ class _CaseExerciseState extends State<CaseExercise> {
       persistentFooterButtons: NavikaChildFooterButtons(
         context: context,
         caseType: widget.caseType,
-        refreshFunction: () => setState(() {
-          // listItems = N.getPANCombos(
-          //   widget.sourceData,
-          //   widget.getStaticSentenceParts,
-          //   widget.getPersonalPronounSentenceStaticParts,
-          // );
-          //N.scrollTo(0, controller);
-        }),
+        refreshFunction: () => setState(() {}),
       ),
     );
   }

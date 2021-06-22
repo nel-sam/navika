@@ -3,6 +3,7 @@ import 'package:navika/lang_data/word-bank.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/models/personal-pronoun.dart';
+import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/shared/case-exercise.dart';
 import 'package:navika/widgets/shared/navika-banner.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -12,18 +13,41 @@ import 'package:navika/models/noun.dart';
 StaticSentenceParts getStaticSentenceParts(
     Noun noun, bool isPlural, Adjective? pronoun) {
   String start = '';
+  String end = '';
+
+  if (noun.tags.contains(Tags.Human) || noun.tags.contains(Tags.Portable)) {
+    if (pronoun!.nominativ.masculine.singular != 'moj')
+      start = 'Ići ću bez';
+    else
+      start = 'Ići ćeš bez';
+  }
   if (isPlural) {
     start = 'To su';
   } else {
     start = 'To je';
   }
 
-  return StaticSentenceParts(start: start, end: '');
+  return StaticSentenceParts(start: start, end: end);
 }
 
 StaticSentenceParts getPersonalPronounSentenceStaticParts(
     PersonalPronoun personalPronoun, bool isShortForm) {
-  return StaticSentenceParts(start: 'TEST', end: 'TEST');
+  String start = '';
+  String end = '';
+  var generalForm = personalPronoun.nominativ.general;
+
+  if (generalForm != 'on') {
+    start = N.coinFlip() ? 'Nisam spavala zbog' : 'On pleše';
+  } else if (generalForm != 'oni') {
+    start = N.coinFlip() ? 'Oni su išli bez' : '';
+  } else if (generalForm == 'ja') {
+    start = 'Stojim iza';
+  } else {
+    start = 'Stanite iza';
+    end = ', molim vas';
+  }
+
+  return StaticSentenceParts(start: start, end: end);
 }
 
 class Genitiv extends StatefulWidget {

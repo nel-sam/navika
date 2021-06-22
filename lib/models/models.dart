@@ -39,11 +39,11 @@ class WordBank {
       personalPronouns:
           filterSet.personalPronounsIncluded ? [...this.personalPronouns] : [],
     );
-    
+
     return result;
   }
 
-  WordBank filterPronoun(String toFilter) {
+  WordBank excludePronoun(String toFilter) {
     var result = WordBank(
       nouns: [...this.nouns],
       adjectives: [...this.adjectives],
@@ -54,6 +54,17 @@ class WordBank {
     final svoj = result.possessivePronouns
         .firstWhere((e) => e.nominativ.masculine.singular == toFilter);
     result.possessivePronouns.remove(svoj);
+
+    return result;
+  }
+
+  WordBank excludeNounsByTag(Tags tag) {
+    var result = WordBank(
+      nouns: [...this.nouns.where((n) => !n.tags.contains(tag))],
+      adjectives: [...this.adjectives],
+      possessivePronouns: [...this.possessivePronouns],
+      personalPronouns: [...this.personalPronouns],
+    );
 
     return result;
   }
