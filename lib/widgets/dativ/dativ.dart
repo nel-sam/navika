@@ -58,7 +58,7 @@ StaticSentenceParts getPersonalPronounSentenceStaticParts(
   return StaticSentenceParts(start: start, end: end);
 }
 
-class Akuzativ extends StatelessWidget {
+class Dativ extends StatelessWidget {
   final title = 'Dativ';
 
   @override
