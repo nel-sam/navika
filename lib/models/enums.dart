@@ -1,4 +1,9 @@
-enum GenderEnum { Masculine, Feminine, Neuter }
+enum Genders {
+  Masculine,
+  Feminine,
+  Neuter,
+  Unspecific,
+}
 
 enum CaseTypeEnum {
   Instrumental,

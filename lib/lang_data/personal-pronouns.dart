@@ -1,3 +1,102 @@
+import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
+import 'package:navika/models/personal-pronoun.dart';
 
-final List<DeclinableWord> possesivePronounWordBank = [];
+final List<PersonalPronoun> personalPronounWordBank = [
+  PersonalPronoun(
+    dictionary: 'ja',
+    type: PronounEnum.I,
+    isPlural: false,
+    gender: Genders.Unspecific,
+    nominativ: new DeclensionPronoun(general: 'ja'),
+    genitiv: new DeclensionPronoun(general: 'mene', shortForm: 'me'),
+    dativ: new DeclensionPronoun(general: 'meni', shortForm: 'mi'),
+    akuzativ: new DeclensionPronoun(general: 'mene', shortForm: 'me'),
+    lokativ: new DeclensionPronoun(general: 'meni', shortForm: 'mi'),
+    vokativ: new DeclensionPronoun(general: ''),
+    instrumental: new DeclensionPronoun(general: 'mnom'),
+  ),
+  PersonalPronoun(
+    dictionary: 'ti',
+    type: PronounEnum.You,
+    isPlural: false,
+    gender: Genders.Unspecific,
+    nominativ: new DeclensionPronoun(general: 'ti'),
+    genitiv: new DeclensionPronoun(general: 'tebe', shortForm: 'te'),
+    dativ: new DeclensionPronoun(general: 'tebi', shortForm: 'ti'),
+    akuzativ: new DeclensionPronoun(general: 'tebe', shortForm: 'te'),
+    lokativ: new DeclensionPronoun(general: 'tebi'),
+    vokativ: new DeclensionPronoun(general: ''),
+    instrumental: new DeclensionPronoun(general: 'tobom'),
+  ),
+  PersonalPronoun(
+    dictionary: 'on',
+    type: PronounEnum.He,
+    isPlural: false,
+    gender: Genders.Masculine,
+    nominativ: new DeclensionPronoun(general: 'on'),
+    genitiv: new DeclensionPronoun(general: 'njega', shortForm: 'ga'),
+    dativ: new DeclensionPronoun(general: 'njemu', shortForm: 'mu'),
+    akuzativ: new DeclensionPronoun(general: 'njega', shortForm: 'ga'),
+    lokativ:
+        new DeclensionPronoun(general: 'njemu'), // TODO: ????  shortForm: 'mu'
+    vokativ: new DeclensionPronoun(general: ''),
+    instrumental: new DeclensionPronoun(general: 'njim'),
+  ),
+  PersonalPronoun(
+    // TODO: nju, ju, je : To avoid repeating the same syllabe.
+    // For example the atonic form in accusative
+    // ( for feminine gender, 3rd person singular ) is "je, ju".
+    // The correct version would be "Vidio ju je." and not "Vidio je je."
+    dictionary: 'ona',
+    type: PronounEnum.She,
+    isPlural: false,
+    gender: Genders.Feminine,
+    nominativ: new DeclensionPronoun(general: 'ona'),
+    genitiv: new DeclensionPronoun(general: 'nje'),
+    dativ: new DeclensionPronoun(general: 'njoj', shortForm: 'joj'),
+    akuzativ: new DeclensionPronoun(general: 'nju', shortForm: 'ju'),
+    lokativ: new DeclensionPronoun(general: 'njoj'),
+    vokativ: new DeclensionPronoun(general: ''),
+    instrumental: new DeclensionPronoun(general: 'njom'),
+  ),
+  PersonalPronoun(
+    dictionary: 'mi',
+    type: PronounEnum.We,
+    isPlural: true,
+    gender: Genders.Unspecific,
+    nominativ: new DeclensionPronoun(general: 'mi'),
+    genitiv: new DeclensionPronoun(general: 'nas'),
+    dativ: new DeclensionPronoun(general: 'nama', shortForm: 'nam'),
+    akuzativ: new DeclensionPronoun(general: 'nas'),
+    lokativ: new DeclensionPronoun(general: 'nama'),
+    vokativ: new DeclensionPronoun(general: ''),
+    instrumental: new DeclensionPronoun(general: 'nama'),
+  ),
+  PersonalPronoun(
+    dictionary: 'vi',
+    type: PronounEnum.You_Plural,
+    isPlural: true,
+    gender: Genders.Unspecific,
+    nominativ: new DeclensionPronoun(general: 'vi'),
+    genitiv: new DeclensionPronoun(general: 'vas'),
+    dativ: new DeclensionPronoun(general: 'vama', shortForm: 'vam'),
+    akuzativ: new DeclensionPronoun(general: 'vas'),
+    lokativ: new DeclensionPronoun(general: 'vama'),
+    vokativ: new DeclensionPronoun(general: ''),
+    instrumental: new DeclensionPronoun(general: 'vama'),
+  ),
+  PersonalPronoun(
+    dictionary: 'oni',
+    type: PronounEnum.They_Ungendered,
+    isPlural: true,
+    gender: Genders.Unspecific,
+    nominativ: new DeclensionPronoun(general: 'oni'),
+    genitiv: new DeclensionPronoun(general: 'njih', shortForm: 'ih'),
+    dativ: new DeclensionPronoun(general: 'njima', shortForm: 'im'),
+    akuzativ: new DeclensionPronoun(general: 'njih', shortForm: 'ih'),
+    lokativ: new DeclensionPronoun(general: 'njima'),
+    vokativ: new DeclensionPronoun(general: ''),
+    instrumental: new DeclensionPronoun(general: 'njima', shortForm: 'im'),
+  ),
+];

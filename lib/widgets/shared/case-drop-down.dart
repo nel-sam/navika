@@ -18,7 +18,9 @@ class CaseDropDown extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DropdownButton(
-      style: TextStyle(fontSize: EXERCISE_FONT_STYLE),
+      style: TextStyle(
+        fontSize: EXERCISE_FONT_STYLE,
+      ),
       value: activeValue,
       iconSize: 0,
       underline: Container(

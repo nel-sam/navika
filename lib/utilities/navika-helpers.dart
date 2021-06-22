@@ -2,8 +2,11 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
+import 'package:navika/models/adjective.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
+import 'package:navika/models/noun.dart';
+import 'package:navika/models/personal-pronoun.dart';
 import 'package:navika/widgets/shared/pan-list-item.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -13,10 +16,10 @@ class N {
         curve: Curves.linear, duration: SCROLL_DURATION);
   }
 
-  static IconData getGenderIcon(GenderEnum gender) {
-    if (gender == GenderEnum.Feminine) {
+  static IconData getGenderIcon(Genders gender) {
+    if (gender == Genders.Feminine) {
       return FEMININE_ICON;
-    } else if (gender == GenderEnum.Masculine) {
+    } else if (gender == Genders.Masculine) {
       return MASCULINE_ICON;
     } else {
       return NEUTER_ICON;
@@ -41,17 +44,25 @@ class N {
     return result;
   }
 
-  static List<DropdownMenuItem<String>> getNounDropdownItems(Noun noun) {
-    var items = noun.getUniqueDeclensions();
-    return items
-        .map((e) => DropdownMenuItem<String>(value: e, child: Text(e)))
-        .toList();
-  }
+  static List<DropdownMenuItem<String>> getDropdownItems({
+    PersonalPronoun? personalPronoun,
+    Noun? noun,
+    Adjective? adjective,
+  }) {
+    List<String> items = List<String>.empty(growable: true);
 
-  static List<DropdownMenuItem<String>> getDropdownItems(DeclinableWord word) {
-    var items = word.getUniqueDeclensions();
+    if (personalPronoun != null)
+      items = personalPronoun.getUniqueDeclensions();
+    else if (noun != null)
+      items = noun.getUniqueDeclensions();
+    else
+      items = adjective!.getUniqueDeclensions();
+
     return items
-        .map((e) => DropdownMenuItem<String>(value: e, child: Text(e)))
+        .map((e) => DropdownMenuItem<String>(
+              value: e,
+              child: Text(e),
+            ))
         .toList();
   }
 
@@ -78,29 +89,49 @@ class N {
   }
 
   static List<PANExerciseItem> getPANCombos(
-      WordBank bank, Function getSentenceStarters,) {
+    WordBank bank,
+    StaticSentenceParts Function(Noun, bool, Adjective) getStaticSentenceParts,
+    StaticSentenceParts Function(PersonalPronoun, bool)
+        getPersonalPronounSentenceStaticParts,
+  ) {
     var listItems = List<PANExerciseItem>.empty(growable: true);
 
-    bank.possesivePronouns.forEach((pp) {
+    print('----------');
+    print('PerP: ${bank.personalPronouns.length}');
+    print('Adj: ${bank.adjectives.length}');
+    print('Noun: ${bank.nouns.length}');
+    print('PosP: ${bank.possessivePronouns.length}');
+
+    bank.personalPronouns.forEach((persPronoun) {
+      final isPlural = persPronoun.isPlural;
+      final staticParts =
+          getPersonalPronounSentenceStaticParts(persPronoun, isPlural);
+
+      listItems.add(PANExerciseItem(
+        sentenceStarter: staticParts.start,
+        sentenceEnder: staticParts.end,
+        gender: persPronoun.gender,
+        isPlural: isPlural,
+        personalPronoun: persPronoun,
+        usePersonalPronounShortForm: N.coinFlip(),
+      ));
+    });
+
+    bank.possessivePronouns.forEach((possPronoun) {
       bank.adjectives.forEach((adj) {
         bank.nouns.forEach((noun) {
+          final isPlural = noun.nominativ.plural != '' || N.coinFlip();
+          final staticParts =
+              getStaticSentenceParts(noun, isPlural, possPronoun);
+
           listItems.add(PANExerciseItem(
-              sentenceStarter: getSentenceStarters(noun, false, pp),
-              pronoun: pp,
+              sentenceStarter: staticParts.start,
+              sentenceEnder: staticParts.end,
+              pronoun: possPronoun,
               adjective: adj,
               gender: noun.gender,
-              isPlural: false,
+              isPlural: isPlural,
               noun: noun));
-
-          if (noun.nominativ.plural != '') {
-            listItems.add(PANExerciseItem(
-                sentenceStarter: getSentenceStarters(noun, true, pp),
-                pronoun: pp,
-                adjective: adj,
-                gender: noun.gender,
-                isPlural: true,
-                noun: noun));
-          }
         });
       });
     });
@@ -111,31 +142,56 @@ class N {
   static List<PANListItem> getPANListItems(
       List<PANExerciseItem> listItems, CaseTypeEnum caseType) {
     return N
-        .shuffleList(listItems)
-        .map((PANExerciseItem e) {
-          final correctPronounValue = e.pronoun
-              .getDeclension(e.gender, e.isPlural, caseType, e.noun.isAnimate);
-          final correctAdjValue = e.adjective
-              .getDeclension(e.gender, e.isPlural, caseType, e.noun.isAnimate);
-          final correctNounValue = e.noun.getDeclension(e.isPlural, caseType);
-
-          return PANListItem(
-              sentenceStarter: e.sentenceStarter,
-              correctPronounValue: correctPronounValue,
-              correctAdjValue: correctAdjValue,
-              correctNounValue: correctNounValue,
-              adjective: e.adjective,
-              activePronounValue:
-                  e.pronoun.getRandomDeclension(correctPronounValue),
-              activeAdjValue: e.adjective.getRandomDeclension(correctAdjValue),
-              activeNounValue: e.noun.getRandomDeclension(correctNounValue),
-              isPlural: e.isPlural,
-              pronoun: e.pronoun,
-              gender: e.gender,
-              noun: e.noun);
-        })
+        .shuffleList<PANExerciseItem>(listItems)
         .take(BATCH_COUNT)
-        .toList();
+        .map((PANExerciseItem e) {
+      if (e.personalPronoun != null) {
+        final correctPersonalPronounValue = e.personalPronoun!.getDeclension(
+            caseType: caseType, isShortForm: e.usePersonalPronounShortForm);
+
+        return PANListItem(
+          sentenceStarter: e.sentenceStarter,
+          sentenceEnder: e.sentenceEnder,
+          correctPersonalPronounValue: correctPersonalPronounValue,
+          activePersonalPronounValue: e.personalPronoun!
+              .getRandomDeclension(correctPersonalPronounValue),
+          isPlural: e.isPlural,
+          gender: e.gender,
+          personalPronoun: e.personalPronoun!,
+        );
+      }
+
+      final includePossPronoun = N.coinFlip();
+      final includeAdjective = N.coinFlip();
+      final correctNounValue = e.noun!.getDeclension(e.isPlural, caseType);
+      final correctPronounValue = includePossPronoun
+          ? e.pronoun!
+              .getDeclension(e.gender, e.isPlural, caseType, e.noun!.isAnimate)
+          : '';
+      final correctAdjValue = includeAdjective
+          ? e.adjective!
+              .getDeclension(e.gender, e.isPlural, caseType, e.noun!.isAnimate)
+          : '';
+
+      return PANListItem(
+          sentenceStarter: e.sentenceStarter,
+          sentenceEnder: e.sentenceEnder,
+          correctPossPronounValue: correctPronounValue,
+          correctAdjValue: correctAdjValue,
+          correctNounValue: correctNounValue,
+          adjective: e.adjective!,
+          activePossPronounValue: includePossPronoun
+              ? e.pronoun!.getRandomDeclension(correctPronounValue)
+              : '',
+          activeAdjValue: includeAdjective
+              ? e.adjective!.getRandomDeclension(correctAdjValue)
+              : '',
+          activeNounValue: e.noun!.getRandomDeclension(correctNounValue),
+          isPlural: e.isPlural,
+          possPronoun: e.pronoun!,
+          gender: e.gender,
+          noun: e.noun!);
+    }).toList();
   }
 
   static getRandomTense() {
@@ -211,6 +267,27 @@ class N {
         return AppLocalizations.of(context)!.pronouns_They_Fem;
       case PronounEnum.Oneself:
         return AppLocalizations.of(context)!.pronouns_oneself;
+    }
+  }
+
+  static String getBitiConjugationForPronoun(String pronoun) {
+    switch (pronoun) {
+      case 'ja':
+        return 'sam';
+      case 'ti':
+        return 'si';
+      case 'mi':
+        return 'smo';
+      case 'vi':
+        return 'ste';
+      case 'on':
+      case 'ona':
+        return 'je';
+      case 'oni':
+      case 'one':
+        return 'su';
+      default:
+        return '';
     }
   }
 }

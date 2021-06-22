@@ -26,7 +26,7 @@ class _ExerciseSelectionState extends State<ExerciseSelection> {
         imagePath: 'assets/banners/books.jpg',
       ),
       ExerciseButton(
-        destination: NominativExercise(),
+        destination: Nominativ(),
         icon: Icons.category_outlined,
         label: 'Nominativ',
         imagePath: CaseImagePaths[CaseTypeEnum.Nominativ]!,

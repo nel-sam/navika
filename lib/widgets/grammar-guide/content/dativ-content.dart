@@ -14,7 +14,7 @@ Widget DativGrammarGuideContent(BuildContext context) {
     children: [
       getDescription(context),
       getDeclensionTable(context),
-      getPossesivePronounSection(context),
+      getPossessivePronounSection(context),
     ],
   );
 }
@@ -72,12 +72,14 @@ Widget getDeclensionTable(BuildContext context) {
   );
 }
 
-Widget getPossesivePronounSection(BuildContext context) {
+Widget getPossessivePronounSection(BuildContext context) {
   return Column(
     mainAxisAlignment: MainAxisAlignment.start,
     children: [
       Row(
-        children: [NSubHeader(text: AppLocalizations.of(context)!.pronouns)],
+        children: [
+          NSubHeader(text: AppLocalizations.of(context)!.personalPronouns)
+        ],
       ),
       PronounLine(
           pronoun: PronounEnum.I,
@@ -141,7 +143,7 @@ Widget getPossesivePronounSection(BuildContext context) {
           pronoun: PronounEnum.They_Ungendered,
           text: NText([
             N.NTextSpan('Daj '),
-            N.NTextSpan('njim ', isBold: true),
+            N.NTextSpan('im ', isBold: true),
             N.NTextSpan('naše knjige\n'),
             N.NTextSpan('Daj naše knjige  '),
             N.NTextSpan('njima', isBold: true),

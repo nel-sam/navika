@@ -1,98 +1,110 @@
 import 'package:flutter/material.dart';
-import 'package:navika/constants.dart';
 import 'package:navika/lang_data/word-bank.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
+import 'package:navika/models/personal-pronoun.dart';
 import 'package:navika/utilities/navika-helpers.dart';
-import 'package:navika/widgets/shared/footer.dart';
+import 'package:navika/widgets/shared/case-exercise.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/widgets/shared/navika-banner.dart';
+import 'package:navika/models/adjective.dart';
+import 'package:navika/models/noun.dart';
 
-String getSentenceStarter(Noun noun, bool isPlural, DeclinableWord pronoun) {
+StaticSentenceParts getStaticSentenceParts(
+    Noun noun, bool isPlural, Adjective pronoun) {
   final tense = N.getRandomTense();
+  String start = '';
+  String end = '';
 
   if (noun.isAnimate && isPlural) {
-    if (tense == TenseEnum.Past || tense == TenseEnum.Conditional)
-      return noun.gender == GenderEnum.Feminine ? 'One su bile' : 'Oni su bili';
-
-    return noun.gender == GenderEnum.Feminine ? 'One su' : 'Oni su';
+    if (tense == TenseEnum.Past || tense == TenseEnum.Conditional) {
+      start = noun.gender == Genders.Feminine ? 'One su bile' : 'Oni su bili';
+    } else {
+      start = noun.gender == Genders.Feminine ? 'One su' : 'Oni su';
+    }
   } else if (!noun.isAnimate && isPlural) {
     if (tense == TenseEnum.Future || tense == TenseEnum.Conditional)
-      return 'To će biti';
-
-    return 'To su';
+      start = 'To će biti';
+    else {
+      start = 'To su';
+    }
   } else if (noun.isAnimate && !isPlural) {
-    if (tense == TenseEnum.Past || tense == TenseEnum.Conditional)
-      return noun.gender == GenderEnum.Feminine ? 'Ona će biti' : 'On će biti';
-
-    return noun.gender == GenderEnum.Feminine ? 'Ona je' : 'On su';
+    if (tense == TenseEnum.Past || tense == TenseEnum.Conditional) {
+      start = noun.gender == Genders.Feminine ? 'Ona će biti' : 'On će biti';
+    } else {
+      start = noun.gender == Genders.Feminine ? 'Ona je' : 'On su';
+    }
   } else if (!noun.isAnimate && !isPlural) {
-    if (tense == TenseEnum.Past ||
-        tense == TenseEnum.Conditional) if (noun.gender == GenderEnum.Feminine)
-      return 'To je bila';
-    else if (noun.gender == GenderEnum.Masculine)
-      return 'To je bio';
-    else
-      return 'To je bilo';
+    if (tense == TenseEnum.Past || tense == TenseEnum.Conditional) {
+      if (noun.gender == Genders.Feminine) {
+        start = 'To je bila';
+      } else if (noun.gender == Genders.Masculine)
+        start = 'To je bio';
+      else
+        start = 'To je bilo';
+    }
+  } else {
+    start = 'To je';
   }
 
-  return 'To je';
+  return StaticSentenceParts(start: start, end: end);
 }
 
-// ignore: must_be_immutable
-class NominativExercise extends StatefulWidget {
+StaticSentenceParts getPersonalPronounSentenceStaticParts(
+    PersonalPronoun personalPronoun, bool isShortForm) {
+  String start = '';
+  String end = '';
+
+  final verb = N.getBitiConjugationForPronoun(isShortForm
+      ? personalPronoun.nominativ.shortForm
+      : personalPronoun.nominativ.general);
+
+  if (N.coinFlip()) {
+    start = 'To ' + verb;
+  } else {
+    var ocupation = personalPronoun.gender == Genders.Feminine
+        ? (personalPronoun.isPlural ? 'učiteljice' : 'učiteljica')
+        : (personalPronoun.isPlural ? 'učitelji' : 'učitelj');
+    end = '$verb $ocupation';
+  }
+
+  return StaticSentenceParts(start: start, end: end);
+}
+
+class Nominativ extends StatefulWidget {
   @override
-  _NominativExerciseState createState() => _NominativExerciseState();
+  _NominativState createState() => _NominativState();
 }
 
-class _NominativExerciseState extends State<NominativExercise> {
-  late ScrollController controller = ScrollController();
+class _NominativState extends State<Nominativ> {
+  final title = 'Nominativ';
+  final WordBank bank = wordBank.filterPronoun('svoj');
 
+  var filterSet = ExerciseFilterSet();
+
+  @override
   Widget build(BuildContext context) {
-    final WordBank bank = wordBank.filterPronoun('svoj');
-
-    var listItems = N.getPANCombos(
-      bank,
-      getSentenceStarter,
-    );
-
-    return Scaffold(
-      appBar: AppBar(
-        elevation: APPBAR_ELEVATION,
-        backgroundColor: N.getAppBarColor(context),
-        textTheme: N.getAppBarTextTheme(context),
-        iconTheme: N.getAppBarIconTheme(context),
-        title: Text('Nominativ'),
+    return CaseExercise(
+      title: title,
+      caseType: CaseTypeEnum.Nominativ,
+      sourceData: bank,
+      getStaticSentenceParts: getStaticSentenceParts,
+      getPersonalPronounSentenceStaticParts:
+          getPersonalPronounSentenceStaticParts,
+      banner: NavikaBanner(
+        imagePath: CaseImagePaths[CaseTypeEnum.Nominativ]!,
+        caseName: title,
+        description: AppLocalizations.of(context)!.nominativDescription,
+        icons: [
+          Icons.category_outlined,
+          Icons.nature,
+          Icons.people,
+        ],
       ),
-      body: Center(
-        child: ListView(
-          controller: controller,
-          padding: EXERCISE_LIST_PADDING,
-          children: [
-            NavikaBanner(
-                imagePath: CaseImagePaths[CaseTypeEnum.Nominativ]!,
-                caseName: 'Nominativ',
-                description: AppLocalizations.of(context)!.nominativDescription,
-                icons: [
-                  Icons.category_outlined,
-                  Icons.nature,
-                  Icons.people,
-                ]),
-            ...N.getPANListItems(listItems, CaseTypeEnum.Nominativ)
-          ],
-        ),
-      ),
-      persistentFooterButtons: NavikaChildFooterButtons(
-        context: context,
-        caseType: CaseTypeEnum.Nominativ,
-        refreshFunction: () => setState(() {
-          listItems = N.getPANCombos(
-            bank,
-            getSentenceStarter,
-          );
-          N.scrollTo(0, controller);
-        }),
-      ),
+      onFilterSet: (ExerciseFilterSet newFilterSet) => setState(() {
+        filterSet = newFilterSet;
+      }),
+      filterSet: filterSet,
     );
   }
 }

@@ -1,7 +1,8 @@
+import 'package:navika/models/adjective.dart';
 import 'package:navika/models/models.dart';
 
-final List<DeclinableWord> possesivePronounWordBank = [
-  DeclinableWord(
+final List<Adjective> possessivePronounWordBank = [
+  Adjective(
     dictionary: 'moj',
     nominativ: new Declension(
       masculine: new DeclensionByGender(singular: 'moj', plural: 'moji'),
@@ -44,7 +45,7 @@ final List<DeclinableWord> possesivePronounWordBank = [
       neuter: new DeclensionByGender(singular: '', plural: ''),
     ),
   ),
-  DeclinableWord(
+  Adjective(
     dictionary: 'tvoj',
     nominativ: new Declension(
       masculine: new DeclensionByGender(singular: 'tvoj', plural: 'tvoji'),
@@ -87,7 +88,7 @@ final List<DeclinableWord> possesivePronounWordBank = [
       neuter: new DeclensionByGender(singular: '', plural: ''),
     ),
   ),
-  DeclinableWord(
+  Adjective(
     dictionary: 'svoj',
     nominativ: new Declension(
       masculine: new DeclensionByGender(singular: 'svoj', plural: 'svoji'),

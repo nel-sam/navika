@@ -1,73 +1,96 @@
 import 'package:flutter/material.dart';
-import 'package:navika/constants.dart';
 import 'package:navika/lang_data/word-bank.dart';
+import 'package:navika/models/adjective.dart';
+import 'package:navika/models/noun.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
+import 'package:navika/models/personal-pronoun.dart';
 import 'package:navika/utilities/navika-helpers.dart';
-import 'package:navika/widgets/shared/footer.dart';
+import 'package:navika/widgets/shared/case-exercise.dart';
 import 'package:navika/widgets/shared/navika-banner.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-String getSentenceStarter(Noun noun, bool isPlural, DeclinableWord? pronoun) {
-  if (noun.isAnimate) return 'Daj to ';
-  if (isPlural) return 'Slični su ';
-  return 'Slično je ';
+StaticSentenceParts getStaticSentenceParts(
+  Noun noun,
+  bool isPlural,
+  Adjective? pronoun,
+) {
+  String start = '';
+  String end = '';
+
+  if (noun.isAnimate) {
+    start = 'Daj to ';
+  } else if (isPlural) {
+    start = 'Slični su ';
+  } else {
+    start = 'Slično je ';
+  }
+
+  return StaticSentenceParts(start: start, end: end);
 }
 
-// ignore: must_be_immutable
-class Dativ extends StatefulWidget {
-  final WordBank bank = wordBank;
-  var listItems = N.getPANCombos(
-    wordBank,
-    getSentenceStarter,
-  );
+StaticSentenceParts getPersonalPronounSentenceStaticParts(
+  PersonalPronoun personalPronoun,
+  bool isShortForm,
+) {
+  String start = '';
+  String end = '';
 
+  if (N.coinFlip()) {
+    start = 'Došlo je do';
+  } else if (N.coinFlip()) {
+    start = 'Odakle';
+    end = 'to dolazi';
+  } else if (N.coinFlip()) {
+    start = 'Pas';
+    end = 'je donio igračku';
+  } else {
+    start = 'On';
+    end = 'nešto pokazao';
+  }
+  print(start +
+      ' ' +
+      (isShortForm
+          ? personalPronoun.dativ.shortForm
+          : personalPronoun.dativ.general) +
+      ' ' +
+      end);
+  return StaticSentenceParts(start: start, end: end);
+}
+
+class Dativ extends StatefulWidget {
   @override
   _DativState createState() => _DativState();
 }
 
 class _DativState extends State<Dativ> {
-  final ScrollController controller = ScrollController();
+  final title = 'Dativ';
+  final WordBank bank = wordBank;
+  var filterSet = ExerciseFilterSet();
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        elevation: APPBAR_ELEVATION,
-        backgroundColor: N.getAppBarColor(context),
-        textTheme: N.getAppBarTextTheme(context),
-        iconTheme: N.getAppBarIconTheme(context),
-        title: Text('Dativ'),
+    return CaseExercise(
+      title: title,
+      caseType: CaseTypeEnum.Dativ,
+      sourceData: bank,
+      getStaticSentenceParts: getStaticSentenceParts,
+      getPersonalPronounSentenceStaticParts:
+          getPersonalPronounSentenceStaticParts,
+      banner: NavikaBanner(
+        imagePath: CaseImagePaths[CaseTypeEnum.Dativ]!,
+        caseName: title,
+        description: AppLocalizations.of(context)!.dativDescription,
+        icons: [
+          Icons.person,
+          Icons.arrow_forward,
+          Icons.people,
+        ],
       ),
-      body: Center(
-        child: ListView(
-          controller: controller,
-          padding: EXERCISE_LIST_PADDING,
-          children: [
-            NavikaBanner(
-                imagePath: CaseImagePaths[CaseTypeEnum.Dativ]!,
-                caseName: 'Dativ',
-                description: AppLocalizations.of(context)!.dativDescription,
-                icons: [
-                  Icons.person,
-                  Icons.arrow_forward,
-                  Icons.people,
-                ]),
-            ...N.getPANListItems(widget.listItems, CaseTypeEnum.Dativ),
-          ],
-        ),
-      ),
-      persistentFooterButtons: NavikaChildFooterButtons(
-        context: context,
-        caseType: CaseTypeEnum.Dativ,
-        refreshFunction: () => setState(() {
-          widget.listItems = N.getPANCombos(
-            wordBank,
-            getSentenceStarter,
-          );
-          N.scrollTo(0, controller);
-        }),
-      ),
+      onFilterSet: (ExerciseFilterSet newFilterSet) => setState(() {
+        filterSet = newFilterSet;
+      }),
+      filterSet: filterSet,
     );
   }
 }

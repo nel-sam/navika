@@ -14,7 +14,7 @@ Widget GenetivGrammarGuideContent(BuildContext context) {
     children: [
       getDescription(context),
       getDeclensionTable(),
-      getPossesivePronounSection(context),
+      getPossessivePronounSection(context),
     ],
   );
 }
@@ -72,12 +72,14 @@ Widget getDeclensionTable() {
   );
 }
 
-Widget getPossesivePronounSection(BuildContext context) {
+Widget getPossessivePronounSection(BuildContext context) {
   return Column(
     mainAxisAlignment: MainAxisAlignment.start,
     children: [
       Row(
-        children: [NSubHeader(text: AppLocalizations.of(context)!.pronouns)],
+        children: [
+          NSubHeader(text: AppLocalizations.of(context)!.personalPronouns)
+        ],
       ),
       PronounLine(
           pronoun: PronounEnum.I,
