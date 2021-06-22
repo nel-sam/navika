@@ -19,6 +19,7 @@ enum Tags {
   AnimateNonHuman,
   NaturalFeature,
   FlatSurface,
+  WorkPlace,
   Furniture,
   BodyPart,
   Portable,

@@ -12,7 +12,7 @@ final List<PersonalPronoun> personalPronounWordBank = [
     genitiv: new DeclensionPronoun(general: 'mene', shortForm: 'me'),
     dativ: new DeclensionPronoun(general: 'meni', shortForm: 'mi'),
     akuzativ: new DeclensionPronoun(general: 'mene', shortForm: 'me'),
-    lokativ: new DeclensionPronoun(general: 'meni', shortForm: 'mi'),
+    lokativ: new DeclensionPronoun(general: 'meni'),
     vokativ: new DeclensionPronoun(general: ''),
     instrumental: new DeclensionPronoun(general: 'mnom'),
   ),

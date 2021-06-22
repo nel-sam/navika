@@ -40,7 +40,7 @@ class N {
   }
 
   static bool coinFlip() {
-    var result = (new Random()).nextInt(8) % 2 == 0;
+    var result = (new Random()).nextInt(4) % 2 == 0;
     return result;
   }
 
@@ -89,18 +89,12 @@ class N {
   }
 
   static List<PANExerciseItem> getPANCombos(
-    WordBank bank,
-    StaticSentenceParts Function(Noun, bool, Adjective) getStaticSentenceParts,
-    StaticSentenceParts Function(PersonalPronoun, bool)
-        getPersonalPronounSentenceStaticParts,
-  ) {
+      WordBank bank,
+      StaticSentenceParts Function(Noun, bool, Adjective)
+          getStaticSentenceParts,
+      StaticSentenceParts Function(PersonalPronoun, bool)
+          getPersonalPronounSentenceStaticParts) {
     var listItems = List<PANExerciseItem>.empty(growable: true);
-
-    print('----------');
-    print('PerP: ${bank.personalPronouns.length}');
-    print('Adj: ${bank.adjectives.length}');
-    print('Noun: ${bank.nouns.length}');
-    print('PosP: ${bank.possessivePronouns.length}');
 
     bank.personalPronouns.forEach((persPronoun) {
       final isPlural = persPronoun.isPlural;
@@ -163,6 +157,7 @@ class N {
 
       final includePossPronoun = N.coinFlip();
       final includeAdjective = N.coinFlip();
+
       final correctNounValue = e.noun!.getDeclension(e.isPlural, caseType);
       final correctPronounValue = includePossPronoun
           ? e.pronoun!

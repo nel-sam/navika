@@ -75,7 +75,7 @@ class _FilterDrawerState extends State<FilterDrawer> {
                             pronounsChecked = false;
                             possPronounsChecked = false;
                             adjectivesChecked = false;
-                            nounsChecked = false;
+                            //nounsChecked = false;
                           });
                         },
                       ),
@@ -101,16 +101,16 @@ class _FilterDrawerState extends State<FilterDrawer> {
                       });
                     },
                   ),
-                  SwitchListTile(
-                    value: nounsChecked,
-                    activeColor: ACCENT_COLOR,
-                    title: Text(AppLocalizations.of(context)!.nouns),
-                    onChanged: (bool value) {
-                      setState(() {
-                        nounsChecked = value;
-                      });
-                    },
-                  ),
+                  // SwitchListTile(
+                  //   value: nounsChecked,
+                  //   activeColor: ACCENT_COLOR,
+                  //   title: Text(AppLocalizations.of(context)!.nouns),
+                  //   onChanged: (bool value) {
+                  //     setState(() {
+                  //       nounsChecked = value;
+                  //     });
+                  //   },
+                  // ),
                   SwitchListTile(
                     value: possPronounsChecked,
                     activeColor: ACCENT_COLOR,

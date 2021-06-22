@@ -3,6 +3,7 @@ import 'package:navika/lang_data/word-bank.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/models/personal-pronoun.dart';
+import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/shared/case-exercise.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/widgets/shared/navika-banner.dart';
@@ -11,17 +12,38 @@ import 'package:navika/models/noun.dart';
 
 StaticSentenceParts getStaticSentenceParts(
     Noun noun, bool isPlural, Adjective? pronoun) {
+  final pronounVal = pronoun!.dictionary;
   String start = '';
+  String end = '';
 
-  start = 'Govorim o';
-  return StaticSentenceParts(start: start, end: '');
+  if (noun.tags.contains(Tags.FlatSurface)) {
+    start = N.coinFlip() ? 'Spavam u' : 'Jabuka je na';
+  } else if (noun.tags.contains(Tags.WorkPlace)) {
+    start = pronounVal == 'moj' ? 'On rade u' : 'Radim u';
+  } else if (noun.tags.contains(Tags.Location)) {
+    start = pronounVal == 'moj' ? 'On živi u' : 'Živim u';
+  } else {
+    start = 'Razgovoramo o';
+  }
+
+  return StaticSentenceParts(start: start, end: end);
 }
 
 StaticSentenceParts getPersonalPronounSentenceStaticParts(
     PersonalPronoun personalPronoun, bool isShortForm) {
-  late String start = 'TEST';
+  final actualValue = isShortForm
+      ? personalPronoun.nominativ.shortForm
+      : personalPronoun.nominativ.general;
+  String start = '';
+  String end = '';
 
-  return StaticSentenceParts(start: start, end: '');
+  if (N.coinFlip()) {
+    start = actualValue != 'ja' ? 'Sanjam o' : 'On je kod';
+  } else {
+    start = 'Razgovoramo o';
+  }
+  
+  return StaticSentenceParts(start: start, end: end);
 }
 
 class Lokativ extends StatefulWidget {

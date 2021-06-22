@@ -12,7 +12,7 @@ import 'package:navika/models/noun.dart';
 
 // TODO: Figure out how to handle sa/s
 StaticSentenceParts getStaticSentenceParts(
-  Noun noun, bool isPlural, Adjective? pronoun) {
+    Noun noun, bool isPlural, Adjective? pronoun) {
   String start = '';
   String end = '';
   String possPronoun = pronoun!.nominativ.masculine.singular;
@@ -36,8 +36,17 @@ StaticSentenceParts getStaticSentenceParts(
 
 StaticSentenceParts getPersonalPronounSentenceStaticParts(
     PersonalPronoun personalPronoun, bool isShortForm) {
+  final actualValue = isShortForm
+      ? personalPronoun.nominativ.shortForm
+      : personalPronoun.nominativ.general;
   String start = '';
   String end = '';
+
+  if (actualValue != 'ja') {
+    start = 'Ja ću pjevati s';
+  } else {
+    start = 'On će ići s';
+  }
 
   return StaticSentenceParts(start: start, end: end);
 }

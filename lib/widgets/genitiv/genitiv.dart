@@ -16,8 +16,8 @@ StaticSentenceParts getStaticSentenceParts(
   String end = '';
 
   if (noun.tags.contains(Tags.Human) || noun.tags.contains(Tags.Portable)) {
-    if (pronoun!.nominativ.masculine.singular != 'moj')
-      start = 'Ići ću bez';
+    if (pronoun!.dictionary != 'moj')
+      start = N.coinFlip() ? 'Otkad sam bez' : 'Ići ću bez';
     else
       start = 'Ići ćeš bez';
   }
@@ -34,14 +34,16 @@ StaticSentenceParts getPersonalPronounSentenceStaticParts(
     PersonalPronoun personalPronoun, bool isShortForm) {
   String start = '';
   String end = '';
-  var generalForm = personalPronoun.nominativ.general;
+  final actualValue = isShortForm
+      ? personalPronoun.nominativ.shortForm
+      : personalPronoun.nominativ.general;
 
-  if (generalForm != 'on') {
+  if (actualValue != 'on') {
     start = N.coinFlip() ? 'Nisam spavala zbog' : 'On pleše';
-  } else if (generalForm != 'oni') {
-    start = N.coinFlip() ? 'Oni su išli bez' : '';
-  } else if (generalForm == 'ja') {
-    start = 'Stojim iza';
+  } else if (actualValue != 'oni') {
+    start = N.coinFlip() ? 'Oni su išli bez' : 'Ne možeš spavati zbog';
+  } else if (actualValue != 'ja') {
+    start = N.coinFlip() ? 'Ne mogu spavati zbog' : 'Stojim iza';
   } else {
     start = 'Stanite iza';
     end = ', molim vas';

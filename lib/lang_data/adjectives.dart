@@ -182,4 +182,5 @@ final List<Adjective> adjectiveWordBank = [
       neuter: new DeclensionByGender(singular: "", plural: ""),
     ),
   ),
+  // TODO: Add 'this' (ovo, ovoj, ...)
 ];
