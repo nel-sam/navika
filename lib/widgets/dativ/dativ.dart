@@ -58,15 +58,22 @@ StaticSentenceParts getPersonalPronounSentenceStaticParts(
   return StaticSentenceParts(start: start, end: end);
 }
 
-class Dativ extends StatelessWidget {
+class Dativ extends StatefulWidget {
+  @override
+  _DativState createState() => _DativState();
+}
+
+class _DativState extends State<Dativ> {
   final title = 'Dativ';
+  final WordBank bank = wordBank;
+  var filterSet = ExerciseFilterSet();
 
   @override
   Widget build(BuildContext context) {
     return CaseExercise(
       title: title,
       caseType: CaseTypeEnum.Dativ,
-      sourceData: wordBank,
+      sourceData: bank,
       getStaticSentenceParts: getStaticSentenceParts,
       getPersonalPronounSentenceStaticParts:
           getPersonalPronounSentenceStaticParts,
@@ -80,6 +87,10 @@ class Dativ extends StatelessWidget {
           Icons.people,
         ],
       ),
+      onFilterSet: (ExerciseFilterSet newFilterSet) => setState(() {
+        filterSet = newFilterSet;
+      }),
+      filterSet: filterSet,
     );
   }
 }

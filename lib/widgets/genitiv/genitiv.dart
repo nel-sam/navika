@@ -26,15 +26,22 @@ StaticSentenceParts getPersonalPronounSentenceStaticParts(
   return StaticSentenceParts(start: 'TEST', end: 'TEST');
 }
 
-class Genitiv extends StatelessWidget {
+class Genitiv extends StatefulWidget {
+  @override
+  _GenitivState createState() => _GenitivState();
+}
+
+class _GenitivState extends State<Genitiv> {
   final title = 'Genitiv';
+  final WordBank bank = wordBank;
+  var filterSet = ExerciseFilterSet();
 
   @override
   Widget build(BuildContext context) {
     return CaseExercise(
       title: title,
       caseType: CaseTypeEnum.Genitiv,
-      sourceData: wordBank,
+      sourceData: bank,
       getStaticSentenceParts: getStaticSentenceParts,
       getPersonalPronounSentenceStaticParts:
           getPersonalPronounSentenceStaticParts,
@@ -48,6 +55,10 @@ class Genitiv extends StatelessWidget {
           Icons.people,
         ],
       ),
+      onFilterSet: (ExerciseFilterSet newFilterSet) => setState(() {
+        filterSet = newFilterSet;
+      }),
+      filterSet: filterSet,
     );
   }
 }

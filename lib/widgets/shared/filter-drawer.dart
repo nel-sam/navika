@@ -36,7 +36,7 @@ class _FilterDrawerState extends State<FilterDrawer> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 230,
+      // width: 230,
       child: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
@@ -52,6 +52,35 @@ class _FilterDrawerState extends State<FilterDrawer> {
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      TextButton.icon(
+                        icon: Icon(Icons.list),
+                        label: Text(AppLocalizations.of(context)!.selectAll),
+                        onPressed: () {
+                          setState(() {
+                            pronounsChecked = true;
+                            possPronounsChecked = true;
+                            adjectivesChecked = true;
+                            nounsChecked = true;
+                          });
+                        },
+                      ),
+                      TextButton.icon(
+                        icon: Icon(Icons.close_outlined),
+                        label: Text(AppLocalizations.of(context)!.unselectAll),
+                        onPressed: () {
+                          setState(() {
+                            pronounsChecked = false;
+                            possPronounsChecked = false;
+                            adjectivesChecked = false;
+                            nounsChecked = false;
+                          });
+                        },
+                      ),
+                    ],
+                  ),
                   SwitchListTile(
                     value: pronounsChecked,
                     activeColor: ACCENT_COLOR,
@@ -95,7 +124,7 @@ class _FilterDrawerState extends State<FilterDrawer> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 20),
-                    child: OutlinedButton(
+                    child: ElevatedButton(
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [Text(AppLocalizations.of(context)!.close)],

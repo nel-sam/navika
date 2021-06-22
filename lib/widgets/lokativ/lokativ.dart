@@ -24,15 +24,22 @@ StaticSentenceParts getPersonalPronounSentenceStaticParts(
   return StaticSentenceParts(start: start, end: '');
 }
 
-class Lokativ extends StatelessWidget {
+class Lokativ extends StatefulWidget {
+  @override
+  _LokativState createState() => _LokativState();
+}
+
+class _LokativState extends State<Lokativ> {
   final title = 'Lokativ';
+  final WordBank bank = wordBank;
+  var filterSet = ExerciseFilterSet();
 
   @override
   Widget build(BuildContext context) {
     return CaseExercise(
       title: title,
       caseType: CaseTypeEnum.Lokativ,
-      sourceData: wordBank,
+      sourceData: bank,
       getStaticSentenceParts: getStaticSentenceParts,
       getPersonalPronounSentenceStaticParts:
           getPersonalPronounSentenceStaticParts,
@@ -45,6 +52,10 @@ class Lokativ extends StatelessWidget {
           Icons.message,
         ],
       ),
+      onFilterSet: (ExerciseFilterSet newFilterSet) => setState(() {
+        filterSet = newFilterSet;
+      }),
+      filterSet: filterSet,
     );
   }
 }

@@ -54,15 +54,22 @@ StaticSentenceParts getPersonalPronounSentenceStaticParts(
   return StaticSentenceParts(start: start, end: end);
 }
 
-class Akuzativ extends StatelessWidget {
+class Akuzativ extends StatefulWidget {
+  @override
+  _AkuzativState createState() => _AkuzativState();
+}
+
+class _AkuzativState extends State<Akuzativ> {
   final title = 'Akuzativ';
+  final WordBank bank = wordBank;
+  var filterSet = ExerciseFilterSet();
 
   @override
   Widget build(BuildContext context) {
     return CaseExercise(
       title: title,
       caseType: CaseTypeEnum.Akuzativ,
-      sourceData: wordBank,
+      sourceData: bank,
       getStaticSentenceParts: getStaticSentenceParts,
       getPersonalPronounSentenceStaticParts:
           getPersonalPronounSentenceStaticParts,
@@ -77,6 +84,10 @@ class Akuzativ extends StatelessWidget {
           Icons.euro,
         ],
       ),
+      onFilterSet: (ExerciseFilterSet newFilterSet) => setState(() {
+        filterSet = newFilterSet;
+      }),
+      filterSet: filterSet,
     );
   }
 }

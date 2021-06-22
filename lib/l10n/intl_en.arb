@@ -35,5 +35,8 @@
     "next": "Next",
     "previous": "Previous",
     "recommendedVideo": "Play Recommended Video",
-    "selectExercises": "What kind of sentences do you want to see?"
+    "selectExercises": "What kind of sentences do you want to see?",
+    "unselectAll": "Unselect All",
+    "selectAll": "Select All"
+
 }

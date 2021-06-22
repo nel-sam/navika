@@ -22,15 +22,22 @@ StaticSentenceParts getPersonalPronounSentenceStaticParts(
   return StaticSentenceParts(start: 'TEST', end: 'TEST');
 }
 
-class Instrumental extends StatelessWidget {
+class Instrumental extends StatefulWidget {
+  @override
+  _InstrumentalState createState() => _InstrumentalState();
+}
+
+class _InstrumentalState extends State<Instrumental> {
   final title = 'Instrumental';
+  final WordBank bank = wordBank;
+  var filterSet = ExerciseFilterSet();
 
   @override
   Widget build(BuildContext context) {
     return CaseExercise(
       title: title,
       caseType: CaseTypeEnum.Instrumental,
-      sourceData: wordBank,
+      sourceData: bank,
       getStaticSentenceParts: getStaticSentenceParts,
       getPersonalPronounSentenceStaticParts:
           getPersonalPronounSentenceStaticParts,
@@ -44,6 +51,10 @@ class Instrumental extends StatelessWidget {
           Icons.motorcycle,
         ],
       ),
+      onFilterSet: (ExerciseFilterSet newFilterSet) => setState(() {
+        filterSet = newFilterSet;
+      }),
+      filterSet: filterSet,
     );
   }
 }

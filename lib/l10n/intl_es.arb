@@ -34,5 +34,7 @@
     "next": "Siguiente",
     "previous": "Anterior",
     "recommendedVideo": "Mirar Video Recomendado",
-    "selectExercises": "¿Qué quieres practicar?"
+    "selectExercises": "¿Qué quieres practicar?",
+    "unselectAll": "Deseleccionar Todos",
+    "selectAll": "Seleccionar Todos"
 }
