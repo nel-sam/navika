@@ -111,25 +111,24 @@ class N {
       ));
     });
 
-    // TODO: Uncomment this
-    // bank.possesivePronouns.forEach((possPronoun) {
-    //   bank.adjectives.forEach((adj) {
-    //     bank.nouns.forEach((noun) {
-    //       final isPlural = noun.nominativ.plural != '' || N.coinFlip();
-    //       final staticParts =
-    //           getStaticSentenceParts(noun, isPlural, possPronoun);
+    bank.possesivePronouns.forEach((possPronoun) {
+      bank.adjectives.forEach((adj) {
+        bank.nouns.forEach((noun) {
+          final isPlural = noun.nominativ.plural != '' || N.coinFlip();
+          final staticParts =
+              getStaticSentenceParts(noun, isPlural, possPronoun);
 
-    //       listItems.add(PANExerciseItem(
-    //           sentenceStarter: staticParts.start,
-    //           sentenceEnder: staticParts.end,
-    //           pronoun: possPronoun,
-    //           adjective: adj,
-    //           gender: noun.gender,
-    //           isPlural: isPlural,
-    //           noun: noun));
-    //     });
-    //   });
-    // });
+          listItems.add(PANExerciseItem(
+              sentenceStarter: staticParts.start,
+              sentenceEnder: staticParts.end,
+              pronoun: possPronoun,
+              adjective: adj,
+              gender: noun.gender,
+              isPlural: isPlural,
+              noun: noun));
+        });
+      });
+    });
 
     return listItems;
   }

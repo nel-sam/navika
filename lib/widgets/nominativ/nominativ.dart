@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:navika/constants.dart';
 import 'package:navika/lang_data/word-bank.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/models/personal-pronoun.dart';
 import 'package:navika/utilities/navika-helpers.dart';
-import 'package:navika/widgets/shared/footer.dart';
+import 'package:navika/widgets/shared/case-exercise.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/widgets/shared/navika-banner.dart';
 import 'package:navika/models/adjective.dart';
 import 'package:navika/models/noun.dart';
 
-StaticSentenceParts getStaticSentenceStarter(
+StaticSentenceParts getStaticSentenceParts(
     Noun noun, bool isPlural, Adjective pronoun) {
   final tense = N.getRandomTense();
   String start = '';
@@ -51,7 +50,7 @@ StaticSentenceParts getStaticSentenceStarter(
   return StaticSentenceParts(start: start, end: end);
 }
 
-StaticSentenceParts getPersonalPronounSentenceStarter(
+StaticSentenceParts getPersonalPronounSentenceStaticParts(
     PersonalPronoun personalPronoun, bool isShortForm) {
   String start = '';
   String end = '';
@@ -72,61 +71,28 @@ StaticSentenceParts getPersonalPronounSentenceStarter(
   return StaticSentenceParts(start: start, end: end);
 }
 
-// ignore: must_be_immutable
-class NominativExercise extends StatefulWidget {
+class Nominativ extends StatelessWidget {
+  final title = 'Nominativ';
+  final WordBank bank = wordBank.filterPronoun('svoj');
+
   @override
-  _NominativExerciseState createState() => _NominativExerciseState();
-}
-
-class _NominativExerciseState extends State<NominativExercise> {
-  late ScrollController controller = ScrollController();
-
   Widget build(BuildContext context) {
-    final WordBank bank = wordBank.filterPronoun('svoj');
-
-    var listItems = N.getPANCombos(
-      bank,
-      getStaticSentenceStarter,
-      getPersonalPronounSentenceStarter,
-    );
-
-    return Scaffold(
-      appBar: AppBar(
-        elevation: APPBAR_ELEVATION,
-        backgroundColor: N.getAppBarColor(context),
-        textTheme: N.getAppBarTextTheme(context),
-        iconTheme: N.getAppBarIconTheme(context),
-        title: Text('Nominativ'),
-      ),
-      body: Center(
-        child: ListView(
-          controller: controller,
-          padding: EXERCISE_LIST_PADDING,
-          children: [
-            NavikaBanner(
-                imagePath: CaseImagePaths[CaseTypeEnum.Nominativ]!,
-                caseName: 'Nominativ',
-                description: AppLocalizations.of(context)!.nominativDescription,
-                icons: [
-                  Icons.category_outlined,
-                  Icons.nature,
-                  Icons.people,
-                ]),
-            ...N.getPANListItems(listItems, CaseTypeEnum.Nominativ)
-          ],
-        ),
-      ),
-      persistentFooterButtons: NavikaChildFooterButtons(
-        context: context,
-        caseType: CaseTypeEnum.Nominativ,
-        refreshFunction: () => setState(() {
-          listItems = N.getPANCombos(
-            bank,
-            getStaticSentenceStarter,
-            getPersonalPronounSentenceStarter,
-          );
-          N.scrollTo(0, controller);
-        }),
+    return CaseExercise(
+      title: title,
+      caseType: CaseTypeEnum.Nominativ,
+      sourceData: bank,
+      getStaticSentenceParts: getStaticSentenceParts,
+      getPersonalPronounSentenceStaticParts:
+          getPersonalPronounSentenceStaticParts,
+      banner: NavikaBanner(
+        imagePath: CaseImagePaths[CaseTypeEnum.Nominativ]!,
+        caseName: title,
+        description: AppLocalizations.of(context)!.nominativDescription,
+        icons: [
+          Icons.category_outlined,
+          Icons.nature,
+          Icons.people,
+        ],
       ),
     );
   }

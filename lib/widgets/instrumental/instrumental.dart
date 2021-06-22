@@ -5,13 +5,14 @@ import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/models/personal-pronoun.dart';
 import 'package:navika/utilities/navika-helpers.dart';
+import 'package:navika/widgets/shared/case-exercise.dart';
 import 'package:navika/widgets/shared/footer.dart';
 import 'package:navika/widgets/shared/navika-banner.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/models/adjective.dart';
 import 'package:navika/models/noun.dart';
 
-StaticSentenceParts getStaticSentenceStarter(
+StaticSentenceParts getStaticSentenceParts(
     Noun noun, bool isPlural, Adjective? pronoun) {
   String start = '';
 
@@ -19,67 +20,32 @@ StaticSentenceParts getStaticSentenceStarter(
   return StaticSentenceParts(start: start, end: '');
 }
 
-StaticSentenceParts getPersonalPronounSentenceStarter(
+StaticSentenceParts getPersonalPronounSentenceStaticParts(
     PersonalPronoun personalPronoun, bool isShortForm) {
   return StaticSentenceParts(start: 'TEST', end: 'TEST');
 }
 
-// ignore: must_be_immutable
-class Instrumental extends StatefulWidget {
-  final WordBank bank = wordBank;
-  var listItems = N.getPANCombos(
-    wordBank,
-    getStaticSentenceStarter,
-    getPersonalPronounSentenceStarter,
-  );
-
-  @override
-  _InstrumentalState createState() => _InstrumentalState();
-}
-
-class _InstrumentalState extends State<Instrumental> {
-  final ScrollController controller = ScrollController();
+class Instrumental extends StatelessWidget {
+  final title = 'Instrumental';
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        elevation: APPBAR_ELEVATION,
-        backgroundColor: N.getAppBarColor(context),
-        textTheme: N.getAppBarTextTheme(context),
-        iconTheme: N.getAppBarIconTheme(context),
-        title: Text('Instrumental'),
-      ),
-      body: Center(
-        child: ListView(
-          controller: controller,
-          padding: EXERCISE_LIST_PADDING,
-          children: [
-            NavikaBanner(
-                imagePath: CaseImagePaths[CaseTypeEnum.Instrumental]!,
-                caseName: 'Instrumental',
-                description:
-                    AppLocalizations.of(context)!.instrumentalDescription,
-                icons: [
-                  Icons.handyman_outlined,
-                  Icons.train,
-                  Icons.motorcycle,
-                ]),
-            ...N.getPANListItems(widget.listItems, CaseTypeEnum.Instrumental),
-          ],
-        ),
-      ),
-      persistentFooterButtons: NavikaChildFooterButtons(
-        context: context,
-        caseType: CaseTypeEnum.Instrumental,
-        refreshFunction: () => setState(() {
-          widget.listItems = N.getPANCombos(
-            wordBank,
-            getStaticSentenceStarter,
-            getPersonalPronounSentenceStarter,
-          );
-          N.scrollTo(0, controller);
-        }),
+    return CaseExercise(
+      title: title,
+      caseType: CaseTypeEnum.Instrumental,
+      sourceData: wordBank,
+      getStaticSentenceParts: getStaticSentenceParts,
+      getPersonalPronounSentenceStaticParts:
+          getPersonalPronounSentenceStaticParts,
+      banner: NavikaBanner(
+        imagePath: CaseImagePaths[CaseTypeEnum.Instrumental]!,
+        caseName: title,
+        description: AppLocalizations.of(context)!.instrumentalDescription,
+        icons: [
+          Icons.handyman_outlined,
+          Icons.train,
+          Icons.motorcycle,
+        ],
       ),
     );
   }

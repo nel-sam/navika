@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:navika/constants.dart';
 import 'package:navika/lang_data/word-bank.dart';
 import 'package:navika/models/adjective.dart';
 import 'package:navika/models/enums.dart';
@@ -7,12 +6,15 @@ import 'package:navika/models/models.dart';
 import 'package:navika/models/noun.dart';
 import 'package:navika/models/personal-pronoun.dart';
 import 'package:navika/utilities/navika-helpers.dart';
-import 'package:navika/widgets/shared/footer.dart';
+import 'package:navika/widgets/shared/case-exercise.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/widgets/shared/navika-banner.dart';
 
-StaticSentenceParts getStaticSentenceStarter(
-    Noun noun, bool isPlural, Adjective? pronoun) {
+StaticSentenceParts getStaticSentenceParts(
+  Noun noun,
+  bool isPlural,
+  Adjective? pronoun,
+) {
   String start = '';
   String end = '';
 
@@ -31,8 +33,10 @@ StaticSentenceParts getStaticSentenceStarter(
   return StaticSentenceParts(start: start, end: end);
 }
 
-StaticSentenceParts getPersonalPronounSentenceStarter(
-    PersonalPronoun personalPronoun, bool isShortForm) {
+StaticSentenceParts getPersonalPronounSentenceStaticParts(
+  PersonalPronoun personalPronoun,
+  bool isShortForm,
+) {
   final actualValue = isShortForm
       ? personalPronoun.nominativ.shortForm
       : personalPronoun.nominativ.general;
@@ -50,59 +54,28 @@ StaticSentenceParts getPersonalPronounSentenceStarter(
   return StaticSentenceParts(start: start, end: end);
 }
 
-// ignore: must_be_immutable
-class Akuzativ extends StatefulWidget {
-  @override
-  _AkuzativState createState() => _AkuzativState();
-}
-
-class _AkuzativState extends State<Akuzativ> {
-  final ScrollController controller = ScrollController();
+class Akuzativ extends StatelessWidget {
+  final title = 'Akuzativ';
 
   @override
   Widget build(BuildContext context) {
-    final WordBank bank = wordBank;
-    List<PANExerciseItem> listItems = N.getPANCombos(
-        bank, getStaticSentenceStarter, getPersonalPronounSentenceStarter);
-
-    return Scaffold(
-      appBar: AppBar(
-        elevation: APPBAR_ELEVATION,
-        backgroundColor: N.getAppBarColor(context),
-        textTheme: N.getAppBarTextTheme(context),
-        iconTheme: N.getAppBarIconTheme(context),
-        title: Text('Akuzativ'),
-      ),
-      body: Center(
-        child: ListView(
-          controller: controller,
-          padding: EXERCISE_LIST_PADDING,
-          children: [
-            NavikaBanner(
-                imagePath: CaseImagePaths[CaseTypeEnum.Akuzativ]!,
-                caseName: 'Akuzativ',
-                description: AppLocalizations.of(context)!.akuzativDescription,
-                icons: [
-                  Icons.remove_red_eye_outlined,
-                  Icons.car_rental,
-                  Icons.arrow_forward,
-                  Icons.euro,
-                ]),
-            ...N.getPANListItems(listItems, CaseTypeEnum.Akuzativ)
-          ],
-        ),
-      ),
-      persistentFooterButtons: NavikaChildFooterButtons(
-        context: context,
-        caseType: CaseTypeEnum.Akuzativ,
-        refreshFunction: () => setState(() {
-          listItems = N.getPANCombos(
-            wordBank,
-            getStaticSentenceStarter,
-            getPersonalPronounSentenceStarter,
-          );
-          N.scrollTo(0, controller);
-        }),
+    return CaseExercise(
+      title: title,
+      caseType: CaseTypeEnum.Akuzativ,
+      sourceData: wordBank,
+      getStaticSentenceParts: getStaticSentenceParts,
+      getPersonalPronounSentenceStaticParts:
+          getPersonalPronounSentenceStaticParts,
+      banner: NavikaBanner(
+        imagePath: CaseImagePaths[CaseTypeEnum.Akuzativ]!,
+        caseName: title,
+        description: AppLocalizations.of(context)!.akuzativDescription,
+        icons: [
+          Icons.remove_red_eye_outlined,
+          Icons.car_rental,
+          Icons.arrow_forward,
+          Icons.euro,
+        ],
       ),
     );
   }
