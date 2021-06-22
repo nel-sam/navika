@@ -36,7 +36,7 @@ final List<PersonalPronoun> personalPronounWordBank = [
     gender: Genders.Masculine,
     nominativ: new DeclensionPronoun(general: 'on'),
     genitiv: new DeclensionPronoun(general: 'njega', shortForm: 'ga'),
-    dativ: new DeclensionPronoun(general: 'njumu', shortForm: 'mu'),
+    dativ: new DeclensionPronoun(general: 'njemu', shortForm: 'mu'),
     akuzativ: new DeclensionPronoun(general: 'njega', shortForm: 'ga'),
     lokativ:
         new DeclensionPronoun(general: 'njemu'), // TODO: ????  shortForm: 'mu'
@@ -44,6 +44,10 @@ final List<PersonalPronoun> personalPronounWordBank = [
     instrumental: new DeclensionPronoun(general: 'njim'),
   ),
   PersonalPronoun(
+    // TODO: nju, ju, je : To avoid repeating the same syllabe.
+    // For example the atonic form in accusative
+    // ( for feminine gender, 3rd person singular ) is "je, ju".
+    // The correct version would be "Vidio ju je." and not "Vidio je je."
     dictionary: 'ona',
     type: PronounEnum.She,
     isPlural: false,
@@ -89,10 +93,10 @@ final List<PersonalPronoun> personalPronounWordBank = [
     gender: Genders.Unspecific,
     nominativ: new DeclensionPronoun(general: 'oni'),
     genitiv: new DeclensionPronoun(general: 'njih', shortForm: 'ih'),
-    dativ: new DeclensionPronoun(general: 'njima', shortForm: 'njim'),
+    dativ: new DeclensionPronoun(general: 'njima', shortForm: 'im'),
     akuzativ: new DeclensionPronoun(general: 'njih', shortForm: 'ih'),
     lokativ: new DeclensionPronoun(general: 'njima'),
     vokativ: new DeclensionPronoun(general: ''),
-    instrumental: new DeclensionPronoun(general: 'njima'),
+    instrumental: new DeclensionPronoun(general: 'njima', shortForm: 'im'),
   ),
 ];

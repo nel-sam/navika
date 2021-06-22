@@ -52,10 +52,6 @@ StaticSentenceParts getPersonalPronounSentenceStarter(
 
 // ignore: must_be_immutable
 class Akuzativ extends StatefulWidget {
-  final WordBank bank = wordBank;
-  List<PANExerciseItem> listItems = N.getPANCombos(
-      wordBank, getStaticSentenceStarter, getPersonalPronounSentenceStarter);
-
   @override
   _AkuzativState createState() => _AkuzativState();
 }
@@ -65,6 +61,10 @@ class _AkuzativState extends State<Akuzativ> {
 
   @override
   Widget build(BuildContext context) {
+    final WordBank bank = wordBank;
+    List<PANExerciseItem> listItems = N.getPANCombos(
+        bank, getStaticSentenceStarter, getPersonalPronounSentenceStarter);
+
     return Scaffold(
       appBar: AppBar(
         elevation: APPBAR_ELEVATION,
@@ -88,7 +88,7 @@ class _AkuzativState extends State<Akuzativ> {
                   Icons.arrow_forward,
                   Icons.euro,
                 ]),
-            ...N.getPANListItems(widget.listItems, CaseTypeEnum.Akuzativ)
+            ...N.getPANListItems(listItems, CaseTypeEnum.Akuzativ)
           ],
         ),
       ),
@@ -96,7 +96,7 @@ class _AkuzativState extends State<Akuzativ> {
         context: context,
         caseType: CaseTypeEnum.Akuzativ,
         refreshFunction: () => setState(() {
-          widget.listItems = N.getPANCombos(
+          listItems = N.getPANCombos(
             wordBank,
             getStaticSentenceStarter,
             getPersonalPronounSentenceStarter,

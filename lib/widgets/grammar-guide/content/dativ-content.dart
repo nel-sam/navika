@@ -141,7 +141,7 @@ Widget getPossesivePronounSection(BuildContext context) {
           pronoun: PronounEnum.They_Ungendered,
           text: NText([
             N.NTextSpan('Daj '),
-            N.NTextSpan('njim ', isBold: true),
+            N.NTextSpan('im ', isBold: true),
             N.NTextSpan('naše knjige\n'),
             N.NTextSpan('Daj naše knjige  '),
             N.NTextSpan('njima', isBold: true),

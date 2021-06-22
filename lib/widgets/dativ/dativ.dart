@@ -12,8 +12,12 @@ import 'package:navika/widgets/shared/navika-banner.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 StaticSentenceParts getStaticSentenceStarter(
-    Noun noun, bool isPlural, Adjective? pronoun) {
+  Noun noun,
+  bool isPlural,
+  Adjective? pronoun,
+) {
   String start = '';
+  String end = '';
 
   if (noun.isAnimate) {
     start = 'Daj to ';
@@ -23,12 +27,36 @@ StaticSentenceParts getStaticSentenceStarter(
     start = 'Slično je ';
   }
 
-  return StaticSentenceParts(start: start, end: '');
+  return StaticSentenceParts(start: start, end: end);
 }
 
 StaticSentenceParts getPersonalPronounSentenceStarter(
-    PersonalPronoun personalPronoun, bool isShortForm) {
-  return StaticSentenceParts(start: 'TEST', end: 'TEST');
+  PersonalPronoun personalPronoun,
+  bool isShortForm,
+) {
+  String start = '';
+  String end = '';
+
+  if (N.coinFlip()) {
+    start = 'Došlo je do';
+  } else if (N.coinFlip()) {
+    start = 'Odakle';
+    end = 'to dolazi';
+  } else if (N.coinFlip()) {
+    start = 'Pas';
+    end = 'je donio igračku';
+  } else {
+    start = 'On';
+    end = 'nešto pokazao';
+  }
+  print(start +
+      ' ' +
+      (isShortForm
+          ? personalPronoun.dativ.shortForm
+          : personalPronoun.dativ.general) +
+      ' ' +
+      end);
+  return StaticSentenceParts(start: start, end: end);
 }
 
 // ignore: must_be_immutable

@@ -84,6 +84,7 @@ class PANExerciseItem {
   Adjective? pronoun;
   Adjective? adjective;
   PersonalPronoun? personalPronoun;
+  bool usePersonalPronounShortForm;
   Genders gender;
   bool isPlural;
 
@@ -96,6 +97,7 @@ class PANExerciseItem {
     this.personalPronoun,
     required this.gender,
     required this.isPlural,
+    this.usePersonalPronounShortForm = false,
   });
 }
 

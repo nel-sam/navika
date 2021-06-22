@@ -107,27 +107,29 @@ class N {
         gender: persPronoun.gender,
         isPlural: isPlural,
         personalPronoun: persPronoun,
+        usePersonalPronounShortForm: N.coinFlip(),
       ));
     });
 
-    bank.possesivePronouns.forEach((possPronoun) {
-      bank.adjectives.forEach((adj) {
-        bank.nouns.forEach((noun) {
-          final isPlural = noun.nominativ.plural != '' || N.coinFlip();
-          final staticParts =
-              getStaticSentenceParts(noun, isPlural, possPronoun);
+    // TODO: Uncomment this
+    // bank.possesivePronouns.forEach((possPronoun) {
+    //   bank.adjectives.forEach((adj) {
+    //     bank.nouns.forEach((noun) {
+    //       final isPlural = noun.nominativ.plural != '' || N.coinFlip();
+    //       final staticParts =
+    //           getStaticSentenceParts(noun, isPlural, possPronoun);
 
-          listItems.add(PANExerciseItem(
-              sentenceStarter: staticParts.start,
-              sentenceEnder: staticParts.end,
-              pronoun: possPronoun,
-              adjective: adj,
-              gender: noun.gender,
-              isPlural: isPlural,
-              noun: noun));
-        });
-      });
-    });
+    //       listItems.add(PANExerciseItem(
+    //           sentenceStarter: staticParts.start,
+    //           sentenceEnder: staticParts.end,
+    //           pronoun: possPronoun,
+    //           adjective: adj,
+    //           gender: noun.gender,
+    //           isPlural: isPlural,
+    //           noun: noun));
+    //     });
+    //   });
+    // });
 
     return listItems;
   }
@@ -139,9 +141,8 @@ class N {
         .take(BATCH_COUNT)
         .map((PANExerciseItem e) {
       if (e.personalPronoun != null) {
-        final isShortForm = e.sentenceEnder != '';
-        final correctPersonalPronounValue = e.personalPronoun!
-            .getDeclension(caseType: caseType, isShortForm: isShortForm);
+        final correctPersonalPronounValue = e.personalPronoun!.getDeclension(
+            caseType: caseType, isShortForm: e.usePersonalPronounShortForm);
 
         return PANListItem(
           sentenceStarter: e.sentenceStarter,
@@ -155,11 +156,17 @@ class N {
         );
       }
 
+      final includePossPronoun = N.coinFlip();
+      final includeAdjective = N.coinFlip();
       final correctNounValue = e.noun!.getDeclension(e.isPlural, caseType);
-      final correctPronounValue = e.pronoun!
-          .getDeclension(e.gender, e.isPlural, caseType, e.noun!.isAnimate);
-      final correctAdjValue = e.adjective!
-          .getDeclension(e.gender, e.isPlural, caseType, e.noun!.isAnimate);
+      final correctPronounValue = includePossPronoun
+          ? e.pronoun!
+              .getDeclension(e.gender, e.isPlural, caseType, e.noun!.isAnimate)
+          : '';
+      final correctAdjValue = includeAdjective
+          ? e.adjective!
+              .getDeclension(e.gender, e.isPlural, caseType, e.noun!.isAnimate)
+          : '';
 
       return PANListItem(
           sentenceStarter: e.sentenceStarter,
@@ -168,9 +175,12 @@ class N {
           correctAdjValue: correctAdjValue,
           correctNounValue: correctNounValue,
           adjective: e.adjective!,
-          activePossPronounValue:
-              e.pronoun!.getRandomDeclension(correctPronounValue),
-          activeAdjValue: e.adjective!.getRandomDeclension(correctAdjValue),
+          activePossPronounValue: includePossPronoun
+              ? e.pronoun!.getRandomDeclension(correctPronounValue)
+              : '',
+          activeAdjValue: includeAdjective
+              ? e.adjective!.getRandomDeclension(correctAdjValue)
+              : '',
           activeNounValue: e.noun!.getRandomDeclension(correctNounValue),
           isPlural: e.isPlural,
           possPronoun: e.pronoun!,

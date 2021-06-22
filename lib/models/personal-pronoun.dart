@@ -33,7 +33,7 @@ class PersonalPronoun {
   });
 
   String getDeclension(
-      {required CaseTypeEnum caseType, bool isShortForm = false}) {
+      {required CaseTypeEnum caseType, required bool isShortForm}) {
     DeclensionPronoun declension;
 
     switch (caseType) {
