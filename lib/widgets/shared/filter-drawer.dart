@@ -57,7 +57,6 @@ class _FilterDrawerState extends State<FilterDrawer> {
                     activeColor: ACCENT_COLOR,
                     title: Text(AppLocalizations.of(context)!.personalPronouns),
                     onChanged: (bool value) {
-                      print(value);
                       setState(() {
                         pronounsChecked = value;
                       });

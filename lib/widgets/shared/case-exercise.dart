@@ -20,6 +20,10 @@ class CaseExercise extends StatefulWidget {
   final StaticSentenceParts Function(PersonalPronoun, bool)
       getPersonalPronounSentenceStaticParts;
 
+  // TODO: make these required
+  final Function(ExerciseFilterSet)? onFilterSet;
+  final ExerciseFilterSet? filterSet;
+
   const CaseExercise({
     Key? key,
     required this.title,
@@ -28,6 +32,8 @@ class CaseExercise extends StatefulWidget {
     required this.banner,
     required this.getStaticSentenceParts,
     required this.getPersonalPronounSentenceStaticParts,
+    this.onFilterSet,
+    this.filterSet,
   }) : super(key: key);
 
   @override
@@ -36,19 +42,12 @@ class CaseExercise extends StatefulWidget {
 
 class _CaseExerciseState extends State<CaseExercise> {
   final controller = ScrollController();
-  late ExerciseFilterSet currentFilterSet;
-
-  @override
-  void initState() {
-    currentFilterSet = ExerciseFilterSet();
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
     final scaffoldKey = new GlobalKey<ScaffoldState>();
     List<PANExerciseItem> listItems = N.getPANCombos(
-        widget.sourceData,
+        widget.sourceData.filter(widget.filterSet!),
         widget.getStaticSentenceParts,
         widget.getPersonalPronounSentenceStaticParts);
 
@@ -63,18 +62,18 @@ class _CaseExerciseState extends State<CaseExercise> {
         title: Text(widget.title),
       ),
       endDrawer: FilterDrawer(
-        initalValues: currentFilterSet,
-        onFiltersSet: (ExerciseFilterSet filterSet) {
-          setState(() {
-            listItems = N.getPANCombos(
-              widget.sourceData.filter(filterSet),
-              widget.getStaticSentenceParts,
-              widget.getPersonalPronounSentenceStaticParts,
-            );
-            currentFilterSet = filterSet;
-            N.scrollTo(0, controller);
-          });
-        },
+        initalValues: widget.filterSet!,
+        onFiltersSet: (ExerciseFilterSet filterSet) => setState(() {
+          //var filtered = widget.sourceData.filter(filterSet);
+          // listItems = N.getPANCombos(
+          //   filtered,
+          //   widget.getStaticSentenceParts,
+          //   widget.getPersonalPronounSentenceStaticParts,
+          // );
+
+          //N.scrollTo(0, controller);
+          widget.onFilterSet!(filterSet);
+        }),
       ),
       body: Center(
         child: ListView(
@@ -90,12 +89,12 @@ class _CaseExerciseState extends State<CaseExercise> {
         context: context,
         caseType: widget.caseType,
         refreshFunction: () => setState(() {
-          listItems = N.getPANCombos(
-            widget.sourceData,
-            widget.getStaticSentenceParts,
-            widget.getPersonalPronounSentenceStaticParts,
-          );
-          N.scrollTo(0, controller);
+          // listItems = N.getPANCombos(
+          //   widget.sourceData,
+          //   widget.getStaticSentenceParts,
+          //   widget.getPersonalPronounSentenceStaticParts,
+          // );
+          //N.scrollTo(0, controller);
         }),
       ),
     );

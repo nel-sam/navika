@@ -96,6 +96,12 @@ class N {
   ) {
     var listItems = List<PANExerciseItem>.empty(growable: true);
 
+    print('----------');
+    print('PerP: ${bank.personalPronouns.length}');
+    print('Adj: ${bank.adjectives.length}');
+    print('Noun: ${bank.nouns.length}');
+    print('PosP: ${bank.possessivePronouns.length}');
+
     bank.personalPronouns.forEach((persPronoun) {
       final isPlural = persPronoun.isPlural;
       final staticParts =

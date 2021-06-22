@@ -71,9 +71,16 @@ StaticSentenceParts getPersonalPronounSentenceStaticParts(
   return StaticSentenceParts(start: start, end: end);
 }
 
-class Nominativ extends StatelessWidget {
+class Nominativ extends StatefulWidget {
+  @override
+  _NominativState createState() => _NominativState();
+}
+
+class _NominativState extends State<Nominativ> {
   final title = 'Nominativ';
   final WordBank bank = wordBank.filterPronoun('svoj');
+
+  var filterSet = ExerciseFilterSet();
 
   @override
   Widget build(BuildContext context) {
@@ -94,6 +101,10 @@ class Nominativ extends StatelessWidget {
           Icons.people,
         ],
       ),
+      onFilterSet: (ExerciseFilterSet newFilterSet) => setState(() {
+        filterSet = newFilterSet;
+      }),
+      filterSet: filterSet,
     );
   }
 }

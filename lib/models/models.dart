@@ -39,7 +39,7 @@ class WordBank {
       personalPronouns:
           filterSet.personalPronounsIncluded ? [...this.personalPronouns] : [],
     );
-
+    
     return result;
   }
 
