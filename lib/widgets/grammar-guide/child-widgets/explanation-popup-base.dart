@@ -52,7 +52,7 @@ class ExplanationPopupBase extends StatelessWidget {
       body: Column(
         children: [
           getTable(
-            AppLocalizations.of(context)!.pronouns,
+            AppLocalizations.of(context)!.personalPronouns,
             pronounMasculineSingular,
             pronounFeminineSingular,
             pronounNeuterSingular,

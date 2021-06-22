@@ -3,29 +3,57 @@ import 'package:navika/models/noun.dart';
 import 'package:navika/models/personal-pronoun.dart';
 import 'enums.dart';
 
+class ExerciseFilterSet {
+  final bool possessivePronounsIncluded;
+  final bool personalPronounsIncluded;
+  final bool adjectivesIncluded;
+  final bool nounsIncluded;
+
+  ExerciseFilterSet({
+    this.possessivePronounsIncluded = true,
+    this.personalPronounsIncluded = true,
+    this.adjectivesIncluded = true,
+    this.nounsIncluded = true,
+  });
+}
+
 class WordBank {
   final List<Noun> nouns;
   final List<Adjective> adjectives;
-  final List<Adjective> possesivePronouns;
+  final List<Adjective> possessivePronouns;
   final List<PersonalPronoun> personalPronouns;
 
   WordBank(
       {required this.nouns,
       required this.adjectives,
-      required this.possesivePronouns,
+      required this.possessivePronouns,
       required this.personalPronouns});
+
+  WordBank filter(ExerciseFilterSet filterSet) {
+    var result = WordBank(
+      nouns: filterSet.nounsIncluded ? [...this.nouns] : [],
+      adjectives: filterSet.adjectivesIncluded ? [...this.adjectives] : [],
+      possessivePronouns: filterSet.possessivePronounsIncluded
+          ? [...this.possessivePronouns]
+          : [],
+      personalPronouns:
+          filterSet.personalPronounsIncluded ? [...this.personalPronouns] : [],
+    );
+
+    return result;
+  }
 
   WordBank filterPronoun(String toFilter) {
     var result = WordBank(
       nouns: [...this.nouns],
       adjectives: [...this.adjectives],
-      possesivePronouns: [...this.possesivePronouns],
+      possessivePronouns: [...this.possessivePronouns],
       personalPronouns: [...this.personalPronouns],
     );
 
-    final svoj = result.possesivePronouns
+    final svoj = result.possessivePronouns
         .firstWhere((e) => e.nominativ.masculine.singular == toFilter);
-    result.possesivePronouns.remove(svoj);
+    result.possessivePronouns.remove(svoj);
 
     return result;
   }

@@ -1,7 +1,7 @@
 import 'package:navika/models/adjective.dart';
 import 'package:navika/models/models.dart';
 
-final List<Adjective> possesivePronounWordBank = [
+final List<Adjective> possessivePronounWordBank = [
   Adjective(
     dictionary: 'moj',
     nominativ: new Declension(

@@ -1,8 +1,9 @@
 {
     "appTitle": "Navika",
+    "nouns": "Sustantivos",
     "adjectives": "Adjetivos",
     "close": "Cerrar",
-    "pronouns": "Pronombres",
+    "personalPronouns": "Pronombres Personales",
     "plural": "Plural",
     "singular": "Singular",
     "masculine": "Masculino",
@@ -32,5 +33,6 @@
     "refresh": "Reiniciar",
     "next": "Siguiente",
     "previous": "Anterior",
-    "recommendedVideo": "Mirar Video Recomendado"
+    "recommendedVideo": "Mirar Video Recomendado",
+    "selectExercises": "¿Qué quieres practicar?"
 }

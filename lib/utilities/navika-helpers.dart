@@ -111,7 +111,7 @@ class N {
       ));
     });
 
-    bank.possesivePronouns.forEach((possPronoun) {
+    bank.possessivePronouns.forEach((possPronoun) {
       bank.adjectives.forEach((adj) {
         bank.nouns.forEach((noun) {
           final isPlural = noun.nominativ.plural != '' || N.coinFlip();
