@@ -57,10 +57,23 @@ class PANListItem extends StatefulWidget {
 
 class _PANListItemState extends State<PANListItem> {
   bool checkAnswer() {
-    return widget.activePossPronounValue == widget.correctPossPronounValue &&
+    var allCorrect = widget.activePossPronounValue ==
+            widget.correctPossPronounValue &&
         widget.activeAdjValue == widget.correctAdjValue &&
         widget.activeNounValue == widget.correctNounValue &&
         widget.activePersonalPronounValue == widget.correctPersonalPronounValue;
+
+    if (!allCorrect) {
+      // TODO: Remove this
+      // print(
+      //     'PosP ${widget.activePossPronounValue} : ${widget.correctPossPronounValue}');
+      // print('Adj ${widget.activeAdjValue} : ${widget.activeAdjValue}');
+      // print('Noun ${widget.activeNounValue} : ${widget.activeNounValue}');
+      // print(
+      //     'PersP ${widget.activePersonalPronounValue} : ${widget.activePersonalPronounValue}');
+    }
+
+    return allCorrect;
   }
 
   @override
@@ -129,9 +142,12 @@ class _PANListItemState extends State<PANListItem> {
         ),
     ];
 
+    print('IsAnimate: ${widget.noun!.dictionary} ${widget.noun!.isAnimate}');
+
     return ExerciseRowCard(
       isAllCorrect: isAllCorrect,
       isPlural: widget.isPlural,
+      isAnimate: widget.noun!.isAnimate,
       children: sentenceContent,
       gender: widget.gender,
     );

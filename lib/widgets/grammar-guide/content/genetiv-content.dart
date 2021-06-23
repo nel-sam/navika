@@ -13,18 +13,20 @@ Widget GenetivGrammarGuideContent(BuildContext context) {
   return Column(
     children: [
       getDescription(context),
-      getDeclensionTable(),
+      getDeclensionTable(context),
       getPossessivePronounSection(context),
     ],
   );
 }
 
-Widget getDeclensionTable() {
+Widget getDeclensionTable(BuildContext context) {
   return DeclensionTable(
+    note: AppLocalizations.of(context)!.softLettersOgEg,
     masculineSingular: [
       NText([
         N.NTextSpan('Lijep'),
-        N.NTextSpan('og\n', isItalic: true, color: MASCULINE_COLOR),
+        N.NTextSpan('og', isItalic: true, color: MASCULINE_COLOR),
+        N.NTextSpan('**\n'),
         N.NTextSpan('jezik'),
         N.NTextSpan('a', isItalic: true, color: MASCULINE_COLOR),
       ]),
@@ -55,15 +57,16 @@ Widget getDeclensionTable() {
     ],
     neuterSingular: [
       NText([
-        N.NTextSpan('Vruč'),
-        N.NTextSpan('eg\n', isItalic: true, color: NEUTER_COLOR),
+        N.NTextSpan('Vruć'),
+        N.NTextSpan('eg', isItalic: true, color: NEUTER_COLOR),
+        N.NTextSpan('**\n'),
         N.NTextSpan('mlijek'),
         N.NTextSpan('a', isItalic: true, color: NEUTER_COLOR),
       ]),
     ],
     neuterPlural: [
       NText([
-        N.NTextSpan('Vruč'),
+        N.NTextSpan('Vruć'),
         N.NTextSpan('ih\n', isItalic: true, color: NEUTER_COLOR),
         N.NTextSpan('mlijek'),
         N.NTextSpan('a', isItalic: true, color: NEUTER_COLOR),

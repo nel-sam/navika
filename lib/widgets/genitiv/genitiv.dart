@@ -11,20 +11,28 @@ import 'package:navika/models/adjective.dart';
 import 'package:navika/models/noun.dart';
 
 StaticSentenceParts getStaticSentenceParts(
-    Noun noun, bool isPlural, Adjective? pronoun) {
+  Noun noun,
+  bool isPlural,
+  Adjective? pronoun,
+) {
   String start = '';
   String end = '';
 
-  if (noun.tags.contains(Tags.Human) || noun.tags.contains(Tags.Portable)) {
+  if (noun.tags.contains(Tags.BodyPart) && !isPlural) {
+    start = 'Boja';
+    end = 'je lijepa';
+  } else if (noun.tags.contains(Tags.Human) ||
+      noun.tags.contains(Tags.Portable)) {
     if (pronoun!.dictionary != 'moj')
       start = N.coinFlip() ? 'Otkad sam bez' : 'Ići ću bez';
     else
       start = 'Ići ćeš bez';
-  }
-  if (isPlural) {
-    start = 'To su';
+  } else if (noun.tags.contains(Tags.Location)) {
+    start = pronoun!.dictionary != 'moj' ? 'Ja sam iz' : 'On je iz';
+  } else if (N.coinFlip()) {
+    start = 'Volim boja';
   } else {
-    start = 'To je';
+    start = 'Nema';
   }
 
   return StaticSentenceParts(start: start, end: end);

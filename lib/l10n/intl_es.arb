@@ -4,6 +4,7 @@
     "adjectives": "Adjetivos",
     "close": "Cerrar",
     "personalPronouns": "Pronombres Personales",
+      "possessivePronouns": "Pronombres Posesivos",
     "plural": "Plural",
     "singular": "Singular",
     "masculine": "Masculino",
@@ -36,5 +37,7 @@
     "recommendedVideo": "Mirar Video Recomendado",
     "selectExercises": "¿Qué quieres practicar?",
     "unselectAll": "Deseleccionar Todos",
-    "selectAll": "Seleccionar Todos"
+    "selectAll": "Seleccionar Todos",
+    "softLettersOgEg": "A č, ć, đ, dž, š, ž, lj, & nj se agrega 'eg' y no 'og'.",
+    "animate": "Vivo"
 }

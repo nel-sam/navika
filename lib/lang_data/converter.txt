@@ -3,15 +3,15 @@
 // Nouns
 // https://www.crodict.com/nouns/croatian/avion
 // (^[A-Z].*tive|Instrumental)	([a-z]*)	([a-z]*)
-// \L$1: new DeclensionByCount(singular: '\L$2', plural: '\L$3',),
+// \L$1: new DeclensionByCount(singular: '\L$2', plural: '\L$3'),
 //
-// tiv:  tiv:
+// tive:  tiv:
 // akuzativ genitiv lokativ vokativ
 
-nominativ: new DeclensionByCount(singular: 'ananas', plural: 'ananasi',),
-genitiv: new DeclensionByCount(singular: 'ananasa', plural: 'ananasa',),
-dativ: new DeclensionByCount(singular: 'ananasu', plural: 'ananasima',),
-akuzativ: new DeclensionByCount(singular: 'ananas', plural: 'ananase',),
-lokativ: new DeclensionByCount(singular: 'ananasu', plural: 'ananasima',),
-vokativ: new DeclensionByCount(singular: 'ananase', plural: 'ananasi',),
-instrumental: new DeclensionByCount(singular: 'ananasom', plural: 'ananasima',),
+nominativ: new DeclensionByCount(singular: 'sin', plural: 'sinovi',),
+genitiv: new DeclensionByCount(singular: 'sina', plural: 'sinova',),
+dativ: new DeclensionByCount(singular: 'sinu', plural: 'sinovima',),
+akuzativ: new DeclensionByCount(singular: 'sina', plural: 'sinove',),
+lokativ: new DeclensionByCount(singular: 'sinu', plural: 'sinovima',),
+vokativ: new DeclensionByCount(singular: 'sine', plural: 'sinovi',),
+instrumental: new DeclensionByCount(singular: 'sinom', plural: 'sinovimaural',),: 'ananasima',),

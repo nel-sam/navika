@@ -174,7 +174,7 @@ final List<Adjective> adjectiveWordBank = [
     genitiv: new Declension(
       masculine: new DeclensionByGender(singular: "drugog", plural: "drugih"),
       feminine: new DeclensionByGender(singular: "druge", plural: "drugih"),
-      neuter: new DeclensionByGender(singular: "drugeg", plural: "drugih"),
+      neuter: new DeclensionByGender(singular: "drugog", plural: "drugih"),
     ),
     vokativ: new Declension(
       masculine: new DeclensionByGender(singular: "", plural: ""),

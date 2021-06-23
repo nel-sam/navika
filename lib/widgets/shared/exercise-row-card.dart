@@ -8,6 +8,7 @@ class ExerciseRowCard extends StatelessWidget {
   final bool isAllCorrect;
   final List<Widget> children;
   final bool isPlural;
+  final bool isAnimate;
   final Genders gender;
 
   const ExerciseRowCard({
@@ -15,6 +16,7 @@ class ExerciseRowCard extends StatelessWidget {
     required this.isAllCorrect,
     required this.children,
     required this.isPlural,
+    required this.isAnimate,
     required this.gender,
   }) : super(key: key);
 
@@ -83,18 +85,21 @@ class ExerciseRowCard extends StatelessWidget {
     const double iconPadding = 4;
 
     return Container(
-      width: 120,
-      child: Row(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(right: iconPadding),
-            child: Icon(
-              icon,
-              color: ACCENT_COLOR,
+      //width: 120,
+      child: Padding(
+        padding: const EdgeInsets.only(left: 10),
+        child: Row(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(right: iconPadding),
+              child: Icon(
+                icon,
+                color: ACCENT_COLOR,
+              ),
             ),
-          ),
-          Text(text),
-        ],
+            Text(text),
+          ],
+        ),
       ),
     );
   }
@@ -106,7 +111,7 @@ class ExerciseRowCard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Padding(
-            padding: const EdgeInsets.only(right: 30),
+            padding: const EdgeInsets.only(right: 20),
             child: this.isAllCorrect
                 ? Icon(Icons.check_circle_outline, color: CORRECT_COLOR)
                 : Icon(Icons.close_outlined, color: WRONG_COLOR),
@@ -121,6 +126,11 @@ class ExerciseRowCard extends StatelessWidget {
                 ? AppLocalizations.of(context)!.plural
                 : AppLocalizations.of(context)!.singular,
           ),
+          if (isAnimate)
+            IconTextPair(
+              Icons.person,
+              AppLocalizations.of(context)!.animate,
+            ),
         ],
       ),
     );

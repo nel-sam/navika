@@ -114,7 +114,7 @@ class N {
     bank.possessivePronouns.forEach((possPronoun) {
       bank.adjectives.forEach((adj) {
         bank.nouns.forEach((noun) {
-          final isPlural = noun.nominativ.plural != '' || N.coinFlip();
+          final isPlural = noun.nominativ.plural != '' && N.coinFlip();
           final staticParts =
               getStaticSentenceParts(noun, isPlural, possPronoun);
 
