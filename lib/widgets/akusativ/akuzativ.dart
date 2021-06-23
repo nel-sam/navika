@@ -19,7 +19,7 @@ StaticSentenceParts getStaticSentenceParts(
   String end = '';
 
   if (noun.tags.contains(Tags.Location)) {
-    start = 'Idemo na';
+    start = 'Idemo u';
   } else if (noun.tags.contains(Tags.Food)) {
     start = N.coinFlip() ? 'Ću jesti' : 'Želi';
   } else if (pronoun != null && pronoun.nominativ.masculine.singular != 'moj')
@@ -47,8 +47,10 @@ StaticSentenceParts getPersonalPronounSentenceStaticParts(
     start = 'Mi vidimo';
   } else if (actualValue != 'ti' && N.coinFlip()) {
     start = 'Daj to ';
-  } else {
+  } else if (isShortForm) {
     start = 'Molim';
+  } else {
+    start = actualValue != 'ti' ? 'Videš' : 'Videm';
   }
 
   return StaticSentenceParts(start: start, end: end);

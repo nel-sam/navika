@@ -89,5 +89,4 @@ class Noun {
       this.vokativ.plural,
     ].toSet().toList().where((element) => element.length > 0).toList());
   }
-  // TODO: Add krevet, ljeto, hospital, post office
 }

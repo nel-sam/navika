@@ -48,13 +48,7 @@ StaticSentenceParts getPersonalPronounSentenceStaticParts(
     start = 'On';
     end = 'nešto pokazao';
   }
-  print(start +
-      ' ' +
-      (isShortForm
-          ? personalPronoun.dativ.shortForm
-          : personalPronoun.dativ.general) +
-      ' ' +
-      end);
+
   return StaticSentenceParts(start: start, end: end);
 }
 

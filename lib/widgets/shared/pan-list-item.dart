@@ -142,12 +142,10 @@ class _PANListItemState extends State<PANListItem> {
         ),
     ];
 
-    print('IsAnimate: ${widget.noun!.dictionary} ${widget.noun!.isAnimate}');
-
     return ExerciseRowCard(
       isAllCorrect: isAllCorrect,
       isPlural: widget.isPlural,
-      isAnimate: widget.noun!.isAnimate,
+      isAnimate: widget.noun == null ? false : widget.noun!.isAnimate,
       children: sentenceContent,
       gender: widget.gender,
     );

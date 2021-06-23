@@ -208,4 +208,6 @@ final List<Noun> nounWordBank = [
   //     plural: 'ljudi'
   //   ),
   // ),
+
+  // TODO: Add krevet, ljeto, hospital, post office
 ];

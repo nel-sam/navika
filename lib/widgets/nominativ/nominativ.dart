@@ -24,7 +24,7 @@ StaticSentenceParts getStaticSentenceParts(
     }
   } else if (!noun.isAnimate && isPlural) {
     if (tense == TenseEnum.Future || tense == TenseEnum.Conditional)
-      start = 'To će biti';
+      start = isPlural ? 'One će biti' : 'To će biti';
     else {
       start = 'To su';
     }
