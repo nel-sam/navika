@@ -13,6 +13,7 @@ Widget DativGrammarGuideContent(BuildContext context) {
   return Column(
     children: [
       getDescription(context),
+      getExampleSentences(context),
       getDeclensionTable(context),
       getPossessivePronounSection(context),
     ],
@@ -21,6 +22,7 @@ Widget DativGrammarGuideContent(BuildContext context) {
 
 Widget getDeclensionTable(BuildContext context) {
   return DeclensionTable(
+    note: AppLocalizations.of(context)!.assibilation,
     masculineSingular: [
       NText([
         N.NTextSpan('Lijep'),
@@ -35,6 +37,7 @@ Widget getDeclensionTable(BuildContext context) {
         N.NTextSpan('im\n', isItalic: true, color: MASCULINE_COLOR),
         N.NTextSpan('jezic'),
         N.NTextSpan('ima', isItalic: true, color: MASCULINE_COLOR),
+        N.NTextSpan('**'),
       ]),
     ],
     feminineSingular: [
@@ -43,6 +46,7 @@ Widget getDeclensionTable(BuildContext context) {
         N.NTextSpan('oj\n', isItalic: true, color: FEMININE_COLOR),
         N.NTextSpan('kuć'),
         N.NTextSpan('i', isItalic: true, color: FEMININE_COLOR),
+        N.NTextSpan('**'),
       ]),
     ],
     femininePlural: [
@@ -165,6 +169,27 @@ Widget getDescription(BuildContext context) {
   return Column(
     children: [
       NText([N.NTextSpan(AppLocalizations.of(context)!.dativDescription)])
+    ],
+  );
+}
+
+Widget getExampleSentences(BuildContext context) {
+  return Column(
+    children: [
+      NSubHeader(text: AppLocalizations.of(context)!.exampleSentences),
+      NText([
+        N.NTextSpan('On je kupio igračku '),
+        N.NTextSpan('sinu', isBold: true),
+      ]),
+      NText([
+        N.NTextSpan('Došao je na posao usprkos '),
+        N.NTextSpan('bolesti', isBold: true),
+      ]),
+      NText([
+        N.NTextSpan('Dao sam '),
+        N.NTextSpan('mami', isBold: true),
+        N.NTextSpan('čaj'),
+      ]),
     ],
   );
 }

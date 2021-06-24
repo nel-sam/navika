@@ -13,6 +13,7 @@ Widget GenetivGrammarGuideContent(BuildContext context) {
   return Column(
     children: [
       getDescription(context),
+      getExampleSentences(context),
       getDeclensionTable(context),
       getPossessivePronounSection(context),
     ],
@@ -144,6 +145,42 @@ Widget getDescription(BuildContext context) {
   return Column(
     children: [
       NText([N.NTextSpan(AppLocalizations.of(context)!.genitiveDescription)])
+    ],
+  );
+}
+
+Widget getExampleSentences(BuildContext context) {
+  return Column(
+    children: [
+      NSubHeader(text: AppLocalizations.of(context)!.exampleSentences),
+      NText([
+        N.NTextSpan('Kraj '),
+        N.NTextSpan('filma', isBold: true),
+      ]),
+      NText([
+        N.NTextSpan('Ne mogu živjeti '),
+        N.NTextSpan('bez tebe', isBold: true),
+      ]),
+      NText([
+        N.NTextSpan('Vrh '),
+        N.NTextSpan('planine', isBold: true),
+      ]),
+      NText([
+        N.NTextSpan('Broj '),
+        N.NTextSpan('telefona', isBold: true),
+      ]),
+      NText([
+        N.NTextSpan('Ja sam '),
+        N.NTextSpan('kod zuruba', isBold: true),
+      ]),
+      NText([
+        N.NTextSpan('Pas je mokar '),
+        N.NTextSpan('zbog kiše', isBold: true),
+      ]),
+      NText([
+        N.NTextSpan('Nema '),
+        N.NTextSpan('problema', isBold: true),
+      ]),
     ],
   );
 }

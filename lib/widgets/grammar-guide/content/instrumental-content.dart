@@ -14,6 +14,7 @@ Widget InstrumentalGrammarGuideContent(BuildContext context) {
   return Column(
     children: [
       getDescription(context),
+      getExampleSentences(context),
       getDeclensionTable(context),
       getPossessivePronounSection(context),
     ],
@@ -140,6 +141,34 @@ Widget getDescription(BuildContext context) {
       NText(
           [N.NTextSpan(AppLocalizations.of(context)!.instrumentalDescription)]),
       YouTubeLink(context, 'https://www.youtube.com/watch?v=sOX2Z70g73Q')
+    ],
+  );
+}
+
+Widget getExampleSentences(BuildContext context) {
+  return Column(
+    children: [
+      NSubHeader(text: AppLocalizations.of(context)!.exampleSentences),
+      NText([
+        N.NTextSpan('Juhu sam jeo '),
+        N.NTextSpan('žlicom', isBold: true),
+      ]),
+      NText([
+        N.NTextSpan('Na posao idem '),
+        N.NTextSpan('autom', isBold: true),
+      ]),
+      NText([
+        N.NTextSpan('Razgovaram '),
+        N.NTextSpan('s prijateljem', isBold: true),
+      ]),
+      NText([
+        N.NTextSpan('Volim se baviti '),
+        N.NTextSpan('sportom', isBold: true),
+      ]),
+      NText([
+        N.NTextSpan('Putujem '),
+        N.NTextSpan('noću', isBold: true),
+      ]),
     ],
   );
 }

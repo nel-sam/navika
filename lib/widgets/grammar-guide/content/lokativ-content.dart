@@ -163,6 +163,10 @@ Widget getExampleSentences(BuildContext context) {
         N.NTextSpan('U kuhinji ', isBold: true),
         N.NTextSpan('ima mnogo'),
       ]),
+      NText([
+        N.NTextSpan('Idemo ', isBold: true),
+        N.NTextSpan('na ručak'),
+      ]),
     ],
   );
 }
