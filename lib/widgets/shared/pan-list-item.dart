@@ -57,21 +57,12 @@ class PANListItem extends StatefulWidget {
 
 class _PANListItemState extends State<PANListItem> {
   bool checkAnswer() {
+    // TODO: Support multiple correct answers (tvog/tvojog)
     var allCorrect = widget.activePossPronounValue ==
             widget.correctPossPronounValue &&
         widget.activeAdjValue == widget.correctAdjValue &&
         widget.activeNounValue == widget.correctNounValue &&
         widget.activePersonalPronounValue == widget.correctPersonalPronounValue;
-
-    if (!allCorrect) {
-      // TODO: Remove this
-      // print(
-      //     'PosP ${widget.activePossPronounValue} : ${widget.correctPossPronounValue}');
-      // print('Adj ${widget.activeAdjValue} : ${widget.activeAdjValue}');
-      // print('Noun ${widget.activeNounValue} : ${widget.activeNounValue}');
-      // print(
-      //     'PersP ${widget.activePersonalPronounValue} : ${widget.activePersonalPronounValue}');
-    }
 
     return allCorrect;
   }
@@ -79,6 +70,8 @@ class _PANListItemState extends State<PANListItem> {
   @override
   Widget build(BuildContext context) {
     bool isAllCorrect = checkAnswer();
+
+    // TODO: Make freeform text possible
 
     var sentenceContent = [
       if (widget.sentenceStarter != '')

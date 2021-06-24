@@ -49,7 +49,7 @@ class ExerciseRowCard extends StatelessWidget {
               color: this.isAllCorrect
                   ? CORRECT_COLOR.withOpacity(0.4)
                   : WRONG_COLOR.withOpacity(0.4),
-              spreadRadius: 3,
+              spreadRadius: 1,
               blurRadius: 1,
             ),
           ],

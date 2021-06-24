@@ -6,8 +6,8 @@ import 'package:navika/models/models.dart';
 import 'package:navika/models/noun.dart';
 import 'package:navika/models/personal-pronoun.dart';
 import 'package:navika/utilities/navika-helpers.dart';
-import 'package:navika/widgets/shared/filter-drawer.dart';
-import 'package:navika/widgets/shared/footer.dart';
+import 'package:navika/widgets/shared/navika-drawer.dart';
+import 'package:navika/widgets/shared/footer-buttons.dart';
 import 'package:navika/widgets/shared/navika-banner.dart';
 
 class CaseExercise extends StatefulWidget {
@@ -60,7 +60,7 @@ class _CaseExerciseState extends State<CaseExercise> {
         iconTheme: N.getAppBarIconTheme(context),
         title: Text(widget.title),
       ),
-      endDrawer: FilterDrawer(
+      endDrawer: NavikaDrawer(
         initalValues: widget.filterSet,
         onFiltersSet: (ExerciseFilterSet newFilterSet) {
           var filterChanged = widget.filterSet.adjectivesIncluded ==

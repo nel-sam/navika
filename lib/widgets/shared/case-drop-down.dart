@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
+import 'package:navika/utilities/navika-helpers.dart';
 
 class CaseDropDown extends StatelessWidget {
   final String activeValue;
@@ -20,6 +21,7 @@ class CaseDropDown extends StatelessWidget {
     return DropdownButton(
       style: TextStyle(
         fontSize: EXERCISE_FONT_STYLE,
+        color: N.isDarkTheme(context) ? Colors.white : Colors.black,
       ),
       value: activeValue,
       iconSize: 0,

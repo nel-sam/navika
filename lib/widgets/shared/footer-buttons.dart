@@ -14,7 +14,7 @@ List<Widget> NavikaChildFooterButtons({
 }) {
   return [
     Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         Padding(
           padding: const EdgeInsets.only(bottom: FOOTER_ICON_BOTTOM_PADDING),

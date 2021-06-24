@@ -4,21 +4,21 @@ import 'package:navika/constants.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/models/models.dart';
 
-class FilterDrawer extends StatefulWidget {
+class NavikaDrawer extends StatefulWidget {
   final Function(ExerciseFilterSet) onFiltersSet;
   final ExerciseFilterSet initalValues;
 
-  const FilterDrawer({
+  const NavikaDrawer({
     Key? key,
     required this.initalValues,
     required this.onFiltersSet,
   }) : super(key: key);
 
   @override
-  _FilterDrawerState createState() => _FilterDrawerState();
+  _NavikaDrawerState createState() => _NavikaDrawerState();
 }
 
-class _FilterDrawerState extends State<FilterDrawer> {
+class _NavikaDrawerState extends State<NavikaDrawer> {
   late bool pronounsChecked;
   late bool possPronounsChecked;
   late bool adjectivesChecked;
@@ -45,7 +45,7 @@ class _FilterDrawerState extends State<FilterDrawer> {
               decoration: BoxDecoration(color: ACCENT_COLOR),
               child: Text(
                 AppLocalizations.of(context)!.selectExercises,
-                style: TextStyle(fontSize: 25),
+                style: TextStyle(fontSize: 25, color: Colors.white),
               ),
             ),
             Padding(
