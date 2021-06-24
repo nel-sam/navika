@@ -13,6 +13,7 @@ Widget LokativGrammarGuideContent(BuildContext context) {
   return Column(
     children: [
       getDescription(context),
+      getExampleSentences(context),
       getDeclensionTable(context),
       getPossessivePronounSection(context),
     ],
@@ -138,6 +139,30 @@ Widget getDescription(BuildContext context) {
   return Column(
     children: [
       NText([N.NTextSpan(AppLocalizations.of(context)!.lokativDescription)])
+    ],
+  );
+}
+
+Widget getExampleSentences(BuildContext context) {
+  return Column(
+    children: [
+      NSubHeader(text: AppLocalizations.of(context)!.exampleSentences),
+      NText([
+        N.NTextSpan('Ova priča govori '),
+        N.NTextSpan('o njemu', isBold: true),
+      ]),
+      NText([
+        N.NTextSpan('On gleda film '),
+        N.NTextSpan('u kinu', isBold: true),
+      ]),
+      NText([
+        N.NTextSpan('Živim '),
+        N.NTextSpan('u gradu', isBold: true),
+      ]),
+      NText([
+        N.NTextSpan('U kuhinji ', isBold: true),
+        N.NTextSpan('ima mnogo'),
+      ]),
     ],
   );
 }

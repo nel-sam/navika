@@ -14,6 +14,7 @@ Widget AkuzativGrammarGuideContent(BuildContext context) {
   return Column(
     children: [
       getDescription(context),
+      getExampleSentences(context),
       getDeclensionTable(context),
       getPossessivePronounSection(context),
     ],
@@ -152,6 +153,27 @@ Widget getDescription(BuildContext context) {
     children: [
       NText([N.NTextSpan(AppLocalizations.of(context)!.akuzativDescription)]),
       YouTubeLink(context, 'https://www.youtube.com/watch?v=MaDzMpCP34A')
+    ],
+  );
+}
+
+Widget getExampleSentences(BuildContext context) {
+  return Column(
+    children: [
+      NSubHeader(text: AppLocalizations.of(context)!.exampleSentences),
+      NText([
+        N.NTextSpan('Volim '),
+        N.NTextSpan('svog psa', isBold: true),
+      ]),
+      NText([
+        N.NTextSpan('Vidiš li '),
+        N.NTextSpan('veliku kuću', isBold: true),
+        N.NTextSpan('?'),
+      ]),
+      NText([
+        N.NTextSpan('Popijmo '),
+        N.NTextSpan('toplo mlijeko ', isBold: true),
+      ]),
     ],
   );
 }
