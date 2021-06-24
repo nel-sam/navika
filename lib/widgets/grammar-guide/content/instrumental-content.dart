@@ -14,14 +14,15 @@ Widget InstrumentalGrammarGuideContent(BuildContext context) {
   return Column(
     children: [
       getDescription(context),
-      getDeclensionTable(),
+      getDeclensionTable(context),
       getPossessivePronounSection(context),
     ],
   );
 }
 
-Widget getDeclensionTable() {
+Widget getDeclensionTable(BuildContext context) {
   return DeclensionTable(
+    note: AppLocalizations.of(context)!.instrumentalFemSing,
     masculineSingular: [
       NText([
         N.NTextSpan('Lijep'),
@@ -44,6 +45,7 @@ Widget getDeclensionTable() {
         N.NTextSpan('om\n', isItalic: true, color: FEMININE_COLOR),
         N.NTextSpan('kuć'),
         N.NTextSpan('om', isItalic: true, color: FEMININE_COLOR),
+        N.NTextSpan('**'),
       ]),
     ],
     femininePlural: [

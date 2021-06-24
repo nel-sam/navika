@@ -50,3 +50,10 @@ flutter_native_splash:
   color_dark: "#1a1a1a"
   android: true
   ios: true
+
+
+  # Commands:
+  # Build deployable IOS:         flutter build ipa
+  # Build deployable Android:     flutter build appbundle
+  # Build debug installable IOS:  flutter build ios
+  # Install on phone:             flutter install

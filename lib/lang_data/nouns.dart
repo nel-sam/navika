@@ -36,21 +36,6 @@ final List<Noun> nounWordBank = [
     vokativ: new DeclensionByCount(singular: 'Bosno', plural: ''),
     instrumental: new DeclensionByCount(singular: 'Bosnom', plural: ''),
   ),
-  // TODO: This is incorrect
-  // Noun(
-  //   dictionary: 'slik',
-  //   tags: [Tags.Thing, Tags.Portable],
-  //   gender: Genders.Masculine,
-  //   isAnimate: false,
-  //   nominativ: new DeclensionByCount(singular: 'slik', plural: 'slikovi'),
-  //   genitiv: new DeclensionByCount(singular: 'slika', plural: 'slikova'),
-  //   dativ: new DeclensionByCount(singular: 'sliku', plural: 'slikovima'),
-  //   akuzativ: new DeclensionByCount(singular: 'slik', plural: 'slikove'),
-  //   lokativ: new DeclensionByCount(singular: 'sliku', plural: 'slikovima'),
-  //   vokativ: new DeclensionByCount(singular: 'sliče', plural: 'slikovi'),
-  //   instrumental:
-  //       new DeclensionByCount(singular: 'slikom', plural: 'slikovima'),
-  // ),
   Noun(
     dictionary: 'lice',
     tags: [Tags.BodyPart],
@@ -174,40 +159,100 @@ final List<Noun> nounWordBank = [
     genitiv: new DeclensionByCount(singular: 'telefona', plural: 'telefona'),
     vokativ: new DeclensionByCount(singular: '', plural: ''),
   ),
-  // Noun(
-  //   dictionary: 'čovjek',
-  //   tags: [Tags.Human, Tags.Adult],
-  //   gender: GenderEnum.Masculine,
-  //   isAnimate: true,
-  //   nominativ: new DeclensionByCount(
-  //     singular: 'čovjek',
-  //     plural: 'ljudi'
-  //   ),
-  //   akuzativ: new DeclensionByCount(
-  //     singular: 'čovjeka',
-  //     plural: 'ljude'
-  //   ),
-  //   instrumental: new DeclensionByCount(
-  //     singular: 'čovjekom',
-  //     plural: 'ljudima'
-  //   ),
-  //   lokativ: new DeclensionByCount(
-  //     singular: 'čovjeku',
-  //     plural: 'ljudima'
-  //   ),
-  //   dativ: new DeclensionByCount(
-  //     singular: 'čovjeku',
-  //     plural: 'ljudima'
-  //   ),
-  //   genitiv: new DeclensionByCount(
-  //     singular: 'čovjeka',
-  //     plural: 'ljudi'
-  //   ),
-  //   vokativ: new DeclensionByCount(
-  //     singular: 'čovječe',
-  //     plural: 'ljudi'
-  //   ),
-  // ),
-
-  // TODO: Add krevet, ljeto, hospital, post office
+  Noun(
+    dictionary: 'knjiga',
+    tags: [Tags.Portable, Tags.Thing],
+    gender: Genders.Feminine,
+    isAnimate: false,
+    nominativ: new DeclensionByCount(singular: 'knjiga', plural: 'knjige'),
+    genitiv: new DeclensionByCount(singular: 'knjige', plural: 'knjiga'),
+    dativ: new DeclensionByCount(singular: 'knjizi', plural: 'knjigama'),
+    akuzativ: new DeclensionByCount(singular: 'knjigu', plural: 'knjige'),
+    lokativ: new DeclensionByCount(singular: 'knjizi', plural: 'knjigama'),
+    vokativ: new DeclensionByCount(singular: 'knjigo', plural: 'knjige'),
+    instrumental:
+        new DeclensionByCount(singular: 'knjigom', plural: 'knjigama'),
+  ),
+  Noun(
+    dictionary: 'ljeto',
+    tags: [Tags.Season, Tags.Weather],
+    gender: Genders.Neuter,
+    isAnimate: false,
+    nominativ: new DeclensionByCount(singular: 'ljeto', plural: 'ljeta'),
+    genitiv: new DeclensionByCount(singular: 'ljeta', plural: 'ljeta'),
+    dativ: new DeclensionByCount(singular: 'ljetu', plural: 'ljetima'),
+    akuzativ: new DeclensionByCount(singular: 'ljeto', plural: 'ljeta'),
+    lokativ: new DeclensionByCount(singular: 'ljetu', plural: 'ljetima'),
+    vokativ: new DeclensionByCount(singular: 'ljeto', plural: 'ljeta'),
+    instrumental: new DeclensionByCount(singular: 'ljetom', plural: 'ljetima'),
+  ),
+  Noun(
+    dictionary: 'bolnica',
+    tags: [Tags.Location, Tags.WorkPlace],
+    gender: Genders.Feminine,
+    isAnimate: false,
+    nominativ: new DeclensionByCount(singular: 'bolnica', plural: 'bolnice'),
+    genitiv: new DeclensionByCount(singular: 'bolnice', plural: 'bolnica'),
+    dativ: new DeclensionByCount(singular: 'bolnici', plural: 'bolnicama'),
+    akuzativ: new DeclensionByCount(singular: 'bolnicu', plural: 'bolnice'),
+    lokativ: new DeclensionByCount(singular: 'bolnici', plural: 'bolnicama'),
+    vokativ: new DeclensionByCount(singular: 'bolnico', plural: 'bolnice'),
+    instrumental:
+        new DeclensionByCount(singular: 'bolnicom', plural: 'bolnicama'),
+  ),
+  Noun(
+    dictionary: 'krevet',
+    tags: [Tags.FlatSurface, Tags.Furniture, Tags.Thing],
+    gender: Genders.Masculine,
+    isAnimate: false,
+    nominativ: new DeclensionByCount(singular: 'krevet', plural: 'kreveti'),
+    genitiv: new DeclensionByCount(singular: 'kreveta', plural: 'kreveta'),
+    dativ: new DeclensionByCount(singular: 'krevetu', plural: 'krevetima'),
+    akuzativ: new DeclensionByCount(singular: 'krevet', plural: 'krevete'),
+    lokativ: new DeclensionByCount(singular: 'krevetu', plural: 'krevetima'),
+    vokativ: new DeclensionByCount(singular: 'krevete', plural: 'kreveti'),
+    instrumental:
+        new DeclensionByCount(singular: 'krevetom', plural: 'krevetima'),
+  ),
+  Noun(
+    dictionary: 'pas',
+    tags: [Tags.Animal, Tags.Pet, Tags.Portable],
+    gender: Genders.Masculine,
+    isAnimate: true,
+    nominativ: new DeclensionByCount(singular: 'pas', plural: 'psi'),
+    genitiv: new DeclensionByCount(singular: 'psa', plural: 'pasa'),
+    dativ: new DeclensionByCount(singular: 'psu', plural: 'psima'),
+    akuzativ: new DeclensionByCount(singular: 'psa', plural: 'pse'),
+    lokativ: new DeclensionByCount(singular: 'psu', plural: 'psima'),
+    vokativ: new DeclensionByCount(singular: 'psu', plural: 'psi'),
+    instrumental: new DeclensionByCount(singular: 'psom', plural: 'psima'),
+  ),
+  Noun(
+    dictionary: 'gitara',
+    tags: [Tags.Instrument, Tags.Thing, Tags.Portable],
+    gender: Genders.Feminine,
+    isAnimate: false,
+    nominativ: new DeclensionByCount(singular: 'gitara', plural: 'gitare'),
+    genitiv: new DeclensionByCount(singular: 'gitare', plural: 'gitara'),
+    dativ: new DeclensionByCount(singular: 'gitari', plural: 'gitarama'),
+    akuzativ: new DeclensionByCount(singular: 'gitaru', plural: 'gitare'),
+    lokativ: new DeclensionByCount(singular: 'gitari', plural: 'gitarama'),
+    vokativ: new DeclensionByCount(singular: 'gitaro', plural: 'gitare'),
+    instrumental:
+        new DeclensionByCount(singular: 'gitarom', plural: 'gitarama'),
+  ),
+  Noun(
+    dictionary: 'pivo',
+    tags: [Tags.Drink, Tags.Alcohol, Tags.Thing, Tags.Portable],
+    gender: Genders.Feminine,
+    isAnimate: false,
+    nominativ: new DeclensionByCount(singular: 'pivo', plural: 'piva'),
+    genitiv: new DeclensionByCount(singular: 'piva', plural: 'piva'),
+    dativ: new DeclensionByCount(singular: 'pivu', plural: 'pivima'),
+    akuzativ: new DeclensionByCount(singular: 'pivo', plural: 'piva'),
+    lokativ: new DeclensionByCount(singular: 'pivu', plural: 'pivima'),
+    vokativ: new DeclensionByCount(singular: 'pivo', plural: 'piva'),
+    instrumental: new DeclensionByCount(singular: 'pivom', plural: 'pivima'),
+  ),
+  // Add boolest, obitelj,
 ];

@@ -16,23 +16,28 @@ enum CaseTypeEnum {
 }
 
 enum Tags {
-  AnimateNonHuman,
   NaturalFeature,
   FlatSurface,
+  Instrument,
   WorkPlace,
   Furniture,
   BodyPart,
   Portable,
   Location,
+  Alcohol,
   Activity,
   Vehicle,
   Emotion,
   Country,
+  Weather,
+  Season,
+  Animal,
   Adult,
   Drink,
   Thing,
   Human,
   Food,
+  Pet,
 }
 
 enum TenseEnum {

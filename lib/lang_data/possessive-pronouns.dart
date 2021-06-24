@@ -64,10 +64,11 @@ final List<Adjective> possessivePronounWordBank = [
     ),
     instrumental: new Declension(
       masculine: new DeclensionByGender(singular: 'tvojim', plural: 'tvojim'),
-      feminine: new DeclensionByGender(singular: 'tvojom', plural: 'tvojim'),
+      feminine: new DeclensionByGender(singular: 'tvom', plural: 'tvojim'),
       neuter: new DeclensionByGender(singular: 'tvojim', plural: 'tvojim'),
     ),
     lokativ: new Declension(
+      // Add support for accepting tvojom/tvom, svojom/svom, etc
       masculine: new DeclensionByGender(singular: 'tvom', plural: 'tvojim'),
       feminine: new DeclensionByGender(singular: 'tvojoj', plural: 'tvojim'),
       neuter: new DeclensionByGender(singular: 'tvom', plural: 'tvojim'),
@@ -107,18 +108,18 @@ final List<Adjective> possessivePronounWordBank = [
     ),
     instrumental: new Declension(
       masculine: new DeclensionByGender(singular: 'svojim', plural: 'svojim'),
-      feminine: new DeclensionByGender(singular: 'svojom', plural: 'svojim'),
+      feminine: new DeclensionByGender(singular: 'svom', plural: 'svojim'),
       neuter: new DeclensionByGender(singular: 'svojim', plural: 'svojim'),
     ),
     lokativ: new Declension(
-      masculine: new DeclensionByGender(singular: 'svojm', plural: 'svojim'),
+      masculine: new DeclensionByGender(singular: 'svom', plural: 'svojim'),
       feminine: new DeclensionByGender(singular: 'svojoj', plural: 'svojim'),
-      neuter: new DeclensionByGender(singular: 'svojm', plural: 'svojim'),
+      neuter: new DeclensionByGender(singular: 'svom', plural: 'svojim'),
     ),
     dativ: new Declension(
-      masculine: new DeclensionByGender(singular: 'svojm', plural: 'svojim'),
+      masculine: new DeclensionByGender(singular: 'svom', plural: 'svojim'),
       feminine: new DeclensionByGender(singular: 'svojoj', plural: 'svojim'),
-      neuter: new DeclensionByGender(singular: 'svojm', plural: 'svojim'),
+      neuter: new DeclensionByGender(singular: 'svom', plural: 'svojim'),
     ),
     genitiv: new Declension(
       masculine: new DeclensionByGender(singular: 'svojg', plural: 'svojih'),
