@@ -11,7 +11,7 @@ class AkuzativDeclensionTable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DeclensionTable(
-      showSameAsNomNote: true,
+      borderedItemNote: AppLocalizations.of(context)!.sameAsNom,
       note: AppLocalizations.of(context)!.animateAkuzativ,
       masculineSingular: [
         NText([
@@ -39,31 +39,37 @@ class AkuzativDeclensionTable extends StatelessWidget {
         ]),
       ],
       femininePlural: [
-        NText([
-          N.NTextSpan('Moj'),
-          N.NTextSpan('e\n', isItalic: true, color: FEMININE_COLOR),
-          N.NTextSpan('kuć'),
-          N.NTextSpan('e', isItalic: true, color: FEMININE_COLOR),
-          N.NTextSpan('*'),
-        ]),
+        NText(
+          [
+            N.NTextSpan('Moj'),
+            N.NTextSpan('e\n', isItalic: true, color: FEMININE_COLOR),
+            N.NTextSpan('kuć'),
+            N.NTextSpan('e', isItalic: true, color: FEMININE_COLOR),
+          ],
+          showborder: true,
+        ),
       ],
       neuterSingular: [
-        NText([
-          N.NTextSpan('Topl'),
-          N.NTextSpan('o\n', isItalic: true, color: NEUTER_COLOR),
-          N.NTextSpan('mlijek'),
-          N.NTextSpan('o', isItalic: true, color: NEUTER_COLOR),
-          N.NTextSpan('*'),
-        ]),
+        NText(
+          [
+            N.NTextSpan('Topl'),
+            N.NTextSpan('o\n', isItalic: true, color: NEUTER_COLOR),
+            N.NTextSpan('mlijek'),
+            N.NTextSpan('o', isItalic: true, color: NEUTER_COLOR),
+          ],
+          showborder: true,
+        ),
       ],
       neuterPlural: [
-        NText([
-          N.NTextSpan('Topl'),
-          N.NTextSpan('a\n', isItalic: true, color: NEUTER_COLOR),
-          N.NTextSpan('mlijek'),
-          N.NTextSpan('a', isItalic: true, color: NEUTER_COLOR),
-          N.NTextSpan('*'),
-        ]),
+        NText(
+          [
+            N.NTextSpan('Topl'),
+            N.NTextSpan('a\n', isItalic: true, color: NEUTER_COLOR),
+            N.NTextSpan('mlijek'),
+            N.NTextSpan('a', isItalic: true, color: NEUTER_COLOR),
+          ],
+          showborder: true,
+        ),
       ],
     );
   }

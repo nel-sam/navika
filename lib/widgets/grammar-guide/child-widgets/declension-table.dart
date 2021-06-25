@@ -13,7 +13,7 @@ class DeclensionTable extends StatelessWidget {
   final List<NText> masculinePlural;
   final List<NText> femininePlural;
   final List<NText> neuterPlural;
-  final bool showSameAsNomNote;
+  final String borderedItemNote;
   final String note;
 
   const DeclensionTable({
@@ -25,18 +25,17 @@ class DeclensionTable extends StatelessWidget {
     required this.femininePlural,
     required this.neuterPlural,
     this.note = '',
-    this.showSameAsNomNote = false,
+    this.borderedItemNote = '',
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    const paddingAmount = 12.0;
     const colWidth = 100.0;
     const firstColWidth = 55.0;
 
     return Column(
       children: [
-        Container(height: CELL_TEXT_PADDING + 30),
+        Container(height: CELL_TEXT_PADDING + 5),
         Container(
           decoration: BoxDecoration(
             border: Border.all(color: Colors.grey),
@@ -82,24 +81,15 @@ class DeclensionTable extends StatelessWidget {
                 ),
                 Container(
                   width: colWidth,
-                  child: Padding(
-                    padding: const EdgeInsets.all(paddingAmount),
-                    child: Row(children: [...masculineSingular]),
-                  ),
+                  child: Row(children: [...masculineSingular]),
                 ),
                 Container(
                   width: colWidth,
-                  child: Padding(
-                    padding: const EdgeInsets.all(paddingAmount),
-                    child: Row(children: [...feminineSingular]),
-                  ),
+                  child: Row(children: [...feminineSingular]),
                 ),
                 Container(
                   width: colWidth,
-                  child: Padding(
-                    padding: const EdgeInsets.all(paddingAmount),
-                    child: Row(children: [...neuterSingular]),
-                  ),
+                  child: Row(children: [...neuterSingular]),
                 ),
               ]),
               Row(children: [
@@ -112,39 +102,41 @@ class DeclensionTable extends StatelessWidget {
                 ),
                 Container(
                   width: colWidth,
-                  child: Padding(
-                    padding: const EdgeInsets.all(paddingAmount),
-                    child: Row(
-                      children: [...masculinePlural],
-                    ),
+                  child: Row(
+                    children: [...masculinePlural],
                   ),
                 ),
                 Container(
                   width: colWidth,
-                  child: Padding(
-                    padding: const EdgeInsets.all(paddingAmount),
-                    child: Row(
-                      children: [...femininePlural],
-                    ),
+                  child: Row(
+                    children: [...femininePlural],
                   ),
                 ),
                 Container(
                   width: colWidth,
-                  child: Padding(
-                    padding: const EdgeInsets.all(paddingAmount),
-                    child: Row(
-                      children: [...neuterPlural],
-                    ),
+                  child: Row(
+                    children: [...neuterPlural],
                   ),
                 ),
               ]),
-              showSameAsNomNote
-                  ? Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(
-                              paddingAmount, paddingAmount, paddingAmount, 0),
-                          child: RichText(
+              borderedItemNote != ''
+                  ? Padding(
+                      padding: const EdgeInsets.fromLTRB(12, 12, 12, 0),
+                      child: Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(2.0),
+                            child: Container(
+                              width: 10,
+                              height: 10,
+                              decoration: BoxDecoration(
+                                  border: Border.all(color: ACCENT_COLOR),
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(2.0),
+                                  )),
+                            ),
+                          ),
+                          RichText(
                             text: TextSpan(
                               style: TextStyle(
                                   fontSize: 12,
@@ -152,21 +144,19 @@ class DeclensionTable extends StatelessWidget {
                                       ? Colors.white
                                       : Colors.black),
                               children: [
-                                TextSpan(text: '*'),
                                 TextSpan(
-                                    text:
-                                        AppLocalizations.of(context)!.sameAsNom,
+                                    text: borderedItemNote,
                                     style: DECLINED_LETTER_STYLE)
                               ],
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     )
                   : Container(),
               note != ''
                   ? Padding(
-                      padding: const EdgeInsets.all(paddingAmount),
+                      padding: const EdgeInsets.fromLTRB(12, 4, 12, 12),
                       child: RichText(
                         text: TextSpan(
                           style: TextStyle(

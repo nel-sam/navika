@@ -12,6 +12,7 @@ class InstrumentalDeclensionTable extends StatelessWidget {
   Widget build(BuildContext context) {
     return DeclensionTable(
       note: AppLocalizations.of(context)!.instrumentalFemSing,
+      borderedItemNote: AppLocalizations.of(context)!.sameAsLok,
       masculineSingular: [
         NText([
           N.NTextSpan('Lijep'),
@@ -21,12 +22,15 @@ class InstrumentalDeclensionTable extends StatelessWidget {
         ]),
       ],
       masculinePlural: [
-        NText([
-          N.NTextSpan('Lijep'),
-          N.NTextSpan('im\n', isItalic: true, color: MASCULINE_COLOR),
-          N.NTextSpan('jezic'),
-          N.NTextSpan('ima', isItalic: true, color: MASCULINE_COLOR),
-        ]),
+        NText(
+          [
+            N.NTextSpan('Lijep'),
+            N.NTextSpan('im\n', isItalic: true, color: MASCULINE_COLOR),
+            N.NTextSpan('jezic'),
+            N.NTextSpan('ima', isItalic: true, color: MASCULINE_COLOR),
+          ],
+          showborder: true,
+        ),
       ],
       feminineSingular: [
         NText([
@@ -38,12 +42,15 @@ class InstrumentalDeclensionTable extends StatelessWidget {
         ]),
       ],
       femininePlural: [
-        NText([
-          N.NTextSpan('Moj'),
-          N.NTextSpan('im\n', isItalic: true, color: FEMININE_COLOR),
-          N.NTextSpan('kuć'),
-          N.NTextSpan('ama', isItalic: true, color: FEMININE_COLOR),
-        ]),
+        NText(
+          [
+            N.NTextSpan('Moj'),
+            N.NTextSpan('im\n', isItalic: true, color: FEMININE_COLOR),
+            N.NTextSpan('kuć'),
+            N.NTextSpan('ama', isItalic: true, color: FEMININE_COLOR),
+          ],
+          showborder: true,
+        ),
       ],
       neuterSingular: [
         NText([
@@ -54,12 +61,15 @@ class InstrumentalDeclensionTable extends StatelessWidget {
         ]),
       ],
       neuterPlural: [
-        NText([
-          N.NTextSpan('Vruč'),
-          N.NTextSpan('im \n', isItalic: true, color: NEUTER_COLOR),
-          N.NTextSpan('mlijek'),
-          N.NTextSpan('ima', isItalic: true, color: NEUTER_COLOR),
-        ]),
+        NText(
+          [
+            N.NTextSpan('Vruč'),
+            N.NTextSpan('im \n', isItalic: true, color: NEUTER_COLOR),
+            N.NTextSpan('mlijek'),
+            N.NTextSpan('ima', isItalic: true, color: NEUTER_COLOR),
+          ],
+          showborder: true,
+        ),
       ],
     );
   }

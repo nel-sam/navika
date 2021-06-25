@@ -3,7 +3,7 @@ import 'package:navika/models/enums.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/widgets/grammar-guide/child-widgets/navika-subheader.dart';
-import 'package:navika/widgets/grammar-guide/content/declension-tables/dativ-table.dart';
+import 'package:navika/widgets/grammar-guide/content/declension-tables/dativ-lokativ-table.dart';
 import 'package:navika/widgets/shared/navika-text.dart';
 import 'package:navika/widgets/grammar-guide/child-widgets/pronoun-line.dart';
 
