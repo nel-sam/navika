@@ -1,7 +1,7 @@
 
 
 // Nouns
-// https://www.crodict.com/nouns/croatian/krevet
+// https://www.crodict.com/nouns/croatian/bolest
 // (^[A-Z].*tive|Instrumental)	([a-z]*)	([a-z]*)
 // \L$1: new DeclensionByCount(singular: '\L$2', plural: '\L$3'),
 //

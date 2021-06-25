@@ -43,7 +43,9 @@ StaticSentenceParts getStaticSentenceParts(
       else
         start = 'To je bilo';
     }
-  } else {
+  }
+
+  if (start == '' && end == '') {
     start = 'To je';
   }
 
