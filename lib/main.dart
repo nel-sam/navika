@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:navika/constants.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/exercise-selection/exercise-selection.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -72,7 +73,14 @@ class _MyHomePageState extends State<MyHomePage> {
     adBanner.load();
 
     return Scaffold(
-      appBar: N.NavikaAppBar(Text('Navika'), context, []),
+      appBar: N.NavikaAppBar(
+          Text(
+            'navika',
+            style: TextStyle(
+                fontSize: 30, fontFamily: 'helvetica', color: ACCENT_COLOR),
+          ),
+          context,
+          []),
       body: Center(
         child: Column(
           children: [
