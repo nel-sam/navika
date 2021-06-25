@@ -6,8 +6,8 @@ import 'package:navika/widgets/grammar-guide/child-widgets/declension-table.dart
 import 'package:navika/widgets/shared/navika-text.dart';
 
 
-class DativDeclensionTable extends StatelessWidget {
-  const DativDeclensionTable
+class DativLokativDDeclensionTable extends StatelessWidget {
+  const DativLokativDDeclensionTable
 ({ Key? key }) : super(key: key);
 
   @override

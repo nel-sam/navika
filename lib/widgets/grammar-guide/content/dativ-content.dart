@@ -16,7 +16,7 @@ class DativGrammarGuideContent extends StatelessWidget {
       children: [
         getDescription(context),
         getExampleSentences(context),
-        DativDeclensionTable(),
+        DativLokativDDeclensionTable(),
         getPossessivePronounSection(context),
       ],
     );
