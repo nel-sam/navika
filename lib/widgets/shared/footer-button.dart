@@ -10,7 +10,6 @@ Widget FooterButton({
   bool disabled = false,
 }) =>
     Container(
-      // TODO: Make sure the Grammar Guide button looks OK on released version
       width: 100,
       child: Padding(
         padding: const EdgeInsets.only(bottom: FOOTER_ICON_BOTTOM_PADDING),

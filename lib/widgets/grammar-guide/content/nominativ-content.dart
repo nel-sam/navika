@@ -1,24 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:navika/widgets/grammar-guide/child-widgets/declension-table.dart';
 import 'package:navika/widgets/grammar-guide/child-widgets/youtube-link.dart';
 import 'package:navika/widgets/grammar-guide/child-widgets/navika-subheader.dart';
+import 'package:navika/widgets/grammar-guide/content/declension-tables/nominativ-table.dart';
 import 'package:navika/widgets/shared/navika-text.dart';
 import 'package:navika/widgets/grammar-guide/child-widgets/pronoun-line.dart';
 
-// ignore: non_constant_identifier_names
-Widget NominativGrammarGuideContent(BuildContext context) {
-  return Column(
-    children: [
-      getDescription(context),
-      getExampleSentences(context),
-      getDeclensionTable(context),
-      getPossessivePronounSection(context),
-    ],
-  );
+class NominativGrammarGuideContent extends StatelessWidget {
+  const NominativGrammarGuideContent({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        getDescription(context),
+        getExampleSentences(context),
+        NominativDeclensionTable(),
+        getPossessivePronounSection(context),
+      ],
+    );
+  }
 }
 
 Widget getExampleSentences(BuildContext context) {
@@ -45,59 +48,6 @@ Widget getExampleSentences(BuildContext context) {
         N.NTextSpan('Mlijeko ', isBold: true),
         N.NTextSpan('je ukusnije nego '),
         N.NTextSpan('limunada', isBold: true),
-      ]),
-    ],
-  );
-}
-
-Widget getDeclensionTable(BuildContext context) {
-  return DeclensionTable(
-    masculineSingular: [
-      NText([
-        N.NTextSpan('Lijep'),
-        N.NTextSpan('i\n', isItalic: true, color: MASCULINE_COLOR),
-        N.NTextSpan('jezi'),
-        N.NTextSpan('k', isItalic: true, color: MASCULINE_COLOR),
-      ]),
-    ],
-    masculinePlural: [
-      NText([
-        N.NTextSpan('Lijep'),
-        N.NTextSpan('i\n', isItalic: true, color: MASCULINE_COLOR),
-        N.NTextSpan('jezic'),
-        N.NTextSpan('i', isItalic: true, color: MASCULINE_COLOR),
-      ]),
-    ],
-    feminineSingular: [
-      NText([
-        N.NTextSpan('Moj'),
-        N.NTextSpan('a\n', isItalic: true, color: FEMININE_COLOR),
-        N.NTextSpan('kuć'),
-        N.NTextSpan('a', isItalic: true, color: FEMININE_COLOR),
-      ]),
-    ],
-    femininePlural: [
-      NText([
-        N.NTextSpan('Moj'),
-        N.NTextSpan('e\n', isItalic: true, color: FEMININE_COLOR),
-        N.NTextSpan('kuć'),
-        N.NTextSpan('e', isItalic: true, color: FEMININE_COLOR),
-      ]),
-    ],
-    neuterSingular: [
-      NText([
-        N.NTextSpan('Vruč'),
-        N.NTextSpan('e\n', isItalic: true, color: NEUTER_COLOR),
-        N.NTextSpan('mlijek'),
-        N.NTextSpan('o', isItalic: true, color: NEUTER_COLOR),
-      ]),
-    ],
-    neuterPlural: [
-      NText([
-        N.NTextSpan('Vruč'),
-        N.NTextSpan('a\n', isItalic: true, color: NEUTER_COLOR),
-        N.NTextSpan('mlijek'),
-        N.NTextSpan('a', isItalic: true, color: NEUTER_COLOR),
       ]),
     ],
   );

@@ -1,82 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:navika/widgets/grammar-guide/child-widgets/declension-table.dart';
 import 'package:navika/widgets/grammar-guide/child-widgets/youtube-link.dart';
 import 'package:navika/widgets/grammar-guide/child-widgets/navika-subheader.dart';
+import 'package:navika/widgets/grammar-guide/content/declension-tables/akuzativ-table.dart';
 import 'package:navika/widgets/shared/navika-text.dart';
 import 'package:navika/widgets/grammar-guide/child-widgets/pronoun-line.dart';
 
-// ignore: non_constant_identifier_names
-Widget AkuzativGrammarGuideContent(BuildContext context) {
-  return Column(
-    children: [
-      getDescription(context),
-      getExampleSentences(context),
-      getDeclensionTable(context),
-      getPossessivePronounSection(context),
-    ],
-  );
-}
+class AkuzativGrammarGuideContent extends StatelessWidget {
+  const AkuzativGrammarGuideContent({Key? key}) : super(key: key);
 
-Widget getDeclensionTable(BuildContext context) {
-  return DeclensionTable(
-    showSameAsNomNote: true,
-    note: AppLocalizations.of(context)!.animateAkuzativ,
-    masculineSingular: [
-      NText([
-        N.NTextSpan('Star'),
-        N.NTextSpan('og\n', isItalic: true, color: MASCULINE_COLOR),
-        N.NTextSpan('prijatelj'),
-        N.NTextSpan('a', isItalic: true, color: MASCULINE_COLOR),
-        N.NTextSpan('**\n'),
-      ]),
-    ],
-    masculinePlural: [
-      NText([
-        N.NTextSpan('Star'),
-        N.NTextSpan('e\n', isItalic: true, color: MASCULINE_COLOR),
-        N.NTextSpan('prijatel'),
-        N.NTextSpan('e', isItalic: true, color: MASCULINE_COLOR),
-      ]),
-    ],
-    feminineSingular: [
-      NText([
-        N.NTextSpan('Moj'),
-        N.NTextSpan('u\n', isItalic: true, color: FEMININE_COLOR),
-        N.NTextSpan('kuć'),
-        N.NTextSpan('u', isItalic: true, color: FEMININE_COLOR),
-      ]),
-    ],
-    femininePlural: [
-      NText([
-        N.NTextSpan('Moj'),
-        N.NTextSpan('e\n', isItalic: true, color: FEMININE_COLOR),
-        N.NTextSpan('kuć'),
-        N.NTextSpan('e', isItalic: true, color: FEMININE_COLOR),
-        N.NTextSpan('*'),
-      ]),
-    ],
-    neuterSingular: [
-      NText([
-        N.NTextSpan('Topl'),
-        N.NTextSpan('o\n', isItalic: true, color: NEUTER_COLOR),
-        N.NTextSpan('mlijek'),
-        N.NTextSpan('o', isItalic: true, color: NEUTER_COLOR),
-        N.NTextSpan('*'),
-      ]),
-    ],
-    neuterPlural: [
-      NText([
-        N.NTextSpan('Topl'),
-        N.NTextSpan('a\n', isItalic: true, color: NEUTER_COLOR),
-        N.NTextSpan('mlijek'),
-        N.NTextSpan('a', isItalic: true, color: NEUTER_COLOR),
-      ]),
-    ],
-  );
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        getDescription(context),
+        getExampleSentences(context),
+        AkuzativDeclensionTable(),
+        getPossessivePronounSection(context),
+      ],
+    );
+  }
 }
 
 Widget getPossessivePronounSection(BuildContext context) {

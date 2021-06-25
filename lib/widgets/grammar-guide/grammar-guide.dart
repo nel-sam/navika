@@ -151,27 +151,27 @@ class _GrammarGuideState extends State<GrammarGuide> {
             children: [
               contentSection(
                 SectionHeader('Nominativ'),
-                NominativGrammarGuideContent(context),
+                NominativGrammarGuideContent(),
               ),
               contentSection(
                 SectionHeader('Akuzativ'),
-                AkuzativGrammarGuideContent(context),
+                AkuzativGrammarGuideContent(),
               ),
               contentSection(
                 SectionHeader('Instrumental'),
-                InstrumentalGrammarGuideContent(context),
+                InstrumentalGrammarGuideContent(),
               ),
               contentSection(
                 SectionHeader('Lokativ'),
-                LokativGrammarGuideContent(context),
+                LokativGrammarGuideContent(),
               ),
               contentSection(
                 SectionHeader('Dativ'),
-                DativGrammarGuideContent(context),
+                DativGrammarGuideContent(),
               ),
               contentSection(
                 SectionHeader('Genetiv'),
-                GenetivGrammarGuideContent(context),
+                GenetivGrammarGuideContent(),
               ),
             ],
           ),
