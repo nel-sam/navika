@@ -106,12 +106,16 @@ Widget getExampleSentences(BuildContext context) {
         N.NTextSpan('autom', isBold: true),
       ]),
       NText([
+        N.NTextSpan('Volim se baviti '),
+        N.NTextSpan('sportom', isBold: true),
+      ]),
+      NText([
         N.NTextSpan('Razgovaram '),
         N.NTextSpan('s prijateljem', isBold: true),
       ]),
       NText([
-        N.NTextSpan('Volim se baviti '),
-        N.NTextSpan('sportom', isBold: true),
+        N.NTextSpan('Idem '),
+        N.NTextSpan('sa ženom', isBold: true),
       ]),
       NText([
         N.NTextSpan('Putujem '),

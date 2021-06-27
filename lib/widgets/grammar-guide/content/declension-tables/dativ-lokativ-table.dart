@@ -55,7 +55,7 @@ class DativLokativDDeclensionTable extends StatelessWidget {
       ],
       neuterSingular: [
         NText([
-          N.NTextSpan('Vruč'),
+          N.NTextSpan('Vruć'),
           N.NTextSpan('em\n', isItalic: true, color: NEUTER_COLOR),
           N.NTextSpan('mlijek'),
           N.NTextSpan('u', isItalic: true, color: NEUTER_COLOR),
@@ -64,7 +64,7 @@ class DativLokativDDeclensionTable extends StatelessWidget {
       neuterPlural: [
         NText(
           [
-            N.NTextSpan('Vruč'),
+            N.NTextSpan('Vruć'),
             N.NTextSpan('im\n', isItalic: true, color: NEUTER_COLOR),
             N.NTextSpan('mlijek'),
             N.NTextSpan('ima', isItalic: true, color: NEUTER_COLOR),
