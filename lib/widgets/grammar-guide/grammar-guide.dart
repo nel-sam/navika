@@ -51,7 +51,6 @@ class _GrammarGuideState extends State<GrammarGuide> {
   }
 
   scrollListener() => setState(() {
-        print('currentPoint: ' + controller.position.pixels.toString());
         isAtTop = getIsAtTop();
         isAtBottom = getIsAtBottom();
       });
@@ -66,18 +65,13 @@ class _GrammarGuideState extends State<GrammarGuide> {
 
   moveToPrev() => setState(() {
         if (isAtTop) return;
-
         scrollPrevOrNext(toNext: false);
       });
 
-  moveToNext() {
-    if (isAtBottom) return;
-
-    setState(() {
-      isAtTop = false;
-      scrollPrevOrNext(toNext: true);
-    });
-  }
+  moveToNext() => setState(() {
+        if (isAtBottom) return;
+        scrollPrevOrNext(toNext: true);
+      });
 
   scrollPrevOrNext({required bool toNext}) {
     double currentPoint = controller.position.pixels;
@@ -88,11 +82,11 @@ class _GrammarGuideState extends State<GrammarGuide> {
     } else if (isAtHeader) {
       N.scrollTo(currentPoint - CONTENT_HEIGHT, controller);
     } else {
-      final mult = toNext
+      final multFactor = toNext
           ? (currentPoint / CONTENT_HEIGHT).ceil()
           : (currentPoint / CONTENT_HEIGHT).floor();
 
-      double scrollPoint = mult * CONTENT_HEIGHT;
+      double scrollPoint = multFactor * CONTENT_HEIGHT;
       N.scrollTo(scrollPoint, controller);
     }
   }
