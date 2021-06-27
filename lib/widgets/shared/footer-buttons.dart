@@ -33,7 +33,7 @@ List<Widget> NavikaChildFooterButtons({
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => GrammarGuide(scrollToCase: caseType)),
+                    builder: (context) => GrammarGuide(startingCase: caseType)),
               );
             },
             icon: Icons.help_center_outlined,

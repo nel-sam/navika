@@ -54,7 +54,7 @@ class _ExerciseSelectionState extends State<ExerciseSelection> {
       ExerciseButton(
           destination: Genitiv(),
           icon: Icons.coffee,
-          label: 'Genetiv',
+          label: 'Genitiv',
           imagePath: CaseImagePaths[CaseTypeEnum.Genitiv]!),
       // ExerciseButton(
       //     destination: Akuzativ(),

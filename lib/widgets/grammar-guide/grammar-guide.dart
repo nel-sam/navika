@@ -6,7 +6,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/widgets/grammar-guide/child-widgets/section-header.dart';
 import 'package:navika/widgets/grammar-guide/content/akuzativ-content.dart';
 import 'package:navika/widgets/grammar-guide/content/dativ-content.dart';
-import 'package:navika/widgets/grammar-guide/content/genetiv-content.dart';
+import 'package:navika/widgets/grammar-guide/content/genitiv-content.dart';
 import 'package:navika/widgets/grammar-guide/content/instrumental-content.dart';
 import 'package:navika/widgets/grammar-guide/content/lokativ-content.dart';
 import 'package:navika/widgets/grammar-guide/content/nominativ-content.dart';
@@ -26,11 +26,11 @@ const CasesInOrder = [
 ];
 
 class GrammarGuide extends StatefulWidget {
-  final CaseTypeEnum scrollToCase;
+  final CaseTypeEnum startingCase;
 
   const GrammarGuide({
     Key? key,
-    this.scrollToCase = CaseTypeEnum.Nominativ,
+    this.startingCase = CaseTypeEnum.Nominativ,
   }) : super(key: key);
 
   @override
@@ -39,104 +39,73 @@ class GrammarGuide extends StatefulWidget {
 
 class _GrammarGuideState extends State<GrammarGuide> {
   late ScrollController controller;
-  late bool isAtTop = getIsAtTop();
-  late bool isAtBottom = getIsAtBottom();
-  late CaseTypeEnum currentCase;
+  late bool isAtTop = false;
+  late bool isAtBottom = false;
 
   @override
   void initState() {
-    currentCase = widget.scrollToCase;
     controller = ScrollController(
-      initialScrollOffset: getScrollPoint(currentCase),
-    );
-
+        initialScrollOffset: getScrollPoint(widget.startingCase));
     controller.addListener(scrollListener);
     super.initState();
   }
 
-  bool getIsAtTop() {
-    return currentCase == CasesInOrder.first;
-  }
-
-  bool getIsAtBottom() {
-    return currentCase == CasesInOrder.last;
-  }
-
-  scrollListener() {
-    if (getIsAtTop()) {
-      setState(() {
-        isAtTop = true;
+  scrollListener() => setState(() {
+        print('currentPoint: ' + controller.position.pixels.toString());
+        isAtTop = getIsAtTop();
+        isAtBottom = getIsAtBottom();
       });
-    }
 
-    if (getIsAtBottom()) {
-      setState(() {
-        isAtBottom = true;
+  bool getIsAtTop() => controller.position.pixels <= 10;
+
+  bool getIsAtBottom() =>
+      controller.position.pixels >= CONTENT_HEIGHT * (CasesInOrder.length - 1);
+
+  double getScrollPoint(CaseTypeEnum caseType) =>
+      CasesInOrder.indexOf(caseType) * CONTENT_HEIGHT;
+
+  moveToPrev() => setState(() {
+        if (isAtTop) return;
+
+        scrollPrevOrNext(toNext: false);
       });
-    }
-  }
 
-  double getScrollPoint(CaseTypeEnum caseType) {
-    // This is like this in case detecting widget
-    // height becomes easier in the future
-    var sizeMap = <CaseTypeEnum, double>{
-      CaseTypeEnum.Nominativ: CONTENT_HEIGHT,
-      CaseTypeEnum.Akuzativ: CONTENT_HEIGHT,
-      CaseTypeEnum.Instrumental: CONTENT_HEIGHT,
-      CaseTypeEnum.Lokativ: CONTENT_HEIGHT,
-      CaseTypeEnum.Dativ: CONTENT_HEIGHT,
-      CaseTypeEnum.Genitiv: CONTENT_HEIGHT,
-    };
-
-    double scrollPoint = 0;
-
-    for (final c in CasesInOrder) {
-      if (c == caseType) break;
-      scrollPoint += sizeMap[c]!;
-    }
-
-    return scrollPoint;
-  }
-
-  _moveUp() {
-    if (isAtTop) return;
-
-    setState(() {
-      isAtBottom = false;
-
-      final currentIndex = CasesInOrder.indexOf(currentCase);
-      currentCase = CasesInOrder[currentIndex - 1];
-      final scrollPoint = getScrollPoint(currentCase);
-
-      N.scrollTo(scrollPoint, controller);
-    });
-  }
-
-  _moveDown() {
+  moveToNext() {
     if (isAtBottom) return;
 
     setState(() {
       isAtTop = false;
-
-      final currentIndex = CasesInOrder.indexOf(currentCase);
-      currentCase = CasesInOrder[currentIndex + 1];
-      final scrollPoint = getScrollPoint(currentCase);
-
-      N.scrollTo(scrollPoint, controller);
+      scrollPrevOrNext(toNext: true);
     });
   }
 
-  contentSection(Widget header, Widget content) {
-    return Container(
-      height: CONTENT_HEIGHT,
-      child: Column(
-        children: [
-          header,
-          content,
-        ],
-      ),
-    );
+  scrollPrevOrNext({required bool toNext}) {
+    double currentPoint = controller.position.pixels;
+    bool isAtHeader = (currentPoint % CONTENT_HEIGHT) == 0;
+
+    if (isAtHeader && toNext) {
+      N.scrollTo(currentPoint + CONTENT_HEIGHT, controller);
+    } else if (isAtHeader) {
+      N.scrollTo(currentPoint - CONTENT_HEIGHT, controller);
+    } else {
+      final mult = toNext
+          ? (currentPoint / CONTENT_HEIGHT).ceil()
+          : (currentPoint / CONTENT_HEIGHT).floor();
+
+      double scrollPoint = mult * CONTENT_HEIGHT;
+      N.scrollTo(scrollPoint, controller);
+    }
   }
+
+  contentSection(Widget header, Widget content) => Container(
+        height: CONTENT_HEIGHT,
+        child: Column(
+          children: [
+            header,
+            content,
+          ],
+        ),
+      );
 
   @override
   Widget build(BuildContext context) {
@@ -170,8 +139,8 @@ class _GrammarGuideState extends State<GrammarGuide> {
                 DativGrammarGuideContent(),
               ),
               contentSection(
-                SectionHeader('Genetiv'),
-                GenetivGrammarGuideContent(),
+                SectionHeader('Genitiv'),
+                GenitivGrammarGuideContent(),
               ),
             ],
           ),
@@ -188,7 +157,7 @@ class _GrammarGuideState extends State<GrammarGuide> {
                 disabled: isAtTop,
                 icon: Icons.arrow_upward,
                 text: AppLocalizations.of(context)!.previous,
-                onPressed: () => _moveUp(),
+                onPressed: () => moveToPrev(),
                 context: context,
               ),
             ),
@@ -198,7 +167,7 @@ class _GrammarGuideState extends State<GrammarGuide> {
                   const EdgeInsets.only(bottom: FOOTER_ICON_BOTTOM_PADDING),
               child: FooterButton(
                 disabled: isAtBottom,
-                onPressed: () => _moveDown(),
+                onPressed: () => moveToNext(),
                 icon: Icons.arrow_downward,
                 text: AppLocalizations.of(context)!.next,
                 context: context,

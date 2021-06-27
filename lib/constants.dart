@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 const BATCH_COUNT = 25;
 
 const double EXERCISE_FONT_STYLE = 18;
-const SCROLL_DURATION = Duration(milliseconds: 500);
+const SCROLL_DURATION = Duration(milliseconds: 800);
 const EdgeInsets EXERCISE_LIST_PADDING = const EdgeInsets.only(bottom: 10);
 const double FOOTER_ICON_BOTTOM_PADDING = 0;
 const double APPBAR_ELEVATION = 0;

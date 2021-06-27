@@ -13,7 +13,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class N {
   static scrollTo(double point, controller) {
     controller.animateTo(point,
-        curve: Curves.linear, duration: SCROLL_DURATION);
+        curve: Curves.linearToEaseOut, duration: SCROLL_DURATION);
   }
 
   static IconData getGenderIcon(Genders gender) {
