@@ -27,7 +27,7 @@ class DativLokativDDeclensionTable extends StatelessWidget {
           N.NTextSpan('ima', isItalic: true, color: MASCULINE_COLOR),
           N.NTextSpan('**'),
         ],
-        backgroundColor: ACCENT_COLOR,
+        backgroundColor: Colors.grey,
       ),
       feminineSingular: DeclensionTableCell(children: [
         N.NTextSpan('Moj'),
@@ -43,7 +43,7 @@ class DativLokativDDeclensionTable extends StatelessWidget {
           N.NTextSpan('kuć'),
           N.NTextSpan('ama', isItalic: true, color: FEMININE_COLOR),
         ],
-        backgroundColor: ACCENT_COLOR,
+        backgroundColor: Colors.grey,
       ),
       neuterSingular: DeclensionTableCell(children: [
         N.NTextSpan('Vruć'),
@@ -58,7 +58,7 @@ class DativLokativDDeclensionTable extends StatelessWidget {
           N.NTextSpan('mlijek'),
           N.NTextSpan('ima', isItalic: true, color: NEUTER_COLOR),
         ],
-        backgroundColor: ACCENT_COLOR,
+        backgroundColor: Colors.grey,
       ),
     );
   }

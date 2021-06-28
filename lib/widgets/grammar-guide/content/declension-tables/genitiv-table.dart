@@ -21,7 +21,7 @@ class GenitivDeclensionTable extends StatelessWidget {
           N.NTextSpan('jezik'),
           N.NTextSpan('a', isItalic: true, color: MASCULINE_COLOR),
         ],
-        backgroundColor: ACCENT_COLOR,
+        backgroundColor: Colors.grey,
       ),
       masculinePlural: DeclensionTableCell(children: [
         N.NTextSpan('Lijep'),

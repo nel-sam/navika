@@ -33,7 +33,7 @@ class AkuzativDeclensionTable extends StatelessWidget {
         N.NTextSpan('u', isItalic: true, color: FEMININE_COLOR),
       ]),
       femininePlural: DeclensionTableCell(
-        backgroundColor: ACCENT_COLOR,
+        backgroundColor: Colors.grey,
         children: [
           N.NTextSpan('Moj'),
           N.NTextSpan('e\n', isItalic: true, color: FEMININE_COLOR),
@@ -48,7 +48,7 @@ class AkuzativDeclensionTable extends StatelessWidget {
           N.NTextSpan('mlijek'),
           N.NTextSpan('o', isItalic: true, color: NEUTER_COLOR),
         ],
-        backgroundColor: ACCENT_COLOR,
+        backgroundColor: Colors.grey,
       ),
       neuterPlural: DeclensionTableCell(
         children: [
@@ -57,7 +57,7 @@ class AkuzativDeclensionTable extends StatelessWidget {
           N.NTextSpan('mlijek'),
           N.NTextSpan('a', isItalic: true, color: NEUTER_COLOR),
         ],
-        backgroundColor: ACCENT_COLOR,
+        backgroundColor: Colors.grey,
       ),
     );
   }

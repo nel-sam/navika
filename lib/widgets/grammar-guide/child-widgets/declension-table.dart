@@ -26,7 +26,7 @@ class DeclensionTable extends StatelessWidget {
     required this.neuterPlural,
     this.note = '',
     this.coloredItemNote = '',
-    this.coloredItemNoteColor = ACCENT_COLOR,
+    this.coloredItemNoteColor = Colors.grey,
   }) : super(key: key);
 
   @override
@@ -52,15 +52,15 @@ class DeclensionTable extends StatelessWidget {
                   Container(
                     width: colWidth,
                     child: ExplanationIconCell(
-                      icon: N.getGenderIcon(Genders.Masculine),
-                      label: 'Masc.',
+                      icon: N.getGenderIcon(Genders.Feminine),
+                      label: 'Fem.',
                     ),
                   ),
                   Container(
                     width: colWidth,
                     child: ExplanationIconCell(
-                      icon: N.getGenderIcon(Genders.Feminine),
-                      label: 'Fem.',
+                      icon: N.getGenderIcon(Genders.Masculine),
+                      label: 'Masc.',
                     ),
                   ),
                   Container(
@@ -80,8 +80,8 @@ class DeclensionTable extends StatelessWidget {
                     label: 'Sing.',
                   ),
                 ),
-                masculineSingular,
                 feminineSingular,
+                masculineSingular,
                 neuterSingular
               ]),
               Row(children: [
@@ -92,16 +92,35 @@ class DeclensionTable extends StatelessWidget {
                     label: 'Pl.',
                   ),
                 ),
-                masculinePlural,
                 femininePlural,
+                masculinePlural,
                 neuterPlural
               ]),
+              note != ''
+                  ? Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                      RichText(
+                        text: TextSpan(
+                          style: TextStyle(
+                              fontSize: 12,
+                              color: N.isDarkTheme(context)
+                                  ? Colors.white
+                                  : Colors.black),
+                          children: [
+                            TextSpan(text: '**'),
+                            TextSpan(text: note, style: DECLINED_LETTER_STYLE)
+                          ],
+                        ),
+                      )
+                    ])
+                  : Container(),
               coloredItemNote != ''
                   ? Padding(
-                      padding: const EdgeInsets.fromLTRB(12, 12, 12, 0),
+                      padding: const EdgeInsets.all(8.0),
                       child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Padding(
+                            // Little square
                             padding: const EdgeInsets.fromLTRB(2, 2, 4, 2),
                             child: Container(
                               width: 10,
@@ -124,24 +143,6 @@ class DeclensionTable extends StatelessWidget {
                             ),
                           ),
                         ],
-                      ),
-                    )
-                  : Container(),
-              note != ''
-                  ? Padding(
-                      padding: const EdgeInsets.fromLTRB(12, 4, 12, 12),
-                      child: RichText(
-                        text: TextSpan(
-                          style: TextStyle(
-                              fontSize: 12,
-                              color: N.isDarkTheme(context)
-                                  ? Colors.white
-                                  : Colors.black),
-                          children: [
-                            TextSpan(text: '**'),
-                            TextSpan(text: note, style: DECLINED_LETTER_STYLE)
-                          ],
-                        ),
                       ),
                     )
                   : Container(),
