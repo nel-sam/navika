@@ -2,7 +2,10 @@
   xmlns:android="http://schemas.android.com/apk/res/android"
   package="com.nrsdev.navika"
 >
-   <application android:label="Navika" android:icon="@mipmap/ic_launcher">
+   <application
+    android:label="Navika"
+    android:icon="@mipmap/ic_launcher"
+    android:roundIcon="@mipmap/ic_launcher">
         <activity
       android:name=".MainActivity"
       android:launchMode="singleTop"
