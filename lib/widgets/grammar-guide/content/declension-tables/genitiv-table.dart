@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/utilities/navika-helpers.dart';
+import 'package:navika/widgets/grammar-guide/child-widgets/declension-table-cell.dart';
 import 'package:navika/widgets/grammar-guide/child-widgets/declension-table.dart';
-import 'package:navika/widgets/shared/navika-text.dart';
 
 class GenitivDeclensionTable extends StatelessWidget {
   const GenitivDeclensionTable({Key? key}) : super(key: key);
@@ -12,60 +12,48 @@ class GenitivDeclensionTable extends StatelessWidget {
   Widget build(BuildContext context) {
     return DeclensionTable(
       note: AppLocalizations.of(context)!.softLettersOgEg,
-      borderedItemNote: AppLocalizations.of(context)!.sameAsAkuz,
-      masculineSingular: [
-        NText(
-          [
-            N.NTextSpan('Lijep'),
-            N.NTextSpan('og', isItalic: true, color: MASCULINE_COLOR),
-            N.NTextSpan('**\n'),
-            N.NTextSpan('jezik'),
-            N.NTextSpan('a', isItalic: true, color: MASCULINE_COLOR),
-          ],
-          showborder: true,
-        ),
-      ],
-      masculinePlural: [
-        NText([
+      coloredItemNote: AppLocalizations.of(context)!.sameAsAkuz,
+      masculineSingular: DeclensionTableCell(
+        children: [
           N.NTextSpan('Lijep'),
-          N.NTextSpan('ih\n', isItalic: true, color: MASCULINE_COLOR),
+          N.NTextSpan('og', isItalic: true, color: MASCULINE_COLOR),
+          N.NTextSpan('**\n'),
           N.NTextSpan('jezik'),
           N.NTextSpan('a', isItalic: true, color: MASCULINE_COLOR),
-        ]),
-      ],
-      feminineSingular: [
-        NText([
-          N.NTextSpan('Moj'),
-          N.NTextSpan('e\n', isItalic: true, color: FEMININE_COLOR),
-          N.NTextSpan('kuć'),
-          N.NTextSpan('e', isItalic: true, color: FEMININE_COLOR),
-        ]),
-      ],
-      femininePlural: [
-        NText([
-          N.NTextSpan('Moj'),
-          N.NTextSpan('ih\n', isItalic: true, color: FEMININE_COLOR),
-          N.NTextSpan('kuć'),
-          N.NTextSpan('e', isItalic: true, color: FEMININE_COLOR),
-        ]),
-      ],
-      neuterSingular: [
-        NText([
-          N.NTextSpan('Vruć'),
-          N.NTextSpan('eg', isItalic: true, color: NEUTER_COLOR),
-          N.NTextSpan('**\n'),
-          N.NTextSpan('mlijek'),
-          N.NTextSpan('a', isItalic: true, color: NEUTER_COLOR),
-        ]),
-      ],
-      neuterPlural: [
-        NText([
-          N.NTextSpan('Vruć'),
-          N.NTextSpan('ih\n', isItalic: true, color: NEUTER_COLOR),
-          N.NTextSpan('mlijek'),
-          N.NTextSpan('a', isItalic: true, color: NEUTER_COLOR),
-        ]),
-      ],
+        ],
+        backgroundColor: ACCENT_COLOR,
+      ),
+      masculinePlural: DeclensionTableCell(children: [
+        N.NTextSpan('Lijep'),
+        N.NTextSpan('ih\n', isItalic: true, color: MASCULINE_COLOR),
+        N.NTextSpan('jezik'),
+        N.NTextSpan('a', isItalic: true, color: MASCULINE_COLOR),
+      ]),
+      feminineSingular: DeclensionTableCell(children: [
+        N.NTextSpan('Moj'),
+        N.NTextSpan('e\n', isItalic: true, color: FEMININE_COLOR),
+        N.NTextSpan('kuć'),
+        N.NTextSpan('e', isItalic: true, color: FEMININE_COLOR),
+      ]),
+      femininePlural: DeclensionTableCell(children: [
+        N.NTextSpan('Moj'),
+        N.NTextSpan('ih\n', isItalic: true, color: FEMININE_COLOR),
+        N.NTextSpan('kuć'),
+        N.NTextSpan('e', isItalic: true, color: FEMININE_COLOR),
+      ]),
+      neuterSingular: DeclensionTableCell(children: [
+        N.NTextSpan('Vruć'),
+        N.NTextSpan('eg', isItalic: true, color: NEUTER_COLOR),
+        N.NTextSpan('**\n'),
+        N.NTextSpan('mlijek'),
+        N.NTextSpan('a', isItalic: true, color: NEUTER_COLOR),
+      ]),
+      neuterPlural: DeclensionTableCell(children: [
+        N.NTextSpan('Vruć'),
+        N.NTextSpan('ih\n', isItalic: true, color: NEUTER_COLOR),
+        N.NTextSpan('mlijek'),
+        N.NTextSpan('a', isItalic: true, color: NEUTER_COLOR),
+      ]),
     );
   }
 }
