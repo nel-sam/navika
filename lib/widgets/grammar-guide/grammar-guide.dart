@@ -105,7 +105,10 @@ class _GrammarGuideState extends State<GrammarGuide> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: N.NavikaAppBar(
-          Text(AppLocalizations.of(context)!.grammarGuide), context, []),
+          Text(AppLocalizations.of(context)!.grammarGuide,
+              style: HEADER_TEXT_STYLE),
+          context,
+          []),
       body: SingleChildScrollView(
         controller: controller,
         child: Padding(

@@ -58,7 +58,7 @@ class _CaseExerciseState extends State<CaseExercise> {
         backgroundColor: N.getAppBarColor(context),
         textTheme: N.getAppBarTextTheme(context),
         iconTheme: N.getAppBarIconTheme(context),
-        title: Text(widget.title),
+        title: Text(widget.title, style: HEADER_TEXT_STYLE),
       ),
       endDrawer: NavikaDrawer(
         initalValues: widget.filterSet,
