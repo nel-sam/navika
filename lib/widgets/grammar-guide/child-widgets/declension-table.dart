@@ -12,9 +12,8 @@ class DeclensionTable extends StatelessWidget {
   final DeclensionTableCell masculinePlural;
   final DeclensionTableCell femininePlural;
   final DeclensionTableCell neuterPlural;
-  final Color? coloredItemNoteColor;
-  final String coloredItemNote;
-  final String note;
+  final String borderedItemNote;
+  final List<String>? notes;
 
   const DeclensionTable({
     Key? key,
@@ -24,10 +23,19 @@ class DeclensionTable extends StatelessWidget {
     required this.masculinePlural,
     required this.femininePlural,
     required this.neuterPlural,
-    this.note = '',
-    this.coloredItemNote = '',
-    this.coloredItemNoteColor = Colors.grey,
+    this.notes,
+    this.borderedItemNote = '',
   }) : super(key: key);
+
+  String getAsterix(int count) {
+    var result = '';
+
+    for (int i = 0; i < count; i++) {
+      result += '*';
+    }
+
+    return result;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,23 +59,29 @@ class DeclensionTable extends StatelessWidget {
                   ),
                   Container(
                     width: colWidth,
-                    child: ExplanationIconCell(
-                      icon: N.getGenderIcon(Genders.Feminine),
-                      label: 'Fem.',
+                    child: Center(
+                      child: ExplanationIconCell(
+                        icon: N.getGenderIcon(Genders.Feminine),
+                        label: 'Fem.',
+                      ),
                     ),
                   ),
                   Container(
                     width: colWidth,
-                    child: ExplanationIconCell(
-                      icon: N.getGenderIcon(Genders.Masculine),
-                      label: 'Masc.',
+                    child: Center(
+                      child: ExplanationIconCell(
+                        icon: N.getGenderIcon(Genders.Masculine),
+                        label: 'Masc.',
+                      ),
                     ),
                   ),
                   Container(
                     width: colWidth,
-                    child: ExplanationIconCell(
-                      icon: N.getGenderIcon(Genders.Neuter),
-                      label: 'Neut.',
+                    child: Center(
+                      child: ExplanationIconCell(
+                        icon: N.getGenderIcon(Genders.Neuter),
+                        label: 'Neut.',
+                      ),
                     ),
                   ),
                 ],
@@ -96,56 +110,80 @@ class DeclensionTable extends StatelessWidget {
                 masculinePlural,
                 neuterPlural
               ]),
-              note != ''
-                  ? Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                      RichText(
-                        text: TextSpan(
-                          style: TextStyle(
-                              fontSize: 12,
-                              color: N.isDarkTheme(context)
-                                  ? Colors.white
-                                  : Colors.black),
-                          children: [
-                            TextSpan(text: '**'),
-                            TextSpan(text: note, style: DECLINED_LETTER_STYLE)
-                          ],
+              Padding(
+                padding: EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    if (notes != null)
+                      ...notes!.map(
+                        (note) => Padding(
+                          padding: const EdgeInsets.only(bottom: 12),
+                          child: Row(
+                            children: [
+                              Padding(
+                                padding:
+                                    const EdgeInsets.only(bottom: 8, right: 6),
+                                child: Text(
+                                  getAsterix(notes!.indexOf(note) + 1),
+                                ),
+                              ),
+                              Flexible(
+                                child: RichText(
+                                  maxLines: 10,
+                                  text: TextSpan(
+                                    style: TextStyle(
+                                        fontSize: 12,
+                                        color: N.isDarkTheme(context)
+                                            ? Colors.white
+                                            : Colors.black),
+                                    children: [
+                                      TextSpan(
+                                          text: note,
+                                          style: DECLINED_LETTER_STYLE)
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
-                      )
-                    ])
-                  : Container(),
-              coloredItemNote != ''
-                  ? Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Padding(
-                            // Little square
-                            padding: const EdgeInsets.fromLTRB(2, 2, 4, 2),
-                            child: Container(
-                              width: 10,
-                              height: 10,
-                              color: coloredItemNoteColor,
-                            ),
-                          ),
-                          RichText(
-                            text: TextSpan(
-                              style: TextStyle(
-                                  fontSize: 12,
-                                  color: N.isDarkTheme(context)
-                                      ? Colors.white
-                                      : Colors.black),
-                              children: [
-                                TextSpan(
-                                    text: coloredItemNote,
-                                    style: DECLINED_LETTER_STYLE)
-                              ],
-                            ),
-                          ),
-                        ],
                       ),
-                    )
-                  : Container(),
+                    borderedItemNote != ''
+                        ? Row(
+                            children: [
+                              Padding(
+                                // Little square
+                                padding: const EdgeInsets.only(right: 5),
+                                child: Container(
+                                  width: 13,
+                                  height: 13,
+                                  decoration: BoxDecoration(
+                                    border: Border.all(color: ACCENT_COLOR),
+                                    borderRadius: BorderRadius.circular(2),
+                                  ),
+                                ),
+                              ),
+                              RichText(
+                                text: TextSpan(
+                                  style: TextStyle(
+                                      fontSize: 12,
+                                      color: N.isDarkTheme(context)
+                                          ? Colors.white
+                                          : Colors.black),
+                                  children: [
+                                    TextSpan(
+                                        text: borderedItemNote,
+                                        style: DECLINED_LETTER_STYLE)
+                                  ],
+                                ),
+                              ),
+                            ],
+                          )
+                        : Container(),
+                  ],
+                ),
+              ),
             ],
           ),
         )

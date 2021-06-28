@@ -11,8 +11,8 @@ class AkuzativDeclensionTable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DeclensionTable(
-      coloredItemNote: AppLocalizations.of(context)!.sameAsNom,
-      note: AppLocalizations.of(context)!.animateAkuzativ,
+      borderedItemNote: AppLocalizations.of(context)!.sameAsNom,
+      notes: [AppLocalizations.of(context)!.animateAkuzativ],
       masculineSingular: DeclensionTableCell(children: [
         N.NTextSpan('Star'),
         N.NTextSpan('og\n', isItalic: true, color: MASCULINE_COLOR),
@@ -33,7 +33,7 @@ class AkuzativDeclensionTable extends StatelessWidget {
         N.NTextSpan('u', isItalic: true, color: FEMININE_COLOR),
       ]),
       femininePlural: DeclensionTableCell(
-        backgroundColor: Colors.grey,
+        highlightItem: true,
         children: [
           N.NTextSpan('Moj'),
           N.NTextSpan('e\n', isItalic: true, color: FEMININE_COLOR),
@@ -48,7 +48,7 @@ class AkuzativDeclensionTable extends StatelessWidget {
           N.NTextSpan('mlijek'),
           N.NTextSpan('o', isItalic: true, color: NEUTER_COLOR),
         ],
-        backgroundColor: Colors.grey,
+        highlightItem: true,
       ),
       neuterPlural: DeclensionTableCell(
         children: [
@@ -57,7 +57,7 @@ class AkuzativDeclensionTable extends StatelessWidget {
           N.NTextSpan('mlijek'),
           N.NTextSpan('a', isItalic: true, color: NEUTER_COLOR),
         ],
-        backgroundColor: Colors.grey,
+        highlightItem: true,
       ),
     );
   }

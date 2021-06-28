@@ -11,8 +11,8 @@ class GenitivDeclensionTable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DeclensionTable(
-      note: AppLocalizations.of(context)!.softLettersOgEg,
-      coloredItemNote: AppLocalizations.of(context)!.sameAsAkuz,
+      notes: [AppLocalizations.of(context)!.softLettersOgEg],
+      borderedItemNote: AppLocalizations.of(context)!.sameAsAkuz,
       masculineSingular: DeclensionTableCell(
         children: [
           N.NTextSpan('Lijep'),
@@ -21,7 +21,7 @@ class GenitivDeclensionTable extends StatelessWidget {
           N.NTextSpan('jezik'),
           N.NTextSpan('a', isItalic: true, color: MASCULINE_COLOR),
         ],
-        backgroundColor: Colors.grey,
+        highlightItem: true,
       ),
       masculinePlural: DeclensionTableCell(children: [
         N.NTextSpan('Lijep'),

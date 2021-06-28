@@ -11,11 +11,15 @@ class DativLokativDDeclensionTable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DeclensionTable(
-      note: AppLocalizations.of(context)!.assibilation,
-      coloredItemNote: AppLocalizations.of(context)!.sameAsInst,
+      notes: [
+        AppLocalizations.of(context)!.assibilation,
+        AppLocalizations.of(context)!.softLettersOmEm,
+      ],
+      borderedItemNote: AppLocalizations.of(context)!.sameAsInst,
       masculineSingular: DeclensionTableCell(children: [
         N.NTextSpan('Lijep'),
-        N.NTextSpan('om\n', isItalic: true, color: MASCULINE_COLOR),
+        N.NTextSpan('om', isItalic: true, color: MASCULINE_COLOR),
+        N.NTextSpan('**\n'),
         N.NTextSpan('jezik'),
         N.NTextSpan('u', isItalic: true, color: MASCULINE_COLOR),
       ]),
@@ -25,16 +29,16 @@ class DativLokativDDeclensionTable extends StatelessWidget {
           N.NTextSpan('im\n', isItalic: true, color: MASCULINE_COLOR),
           N.NTextSpan('jezic'),
           N.NTextSpan('ima', isItalic: true, color: MASCULINE_COLOR),
-          N.NTextSpan('**'),
+          N.NTextSpan('*'),
         ],
-        backgroundColor: Colors.grey,
+        highlightItem: true,
       ),
       feminineSingular: DeclensionTableCell(children: [
         N.NTextSpan('Moj'),
         N.NTextSpan('oj\n', isItalic: true, color: FEMININE_COLOR),
         N.NTextSpan('kuć'),
         N.NTextSpan('i', isItalic: true, color: FEMININE_COLOR),
-        N.NTextSpan('**'),
+        N.NTextSpan('*'),
       ]),
       femininePlural: DeclensionTableCell(
         children: [
@@ -43,11 +47,12 @@ class DativLokativDDeclensionTable extends StatelessWidget {
           N.NTextSpan('kuć'),
           N.NTextSpan('ama', isItalic: true, color: FEMININE_COLOR),
         ],
-        backgroundColor: Colors.grey,
+        highlightItem: true,
       ),
       neuterSingular: DeclensionTableCell(children: [
         N.NTextSpan('Vruć'),
-        N.NTextSpan('em\n', isItalic: true, color: NEUTER_COLOR),
+        N.NTextSpan('em', isItalic: true, color: NEUTER_COLOR),
+        N.NTextSpan('**\n'),
         N.NTextSpan('mlijek'),
         N.NTextSpan('u', isItalic: true, color: NEUTER_COLOR),
       ]),
@@ -58,7 +63,7 @@ class DativLokativDDeclensionTable extends StatelessWidget {
           N.NTextSpan('mlijek'),
           N.NTextSpan('ima', isItalic: true, color: NEUTER_COLOR),
         ],
-        backgroundColor: Colors.grey,
+        highlightItem: true,
       ),
     );
   }

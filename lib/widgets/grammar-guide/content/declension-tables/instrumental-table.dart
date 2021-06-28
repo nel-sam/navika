@@ -11,8 +11,8 @@ class InstrumentalDeclensionTable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DeclensionTable(
-      note: AppLocalizations.of(context)!.instrumentalFemSing,
-      coloredItemNote: AppLocalizations.of(context)!.sameAsLok,
+      notes: [AppLocalizations.of(context)!.instrumentalFemSing],
+      borderedItemNote: AppLocalizations.of(context)!.sameAsLok,
       masculineSingular: DeclensionTableCell(children: [
         N.NTextSpan('Lijep'),
         N.NTextSpan('im\n', isItalic: true, color: MASCULINE_COLOR),
@@ -26,7 +26,7 @@ class InstrumentalDeclensionTable extends StatelessWidget {
           N.NTextSpan('jezic'),
           N.NTextSpan('ima', isItalic: true, color: MASCULINE_COLOR),
         ],
-        backgroundColor: Colors.grey,
+        highlightItem: true,
       ),
       feminineSingular: DeclensionTableCell(children: [
         N.NTextSpan('Moj'),
@@ -42,7 +42,7 @@ class InstrumentalDeclensionTable extends StatelessWidget {
           N.NTextSpan('kuć'),
           N.NTextSpan('ama', isItalic: true, color: FEMININE_COLOR),
         ],
-        backgroundColor: Colors.grey,
+        highlightItem: true,
       ),
       neuterSingular: DeclensionTableCell(children: [
         N.NTextSpan('Vruć'),
@@ -57,7 +57,7 @@ class InstrumentalDeclensionTable extends StatelessWidget {
           N.NTextSpan('mlijek'),
           N.NTextSpan('ima', isItalic: true, color: NEUTER_COLOR),
         ],
-        backgroundColor: Colors.grey,
+        highlightItem: true,
       ),
     );
   }
