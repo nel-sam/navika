@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 const BATCH_COUNT = 25;
 
+const TABLE_CELL_WIDTH = 87.0;
 const TextStyle HEADER_TEXT_STYLE =
     TextStyle(fontSize: 20, fontFamily: 'helvetica', color: ACCENT_COLOR);
 const double EXERCISE_FONT_STYLE = 18;

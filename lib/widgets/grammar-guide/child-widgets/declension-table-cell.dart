@@ -31,7 +31,6 @@ class DeclensionTableCell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const double width = 100;
     const double height = 50;
     const double borderRadius = 5;
     const double borderWidth = 1;
@@ -39,7 +38,7 @@ class DeclensionTableCell extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(1),
       child: Container(
-        width: width,
+        width: TABLE_CELL_WIDTH,
         height: height,
         decoration: isEqualItem
             ? BoxDecoration(

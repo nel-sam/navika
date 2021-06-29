@@ -59,7 +59,7 @@ Widget getPossessivePronounSection(BuildContext context) {
       PronounLine(
           pronoun: PronounEnum.We,
           text: NText([
-            N.NTextSpan('A ona uvijek kaže nešto o '),
+            N.NTextSpan('Ona kaže nešto o '),
             N.NTextSpan('nama', isBold: true),
           ])),
       PronounLine(

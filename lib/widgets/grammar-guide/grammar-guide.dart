@@ -11,7 +11,6 @@ import 'package:navika/widgets/grammar-guide/content/instrumental-content.dart';
 import 'package:navika/widgets/grammar-guide/content/lokativ-content.dart';
 import 'package:navika/widgets/grammar-guide/content/nominativ-content.dart';
 import 'package:navika/widgets/shared/footer-button.dart';
-import 'package:navika/widgets/shared/home-button.dart';
 
 const double CONTENT_HEIGHT = 1200.0;
 

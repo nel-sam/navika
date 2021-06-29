@@ -42,7 +42,7 @@ class DeclensionTable extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const colWidth = 100.0;
+    const colWidth = TABLE_CELL_WIDTH;
     const firstColWidth = 55.0;
 
     return Column(
