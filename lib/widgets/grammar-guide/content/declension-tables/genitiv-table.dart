@@ -19,7 +19,7 @@ class GenitivDeclensionTable extends StatelessWidget {
         children: [
           N.NTextSpan('Lijep'),
           N.NTextSpan('og', isItalic: true, color: MASCULINE_COLOR),
-          N.NTextSpan('**\n'),
+          N.NTextSpan('*\n'),
           N.NTextSpan('jezik'),
           N.NTextSpan('a', isItalic: true, color: MASCULINE_COLOR),
         ],
@@ -48,7 +48,7 @@ class GenitivDeclensionTable extends StatelessWidget {
         children: [
           N.NTextSpan('Vruć'),
           N.NTextSpan('eg', isItalic: true, color: NEUTER_COLOR),
-          N.NTextSpan('**\n'),
+          N.NTextSpan('*\n'),
           N.NTextSpan('mlijek'),
           N.NTextSpan('a', isItalic: true, color: NEUTER_COLOR),
         ],

@@ -11,10 +11,7 @@ import 'package:navika/widgets/shared/navika-banner.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 StaticSentenceParts getStaticSentenceParts(
-  Noun noun,
-  bool isPlural,
-  Adjective? pronoun,
-) {
+    Noun noun, bool isPlural, Adjective? pronoun, Adjective? adjective) {
   String start = '';
   String end = '';
 

@@ -158,7 +158,7 @@ class _GrammarGuideState extends State<GrammarGuide> {
                 context: context,
               ),
             ),
-            HomeButton(context),
+            //HomeButton(context),
             Padding(
               padding:
                   const EdgeInsets.only(bottom: FOOTER_ICON_BOTTOM_PADDING),

@@ -11,7 +11,11 @@ import 'package:navika/models/adjective.dart';
 import 'package:navika/models/noun.dart';
 
 StaticSentenceParts getStaticSentenceParts(
-    Noun noun, bool isPlural, Adjective? pronoun) {
+  Noun noun,
+  bool isPlural,
+  Adjective? pronoun,
+  Adjective? adjective,
+) {
   final pronounVal = pronoun!.dictionary;
   String start = '';
   String end = '';
@@ -42,7 +46,7 @@ StaticSentenceParts getPersonalPronounSentenceStaticParts(
   } else {
     start = 'Razgovoramo o';
   }
-  
+
   return StaticSentenceParts(start: start, end: end);
 }
 

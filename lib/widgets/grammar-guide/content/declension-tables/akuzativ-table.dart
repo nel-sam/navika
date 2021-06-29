@@ -18,7 +18,7 @@ class AkuzativDeclensionTable extends StatelessWidget {
         N.NTextSpan('og\n', isItalic: true, color: MASCULINE_COLOR),
         N.NTextSpan('prijatelj'),
         N.NTextSpan('a', isItalic: true, color: MASCULINE_COLOR),
-        N.NTextSpan('**\n'),
+        N.NTextSpan('*\n'),
       ]),
       masculinePlural: DeclensionTableCell(children: [
         N.NTextSpan('Star'),

@@ -90,7 +90,7 @@ class N {
 
   static List<PANExerciseItem> getPANCombos(
       WordBank bank,
-      StaticSentenceParts Function(Noun, bool, Adjective)
+      StaticSentenceParts Function(Noun, bool, Adjective, Adjective)
           getStaticSentenceParts,
       StaticSentenceParts Function(PersonalPronoun, bool)
           getPersonalPronounSentenceStaticParts) {
@@ -116,7 +116,7 @@ class N {
         bank.nouns.forEach((noun) {
           final isPlural = noun.nominativ.plural != '' && N.coinFlip();
           final staticParts =
-              getStaticSentenceParts(noun, isPlural, possPronoun);
+              getStaticSentenceParts(noun, isPlural, possPronoun, adj);
 
           listItems.add(PANExerciseItem(
               sentenceStarter: staticParts.start,
@@ -226,13 +226,19 @@ class N {
         color: color,
         fontStyle: FontStyle.italic,
       );
-    } else if (isBold && color != Colors.transparent) {
-      textStyle = TextStyle(
-        color: color,
-        fontWeight: FontWeight.bold,
-      );
+      // } else if (isBold && color != Colors.transparent) {
+      //   textStyle = TextStyle(
+      //     color: color,
+      //     fontWeight: FontWeight.bold,
+      //   );
+      // } else if (isBold) {
+      //   textStyle = TextStyle(
+      //     fontWeight: FontWeight.bold,
+      //   );
+      // }
     } else if (isBold) {
       textStyle = TextStyle(
+        color: ACCENT_COLOR,
         fontWeight: FontWeight.bold,
       );
     }

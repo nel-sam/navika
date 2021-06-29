@@ -134,7 +134,7 @@ Widget getExampleSentences(BuildContext context) {
       ]),
       NText([
         N.NTextSpan('Dao sam '),
-        N.NTextSpan('mami', isBold: true),
+        N.NTextSpan('mami ', isBold: true),
         N.NTextSpan('čaj'),
       ]),
     ],

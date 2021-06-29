@@ -37,7 +37,7 @@ class InstrumentalDeclensionTable extends StatelessWidget {
         N.NTextSpan('om\n', isItalic: true, color: FEMININE_COLOR),
         N.NTextSpan('kuć'),
         N.NTextSpan('om', isItalic: true, color: FEMININE_COLOR),
-        N.NTextSpan('**'),
+        N.NTextSpan('*'),
       ]),
       femininePlural: DeclensionTableCell(
         children: [

@@ -15,7 +15,7 @@ class CaseExercise extends StatefulWidget {
   final CaseTypeEnum caseType;
   final WordBank sourceData;
   final NavikaBanner banner;
-  final StaticSentenceParts Function(Noun, bool, Adjective)
+  final StaticSentenceParts Function(Noun, bool, Adjective, Adjective)
       getStaticSentenceParts;
   final StaticSentenceParts Function(PersonalPronoun, bool)
       getPersonalPronounSentenceStaticParts;

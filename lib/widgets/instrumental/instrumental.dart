@@ -10,28 +10,56 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/models/adjective.dart';
 import 'package:navika/models/noun.dart';
 
-// TODO: Figure out how to handle sa/s
 StaticSentenceParts getStaticSentenceParts(
-    Noun noun, bool isPlural, Adjective? pronoun) {
+  Noun noun,
+  bool isPlural,
+  Adjective? pronoun,
+  Adjective? adjective,
+) {
   String start = '';
   String end = '';
   String possPronoun = pronoun!.nominativ.masculine.singular;
+  String sSa = getsSa(
+    noun,
+    pronoun,
+    adjective,
+  );
 
   if (noun.tags.contains(Tags.Human) || noun.tags.contains(Tags.Portable)) {
     if (possPronoun != 'tvoj')
-      start = N.coinFlip() ? 'Ti ideš s' : 'Trebaš da ideš s';
+      start = N.coinFlip() ? 'Ti ideš $sSa' : 'Trebaš da ideš $sSa';
     else
-      start = 'Idemo s';
+      start = 'Idemo $sSa';
   } else if (noun.tags.contains(Tags.Vehicle)) {
     start = possPronoun == 'moj' ? 'Putujemo' : 'Putujem';
   } else if (noun.tags.contains(Tags.Location)) {
     start = '';
   } else if (possPronoun == 'moj')
-    start = 'Ideš s';
+    start = 'Ideš $sSa';
   else
-    start = 'Idem s';
+    start = 'Idem $sSa';
 
   return StaticSentenceParts(start: start, end: end);
+}
+
+String getsSa(Noun noun, Adjective? pronoun, Adjective? adjective) {
+  const saLetters = 'sšzž';
+
+  if (pronoun != null &&
+      saLetters.contains(pronoun.dictionary.characters.first)) {
+    return 'sa';
+  } else if (pronoun != null) {
+    return 's';
+  } else if (adjective != null &&
+      saLetters.contains(adjective.dictionary.characters.first)) {
+    return 'sa';
+  } else if (adjective != null) {
+    return 's';
+  } else if (saLetters.contains(noun.dictionary.characters.first)) {
+    return 'sa';
+  }
+
+  return 's';
 }
 
 StaticSentenceParts getPersonalPronounSentenceStaticParts(

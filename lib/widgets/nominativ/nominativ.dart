@@ -11,7 +11,7 @@ import 'package:navika/models/adjective.dart';
 import 'package:navika/models/noun.dart';
 
 StaticSentenceParts getStaticSentenceParts(
-    Noun noun, bool isPlural, Adjective pronoun) {
+    Noun noun, bool isPlural, Adjective? pronoun, Adjective? adjective) {
   final tense = N.getRandomTense();
   String start = '';
   String end = '';

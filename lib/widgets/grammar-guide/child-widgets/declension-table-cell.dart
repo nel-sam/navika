@@ -33,22 +33,30 @@ class DeclensionTableCell extends StatelessWidget {
   Widget build(BuildContext context) {
     const double width = 100;
     const double height = 50;
+    const double borderRadius = 5;
+    const double borderWidth = 1;
 
-    if (highlightItem && isEqualItem) {
-      return Container(
+    return Padding(
+      padding: const EdgeInsets.all(1),
+      child: Container(
         width: width,
         height: height,
-        decoration: BoxDecoration(
-          border: Border.all(color: EQUAL_ITEMS_BORDER_COLOR),
-          borderRadius: BorderRadius.circular(5),
-        ),
+        decoration: isEqualItem
+            ? BoxDecoration(
+                border: Border.all(
+                    width: borderWidth, color: EQUAL_ITEMS_BORDER_COLOR),
+                borderRadius: BorderRadius.circular(borderRadius),
+              )
+            : null,
         child: Padding(
           padding: const EdgeInsets.all(2),
           child: Container(
-            decoration: BoxDecoration(
-              border: Border.all(color: ACCENT_COLOR),
-              borderRadius: BorderRadius.circular(5),
-            ),
+            decoration: highlightItem
+                ? BoxDecoration(
+                    border: Border.all(width: borderWidth, color: ACCENT_COLOR),
+                    borderRadius: BorderRadius.circular(borderRadius),
+                  )
+                : null,
             child: Padding(
               padding: const EdgeInsets.all(4),
               child: Center(
@@ -57,20 +65,6 @@ class DeclensionTableCell extends StatelessWidget {
                 ),
               ),
             ),
-          ),
-        ),
-      );
-    }
-
-    return Container(
-      width: width,
-      height: height,
-      decoration: getDecoration(),
-      child: Padding(
-        padding: const EdgeInsets.all(4),
-        child: Center(
-          child: NText(
-            children,
           ),
         ),
       ),
