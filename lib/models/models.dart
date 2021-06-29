@@ -58,15 +58,32 @@ class WordBank {
     return result;
   }
 
-  WordBank excludeNounsByTag(Tags tag) {
+  WordBank excludeNounsByTags(List<Tags> tagsToFilter) {
     var result = WordBank(
-      nouns: [...this.nouns.where((n) => !n.tags.contains(tag))],
+      nouns: [
+        ...this.nouns.where((n) => !listsShareElements(tagsToFilter, n.tags))
+      ],
       adjectives: [...this.adjectives],
       possessivePronouns: [...this.possessivePronouns],
       personalPronouns: [...this.personalPronouns],
     );
 
     return result;
+  }
+
+  bool listsShareElements(List<Tags> list1, List<Tags> list2) {
+    var contains = false;
+
+    for (int i = 0; i < list1.length; i++) {
+      final Tags toFilter = list1[i];
+
+      if (list2.contains(toFilter)) {
+        contains = true;
+        break;
+      }
+    }
+
+    return contains;
   }
 }
 

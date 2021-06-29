@@ -32,6 +32,8 @@ StaticSentenceParts getStaticSentenceParts(
       start = 'Idemo $sSa';
   } else if (noun.tags.contains(Tags.Vehicle)) {
     start = possPronoun == 'moj' ? 'Putujemo' : 'Putujem';
+  } else if (noun.tags.contains(Tags.Health)) {
+    start = possPronoun == 'moj' ? 'Putovao je $sSa' : 'Putovao sam $sSa';
   } else if (noun.tags.contains(Tags.Location)) {
     start = '';
   } else if (possPronoun == 'moj')
@@ -86,7 +88,11 @@ class Instrumental extends StatefulWidget {
 
 class _InstrumentalState extends State<Instrumental> {
   final title = 'Instrumental';
-  final WordBank bank = wordBank.excludeNounsByTag(Tags.Location);
+  final WordBank bank = wordBank.excludeNounsByTags([
+    Tags.Location,
+    Tags.Health,
+  ]);
+
   var filterSet = ExerciseFilterSet();
 
   @override
