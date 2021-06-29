@@ -25,13 +25,14 @@ StaticSentenceParts getStaticSentenceParts(
     adjective,
   );
 
-  if (noun.tags.contains(Tags.Human) || noun.tags.contains(Tags.Portable)) {
+  if (noun.tags.contains(Tags.Vehicle)) {
+    start = possPronoun == 'moj' ? 'Putujemo' : 'Putujem';
+  } else if (noun.tags.contains(Tags.Human) ||
+      noun.tags.contains(Tags.Portable)) {
     if (possPronoun != 'tvoj')
       start = N.coinFlip() ? 'Ti ideš $sSa' : 'Trebaš da ideš $sSa';
     else
       start = 'Idemo $sSa';
-  } else if (noun.tags.contains(Tags.Vehicle)) {
-    start = possPronoun == 'moj' ? 'Putujemo' : 'Putujem';
   } else if (noun.tags.contains(Tags.Health)) {
     start = possPronoun == 'moj' ? 'Putovao je $sSa' : 'Putovao sam $sSa';
   } else if (noun.tags.contains(Tags.Location)) {
@@ -49,11 +50,12 @@ String getsSa(Noun noun, Adjective? pronoun, Adjective? adjective) {
 
   if (pronoun != null &&
       saLetters.contains(pronoun.dictionary.characters.first)) {
+    print('Pronoun: ${pronoun.dictionary}');
     return 'sa';
   } else if (pronoun != null) {
     return 's';
-  } else if (adjective != null &&
-      saLetters.contains(adjective.dictionary.characters.first)) {
+  } else if (adjective != null && saLetters.contains(adjective.dictionary)) {
+    print('Adj: ${adjective.dictionary.characters.first}');
     return 'sa';
   } else if (adjective != null) {
     return 's';

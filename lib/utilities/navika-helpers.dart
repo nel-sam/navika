@@ -114,6 +114,8 @@ class N {
     bank.possessivePronouns.forEach((possPronoun) {
       bank.adjectives.forEach((adj) {
         bank.nouns.forEach((noun) {
+          final includePossPronoun = N.coinFlip();
+          final includeAdjective = N.coinFlip();
           final isPlural = noun.nominativ.plural != '' && N.coinFlip();
           final staticParts =
               getStaticSentenceParts(noun, isPlural, possPronoun, adj);
@@ -121,8 +123,8 @@ class N {
           listItems.add(PANExerciseItem(
               sentenceStarter: staticParts.start,
               sentenceEnder: staticParts.end,
-              pronoun: possPronoun,
-              adjective: adj,
+              pronoun: includePossPronoun ? possPronoun : null,
+              adjective: includeAdjective ? adj : null,
               gender: noun.gender,
               isPlural: isPlural,
               noun: noun));
@@ -155,15 +157,14 @@ class N {
         );
       }
 
-      final includePossPronoun = N.coinFlip();
-      final includeAdjective = N.coinFlip();
-
+      final hasPP = e.pronoun != null;
+      final hasAdj = e.adjective != null;
       final correctNounValue = e.noun!.getDeclension(e.isPlural, caseType);
-      final correctPronounValue = includePossPronoun
+      final correctPronounValue = hasPP
           ? e.pronoun!
               .getDeclension(e.gender, e.isPlural, caseType, e.noun!.isAnimate)
           : '';
-      final correctAdjValue = includeAdjective
+      final correctAdjValue = hasAdj
           ? e.adjective!
               .getDeclension(e.gender, e.isPlural, caseType, e.noun!.isAnimate)
           : '';
@@ -174,16 +175,14 @@ class N {
           correctPossPronounValue: correctPronounValue,
           correctAdjValue: correctAdjValue,
           correctNounValue: correctNounValue,
-          adjective: e.adjective!,
-          activePossPronounValue: includePossPronoun
-              ? e.pronoun!.getRandomDeclension(correctPronounValue)
-              : '',
-          activeAdjValue: includeAdjective
-              ? e.adjective!.getRandomDeclension(correctAdjValue)
-              : '',
+          adjective: hasAdj ? e.adjective! : null,
+          activePossPronounValue:
+              hasPP ? e.pronoun!.getRandomDeclension(correctPronounValue) : '',
+          activeAdjValue:
+              hasAdj ? e.adjective!.getRandomDeclension(correctAdjValue) : '',
           activeNounValue: e.noun!.getRandomDeclension(correctNounValue),
           isPlural: e.isPlural,
-          possPronoun: e.pronoun!,
+          possPronoun: hasPP ? e.pronoun! : null,
           gender: e.gender,
           noun: e.noun!);
     }).toList();
