@@ -25,7 +25,9 @@ StaticSentenceParts getStaticSentenceParts(
     adjective,
   );
 
-  if (noun.tags.contains(Tags.Vehicle)) {
+  if (noun.tags.contains(Tags.BodyPart)) {
+    start = possPronoun == 'moj' ? 'Ovo ti dobro ide s' : 'Ovo mi dobro ide s';
+  } else if (noun.tags.contains(Tags.Vehicle)) {
     start = possPronoun == 'moj' ? 'Putujemo' : 'Putujem';
   } else if (noun.tags.contains(Tags.Human) ||
       noun.tags.contains(Tags.Portable)) {
