@@ -12,6 +12,7 @@ const double APPBAR_ELEVATION = 0;
 const CORRECT_COLOR = Colors.green;
 const WRONG_COLOR = Colors.deepOrange;
 const ACCENT_COLOR = Colors.blue;
+const EQUAL_ITEMS_BORDER_COLOR = Colors.amber;
 const CARD_PADDING = 10.0;
 const DECLINED_LETTER_STYLE =
     TextStyle(fontStyle: FontStyle.italic, fontWeight: FontWeight.bold);

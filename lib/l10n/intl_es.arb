@@ -45,5 +45,6 @@
   "singular": "Singular",
   "softLettersOgEg": "A č, ć, đ, dž, š, ž, lj, & nj se agrega 'eg' y no 'og'.",
   "softLettersOmEm": "A č, ć, đ, dž, š, ž, lj, & nj se agrega 'em' y no 'om'.",
-  "unselectAll": "Deseleccionar Todos"
+  "unselectAll": "Deseleccionar Todos",
+  "mascAndNeutEqual": "Masculino y neutro en singular son iguales"
 }

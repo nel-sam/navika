@@ -11,14 +11,18 @@ class InstrumentalDeclensionTable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DeclensionTable(
+      showEqualItemNote: true,
       notes: [AppLocalizations.of(context)!.instrumentalFemSing],
       borderedItemNote: AppLocalizations.of(context)!.sameAsLok,
-      masculineSingular: DeclensionTableCell(children: [
-        N.NTextSpan('Lijep'),
-        N.NTextSpan('im\n', isItalic: true, color: MASCULINE_COLOR),
-        N.NTextSpan('jezik'),
-        N.NTextSpan('om', isItalic: true, color: MASCULINE_COLOR),
-      ]),
+      masculineSingular: DeclensionTableCell(
+        isEqualItem: true,
+        children: [
+          N.NTextSpan('Lijep'),
+          N.NTextSpan('im\n', isItalic: true, color: MASCULINE_COLOR),
+          N.NTextSpan('jezik'),
+          N.NTextSpan('om', isItalic: true, color: MASCULINE_COLOR),
+        ],
+      ),
       masculinePlural: DeclensionTableCell(
         children: [
           N.NTextSpan('Lijep'),
@@ -44,12 +48,15 @@ class InstrumentalDeclensionTable extends StatelessWidget {
         ],
         highlightItem: true,
       ),
-      neuterSingular: DeclensionTableCell(children: [
-        N.NTextSpan('Vruć'),
-        N.NTextSpan('im\n', isItalic: true, color: NEUTER_COLOR),
-        N.NTextSpan('mlijek'),
-        N.NTextSpan('om', isItalic: true, color: NEUTER_COLOR),
-      ]),
+      neuterSingular: DeclensionTableCell(
+        isEqualItem: true,
+        children: [
+          N.NTextSpan('Vruć'),
+          N.NTextSpan('im\n', isItalic: true, color: NEUTER_COLOR),
+          N.NTextSpan('mlijek'),
+          N.NTextSpan('om', isItalic: true, color: NEUTER_COLOR),
+        ],
+      ),
       neuterPlural: DeclensionTableCell(
         children: [
           N.NTextSpan('Vruć'),

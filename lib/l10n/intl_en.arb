@@ -45,5 +45,6 @@
   "singular": "Singular",
   "softLettersOgEg": "č, ć, đ, dž, š, ž, lj, & nj get 'eg' instead of 'og'.",
   "softLettersOmEm": "č, ć, đ, dž, š, ž, lj, & nj get 'em' instead of 'om'.",
-  "unselectAll": "Unselect All"
+  "unselectAll": "Unselect All",
+  "mascAndNeutEqual": "Masculine and Neuter singular are the same"
 }

@@ -15,14 +15,18 @@ class DativLokativDDeclensionTable extends StatelessWidget {
         AppLocalizations.of(context)!.assibilation,
         AppLocalizations.of(context)!.softLettersOmEm,
       ],
+      showEqualItemNote: true,
       borderedItemNote: AppLocalizations.of(context)!.sameAsInst,
-      masculineSingular: DeclensionTableCell(children: [
-        N.NTextSpan('Lijep'),
-        N.NTextSpan('om', isItalic: true, color: MASCULINE_COLOR),
-        N.NTextSpan('**\n'),
-        N.NTextSpan('jezik'),
-        N.NTextSpan('u', isItalic: true, color: MASCULINE_COLOR),
-      ]),
+      masculineSingular: DeclensionTableCell(
+        isEqualItem: true,
+        children: [
+          N.NTextSpan('Lijep'),
+          N.NTextSpan('om', isItalic: true, color: MASCULINE_COLOR),
+          N.NTextSpan('**\n'),
+          N.NTextSpan('jezik'),
+          N.NTextSpan('u', isItalic: true, color: MASCULINE_COLOR),
+        ],
+      ),
       masculinePlural: DeclensionTableCell(
         children: [
           N.NTextSpan('Lijep'),
@@ -49,13 +53,16 @@ class DativLokativDDeclensionTable extends StatelessWidget {
         ],
         highlightItem: true,
       ),
-      neuterSingular: DeclensionTableCell(children: [
-        N.NTextSpan('Vruć'),
-        N.NTextSpan('em', isItalic: true, color: NEUTER_COLOR),
-        N.NTextSpan('**\n'),
-        N.NTextSpan('mlijek'),
-        N.NTextSpan('u', isItalic: true, color: NEUTER_COLOR),
-      ]),
+      neuterSingular: DeclensionTableCell(
+        isEqualItem: true,
+        children: [
+          N.NTextSpan('Vruć'),
+          N.NTextSpan('em', isItalic: true, color: NEUTER_COLOR),
+          N.NTextSpan('**\n'),
+          N.NTextSpan('mlijek'),
+          N.NTextSpan('u', isItalic: true, color: NEUTER_COLOR),
+        ],
+      ),
       neuterPlural: DeclensionTableCell(
         children: [
           N.NTextSpan('Vruć'),

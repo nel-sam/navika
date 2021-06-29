@@ -8,12 +8,15 @@ import 'package:navika/widgets/grammar-guide/child-widgets/declension-table.dart
 class GenitivDeclensionTable extends StatelessWidget {
   const GenitivDeclensionTable({Key? key}) : super(key: key);
 
+// TODO: Show BOTH borders
   @override
   Widget build(BuildContext context) {
     return DeclensionTable(
       notes: [AppLocalizations.of(context)!.softLettersOgEg],
+      showEqualItemNote: true,
       borderedItemNote: AppLocalizations.of(context)!.sameAsAkuz,
       masculineSingular: DeclensionTableCell(
+        isEqualItem: true,
         children: [
           N.NTextSpan('Lijep'),
           N.NTextSpan('og', isItalic: true, color: MASCULINE_COLOR),
@@ -41,13 +44,16 @@ class GenitivDeclensionTable extends StatelessWidget {
         N.NTextSpan('kuć'),
         N.NTextSpan('e', isItalic: true, color: FEMININE_COLOR),
       ]),
-      neuterSingular: DeclensionTableCell(children: [
-        N.NTextSpan('Vruć'),
-        N.NTextSpan('eg', isItalic: true, color: NEUTER_COLOR),
-        N.NTextSpan('**\n'),
-        N.NTextSpan('mlijek'),
-        N.NTextSpan('a', isItalic: true, color: NEUTER_COLOR),
-      ]),
+      neuterSingular: DeclensionTableCell(
+        isEqualItem: true,
+        children: [
+          N.NTextSpan('Vruć'),
+          N.NTextSpan('eg', isItalic: true, color: NEUTER_COLOR),
+          N.NTextSpan('**\n'),
+          N.NTextSpan('mlijek'),
+          N.NTextSpan('a', isItalic: true, color: NEUTER_COLOR),
+        ],
+      ),
       neuterPlural: DeclensionTableCell(children: [
         N.NTextSpan('Vruć'),
         N.NTextSpan('ih\n', isItalic: true, color: NEUTER_COLOR),

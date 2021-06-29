@@ -4,6 +4,7 @@ import 'package:navika/models/enums.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/grammar-guide/child-widgets/declension-table-cell.dart';
 import 'package:navika/widgets/grammar-guide/child-widgets/explanation-icon-cell.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DeclensionTable extends StatelessWidget {
   final DeclensionTableCell masculineSingular;
@@ -13,6 +14,7 @@ class DeclensionTable extends StatelessWidget {
   final DeclensionTableCell femininePlural;
   final DeclensionTableCell neuterPlural;
   final String borderedItemNote;
+  final bool showEqualItemNote;
   final List<String>? notes;
 
   const DeclensionTable({
@@ -25,6 +27,7 @@ class DeclensionTable extends StatelessWidget {
     required this.neuterPlural,
     this.notes,
     this.borderedItemNote = '',
+    this.showEqualItemNote = false,
   }) : super(key: key);
 
   String getAsterix(int count) {
@@ -149,36 +152,72 @@ class DeclensionTable extends StatelessWidget {
                           ),
                         ),
                       ),
+                    if (showEqualItemNote)
+                      Row(
+                        children: [
+                          Padding(
+                            // Little square
+                            padding: const EdgeInsets.only(right: 5),
+                            child: Container(
+                              width: 13,
+                              height: 13,
+                              decoration: BoxDecoration(
+                                border:
+                                    Border.all(color: EQUAL_ITEMS_BORDER_COLOR),
+                                borderRadius: BorderRadius.circular(2),
+                              ),
+                            ),
+                          ),
+                          RichText(
+                            text: TextSpan(
+                              style: TextStyle(
+                                  fontSize: 12,
+                                  color: N.isDarkTheme(context)
+                                      ? Colors.white
+                                      : Colors.black),
+                              children: [
+                                TextSpan(
+                                    text: AppLocalizations.of(context)!
+                                        .mascAndNeutEqual,
+                                    style: DECLINED_LETTER_STYLE)
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
                     borderedItemNote != ''
-                        ? Row(
-                            children: [
-                              Padding(
-                                // Little square
-                                padding: const EdgeInsets.only(right: 5),
-                                child: Container(
-                                  width: 13,
-                                  height: 13,
-                                  decoration: BoxDecoration(
-                                    border: Border.all(color: ACCENT_COLOR),
-                                    borderRadius: BorderRadius.circular(2),
+                        ? Padding(
+                            padding: const EdgeInsets.only(top: 8),
+                            child: Row(
+                              children: [
+                                Padding(
+                                  // Little square
+                                  padding: const EdgeInsets.only(right: 5),
+                                  child: Container(
+                                    width: 13,
+                                    height: 13,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(color: ACCENT_COLOR),
+                                      borderRadius: BorderRadius.circular(2),
+                                    ),
                                   ),
                                 ),
-                              ),
-                              RichText(
-                                text: TextSpan(
-                                  style: TextStyle(
-                                      fontSize: 12,
-                                      color: N.isDarkTheme(context)
-                                          ? Colors.white
-                                          : Colors.black),
-                                  children: [
-                                    TextSpan(
-                                        text: borderedItemNote,
-                                        style: DECLINED_LETTER_STYLE)
-                                  ],
+                                RichText(
+                                  text: TextSpan(
+                                    style: TextStyle(
+                                        fontSize: 12,
+                                        color: N.isDarkTheme(context)
+                                            ? Colors.white
+                                            : Colors.black),
+                                    children: [
+                                      TextSpan(
+                                          text: borderedItemNote,
+                                          style: DECLINED_LETTER_STYLE)
+                                    ],
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           )
                         : Container(),
                   ],
