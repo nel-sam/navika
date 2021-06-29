@@ -244,7 +244,7 @@ final List<Noun> nounWordBank = [
   Noun(
     dictionary: 'pivo',
     tags: [Tags.Drink, Tags.Alcohol, Tags.Thing, Tags.Portable],
-    gender: Genders.Feminine,
+    gender: Genders.Neuter,
     isAnimate: false,
     nominativ: new DeclensionByCount(singular: 'pivo', plural: 'piva'),
     genitiv: new DeclensionByCount(singular: 'piva', plural: 'piva'),

@@ -10,8 +10,11 @@ class InstrumentalDeclensionTable extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final secondEqualColor = Colors.red;
+
     return DeclensionTable(
       showEqualItemNote: true,
+      additionalEqualItemColor: secondEqualColor,
       notes: [AppLocalizations.of(context)!.instrumentalFemSing],
       borderedItemNote: AppLocalizations.of(context)!.sameAsLok,
       masculineSingular: DeclensionTableCell(
@@ -24,6 +27,8 @@ class InstrumentalDeclensionTable extends StatelessWidget {
         ],
       ),
       masculinePlural: DeclensionTableCell(
+        isEqualItem: true,
+        equalItemColor: secondEqualColor,
         children: [
           N.NTextSpan('Lijep'),
           N.NTextSpan('im\n', isItalic: true, color: MASCULINE_COLOR),
@@ -58,6 +63,8 @@ class InstrumentalDeclensionTable extends StatelessWidget {
         ],
       ),
       neuterPlural: DeclensionTableCell(
+        isEqualItem: true,
+        equalItemColor: secondEqualColor,
         children: [
           N.NTextSpan('Vruć'),
           N.NTextSpan('im \n', isItalic: true, color: NEUTER_COLOR),

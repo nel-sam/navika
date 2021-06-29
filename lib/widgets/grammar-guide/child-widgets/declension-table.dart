@@ -15,6 +15,7 @@ class DeclensionTable extends StatelessWidget {
   final DeclensionTableCell neuterPlural;
   final String borderedItemNote;
   final bool showEqualItemNote;
+  final Color additionalEqualItemColor;
   final List<String>? notes;
 
   const DeclensionTable({
@@ -28,6 +29,7 @@ class DeclensionTable extends StatelessWidget {
     this.notes,
     this.borderedItemNote = '',
     this.showEqualItemNote = false,
+    this.additionalEqualItemColor = EQUAL_ITEMS_BORDER_COLOR,
   }) : super(key: key);
 
   String getAsterix(int count) {
@@ -168,6 +170,21 @@ class DeclensionTable extends StatelessWidget {
                               ),
                             ),
                           ),
+                          if (additionalEqualItemColor !=
+                              EQUAL_ITEMS_BORDER_COLOR)
+                            Padding(
+                              // Little square 1
+                              padding: const EdgeInsets.only(right: 5),
+                              child: Container(
+                                width: 13,
+                                height: 13,
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                      color: additionalEqualItemColor),
+                                  borderRadius: BorderRadius.circular(2),
+                                ),
+                              ),
+                            ),
                           RichText(
                             text: TextSpan(
                               style: TextStyle(
@@ -177,9 +194,10 @@ class DeclensionTable extends StatelessWidget {
                                       : Colors.black),
                               children: [
                                 TextSpan(
-                                    text: AppLocalizations.of(context)!
-                                        .mascAndNeutEqual,
-                                    style: DECLINED_LETTER_STYLE)
+                                  text: AppLocalizations.of(context)!
+                                      .equalDeclensions,
+                                  style: DECLINED_LETTER_STYLE,
+                                )
                               ],
                             ),
                           ),
@@ -191,7 +209,7 @@ class DeclensionTable extends StatelessWidget {
                             child: Row(
                               children: [
                                 Padding(
-                                  // Little square
+                                  // Little square 1
                                   padding: const EdgeInsets.only(right: 5),
                                   child: Container(
                                     width: 13,

@@ -12,7 +12,11 @@ class AkuzativDeclensionTable extends StatelessWidget {
   Widget build(BuildContext context) {
     return DeclensionTable(
       borderedItemNote: AppLocalizations.of(context)!.sameAsNom,
-      notes: [AppLocalizations.of(context)!.animateAkuzativ],
+      showEqualItemNote: true,
+      notes: [
+        AppLocalizations.of(context)!.animateAkuzativ,
+        AppLocalizations.of(context)!.assibilation,
+      ],
       masculineSingular: DeclensionTableCell(children: [
         N.NTextSpan('Star'),
         N.NTextSpan('og\n', isItalic: true, color: MASCULINE_COLOR),
@@ -20,19 +24,24 @@ class AkuzativDeclensionTable extends StatelessWidget {
         N.NTextSpan('a', isItalic: true, color: MASCULINE_COLOR),
         N.NTextSpan('*\n'),
       ]),
-      masculinePlural: DeclensionTableCell(children: [
-        N.NTextSpan('Star'),
-        N.NTextSpan('e\n', isItalic: true, color: MASCULINE_COLOR),
-        N.NTextSpan('prijatel'),
-        N.NTextSpan('e', isItalic: true, color: MASCULINE_COLOR),
-      ]),
+      masculinePlural: DeclensionTableCell(
+        isEqualItem: true,
+        children: [
+          N.NTextSpan('Star'),
+          N.NTextSpan('e\n', isItalic: true, color: MASCULINE_COLOR),
+          N.NTextSpan('prijatel'),
+          N.NTextSpan('e', isItalic: true, color: MASCULINE_COLOR),
+        ],
+      ),
       feminineSingular: DeclensionTableCell(children: [
         N.NTextSpan('Moj'),
         N.NTextSpan('u\n', isItalic: true, color: FEMININE_COLOR),
         N.NTextSpan('kuć'),
         N.NTextSpan('u', isItalic: true, color: FEMININE_COLOR),
+        N.NTextSpan('**'),
       ]),
       femininePlural: DeclensionTableCell(
+        isEqualItem: true,
         highlightItem: true,
         children: [
           N.NTextSpan('Moj'),

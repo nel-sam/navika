@@ -46,5 +46,5 @@
   "softLettersOgEg": "A č, ć, đ, dž, š, ž, lj, & nj se agrega 'eg' y no 'og'.",
   "softLettersOmEm": "A č, ć, đ, dž, š, ž, lj, & nj se agrega 'em' y no 'om'.",
   "unselectAll": "Deseleccionar Todos",
-  "mascAndNeutEqual": "Masculino y neutro en singular son iguales"
+  "equalDeclensions": "Estas declinaciones son las mismas"
 }

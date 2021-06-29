@@ -36,6 +36,7 @@ class GrammarGuide extends StatefulWidget {
   _GrammarGuideState createState() => _GrammarGuideState();
 }
 
+// TODO: Add cases similarities map and remove "same as" from individual tables
 class _GrammarGuideState extends State<GrammarGuide> {
   late ScrollController controller;
   late bool isAtTop = false;

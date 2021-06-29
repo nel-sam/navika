@@ -14,15 +14,16 @@ StaticSentenceParts getStaticSentenceParts(
     Noun noun, bool isPlural, Adjective? pronoun, Adjective? adjective) {
   String start = '';
   String end = '';
+  final pron = pronoun != null ? pronoun.nominativ.masculine.singular : '';
 
   if (noun.tags.contains(Tags.Location)) {
     start = 'Idemo u';
   } else if (noun.tags.contains(Tags.Food)) {
     start = N.coinFlip() ? 'Ću jesti' : 'Želi';
-  } else if (pronoun != null && pronoun.nominativ.masculine.singular != 'moj')
+  } else if (pron != 'moj')
     start = N.coinFlip() ? 'Ja vidim' : 'Volim';
   else if (noun.tags.contains(Tags.Portable)) {
-    start = 'Daj mi';
+    start = 'Daj joj';
   } else {
     start = 'Vidimo';
   }

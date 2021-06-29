@@ -6,12 +6,14 @@ class DeclensionTableCell extends StatelessWidget {
   final List<TextSpan> children;
   final bool highlightItem;
   final bool isEqualItem;
+  final Color equalItemColor;
 
   const DeclensionTableCell({
     Key? key,
     required this.children,
     this.highlightItem = false,
     this.isEqualItem = false,
+    this.equalItemColor = EQUAL_ITEMS_BORDER_COLOR,
   }) : super(key: key);
 
   getDecoration() {
@@ -42,8 +44,7 @@ class DeclensionTableCell extends StatelessWidget {
         height: height,
         decoration: isEqualItem
             ? BoxDecoration(
-                border: Border.all(
-                    width: borderWidth, color: EQUAL_ITEMS_BORDER_COLOR),
+                border: Border.all(width: borderWidth, color: equalItemColor),
                 borderRadius: BorderRadius.circular(borderRadius),
               )
             : null,

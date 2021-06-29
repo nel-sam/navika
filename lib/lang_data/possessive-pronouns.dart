@@ -102,7 +102,7 @@ final List<Adjective> possessivePronounWordBank = [
       neuter: new DeclensionByGender(singular: 'svoje', plural: 'svoja'),
     ),
     akuzativAnimate: new Declension(
-      masculine: new DeclensionByGender(singular: 'svojg', plural: 'svoje'),
+      masculine: new DeclensionByGender(singular: 'svojog', plural: 'svoje'),
       feminine: new DeclensionByGender(singular: 'svoju', plural: 'svoje'),
       neuter: new DeclensionByGender(singular: 'svoje', plural: 'svoja'),
     ),
@@ -122,9 +122,9 @@ final List<Adjective> possessivePronounWordBank = [
       neuter: new DeclensionByGender(singular: 'svom', plural: 'svojim'),
     ),
     genitiv: new Declension(
-      masculine: new DeclensionByGender(singular: 'svojg', plural: 'svojih'),
+      masculine: new DeclensionByGender(singular: 'svojog', plural: 'svojih'),
       feminine: new DeclensionByGender(singular: 'svoje', plural: 'svojih'),
-      neuter: new DeclensionByGender(singular: 'svojga', plural: 'svojih'),
+      neuter: new DeclensionByGender(singular: 'svojoga', plural: 'svojih'),
     ),
     vokativ: new Declension(
       masculine: new DeclensionByGender(singular: '', plural: ''),
