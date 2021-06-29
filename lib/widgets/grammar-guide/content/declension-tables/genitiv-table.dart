@@ -8,7 +8,6 @@ import 'package:navika/widgets/grammar-guide/child-widgets/declension-table.dart
 class GenitivDeclensionTable extends StatelessWidget {
   const GenitivDeclensionTable({Key? key}) : super(key: key);
 
-// TODO: Show BOTH borders
   @override
   Widget build(BuildContext context) {
     return DeclensionTable(
