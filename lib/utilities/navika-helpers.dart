@@ -142,8 +142,8 @@ class N {
         .take(BATCH_COUNT)
         .map((PANExerciseItem e) {
       if (e.personalPronoun != null) {
-        final correctPersPron = e.personalPronoun!.getDeclensions(
-            caseType: caseType, isShortForm: e.usePersonalPronounShortForm);
+        final correctPersPron =
+            e.personalPronoun!.getDeclensions(caseType: caseType);
 
         return PANListItem(
           sentenceStarter: e.sentenceStarter,
@@ -269,7 +269,7 @@ class N {
     }
   }
 
-  static String getBitiConjugationForPronoun(String pronoun) {
+  static String getBitiConjugation(String pronoun) {
     switch (pronoun) {
       case 'ja':
         return 'sam';

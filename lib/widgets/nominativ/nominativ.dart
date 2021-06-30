@@ -56,10 +56,7 @@ StaticSentenceParts getPersonalPronounSentenceStaticParts(
     PersonalPronoun personalPronoun, bool isShortForm) {
   String start = '';
   String end = '';
-
-  final verb = N.getBitiConjugationForPronoun(isShortForm
-      ? personalPronoun.nominativ.shortForm
-      : personalPronoun.nominativ.general);
+  final verb = N.getBitiConjugation(personalPronoun.nominativ.forms.first);
 
   if (N.coinFlip()) {
     start = 'To ' + verb;

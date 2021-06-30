@@ -291,6 +291,21 @@ final List<Noun> nounWordBank = [
         new DeclensionByCount(singular: ['bolesti'], plural: ['bolestima']),
   ),
   Noun(
+    dictionary: 'bicikl',
+    tags: [Tags.Vehicle, Tags.Portable, Tags.Thing],
+    gender: Genders.Masculine,
+    isAnimate: false,
+    nominativ: new DeclensionByCount(singular: ['bicikl'], plural: ['bicikli']),
+    genitiv: new DeclensionByCount(singular: ['bicikla'], plural: ['bicikla']),
+    dativ: new DeclensionByCount(singular: ['biciklu'], plural: ['biciklima']),
+    akuzativ: new DeclensionByCount(singular: ['bicikl'], plural: ['bicikle']),
+    lokativ:
+        new DeclensionByCount(singular: ['biciklu'], plural: ['biciklima']),
+    vokativ: new DeclensionByCount(singular: ['bicikle'], plural: ['bicikli']),
+    instrumental:
+        new DeclensionByCount(singular: ['biciklom'], plural: ['biciklima']),
+  ),
+  Noun(
     dictionary: 'obitelj',
     tags: [Tags.Human, Tags.Group],
     gender: Genders.Feminine,
@@ -307,22 +322,7 @@ final List<Noun> nounWordBank = [
         new DeclensionByCount(singular: ['obitelji'], plural: ['obiteljima']),
     vokativ:
         new DeclensionByCount(singular: ['obitelji'], plural: ['obitelji']),
-    instrumental:
-        new DeclensionByCount(singular: ['obitelji'], plural: ['obiteljima']),
-  ),
-  Noun(
-    dictionary: 'bicikl',
-    tags: [Tags.Vehicle, Tags.Portable, Tags.Thing],
-    gender: Genders.Masculine,
-    isAnimate: false,
-    nominativ: new DeclensionByCount(singular: ['bicikl'], plural: ['bicikli']),
-    genitiv: new DeclensionByCount(singular: ['bicikla'], plural: ['bicikla']),
-    dativ: new DeclensionByCount(singular: ['biciklu'], plural: ['biciklima']),
-    akuzativ: new DeclensionByCount(singular: ['bicikl'], plural: ['bicikle']),
-    lokativ:
-        new DeclensionByCount(singular: ['biciklu'], plural: ['biciklima']),
-    vokativ: new DeclensionByCount(singular: ['bicikle'], plural: ['bicikli']),
-    instrumental:
-        new DeclensionByCount(singular: ['biciklom'], plural: ['biciklima']),
+    instrumental: new DeclensionByCount(
+        singular: ['obitelji', 'obitelju'], plural: ['obitelju']),
   ),
 ];

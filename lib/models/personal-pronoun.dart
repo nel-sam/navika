@@ -32,35 +32,23 @@ class PersonalPronoun {
     required this.vokativ,
   });
 
-  List<String> getDeclensions(
-      {required CaseTypeEnum caseType, required bool isShortForm}) {
-    DeclensionPronoun declension;
-
+  List<String> getDeclensions({required CaseTypeEnum caseType}) {
     switch (caseType) {
       case CaseTypeEnum.Akuzativ:
-        declension = this.akuzativ;
-        break;
+        return this.akuzativ.forms;
       case CaseTypeEnum.Dativ:
-        declension = this.dativ;
-        break;
+        return this.dativ.forms;
       case CaseTypeEnum.Genitiv:
-        declension = this.genitiv;
-        break;
+        return this.genitiv.forms;
       case CaseTypeEnum.Instrumental:
-        declension = this.instrumental;
-        break;
+        return this.instrumental.forms;
       case CaseTypeEnum.Lokativ:
-        declension = this.lokativ;
-        break;
+        return this.lokativ.forms;
       case CaseTypeEnum.Nominativ:
-        declension = this.nominativ;
-        break;
+        return this.nominativ.forms;
       case CaseTypeEnum.Vokativ:
-        declension = this.vokativ;
-        break;
+        return this.vokativ.forms;
     }
-
-    return isShortForm ? [declension.shortForm] : [declension.general];
   }
 
   String getRandomDeclension(List<String> avoid) {
@@ -75,20 +63,13 @@ class PersonalPronoun {
   List<String> getUniqueDeclensions() {
     return N.shuffleList([
       this.dictionary,
-      this.nominativ.general,
-      this.akuzativ.general,
-      this.instrumental.general,
-      this.lokativ.general,
-      this.dativ.general,
-      this.genitiv.general,
-      this.vokativ.general,
-      this.nominativ.shortForm,
-      this.akuzativ.shortForm,
-      this.instrumental.shortForm,
-      this.lokativ.shortForm,
-      this.dativ.shortForm,
-      this.genitiv.shortForm,
-      this.vokativ.shortForm,
+      ...this.nominativ.forms,
+      ...this.akuzativ.forms,
+      ...this.instrumental.forms,
+      ...this.lokativ.forms,
+      ...this.dativ.forms,
+      ...this.genitiv.forms,
+      ...this.vokativ.forms,
     ].toSet().toList().where((element) => element.length > 0).toList());
   }
 }

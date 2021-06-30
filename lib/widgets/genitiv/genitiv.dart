@@ -39,7 +39,7 @@ StaticSentenceParts getPersonalPronounSentenceStaticParts(
     PersonalPronoun personalPronoun, bool isShortForm) {
   String start = '';
   String end = '';
-  final actualValue = personalPronoun.nominativ.general;
+  final actualValue = personalPronoun.nominativ.forms.first;
 
   if (actualValue != 'on') {
     start = N.coinFlip() ? 'Nisam spavala zbog' : 'On pleše';

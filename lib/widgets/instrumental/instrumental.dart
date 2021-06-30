@@ -70,7 +70,7 @@ String getsSa(Noun noun, Adjective? pronoun, Adjective? adjective) {
 
 StaticSentenceParts getPersonalPronounSentenceStaticParts(
     PersonalPronoun personalPronoun, bool isShortForm) {
-  final actualValue = personalPronoun.nominativ.general;
+  final actualValue = personalPronoun.nominativ.forms.first;
   String start = '';
   String end = '';
 

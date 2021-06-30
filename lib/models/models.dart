@@ -88,16 +88,16 @@ class WordBank {
 }
 
 class DeclensionPronoun {
-  final String general;
-  late String shortForm;
+  final List<String> forms;
+  //late String shortForm;
 
   DeclensionPronoun({
-    required this.general,
-    this.shortForm = '',
+    required this.forms,
+    //this.shortForm = '',
   }) {
-    if (this.shortForm == '') {
-      this.shortForm = this.general;
-    }
+    // if (this.shortForm == '') {
+    //   this.shortForm = this.general;
+    //}
   }
 }
 
