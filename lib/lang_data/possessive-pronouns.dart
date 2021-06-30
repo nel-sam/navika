@@ -218,4 +218,105 @@ final List<Adjective> possessivePronounWordBank = [
       neuter: new DeclensionByGender(singular: '', plural: ''),
     ),
   ),
+  Adjective(
+    dictionary: 'njegov',
+    nominativ: new Declension(
+      masculine: new DeclensionByGender(singular: 'njegov', plural: 'njegovi'),
+      feminine: new DeclensionByGender(singular: 'njegova', plural: 'njegove'),
+      neuter: new DeclensionByGender(singular: 'njegov', plural: 'njegovi'),
+    ),
+    akuzativ: new Declension(
+      masculine: new DeclensionByGender(singular: 'njegov', plural: 'njegove'),
+      feminine: new DeclensionByGender(singular: 'njegovu', plural: 'njegove'),
+      neuter: new DeclensionByGender(singular: 'njegovo', plural: 'njegova'),
+    ),
+    akuzativAnimate: new Declension(
+      masculine:
+          new DeclensionByGender(singular: 'njegovog', plural: 'njegove'),
+      feminine: new DeclensionByGender(singular: 'njegovu', plural: 'njegove'),
+      neuter: new DeclensionByGender(singular: 'njegovo', plural: 'njegova'),
+    ),
+    instrumental: new Declension(
+      masculine:
+          new DeclensionByGender(singular: 'njegovim', plural: 'njegovim'),
+      feminine:
+          new DeclensionByGender(singular: 'njegovom', plural: 'njegovim'),
+      neuter: new DeclensionByGender(singular: 'njegovim', plural: 'njegovim'),
+    ),
+    lokativ: new Declension(
+      masculine:
+          new DeclensionByGender(singular: 'njegovom', plural: 'njegovim'),
+      feminine:
+          new DeclensionByGender(singular: 'njegovoj', plural: 'njegovim'),
+      neuter: new DeclensionByGender(singular: 'njegovom', plural: 'njegovim'),
+    ),
+    dativ: new Declension(
+      masculine:
+          new DeclensionByGender(singular: 'njegovom', plural: 'njegovim'),
+      feminine:
+          new DeclensionByGender(singular: 'njegovoj', plural: 'njegovim'),
+      neuter: new DeclensionByGender(singular: 'njegovom', plural: 'njegovim'),
+    ),
+    genitiv: new Declension(
+      masculine:
+          new DeclensionByGender(singular: 'njegovog', plural: 'njegovih'),
+      feminine: new DeclensionByGender(singular: 'njegove', plural: 'njegovih'),
+      neuter: new DeclensionByGender(singular: 'njegovog', plural: 'njegovih'),
+    ),
+    vokativ: new Declension(
+      masculine: new DeclensionByGender(singular: '', plural: ''),
+      feminine: new DeclensionByGender(singular: '', plural: ''),
+      neuter: new DeclensionByGender(singular: '', plural: ''),
+    ),
+  ),
+  Adjective(
+    dictionary: 'nju',
+    nominativ: new Declension(
+      masculine: new DeclensionByGender(singular: 'njezin', plural: 'njezini'),
+      feminine: new DeclensionByGender(singular: 'njezina', plural: 'njezine'),
+      neuter: new DeclensionByGender(singular: 'njezin', plural: 'njezini'),
+    ),
+    akuzativ: new Declension(
+      masculine: new DeclensionByGender(singular: 'njezin', plural: 'njezine'),
+      feminine: new DeclensionByGender(singular: 'njezinu', plural: 'njezine'),
+      neuter: new DeclensionByGender(singular: 'njezino', plural: 'njezina'),
+    ),
+    akuzativAnimate: new Declension(
+      masculine: new DeclensionByGender(singular: 'njezina', plural: 'njezine'),
+      feminine: new DeclensionByGender(singular: 'njezinu', plural: 'njezine'),
+      neuter: new DeclensionByGender(singular: 'njezino', plural: 'njezina'),
+    ),
+    instrumental: new Declension(
+      masculine:
+          new DeclensionByGender(singular: 'njezinim', plural: 'njezinim'),
+      feminine: new DeclensionByGender(
+          singular: 'njenom', plural: 'njezinim'), // njenom short form?
+      neuter: new DeclensionByGender(singular: 'njezinim', plural: 'njezinim'),
+    ),
+    lokativ: new Declension(
+      masculine:
+          new DeclensionByGender(singular: 'njezinim', plural: 'njezinim'),
+      feminine: new DeclensionByGender(
+          singular: 'njezinu', plural: 'njezinim'), // njezinoj short form?
+      neuter: new DeclensionByGender(singular: 'njezinim', plural: 'njezinim'),
+    ),
+    dativ: new Declension(
+      masculine:
+          new DeclensionByGender(singular: 'njezinim', plural: 'njezinim'),
+      feminine: new DeclensionByGender(
+          singular: 'njezinu', plural: 'njezinim'), // njezinoj short form?
+      neuter: new DeclensionByGender(singular: 'njezinim', plural: 'njezinim'),
+    ),
+    genitiv: new Declension(
+      masculine:
+          new DeclensionByGender(singular: 'njezinog', plural: 'njezinih'),
+      feminine: new DeclensionByGender(singular: 'njezine', plural: 'njezinih'),
+      neuter: new DeclensionByGender(singular: 'njezinog', plural: 'njezinih'),
+    ),
+    vokativ: new Declension(
+      masculine: new DeclensionByGender(singular: '', plural: ''),
+      feminine: new DeclensionByGender(singular: '', plural: ''),
+      neuter: new DeclensionByGender(singular: '', plural: ''),
+    ),
+  ),
 ];
