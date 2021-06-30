@@ -597,5 +597,56 @@ final List<Adjective> possessivePronounWordBank = [
       neuter: new DeclensionByGender(singular: [''], plural: ['']),
     ),
   ),
-  // TODO: vaš, onaj
+  Adjective(
+    dictionary: 'onaj',
+    nominativ: new Declension(
+      masculine: new DeclensionByGender(singular: ['onaj'], plural: ['oni']),
+      feminine: new DeclensionByGender(singular: ['ona'], plural: ['one']),
+      neuter: new DeclensionByGender(singular: ['ono'], plural: ['ona']),
+    ),
+    akuzativ: new Declension(
+      masculine: new DeclensionByGender(singular: ['onaj'], plural: ['one']),
+      feminine: new DeclensionByGender(singular: ['onu'], plural: ['one']),
+      neuter: new DeclensionByGender(singular: ['ono'], plural: ['ona']),
+    ),
+    akuzativAnimate: new Declension(
+      masculine:
+          new DeclensionByGender(singular: ['onoga', 'onog'], plural: ['one']),
+      feminine: new DeclensionByGender(singular: ['onu'], plural: ['one']),
+      neuter: new DeclensionByGender(singular: ['ono'], plural: ['ona']),
+    ),
+    instrumental: new Declension(
+      masculine:
+          new DeclensionByGender(singular: ['onime', 'onim'], plural: ['onim']),
+      feminine: new DeclensionByGender(singular: ['onom'], plural: ['onim']),
+      neuter:
+          new DeclensionByGender(singular: ['onime', 'onim'], plural: ['onim']),
+    ),
+    lokativ: new Declension(
+      masculine: new DeclensionByGender(
+          singular: ['onome', 'onomu', 'onom'], plural: ['onim']),
+      feminine: new DeclensionByGender(singular: ['onoj'], plural: ['onim']),
+      neuter: new DeclensionByGender(
+          singular: ['onome', 'onomu', 'onom'], plural: ['onim']),
+    ),
+    dativ: new Declension(
+      masculine: new DeclensionByGender(
+          singular: ['onome', 'onomu', 'onom'], plural: ['onim']),
+      feminine: new DeclensionByGender(singular: ['onoj'], plural: ['onim']),
+      neuter: new DeclensionByGender(
+          singular: ['onome', 'onomu', 'onom'], plural: ['onim']),
+    ),
+    genitiv: new Declension(
+      masculine:
+          new DeclensionByGender(singular: ['onoga', 'onog'], plural: ['onih']),
+      feminine: new DeclensionByGender(singular: ['one'], plural: ['onih']),
+      neuter:
+          new DeclensionByGender(singular: ['onoga', 'onog'], plural: ['onih']),
+    ),
+    vokativ: new Declension(
+      masculine: new DeclensionByGender(singular: [''], plural: ['']),
+      feminine: new DeclensionByGender(singular: [''], plural: ['']),
+      neuter: new DeclensionByGender(singular: [''], plural: ['']),
+    ),
+  ),
 ];
