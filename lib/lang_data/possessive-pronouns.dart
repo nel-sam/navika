@@ -386,6 +386,114 @@ final List<Adjective> possessivePronounWordBank = [
     ),
   ),
   Adjective(
+    dictionary: 'naš',
+    nominativ: new Declension(
+      masculine: new DeclensionByGender(singular: ['naš'], plural: ['naši']),
+      feminine: new DeclensionByGender(singular: ['naša'], plural: ['naše']),
+      neuter: new DeclensionByGender(singular: ['naše'], plural: ['naša']),
+    ),
+    akuzativ: new Declension(
+      masculine: new DeclensionByGender(singular: ['naš'], plural: ['naše']),
+      feminine: new DeclensionByGender(singular: ['našu'], plural: ['naše']),
+      neuter: new DeclensionByGender(singular: ['naše'], plural: ['naša']),
+    ),
+    akuzativAnimate: new Declension(
+      masculine: new DeclensionByGender(singular: ['našega'], plural: ['naše']),
+      feminine: new DeclensionByGender(singular: ['našu'], plural: ['naše']),
+      neuter: new DeclensionByGender(singular: ['naše'], plural: ['naša']),
+    ),
+    instrumental: new Declension(
+      masculine: new DeclensionByGender(
+          singular: ['našim'], plural: ['našima', 'našim']),
+      feminine: new DeclensionByGender(
+          singular: ['našom'], plural: ['našima', 'našim']),
+      neuter: new DeclensionByGender(
+          singular: ['našim'], plural: ['našima', 'našim']),
+    ),
+    lokativ: new Declension(
+      masculine: new DeclensionByGender(
+          singular: ['našemu', 'našem'], plural: ['našima', 'našim']),
+      feminine: new DeclensionByGender(
+          singular: ['našoj'], plural: ['našima', 'našim']),
+      neuter: new DeclensionByGender(
+          singular: ['našemu', 'našem'], plural: ['našima', 'našim']),
+    ),
+    dativ: new Declension(
+      masculine: new DeclensionByGender(
+          singular: ['našemu', 'našem'], plural: ['našima', 'našim']),
+      feminine: new DeclensionByGender(
+          singular: ['našoj'], plural: ['našima', 'našim']),
+      neuter: new DeclensionByGender(
+          singular: ['našemu', 'našem'], plural: ['našima', 'našim']),
+    ),
+    genitiv: new Declension(
+      masculine: new DeclensionByGender(
+          singular: ['našega', 'našeg'], plural: ['naših']),
+      feminine: new DeclensionByGender(singular: ['naše'], plural: ['naših']),
+      neuter: new DeclensionByGender(
+          singular: ['našega', 'našeg'], plural: ['naših']),
+    ),
+    vokativ: new Declension(
+      masculine: new DeclensionByGender(singular: ['naš'], plural: ['naši']),
+      feminine: new DeclensionByGender(singular: ['naša'], plural: ['naše']),
+      neuter: new DeclensionByGender(singular: ['naše'], plural: ['naša']),
+    ),
+  ),
+    Adjective(
+    dictionary: 'vaš',
+    nominativ: new Declension(
+      masculine: new DeclensionByGender(singular: ['vaš'], plural: ['vaši']),
+      feminine: new DeclensionByGender(singular: ['vaša'], plural: ['vaše']),
+      neuter: new DeclensionByGender(singular: ['vaše'], plural: ['vaša']),
+    ),
+    akuzativ: new Declension(
+      masculine: new DeclensionByGender(singular: ['vaš'], plural: ['vaše']),
+      feminine: new DeclensionByGender(singular: ['vašu'], plural: ['vaše']),
+      neuter: new DeclensionByGender(singular: ['vaše'], plural: ['vaša']),
+    ),
+    akuzativAnimate: new Declension(
+      masculine: new DeclensionByGender(singular: ['vašega'], plural: ['vaše']),
+      feminine: new DeclensionByGender(singular: ['vašu'], plural: ['vaše']),
+      neuter: new DeclensionByGender(singular: ['vaše'], plural: ['vaša']),
+    ),
+    instrumental: new Declension(
+      masculine: new DeclensionByGender(
+          singular: ['vašim'], plural: ['vašima', 'vašim']),
+      feminine: new DeclensionByGender(
+          singular: ['vašom'], plural: ['vašima', 'vašim']),
+      neuter: new DeclensionByGender(
+          singular: ['vašim'], plural: ['vašima', 'vašim']),
+    ),
+    lokativ: new Declension(
+      masculine: new DeclensionByGender(
+          singular: ['vašemu', 'vašem'], plural: ['vašima', 'vašim']),
+      feminine: new DeclensionByGender(
+          singular: ['vašoj'], plural: ['vašima', 'vašim']),
+      neuter: new DeclensionByGender(
+          singular: ['vašemu', 'vašem'], plural: ['vašima', 'vašim']),
+    ),
+    dativ: new Declension(
+      masculine: new DeclensionByGender(
+          singular: ['vašemu', 'vašem'], plural: ['vašima', 'vašim']),
+      feminine: new DeclensionByGender(
+          singular: ['vašoj'], plural: ['vašima', 'vašim']),
+      neuter: new DeclensionByGender(
+          singular: ['vašemu', 'vašem'], plural: ['vašima', 'vašim']),
+    ),
+    genitiv: new Declension(
+      masculine: new DeclensionByGender(
+          singular: ['vašega', 'vašeg'], plural: ['vaših']),
+      feminine: new DeclensionByGender(singular: ['vaše'], plural: ['vaših']),
+      neuter: new DeclensionByGender(
+          singular: ['vašega', 'vašeg'], plural: ['vaših']),
+    ),
+    vokativ: new Declension(
+      masculine: new DeclensionByGender(singular: ['vaš'], plural: ['vaši']),
+      feminine: new DeclensionByGender(singular: ['vaša'], plural: ['vaše']),
+      neuter: new DeclensionByGender(singular: ['vaše'], plural: ['vaša']),
+    ),
+  ),
+  Adjective(
     dictionary: 'ovaj',
     nominativ: new Declension(
       masculine: new DeclensionByGender(singular: ['ovaj'], plural: ['ovi']),
@@ -489,5 +597,5 @@ final List<Adjective> possessivePronounWordBank = [
       neuter: new DeclensionByGender(singular: [''], plural: ['']),
     ),
   ),
-  // TODO: naš, vaš, onaj
+  // TODO: vaš, onaj
 ];
