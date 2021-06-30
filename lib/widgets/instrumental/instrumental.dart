@@ -18,7 +18,7 @@ StaticSentenceParts getStaticSentenceParts(
 ) {
   String start = '';
   String end = '';
-  String possPronoun = pronoun!.nominativ.masculine.singular;
+  String possPronouns = pronoun!.nominativ.masculine.singular.first;
   String sSa = getsSa(
     noun,
     pronoun,
@@ -26,20 +26,20 @@ StaticSentenceParts getStaticSentenceParts(
   );
 
   if (noun.tags.contains(Tags.BodyPart)) {
-    start = possPronoun == 'moj' ? 'Ovo ti dobro ide s' : 'Ovo mi dobro ide s';
+    start = possPronouns == 'moj' ? 'Ovo ti dobro ide s' : 'Ovo mi dobro ide s';
   } else if (noun.tags.contains(Tags.Vehicle)) {
-    start = possPronoun == 'moj' ? 'Putujemo' : 'Putujem';
+    start = possPronouns == 'moj' ? 'Putujemo' : 'Putujem';
   } else if (noun.tags.contains(Tags.Human) ||
       noun.tags.contains(Tags.Portable)) {
-    if (possPronoun != 'tvoj')
+    if (possPronouns != 'tvoj')
       start = N.coinFlip() ? 'Ti ideš $sSa' : 'Trebaš da ideš $sSa';
     else
       start = 'Idemo $sSa';
   } else if (noun.tags.contains(Tags.Health)) {
-    start = possPronoun == 'moj' ? 'Putovao je $sSa' : 'Putovao sam $sSa';
+    start = possPronouns == 'moj' ? 'Putovao je $sSa' : 'Putovao sam $sSa';
   } else if (noun.tags.contains(Tags.Location)) {
     start = '';
-  } else if (possPronoun == 'moj')
+  } else if (possPronouns == 'moj')
     start = 'Ideš $sSa';
   else
     start = 'Idem $sSa';
@@ -70,9 +70,7 @@ String getsSa(Noun noun, Adjective? pronoun, Adjective? adjective) {
 
 StaticSentenceParts getPersonalPronounSentenceStaticParts(
     PersonalPronoun personalPronoun, bool isShortForm) {
-  final actualValue = isShortForm
-      ? personalPronoun.nominativ.shortForm
-      : personalPronoun.nominativ.general;
+  final actualValue = personalPronoun.nominativ.general;
   String start = '';
   String end = '';
 

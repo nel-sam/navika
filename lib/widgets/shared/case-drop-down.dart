@@ -4,14 +4,14 @@ import 'package:navika/utilities/navika-helpers.dart';
 
 class CaseDropDown extends StatelessWidget {
   final String activeValue;
-  final String correctValue;
+  final List<String> correctValues;
   final Function(String) onChanged;
   final List<DropdownMenuItem<String>> dropDownOptions;
 
   const CaseDropDown(
       {Key? key,
       required this.activeValue,
-      required this.correctValue,
+      required this.correctValues,
       required this.onChanged,
       required this.dropDownOptions})
       : super(key: key);
@@ -27,7 +27,8 @@ class CaseDropDown extends StatelessWidget {
       iconSize: 0,
       underline: Container(
         height: 1,
-        color: activeValue == correctValue ? CORRECT_COLOR : WRONG_COLOR,
+        color:
+            correctValues.contains(activeValue) ? CORRECT_COLOR : WRONG_COLOR,
       ),
       onChanged: (String? newVal) {
         if (newVal != null) {

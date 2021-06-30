@@ -52,7 +52,7 @@ class WordBank {
     );
 
     final svoj = result.possessivePronouns
-        .firstWhere((e) => e.nominativ.masculine.singular == toFilter);
+        .firstWhere((e) => e.nominativ.masculine.singular.first == toFilter);
     result.possessivePronouns.remove(svoj);
 
     return result;
@@ -102,8 +102,8 @@ class DeclensionPronoun {
 }
 
 class DeclensionByCount {
-  final String singular;
-  final String plural;
+  final List<String> singular;
+  final List<String> plural;
 
   DeclensionByCount({
     required this.singular,
@@ -124,8 +124,8 @@ class Declension {
 }
 
 class DeclensionByGender {
-  final String singular;
-  final String plural;
+  final List<String> singular;
+  final List<String> plural;
 
   DeclensionByGender({
     required this.singular,

@@ -32,7 +32,7 @@ class PersonalPronoun {
     required this.vokativ,
   });
 
-  String getDeclension(
+  List<String> getDeclensions(
       {required CaseTypeEnum caseType, required bool isShortForm}) {
     DeclensionPronoun declension;
 
@@ -60,12 +60,13 @@ class PersonalPronoun {
         break;
     }
 
-    return isShortForm ? declension.shortForm : declension.general;
+    return isShortForm ? [declension.shortForm] : [declension.general];
   }
 
-  String getRandomDeclension(String avoid) {
-    final declensions = getUniqueDeclensions();
-    declensions.remove(avoid);
+  String getRandomDeclension(List<String> avoid) {
+    final List<String> declensions = getUniqueDeclensions();
+    declensions.removeWhere((d) => avoid.contains(d));
+
     final random = new Random();
     var index = random.nextInt(declensions.length - 1);
     return declensions[index];

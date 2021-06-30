@@ -35,9 +35,7 @@ StaticSentenceParts getStaticSentenceParts(
 
 StaticSentenceParts getPersonalPronounSentenceStaticParts(
     PersonalPronoun personalPronoun, bool isShortForm) {
-  final actualValue = isShortForm
-      ? personalPronoun.nominativ.shortForm
-      : personalPronoun.nominativ.general;
+  final actualValue = personalPronoun.nominativ.general;
   String start = '';
   String end = '';
 

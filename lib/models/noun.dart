@@ -32,7 +32,7 @@ class Noun {
     required this.vokativ,
   });
 
-  String getDeclension(bool isPlural, CaseTypeEnum caseType) {
+  List<String> getDeclensions(bool isPlural, CaseTypeEnum caseType) {
     DeclensionByCount declension;
 
     switch (caseType) {
@@ -62,9 +62,9 @@ class Noun {
     return isPlural ? declension.plural : declension.singular;
   }
 
-  String getRandomDeclension(String avoid) {
+  String getRandomDeclension(List<String> avoid) {
     final declensions = getUniqueDeclensions();
-    declensions.remove(avoid);
+    declensions.removeWhere((d) => avoid.contains(d));
     final random = new Random();
     var index = random.nextInt(declensions.length - 1);
     return declensions[index];
@@ -73,20 +73,20 @@ class Noun {
   List<String> getUniqueDeclensions() {
     return N.shuffleList([
       this.dictionary,
-      this.nominativ.singular,
-      this.akuzativ.singular,
-      this.instrumental.singular,
-      this.lokativ.singular,
-      this.dativ.singular,
-      this.genitiv.singular,
-      this.vokativ.singular,
-      this.nominativ.plural,
-      this.akuzativ.plural,
-      this.instrumental.plural,
-      this.lokativ.plural,
-      this.dativ.plural,
-      this.genitiv.plural,
-      this.vokativ.plural,
+      ...this.nominativ.singular,
+      ...this.akuzativ.singular,
+      ...this.instrumental.singular,
+      ...this.lokativ.singular,
+      ...this.dativ.singular,
+      ...this.genitiv.singular,
+      ...this.vokativ.singular,
+      ...this.nominativ.plural,
+      ...this.akuzativ.plural,
+      ...this.instrumental.plural,
+      ...this.lokativ.plural,
+      ...this.dativ.plural,
+      ...this.genitiv.plural,
+      ...this.vokativ.plural,
     ].toSet().toList().where((element) => element.length > 0).toList());
   }
 }

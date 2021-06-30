@@ -116,7 +116,7 @@ class N {
         bank.nouns.forEach((noun) {
           final includePossPronoun = N.coinFlip();
           final includeAdjective = N.coinFlip();
-          final isPlural = noun.nominativ.plural != '' && N.coinFlip();
+          final isPlural = noun.nominativ.plural.first != '' && N.coinFlip();
           final staticParts =
               getStaticSentenceParts(noun, isPlural, possPronoun, adj);
 
@@ -142,15 +142,15 @@ class N {
         .take(BATCH_COUNT)
         .map((PANExerciseItem e) {
       if (e.personalPronoun != null) {
-        final correctPersonalPronounValue = e.personalPronoun!.getDeclension(
+        final correctPersPron = e.personalPronoun!.getDeclensions(
             caseType: caseType, isShortForm: e.usePersonalPronounShortForm);
 
         return PANListItem(
           sentenceStarter: e.sentenceStarter,
           sentenceEnder: e.sentenceEnder,
-          correctPersonalPronounValue: correctPersonalPronounValue,
-          activePersonalPronounValue: e.personalPronoun!
-              .getRandomDeclension(correctPersonalPronounValue),
+          correctPersProns: correctPersPron,
+          activePersPron:
+              e.personalPronoun!.getRandomDeclension(correctPersPron),
           isPlural: e.isPlural,
           gender: e.gender,
           personalPronoun: e.personalPronoun!,
@@ -159,28 +159,27 @@ class N {
 
       final hasPP = e.pronoun != null;
       final hasAdj = e.adjective != null;
-      final correctNounValue = e.noun!.getDeclension(e.isPlural, caseType);
-      final correctPronounValue = hasPP
+      final correctNounValue = e.noun!.getDeclensions(e.isPlural, caseType);
+      final List<String> correctPron = hasPP
           ? e.pronoun!
-              .getDeclension(e.gender, e.isPlural, caseType, e.noun!.isAnimate)
-          : '';
-      final correctAdjValue = hasAdj
+              .getDeclensions(e.gender, e.isPlural, caseType, e.noun!.isAnimate)
+          : [''];
+      final List<String> correctAdj = hasAdj
           ? e.adjective!
-              .getDeclension(e.gender, e.isPlural, caseType, e.noun!.isAnimate)
-          : '';
+              .getDeclensions(e.gender, e.isPlural, caseType, e.noun!.isAnimate)
+          : [''];
 
       return PANListItem(
           sentenceStarter: e.sentenceStarter,
           sentenceEnder: e.sentenceEnder,
-          correctPossPronounValue: correctPronounValue,
-          correctAdjValue: correctAdjValue,
-          correctNounValue: correctNounValue,
+          correctPossProns: correctPron,
+          correctAdjs: correctAdj,
+          correctNouns: correctNounValue,
           adjective: hasAdj ? e.adjective! : null,
-          activePossPronounValue:
-              hasPP ? e.pronoun!.getRandomDeclension(correctPronounValue) : '',
-          activeAdjValue:
-              hasAdj ? e.adjective!.getRandomDeclension(correctAdjValue) : '',
-          activeNounValue: e.noun!.getRandomDeclension(correctNounValue),
+          activePossPron:
+              hasPP ? e.pronoun!.getRandomDeclension(correctPron) : '',
+          activeAdj: hasAdj ? e.adjective!.getRandomDeclension(correctAdj) : '',
+          activeNoun: e.noun!.getRandomDeclension(correctNounValue),
           isPlural: e.isPlural,
           possPronoun: hasPP ? e.pronoun! : null,
           gender: e.gender,
