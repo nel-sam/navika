@@ -15,7 +15,8 @@ final List<Adjective> possessivePronounWordBank = [
       neuter: new DeclensionByGender(singular: ['moje'], plural: ['moja']),
     ),
     akuzativAnimate: new Declension(
-      masculine: new DeclensionByGender(singular: ['mog'], plural: ['moje']),
+      masculine:
+          new DeclensionByGender(singular: ['mojeg', 'mog'], plural: ['moje']),
       feminine: new DeclensionByGender(singular: ['moju'], plural: ['moje']),
       neuter: new DeclensionByGender(singular: ['moje'], plural: ['moja']),
     ),
@@ -25,19 +26,25 @@ final List<Adjective> possessivePronounWordBank = [
       neuter: new DeclensionByGender(singular: ['mojim'], plural: ['mojim']),
     ),
     lokativ: new Declension(
-      masculine: new DeclensionByGender(singular: ['mom'], plural: ['mojim']),
+      masculine:
+          new DeclensionByGender(singular: ['mojom', 'mom'], plural: ['mojim']),
       feminine: new DeclensionByGender(singular: ['mojoj'], plural: ['mojim']),
-      neuter: new DeclensionByGender(singular: ['mom'], plural: ['mojim']),
+      neuter:
+          new DeclensionByGender(singular: ['mojom', 'mom'], plural: ['mojim']),
     ),
     dativ: new Declension(
-      masculine: new DeclensionByGender(singular: ['mom'], plural: ['mojim']),
+      masculine:
+          new DeclensionByGender(singular: ['mojom', 'mom'], plural: ['mojim']),
       feminine: new DeclensionByGender(singular: ['mojoj'], plural: ['mojim']),
-      neuter: new DeclensionByGender(singular: ['mom'], plural: ['mojim']),
+      neuter:
+          new DeclensionByGender(singular: ['mojom', 'mom'], plural: ['mojim']),
     ),
     genitiv: new Declension(
-      masculine: new DeclensionByGender(singular: ['mog'], plural: ['mojih']),
+      masculine:
+          new DeclensionByGender(singular: ['mojeg', 'mog'], plural: ['mojih']),
       feminine: new DeclensionByGender(singular: ['moje'], plural: ['mojih']),
-      neuter: new DeclensionByGender(singular: ['moga'], plural: ['mojih']),
+      neuter: new DeclensionByGender(
+          singular: ['mojega', 'moga'], plural: ['mojih']),
     ),
     vokativ: new Declension(
       masculine: new DeclensionByGender(singular: [''], plural: ['']),
@@ -59,7 +66,8 @@ final List<Adjective> possessivePronounWordBank = [
     ),
     akuzativAnimate: new Declension(
       // TODO: Support multiple correct answers (tvog/tvojog)
-      masculine: new DeclensionByGender(singular: ['tvog'], plural: ['tvoje']),
+      masculine: new DeclensionByGender(
+          singular: ['tvojog', 'tvog'], plural: ['tvoje']),
       feminine: new DeclensionByGender(singular: ['tvoju'], plural: ['tvoje']),
       neuter: new DeclensionByGender(singular: ['tvoje'], plural: ['tvoja']),
     ),
@@ -83,7 +91,8 @@ final List<Adjective> possessivePronounWordBank = [
       neuter: new DeclensionByGender(singular: ['tvom'], plural: ['tvojim']),
     ),
     genitiv: new Declension(
-      masculine: new DeclensionByGender(singular: ['tvog'], plural: ['tvojih']),
+      masculine: new DeclensionByGender(
+          singular: ['tvojog', 'tvog'], plural: ['tvojih']),
       feminine: new DeclensionByGender(singular: ['tvoje'], plural: ['tvojih']),
       neuter: new DeclensionByGender(singular: ['tvoga'], plural: ['tvojih']),
     ),
@@ -114,20 +123,25 @@ final List<Adjective> possessivePronounWordBank = [
     instrumental: new Declension(
       masculine:
           new DeclensionByGender(singular: ['svojim'], plural: ['svojim']),
-      feminine: new DeclensionByGender(singular: ['svom'], plural: ['svojim']),
+      feminine: new DeclensionByGender(
+          singular: ['svojom', 'svom'], plural: ['svojim']),
       neuter: new DeclensionByGender(singular: ['svojim'], plural: ['svojim']),
     ),
     lokativ: new Declension(
-      masculine: new DeclensionByGender(singular: ['svom'], plural: ['svojim']),
+      masculine: new DeclensionByGender(
+          singular: ['svojom', 'svom'], plural: ['svojim']),
       feminine:
           new DeclensionByGender(singular: ['svojoj'], plural: ['svojim']),
-      neuter: new DeclensionByGender(singular: ['svom'], plural: ['svojim']),
+      neuter: new DeclensionByGender(
+          singular: ['svojom', 'svom'], plural: ['svojim']),
     ),
     dativ: new Declension(
-      masculine: new DeclensionByGender(singular: ['svom'], plural: ['svojim']),
+      masculine: new DeclensionByGender(
+          singular: ['svojom', 'svom'], plural: ['svojim']),
       feminine:
           new DeclensionByGender(singular: ['svojoj'], plural: ['svojim']),
-      neuter: new DeclensionByGender(singular: ['svom'], plural: ['svojim']),
+      neuter: new DeclensionByGender(
+          singular: ['svojom', 'svom'], plural: ['svojim']),
     ),
     genitiv: new Declension(
       masculine:
@@ -160,18 +174,23 @@ final List<Adjective> possessivePronounWordBank = [
     ),
     instrumental: new Declension(
       masculine: new DeclensionByGender(singular: ['ovim'], plural: ['ovim']),
-      feminine: new DeclensionByGender(singular: ['ovom'], plural: ['ovim']),
+      feminine: new DeclensionByGender(
+          singular: ['ovojom', 'ovom'], plural: ['ovim']),
       neuter: new DeclensionByGender(singular: ['ovim'], plural: ['ovim']),
     ),
     lokativ: new Declension(
-      masculine: new DeclensionByGender(singular: ['ovom'], plural: ['ovim']),
+      masculine: new DeclensionByGender(
+          singular: ['ovojom', 'ovom'], plural: ['ovim']),
       feminine: new DeclensionByGender(singular: ['ovoj'], plural: ['ovim']),
-      neuter: new DeclensionByGender(singular: ['ovom'], plural: ['ovim']),
+      neuter: new DeclensionByGender(
+          singular: ['ovojom', 'ovom'], plural: ['ovim']),
     ),
     dativ: new Declension(
-      masculine: new DeclensionByGender(singular: ['ovom'], plural: ['ovim']),
+      masculine: new DeclensionByGender(
+          singular: ['ovojom', 'ovom'], plural: ['ovim']),
       feminine: new DeclensionByGender(singular: ['ovoj'], plural: ['ovim']),
-      neuter: new DeclensionByGender(singular: ['ovom'], plural: ['ovim']),
+      neuter: new DeclensionByGender(
+          singular: ['ovojom', 'ovom'], plural: ['ovim']),
     ),
     genitiv: new Declension(
       masculine: new DeclensionByGender(singular: ['ovog'], plural: ['ovih']),
@@ -203,18 +222,23 @@ final List<Adjective> possessivePronounWordBank = [
     ),
     instrumental: new Declension(
       masculine: new DeclensionByGender(singular: ['tim'], plural: ['tim']),
-      feminine: new DeclensionByGender(singular: ['tom'], plural: ['tim']),
+      feminine:
+          new DeclensionByGender(singular: ['tjovom', 'tom'], plural: ['tim']),
       neuter: new DeclensionByGender(singular: ['tim'], plural: ['tim']),
     ),
     lokativ: new Declension(
-      masculine: new DeclensionByGender(singular: ['tom'], plural: ['tim']),
+      masculine:
+          new DeclensionByGender(singular: ['tjovom', 'tom'], plural: ['tim']),
       feminine: new DeclensionByGender(singular: ['toj'], plural: ['tim']),
-      neuter: new DeclensionByGender(singular: ['tom'], plural: ['tim']),
+      neuter:
+          new DeclensionByGender(singular: ['tjovom', 'tom'], plural: ['tim']),
     ),
     dativ: new Declension(
-      masculine: new DeclensionByGender(singular: ['tom'], plural: ['tim']),
+      masculine:
+          new DeclensionByGender(singular: ['tjovom', 'tom'], plural: ['tim']),
       feminine: new DeclensionByGender(singular: ['toj'], plural: ['tim']),
-      neuter: new DeclensionByGender(singular: ['tom'], plural: ['tim']),
+      neuter:
+          new DeclensionByGender(singular: ['tjovom', 'tom'], plural: ['tim']),
     ),
     genitiv: new Declension(
       masculine: new DeclensionByGender(singular: ['tog'], plural: ['tih']),
