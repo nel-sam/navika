@@ -132,4 +132,90 @@ final List<Adjective> possessivePronounWordBank = [
       neuter: new DeclensionByGender(singular: '', plural: ''),
     ),
   ),
+  Adjective(
+    dictionary: 'ovo',
+    nominativ: new Declension(
+      masculine: new DeclensionByGender(singular: 'ovaj', plural: 'ovi'),
+      feminine: new DeclensionByGender(singular: 'ova', plural: 'ove'),
+      neuter: new DeclensionByGender(singular: 'ovo', plural: 'ova'),
+    ),
+    akuzativ: new Declension(
+      masculine: new DeclensionByGender(singular: 'ovaj', plural: 'ove'),
+      feminine: new DeclensionByGender(singular: 'ovu', plural: 'ove'),
+      neuter: new DeclensionByGender(singular: 'ovo', plural: 'ova'),
+    ),
+    akuzativAnimate: new Declension(
+      masculine: new DeclensionByGender(singular: 'ovog', plural: 'ove'),
+      feminine: new DeclensionByGender(singular: 'ovu', plural: 'ove'),
+      neuter: new DeclensionByGender(singular: 'ovo', plural: 'ova'),
+    ),
+    instrumental: new Declension(
+      masculine: new DeclensionByGender(singular: 'ovim', plural: 'ovim'),
+      feminine: new DeclensionByGender(singular: 'ovom', plural: 'ovim'),
+      neuter: new DeclensionByGender(singular: 'ovim', plural: 'ovim'),
+    ),
+    lokativ: new Declension(
+      masculine: new DeclensionByGender(singular: 'ovom', plural: 'ovim'),
+      feminine: new DeclensionByGender(singular: 'ovoj', plural: 'ovim'),
+      neuter: new DeclensionByGender(singular: 'ovom', plural: 'ovim'),
+    ),
+    dativ: new Declension(
+      masculine: new DeclensionByGender(singular: 'ovom', plural: 'ovim'),
+      feminine: new DeclensionByGender(singular: 'ovoj', plural: 'ovim'),
+      neuter: new DeclensionByGender(singular: 'ovom', plural: 'ovim'),
+    ),
+    genitiv: new Declension(
+      masculine: new DeclensionByGender(singular: 'ovog', plural: 'ovih'),
+      feminine: new DeclensionByGender(singular: 'ove', plural: 'ovih'),
+      neuter: new DeclensionByGender(singular: 'ovog', plural: 'ovih'),
+    ),
+    vokativ: new Declension(
+      masculine: new DeclensionByGender(singular: '', plural: ''),
+      feminine: new DeclensionByGender(singular: '', plural: ''),
+      neuter: new DeclensionByGender(singular: '', plural: ''),
+    ),
+  ),
+  Adjective(
+    dictionary: 'to',
+    nominativ: new Declension(
+      masculine: new DeclensionByGender(singular: 'taj', plural: 'ta'),
+      feminine: new DeclensionByGender(singular: 'ta', plural: 'te'),
+      neuter: new DeclensionByGender(singular: 'taj', plural: 'ti'),
+    ),
+    akuzativ: new Declension(
+      masculine: new DeclensionByGender(singular: 'taj', plural: 'ta'),
+      feminine: new DeclensionByGender(singular: 'tu', plural: 'te'),
+      neuter: new DeclensionByGender(singular: 'taj', plural: 'ti'),
+    ),
+    akuzativAnimate: new Declension(
+      masculine: new DeclensionByGender(singular: 'tog', plural: 'ta'),
+      feminine: new DeclensionByGender(singular: 'tu', plural: 'te'),
+      neuter: new DeclensionByGender(singular: 'taj', plural: 'ti'),
+    ),
+    instrumental: new Declension(
+      masculine: new DeclensionByGender(singular: 'tim', plural: 'tim'),
+      feminine: new DeclensionByGender(singular: 'tom', plural: 'tim'),
+      neuter: new DeclensionByGender(singular: 'tim', plural: 'tim'),
+    ),
+    lokativ: new Declension(
+      masculine: new DeclensionByGender(singular: 'tom', plural: 'tim'),
+      feminine: new DeclensionByGender(singular: 'toj', plural: 'tim'),
+      neuter: new DeclensionByGender(singular: 'tom', plural: 'tim'),
+    ),
+    dativ: new Declension(
+      masculine: new DeclensionByGender(singular: 'tom', plural: 'tim'),
+      feminine: new DeclensionByGender(singular: 'toj', plural: 'tim'),
+      neuter: new DeclensionByGender(singular: 'tom', plural: 'tim'),
+    ),
+    genitiv: new Declension(
+      masculine: new DeclensionByGender(singular: 'tog', plural: 'tih'),
+      feminine: new DeclensionByGender(singular: 'te', plural: 'tih'),
+      neuter: new DeclensionByGender(singular: 'tog', plural: 'tih'),
+    ),
+    vokativ: new Declension(
+      masculine: new DeclensionByGender(singular: '', plural: ''),
+      feminine: new DeclensionByGender(singular: '', plural: ''),
+      neuter: new DeclensionByGender(singular: '', plural: ''),
+    ),
+  ),
 ];
