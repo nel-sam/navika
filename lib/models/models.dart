@@ -11,7 +11,7 @@ class SettingsSet {
   final bool nounsIncluded;
 
   SettingsSet({
-    this.entryType = EntryTypes.FreeForm,
+    this.entryType = EntryTypes.Mixed,
     this.possessivePronounsIncluded = true,
     this.personalPronounsIncluded = true,
     this.adjectivesIncluded = true,

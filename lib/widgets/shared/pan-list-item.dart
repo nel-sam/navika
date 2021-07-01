@@ -213,6 +213,18 @@ class _PANListItemState extends State<PANListItem> {
       ];
     }
 
+    getMixedForms() {
+      var freeF = freeForms();
+      var dropD = dropDowns();
+      var result = List<Widget>.empty(growable: true);
+
+      for (int i = 0; i < freeF.length; i++) {
+        result.add(N.coinFlip() ? freeF[i] : dropD[i]);
+      }
+
+      return result;
+    }
+
     List<Widget> list = [
       if (widget.sentenceStarter != '')
         Text(
@@ -221,6 +233,7 @@ class _PANListItemState extends State<PANListItem> {
         ),
       if (widget.entryType == EntryTypes.Select) ...dropDowns(),
       if (widget.entryType == EntryTypes.FreeForm) ...freeForms(),
+      if (widget.entryType == EntryTypes.Mixed) ...getMixedForms(),
       if (widget.sentenceEnder != '')
         Text(
           widget.sentenceEnder,
