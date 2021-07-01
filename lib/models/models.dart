@@ -3,13 +3,15 @@ import 'package:navika/models/noun.dart';
 import 'package:navika/models/personal-pronoun.dart';
 import 'enums.dart';
 
-class ExerciseFilterSet {
+class SettingsSet {
+  final EntryTypes entryType;
   final bool possessivePronounsIncluded;
   final bool personalPronounsIncluded;
   final bool adjectivesIncluded;
   final bool nounsIncluded;
 
-  ExerciseFilterSet({
+  SettingsSet({
+    this.entryType = EntryTypes.FreeForm,
     this.possessivePronounsIncluded = true,
     this.personalPronounsIncluded = true,
     this.adjectivesIncluded = true,
@@ -29,15 +31,16 @@ class WordBank {
       required this.possessivePronouns,
       required this.personalPronouns});
 
-  WordBank filter(ExerciseFilterSet filterSet) {
+  WordBank filter(SettingsSet settingsSet) {
     var result = WordBank(
-      nouns: filterSet.nounsIncluded ? [...this.nouns] : [],
-      adjectives: filterSet.adjectivesIncluded ? [...this.adjectives] : [],
-      possessivePronouns: filterSet.possessivePronounsIncluded
+      nouns: settingsSet.nounsIncluded ? [...this.nouns] : [],
+      adjectives: settingsSet.adjectivesIncluded ? [...this.adjectives] : [],
+      possessivePronouns: settingsSet.possessivePronounsIncluded
           ? [...this.possessivePronouns]
           : [],
-      personalPronouns:
-          filterSet.personalPronounsIncluded ? [...this.personalPronouns] : [],
+      personalPronouns: settingsSet.personalPronounsIncluded
+          ? [...this.personalPronouns]
+          : [],
     );
 
     return result;
@@ -109,6 +112,10 @@ class DeclensionByCount {
     required this.singular,
     required this.plural,
   });
+
+  List<String> getAll() {
+    return [...this.singular, ...this.plural];
+  }
 }
 
 class Declension {

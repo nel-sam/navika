@@ -34,6 +34,8 @@ class PANListItem extends StatefulWidget {
   final bool isPlural;
   final CaseTypeEnum caseType;
 
+  EntryTypes entryType;
+
   PANListItem({
     required this.sentenceStarter,
     required this.sentenceEnder,
@@ -52,6 +54,7 @@ class PANListItem extends StatefulWidget {
     required this.isPlural,
     required this.gender,
     required this.caseType,
+    required this.entryType,
   });
 
   @override
@@ -82,7 +85,6 @@ class _PANListItemState extends State<PANListItem> {
   @override
   Widget build(BuildContext context) {
     bool isAllCorrect = checkAnswer();
-    EntryTypes entryType = EntryTypes.FreeForm; // TODO: Make this configurable
 
     final bool usePossPronouns = widget.possPronoun != null &&
         widget.correctPossProns != null &&
@@ -158,6 +160,7 @@ class _PANListItemState extends State<PANListItem> {
       return [
         if (usePossPronouns)
           CaseFreeForm(
+            hintValue: widget.possPronoun!.dictionary,
             maxLength: widget.possPronoun!.longestForCase(widget.caseType),
             activeValue: widget.activePossPron!,
             correctValues: widget.correctPossProns!,
@@ -170,6 +173,7 @@ class _PANListItemState extends State<PANListItem> {
           ),
         if (useAdj)
           CaseFreeForm(
+            hintValue: widget.adjective!.dictionary,
             maxLength: widget.adjective!.longestForCase(widget.caseType),
             activeValue: widget.activeAdj!,
             correctValues: widget.correctAdjs!,
@@ -181,10 +185,11 @@ class _PANListItemState extends State<PANListItem> {
             },
           ),
         if (useNoun)
-          CaseDropDown(
+          CaseFreeForm(
+            hintValue: widget.noun!.dictionary,
+            maxLength: widget.noun!.longestForCase(widget.caseType),
             activeValue: widget.activeNoun!,
             correctValues: widget.correctNouns!,
-            dropDownOptions: N.getDropdownItems(noun: widget.noun!),
             onChanged: (String newVal) {
               setState(() {
                 widget.activeNoun = newVal;
@@ -193,11 +198,11 @@ class _PANListItemState extends State<PANListItem> {
             },
           ),
         if (usePersPron)
-          CaseDropDown(
+          CaseFreeForm(
+            hintValue: widget.personalPronoun!.dictionary,
+            maxLength: widget.personalPronoun!.longestForCase(widget.caseType),
             activeValue: widget.activePersPron!,
             correctValues: widget.correctPersProns!,
-            dropDownOptions:
-                N.getDropdownItems(personalPronoun: widget.personalPronoun!),
             onChanged: (String newVal) {
               setState(() {
                 widget.activePersPron = newVal;
@@ -214,8 +219,8 @@ class _PANListItemState extends State<PANListItem> {
           widget.sentenceStarter,
           style: TextStyle(fontSize: EXERCISE_FONT_STYLE),
         ),
-      if (entryType == EntryTypes.Select) ...dropDowns(),
-      if (entryType == EntryTypes.FreeForm) ...freeForms(),
+      if (widget.entryType == EntryTypes.Select) ...dropDowns(),
+      if (widget.entryType == EntryTypes.FreeForm) ...freeForms(),
       if (widget.sentenceEnder != '')
         Text(
           widget.sentenceEnder,

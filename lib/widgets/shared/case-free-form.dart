@@ -3,12 +3,14 @@ import 'package:navika/constants.dart';
 
 class CaseFreeForm extends StatelessWidget {
   final int maxLength;
+  final String hintValue;
   final String activeValue;
   final List<String> correctValues;
   final Function(String) onChanged;
 
   const CaseFreeForm({
     Key? key,
+    required this.hintValue,
     required this.onChanged,
     required this.activeValue,
     required this.correctValues,
@@ -18,12 +20,12 @@ class CaseFreeForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: maxLength * 15,
+      width: maxLength * 10,
       child: TextField(
         decoration: InputDecoration(
           isDense: true,
-          contentPadding: EdgeInsets.fromLTRB(4, 1, 1, 1),
-          labelText: correctValues.contains(activeValue) ? '' : activeValue,
+          contentPadding: EdgeInsets.fromLTRB(4, 10, 0, 1),
+          labelText: correctValues.contains(activeValue) ? '' : hintValue,
           enabledBorder: getBorder(),
           focusedBorder: getBorder(),
         ),

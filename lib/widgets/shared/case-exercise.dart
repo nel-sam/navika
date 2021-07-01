@@ -20,8 +20,8 @@ class CaseExercise extends StatefulWidget {
   final StaticSentenceParts Function(PersonalPronoun, bool)
       getPersonalPronounSentenceStaticParts;
 
-  final Function(ExerciseFilterSet) onFilterSet;
-  final ExerciseFilterSet filterSet;
+  final Function(SettingsSet) onSettingsSet;
+  final SettingsSet settingsSet;
 
   const CaseExercise({
     Key? key,
@@ -31,8 +31,8 @@ class CaseExercise extends StatefulWidget {
     required this.banner,
     required this.getStaticSentenceParts,
     required this.getPersonalPronounSentenceStaticParts,
-    required this.onFilterSet,
-    required this.filterSet,
+    required this.onSettingsSet,
+    required this.settingsSet,
   }) : super(key: key);
 
   @override
@@ -46,7 +46,7 @@ class _CaseExerciseState extends State<CaseExercise> {
   Widget build(BuildContext context) {
     final scaffoldKey = new GlobalKey<ScaffoldState>();
     List<PANExerciseItem> listItems = N.getPANCombos(
-        widget.sourceData.filter(widget.filterSet),
+        widget.sourceData.filter(widget.settingsSet),
         widget.getStaticSentenceParts,
         widget.getPersonalPronounSentenceStaticParts);
 
@@ -61,15 +61,17 @@ class _CaseExerciseState extends State<CaseExercise> {
         title: Text(widget.title, style: HEADER_TEXT_STYLE),
       ),
       endDrawer: NavikaDrawer(
-        initalValues: widget.filterSet,
-        onFiltersSet: (ExerciseFilterSet newFilterSet) {
-          var filterChanged = widget.filterSet.adjectivesIncluded ==
-                  newFilterSet.adjectivesIncluded &&
-              widget.filterSet.nounsIncluded == newFilterSet.nounsIncluded &&
-              widget.filterSet.personalPronounsIncluded ==
-                  newFilterSet.personalPronounsIncluded &&
-              widget.filterSet.possessivePronounsIncluded ==
-                  newFilterSet.possessivePronounsIncluded;
+        initalValues: widget.settingsSet,
+        onFiltersSet: (SettingsSet newSettingsSet) {
+          var filterChanged = widget.settingsSet.adjectivesIncluded ==
+                  newSettingsSet.adjectivesIncluded &&
+              widget.settingsSet.nounsIncluded ==
+                  newSettingsSet.nounsIncluded &&
+              widget.settingsSet.personalPronounsIncluded ==
+                  newSettingsSet.personalPronounsIncluded &&
+              widget.settingsSet.possessivePronounsIncluded ==
+                  newSettingsSet.possessivePronounsIncluded &&
+              widget.settingsSet.entryType == newSettingsSet.entryType;
 
           if (filterChanged) {
             Navigator.pop(context);
@@ -77,7 +79,7 @@ class _CaseExerciseState extends State<CaseExercise> {
           }
 
           setState(() {
-            widget.onFilterSet(newFilterSet);
+            widget.onSettingsSet(newSettingsSet);
           });
         },
       ),
@@ -87,7 +89,11 @@ class _CaseExerciseState extends State<CaseExercise> {
           padding: EXERCISE_LIST_PADDING,
           children: [
             widget.banner,
-            ...N.getPANListItems(listItems, widget.caseType)
+            ...N.getPANListItems(
+              listItems,
+              widget.caseType,
+              widget.settingsSet.entryType,
+            )
           ],
         ),
       ),

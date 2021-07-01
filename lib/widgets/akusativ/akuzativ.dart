@@ -60,7 +60,7 @@ class Akuzativ extends StatefulWidget {
 class _AkuzativState extends State<Akuzativ> {
   final title = 'Akuzativ';
   final WordBank bank = wordBank;
-  var filterSet = ExerciseFilterSet();
+  var settingsSet = SettingsSet();
 
   @override
   Widget build(BuildContext context) {
@@ -82,10 +82,10 @@ class _AkuzativState extends State<Akuzativ> {
           Icons.euro,
         ],
       ),
-      onFilterSet: (ExerciseFilterSet newFilterSet) => setState(() {
-        filterSet = newFilterSet;
+      onSettingsSet: (SettingsSet newSettingsSet) => setState(() {
+        settingsSet = newSettingsSet;
       }),
-      filterSet: filterSet,
+      settingsSet: settingsSet,
     );
   }
 }

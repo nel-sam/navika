@@ -56,7 +56,7 @@ class Lokativ extends StatefulWidget {
 class _LokativState extends State<Lokativ> {
   final title = 'Lokativ';
   final WordBank bank = wordBank;
-  var filterSet = ExerciseFilterSet();
+  var settingsSet = SettingsSet();
 
   @override
   Widget build(BuildContext context) {
@@ -76,10 +76,10 @@ class _LokativState extends State<Lokativ> {
           Icons.message,
         ],
       ),
-      onFilterSet: (ExerciseFilterSet newFilterSet) => setState(() {
-        filterSet = newFilterSet;
+      onSettingsSet: (SettingsSet newSettingsSet) => setState(() {
+        settingsSet = newSettingsSet;
       }),
-      filterSet: filterSet,
+      settingsSet: settingsSet,
     );
   }
 }

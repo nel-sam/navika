@@ -2,11 +2,12 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 
 class NavikaDrawer extends StatefulWidget {
-  final Function(ExerciseFilterSet) onFiltersSet;
-  final ExerciseFilterSet initalValues;
+  final Function(SettingsSet) onFiltersSet;
+  final SettingsSet initalValues;
 
   const NavikaDrawer({
     Key? key,
@@ -19,10 +20,12 @@ class NavikaDrawer extends StatefulWidget {
 }
 
 class _NavikaDrawerState extends State<NavikaDrawer> {
+  late EntryTypes entryType;
   late bool pronounsChecked;
   late bool possPronounsChecked;
   late bool adjectivesChecked;
   late bool nounsChecked;
+  late List<bool> entryTypeSelections;
 
   @override
   void initState() {
@@ -30,7 +33,34 @@ class _NavikaDrawerState extends State<NavikaDrawer> {
     possPronounsChecked = widget.initalValues.possessivePronounsIncluded;
     adjectivesChecked = widget.initalValues.adjectivesIncluded;
     nounsChecked = widget.initalValues.nounsIncluded;
+    entryType = widget.initalValues.entryType;
+    entryTypeSelections = getEntryTypeSelections();
     super.initState();
+  }
+
+  List<bool> getEntryTypeSelections() {
+    switch (entryType) {
+      case EntryTypes.FreeForm:
+        return [true, false, false];
+      case EntryTypes.Mixed:
+        return [false, true, false];
+      case EntryTypes.Select:
+        return [false, false, true];
+    }
+  }
+
+  EntryTypes getSelectedEntryType(List<bool> entryTypeSelections) {
+    int selectedInx = entryTypeSelections.indexOf(true);
+
+    switch (selectedInx) {
+      case 0:
+        return EntryTypes.FreeForm;
+      case 1:
+        return EntryTypes.Mixed;
+      case 2:
+      default:
+        return EntryTypes.Select;
+    }
   }
 
   @override
@@ -122,6 +152,34 @@ class _NavikaDrawerState extends State<NavikaDrawer> {
                       });
                     },
                   ),
+                  Column(
+                    children: [
+                      Text(
+                          'Choose exercise type'), // TODO: Multi lingual support
+                      ToggleButtons(
+                        children: <Widget>[
+                          // TODO: Multi lingual support
+                          Text('Free'),
+                          Text('Mixed'),
+                          Text('Select'),
+                        ],
+                        onPressed: (int selectedIndx) {
+                          setState(() {
+                            for (int i = 0;
+                                i < entryTypeSelections.length;
+                                i++) {
+                              if (i == selectedIndx) {
+                                entryTypeSelections[i] = true;
+                              } else {
+                                entryTypeSelections[i] = false;
+                              }
+                            }
+                          });
+                        },
+                        isSelected: entryTypeSelections,
+                      ),
+                    ],
+                  ),
                   Padding(
                     padding: const EdgeInsets.only(top: 20),
                     child: ElevatedButton(
@@ -131,11 +189,13 @@ class _NavikaDrawerState extends State<NavikaDrawer> {
                       ),
                       onPressed: () => {
                         widget.onFiltersSet(
-                          ExerciseFilterSet(
+                          SettingsSet(
                             personalPronounsIncluded: pronounsChecked,
                             nounsIncluded: nounsChecked,
                             adjectivesIncluded: adjectivesChecked,
                             possessivePronounsIncluded: possPronounsChecked,
+                            entryType:
+                                getSelectedEntryType(entryTypeSelections),
                           ),
                         )
                       },

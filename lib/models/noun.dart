@@ -89,4 +89,35 @@ class Noun {
       ...this.vokativ.plural,
     ].toSet().toList().where((element) => element.length > 0).toList());
   }
+
+  List<String> getDeclensionsForCaseType(CaseTypeEnum caseType) {
+    switch (caseType) {
+      case CaseTypeEnum.Instrumental:
+        return this.instrumental.getAll();
+      case CaseTypeEnum.Nominativ:
+        return this.nominativ.getAll();
+      case CaseTypeEnum.Akuzativ:
+        return this.akuzativ.getAll();
+      case CaseTypeEnum.Vokativ:
+        return this.vokativ.getAll();
+      case CaseTypeEnum.Lokativ:
+        return this.lokativ.getAll();
+      case CaseTypeEnum.Genitiv:
+        return this.genitiv.getAll();
+      case CaseTypeEnum.Dativ:
+        return this.dativ.getAll();
+    }
+  }
+
+  longestForCase(CaseTypeEnum caseType) {
+    int longestFound = 0;
+
+    this.getDeclensionsForCaseType(caseType).forEach((d) {
+      if (d.length > longestFound) {
+        longestFound = d.length;
+      }
+    });
+
+    return longestFound;
+  }
 }

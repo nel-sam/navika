@@ -63,7 +63,7 @@ class Genitiv extends StatefulWidget {
 class _GenitivState extends State<Genitiv> {
   final title = 'Genitiv';
   final WordBank bank = wordBank;
-  var filterSet = ExerciseFilterSet();
+  var settingsSet = SettingsSet();
 
   @override
   Widget build(BuildContext context) {
@@ -84,10 +84,10 @@ class _GenitivState extends State<Genitiv> {
           Icons.people,
         ],
       ),
-      onFilterSet: (ExerciseFilterSet newFilterSet) => setState(() {
-        filterSet = newFilterSet;
+      onSettingsSet: (SettingsSet newSettingsSet) => setState(() {
+        settingsSet = newSettingsSet;
       }),
-      filterSet: filterSet,
+      settingsSet: settingsSet,
     );
   }
 }

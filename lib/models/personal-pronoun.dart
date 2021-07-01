@@ -72,4 +72,16 @@ class PersonalPronoun {
       ...this.vokativ.forms,
     ].toSet().toList().where((element) => element.length > 0).toList());
   }
+
+  longestForCase(CaseTypeEnum caseType) {
+    int longestFound = 0;
+
+    this.getDeclensions(caseType: caseType).forEach((d) {
+      if (d.length > longestFound) {
+        longestFound = d.length;
+      }
+    });
+
+    return longestFound;
+  }
 }

@@ -136,7 +136,10 @@ class N {
   }
 
   static List<PANListItem> getPANListItems(
-      List<PANExerciseItem> listItems, CaseTypeEnum caseType) {
+    List<PANExerciseItem> listItems,
+    CaseTypeEnum caseType,
+    EntryTypes entryType,
+  ) {
     return N
         .shuffleList<PANExerciseItem>(listItems)
         .take(BATCH_COUNT)
@@ -146,6 +149,7 @@ class N {
             e.personalPronoun!.getDeclensions(caseType: caseType);
 
         return PANListItem(
+          entryType: entryType,
           caseType: caseType,
           sentenceStarter: e.sentenceStarter,
           sentenceEnder: e.sentenceEnder,
@@ -171,6 +175,7 @@ class N {
           : [''];
 
       return PANListItem(
+          entryType: entryType,
           caseType: caseType,
           sentenceStarter: e.sentenceStarter,
           sentenceEnder: e.sentenceEnder,

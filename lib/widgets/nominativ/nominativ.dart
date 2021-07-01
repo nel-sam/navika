@@ -78,7 +78,7 @@ class Nominativ extends StatefulWidget {
 class _NominativState extends State<Nominativ> {
   final title = 'Nominativ';
   final WordBank bank = wordBank.excludePronoun('svoj');
-  var filterSet = ExerciseFilterSet();
+  var settingsSet = SettingsSet();
 
   @override
   Widget build(BuildContext context) {
@@ -99,10 +99,10 @@ class _NominativState extends State<Nominativ> {
           Icons.people,
         ],
       ),
-      onFilterSet: (ExerciseFilterSet newFilterSet) => setState(() {
-        filterSet = newFilterSet;
+      onSettingsSet: (SettingsSet newSettingsSet) => setState(() {
+        settingsSet = newSettingsSet;
       }),
-      filterSet: filterSet,
+      settingsSet: settingsSet,
     );
   }
 }

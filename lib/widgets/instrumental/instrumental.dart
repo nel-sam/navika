@@ -95,7 +95,7 @@ class _InstrumentalState extends State<Instrumental> {
     Tags.Health,
   ]);
 
-  var filterSet = ExerciseFilterSet();
+  var settingsSet = SettingsSet();
 
   @override
   Widget build(BuildContext context) {
@@ -116,10 +116,10 @@ class _InstrumentalState extends State<Instrumental> {
           Icons.motorcycle,
         ],
       ),
-      onFilterSet: (ExerciseFilterSet newFilterSet) => setState(() {
-        filterSet = newFilterSet;
+      onSettingsSet: (SettingsSet newSettingsSet) => setState(() {
+        settingsSet = newSettingsSet;
       }),
-      filterSet: filterSet,
+      settingsSet: settingsSet,
     );
   }
 }

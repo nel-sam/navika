@@ -57,7 +57,7 @@ class Dativ extends StatefulWidget {
 class _DativState extends State<Dativ> {
   final title = 'Dativ';
   final WordBank bank = wordBank;
-  var filterSet = ExerciseFilterSet();
+  var settingsSet = SettingsSet();
 
   @override
   Widget build(BuildContext context) {
@@ -78,10 +78,10 @@ class _DativState extends State<Dativ> {
           Icons.people,
         ],
       ),
-      onFilterSet: (ExerciseFilterSet newFilterSet) => setState(() {
-        filterSet = newFilterSet;
+      onSettingsSet: (SettingsSet newSettingsSet) => setState(() {
+        settingsSet = newSettingsSet;
       }),
-      filterSet: filterSet,
+      settingsSet: settingsSet,
     );
   }
 }
