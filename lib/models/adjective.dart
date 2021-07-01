@@ -130,4 +130,35 @@ class Adjective {
       return isPlural ? declension.neuter.plural : declension.neuter.singular;
     }
   }
+
+  List<String> getDeclensionsForCaseType(CaseTypeEnum caseType) {
+    switch (caseType) {
+      case CaseTypeEnum.Instrumental:
+        return this.instrumental.getAll();
+      case CaseTypeEnum.Nominativ:
+        return this.nominativ.getAll();
+      case CaseTypeEnum.Akuzativ:
+        return [...this.akuzativ.getAll(), ...this.akuzativAnimate.getAll()];
+      case CaseTypeEnum.Vokativ:
+        return this.vokativ.getAll();
+      case CaseTypeEnum.Lokativ:
+        return this.lokativ.getAll();
+      case CaseTypeEnum.Genitiv:
+        return this.genitiv.getAll();
+      case CaseTypeEnum.Dativ:
+        return this.dativ.getAll();
+    }
+  }
+
+  int longestForCase(CaseTypeEnum caseType) {
+    int longestFound = 0;
+
+    this.getDeclensionsForCaseType(caseType).forEach((d) {
+      if (d.length > longestFound) {
+        longestFound = d.length;
+      }
+    });
+
+    return longestFound;
+  }
 }

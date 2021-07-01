@@ -6,6 +6,7 @@ import 'package:navika/models/noun.dart';
 import 'package:navika/models/personal-pronoun.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/shared/case-drop-down.dart';
+import 'package:navika/widgets/shared/case-free-form.dart';
 import 'package:navika/widgets/shared/exercise-row-card.dart';
 
 // ignore: must_be_immutable
@@ -31,6 +32,7 @@ class PANListItem extends StatefulWidget {
 
   final Genders gender;
   final bool isPlural;
+  final CaseTypeEnum caseType;
 
   PANListItem({
     required this.sentenceStarter,
@@ -49,6 +51,7 @@ class PANListItem extends StatefulWidget {
     this.activePersPron = '',
     required this.isPlural,
     required this.gender,
+    required this.caseType,
   });
 
   @override
@@ -79,78 +82,148 @@ class _PANListItemState extends State<PANListItem> {
   @override
   Widget build(BuildContext context) {
     bool isAllCorrect = checkAnswer();
+    EntryTypes entryType = EntryTypes.FreeForm;
 
-    // TODO: Make freeform text possible
+    dropDowns() {
+      return [
+        if (widget.possPronoun != null &&
+            widget.correctPossProns != null &&
+            widget.correctPossProns!.length > 0)
+          CaseDropDown(
+            activeValue: widget.activePossPron!,
+            correctValues: widget.correctPossProns!,
+            dropDownOptions: N.getDropdownItems(adjective: widget.possPronoun!),
+            onChanged: (String newVal) {
+              setState(() {
+                widget.activePossPron = newVal;
+                isAllCorrect = checkAnswer();
+              });
+            },
+          ),
+        if (widget.adjective != null &&
+            widget.correctAdjs != null &&
+            widget.correctAdjs!.length > 0)
+          CaseDropDown(
+            activeValue: widget.activeAdj!,
+            correctValues: widget.correctAdjs!,
+            dropDownOptions: N.getDropdownItems(adjective: widget.adjective!),
+            onChanged: (String newVal) {
+              setState(() {
+                widget.activeAdj = newVal;
+                isAllCorrect = checkAnswer();
+              });
+            },
+          ),
+        if (widget.noun != null &&
+            widget.correctNouns != null &&
+            widget.correctNouns!.length > 0)
+          CaseDropDown(
+            activeValue: widget.activeNoun!,
+            correctValues: widget.correctNouns!,
+            dropDownOptions: N.getDropdownItems(noun: widget.noun!),
+            onChanged: (String newVal) {
+              setState(() {
+                widget.activeNoun = newVal;
+                isAllCorrect = checkAnswer();
+              });
+            },
+          ),
+        if (widget.personalPronoun != null &&
+            widget.correctPersProns != null &&
+            widget.correctPersProns!.length > 0)
+          CaseDropDown(
+            activeValue: widget.activePersPron!,
+            correctValues: widget.correctPersProns!,
+            dropDownOptions:
+                N.getDropdownItems(personalPronoun: widget.personalPronoun!),
+            onChanged: (String newVal) {
+              setState(() {
+                widget.activePersPron = newVal;
+                isAllCorrect = checkAnswer();
+              });
+            },
+          ),
+      ];
+    }
 
-    var sentenceContent = [
+    freeForms() {
+      return [
+        if (widget.possPronoun != null &&
+            widget.correctPossProns != null &&
+            widget.correctPossProns!.length > 0)
+          CaseFreeForm(
+            maxLength: widget.possPronoun!.longestForCase(widget.caseType),
+            activeValue: widget.activePossPron!,
+            correctValues: widget.correctPossProns!,
+            onChanged: (String newVal) {
+              setState(() {
+                widget.activePossPron = newVal;
+                isAllCorrect = checkAnswer();
+              });
+            },
+          ),
+        if (widget.adjective != null &&
+            widget.correctAdjs != null &&
+            widget.correctAdjs!.length > 0)
+          CaseDropDown(
+            activeValue: widget.activeAdj!,
+            correctValues: widget.correctAdjs!,
+            dropDownOptions: N.getDropdownItems(adjective: widget.adjective!),
+            onChanged: (String newVal) {
+              setState(() {
+                widget.activeAdj = newVal;
+                isAllCorrect = checkAnswer();
+              });
+            },
+          ),
+        if (widget.noun != null &&
+            widget.correctNouns != null &&
+            widget.correctNouns!.length > 0)
+          CaseDropDown(
+            activeValue: widget.activeNoun!,
+            correctValues: widget.correctNouns!,
+            dropDownOptions: N.getDropdownItems(noun: widget.noun!),
+            onChanged: (String newVal) {
+              setState(() {
+                widget.activeNoun = newVal;
+                isAllCorrect = checkAnswer();
+              });
+            },
+          ),
+        if (widget.personalPronoun != null &&
+            widget.correctPersProns != null &&
+            widget.correctPersProns!.length > 0)
+          CaseDropDown(
+            activeValue: widget.activePersPron!,
+            correctValues: widget.correctPersProns!,
+            dropDownOptions:
+                N.getDropdownItems(personalPronoun: widget.personalPronoun!),
+            onChanged: (String newVal) {
+              setState(() {
+                widget.activePersPron = newVal;
+                isAllCorrect = checkAnswer();
+              });
+            },
+          ),
+      ];
+    }
+
+    List<Widget> list = [
       if (widget.sentenceStarter != '')
         Text(
           widget.sentenceStarter,
           style: TextStyle(fontSize: EXERCISE_FONT_STYLE),
         ),
-      if (widget.possPronoun != null &&
-          widget.correctPossProns != null &&
-          widget.correctPossProns!.length > 0)
-        CaseDropDown(
-          activeValue: widget.activePossPron!,
-          correctValues: widget.correctPossProns!,
-          dropDownOptions: N.getDropdownItems(adjective: widget.possPronoun!),
-          onChanged: (String newVal) {
-            setState(() {
-              widget.activePossPron = newVal;
-              isAllCorrect = checkAnswer();
-            });
-          },
-        ),
-      if (widget.adjective != null &&
-          widget.correctAdjs != null &&
-          widget.correctAdjs!.length > 0)
-        CaseDropDown(
-          activeValue: widget.activeAdj!,
-          correctValues: widget.correctAdjs!,
-          dropDownOptions: N.getDropdownItems(adjective: widget.adjective!),
-          onChanged: (String newVal) {
-            setState(() {
-              widget.activeAdj = newVal;
-              isAllCorrect = checkAnswer();
-            });
-          },
-        ),
-      if (widget.noun != null &&
-          widget.correctNouns != null &&
-          widget.correctNouns!.length > 0)
-        CaseDropDown(
-          activeValue: widget.activeNoun!,
-          correctValues: widget.correctNouns!,
-          dropDownOptions: N.getDropdownItems(noun: widget.noun!),
-          onChanged: (String newVal) {
-            setState(() {
-              widget.activeNoun = newVal;
-              isAllCorrect = checkAnswer();
-            });
-          },
-        ),
-      if (widget.personalPronoun != null &&
-          widget.correctPersProns != null &&
-          widget.correctPersProns!.length > 0)
-        CaseDropDown(
-          activeValue: widget.activePersPron!,
-          correctValues: widget.correctPersProns!,
-          dropDownOptions:
-              N.getDropdownItems(personalPronoun: widget.personalPronoun!),
-          onChanged: (String newVal) {
-            setState(() {
-              widget.activePersPron = newVal;
-              isAllCorrect = checkAnswer();
-            });
-          },
-        ),
+      if (entryType == EntryTypes.Select) ...dropDowns(),
+      if (entryType == EntryTypes.FreeForm) ...freeForms(),
       if (widget.sentenceEnder != '')
         Text(
           widget.sentenceEnder,
           style: TextStyle(fontSize: EXERCISE_FONT_STYLE),
         ),
     ];
+
+    var sentenceContent = list;
 
     return ExerciseRowCard(
       isAllCorrect: isAllCorrect,

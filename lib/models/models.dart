@@ -121,6 +121,17 @@ class Declension {
     required this.feminine,
     required this.neuter,
   });
+
+  List<String> getAll() {
+    return [
+      ...this.feminine.singular,
+      ...this.feminine.plural,
+      ...this.masculine.singular,
+      ...this.masculine.plural,
+      ...this.neuter.singular,
+      ...this.neuter.plural
+    ];
+  }
 }
 
 class DeclensionByGender {

@@ -1,3 +1,8 @@
+enum EntryTypes {
+  FreeForm,
+  Select,
+}
+
 enum Genders {
   Masculine,
   Feminine,

@@ -1,0 +1,46 @@
+import 'package:flutter/material.dart';
+import 'package:navika/constants.dart';
+import 'package:navika/utilities/navika-helpers.dart';
+
+class CaseFreeForm extends StatelessWidget {
+  final int maxLength;
+  final String activeValue;
+  final List<String> correctValues;
+  final Function(String) onChanged;
+
+  const CaseFreeForm({
+    Key? key,
+    required this.onChanged,
+    required this.activeValue,
+    required this.correctValues,
+    required this.maxLength,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: maxLength * 15,
+      child: TextField(
+        decoration: InputDecoration(
+          enabledBorder: getBorder(),
+          focusedBorder: getBorder(),
+          labelText: correctValues.contains(activeValue) ? null : activeValue,
+        ),
+        onChanged: (String? newVal) {
+          if (newVal != null) {
+            onChanged(newVal);
+          }
+        },
+      ),
+    );
+  }
+
+  OutlineInputBorder getBorder() {
+    return OutlineInputBorder(
+      borderSide: BorderSide(
+        color:
+            correctValues.contains(activeValue) ? CORRECT_COLOR : WRONG_COLOR,
+      ),
+    );
+  }
+}

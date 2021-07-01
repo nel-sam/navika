@@ -146,6 +146,7 @@ class N {
             e.personalPronoun!.getDeclensions(caseType: caseType);
 
         return PANListItem(
+          caseType: caseType,
           sentenceStarter: e.sentenceStarter,
           sentenceEnder: e.sentenceEnder,
           correctPersProns: correctPersPron,
@@ -170,6 +171,7 @@ class N {
           : [''];
 
       return PANListItem(
+          caseType: caseType,
           sentenceStarter: e.sentenceStarter,
           sentenceEnder: e.sentenceEnder,
           correctPossProns: correctPron,
@@ -288,5 +290,15 @@ class N {
       default:
         return '';
     }
+  }
+
+  static int longestFromList(List<String> values) {
+    int longestFound = 0;
+
+    values.forEach((e) {
+      if (e.length > longestFound) longestFound = e.length;
+    });
+    print(longestFound);
+    return longestFound;
   }
 }
