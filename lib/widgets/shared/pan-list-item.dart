@@ -82,13 +82,27 @@ class _PANListItemState extends State<PANListItem> {
   @override
   Widget build(BuildContext context) {
     bool isAllCorrect = checkAnswer();
-    EntryTypes entryType = EntryTypes.FreeForm;
+    EntryTypes entryType = EntryTypes.FreeForm; // TODO: Make this configurable
+
+    final bool usePossPronouns = widget.possPronoun != null &&
+        widget.correctPossProns != null &&
+        widget.correctPossProns!.length > 0;
+
+    final bool useAdj = widget.adjective != null &&
+        widget.correctAdjs != null &&
+        widget.correctAdjs!.length > 0;
+
+    final bool useNoun = widget.noun != null &&
+        widget.correctNouns != null &&
+        widget.correctNouns!.length > 0;
+
+    final bool usePersPron = widget.personalPronoun != null &&
+        widget.correctPersProns != null &&
+        widget.correctPersProns!.length > 0;
 
     dropDowns() {
       return [
-        if (widget.possPronoun != null &&
-            widget.correctPossProns != null &&
-            widget.correctPossProns!.length > 0)
+        if (usePossPronouns)
           CaseDropDown(
             activeValue: widget.activePossPron!,
             correctValues: widget.correctPossProns!,
@@ -100,9 +114,7 @@ class _PANListItemState extends State<PANListItem> {
               });
             },
           ),
-        if (widget.adjective != null &&
-            widget.correctAdjs != null &&
-            widget.correctAdjs!.length > 0)
+        if (useAdj)
           CaseDropDown(
             activeValue: widget.activeAdj!,
             correctValues: widget.correctAdjs!,
@@ -114,9 +126,7 @@ class _PANListItemState extends State<PANListItem> {
               });
             },
           ),
-        if (widget.noun != null &&
-            widget.correctNouns != null &&
-            widget.correctNouns!.length > 0)
+        if (useNoun)
           CaseDropDown(
             activeValue: widget.activeNoun!,
             correctValues: widget.correctNouns!,
@@ -128,9 +138,7 @@ class _PANListItemState extends State<PANListItem> {
               });
             },
           ),
-        if (widget.personalPronoun != null &&
-            widget.correctPersProns != null &&
-            widget.correctPersProns!.length > 0)
+        if (usePersPron)
           CaseDropDown(
             activeValue: widget.activePersPron!,
             correctValues: widget.correctPersProns!,
@@ -148,9 +156,7 @@ class _PANListItemState extends State<PANListItem> {
 
     freeForms() {
       return [
-        if (widget.possPronoun != null &&
-            widget.correctPossProns != null &&
-            widget.correctPossProns!.length > 0)
+        if (usePossPronouns)
           CaseFreeForm(
             maxLength: widget.possPronoun!.longestForCase(widget.caseType),
             activeValue: widget.activePossPron!,
@@ -162,13 +168,11 @@ class _PANListItemState extends State<PANListItem> {
               });
             },
           ),
-        if (widget.adjective != null &&
-            widget.correctAdjs != null &&
-            widget.correctAdjs!.length > 0)
-          CaseDropDown(
+        if (useAdj)
+          CaseFreeForm(
+            maxLength: widget.adjective!.longestForCase(widget.caseType),
             activeValue: widget.activeAdj!,
             correctValues: widget.correctAdjs!,
-            dropDownOptions: N.getDropdownItems(adjective: widget.adjective!),
             onChanged: (String newVal) {
               setState(() {
                 widget.activeAdj = newVal;
@@ -176,9 +180,7 @@ class _PANListItemState extends State<PANListItem> {
               });
             },
           ),
-        if (widget.noun != null &&
-            widget.correctNouns != null &&
-            widget.correctNouns!.length > 0)
+        if (useNoun)
           CaseDropDown(
             activeValue: widget.activeNoun!,
             correctValues: widget.correctNouns!,
@@ -190,9 +192,7 @@ class _PANListItemState extends State<PANListItem> {
               });
             },
           ),
-        if (widget.personalPronoun != null &&
-            widget.correctPersProns != null &&
-            widget.correctPersProns!.length > 0)
+        if (usePersPron)
           CaseDropDown(
             activeValue: widget.activePersPron!,
             correctValues: widget.correctPersProns!,

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
-import 'package:navika/utilities/navika-helpers.dart';
 
 class CaseFreeForm extends StatelessWidget {
   final int maxLength;
@@ -22,9 +21,11 @@ class CaseFreeForm extends StatelessWidget {
       width: maxLength * 15,
       child: TextField(
         decoration: InputDecoration(
+          isDense: true,
+          contentPadding: EdgeInsets.fromLTRB(4, 1, 1, 1),
+          labelText: correctValues.contains(activeValue) ? '' : activeValue,
           enabledBorder: getBorder(),
           focusedBorder: getBorder(),
-          labelText: correctValues.contains(activeValue) ? null : activeValue,
         ),
         onChanged: (String? newVal) {
           if (newVal != null) {
