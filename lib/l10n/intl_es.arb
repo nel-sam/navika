@@ -5,10 +5,13 @@
   "animateAkuzativ": "Sustantivos animados/vivos masculinos en singular + a, y sus adjetivos + og/eg. Los objectos no animados/vivos son igual al Nominativ",
   "appTitle": "Navika",
   "assibilation": "Ciertos sustantivos que terminan en k, g y h dejan caer su letra final y obtienen ci, zi o si",
+  "chooseExerciseType": "Escoje tipo de ejercicios",
   "close": "Cerrar",
   "dativDescription": "Dativ indica el objecto indirecto y se usa para dar, mostrar, o hacer algo a alguien/algo. El dativ y el lokativ se declinan igual.",
+  "equalDeclensions": "Estas declinaciones son las mismas",
   "exampleSentences": "Ejemplos",
   "feminine": "Femenino",
+  "freeForm": "Escribir",
   "genitiveDescription": "El caso genitivo se usa con preposiciones e indica posesión, origin, o falta de algo (nema, bez). Si se usa sin preposiciones, puede indicar el material de lo cual está hecho algo.",
   "grammarGuide": "Gramatica",
   "home": "Inicio",
@@ -16,6 +19,7 @@
   "instrumentalFemSing": "Algunos sustantivos femeninos singulares que tienen un consonante al final reciben –i (ex: Obitelj = obitelji, ljubav = ljubavi, bolest = bolesti)",
   "lokativDescription": "Lokativ se usa cuando se habla de la ubicación donde algo ocurre, algo está ubicado, o estará ubicado. Tambíen se usa el Lokativ para decir 'sobre' como en la frase 'hablando sobre un tema'. El dativ y el lokativ se declinan igual",
   "masculine": "Masculino",
+  "mixedMode": "Ambos",
   "neuter": "Neutro",
   "next": "Siguiente",
   "nominativDescription": "El nominativo se usa para nombrar cosas e indica el sujeto de la frase. Cuando se hace una comparación usando 'nego', los dos sujectos deberían estar en nominativo.",
@@ -42,9 +46,9 @@
   "sameAsNom": "Igual al caso Nominativo",
   "selectAll": "Seleccionar Todos",
   "selectExercises": "¿Qué quieres practicar?",
+  "selectMode": "Escojer",
   "singular": "Singular",
   "softLettersOgEg": "A č, ć, đ, dž, š, ž, lj, & nj se agrega 'eg' y no 'og'.",
   "softLettersOmEm": "A č, ć, đ, dž, š, ž, lj, & nj se agrega 'em' y no 'om'.",
-  "unselectAll": "Deseleccionar Todos",
-  "equalDeclensions": "Estas declinaciones son las mismas"
+  "unselectAll": "Deseleccionar Todos"
 }

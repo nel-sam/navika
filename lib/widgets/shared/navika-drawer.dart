@@ -65,6 +65,8 @@ class _NavikaDrawerState extends State<NavikaDrawer> {
 
   @override
   Widget build(BuildContext context) {
+    var typeIconPadding = const EdgeInsets.all(12);
+
     return Container(
       // width: 230,
       child: Drawer(
@@ -154,14 +156,38 @@ class _NavikaDrawerState extends State<NavikaDrawer> {
                   ),
                   Column(
                     children: [
-                      Text(
-                          'Choose exercise type'), // TODO: Multi lingual support
+                      // TODO: Make text nicer looking
+                      Text(AppLocalizations.of(context)!.chooseExerciseType),
                       ToggleButtons(
                         children: <Widget>[
-                          // TODO: Multi lingual support
-                          Text('Free'),
-                          Text('Mixed'),
-                          Text('Select'),
+                          Padding(
+                            padding: typeIconPadding,
+                            child: Column(
+                              children: [
+                                Icon(Icons.keyboard),
+                                Text(AppLocalizations.of(context)!.freeForm),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: typeIconPadding,
+                            child: Column(
+                              children: [
+                                Icon(Icons
+                                    .arrow_upward), // TODO: Choose better icon
+                                Text(AppLocalizations.of(context)!.mixedMode),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: typeIconPadding,
+                            child: Column(
+                              children: [
+                                Icon(Icons.list),
+                                Text(AppLocalizations.of(context)!.selectMode),
+                              ],
+                            ),
+                          ),
                         ],
                         onPressed: (int selectedIndx) {
                           setState(() {
