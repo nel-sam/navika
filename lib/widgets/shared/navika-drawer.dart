@@ -4,6 +4,8 @@ import 'package:navika/constants.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
+import 'package:navika/widgets/grammar-guide/child-widgets/navika-subheader.dart';
+import 'package:navika/widgets/shared/navika-text.dart';
 
 class NavikaDrawer extends StatefulWidget {
   final Function(SettingsSet) onFiltersSet;
@@ -154,57 +156,66 @@ class _NavikaDrawerState extends State<NavikaDrawer> {
                       });
                     },
                   ),
-                  Column(
-                    children: [
-                      // TODO: Make text nicer looking
-                      Text(AppLocalizations.of(context)!.chooseExerciseType),
-                      ToggleButtons(
-                        children: <Widget>[
-                          Padding(
-                            padding: typeIconPadding,
-                            child: Column(
-                              children: [
-                                Icon(Icons.keyboard),
-                                Text(AppLocalizations.of(context)!.freeForm),
-                              ],
+                  Padding(
+                    padding: const EdgeInsets.all(14.0),
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: NText([
+                            TextSpan(
+                                text: AppLocalizations.of(context)!
+                                    .chooseExerciseType)
+                          ]),
+                        ),
+                        ToggleButtons(
+                          borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                          children: <Widget>[
+                            Padding(
+                              padding: typeIconPadding,
+                              child: Column(
+                                children: [
+                                  Icon(Icons.keyboard),
+                                  Text(AppLocalizations.of(context)!.freeForm),
+                                ],
+                              ),
                             ),
-                          ),
-                          Padding(
-                            padding: typeIconPadding,
-                            child: Column(
-                              children: [
-                                Icon(Icons
-                                    .arrow_upward), // TODO: Choose better icon
-                                Text(AppLocalizations.of(context)!.mixedMode),
-                              ],
+                            Padding(
+                              padding: typeIconPadding,
+                              child: Column(
+                                children: [
+                                  Icon(Icons.auto_awesome_mosaic_rounded),
+                                  Text(AppLocalizations.of(context)!.mixedMode),
+                                ],
+                              ),
                             ),
-                          ),
-                          Padding(
-                            padding: typeIconPadding,
-                            child: Column(
-                              children: [
-                                Icon(Icons.list),
-                                Text(AppLocalizations.of(context)!.selectMode),
-                              ],
+                            Padding(
+                              padding: typeIconPadding,
+                              child: Column(
+                                children: [
+                                  Icon(Icons.list),
+                                  Text(AppLocalizations.of(context)!.selectMode)
+                                ],
+                              ),
                             ),
-                          ),
-                        ],
-                        onPressed: (int selectedIndx) {
-                          setState(() {
-                            for (int i = 0;
-                                i < entryTypeSelections.length;
-                                i++) {
-                              if (i == selectedIndx) {
-                                entryTypeSelections[i] = true;
-                              } else {
-                                entryTypeSelections[i] = false;
+                          ],
+                          onPressed: (int selectedIndx) {
+                            setState(() {
+                              for (int i = 0;
+                                  i < entryTypeSelections.length;
+                                  i++) {
+                                if (i == selectedIndx) {
+                                  entryTypeSelections[i] = true;
+                                } else {
+                                  entryTypeSelections[i] = false;
+                                }
                               }
-                            }
-                          });
-                        },
-                        isSelected: entryTypeSelections,
-                      ),
-                    ],
+                            });
+                          },
+                          isSelected: entryTypeSelections,
+                        ),
+                      ],
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 20),

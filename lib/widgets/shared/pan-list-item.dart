@@ -225,7 +225,7 @@ class _PANListItemState extends State<PANListItem> {
       return result;
     }
 
-    List<Widget> list = [
+    List<Widget> sentenceContent = [
       if (widget.sentenceStarter != '')
         Text(
           widget.sentenceStarter,
@@ -240,8 +240,6 @@ class _PANListItemState extends State<PANListItem> {
           style: TextStyle(fontSize: EXERCISE_FONT_STYLE),
         ),
     ];
-
-    var sentenceContent = list;
 
     return ExerciseRowCard(
       isAllCorrect: isAllCorrect,

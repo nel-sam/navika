@@ -24,7 +24,7 @@ class CaseFreeForm extends StatelessWidget {
       child: TextField(
         decoration: InputDecoration(
           isDense: true,
-          contentPadding: EdgeInsets.fromLTRB(4, 10, 0, 1),
+          contentPadding: EdgeInsets.fromLTRB(4, 18, 0, 1),
           labelText: correctValues.contains(activeValue) ? '' : hintValue,
           enabledBorder: getBorder(),
           focusedBorder: getBorder(),

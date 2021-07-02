@@ -41,7 +41,7 @@ class ExerciseRowCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 8.0),
       child: Container(
-        height: 120,
+        height: 150,
         decoration: BoxDecoration(
           color: bgColor,
           boxShadow: [
@@ -70,13 +70,12 @@ class ExerciseRowCard extends StatelessWidget {
   Widget getBody() {
     return Padding(
       padding: const EdgeInsets.fromLTRB(
-          CELL_TEXT_PADDING * 2, CELL_TEXT_PADDING, 0, 0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: children
-            .map((c) => Padding(padding: const EdgeInsets.all(5), child: c))
-            .toList(),
-      ),
+          CELL_TEXT_PADDING * 2, CELL_TEXT_PADDING * 4, 0, 0),
+      child: Wrap(
+          crossAxisAlignment: WrapCrossAlignment.center,
+          children: children
+              .map((c) => Padding(padding: const EdgeInsets.all(3), child: c))
+              .toList()),
     );
   }
 
