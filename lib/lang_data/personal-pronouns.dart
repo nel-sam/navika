@@ -37,11 +37,10 @@ final List<PersonalPronoun> personalPronounWordBank = [
     nominativ: new DeclensionPronoun(forms: ['on']),
     genitiv: new DeclensionPronoun(forms: ['njega', 'ga']),
     dativ: new DeclensionPronoun(forms: ['njemu', 'mu']),
-    akuzativ: new DeclensionPronoun(forms: ['njega', 'ga']),
-    lokativ:
-        new DeclensionPronoun(forms: ['njemu']), // TODO: ????  shortForm: 'mu'
+    akuzativ: new DeclensionPronoun(forms: ['njega', 'ga', 'nj']),
+    lokativ: new DeclensionPronoun(forms: ['njemu', 'njem']),
     vokativ: new DeclensionPronoun(forms: ['']),
-    instrumental: new DeclensionPronoun(forms: ['njim']),
+    instrumental: new DeclensionPronoun(forms: ['njime', 'njim']),
   ),
   PersonalPronoun(
     // TODO: nju, ju, je : To avoid repeating the same syllabe.
@@ -53,12 +52,12 @@ final List<PersonalPronoun> personalPronounWordBank = [
     isPlural: false,
     gender: Genders.Feminine,
     nominativ: new DeclensionPronoun(forms: ['ona']),
-    genitiv: new DeclensionPronoun(forms: ['nje']),
+    genitiv: new DeclensionPronoun(forms: ['nje', 'je']),
     dativ: new DeclensionPronoun(forms: ['njoj', 'joj']),
-    akuzativ: new DeclensionPronoun(forms: ['nju', 'ju']),
+    akuzativ: new DeclensionPronoun(forms: ['nju', 'ju', 'je']),
     lokativ: new DeclensionPronoun(forms: ['njoj']),
     vokativ: new DeclensionPronoun(forms: ['']),
-    instrumental: new DeclensionPronoun(forms: ['njom']),
+    instrumental: new DeclensionPronoun(forms: ['njome', 'njom']),
   ),
   PersonalPronoun(
     dictionary: 'mi',
