@@ -52,12 +52,10 @@ String getsSa(Noun noun, Adjective? pronoun, Adjective? adjective) {
 
   if (pronoun != null &&
       saLetters.contains(pronoun.dictionary.characters.first)) {
-    print('Pronoun: ${pronoun.dictionary}');
     return 'sa';
   } else if (pronoun != null) {
     return 's';
   } else if (adjective != null && saLetters.contains(adjective.dictionary)) {
-    print('Adj: ${adjective.dictionary.characters.first}');
     return 'sa';
   } else if (adjective != null) {
     return 's';

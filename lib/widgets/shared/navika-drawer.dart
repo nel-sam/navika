@@ -4,7 +4,6 @@ import 'package:navika/constants.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
-import 'package:navika/widgets/grammar-guide/child-widgets/navika-subheader.dart';
 import 'package:navika/widgets/shared/navika-text.dart';
 
 class NavikaDrawer extends StatefulWidget {
@@ -171,13 +170,17 @@ class _NavikaDrawerState extends State<NavikaDrawer> {
                         ToggleButtons(
                           borderRadius: BorderRadius.all(Radius.circular(5.0)),
                           children: <Widget>[
-                            Padding(
-                              padding: typeIconPadding,
-                              child: Column(
-                                children: [
-                                  Icon(Icons.keyboard),
-                                  Text(AppLocalizations.of(context)!.freeForm),
-                                ],
+                            Container(
+                              width: 90,
+                              child: Padding(
+                                padding: typeIconPadding,
+                                child: Column(
+                                  children: [
+                                    Icon(Icons.keyboard),
+                                    Text(
+                                        AppLocalizations.of(context)!.freeForm),
+                                  ],
+                                ),
                               ),
                             ),
                             Padding(
@@ -189,13 +192,17 @@ class _NavikaDrawerState extends State<NavikaDrawer> {
                                 ],
                               ),
                             ),
-                            Padding(
-                              padding: typeIconPadding,
-                              child: Column(
-                                children: [
-                                  Icon(Icons.list),
-                                  Text(AppLocalizations.of(context)!.selectMode)
-                                ],
+                            Container(
+                              width: 90,
+                              child: Padding(
+                                padding: typeIconPadding,
+                                child: Column(
+                                  children: [
+                                    Icon(Icons.list),
+                                    Text(AppLocalizations.of(context)!
+                                        .selectMode)
+                                  ],
+                                ),
                               ),
                             ),
                           ],
