@@ -205,19 +205,22 @@ class _PANListItemState extends State<PANListItem> {
     // This is a deterministic function that still
     // tries to create variety in the exercises
     bool getIsFreeForm(int total, int i) {
-      final nounLen = widget.noun!.dictionary.length;
+      final baseWord = widget.personalPronoun != null
+          ? widget.personalPronoun!.dictionary
+          : widget.noun!.dictionary;
 
       if (total == 1 && widget.personalPronoun != null) {
         return widget.personalPronoun!.dictionary.contains('i');
       } else if (total == 1) {
         return widget.noun!.dictionary.indexOf('e') > i;
       } else if (total == 2) {
-        return widget.noun!.dictionary.contains('e') && total % (i + 1) == 0;
+        return widget.noun!.dictionary.contains('n') ||
+            (total * baseWord.length + 1) % (i + 1) == 0;
       } else if (widget.noun!.dictionary.contains('j')) {
-        return (total + nounLen) % (i + 1) == 0;
+        return (total + baseWord.length) % (i + 1) == 0;
       }
 
-      var t = nounLen % (i + total) == 0;
+      var t = baseWord.length % (i + total) == 0;
       return widget.noun!.dictionary.contains('e') || t;
     }
 

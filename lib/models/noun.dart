@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/utilities/navika-helpers.dart';
@@ -62,16 +60,8 @@ class Noun {
     return isPlural ? declension.plural : declension.singular;
   }
 
-  String getRandomDeclension(List<String> avoid) {
-    final declensions = getUniqueDeclensions();
-    declensions.removeWhere((d) => avoid.contains(d));
-    final random = new Random();
-    var index = random.nextInt(declensions.length - 1);
-    return declensions[index];
-  }
-
-  List<String> getUniqueDeclensions() {
-    return N.shuffleList([
+  List<String> getUniqueDeclensions({bool shuffle = false}) {
+    var result = [
       this.dictionary,
       ...this.nominativ.singular,
       ...this.akuzativ.singular,
@@ -87,7 +77,9 @@ class Noun {
       ...this.dativ.plural,
       ...this.genitiv.plural,
       ...this.vokativ.plural,
-    ].toSet().toList().where((element) => element.length > 0).toList());
+    ].toSet().toList().where((element) => element.length > 0).toList();
+
+    return shuffle ? N.shuffleList(result) : result;
   }
 
   List<String> getDeclensionsForCaseType(CaseTypeEnum caseType) {

@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/utilities/navika-helpers.dart';
@@ -51,17 +49,8 @@ class PersonalPronoun {
     }
   }
 
-  String getRandomDeclension(List<String> avoid) {
-    final List<String> declensions = getUniqueDeclensions();
-    declensions.removeWhere((d) => avoid.contains(d));
-
-    final random = new Random();
-    var index = random.nextInt(declensions.length - 1);
-    return declensions[index];
-  }
-
-  List<String> getUniqueDeclensions() {
-    return N.shuffleList([
+  List<String> getUniqueDeclensions({bool shuffle = false}) {
+    var result = [
       this.dictionary,
       ...this.nominativ.forms,
       ...this.akuzativ.forms,
@@ -70,7 +59,9 @@ class PersonalPronoun {
       ...this.dativ.forms,
       ...this.genitiv.forms,
       ...this.vokativ.forms,
-    ].toSet().toList().where((element) => element.length > 0).toList());
+    ].toSet().toList().where((element) => element.length > 0).toList();
+
+    return shuffle ? N.shuffleList(result) : result;
   }
 
   longestForCase(CaseTypeEnum caseType) {

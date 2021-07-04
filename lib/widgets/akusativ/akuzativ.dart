@@ -1,76 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:navika/lang_data/word-bank.dart';
-import 'package:navika/models/adjective.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
-import 'package:navika/models/noun.dart';
-import 'package:navika/models/personal-pronoun.dart';
-import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/shared/case-exercise.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/widgets/shared/navika-banner.dart';
 
-StaticSentenceParts getStaticSentenceParts(
-    Noun noun, bool isPlural, Adjective? pronoun, Adjective? adjective) {
-  String start = '';
-  String end = '';
-  final pron = pronoun != null ? pronoun.nominativ.masculine.singular : '';
-
-  if (noun.tags.contains(Tags.Location)) {
-    start = 'Idemo u';
-  } else if (noun.tags.contains(Tags.Food)) {
-    start = N.coinFlip() ? 'Ću jesti' : 'Želi';
-  } else if (pron != 'moj')
-    start = N.coinFlip() ? 'Ja vidim' : 'Volim';
-  else if (noun.tags.contains(Tags.Portable)) {
-    start = 'Daj joj';
-  } else {
-    start = 'Vidimo';
-  }
-
-  return StaticSentenceParts(start: start, end: end);
-}
-
-StaticSentenceParts getPersonalPronounSentenceStaticParts(
-  PersonalPronoun personalPronoun,
-  bool isShortForm,
-) {
-  final actualValue = personalPronoun.nominativ.forms.first;
-  String start = '';
-  String end = '';
-
-  if (actualValue != 'mi' && N.coinFlip()) {
-    start = 'Mi vidimo';
-  } else if (actualValue != 'ti' && N.coinFlip()) {
-    start = 'Daj to ';
-  } else if (isShortForm) {
-    start = 'Molim';
-  } else {
-    start = actualValue != 'ti' ? 'Videš' : 'Videm';
-  }
-
-  return StaticSentenceParts(start: start, end: end);
-}
-
 class Akuzativ extends StatefulWidget {
+  final Function(SettingsSet) onSettingsSet;
+  final List<PANExerciseItem> listItems;
+  final SettingsSet settingsSet;
+
+  const Akuzativ({
+    required this.listItems,
+    required this.settingsSet,
+    required this.onSettingsSet,
+  });
+
   @override
   _AkuzativState createState() => _AkuzativState();
 }
 
 class _AkuzativState extends State<Akuzativ> {
   final title = 'Akuzativ';
-  final WordBank bank = wordBank;
-  var settingsSet = SettingsSet();
 
   @override
   Widget build(BuildContext context) {
     return CaseExercise(
       title: title,
       caseType: CaseTypeEnum.Akuzativ,
-      sourceData: bank,
-      getStaticSentenceParts: getStaticSentenceParts,
-      getPersonalPronounSentenceStaticParts:
-          getPersonalPronounSentenceStaticParts,
+      listItems: widget.listItems,
       banner: NavikaBanner(
         imagePath: CaseImagePaths[CaseTypeEnum.Akuzativ]!,
         caseName: title,
@@ -82,10 +40,8 @@ class _AkuzativState extends State<Akuzativ> {
           Icons.euro,
         ],
       ),
-      onSettingsSet: (SettingsSet newSettingsSet) => setState(() {
-        settingsSet = newSettingsSet;
-      }),
-      settingsSet: settingsSet,
+      onSettingsSet: widget.onSettingsSet,
+      settingsSet: widget.settingsSet,
     );
   }
 }

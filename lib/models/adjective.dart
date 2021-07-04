@@ -27,17 +27,8 @@ class Adjective {
     required this.vokativ,
   });
 
-  String getRandomDeclension(List<String> avoid) {
-    final declensions = getUniqueDeclensions();
-    declensions.removeWhere((d) => avoid.contains(d));
-
-    final random = new Random();
-    var index = random.nextInt(declensions.length - 1);
-    return declensions[index];
-  }
-
-  List<String> getUniqueDeclensions() {
-    return N.shuffleList([
+  List<String> getUniqueDeclensions({bool shuffle = false}) {
+    var result = [
       this.dictionary,
       ...this.nominativ.masculine.singular,
       ...this.nominativ.feminine.singular,
@@ -87,7 +78,9 @@ class Adjective {
       ...this.vokativ.masculine.plural,
       ...this.vokativ.feminine.plural,
       ...this.vokativ.neuter.plural,
-    ].toSet().toList().where((element) => element.length > 0).toList());
+    ].toSet().toList().where((element) => element.length > 0).toList();
+
+    return shuffle ? N.shuffleList(result) : result;
   }
 
   List<String> getDeclensions(

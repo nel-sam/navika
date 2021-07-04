@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
-import 'package:navika/models/adjective.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
-import 'package:navika/models/noun.dart';
-import 'package:navika/models/personal-pronoun.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/shared/navika-drawer.dart';
 import 'package:navika/widgets/shared/footer-buttons.dart';
@@ -13,13 +10,8 @@ import 'package:navika/widgets/shared/navika-banner.dart';
 class CaseExercise extends StatefulWidget {
   final String title;
   final CaseTypeEnum caseType;
-  final WordBank sourceData;
   final NavikaBanner banner;
-  final StaticSentenceParts Function(Noun, bool, Adjective, Adjective)
-      getStaticSentenceParts;
-  final StaticSentenceParts Function(PersonalPronoun, bool)
-      getPersonalPronounSentenceStaticParts;
-
+  final List<PANExerciseItem> listItems;
   final Function(SettingsSet) onSettingsSet;
   final SettingsSet settingsSet;
 
@@ -27,12 +19,10 @@ class CaseExercise extends StatefulWidget {
     Key? key,
     required this.title,
     required this.caseType,
-    required this.sourceData,
     required this.banner,
-    required this.getStaticSentenceParts,
-    required this.getPersonalPronounSentenceStaticParts,
     required this.onSettingsSet,
     required this.settingsSet,
+    required this.listItems,
   }) : super(key: key);
 
   @override
@@ -41,14 +31,11 @@ class CaseExercise extends StatefulWidget {
 
 class _CaseExerciseState extends State<CaseExercise> {
   final controller = ScrollController();
+  var settingsSet = new SettingsSet();
 
   @override
   Widget build(BuildContext context) {
     final scaffoldKey = new GlobalKey<ScaffoldState>();
-    List<PANExerciseItem> listItems = N.getPANCombos(
-        widget.sourceData.filter(widget.settingsSet),
-        widget.getStaticSentenceParts,
-        widget.getPersonalPronounSentenceStaticParts);
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -91,7 +78,7 @@ class _CaseExerciseState extends State<CaseExercise> {
           children: [
             widget.banner,
             ...N.getPANListItems(
-              listItems,
+              widget.listItems,
               widget.caseType,
               widget.settingsSet.entryType,
             )

@@ -9,6 +9,7 @@ import 'package:navika/models/noun.dart';
 import 'package:navika/models/personal-pronoun.dart';
 import 'package:navika/widgets/shared/pan-list-item.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:navika/extensions.dart';
 
 class N {
   static scrollTo(double point, controller) {
@@ -140,10 +141,10 @@ class N {
     CaseTypeEnum caseType,
     EntryTypes entryType,
   ) {
-    return N
-        .shuffleList<PANExerciseItem>(listItems)
-        .take(BATCH_COUNT)
-        .map((PANExerciseItem e) {
+    return
+        //N
+        //.shuffleList<PANExerciseItem>(listItems)
+        listItems.take(BATCH_COUNT).map((PANExerciseItem e) {
       if (e.personalPronoun != null) {
         final correctPersPron =
             e.personalPronoun!.getDeclensions(caseType: caseType);
@@ -154,8 +155,10 @@ class N {
           sentenceStarter: e.sentenceStarter,
           sentenceEnder: e.sentenceEnder,
           correctPersProns: correctPersPron,
-          activePersPron:
-              e.personalPronoun!.getRandomDeclension(correctPersPron),
+          activePersPron: e.personalPronoun!
+              .getUniqueDeclensions()
+              .removeList(correctPersPron)
+              .first,
           isPlural: e.isPlural,
           gender: e.gender,
           personalPronoun: e.personalPronoun!,
@@ -164,12 +167,12 @@ class N {
 
       final hasPP = e.pronoun != null;
       final hasAdj = e.adjective != null;
-      final correctNounValue = e.noun!.getDeclensions(e.isPlural, caseType);
-      final List<String> correctPron = hasPP
+      final correctNounValues = e.noun!.getDeclensions(e.isPlural, caseType);
+      final List<String> correctProns = hasPP
           ? e.pronoun!
               .getDeclensions(e.gender, e.isPlural, caseType, e.noun!.isAnimate)
           : [''];
-      final List<String> correctAdj = hasAdj
+      final List<String> correctAdjs = hasAdj
           ? e.adjective!
               .getDeclensions(e.gender, e.isPlural, caseType, e.noun!.isAnimate)
           : [''];
@@ -179,14 +182,23 @@ class N {
           caseType: caseType,
           sentenceStarter: e.sentenceStarter,
           sentenceEnder: e.sentenceEnder,
-          correctPossProns: correctPron,
-          correctAdjs: correctAdj,
-          correctNouns: correctNounValue,
+          correctPossProns: correctProns,
+          correctAdjs: correctAdjs,
+          correctNouns: correctNounValues,
           adjective: hasAdj ? e.adjective! : null,
-          activePossPron:
-              hasPP ? e.pronoun!.getRandomDeclension(correctPron) : '',
-          activeAdj: hasAdj ? e.adjective!.getRandomDeclension(correctAdj) : '',
-          activeNoun: e.noun!.getRandomDeclension(correctNounValue),
+          activePossPron: hasPP
+              ? e.pronoun!.getUniqueDeclensions().removeList(correctProns).first
+              : '',
+          activeAdj: hasAdj
+              ? e.adjective!
+                  .getUniqueDeclensions()
+                  .removeList(correctAdjs)
+                  .first
+              : '',
+          activeNoun: e.noun!
+              .getUniqueDeclensions()
+              .removeList(correctNounValues)
+              .first,
           isPlural: e.isPlural,
           possPronoun: hasPP ? e.pronoun! : null,
           gender: e.gender,
