@@ -51,6 +51,7 @@ class _CaseExerciseState extends State<CaseExercise> {
         widget.getPersonalPronounSentenceStaticParts);
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       key: scaffoldKey,
       appBar: AppBar(
         leading: Builder(builder: (BuildContext context) => BackButton()),

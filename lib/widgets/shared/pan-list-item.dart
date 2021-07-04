@@ -213,13 +213,26 @@ class _PANListItemState extends State<PANListItem> {
       ];
     }
 
+    // This method is a determinate function that still
+    // tries to create variety in the exercises
+    bool getIsFreeForm(int total, int i) {
+      if (total == 1 && widget.personalPronoun != null) {
+        return widget.personalPronoun!.dictionary.contains('i');
+      } else if (total == 2) {
+        return widget.noun!.dictionary.contains('e') && total % (i + 1) == 0;
+      }
+
+      return widget.noun!.dictionary.contains('j') || total % (i + 2) == 0;
+    }
+
     getMixedForms() {
       var freeF = freeForms();
       var dropD = dropDowns();
       var result = List<Widget>.empty(growable: true);
 
       for (int i = 0; i < freeF.length; i++) {
-        result.add(N.coinFlip() ? freeF[i] : dropD[i]);
+        final isFreeForm = getIsFreeForm(freeF.length, i);
+        result.add(isFreeForm ? freeF[i] : dropD[i]);
       }
 
       return result;

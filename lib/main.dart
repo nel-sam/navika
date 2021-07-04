@@ -73,6 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
     adBanner.load();
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: N.NavikaAppBar(
           Text(
             'navika',

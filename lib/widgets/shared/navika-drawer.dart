@@ -85,8 +85,7 @@ class _NavikaDrawerState extends State<NavikaDrawer> {
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  Column(
                     children: [
                       TextButton.icon(
                         icon: Icon(Icons.list),
