@@ -86,21 +86,10 @@ class _PANListItemState extends State<PANListItem> {
   Widget build(BuildContext context) {
     bool isAllCorrect = checkAnswer();
 
-    final bool usePossPronouns = widget.possPronoun != null &&
-        widget.correctPossProns != null &&
-        widget.correctPossProns!.length > 0;
-
-    final bool useAdj = widget.adjective != null &&
-        widget.correctAdjs != null &&
-        widget.correctAdjs!.length > 0;
-
-    final bool useNoun = widget.noun != null &&
-        widget.correctNouns != null &&
-        widget.correctNouns!.length > 0;
-
-    final bool usePersPron = widget.personalPronoun != null &&
-        widget.correctPersProns != null &&
-        widget.correctPersProns!.length > 0;
+    final bool usePossPronouns = widget.possPronoun != null;
+    final bool useAdj = widget.adjective != null;
+    final bool useNoun = widget.noun != null;
+    final bool usePersPron = widget.personalPronoun != null;
 
     dropDowns() {
       return [
@@ -213,16 +202,23 @@ class _PANListItemState extends State<PANListItem> {
       ];
     }
 
-    // This method is a determinate function that still
+    // This is a deterministic function that still
     // tries to create variety in the exercises
     bool getIsFreeForm(int total, int i) {
+      final nounLen = widget.noun!.dictionary.length;
+
       if (total == 1 && widget.personalPronoun != null) {
         return widget.personalPronoun!.dictionary.contains('i');
+      } else if (total == 1) {
+        return widget.noun!.dictionary.indexOf('e') > i;
       } else if (total == 2) {
         return widget.noun!.dictionary.contains('e') && total % (i + 1) == 0;
+      } else if (widget.noun!.dictionary.contains('j')) {
+        return (total + nounLen) % (i + 1) == 0;
       }
 
-      return widget.noun!.dictionary.contains('j') || total % (i + 2) == 0;
+      var t = nounLen % (i + total) == 0;
+      return widget.noun!.dictionary.contains('e') || t;
     }
 
     getMixedForms() {
