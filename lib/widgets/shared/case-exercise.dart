@@ -50,20 +50,21 @@ class _CaseExerciseState extends State<CaseExercise> {
       endDrawer: NavikaDrawer(
         initalValues: widget.settingsSet,
         onFiltersSet: (SettingsSet newSettingsSet) {
-          var filterChanged = widget.settingsSet.adjectivesIncluded ==
-                  newSettingsSet.adjectivesIncluded &&
-              widget.settingsSet.nounsIncluded ==
-                  newSettingsSet.nounsIncluded &&
-              widget.settingsSet.personalPronounsIncluded ==
-                  newSettingsSet.personalPronounsIncluded &&
-              widget.settingsSet.possessivePronounsIncluded ==
-                  newSettingsSet.possessivePronounsIncluded &&
-              widget.settingsSet.entryType == newSettingsSet.entryType;
+          // var sameAsBefore = widget.settingsSet.adjectivesIncluded ==
+          //         newSettingsSet.adjectivesIncluded &&
+          //     widget.settingsSet.nounsIncluded ==
+          //         newSettingsSet.nounsIncluded &&
+          //     widget.settingsSet.personalPronounsIncluded ==
+          //         newSettingsSet.personalPronounsIncluded &&
+          //     widget.settingsSet.possessivePronounsIncluded ==
+          //         newSettingsSet.possessivePronounsIncluded &&
+          //     widget.settingsSet.entryType == newSettingsSet.entryType;
 
-          if (filterChanged) {
-            Navigator.pop(context);
-            return;
-          }
+          // if (!sameAsBefore) {
+          //   print('Changed');
+          //   Navigator.pop(context);
+          //   return;
+          // }
 
           setState(() {
             widget.onSettingsSet(newSettingsSet);
@@ -87,7 +88,10 @@ class _CaseExerciseState extends State<CaseExercise> {
       persistentFooterButtons: NavikaChildFooterButtons(
         context: context,
         caseType: widget.caseType,
-        refreshFunction: widget.refreshFunction,
+        refreshFunction: () {
+          N.scrollTo(0, controller);
+          widget.refreshFunction();
+        },
       ),
     );
   }

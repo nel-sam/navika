@@ -38,34 +38,38 @@ class ExerciseRowCard extends StatelessWidget {
         ? Theme.of(context).backgroundColor
         : Colors.white;
 
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 8.0),
-      child: Flexible(
-        child: Container(
-          padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
-          decoration: BoxDecoration(
-            color: bgColor,
-            boxShadow: [
-              BoxShadow(
-                color: this.isAllCorrect
-                    ? CORRECT_COLOR.withOpacity(0.4)
-                    : WRONG_COLOR.withOpacity(0.4),
-                spreadRadius: 1,
-                blurRadius: 1,
+    return Row(
+      children: [
+        Flexible(
+          child: Padding(
+            padding: const EdgeInsets.only(bottom: 8.0),
+            child: Container(
+              padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
+              decoration: BoxDecoration(
+                color: bgColor,
+                boxShadow: [
+                  BoxShadow(
+                    color: this.isAllCorrect
+                        ? CORRECT_COLOR.withOpacity(0.4)
+                        : WRONG_COLOR.withOpacity(0.4),
+                    spreadRadius: 1,
+                    blurRadius: 1,
+                  ),
+                ],
               ),
-            ],
-          ),
-          margin: EdgeInsets.only(top: 10),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              getHeader(context),
-              getBody(),
-            ],
+              margin: EdgeInsets.only(top: 10),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  getHeader(context),
+                  getBody(),
+                ],
+              ),
+            ),
           ),
         ),
-      ),
+      ],
     );
   }
 

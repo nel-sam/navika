@@ -31,8 +31,6 @@ class _NominativState extends State<Nominativ> {
 
   @override
   Widget build(BuildContext context) {
-    print('${settingsSet.entryType}');
-
     return CaseExercise(
       title: title,
       caseType: CaseTypeEnum.Nominativ,

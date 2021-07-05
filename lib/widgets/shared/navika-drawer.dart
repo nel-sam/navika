@@ -241,7 +241,7 @@ class _NavikaDrawerState extends State<NavikaDrawer> {
                                 getSelectedEntryType(entryTypeSelections),
                           ),
                         );
-                        // TODO: Hide drawer
+                        Navigator.pop(context);
                       },
                     ),
                   ),

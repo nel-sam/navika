@@ -30,7 +30,7 @@ class DativGenerators {
     String end = '';
 
     if (N.coinFlip()) {
-      start = 'Došlo je do';
+      start = 'Pas je došlo do';
     } else if (N.coinFlip()) {
       start = 'Odakle';
       end = 'to dolazi';

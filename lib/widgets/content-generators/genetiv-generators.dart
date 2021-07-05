@@ -21,8 +21,18 @@ class GenetivGenerators {
         start = N.coinFlip() ? 'Otkad sam bez' : 'Ići ću bez';
       else
         start = 'Ići ćeš bez';
-    } else if (noun.tags.contains(Tags.Location)) {
+    } else if (noun.tags.contains(Tags.Country)) {
       start = pronoun!.dictionary != 'moj' ? 'Ja sam iz' : 'On je iz';
+    } else if (noun.tags.contains(Tags.Location)) {
+      start =
+          pronoun!.dictionary != 'mi' ? 'Idemo od kuće do' : 'Idem od kuće do';
+    } else if (noun.tags.contains(Tags.Health)) {
+      if (pronoun!.dictionary == 'ja')
+        start = 'Ne mogu raditi zbog';
+      else {
+        start = 'Život bez';
+        end = 'je naibolji';
+      }
     } else if (N.coinFlip()) {
       start = 'Volim boja';
     } else {
