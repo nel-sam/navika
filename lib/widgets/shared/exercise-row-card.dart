@@ -40,28 +40,30 @@ class ExerciseRowCard extends StatelessWidget {
 
     return Padding(
       padding: const EdgeInsets.only(bottom: 8.0),
-      child: Container(
-        height: 150,
-        decoration: BoxDecoration(
-          color: bgColor,
-          boxShadow: [
-            BoxShadow(
-              color: this.isAllCorrect
-                  ? CORRECT_COLOR.withOpacity(0.4)
-                  : WRONG_COLOR.withOpacity(0.4),
-              spreadRadius: 1,
-              blurRadius: 1,
-            ),
-          ],
-        ),
-        margin: EdgeInsets.only(top: 10),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            getHeader(context),
-            getBody(),
-          ],
+      child: Flexible(
+        child: Container(
+          padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
+          decoration: BoxDecoration(
+            color: bgColor,
+            boxShadow: [
+              BoxShadow(
+                color: this.isAllCorrect
+                    ? CORRECT_COLOR.withOpacity(0.4)
+                    : WRONG_COLOR.withOpacity(0.4),
+                spreadRadius: 1,
+                blurRadius: 1,
+              ),
+            ],
+          ),
+          margin: EdgeInsets.only(top: 10),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              getHeader(context),
+              getBody(),
+            ],
+          ),
         ),
       ),
     );

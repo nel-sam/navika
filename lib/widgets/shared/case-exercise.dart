@@ -37,11 +37,8 @@ class _CaseExerciseState extends State<CaseExercise> {
 
   @override
   Widget build(BuildContext context) {
-    //final scaffoldKey = new GlobalKey<ScaffoldState>();
-
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      //key: scaffoldKey,
       appBar: AppBar(
         leading: Builder(builder: (BuildContext context) => BackButton()),
         elevation: APPBAR_ELEVATION,

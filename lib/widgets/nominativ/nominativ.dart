@@ -6,16 +6,10 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/widgets/shared/navika-banner.dart';
 
 class Nominativ extends StatefulWidget {
-  final Function(SettingsSet) onSettingsSet;
   final List<PANExerciseItem> listItems;
-  final void Function() refreshFunction;
-  final SettingsSet settingsSet;
 
   const Nominativ({
     required this.listItems,
-    required this.settingsSet,
-    required this.onSettingsSet,
-    required this.refreshFunction,
   });
 
   @override
@@ -24,9 +18,21 @@ class Nominativ extends StatefulWidget {
 
 class _NominativState extends State<Nominativ> {
   final title = 'Nominativ';
+  late SettingsSet settingsSet;
+
+  @override
+  initState() {
+    settingsSet = SettingsSet();
+    super.initState();
+  }
+
+  onSettingsSet(SettingsSet newSettingsSet) =>
+      setState(() => settingsSet = newSettingsSet);
 
   @override
   Widget build(BuildContext context) {
+    print('${settingsSet.entryType}');
+
     return CaseExercise(
       title: title,
       caseType: CaseTypeEnum.Nominativ,
@@ -41,9 +47,13 @@ class _NominativState extends State<Nominativ> {
           Icons.people,
         ],
       ),
-      onSettingsSet: widget.onSettingsSet,
-      settingsSet: widget.settingsSet,
-      refreshFunction: widget.refreshFunction,
+      onSettingsSet: onSettingsSet,
+      settingsSet: settingsSet,
+      refreshFunction: () => {
+        setState(() {
+          widget.listItems.shuffle();
+        })
+      },
     );
   }
 }

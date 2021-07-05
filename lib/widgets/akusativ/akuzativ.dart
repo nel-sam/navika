@@ -6,16 +6,10 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/widgets/shared/navika-banner.dart';
 
 class Akuzativ extends StatefulWidget {
-  final Function(SettingsSet) onSettingsSet;
   final List<PANExerciseItem> listItems;
-  final void Function() refreshFunction;
-  final SettingsSet settingsSet;
 
   const Akuzativ({
     required this.listItems,
-    required this.settingsSet,
-    required this.onSettingsSet,
-    required this.refreshFunction,
   });
 
   @override
@@ -24,26 +18,41 @@ class Akuzativ extends StatefulWidget {
 
 class _AkuzativState extends State<Akuzativ> {
   final title = 'Akuzativ';
+  late SettingsSet settingsSet;
+
+  @override
+  initState() {
+    settingsSet = SettingsSet();
+    super.initState();
+  }
+
+  onSettingsSet(SettingsSet newSettingsSet) =>
+      setState(() => settingsSet = newSettingsSet);
 
   @override
   Widget build(BuildContext context) {
     return CaseExercise(
-        title: title,
-        caseType: CaseTypeEnum.Akuzativ,
-        listItems: widget.listItems,
-        banner: NavikaBanner(
-          imagePath: CaseImagePaths[CaseTypeEnum.Akuzativ]!,
-          caseName: title,
-          description: AppLocalizations.of(context)!.akuzativDescription,
-          icons: [
-            Icons.remove_red_eye_outlined,
-            Icons.car_rental,
-            Icons.arrow_forward,
-            Icons.euro,
-          ],
-        ),
-        onSettingsSet: widget.onSettingsSet,
-        settingsSet: widget.settingsSet,
-        refreshFunction: widget.refreshFunction);
+      title: title,
+      caseType: CaseTypeEnum.Akuzativ,
+      listItems: widget.listItems,
+      banner: NavikaBanner(
+        imagePath: CaseImagePaths[CaseTypeEnum.Akuzativ]!,
+        caseName: title,
+        description: AppLocalizations.of(context)!.akuzativDescription,
+        icons: [
+          Icons.remove_red_eye_outlined,
+          Icons.car_rental,
+          Icons.arrow_forward,
+          Icons.euro,
+        ],
+      ),
+      onSettingsSet: onSettingsSet,
+      settingsSet: settingsSet,
+      refreshFunction: () => {
+        setState(() {
+          widget.listItems.shuffle();
+        })
+      },
+    );
   }
 }

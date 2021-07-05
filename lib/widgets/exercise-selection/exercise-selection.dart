@@ -16,7 +16,6 @@ import 'package:navika/widgets/instrumental/instrumental.dart';
 import 'package:navika/widgets/lokativ/lokativ.dart';
 import 'package:navika/widgets/nominativ/nominativ.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:navika/extensions.dart';
 
 class ExerciseSelection extends StatefulWidget {
   @override
@@ -24,26 +23,18 @@ class ExerciseSelection extends StatefulWidget {
 }
 
 class _ExerciseSelectionState extends State<ExerciseSelection> {
-  var settingsSet = SettingsSet();
+  late SettingsSet settingsSet;
   late List<PANExerciseItem> nomContent;
 
   @override
   initState() {
-    print('initState');
+    settingsSet = SettingsSet();
     nomContent = NominativGenerators.getPANCombos(settingsSet);
     super.initState();
   }
 
-  onSettingsSet(SettingsSet newSettingsSet) {
-    setState(() {
-      settingsSet = newSettingsSet;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
-    print(nomContent[0].noun != null ? nomContent[0].noun!.dictionary : '');
-
     var buttons = <Widget>[
       ExerciseButton(
         destination: GrammarGuide(),
@@ -54,12 +45,6 @@ class _ExerciseSelectionState extends State<ExerciseSelection> {
       ExerciseButton(
         destination: Nominativ(
           listItems: nomContent,
-          settingsSet: settingsSet,
-          onSettingsSet: onSettingsSet,
-          refreshFunction: () => setState(() {
-            nomContent =
-                NominativGenerators.getPANCombos(settingsSet).shufflePAN();
-          }),
         ),
         icon: Icons.category_outlined,
         label: 'Nominativ',
@@ -68,9 +53,6 @@ class _ExerciseSelectionState extends State<ExerciseSelection> {
       ExerciseButton(
           destination: Akuzativ(
             listItems: AkuzativGenerators.getPANCombos(settingsSet),
-            settingsSet: settingsSet,
-            onSettingsSet: onSettingsSet,
-            refreshFunction: () => {setState(() => {})},
           ),
           icon: Icons.remove_red_eye_outlined,
           label: 'Akuzativ',
@@ -78,9 +60,6 @@ class _ExerciseSelectionState extends State<ExerciseSelection> {
       ExerciseButton(
           destination: Instrumental(
             listItems: InstrumentalGenerators.getPANCombos(settingsSet),
-            settingsSet: settingsSet,
-            onSettingsSet: onSettingsSet,
-            refreshFunction: () => {setState(() => {})},
           ),
           icon: Icons.handyman_outlined,
           label: 'Instrumental',
@@ -88,9 +67,6 @@ class _ExerciseSelectionState extends State<ExerciseSelection> {
       ExerciseButton(
           destination: Lokativ(
             listItems: LokativGenerators.getPANCombos(settingsSet),
-            settingsSet: settingsSet,
-            onSettingsSet: onSettingsSet,
-            refreshFunction: () => {setState(() => {})},
           ),
           icon: Icons.location_on_outlined,
           label: 'Lokativ',
@@ -98,9 +74,6 @@ class _ExerciseSelectionState extends State<ExerciseSelection> {
       ExerciseButton(
           destination: Dativ(
             listItems: DativGenerators.getPANCombos(settingsSet),
-            settingsSet: settingsSet,
-            onSettingsSet: onSettingsSet,
-            refreshFunction: () => {setState(() => {})},
           ),
           icon: Icons.arrow_forward,
           label: 'Dativ',
@@ -108,9 +81,6 @@ class _ExerciseSelectionState extends State<ExerciseSelection> {
       ExerciseButton(
           destination: Genitiv(
             listItems: GenetivGenerators.getPANCombos(settingsSet),
-            settingsSet: settingsSet,
-            onSettingsSet: onSettingsSet,
-            refreshFunction: () => {setState(() => {})},
           ),
           icon: Icons.coffee,
           label: 'Genitiv',

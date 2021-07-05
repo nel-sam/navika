@@ -230,7 +230,7 @@ class _NavikaDrawerState extends State<NavikaDrawer> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [Text(AppLocalizations.of(context)!.close)],
                       ),
-                      onPressed: () => {
+                      onPressed: () {
                         widget.onFiltersSet(
                           SettingsSet(
                             personalPronounsIncluded: pronounsChecked,
@@ -240,7 +240,8 @@ class _NavikaDrawerState extends State<NavikaDrawer> {
                             entryType:
                                 getSelectedEntryType(entryTypeSelections),
                           ),
-                        )
+                        );
+                        // TODO: Hide drawer
                       },
                     ),
                   ),

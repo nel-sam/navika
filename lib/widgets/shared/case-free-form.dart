@@ -20,7 +20,7 @@ class CaseFreeForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: maxLength * 11,
+      width: maxLength * 14,
       child: TextField(
         decoration: InputDecoration(
           isDense: true,
