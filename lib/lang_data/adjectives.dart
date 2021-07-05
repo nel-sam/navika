@@ -72,6 +72,65 @@ final List<Adjective> adjectiveWordBank = [
     ),
   ),
   Adjective(
+    dictionary: 'nov',
+    nominativ: new Declension(
+      masculine: new DeclensionByGender(singular: ['novi'], plural: ['novi']),
+      feminine: new DeclensionByGender(singular: ['nova'], plural: ['nove']),
+      neuter: new DeclensionByGender(singular: ['novo'], plural: ['nova']),
+    ),
+    akuzativ: new Declension(
+      masculine: new DeclensionByGender(singular: ['novi'], plural: ['nove']),
+      feminine: new DeclensionByGender(singular: ['novu'], plural: ['nove']),
+      neuter: new DeclensionByGender(singular: ['novo'], plural: ['nova']),
+    ),
+    akuzativAnimate: new Declension(
+      masculine: new DeclensionByGender(
+          singular: ['novog', 'novoga'], plural: ['nove']),
+      feminine: new DeclensionByGender(singular: ['novu'], plural: ['nove']),
+      neuter: new DeclensionByGender(singular: ['novo'], plural: ['nova']),
+    ),
+    instrumental: new Declension(
+      masculine: new DeclensionByGender(
+          singular: ['novim'], plural: ['novima', 'novim']),
+      feminine: new DeclensionByGender(
+          singular: ['novom'], plural: ['novima', 'novim']),
+      neuter: new DeclensionByGender(
+          singular: ['novim'], plural: ['novima', 'novim']),
+    ),
+    lokativ: new Declension(
+      masculine: new DeclensionByGender(
+          singular: ['novome', 'novomu', 'novom'],
+          plural: ['novijemu', 'novijem']),
+      feminine:
+          new DeclensionByGender(singular: ['novoj'], plural: ['novijoj']),
+      neuter: new DeclensionByGender(
+          singular: ['novome', 'novomu', 'novom'],
+          plural: ['novijemu', 'novijem']),
+    ),
+    dativ: new Declension(
+      masculine: new DeclensionByGender(
+          singular: ['novome', 'novomu', 'novom'],
+          plural: ['novijemu', 'novijem']),
+      feminine:
+          new DeclensionByGender(singular: ['novoj'], plural: ['novijoj']),
+      neuter: new DeclensionByGender(
+          singular: ['novome', 'novomu', 'novom'],
+          plural: ['novijemu', 'novijem']),
+    ),
+    genitiv: new Declension(
+      masculine: new DeclensionByGender(
+          singular: ['novoga', 'novog'], plural: ['novih']),
+      feminine: new DeclensionByGender(singular: ['nove'], plural: ['novih']),
+      neuter: new DeclensionByGender(
+          singular: ['novoga', 'novog'], plural: ['novih']),
+    ),
+    vokativ: new Declension(
+      masculine: new DeclensionByGender(singular: ['novi'], plural: ['noviji']),
+      feminine: new DeclensionByGender(singular: ['nove'], plural: ['novija']),
+      neuter: new DeclensionByGender(singular: ['nova'], plural: ['novije']),
+    ),
+  ),
+  Adjective(
     dictionary: 'hladno',
     nominativ: new Declension(
       masculine:
