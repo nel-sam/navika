@@ -8,12 +8,14 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class Dativ extends StatefulWidget {
   final Function(SettingsSet) onSettingsSet;
   final List<PANExerciseItem> listItems;
+  final void Function() refreshFunction;
   final SettingsSet settingsSet;
 
   const Dativ({
     required this.listItems,
     required this.settingsSet,
     required this.onSettingsSet,
+    required this.refreshFunction,
   });
 
   @override
@@ -26,21 +28,21 @@ class _DativState extends State<Dativ> {
   @override
   Widget build(BuildContext context) {
     return CaseExercise(
-      title: title,
-      caseType: CaseTypeEnum.Dativ,
-      listItems: widget.listItems,
-      banner: NavikaBanner(
-        imagePath: CaseImagePaths[CaseTypeEnum.Dativ]!,
-        caseName: title,
-        description: AppLocalizations.of(context)!.dativDescription,
-        icons: [
-          Icons.person,
-          Icons.arrow_forward,
-          Icons.people,
-        ],
-      ),
-      onSettingsSet: widget.onSettingsSet,
-      settingsSet: widget.settingsSet,
-    );
+        title: title,
+        caseType: CaseTypeEnum.Dativ,
+        listItems: widget.listItems,
+        banner: NavikaBanner(
+          imagePath: CaseImagePaths[CaseTypeEnum.Dativ]!,
+          caseName: title,
+          description: AppLocalizations.of(context)!.dativDescription,
+          icons: [
+            Icons.person,
+            Icons.arrow_forward,
+            Icons.people,
+          ],
+        ),
+        onSettingsSet: widget.onSettingsSet,
+        settingsSet: widget.settingsSet,
+        refreshFunction: widget.refreshFunction);
   }
 }

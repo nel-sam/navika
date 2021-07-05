@@ -8,12 +8,14 @@ import 'package:navika/widgets/shared/navika-banner.dart';
 class Nominativ extends StatefulWidget {
   final Function(SettingsSet) onSettingsSet;
   final List<PANExerciseItem> listItems;
+  final void Function() refreshFunction;
   final SettingsSet settingsSet;
 
   const Nominativ({
     required this.listItems,
     required this.settingsSet,
     required this.onSettingsSet,
+    required this.refreshFunction,
   });
 
   @override
@@ -41,6 +43,7 @@ class _NominativState extends State<Nominativ> {
       ),
       onSettingsSet: widget.onSettingsSet,
       settingsSet: widget.settingsSet,
+      refreshFunction: widget.refreshFunction,
     );
   }
 }

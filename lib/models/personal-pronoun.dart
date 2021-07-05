@@ -1,6 +1,6 @@
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
-import 'package:navika/utilities/navika-helpers.dart';
+import 'package:navika/extensions.dart';
 
 class PersonalPronoun {
   final PronounEnum type;
@@ -61,7 +61,7 @@ class PersonalPronoun {
       ...this.vokativ.forms,
     ].toSet().toList().where((element) => element.length > 0).toList();
 
-    return shuffle ? N.shuffleList(result) : result;
+    return shuffle ? result.shuffleStrings() : result;
   }
 
   longestForCase(CaseTypeEnum caseType) {

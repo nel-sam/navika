@@ -9,12 +9,14 @@ import 'package:navika/widgets/shared/navika-banner.dart';
 class Lokativ extends StatefulWidget {
   final Function(SettingsSet) onSettingsSet;
   final List<PANExerciseItem> listItems;
+  final void Function() refreshFunction;
   final SettingsSet settingsSet;
 
   const Lokativ({
     required this.listItems,
     required this.settingsSet,
     required this.onSettingsSet,
+    required this.refreshFunction,
   });
 
   @override
@@ -29,20 +31,20 @@ class _LokativState extends State<Lokativ> {
   @override
   Widget build(BuildContext context) {
     return CaseExercise(
-      title: title,
-      caseType: CaseTypeEnum.Lokativ,
-      listItems: widget.listItems,
-      banner: NavikaBanner(
-        imagePath: CaseImagePaths[CaseTypeEnum.Lokativ]!,
-        caseName: title,
-        description: AppLocalizations.of(context)!.lokativDescription,
-        icons: [
-          Icons.location_on_outlined,
-          Icons.message,
-        ],
-      ),
-      onSettingsSet: widget.onSettingsSet,
-      settingsSet: widget.settingsSet,
-    );
+        title: title,
+        caseType: CaseTypeEnum.Lokativ,
+        listItems: widget.listItems,
+        banner: NavikaBanner(
+          imagePath: CaseImagePaths[CaseTypeEnum.Lokativ]!,
+          caseName: title,
+          description: AppLocalizations.of(context)!.lokativDescription,
+          icons: [
+            Icons.location_on_outlined,
+            Icons.message,
+          ],
+        ),
+        onSettingsSet: widget.onSettingsSet,
+        settingsSet: widget.settingsSet,
+        refreshFunction: widget.refreshFunction);
   }
 }

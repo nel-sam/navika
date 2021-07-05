@@ -1,8 +1,6 @@
-import 'dart:math';
-
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
-import 'package:navika/utilities/navika-helpers.dart';
+import 'package:navika/extensions.dart';
 
 class Adjective {
   final String dictionary;
@@ -80,7 +78,7 @@ class Adjective {
       ...this.vokativ.neuter.plural,
     ].toSet().toList().where((element) => element.length > 0).toList();
 
-    return shuffle ? N.shuffleList(result) : result;
+    return shuffle ? result.shuffleStrings() : result;
   }
 
   List<String> getDeclensions(

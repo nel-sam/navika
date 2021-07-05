@@ -13,6 +13,7 @@ class CaseExercise extends StatefulWidget {
   final NavikaBanner banner;
   final List<PANExerciseItem> listItems;
   final Function(SettingsSet) onSettingsSet;
+  final void Function() refreshFunction;
   final SettingsSet settingsSet;
 
   const CaseExercise({
@@ -21,6 +22,7 @@ class CaseExercise extends StatefulWidget {
     required this.caseType,
     required this.banner,
     required this.onSettingsSet,
+    required this.refreshFunction,
     required this.settingsSet,
     required this.listItems,
   }) : super(key: key);
@@ -35,11 +37,11 @@ class _CaseExerciseState extends State<CaseExercise> {
 
   @override
   Widget build(BuildContext context) {
-    final scaffoldKey = new GlobalKey<ScaffoldState>();
+    //final scaffoldKey = new GlobalKey<ScaffoldState>();
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      key: scaffoldKey,
+      //key: scaffoldKey,
       appBar: AppBar(
         leading: Builder(builder: (BuildContext context) => BackButton()),
         elevation: APPBAR_ELEVATION,
@@ -88,7 +90,7 @@ class _CaseExerciseState extends State<CaseExercise> {
       persistentFooterButtons: NavikaChildFooterButtons(
         context: context,
         caseType: widget.caseType,
-        refreshFunction: () => setState(() {}),
+        refreshFunction: widget.refreshFunction,
       ),
     );
   }
