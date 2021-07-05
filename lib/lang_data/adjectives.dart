@@ -99,23 +99,19 @@ final List<Adjective> adjectiveWordBank = [
     ),
     lokativ: new Declension(
       masculine: new DeclensionByGender(
-          singular: ['novome', 'novomu', 'novom'],
-          plural: ['novijemu', 'novijem']),
+          singular: ['novome', 'novomu', 'novom'], plural: ['novima', 'novim']),
       feminine:
           new DeclensionByGender(singular: ['novoj'], plural: ['novijoj']),
       neuter: new DeclensionByGender(
-          singular: ['novome', 'novomu', 'novom'],
-          plural: ['novijemu', 'novijem']),
+          singular: ['novome', 'novomu', 'novom'], plural: ['novima', 'novim']),
     ),
     dativ: new Declension(
       masculine: new DeclensionByGender(
-          singular: ['novome', 'novomu', 'novom'],
-          plural: ['novijemu', 'novijem']),
+          singular: ['novome', 'novomu', 'novom'], plural: ['novima', 'novim']),
       feminine:
           new DeclensionByGender(singular: ['novoj'], plural: ['novijoj']),
       neuter: new DeclensionByGender(
-          singular: ['novome', 'novomu', 'novom'],
-          plural: ['novijemu', 'novijem']),
+          singular: ['novome', 'novomu', 'novom'], plural: ['novima', 'novim']),
     ),
     genitiv: new Declension(
       masculine: new DeclensionByGender(
@@ -125,9 +121,68 @@ final List<Adjective> adjectiveWordBank = [
           singular: ['novoga', 'novog'], plural: ['novih']),
     ),
     vokativ: new Declension(
-      masculine: new DeclensionByGender(singular: ['novi'], plural: ['noviji']),
-      feminine: new DeclensionByGender(singular: ['nove'], plural: ['novija']),
-      neuter: new DeclensionByGender(singular: ['nova'], plural: ['novije']),
+      masculine: new DeclensionByGender(singular: ['novi'], plural: ['novi']),
+      feminine: new DeclensionByGender(singular: ['nova'], plural: ['nove']),
+      neuter: new DeclensionByGender(singular: ['novo'], plural: ['nova']),
+    ),
+  ),
+  Adjective(
+    dictionary: 'star',
+    nominativ: new Declension(
+      masculine: new DeclensionByGender(singular: ['stari'], plural: ['stari']),
+      feminine: new DeclensionByGender(singular: ['stara'], plural: ['stare']),
+      neuter: new DeclensionByGender(singular: ['staro'], plural: ['stara']),
+    ),
+    akuzativ: new Declension(
+      masculine: new DeclensionByGender(singular: ['stari'], plural: ['stare']),
+      feminine: new DeclensionByGender(singular: ['staru'], plural: ['stare']),
+      neuter: new DeclensionByGender(singular: ['staro'], plural: ['stara']),
+    ),
+    akuzativAnimate: new Declension(
+      masculine: new DeclensionByGender(
+          singular: ['starog', 'staroga'], plural: ['stare']),
+      feminine: new DeclensionByGender(singular: ['staru'], plural: ['stare']),
+      neuter: new DeclensionByGender(singular: ['staro'], plural: ['stara']),
+    ),
+    instrumental: new Declension(
+      masculine: new DeclensionByGender(
+          singular: ['starim'], plural: ['starima', 'starim']),
+      feminine: new DeclensionByGender(
+          singular: ['starom'], plural: ['starima', 'starim']),
+      neuter: new DeclensionByGender(
+          singular: ['starim'], plural: ['starima', 'starim']),
+    ),
+    lokativ: new Declension(
+      masculine: new DeclensionByGender(
+          singular: ['starome', 'staromu', 'starom'],
+          plural: ['starima', 'starim']),
+      feminine:
+          new DeclensionByGender(singular: ['staroj'], plural: ['starijoj']),
+      neuter: new DeclensionByGender(
+          singular: ['starome', 'staromu', 'starom'],
+          plural: ['starima', 'starim']),
+    ),
+    dativ: new Declension(
+      masculine: new DeclensionByGender(
+          singular: ['starome', 'staromu', 'starom'],
+          plural: ['starima', 'starim']),
+      feminine:
+          new DeclensionByGender(singular: ['staroj'], plural: ['starijoj']),
+      neuter: new DeclensionByGender(
+          singular: ['starome', 'staromu', 'starom'],
+          plural: ['starima', 'starim']),
+    ),
+    genitiv: new Declension(
+      masculine: new DeclensionByGender(
+          singular: ['staroga', 'starog'], plural: ['starih']),
+      feminine: new DeclensionByGender(singular: ['stare'], plural: ['starih']),
+      neuter: new DeclensionByGender(
+          singular: ['staroga', 'starog'], plural: ['starih']),
+    ),
+    vokativ: new Declension(
+      masculine: new DeclensionByGender(singular: ['stari'], plural: ['stari']),
+      feminine: new DeclensionByGender(singular: ['stara'], plural: ['stare']),
+      neuter: new DeclensionByGender(singular: ['staro'], plural: ['stara']),
     ),
   ),
   Adjective(
