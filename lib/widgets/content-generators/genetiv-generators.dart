@@ -33,6 +33,9 @@ class GenetivGenerators {
         start = 'Život bez';
         end = 'je naibolji';
       }
+    } else if (noun.tags.contains(Tags.Emotion)) {
+      start = 'Prije';
+      end = 'treba se smiriti';
     } else if (N.coinFlip()) {
       start = 'Volim boja';
     } else {

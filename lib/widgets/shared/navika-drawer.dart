@@ -74,11 +74,14 @@ class _NavikaDrawerState extends State<NavikaDrawer> {
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
-            DrawerHeader(
-              decoration: BoxDecoration(color: ACCENT_COLOR),
-              child: Text(
-                AppLocalizations.of(context)!.selectExercises,
-                style: TextStyle(fontSize: 25, color: Colors.white),
+            Container(
+              height: 130,
+              child: DrawerHeader(
+                decoration: BoxDecoration(color: ACCENT_COLOR),
+                child: Text(
+                  AppLocalizations.of(context)!.selectExercises,
+                  style: TextStyle(fontSize: 18, color: Colors.white),
+                ),
               ),
             ),
             Padding(
