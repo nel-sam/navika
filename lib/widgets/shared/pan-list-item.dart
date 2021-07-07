@@ -183,6 +183,7 @@ class _PANListItemState extends State<PANListItem> {
               setState(() {
                 widget.activeNoun = newVal;
                 isAllCorrect = checkAnswer();
+                print('onChanged: ${widget.activeNoun} $isAllCorrect');
               });
             },
           ),

@@ -19,6 +19,7 @@ class CaseFreeForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('CaseFreeForm: ${correctValues} ${activeValue}');
     return Container(
       width: maxLength * 14,
       child: TextField(

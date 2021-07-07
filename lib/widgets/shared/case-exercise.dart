@@ -37,61 +37,70 @@ class _CaseExerciseState extends State<CaseExercise> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      appBar: AppBar(
-        leading: Builder(builder: (BuildContext context) => BackButton()),
-        elevation: APPBAR_ELEVATION,
-        backgroundColor: N.getAppBarColor(context),
-        textTheme: N.getAppBarTextTheme(context),
-        iconTheme: N.getAppBarIconTheme(context),
-        title: Text(widget.title, style: HEADER_TEXT_STYLE),
-      ),
-      endDrawer: NavikaDrawer(
-        initalValues: widget.settingsSet,
-        onFiltersSet: (SettingsSet newSettingsSet) {
-          // var sameAsBefore = widget.settingsSet.adjectivesIncluded ==
-          //         newSettingsSet.adjectivesIncluded &&
-          //     widget.settingsSet.nounsIncluded ==
-          //         newSettingsSet.nounsIncluded &&
-          //     widget.settingsSet.personalPronounsIncluded ==
-          //         newSettingsSet.personalPronounsIncluded &&
-          //     widget.settingsSet.possessivePronounsIncluded ==
-          //         newSettingsSet.possessivePronounsIncluded &&
-          //     widget.settingsSet.entryType == newSettingsSet.entryType;
+    return GestureDetector(
+      onTap: () {
+        FocusScopeNode currentFocus = FocusScope.of(context);
 
-          // if (!sameAsBefore) {
-          //   print('Changed');
-          //   Navigator.pop(context);
-          //   return;
-          // }
-
-          setState(() {
-            widget.onSettingsSet(newSettingsSet);
-          });
-        },
-      ),
-      body: Center(
-        child: ListView(
-          controller: controller,
-          padding: EXERCISE_LIST_PADDING,
-          children: [
-            widget.banner,
-            ...N.getPANListItems(
-              widget.listItems,
-              widget.caseType,
-              widget.settingsSet.entryType,
-            )
-          ],
+        if (!currentFocus.hasPrimaryFocus) {
+          currentFocus.unfocus();
+        }
+      },
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        appBar: AppBar(
+          leading: Builder(builder: (BuildContext context) => BackButton()),
+          elevation: APPBAR_ELEVATION,
+          backgroundColor: N.getAppBarColor(context),
+          textTheme: N.getAppBarTextTheme(context),
+          iconTheme: N.getAppBarIconTheme(context),
+          title: Text(widget.title, style: HEADER_TEXT_STYLE),
         ),
-      ),
-      persistentFooterButtons: NavikaChildFooterButtons(
-        context: context,
-        caseType: widget.caseType,
-        refreshFunction: () {
-          N.scrollTo(0, controller);
-          widget.refreshFunction();
-        },
+        endDrawer: NavikaDrawer(
+          initalValues: widget.settingsSet,
+          onFiltersSet: (SettingsSet newSettingsSet) {
+            // var sameAsBefore = widget.settingsSet.adjectivesIncluded ==
+            //         newSettingsSet.adjectivesIncluded &&
+            //     widget.settingsSet.nounsIncluded ==
+            //         newSettingsSet.nounsIncluded &&
+            //     widget.settingsSet.personalPronounsIncluded ==
+            //         newSettingsSet.personalPronounsIncluded &&
+            //     widget.settingsSet.possessivePronounsIncluded ==
+            //         newSettingsSet.possessivePronounsIncluded &&
+            //     widget.settingsSet.entryType == newSettingsSet.entryType;
+
+            // if (!sameAsBefore) {
+            //   print('Changed');
+            //   Navigator.pop(context);
+            //   return;
+            // }
+
+            setState(() {
+              widget.onSettingsSet(newSettingsSet);
+            });
+          },
+        ),
+        body: Center(
+          child: ListView(
+            controller: controller,
+            padding: EXERCISE_LIST_PADDING,
+            children: [
+              widget.banner,
+              ...N.getPANListItems(
+                widget.listItems,
+                widget.caseType,
+                widget.settingsSet.entryType,
+              )
+            ],
+          ),
+        ),
+        persistentFooterButtons: NavikaChildFooterButtons(
+          context: context,
+          caseType: widget.caseType,
+          refreshFunction: () {
+            N.scrollTo(0, controller);
+            widget.refreshFunction();
+          },
+        ),
       ),
     );
   }
