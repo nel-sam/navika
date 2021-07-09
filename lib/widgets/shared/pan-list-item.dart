@@ -74,8 +74,7 @@ class _PANListItemState extends State<PANListItem> {
   bool isCorrect(List<String>? acceptedAnswers, String? actualAnswer) {
     if (acceptedAnswers == null ||
         acceptedAnswers.length == 0 ||
-        actualAnswer == null ||
-        actualAnswer == '') {
+        (acceptedAnswers == null && actualAnswer == '')) {
       return true;
     }
 

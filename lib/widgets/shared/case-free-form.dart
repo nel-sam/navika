@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:navika/constants.dart';
 
 class CaseFreeForm extends StatefulWidget {
@@ -28,6 +29,7 @@ class _CaseFreeFormState extends State<CaseFreeForm> {
       width: widget.maxLength * 14,
       child: TextField(
         textInputAction: TextInputAction.next,
+        keyboardType: TextInputType.text,
         decoration: InputDecoration(
           isDense: true,
           contentPadding: EdgeInsets.fromLTRB(4, 18, 0, 1),

@@ -70,22 +70,24 @@ class _CaseExerciseState extends State<CaseExercise> {
             });
           },
         ),
-        body: Center(
-          child: SingleChildScrollView(
-              physics: ClampingScrollPhysics(),
-              controller: controller,
-              padding: EXERCISE_LIST_PADDING,
-              child: Column(
-                children: [
-                  widget.banner,
-                  ...N.getPANListItems(
-                    widget.listItems,
-                    widget.caseType,
-                    widget.settingsSet.entryType,
-                  )
-                ],
-              )),
-        ),
+        body: new GestureDetector(
+            onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+            child: Center(
+              child: SingleChildScrollView(
+                  physics: ClampingScrollPhysics(),
+                  controller: controller,
+                  padding: EXERCISE_LIST_PADDING,
+                  child: Column(
+                    children: [
+                      widget.banner,
+                      ...N.getPANListItems(
+                        widget.listItems,
+                        widget.caseType,
+                        widget.settingsSet.entryType,
+                      )
+                    ],
+                  )),
+            )),
         persistentFooterButtons: NavikaChildFooterButtons(
           context: context,
           caseType: widget.caseType,
