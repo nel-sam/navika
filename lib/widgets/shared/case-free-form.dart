@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
 
-class CaseFreeForm extends StatelessWidget {
+class CaseFreeForm extends StatefulWidget {
   final int maxLength;
   final String hintValue;
   final String activeValue;
@@ -18,21 +18,30 @@ class CaseFreeForm extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  _CaseFreeFormState createState() => _CaseFreeFormState();
+}
+
+class _CaseFreeFormState extends State<CaseFreeForm> {
+  @override
   Widget build(BuildContext context) {
-    print('CaseFreeForm: ${correctValues} ${activeValue}');
     return Container(
-      width: maxLength * 14,
+      width: widget.maxLength * 14,
       child: TextField(
+        textInputAction: TextInputAction.next,
         decoration: InputDecoration(
           isDense: true,
           contentPadding: EdgeInsets.fromLTRB(4, 18, 0, 1),
-          labelText: correctValues.contains(activeValue) ? '' : hintValue,
+          labelText: widget.correctValues.contains(widget.activeValue)
+              ? ''
+              : widget.hintValue,
           enabledBorder: getBorder(),
           focusedBorder: getBorder(),
         ),
         onChanged: (String? newVal) {
           if (newVal != null) {
-            onChanged(newVal);
+            setState(() {
+              widget.onChanged(newVal);
+            });
           }
         },
       ),
@@ -42,8 +51,9 @@ class CaseFreeForm extends StatelessWidget {
   OutlineInputBorder getBorder() {
     return OutlineInputBorder(
       borderSide: BorderSide(
-        color:
-            correctValues.contains(activeValue) ? CORRECT_COLOR : WRONG_COLOR,
+        color: widget.correctValues.contains(widget.activeValue)
+            ? CORRECT_COLOR
+            : WRONG_COLOR,
       ),
     );
   }

@@ -42,11 +42,11 @@ class _NavikaDrawerState extends State<NavikaDrawer> {
   List<bool> getEntryTypeSelections() {
     switch (entryType) {
       case EntryTypes.FreeForm:
-        return [true, false, false];
-      case EntryTypes.Mixed:
-        return [false, true, false];
+        return [true, false];
+      // case EntryTypes.Mixed:
+      //   return [false, true, false];
       case EntryTypes.Select:
-        return [false, false, true];
+        return [false, true];
     }
   }
 
@@ -57,8 +57,8 @@ class _NavikaDrawerState extends State<NavikaDrawer> {
       case 0:
         return EntryTypes.FreeForm;
       case 1:
-        return EntryTypes.Mixed;
-      case 2:
+      //   return EntryTypes.Mixed;
+      // case 2:
       default:
         return EntryTypes.Select;
     }
@@ -185,15 +185,15 @@ class _NavikaDrawerState extends State<NavikaDrawer> {
                                 ),
                               ),
                             ),
-                            Padding(
-                              padding: typeIconPadding,
-                              child: Column(
-                                children: [
-                                  Icon(Icons.auto_awesome_mosaic_rounded),
-                                  Text(AppLocalizations.of(context)!.mixedMode),
-                                ],
-                              ),
-                            ),
+                            // Padding(
+                            //   padding: typeIconPadding,
+                            //   child: Column(
+                            //     children: [
+                            //       Icon(Icons.auto_awesome_mosaic_rounded),
+                            //       Text(AppLocalizations.of(context)!.mixedMode),
+                            //     ],
+                            //   ),
+                            // ),
                             Container(
                               width: 90,
                               child: Padding(

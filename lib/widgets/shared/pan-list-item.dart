@@ -85,7 +85,6 @@ class _PANListItemState extends State<PANListItem> {
   @override
   Widget build(BuildContext context) {
     bool isAllCorrect = checkAnswer();
-
     final bool usePossPronouns = widget.possPronoun != null;
     final bool useAdj = widget.adjective != null;
     final bool useNoun = widget.noun != null;
@@ -183,7 +182,6 @@ class _PANListItemState extends State<PANListItem> {
               setState(() {
                 widget.activeNoun = newVal;
                 isAllCorrect = checkAnswer();
-                print('onChanged: ${widget.activeNoun} $isAllCorrect');
               });
             },
           ),
@@ -246,7 +244,7 @@ class _PANListItemState extends State<PANListItem> {
         ),
       if (widget.entryType == EntryTypes.Select) ...dropDowns(),
       if (widget.entryType == EntryTypes.FreeForm) ...freeForms(),
-      if (widget.entryType == EntryTypes.Mixed) ...getMixedForms(),
+      //if (widget.entryType == EntryTypes.Mixed) ...getMixedForms(),
       if (widget.sentenceEnder != '')
         Text(
           widget.sentenceEnder,

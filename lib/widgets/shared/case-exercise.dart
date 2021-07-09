@@ -37,16 +37,7 @@ class _CaseExerciseState extends State<CaseExercise> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        FocusScopeNode currentFocus = FocusScope.of(context);
-
-        if (!currentFocus.hasPrimaryFocus) {
-          currentFocus.unfocus();
-        }
-      },
-      child: Scaffold(
-        resizeToAvoidBottomInset: false,
+    return Scaffold(
         appBar: AppBar(
           leading: Builder(builder: (BuildContext context) => BackButton()),
           elevation: APPBAR_ELEVATION,
@@ -80,18 +71,20 @@ class _CaseExerciseState extends State<CaseExercise> {
           },
         ),
         body: Center(
-          child: ListView(
-            controller: controller,
-            padding: EXERCISE_LIST_PADDING,
-            children: [
-              widget.banner,
-              ...N.getPANListItems(
-                widget.listItems,
-                widget.caseType,
-                widget.settingsSet.entryType,
-              )
-            ],
-          ),
+          child: SingleChildScrollView(
+              physics: ClampingScrollPhysics(),
+              controller: controller,
+              padding: EXERCISE_LIST_PADDING,
+              child: Column(
+                children: [
+                  widget.banner,
+                  ...N.getPANListItems(
+                    widget.listItems,
+                    widget.caseType,
+                    widget.settingsSet.entryType,
+                  )
+                ],
+              )),
         ),
         persistentFooterButtons: NavikaChildFooterButtons(
           context: context,
@@ -100,8 +93,6 @@ class _CaseExerciseState extends State<CaseExercise> {
             N.scrollTo(0, controller);
             widget.refreshFunction();
           },
-        ),
-      ),
-    );
+        ));
   }
 }
