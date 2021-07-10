@@ -151,20 +151,53 @@ class DeclensionByGender {
   });
 }
 
-class PANStateItem {
-  PANCombo combo;
+class QuestionStateItem {
+  final PANCombo combos;
+  late String userNounResponse;
+  late String userPronResponse;
+  late String userAdjResponse;
+  late String userPersPronResponse;
 
-  PANStateItem({required this.combo});
+  QuestionStateItem({required this.combos}) {
+    userNounResponse = '';
+    userPronResponse = '';
+    userAdjResponse = '';
+    userPersPronResponse = '';
+  }
+
+  bool checkAnswer() {
+    final pos = isCorrect(this.combos.correctPronouns, userPronResponse);
+    final adj = isCorrect(this.combos.correctAdjs, userAdjResponse);
+    final noun = isCorrect(this.combos.correctNouns, userNounResponse);
+    final persPron =
+        isCorrect(this.combos.correctPersPronouns, userPersPronResponse);
+
+    return pos && adj && noun && persPron;
+  }
+
+  bool isCorrect(List<String> acceptedAnswers, String? actualAnswer) {
+    if (acceptedAnswers.length == 0 ||
+        (acceptedAnswers.length == 0 && actualAnswer == '')) {
+      return true;
+    }
+
+    return acceptedAnswers.contains(actualAnswer);
+  }
 }
 
 class PANCombo {
   String sentenceStarter;
   String sentenceEnder;
   Noun? noun;
+  late List<String> correctNouns;
   Adjective? pronoun;
+  late List<String> correctPronouns;
   Adjective? adjective;
+  late List<String> correctAdjs;
   PersonalPronoun? personalPronoun;
+  late List<String> correctPersPronouns;
   bool usePersonalPronounShortForm;
+  Cases caseType;
   Genders gender;
   bool isPlural;
 
@@ -175,10 +208,26 @@ class PANCombo {
     this.pronoun,
     this.adjective,
     this.personalPronoun,
+    required this.caseType,
     required this.gender,
     required this.isPlural,
     this.usePersonalPronounShortForm = false,
-  });
+  }) {
+    this.correctNouns =
+        this.noun == null ? [] : this.noun!.getDeclensionsForCaseType(caseType);
+
+    this.correctAdjs = this.adjective == null
+        ? []
+        : this.adjective!.getDeclensionsForCaseType(caseType);
+
+    this.correctNouns = this.pronoun == null
+        ? []
+        : this.pronoun!.getDeclensionsForCaseType(caseType);
+
+    this.correctNouns = this.personalPronoun == null
+        ? []
+        : this.personalPronoun!.getDeclensionsForCaseType(caseType);
+  }
 }
 
 class StaticSentenceParts {

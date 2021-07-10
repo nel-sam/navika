@@ -33,10 +33,10 @@ class _AkuzativState extends State<Akuzativ> {
   Widget build(BuildContext context) {
     return CaseExercise(
       title: title,
-      caseType: CaseTypeEnum.Akuzativ,
+      caseType: Cases.Aku,
       listItems: widget.listItems,
       banner: NavikaBanner(
-        imagePath: CaseImagePaths[CaseTypeEnum.Akuzativ]!,
+        imagePath: CaseImagePaths[Cases.Aku]!,
         caseName: title,
         description: AppLocalizations.of(context)!.akuzativDescription,
         icons: [

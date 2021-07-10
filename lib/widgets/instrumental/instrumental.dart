@@ -33,10 +33,10 @@ class _InstrumentalState extends State<Instrumental> {
   Widget build(BuildContext context) {
     return CaseExercise(
       title: title,
-      caseType: CaseTypeEnum.Instrumental,
+      caseType: Cases.Ins,
       listItems: widget.listItems,
       banner: NavikaBanner(
-        imagePath: CaseImagePaths[CaseTypeEnum.Instrumental]!,
+        imagePath: CaseImagePaths[Cases.Ins]!,
         caseName: title,
         description: AppLocalizations.of(context)!.instrumentalDescription,
         icons: [

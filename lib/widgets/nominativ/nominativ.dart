@@ -1,42 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
+import 'package:navika/state/case-exercises.dart';
 import 'package:navika/widgets/shared/case-exercise.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/widgets/shared/navika-banner.dart';
+import 'package:provider/provider.dart';
 
 class Nominativ extends StatefulWidget {
-  final List<PANCombo> listItems;
-
-  const Nominativ({
-    required this.listItems,
-  });
-
-  @override
-  _NominativState createState() => _NominativState();
-}
-
-class _NominativState extends State<Nominativ> {
   final title = 'Nominativ';
   late SettingsSet settingsSet;
 
-  @override
-  initState() {
-    settingsSet = SettingsSet();
-    super.initState();
-  }
-
-  onSettingsSet(SettingsSet newSettingsSet) =>
-      setState(() => settingsSet = newSettingsSet);
+  // onSettingsSet(SettingsSet newSettingsSet) =>
+  //     setState(() => settingsSet = newSettingsSet);
 
   @override
   Widget build(BuildContext context) {
+    final exercises = Provider.of<CaseExercises>(context);
+
     return CaseExercise(
       title: title,
-      caseType: CaseTypeEnum.Nominativ,
-      listItems: widget.listItems,
+      caseType: Cases.Nom,
+      stateItems: exercises.exerciseItems[Cases.Nom],
       banner: NavikaBanner(
-        imagePath: CaseImagePaths[CaseTypeEnum.Nominativ]!,
+        imagePath: CaseImagePaths[Cases.Nom]!,
         caseName: title,
         description: AppLocalizations.of(context)!.nominativDescription,
         icons: [

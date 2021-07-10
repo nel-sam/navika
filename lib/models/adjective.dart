@@ -82,29 +82,29 @@ class Adjective {
   }
 
   List<String> getDeclensions(
-      Genders gender, bool isPlural, CaseTypeEnum caseType, bool isAnimate) {
+      Genders gender, bool isPlural, Cases caseType, bool isAnimate) {
     Declension declension;
 
     switch (caseType) {
-      case CaseTypeEnum.Akuzativ:
+      case Cases.Aku:
         declension = isAnimate ? this.akuzativAnimate : this.akuzativ;
         break;
-      case CaseTypeEnum.Dativ:
+      case Cases.Dat:
         declension = this.dativ;
         break;
-      case CaseTypeEnum.Genitiv:
+      case Cases.Gen:
         declension = this.genitiv;
         break;
-      case CaseTypeEnum.Instrumental:
+      case Cases.Ins:
         declension = this.instrumental;
         break;
-      case CaseTypeEnum.Lokativ:
+      case Cases.Lok:
         declension = this.lokativ;
         break;
-      case CaseTypeEnum.Nominativ:
+      case Cases.Nom:
         declension = this.nominativ;
         break;
-      case CaseTypeEnum.Vokativ:
+      case Cases.Vok:
         declension = this.vokativ;
         break;
     }
@@ -122,26 +122,26 @@ class Adjective {
     }
   }
 
-  List<String> getDeclensionsForCaseType(CaseTypeEnum caseType) {
+  List<String> getDeclensionsForCaseType(Cases caseType) {
     switch (caseType) {
-      case CaseTypeEnum.Instrumental:
+      case Cases.Ins:
         return this.instrumental.getAll();
-      case CaseTypeEnum.Nominativ:
+      case Cases.Nom:
         return this.nominativ.getAll();
-      case CaseTypeEnum.Akuzativ:
+      case Cases.Aku:
         return [...this.akuzativ.getAll(), ...this.akuzativAnimate.getAll()];
-      case CaseTypeEnum.Vokativ:
+      case Cases.Vok:
         return this.vokativ.getAll();
-      case CaseTypeEnum.Lokativ:
+      case Cases.Lok:
         return this.lokativ.getAll();
-      case CaseTypeEnum.Genitiv:
+      case Cases.Gen:
         return this.genitiv.getAll();
-      case CaseTypeEnum.Dativ:
+      case Cases.Dat:
         return this.dativ.getAll();
     }
   }
 
-  int longestForCase(CaseTypeEnum caseType) {
+  int longestForCase(Cases caseType) {
     int longestFound = 0;
 
     this.getDeclensionsForCaseType(caseType).forEach((d) {

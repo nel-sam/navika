@@ -8,7 +8,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 // ignore: non_constant_identifier_names
 List<Widget> NavikaChildFooterButtons({
-  required CaseTypeEnum caseType,
+  required Cases caseType,
   required void Function() refreshFunction,
   required BuildContext context,
 }) {

@@ -33,10 +33,10 @@ class _GenitivState extends State<Genitiv> {
   Widget build(BuildContext context) {
     return CaseExercise(
       title: title,
-      caseType: CaseTypeEnum.Genitiv,
+      caseType: Cases.Gen,
       listItems: widget.listItems,
       banner: NavikaBanner(
-        imagePath: CaseImagePaths[CaseTypeEnum.Genitiv]!,
+        imagePath: CaseImagePaths[Cases.Gen]!,
         caseName: title,
         description: AppLocalizations.of(context)!.genitiveDescription,
         icons: [

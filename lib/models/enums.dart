@@ -11,14 +11,14 @@ enum Genders {
   Unspecific,
 }
 
-enum CaseTypeEnum {
-  Instrumental,
-  Nominativ,
-  Akuzativ,
-  Vokativ,
-  Lokativ,
-  Genitiv,
-  Dativ,
+enum Cases {
+  Ins,
+  Nom,
+  Aku,
+  Vok,
+  Lok,
+  Gen,
+  Dat,
 }
 
 enum Tags {
@@ -68,11 +68,11 @@ enum PronounEnum {
   Oneself,
 }
 
-const CaseImagePaths = <CaseTypeEnum, String>{
-  CaseTypeEnum.Nominativ: 'assets/banners/seaside_city.jpg',
-  CaseTypeEnum.Akuzativ: 'assets/banners/pay.jpg',
-  CaseTypeEnum.Instrumental: 'assets/banners/vespa.jpg',
-  CaseTypeEnum.Lokativ: 'assets/banners/ladies.jpg',
-  CaseTypeEnum.Dativ: 'assets/banners/giving.jpg',
-  CaseTypeEnum.Genitiv: 'assets/banners/bosna.jpg',
+const CaseImagePaths = <Cases, String>{
+  Cases.Nom: 'assets/banners/seaside_city.jpg',
+  Cases.Aku: 'assets/banners/pay.jpg',
+  Cases.Ins: 'assets/banners/vespa.jpg',
+  Cases.Lok: 'assets/banners/ladies.jpg',
+  Cases.Dat: 'assets/banners/giving.jpg',
+  Cases.Gen: 'assets/banners/bosna.jpg',
 };

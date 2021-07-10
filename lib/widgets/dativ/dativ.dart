@@ -33,10 +33,10 @@ class _DativState extends State<Dativ> {
   Widget build(BuildContext context) {
     return CaseExercise(
       title: title,
-      caseType: CaseTypeEnum.Dativ,
+      caseType: Cases.Dat,
       listItems: widget.listItems,
       banner: NavikaBanner(
-        imagePath: CaseImagePaths[CaseTypeEnum.Dativ]!,
+        imagePath: CaseImagePaths[Cases.Dat]!,
         caseName: title,
         description: AppLocalizations.of(context)!.dativDescription,
         icons: [

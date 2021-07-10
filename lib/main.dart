@@ -5,6 +5,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/state/case-exercises.dart';
+import 'package:navika/state/settings.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/exercise-selection/exercise-selection.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -57,8 +58,15 @@ class MyApp extends StatelessWidget {
         dividerColor: Colors.black12,
       ),
       themeMode: ThemeMode.system,
-      home: ChangeNotifierProvider<CaseExercises>(
-        create: (context) => CaseExercises(),
+      home: MultiProvider(
+        providers: [
+          ChangeNotifierProvider<Settings>(
+            create: (contet) => Settings(),
+          ),
+          ChangeNotifierProvider<CaseExercises>(
+            create: (context) => CaseExercises(),
+          )
+        ],
         child: MyHomePage(),
       ),
     );

@@ -9,9 +9,9 @@ import 'package:navika/widgets/shared/navika-banner.dart';
 
 class CaseExercise extends StatefulWidget {
   final String title;
-  final CaseTypeEnum caseType;
+  final Cases caseType;
   final NavikaBanner banner;
-  final List<PANCombo> listItems;
+  final List<QuestionStateItem> stateItems;
   final Function(SettingsSet) onSettingsSet;
   final void Function() refreshFunction;
   final SettingsSet settingsSet;
@@ -24,7 +24,7 @@ class CaseExercise extends StatefulWidget {
     required this.onSettingsSet,
     required this.refreshFunction,
     required this.settingsSet,
-    required this.listItems,
+    required this.stateItems,
   }) : super(key: key);
 
   @override
@@ -33,7 +33,6 @@ class CaseExercise extends StatefulWidget {
 
 class _CaseExerciseState extends State<CaseExercise> {
   final controller = ScrollController();
-  var settingsSet = new SettingsSet();
 
   @override
   Widget build(BuildContext context) {
@@ -81,7 +80,7 @@ class _CaseExerciseState extends State<CaseExercise> {
                     children: [
                       widget.banner,
                       ...N.getPANListItems(
-                        widget.listItems,
+                        widget.stateItems,
                         widget.caseType,
                         widget.settingsSet.entryType,
                       )

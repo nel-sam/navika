@@ -15,21 +15,21 @@ import 'package:navika/widgets/shared/footer-button.dart';
 const double CONTENT_HEIGHT = 1200.0;
 
 const CasesInOrder = [
-  CaseTypeEnum.Nominativ,
-  CaseTypeEnum.Akuzativ,
-  CaseTypeEnum.Instrumental,
-  CaseTypeEnum.Lokativ,
-  CaseTypeEnum.Dativ,
-  CaseTypeEnum.Genitiv,
-  // CaseTypeEnum.Vokativ,
+  Cases.Nom,
+  Cases.Aku,
+  Cases.Ins,
+  Cases.Lok,
+  Cases.Dat,
+  Cases.Gen,
+  // Cases.Vokativ,
 ];
 
 class GrammarGuide extends StatefulWidget {
-  final CaseTypeEnum startingCase;
+  final Cases startingCase;
 
   const GrammarGuide({
     Key? key,
-    this.startingCase = CaseTypeEnum.Nominativ,
+    this.startingCase = Cases.Nom,
   }) : super(key: key);
 
   @override
@@ -60,7 +60,7 @@ class _GrammarGuideState extends State<GrammarGuide> {
   bool getIsAtBottom() =>
       controller.position.pixels >= CONTENT_HEIGHT * (CasesInOrder.length - 1);
 
-  double getScrollPoint(CaseTypeEnum caseType) =>
+  double getScrollPoint(Cases caseType) =>
       CasesInOrder.indexOf(caseType) * CONTENT_HEIGHT;
 
   moveToPrev() => setState(() {

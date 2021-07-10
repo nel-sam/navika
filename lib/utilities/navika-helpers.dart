@@ -7,7 +7,7 @@ import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/models/noun.dart';
 import 'package:navika/models/personal-pronoun.dart';
-import 'package:navika/widgets/shared/pan-list-item.dart';
+import 'package:navika/widgets/shared/question-content.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/extensions.dart';
 
@@ -123,9 +123,9 @@ class N {
     return listItems;
   }
 
-  static List<PANListItem> getPANListItems(
+  static List<QuestionContent> getPANListItems(
     List<PANCombo> listItems,
-    CaseTypeEnum caseType,
+    Cases caseType,
     EntryTypes entryType,
   ) {
     return
@@ -134,9 +134,9 @@ class N {
         listItems.take(BATCH_COUNT).map((PANCombo e) {
       if (e.personalPronoun != null) {
         final correctPersPron =
-            e.personalPronoun!.getDeclensions(caseType: caseType);
+            e.personalPronoun!.getDeclensionsForCaseType(caseType);
 
-        return PANListItem(
+        return QuestionContent(
           entryType: entryType,
           caseType: caseType,
           sentenceStarter: e.sentenceStarter,
@@ -164,7 +164,7 @@ class N {
               .getDeclensions(e.gender, e.isPlural, caseType, e.noun!.isAnimate)
           : [''];
 
-      return PANListItem(
+      return QuestionContent(
           entryType: entryType,
           caseType: caseType,
           sentenceStarter: e.sentenceStarter,

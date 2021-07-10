@@ -33,10 +33,10 @@ class _LokativState extends State<Lokativ> {
   Widget build(BuildContext context) {
     return CaseExercise(
       title: title,
-      caseType: CaseTypeEnum.Lokativ,
+      caseType: Cases.Lok,
       listItems: widget.listItems,
       banner: NavikaBanner(
-        imagePath: CaseImagePaths[CaseTypeEnum.Lokativ]!,
+        imagePath: CaseImagePaths[Cases.Lok]!,
         caseName: title,
         description: AppLocalizations.of(context)!.lokativDescription,
         icons: [

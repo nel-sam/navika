@@ -30,21 +30,21 @@ class PersonalPronoun {
     required this.vokativ,
   });
 
-  List<String> getDeclensions({required CaseTypeEnum caseType}) {
+  List<String> getDeclensionsForCaseType(Cases caseType) {
     switch (caseType) {
-      case CaseTypeEnum.Akuzativ:
+      case Cases.Aku:
         return this.akuzativ.forms;
-      case CaseTypeEnum.Dativ:
+      case Cases.Dat:
         return this.dativ.forms;
-      case CaseTypeEnum.Genitiv:
+      case Cases.Gen:
         return this.genitiv.forms;
-      case CaseTypeEnum.Instrumental:
+      case Cases.Ins:
         return this.instrumental.forms;
-      case CaseTypeEnum.Lokativ:
+      case Cases.Lok:
         return this.lokativ.forms;
-      case CaseTypeEnum.Nominativ:
+      case Cases.Nom:
         return this.nominativ.forms;
-      case CaseTypeEnum.Vokativ:
+      case Cases.Vok:
         return this.vokativ.forms;
     }
   }
@@ -64,10 +64,10 @@ class PersonalPronoun {
     return shuffle ? result.shuffleStrings() : result;
   }
 
-  longestForCase(CaseTypeEnum caseType) {
+  longestForCase(Cases caseType) {
     int longestFound = 0;
 
-    this.getDeclensions(caseType: caseType).forEach((d) {
+    this.getDeclensionsForCaseType(caseType).forEach((d) {
       if (d.length > longestFound) {
         longestFound = d.length;
       }
