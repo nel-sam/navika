@@ -24,7 +24,7 @@ class ExerciseSelection extends StatefulWidget {
 
 class _ExerciseSelectionState extends State<ExerciseSelection> {
   late SettingsSet settingsSet;
-  late List<PANExerciseItem> nomContent;
+  late List<PANCombo> nomContent;
 
   @override
   initState() {

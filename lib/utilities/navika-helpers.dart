@@ -76,20 +76,20 @@ class N {
     return darkModeOn ? const Color(0xFF212121) : Colors.white;
   }
 
-  static List<PANExerciseItem> getPANCombos(
+  static List<PANCombo> getPANCombos(
       WordBank bank,
       StaticSentenceParts Function(Noun, bool, Adjective, Adjective)
           getStaticSentenceParts,
       StaticSentenceParts Function(PersonalPronoun, bool)
           getPersonalPronounSentenceStaticParts) {
-    var listItems = List<PANExerciseItem>.empty(growable: true);
+    var listItems = List<PANCombo>.empty(growable: true);
 
     bank.personalPronouns.forEach((persPronoun) {
       final isPlural = persPronoun.isPlural;
       final staticParts =
           getPersonalPronounSentenceStaticParts(persPronoun, isPlural);
 
-      listItems.add(PANExerciseItem(
+      listItems.add(PANCombo(
         sentenceStarter: staticParts.start,
         sentenceEnder: staticParts.end,
         gender: persPronoun.gender,
@@ -108,7 +108,7 @@ class N {
           final staticParts =
               getStaticSentenceParts(noun, isPlural, possPronoun, adj);
 
-          listItems.add(PANExerciseItem(
+          listItems.add(PANCombo(
               sentenceStarter: staticParts.start,
               sentenceEnder: staticParts.end,
               pronoun: includePossPronoun ? possPronoun : null,
@@ -124,14 +124,14 @@ class N {
   }
 
   static List<PANListItem> getPANListItems(
-    List<PANExerciseItem> listItems,
+    List<PANCombo> listItems,
     CaseTypeEnum caseType,
     EntryTypes entryType,
   ) {
     return
         //N
         //.shuffleList<PANExerciseItem>(listItems)
-        listItems.take(BATCH_COUNT).map((PANExerciseItem e) {
+        listItems.take(BATCH_COUNT).map((PANCombo e) {
       if (e.personalPronoun != null) {
         final correctPersPron =
             e.personalPronoun!.getDeclensions(caseType: caseType);

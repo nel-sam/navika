@@ -151,7 +151,13 @@ class DeclensionByGender {
   });
 }
 
-class PANExerciseItem {
+class PANStateItem {
+  PANCombo combo;
+
+  PANStateItem({required this.combo});
+}
+
+class PANCombo {
   String sentenceStarter;
   String sentenceEnder;
   Noun? noun;
@@ -162,7 +168,7 @@ class PANExerciseItem {
   Genders gender;
   bool isPlural;
 
-  PANExerciseItem({
+  PANCombo({
     required this.sentenceStarter,
     this.sentenceEnder = '',
     this.noun,

@@ -6,7 +6,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/widgets/shared/navika-banner.dart';
 
 class Lokativ extends StatefulWidget {
-  final List<PANExerciseItem> listItems;
+  final List<PANCombo> listItems;
 
   const Lokativ({
     required this.listItems,

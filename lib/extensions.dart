@@ -30,8 +30,8 @@ extension ExtendedText on List<String> {
   }
 }
 
-extension ExtendedPAN on List<PANExerciseItem> {
-  List<PANExerciseItem> shufflePAN() {
+extension ExtendedPAN on List<PANCombo> {
+  List<PANCombo> shufflePAN() {
     var random = new Random();
 
     for (var i = this.length - 1; i > 0; i--) {

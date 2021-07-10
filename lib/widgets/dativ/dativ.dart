@@ -6,7 +6,7 @@ import 'package:navika/widgets/shared/navika-banner.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Dativ extends StatefulWidget {
-  final List<PANExerciseItem> listItems;
+  final List<PANCombo> listItems;
 
   const Dativ({
     required this.listItems,

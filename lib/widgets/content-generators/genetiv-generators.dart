@@ -65,7 +65,7 @@ class GenetivGenerators {
     return StaticSentenceParts(start: start, end: end);
   }
 
-  static List<PANExerciseItem> getPANCombos(SettingsSet settingsSet) {
+  static List<PANCombo> getPANCombos(SettingsSet settingsSet) {
     final WordBank bank = wordBank;
 
     return N.getPANCombos(

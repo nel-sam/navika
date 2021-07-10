@@ -11,7 +11,7 @@ class CaseExercise extends StatefulWidget {
   final String title;
   final CaseTypeEnum caseType;
   final NavikaBanner banner;
-  final List<PANExerciseItem> listItems;
+  final List<PANCombo> listItems;
   final Function(SettingsSet) onSettingsSet;
   final void Function() refreshFunction;
   final SettingsSet settingsSet;
