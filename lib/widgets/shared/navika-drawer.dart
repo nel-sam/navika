@@ -1,45 +1,15 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/models/enums.dart';
-import 'package:navika/models/models.dart';
+import 'package:navika/state/settings.dart';
 import 'package:navika/widgets/shared/navika-text.dart';
+import 'package:provider/provider.dart';
 
-class NavikaDrawer extends StatefulWidget {
-  final Function(SettingsSet) onFiltersSet;
-  final SettingsSet initalValues;
-
-  const NavikaDrawer({
-    Key? key,
-    required this.initalValues,
-    required this.onFiltersSet,
-  }) : super(key: key);
-
-  @override
-  _NavikaDrawerState createState() => _NavikaDrawerState();
-}
-
-class _NavikaDrawerState extends State<NavikaDrawer> {
-  late EntryTypes entryType;
-  late bool pronounsChecked;
-  late bool possPronounsChecked;
-  late bool adjectivesChecked;
-  late bool nounsChecked;
+class NavikaDrawer extends StatelessWidget {
   late List<bool> entryTypeSelections;
 
-  @override
-  void initState() {
-    pronounsChecked = widget.initalValues.personalPronounsIncluded;
-    possPronounsChecked = widget.initalValues.possessivePronounsIncluded;
-    adjectivesChecked = widget.initalValues.adjectivesIncluded;
-    nounsChecked = widget.initalValues.nounsIncluded;
-    entryType = widget.initalValues.entryType;
-    entryTypeSelections = getEntryTypeSelections();
-    super.initState();
-  }
-
-  List<bool> getEntryTypeSelections() {
+  List<bool> getEntryTypeSelections(EntryTypes entryType) {
     switch (entryType) {
       case EntryTypes.FreeForm:
         return [true, false];
@@ -67,6 +37,7 @@ class _NavikaDrawerState extends State<NavikaDrawer> {
   @override
   Widget build(BuildContext context) {
     var typeIconPadding = const EdgeInsets.all(12);
+    var settings = Provider.of<Settings>(context);
 
     return Container(
       // width: 230,
@@ -94,46 +65,42 @@ class _NavikaDrawerState extends State<NavikaDrawer> {
                         icon: Icon(Icons.list),
                         label: Text(AppLocalizations.of(context)!.selectAll),
                         onPressed: () {
-                          setState(() {
-                            pronounsChecked = true;
-                            possPronounsChecked = true;
-                            adjectivesChecked = true;
-                            nounsChecked = true;
-                          });
+                          settings.setSettings(
+                            personalPronounsIncluded: true,
+                            possessivePronounsIncluded: true,
+                            adjectivesIncluded: true,
+                            nounsIncluded: true,
+                          );
                         },
                       ),
                       TextButton.icon(
                         icon: Icon(Icons.close_outlined),
                         label: Text(AppLocalizations.of(context)!.unselectAll),
                         onPressed: () {
-                          setState(() {
-                            pronounsChecked = false;
-                            possPronounsChecked = false;
-                            adjectivesChecked = false;
-                            //nounsChecked = false;
-                          });
+                          settings.setSettings(
+                            personalPronounsIncluded: false,
+                            possessivePronounsIncluded: false,
+                            adjectivesIncluded: false,
+                            //nounsIncluded: false,
+                          );
                         },
                       ),
                     ],
                   ),
                   SwitchListTile(
-                    value: pronounsChecked,
+                    value: settings.settings.personalPronounsIncluded,
                     activeColor: ACCENT_COLOR,
                     title: Text(AppLocalizations.of(context)!.personalPronouns),
                     onChanged: (bool value) {
-                      setState(() {
-                        pronounsChecked = value;
-                      });
+                      settings.setSettings(personalPronounsIncluded: value);
                     },
                   ),
                   SwitchListTile(
-                    value: adjectivesChecked,
+                    value: settings.settings.adjectivesIncluded,
                     activeColor: ACCENT_COLOR,
                     title: Text(AppLocalizations.of(context)!.adjectives),
                     onChanged: (bool value) {
-                      setState(() {
-                        adjectivesChecked = value;
-                      });
+                      settings.setSettings(adjectivesIncluded: value);
                     },
                   ),
                   // SwitchListTile(
@@ -147,14 +114,12 @@ class _NavikaDrawerState extends State<NavikaDrawer> {
                   //   },
                   // ),
                   SwitchListTile(
-                    value: possPronounsChecked,
+                    value: settings.settings.possessivePronounsIncluded,
                     activeColor: ACCENT_COLOR,
                     title:
                         Text(AppLocalizations.of(context)!.possessivePronouns),
                     onChanged: (bool value) {
-                      setState(() {
-                        possPronounsChecked = value;
-                      });
+                      settings.setSettings(possessivePronounsIncluded: value);
                     },
                   ),
                   Padding(
@@ -209,17 +174,16 @@ class _NavikaDrawerState extends State<NavikaDrawer> {
                             ),
                           ],
                           onPressed: (int selectedIndx) {
-                            setState(() {
-                              for (int i = 0;
-                                  i < entryTypeSelections.length;
-                                  i++) {
-                                if (i == selectedIndx) {
-                                  entryTypeSelections[i] = true;
-                                } else {
-                                  entryTypeSelections[i] = false;
-                                }
+                            // TODO: Set in state
+                            for (int i = 0;
+                                i < entryTypeSelections.length;
+                                i++) {
+                              if (i == selectedIndx) {
+                                entryTypeSelections[i] = true;
+                              } else {
+                                entryTypeSelections[i] = false;
                               }
-                            });
+                            }
                           },
                           isSelected: entryTypeSelections,
                         ),
@@ -234,15 +198,15 @@ class _NavikaDrawerState extends State<NavikaDrawer> {
                         children: [Text(AppLocalizations.of(context)!.close)],
                       ),
                       onPressed: () {
-                        widget.onFiltersSet(
-                          SettingsSet(
-                            personalPronounsIncluded: pronounsChecked,
-                            nounsIncluded: nounsChecked,
-                            adjectivesIncluded: adjectivesChecked,
-                            possessivePronounsIncluded: possPronounsChecked,
-                            entryType:
-                                getSelectedEntryType(entryTypeSelections),
-                          ),
+                        settings.setSettings(
+                          personalPronounsIncluded:
+                              settings.settings.personalPronounsIncluded,
+                          nounsIncluded: settings.settings.nounsIncluded,
+                          adjectivesIncluded:
+                              settings.settings.adjectivesIncluded,
+                          possessivePronounsIncluded:
+                              settings.settings.possessivePronounsIncluded,
+                          entryType: getSelectedEntryType(entryTypeSelections),
                         );
                         Navigator.pop(context);
                       },

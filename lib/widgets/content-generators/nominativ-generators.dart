@@ -67,23 +67,17 @@ class NominativGenerators {
     return StaticSentenceParts(start: start, end: end);
   }
 
-  static List<PANCombo> getPANCombos() {
-    final WordBank bank = wordBank.excludePronoun('svoj');
-
-    return N.getPANCombos(
-      bank,
+  static List<QuestionStateItem> initializePANStateItems() {
+    final combos = N.getPANCombos(
+      wordBank.excludePronoun('svoj'),
       getStaticSentenceParts,
       getPersonalPronounSentenceStaticParts,
     );
-  }
 
-  static List<QuestionStateItem> initializePANStateItems() {
-    final WordBank bank = wordBank.excludePronoun('svoj');
-    final combos = getPANCombos();
     final result = combos.map((c) {
-      return QuestionStateItem(combos: c
-
-      );
+      return QuestionStateItem(combos: c);
     });
+
+    return result.toList();
   }
 }

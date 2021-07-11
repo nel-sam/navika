@@ -111,7 +111,7 @@ class N {
           listItems.add(PANCombo(
               sentenceStarter: staticParts.start,
               sentenceEnder: staticParts.end,
-              pronoun: includePossPronoun ? possPronoun : null,
+              possPronoun: includePossPronoun ? possPronoun : null,
               adjective: includeAdjective ? adj : null,
               gender: noun.gender,
               isPlural: isPlural,
@@ -152,11 +152,11 @@ class N {
         );
       }
 
-      final hasPP = e.pronoun != null;
+      final hasPP = e.possPronoun != null;
       final hasAdj = e.adjective != null;
       final correctNounValues = e.noun!.getDeclensions(e.isPlural, caseType);
       final List<String> correctProns = hasPP
-          ? e.pronoun!
+          ? e.possPronoun!
               .getDeclensions(e.gender, e.isPlural, caseType, e.noun!.isAnimate)
           : [''];
       final List<String> correctAdjs = hasAdj
@@ -174,7 +174,7 @@ class N {
           correctNouns: correctNounValues,
           adjective: hasAdj ? e.adjective! : null,
           activePossPron: hasPP
-              ? e.pronoun!.getUniqueDeclensions().removeList(correctProns).first
+              ? e.possPronoun!.getUniqueDeclensions().removeList(correctProns).first
               : '',
           activeAdj: hasAdj
               ? e.adjective!
@@ -187,7 +187,7 @@ class N {
               .removeList(correctNounValues)
               .first,
           isPlural: e.isPlural,
-          possPronoun: hasPP ? e.pronoun! : null,
+          possPronoun: hasPP ? e.possPronoun! : null,
           gender: e.gender,
           noun: e.noun!);
     }).toList();

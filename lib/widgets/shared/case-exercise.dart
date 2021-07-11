@@ -45,30 +45,7 @@ class _CaseExerciseState extends State<CaseExercise> {
           iconTheme: N.getAppBarIconTheme(context),
           title: Text(widget.title, style: HEADER_TEXT_STYLE),
         ),
-        endDrawer: NavikaDrawer(
-          initalValues: widget.settingsSet,
-          onFiltersSet: (SettingsSet newSettingsSet) {
-            // var sameAsBefore = widget.settingsSet.adjectivesIncluded ==
-            //         newSettingsSet.adjectivesIncluded &&
-            //     widget.settingsSet.nounsIncluded ==
-            //         newSettingsSet.nounsIncluded &&
-            //     widget.settingsSet.personalPronounsIncluded ==
-            //         newSettingsSet.personalPronounsIncluded &&
-            //     widget.settingsSet.possessivePronounsIncluded ==
-            //         newSettingsSet.possessivePronounsIncluded &&
-            //     widget.settingsSet.entryType == newSettingsSet.entryType;
-
-            // if (!sameAsBefore) {
-            //   print('Changed');
-            //   Navigator.pop(context);
-            //   return;
-            // }
-
-            setState(() {
-              widget.onSettingsSet(newSettingsSet);
-            });
-          },
-        ),
+        endDrawer: NavikaDrawer(),
         body: new GestureDetector(
             onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
             child: Center(

@@ -7,12 +7,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/widgets/shared/navika-banner.dart';
 import 'package:provider/provider.dart';
 
-class Nominativ extends StatefulWidget {
+class Nominativ extends StatelessWidget {
   final title = 'Nominativ';
-  late SettingsSet settingsSet;
-
-  // onSettingsSet(SettingsSet newSettingsSet) =>
-  //     setState(() => settingsSet = newSettingsSet);
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +17,7 @@ class Nominativ extends StatefulWidget {
     return CaseExercise(
       title: title,
       caseType: Cases.Nom,
-      stateItems: exercises.exerciseItems[Cases.Nom],
+      stateItems: exercises.exerciseItems[Cases.Nom]!,
       banner: NavikaBanner(
         imagePath: CaseImagePaths[Cases.Nom]!,
         caseName: title,
@@ -32,13 +28,6 @@ class Nominativ extends StatefulWidget {
           Icons.people,
         ],
       ),
-      onSettingsSet: onSettingsSet,
-      settingsSet: settingsSet,
-      refreshFunction: () => {
-        setState(() {
-          widget.listItems.shuffle();
-        })
-      },
     );
   }
 }

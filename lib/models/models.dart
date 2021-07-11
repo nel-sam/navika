@@ -166,7 +166,7 @@ class QuestionStateItem {
   }
 
   bool checkAnswer() {
-    final pos = isCorrect(this.combos.correctPronouns, userPronResponse);
+    final pos = isCorrect(this.combos.correctPossPronouns, userPronResponse);
     final adj = isCorrect(this.combos.correctAdjs, userAdjResponse);
     final noun = isCorrect(this.combos.correctNouns, userNounResponse);
     final persPron =
@@ -190,8 +190,8 @@ class PANCombo {
   String sentenceEnder;
   Noun? noun;
   late List<String> correctNouns;
-  Adjective? pronoun;
-  late List<String> correctPronouns;
+  Adjective? possPronoun;
+  late List<String> correctPossPronouns;
   Adjective? adjective;
   late List<String> correctAdjs;
   PersonalPronoun? personalPronoun;
@@ -205,7 +205,7 @@ class PANCombo {
     required this.sentenceStarter,
     this.sentenceEnder = '',
     this.noun,
-    this.pronoun,
+    this.possPronoun,
     this.adjective,
     this.personalPronoun,
     required this.caseType,
@@ -220,9 +220,9 @@ class PANCombo {
         ? []
         : this.adjective!.getDeclensionsForCaseType(caseType);
 
-    this.correctNouns = this.pronoun == null
+    this.correctNouns = this.possPronoun == null
         ? []
-        : this.pronoun!.getDeclensionsForCaseType(caseType);
+        : this.possPronoun!.getDeclensionsForCaseType(caseType);
 
     this.correctNouns = this.personalPronoun == null
         ? []

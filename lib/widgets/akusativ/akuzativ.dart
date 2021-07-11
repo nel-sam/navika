@@ -5,30 +5,10 @@ import 'package:navika/widgets/shared/case-exercise.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/widgets/shared/navika-banner.dart';
 
-class Akuzativ extends StatefulWidget {
-  final List<PANCombo> listItems;
-
-  const Akuzativ({
-    required this.listItems,
-  });
-
-  @override
-  _AkuzativState createState() => _AkuzativState();
-}
-
-class _AkuzativState extends State<Akuzativ> {
+class Akuzativ extends StatelessWidget {
   final title = 'Akuzativ';
   late SettingsSet settingsSet;
-
-  @override
-  initState() {
-    settingsSet = SettingsSet();
-    super.initState();
-  }
-
-  onSettingsSet(SettingsSet newSettingsSet) =>
-      setState(() => settingsSet = newSettingsSet);
-
+  
   @override
   Widget build(BuildContext context) {
     return CaseExercise(

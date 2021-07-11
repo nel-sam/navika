@@ -40,16 +40,13 @@ class _ExerciseSelectionState extends State<ExerciseSelection> {
         imagePath: 'assets/banners/books.jpg',
       ),
       ExerciseButton(
-        destination: Nominativ(
-          listItems: NominativGenerators.getPANCombos(settingsSet),
-        ),
+        destination: Nominativ(),
         icon: Icons.category_outlined,
         label: 'Nominativ',
         imagePath: CaseImagePaths[Cases.Nom]!,
       ),
       ExerciseButton(
           destination: Akuzativ(
-            listItems: AkuzativGenerators.getPANCombos(settingsSet),
           ),
           icon: Icons.remove_red_eye_outlined,
           label: 'Akuzativ',
