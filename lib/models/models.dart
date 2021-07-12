@@ -9,6 +9,7 @@ class SettingsSet {
   final bool personalPronounsIncluded;
   final bool adjectivesIncluded;
   final bool nounsIncluded;
+  late List<bool> entryTypeSelections;
 
   SettingsSet({
     this.entryType = EntryTypes.FreeForm,
@@ -16,7 +17,13 @@ class SettingsSet {
     this.personalPronounsIncluded = true,
     this.adjectivesIncluded = true,
     this.nounsIncluded = true,
-  });
+  }) {
+    entryTypeSelections = [
+      this.entryType == EntryTypes.FreeForm,
+      this.entryType == EntryTypes.Mixed,
+      this.entryType == EntryTypes.Select,
+    ];
+  }
 }
 
 class WordBank {

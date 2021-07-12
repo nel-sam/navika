@@ -15,7 +15,7 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   MobileAds.instance.initialize();
 
-  runApp(new MyApp());
+  runApp(new NavikaApp());
 }
 
 final BannerAd adBanner = BannerAd(
@@ -28,7 +28,7 @@ final BannerAd adBanner = BannerAd(
   listener: BannerAdListener(),
 );
 
-class MyApp extends StatelessWidget {
+class NavikaApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -67,20 +67,13 @@ class MyApp extends StatelessWidget {
             create: (context) => CaseExercises(),
           )
         ],
-        child: MyHomePage(),
+        child: NHomePage(),
       ),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key}) : super(key: key);
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
+class NHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     adBanner.load();

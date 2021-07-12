@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:navika/models/enums.dart';
-import 'package:navika/models/models.dart';
 import 'package:navika/widgets/akusativ/akuzativ.dart';
 import 'package:navika/widgets/dativ/dativ.dart';
 import 'package:navika/widgets/exercise-selection/exercise-button.dart';
@@ -11,19 +10,7 @@ import 'package:navika/widgets/lokativ/lokativ.dart';
 import 'package:navika/widgets/nominativ/nominativ.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class ExerciseSelection extends StatefulWidget {
-  @override
-  _ExerciseSelectionState createState() => _ExerciseSelectionState();
-}
-
-class _ExerciseSelectionState extends State<ExerciseSelection> {
-  late List<PANCombo> nomContent;
-
-  @override
-  initState() {
-    super.initState();
-  }
-
+class ExerciseSelection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var buttons = <Widget>[

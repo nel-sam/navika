@@ -10,21 +10,25 @@ class Nominativ extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final title = 'Nominativ';
-    final provider = Provider.of<CaseExercises>(context);
 
-    return CaseExercise(
-      title: title,
-      caseType: Cases.Nom,
-      stateItems: provider.exerciseItems[Cases.Nom]!,
-      banner: NavikaBanner(
-        imagePath: CaseImagePaths[Cases.Nom]!,
-        caseName: title,
-        description: AppLocalizations.of(context)!.nominativDescription,
-        icons: [
-          Icons.category_outlined,
-          Icons.nature,
-          Icons.people,
-        ],
+    return ChangeNotifierProvider<CaseExercises>(
+      create: (context) => CaseExercises(),
+      child: Consumer<CaseExercises>(
+        builder: (context, model, child) => CaseExercise(
+          title: title,
+          caseType: Cases.Nom,
+          stateItems: model.exerciseItems[Cases.Nom]!,
+          banner: NavikaBanner(
+            imagePath: CaseImagePaths[Cases.Nom]!,
+            caseName: title,
+            description: AppLocalizations.of(context)!.nominativDescription,
+            icons: [
+              Icons.category_outlined,
+              Icons.nature,
+              Icons.people,
+            ],
+          ),
+        ),
       ),
     );
   }
