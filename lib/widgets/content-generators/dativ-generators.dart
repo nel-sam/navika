@@ -1,5 +1,6 @@
 import 'package:navika/lang_data/word-bank.dart';
 import 'package:navika/models/adjective.dart';
+import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/models/noun.dart';
 import 'package:navika/models/personal-pronoun.dart';
@@ -45,13 +46,19 @@ class DativGenerators {
     return StaticSentenceParts(start: start, end: end);
   }
 
-  static List<PANCombo> getPANCombos(SettingsSet settingsSet) {
-    final WordBank bank = wordBank;
-
-    return N.getPANCombos(
-      bank.filter(settingsSet),
-      getStaticSentenceParts,
-      getPersonalPronounSentenceStaticParts,
+  static List<QuestionStateItem> initializePANStateItems() {
+    final combos = N.getPANCombos(
+      caseType: Cases.Dat,
+      bank: wordBank,
+      getPersonalPronounSentenceStaticParts:
+          getPersonalPronounSentenceStaticParts,
+      getStaticSentenceParts: getStaticSentenceParts,
     );
+
+    final result = combos.map((c) {
+      return QuestionStateItem(combos: c);
+    });
+
+    return result.toList();
   }
 }

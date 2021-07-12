@@ -69,9 +69,11 @@ class NominativGenerators {
 
   static List<QuestionStateItem> initializePANStateItems() {
     final combos = N.getPANCombos(
-      wordBank.excludePronoun('svoj'),
-      getStaticSentenceParts,
-      getPersonalPronounSentenceStaticParts,
+      caseType: Cases.Nom,
+      bank: wordBank.excludePronoun('svoj'),
+      getPersonalPronounSentenceStaticParts:
+          getPersonalPronounSentenceStaticParts,
+      getStaticSentenceParts: getStaticSentenceParts,
     );
 
     final result = combos.map((c) {

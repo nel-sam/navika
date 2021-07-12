@@ -94,7 +94,7 @@ class QuestionContent extends StatelessWidget {
             maxLength: stateItem.combos.adjective!
                 .longestForCase(stateItem.combos.caseType),
             activeValue: stateItem.userAdjResponse,
-            correctValues: stateItem.combos.correctAdjs!,
+            correctValues: stateItem.combos.correctAdjs,
             onChanged: (String newVal) {
               stateItem.userAdjResponse = newVal;
               isAllCorrect = stateItem.checkAnswer();

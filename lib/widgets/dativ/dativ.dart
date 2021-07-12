@@ -1,40 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:navika/models/enums.dart';
-import 'package:navika/models/models.dart';
+import 'package:navika/state/case-exercises.dart';
 import 'package:navika/widgets/shared/case-exercise.dart';
 import 'package:navika/widgets/shared/navika-banner.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
-class Dativ extends StatefulWidget {
-  final List<PANCombo> listItems;
-
-  const Dativ({
-    required this.listItems,
-  });
-
-  @override
-  _DativState createState() => _DativState();
-}
-
-class _DativState extends State<Dativ> {
-  final title = 'Dativ';
-  late SettingsSet settingsSet;
-
-  @override
-  initState() {
-    settingsSet = SettingsSet();
-    super.initState();
-  }
-
-  onSettingsSet(SettingsSet newSettingsSet) =>
-      setState(() => settingsSet = newSettingsSet);
-
+class Dativ extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final title = 'Dativ';
+    final provider = Provider.of<CaseExercises>(context);
+
     return CaseExercise(
       title: title,
       caseType: Cases.Dat,
-      listItems: widget.listItems,
+      stateItems: provider.exerciseItems[Cases.Dat]!,
       banner: NavikaBanner(
         imagePath: CaseImagePaths[Cases.Dat]!,
         caseName: title,
@@ -45,13 +26,6 @@ class _DativState extends State<Dativ> {
           Icons.people,
         ],
       ),
-      onSettingsSet: onSettingsSet,
-      settingsSet: settingsSet,
-      refreshFunction: () => {
-        setState(() {
-          widget.listItems.shuffle();
-        })
-      },
     );
   }
 }

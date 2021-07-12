@@ -49,13 +49,19 @@ class AkuzativGenerators {
     return StaticSentenceParts(start: start, end: end);
   }
 
-  static List<PANCombo> getPANCombos(SettingsSet settingsSet) {
-    final WordBank bank = wordBank;
-
-    return N.getPANCombos(
-      bank.filter(settingsSet),
-      getStaticSentenceParts,
-      getPersonalPronounSentenceStaticParts,
+  static List<QuestionStateItem> initializePANStateItems() {
+    final combos = N.getPANCombos(
+      caseType: Cases.Nom,
+      bank: wordBank,
+      getPersonalPronounSentenceStaticParts:
+          getPersonalPronounSentenceStaticParts,
+      getStaticSentenceParts: getStaticSentenceParts,
     );
+
+    final result = combos.map((c) {
+      return QuestionStateItem(combos: c);
+    });
+
+    return result.toList();
   }
 }

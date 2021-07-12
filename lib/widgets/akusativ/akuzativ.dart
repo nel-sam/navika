@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:navika/models/enums.dart';
-import 'package:navika/models/models.dart';
+import 'package:navika/state/case-exercises.dart';
 import 'package:navika/widgets/shared/case-exercise.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/widgets/shared/navika-banner.dart';
+import 'package:provider/provider.dart';
 
 class Akuzativ extends StatelessWidget {
-  final title = 'Akuzativ';
-  late SettingsSet settingsSet;
-  
   @override
   Widget build(BuildContext context) {
+    final title = 'Akuzativ';
+    final exercises = Provider.of<CaseExercises>(context);
+
     return CaseExercise(
       title: title,
       caseType: Cases.Aku,
-      listItems: widget.listItems,
+      stateItems: exercises.exerciseItems[Cases.Aku]!,
       banner: NavikaBanner(
         imagePath: CaseImagePaths[Cases.Aku]!,
         caseName: title,
@@ -26,13 +27,6 @@ class Akuzativ extends StatelessWidget {
           Icons.euro,
         ],
       ),
-      onSettingsSet: onSettingsSet,
-      settingsSet: settingsSet,
-      refreshFunction: () => {
-        setState(() {
-          widget.listItems.shuffle();
-        })
-      },
     );
   }
 }

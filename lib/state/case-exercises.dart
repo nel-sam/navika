@@ -1,22 +1,24 @@
 import 'package:flutter/foundation.dart';
-import 'package:navika/lang_data/word-bank.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
-import 'package:navika/utilities/navika-helpers.dart';
+import 'package:navika/widgets/content-generators/akuzativ-generators.dart';
 import 'package:navika/widgets/content-generators/nominativ-generators.dart';
+import 'package:navika/widgets/content-generators/instrumental-generators.dart';
+import 'package:navika/widgets/content-generators/dativ-generators.dart';
+import 'package:navika/widgets/content-generators/genetiv-generators.dart';
+import 'package:navika/widgets/content-generators/lokativ-generators.dart';
 
 class CaseExercises with ChangeNotifier {
   Map<Cases, List<QuestionStateItem>> exerciseItems = {};
 
   CaseExercises() {
-
     exerciseItems[Cases.Nom] = NominativGenerators.initializePANStateItems();
-    exerciseItems[Cases.Aku] = List<QuestionStateItem>.empty(growable: true);
-    exerciseItems[Cases.Ins] = List<QuestionStateItem>.empty(growable: true);
-    exerciseItems[Cases.Dat] = List<QuestionStateItem>.empty(growable: true);
-    exerciseItems[Cases.Lok] = List<QuestionStateItem>.empty(growable: true);
-    exerciseItems[Cases.Gen] = List<QuestionStateItem>.empty(growable: true);
-    exerciseItems[Cases.Vok] = List<QuestionStateItem>.empty(growable: true);
+    exerciseItems[Cases.Aku] = AkuzativGenerators.initializePANStateItems();
+    exerciseItems[Cases.Ins] = InstrumentalGenerators.initializePANStateItems();
+    exerciseItems[Cases.Dat] = DativGenerators.initializePANStateItems();
+    exerciseItems[Cases.Lok] = LokativGenerators.initializePANStateItems();
+    exerciseItems[Cases.Gen] = GenetivGenerators.initializePANStateItems();
+    exerciseItems[Cases.Vok] = [];
   }
 
   void add(Cases caseType, QuestionStateItem item) {

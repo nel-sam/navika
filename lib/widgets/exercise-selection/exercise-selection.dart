@@ -2,12 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/widgets/akusativ/akuzativ.dart';
-import 'package:navika/widgets/content-generators/akuzativ-generators.dart';
-import 'package:navika/widgets/content-generators/dativ-generators.dart';
-import 'package:navika/widgets/content-generators/genetiv-generators.dart';
-import 'package:navika/widgets/content-generators/instrumental-generators.dart';
-import 'package:navika/widgets/content-generators/lokativ-generators.dart';
-import 'package:navika/widgets/content-generators/nominativ-generators.dart';
 import 'package:navika/widgets/dativ/dativ.dart';
 import 'package:navika/widgets/exercise-selection/exercise-button.dart';
 import 'package:navika/widgets/genitiv/genitiv.dart';
@@ -46,36 +40,27 @@ class _ExerciseSelectionState extends State<ExerciseSelection> {
         imagePath: CaseImagePaths[Cases.Nom]!,
       ),
       ExerciseButton(
-          destination: Akuzativ(
-          ),
+          destination: Akuzativ(),
           icon: Icons.remove_red_eye_outlined,
           label: 'Akuzativ',
           imagePath: CaseImagePaths[Cases.Aku]!),
       ExerciseButton(
-          destination: Instrumental(
-            listItems: InstrumentalGenerators.getPANCombos(settingsSet),
-          ),
+          destination: Instrumental(),
           icon: Icons.handyman_outlined,
           label: 'Instrumental',
           imagePath: CaseImagePaths[Cases.Ins]!),
       ExerciseButton(
-          destination: Lokativ(
-            listItems: LokativGenerators.getPANCombos(settingsSet),
-          ),
+          destination: Lokativ(),
           icon: Icons.location_on_outlined,
           label: 'Lokativ',
           imagePath: CaseImagePaths[Cases.Lok]!),
       ExerciseButton(
-          destination: Dativ(
-            listItems: DativGenerators.getPANCombos(settingsSet),
-          ),
+          destination: Dativ(),
           icon: Icons.arrow_forward,
           label: 'Dativ',
           imagePath: CaseImagePaths[Cases.Dat]!),
       ExerciseButton(
-          destination: Genitiv(
-            listItems: GenetivGenerators.getPANCombos(settingsSet),
-          ),
+          destination: Genitiv(),
           icon: Icons.coffee,
           label: 'Genitiv',
           imagePath: CaseImagePaths[Cases.Gen]!),

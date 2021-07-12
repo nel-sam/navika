@@ -1,40 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:navika/models/enums.dart';
-import 'package:navika/models/models.dart';
+import 'package:navika/state/case-exercises.dart';
 import 'package:navika/widgets/shared/case-exercise.dart';
 import 'package:navika/widgets/shared/navika-banner.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
-class Genitiv extends StatefulWidget {
-  final List<PANCombo> listItems;
-
-  const Genitiv({
-    required this.listItems,
-  });
-
-  @override
-  _GenitivState createState() => _GenitivState();
-}
-
-class _GenitivState extends State<Genitiv> {
-  final title = 'Genitiv';
-  late SettingsSet settingsSet;
-
-  @override
-  initState() {
-    settingsSet = SettingsSet();
-    super.initState();
-  }
-
-  onSettingsSet(SettingsSet newSettingsSet) =>
-      setState(() => settingsSet = newSettingsSet);
-
+class Genitiv extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final title = 'Genitiv';
+    final exercises = Provider.of<CaseExercises>(context);
+
     return CaseExercise(
       title: title,
       caseType: Cases.Gen,
-      listItems: widget.listItems,
+      stateItems: exercises.exerciseItems[Cases.Gen]!,
       banner: NavikaBanner(
         imagePath: CaseImagePaths[Cases.Gen]!,
         caseName: title,
@@ -45,13 +26,6 @@ class _GenitivState extends State<Genitiv> {
           Icons.people,
         ],
       ),
-      onSettingsSet: onSettingsSet,
-      settingsSet: settingsSet,
-      refreshFunction: () => {
-        setState(() {
-          widget.listItems.shuffle();
-        })
-      },
     );
   }
 }

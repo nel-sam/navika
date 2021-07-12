@@ -7,14 +7,31 @@ import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/models/noun.dart';
 import 'package:navika/models/personal-pronoun.dart';
-import 'package:navika/widgets/shared/question-content.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:navika/extensions.dart';
 
 class N {
   static scrollTo(double point, controller) {
     controller.animateTo(point,
         curve: Curves.linearToEaseOut, duration: SCROLL_DURATION);
+  }
+
+  static getRandomTense() {
+    final tenses = TenseEnum.values;
+    var index = (new Random()).nextInt(tenses.length - 1);
+    return tenses[index];
+  }
+
+  // ignore: non_constant_identifier_names
+  static AppBar NavikaAppBar(
+      Widget title, BuildContext context, List<Widget> actions) {
+    return AppBar(
+      elevation: APPBAR_ELEVATION,
+      backgroundColor: N.getAppBarColor(context),
+      textTheme: N.getAppBarTextTheme(context),
+      iconTheme: N.getAppBarIconTheme(context),
+      title: title,
+      actions: actions,
+    );
   }
 
   static IconData getGenderIcon(Genders gender) {
@@ -77,11 +94,12 @@ class N {
   }
 
   static List<PANCombo> getPANCombos(
-      WordBank bank,
-      StaticSentenceParts Function(Noun, bool, Adjective, Adjective)
+      {required Cases caseType,
+      required WordBank bank,
+      required StaticSentenceParts Function(Noun, bool, Adjective, Adjective)
           getStaticSentenceParts,
-      StaticSentenceParts Function(PersonalPronoun, bool)
-          getPersonalPronounSentenceStaticParts) {
+      required StaticSentenceParts Function(PersonalPronoun, bool)
+          getPersonalPronounSentenceStaticParts}) {
     var listItems = List<PANCombo>.empty(growable: true);
 
     bank.personalPronouns.forEach((persPronoun) {
@@ -90,6 +108,7 @@ class N {
           getPersonalPronounSentenceStaticParts(persPronoun, isPlural);
 
       listItems.add(PANCombo(
+        caseType: caseType,
         sentenceStarter: staticParts.start,
         sentenceEnder: staticParts.end,
         gender: persPronoun.gender,
@@ -109,6 +128,7 @@ class N {
               getStaticSentenceParts(noun, isPlural, possPronoun, adj);
 
           listItems.add(PANCombo(
+              caseType: caseType,
               sentenceStarter: staticParts.start,
               sentenceEnder: staticParts.end,
               possPronoun: includePossPronoun ? possPronoun : null,
@@ -121,95 +141,6 @@ class N {
     });
 
     return listItems;
-  }
-
-  static List<QuestionContent> getPANListItems(
-    List<PANCombo> listItems,
-    Cases caseType,
-    EntryTypes entryType,
-  ) {
-    return
-        //N
-        //.shuffleList<PANExerciseItem>(listItems)
-        listItems.take(BATCH_COUNT).map((PANCombo e) {
-      if (e.personalPronoun != null) {
-        final correctPersPron =
-            e.personalPronoun!.getDeclensionsForCaseType(caseType);
-
-        return QuestionContent(
-          entryType: entryType,
-          caseType: caseType,
-          sentenceStarter: e.sentenceStarter,
-          sentenceEnder: e.sentenceEnder,
-          correctPersProns: correctPersPron,
-          activePersPron: e.personalPronoun!
-              .getUniqueDeclensions()
-              .removeList(correctPersPron)
-              .first,
-          isPlural: e.isPlural,
-          gender: e.gender,
-          personalPronoun: e.personalPronoun!,
-        );
-      }
-
-      final hasPP = e.possPronoun != null;
-      final hasAdj = e.adjective != null;
-      final correctNounValues = e.noun!.getDeclensions(e.isPlural, caseType);
-      final List<String> correctProns = hasPP
-          ? e.possPronoun!
-              .getDeclensions(e.gender, e.isPlural, caseType, e.noun!.isAnimate)
-          : [''];
-      final List<String> correctAdjs = hasAdj
-          ? e.adjective!
-              .getDeclensions(e.gender, e.isPlural, caseType, e.noun!.isAnimate)
-          : [''];
-
-      return QuestionContent(
-          entryType: entryType,
-          caseType: caseType,
-          sentenceStarter: e.sentenceStarter,
-          sentenceEnder: e.sentenceEnder,
-          correctPossProns: correctProns,
-          correctAdjs: correctAdjs,
-          correctNouns: correctNounValues,
-          adjective: hasAdj ? e.adjective! : null,
-          activePossPron: hasPP
-              ? e.possPronoun!.getUniqueDeclensions().removeList(correctProns).first
-              : '',
-          activeAdj: hasAdj
-              ? e.adjective!
-                  .getUniqueDeclensions()
-                  .removeList(correctAdjs)
-                  .first
-              : '',
-          activeNoun: e.noun!
-              .getUniqueDeclensions()
-              .removeList(correctNounValues)
-              .first,
-          isPlural: e.isPlural,
-          possPronoun: hasPP ? e.possPronoun! : null,
-          gender: e.gender,
-          noun: e.noun!);
-    }).toList();
-  }
-
-  static getRandomTense() {
-    final tenses = TenseEnum.values;
-    var index = (new Random()).nextInt(tenses.length - 1);
-    return tenses[index];
-  }
-
-  // ignore: non_constant_identifier_names
-  static AppBar NavikaAppBar(
-      Widget title, BuildContext context, List<Widget> actions) {
-    return AppBar(
-      elevation: APPBAR_ELEVATION,
-      backgroundColor: N.getAppBarColor(context),
-      textTheme: N.getAppBarTextTheme(context),
-      iconTheme: N.getAppBarIconTheme(context),
-      title: title,
-      actions: actions,
-    );
   }
 
   // ignore: non_constant_identifier_names

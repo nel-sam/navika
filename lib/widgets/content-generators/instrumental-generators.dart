@@ -80,16 +80,24 @@ class InstrumentalGenerators {
     return StaticSentenceParts(start: start, end: end);
   }
 
-  static List<PANCombo> getPANCombos(SettingsSet settingsSet) {
+  static List<QuestionStateItem> initializePANStateItems() {
     final WordBank bank = wordBank.excludeNounsByTags([
       Tags.Location,
       Tags.Health,
     ]);
 
-    return N.getPANCombos(
-      bank.filter(settingsSet),
-      getStaticSentenceParts,
-      getPersonalPronounSentenceStaticParts,
+    final combos = N.getPANCombos(
+      caseType: Cases.Nom,
+      bank: bank,
+      getPersonalPronounSentenceStaticParts:
+          getPersonalPronounSentenceStaticParts,
+      getStaticSentenceParts: getStaticSentenceParts,
     );
+
+    final result = combos.map((c) {
+      return QuestionStateItem(combos: c);
+    });
+
+    return result.toList();
   }
 }
