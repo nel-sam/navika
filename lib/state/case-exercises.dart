@@ -20,12 +20,17 @@ class CaseExercises with ChangeNotifier {
     exerciseItems[Cases.Gen] = GenetivGenerators.initializePANStateItems();
     exerciseItems[Cases.Vok] = [];
     notifyListeners();
-
-    print('here');
   }
 
   void add(Cases caseType, QuestionStateItem item) {
     exerciseItems[caseType]!.add(item);
+    notifyListeners();
+  }
+
+  void modifyStateItem(
+      Cases caseType, QuestionStateItem stateItem, QuestionStateItem newValue) {
+    var toModify = exerciseItems[caseType]!.firstWhere((e) => e == stateItem);
+    toModify = newValue;
     notifyListeners();
   }
 }

@@ -18,7 +18,7 @@ class QuestionContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isAllCorrect = stateItem.checkAnswer();
+    bool isAllCorrect = stateItem.isCorrect;
     final bool usePossPronouns = stateItem.combos.possPronoun != null;
     final bool useAdj = stateItem.combos.adjective != null;
     final bool useNoun = stateItem.combos.noun != null;
@@ -34,7 +34,7 @@ class QuestionContent extends StatelessWidget {
                 N.getDropdownItems(adjective: stateItem.combos.possPronoun),
             onChanged: (String newVal) {
               stateItem.userPronResponse = newVal;
-              isAllCorrect = stateItem.checkAnswer();
+              isAllCorrect = stateItem.isCorrect;
             },
           ),
         if (useAdj)
@@ -46,7 +46,7 @@ class QuestionContent extends StatelessWidget {
             onChanged: (String newVal) {
               // TODO: Use store to set?
               stateItem.userAdjResponse = newVal;
-              isAllCorrect = stateItem.checkAnswer();
+              isAllCorrect = stateItem.isCorrect;
             },
           ),
         if (useNoun)
@@ -56,7 +56,7 @@ class QuestionContent extends StatelessWidget {
             dropDownOptions: N.getDropdownItems(noun: stateItem.combos.noun!),
             onChanged: (String newVal) {
               stateItem.userNounResponse = newVal;
-              isAllCorrect = stateItem.checkAnswer();
+              isAllCorrect = stateItem.isCorrect;
             },
           ),
         if (usePersPron)
@@ -67,7 +67,7 @@ class QuestionContent extends StatelessWidget {
                 personalPronoun: stateItem.combos.personalPronoun!),
             onChanged: (String newVal) {
               stateItem.userPersPronResponse = newVal;
-              isAllCorrect = stateItem.checkAnswer();
+              isAllCorrect = stateItem.isCorrect;
             },
           ),
       ];
@@ -84,7 +84,7 @@ class QuestionContent extends StatelessWidget {
             correctValues: stateItem.combos.correctPossPronouns,
             onChanged: (String newVal) {
               stateItem.userPronResponse = newVal;
-              isAllCorrect = stateItem.checkAnswer();
+              isAllCorrect = stateItem.isCorrect;
             },
           ),
         if (useAdj)
@@ -96,7 +96,7 @@ class QuestionContent extends StatelessWidget {
             correctValues: stateItem.combos.correctAdjs,
             onChanged: (String newVal) {
               stateItem.userAdjResponse = newVal;
-              isAllCorrect = stateItem.checkAnswer();
+              isAllCorrect = stateItem.isCorrect;
             },
           ),
         if (useNoun)
@@ -108,7 +108,7 @@ class QuestionContent extends StatelessWidget {
             correctValues: stateItem.combos.correctNouns,
             onChanged: (String newVal) {
               stateItem.userNounResponse = newVal;
-              isAllCorrect = stateItem.checkAnswer();
+              isAllCorrect = stateItem.isCorrect;
             },
           ),
         if (usePersPron)
@@ -119,8 +119,9 @@ class QuestionContent extends StatelessWidget {
             activeValue: stateItem.userPersPronResponse,
             correctValues: stateItem.combos.correctPersPronouns,
             onChanged: (String newVal) {
-              stateItem.userPersPronResponse = newVal;
-              isAllCorrect = stateItem.checkAnswer();
+              //stateItem.userPersPronResponse = newVal;
+              //isAllCorrect = stateItem.isCorrect;
+              // TODO: Modify values
             },
           ),
       ];

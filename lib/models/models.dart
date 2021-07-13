@@ -160,6 +160,7 @@ class DeclensionByGender {
 
 class QuestionStateItem {
   final PANCombo combos;
+  late bool isCorrect;
   late String userNounResponse;
   late String userPronResponse;
   late String userAdjResponse;
@@ -172,17 +173,17 @@ class QuestionStateItem {
     userPersPronResponse = '';
   }
 
-  bool checkAnswer() {
-    final pos = isCorrect(this.combos.correctPossPronouns, userPronResponse);
-    final adj = isCorrect(this.combos.correctAdjs, userAdjResponse);
-    final noun = isCorrect(this.combos.correctNouns, userNounResponse);
+  bool checkAnswers() {
+    final pos = getIsCorrect(this.combos.correctPossPronouns, userPronResponse);
+    final adj = getIsCorrect(this.combos.correctAdjs, userAdjResponse);
+    final noun = getIsCorrect(this.combos.correctNouns, userNounResponse);
     final persPron =
-        isCorrect(this.combos.correctPersPronouns, userPersPronResponse);
+        getIsCorrect(this.combos.correctPersPronouns, userPersPronResponse);
 
     return pos && adj && noun && persPron;
   }
 
-  bool isCorrect(List<String> acceptedAnswers, String? actualAnswer) {
+  bool getIsCorrect(List<String> acceptedAnswers, String? actualAnswer) {
     if (acceptedAnswers.length == 0 ||
         (acceptedAnswers.length == 0 && actualAnswer == '')) {
       return true;
