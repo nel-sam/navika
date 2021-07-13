@@ -19,6 +19,9 @@ class CaseExercises with ChangeNotifier {
     exerciseItems[Cases.Lok] = LokativGenerators.initializePANStateItems();
     exerciseItems[Cases.Gen] = GenetivGenerators.initializePANStateItems();
     exerciseItems[Cases.Vok] = [];
+    notifyListeners();
+
+    print('here');
   }
 
   void add(Cases caseType, QuestionStateItem item) {

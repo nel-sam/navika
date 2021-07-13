@@ -28,5 +28,6 @@ class Settings with ChangeNotifier {
     );
 
     this.settings = newSettings;
+    notifyListeners();
   }
 }

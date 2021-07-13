@@ -227,11 +227,11 @@ class PANCombo {
         ? []
         : this.adjective!.getDeclensionsForCaseType(caseType);
 
-    this.correctNouns = this.possPronoun == null
+    this.correctPossPronouns = this.possPronoun == null
         ? []
         : this.possPronoun!.getDeclensionsForCaseType(caseType);
 
-    this.correctNouns = this.personalPronoun == null
+    this.correctPersPronouns = this.personalPronoun == null
         ? []
         : this.personalPronoun!.getDeclensionsForCaseType(caseType);
   }

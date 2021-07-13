@@ -7,10 +7,9 @@ import 'package:navika/widgets/shared/case-drop-down.dart';
 import 'package:navika/widgets/shared/case-free-form.dart';
 import 'package:navika/widgets/shared/exercise-row-card.dart';
 
-// ignore: must_be_immutable
 class QuestionContent extends StatelessWidget {
-  QuestionStateItem stateItem;
-  EntryTypes entryType;
+  final QuestionStateItem stateItem;
+  final EntryTypes entryType;
 
   QuestionContent({
     required this.stateItem,
@@ -129,38 +128,38 @@ class QuestionContent extends StatelessWidget {
 
     // This is a deterministic function that still
     // tries to create variety in the exercises
-    bool getIsFreeForm(int total, int i) {
-      final baseWord = stateItem.combos.personalPronoun != null
-          ? stateItem.combos.personalPronoun!.dictionary
-          : stateItem.combos.noun!.dictionary;
+    // bool getIsFreeForm(int total, int i) {
+    //   final baseWord = stateItem.combos.personalPronoun != null
+    //       ? stateItem.combos.personalPronoun!.dictionary
+    //       : stateItem.combos.noun!.dictionary;
 
-      if (total == 1 && stateItem.combos.personalPronoun != null) {
-        return stateItem.combos.personalPronoun!.dictionary.contains('i');
-      } else if (total == 1) {
-        return stateItem.combos.noun!.dictionary.indexOf('e') > i;
-      } else if (total == 2) {
-        return stateItem.combos.noun!.dictionary.contains('n') ||
-            (total * baseWord.length + 1) % (i + 1) == 0;
-      } else if (stateItem.combos.noun!.dictionary.contains('j')) {
-        return (total + baseWord.length) % (i + 1) == 0;
-      }
+    //   if (total == 1 && stateItem.combos.personalPronoun != null) {
+    //     return stateItem.combos.personalPronoun!.dictionary.contains('i');
+    //   } else if (total == 1) {
+    //     return stateItem.combos.noun!.dictionary.indexOf('e') > i;
+    //   } else if (total == 2) {
+    //     return stateItem.combos.noun!.dictionary.contains('n') ||
+    //         (total * baseWord.length + 1) % (i + 1) == 0;
+    //   } else if (stateItem.combos.noun!.dictionary.contains('j')) {
+    //     return (total + baseWord.length) % (i + 1) == 0;
+    //   }
 
-      var t = baseWord.length % (i + total) == 0;
-      return stateItem.combos.noun!.dictionary.contains('e') || t;
-    }
+    //   var t = baseWord.length % (i + total) == 0;
+    //   return stateItem.combos.noun!.dictionary.contains('e') || t;
+    // }
 
-    getMixedForms() {
-      var freeF = freeForms();
-      var dropD = dropDowns();
-      var result = List<Widget>.empty(growable: true);
+    // getMixedForms() {
+    //   var freeF = freeForms();
+    //   var dropD = dropDowns();
+    //   var result = List<Widget>.empty(growable: true);
 
-      for (int i = 0; i < freeF.length; i++) {
-        final isFreeForm = getIsFreeForm(freeF.length, i);
-        result.add(isFreeForm ? freeF[i] : dropD[i]);
-      }
+    //   for (int i = 0; i < freeF.length; i++) {
+    //     final isFreeForm = getIsFreeForm(freeF.length, i);
+    //     result.add(isFreeForm ? freeF[i] : dropD[i]);
+    //   }
 
-      return result;
-    }
+    //   return result;
+    // }
 
     List<Widget> sentenceContent = [
       if (stateItem.combos.sentenceStarter != '')
