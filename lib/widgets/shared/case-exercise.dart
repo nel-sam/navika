@@ -98,7 +98,7 @@ class CaseExercise extends StatelessWidget {
             caseType: caseType,
             refreshFunction: () {
               N.scrollTo(0, controller);
-              model.exerciseItems[caseType]!.shuffle();
+              model.shuffle(caseType);
             },
           ),
         ),

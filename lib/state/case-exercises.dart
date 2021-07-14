@@ -38,4 +38,16 @@ class CaseExercises with ChangeNotifier {
 
     notifyListeners();
   }
+
+  void shuffle(Cases caseType) {
+    exerciseItems[caseType]!.shuffle();
+    exerciseItems[caseType]!.forEach((element) {
+      element.userAdjResponse = '';
+      element.userNounResponse = '';
+      element.userPronResponse = '';
+      element.userPersPronResponse = '';
+      element.isCorrect = false;
+    });
+    notifyListeners();
+  }
 }
