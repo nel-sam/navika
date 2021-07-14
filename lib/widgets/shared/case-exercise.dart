@@ -57,6 +57,34 @@ class CaseExercise extends StatelessWidget {
                             (QuestionStateItem e) => QuestionContent(
                               stateItem: e,
                               entryType: settingsModel.settings.entryType,
+                              onChanged:
+                                  (GrammarTypes grammarType, String newValue) {
+                                final newItem =
+                                    QuestionStateItem(combos: e.combos);
+
+                                newItem.userAdjResponse =
+                                    grammarType == GrammarTypes.Adjective
+                                        ? newValue
+                                        : e.userAdjResponse;
+
+                                newItem.userNounResponse =
+                                    grammarType == GrammarTypes.Noun
+                                        ? newValue
+                                        : e.userNounResponse;
+
+                                newItem.userPronResponse =
+                                    grammarType == GrammarTypes.PossesivePronoun
+                                        ? newValue
+                                        : e.userPronResponse;
+
+                                newItem.userPersPronResponse =
+                                    grammarType == GrammarTypes.PersonalPronoun
+                                        ? newValue
+                                        : e.userPersPronResponse;
+
+                                newItem.isCorrect = newItem.checkAnswers();
+                                model.modifyStateItem(caseType, e, newItem);
+                              },
                             ),
                           ),
                         ],

@@ -28,9 +28,14 @@ class CaseExercises with ChangeNotifier {
   }
 
   void modifyStateItem(
-      Cases caseType, QuestionStateItem stateItem, QuestionStateItem newValue) {
-    var toModify = exerciseItems[caseType]!.firstWhere((e) => e == stateItem);
-    toModify = newValue;
+      Cases caseType, QuestionStateItem toModify, QuestionStateItem newValue) {
+    toModify.combos = newValue.combos;
+    toModify.isCorrect = newValue.isCorrect;
+    toModify.userAdjResponse = newValue.userAdjResponse;
+    toModify.userNounResponse = newValue.userNounResponse;
+    toModify.userPersPronResponse = newValue.userPersPronResponse;
+    toModify.userPronResponse = newValue.userPronResponse;
+
     notifyListeners();
   }
 }

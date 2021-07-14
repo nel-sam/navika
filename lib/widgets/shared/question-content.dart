@@ -8,10 +8,12 @@ import 'package:navika/widgets/shared/case-free-form.dart';
 import 'package:navika/widgets/shared/exercise-row-card.dart';
 
 class QuestionContent extends StatelessWidget {
+  final Function(GrammarTypes, String) onChanged;
   final QuestionStateItem stateItem;
   final EntryTypes entryType;
 
   QuestionContent({
+    required this.onChanged,
     required this.stateItem,
     required this.entryType,
   });
@@ -121,7 +123,7 @@ class QuestionContent extends StatelessWidget {
             onChanged: (String newVal) {
               //stateItem.userPersPronResponse = newVal;
               //isAllCorrect = stateItem.isCorrect;
-              // TODO: Modify values
+              onChanged(GrammarTypes.PersonalPronoun, newVal);
             },
           ),
       ];

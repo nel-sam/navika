@@ -159,8 +159,8 @@ class DeclensionByGender {
 }
 
 class QuestionStateItem {
-  final PANCombo combos;
-  late bool isCorrect;
+  PANCombo combos;
+  late bool isCorrect = false;
   late String userNounResponse;
   late String userPronResponse;
   late String userAdjResponse;

@@ -21,6 +21,13 @@ enum Cases {
   Dat,
 }
 
+enum GrammarTypes {
+  Noun,
+  PersonalPronoun,
+  PossesivePronoun,
+  Adjective,
+}
+
 enum Tags {
   NaturalFeature,
   FlatSurface,
