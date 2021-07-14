@@ -23,11 +23,17 @@ class CaseFreeForm extends StatefulWidget {
 }
 
 class _CaseFreeFormState extends State<CaseFreeForm> {
+  final controller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
+    if (widget.activeValue == '') controller.text = '';
+
     return Container(
       width: widget.maxLength * 14,
       child: TextField(
+        key: widget.key,
+        controller: controller,
         textInputAction: TextInputAction.next,
         keyboardType: TextInputType.text,
         decoration: InputDecoration(

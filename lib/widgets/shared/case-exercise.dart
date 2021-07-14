@@ -53,40 +53,43 @@ class CaseExercise extends StatelessWidget {
                       builder: (context, settingsModel, child) => Column(
                         children: [
                           banner,
-                          ...model.exerciseItems[caseType]!.map(
-                            (QuestionStateItem e) => QuestionContent(
-                              stateItem: e,
-                              entryType: settingsModel.settings.entryType,
-                              onChanged:
-                                  (GrammarTypes grammarType, String newValue) {
-                                final newItem =
-                                    QuestionStateItem(combos: e.combos);
+                          ...model.exerciseItems[caseType]!
+                              .take(BATCH_COUNT)
+                              .map(
+                                (QuestionStateItem e) => QuestionContent(
+                                  stateItem: e,
+                                  entryType: settingsModel.settings.entryType,
+                                  onChanged: (GrammarTypes grammarType,
+                                      String newValue) {
+                                    final newItem =
+                                        QuestionStateItem(combos: e.combos);
 
-                                newItem.userAdjResponse =
-                                    grammarType == GrammarTypes.Adjective
-                                        ? newValue
-                                        : e.userAdjResponse;
+                                    newItem.userAdjResponse =
+                                        grammarType == GrammarTypes.Adjective
+                                            ? newValue
+                                            : e.userAdjResponse;
 
-                                newItem.userNounResponse =
-                                    grammarType == GrammarTypes.Noun
-                                        ? newValue
-                                        : e.userNounResponse;
+                                    newItem.userNounResponse =
+                                        grammarType == GrammarTypes.Noun
+                                            ? newValue
+                                            : e.userNounResponse;
 
-                                newItem.userPronResponse =
-                                    grammarType == GrammarTypes.PossesivePronoun
+                                    newItem.userPronResponse = grammarType ==
+                                            GrammarTypes.PossesivePronoun
                                         ? newValue
                                         : e.userPronResponse;
 
-                                newItem.userPersPronResponse =
-                                    grammarType == GrammarTypes.PersonalPronoun
-                                        ? newValue
-                                        : e.userPersPronResponse;
+                                    newItem.userPersPronResponse =
+                                        grammarType ==
+                                                GrammarTypes.PersonalPronoun
+                                            ? newValue
+                                            : e.userPersPronResponse;
 
-                                newItem.isCorrect = newItem.checkAnswers();
-                                model.modifyStateItem(caseType, e, newItem);
-                              },
-                            ),
-                          ),
+                                    newItem.isCorrect = newItem.checkAnswers();
+                                    model.modifyStateItem(caseType, e, newItem);
+                                  },
+                                ),
+                              ),
                         ],
                       ),
                     ),

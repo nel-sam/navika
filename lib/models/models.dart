@@ -121,7 +121,9 @@ class DeclensionByCount {
   });
 
   List<String> getAll() {
-    return [...this.singular, ...this.plural];
+    var result = [...this.singular, ...this.plural];
+    result.removeWhere((element) => element == '');
+    return result;
   }
 }
 
