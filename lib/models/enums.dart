@@ -1,7 +1,7 @@
 enum EntryTypes {
   FreeForm,
-  Select,
   Mixed,
+  Select,
 }
 
 enum Genders {

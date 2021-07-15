@@ -3,7 +3,11 @@ import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 
 class Settings with ChangeNotifier {
-  SettingsSet settings = SettingsSet();
+  late SettingsSet settings;
+
+  Settings() {
+    settings = SettingsSet();
+  }
 
   void setSettings({
     EntryTypes? entryType,
@@ -30,4 +34,17 @@ class Settings with ChangeNotifier {
     this.settings = newSettings;
     notifyListeners();
   }
+
+  // setEntryType(EntryTypes entryType) {
+  //   var newSettings = SettingsSet(
+  //     entryType: entryType,
+  //     possessivePronounsIncluded: this.settings.possessivePronounsIncluded,
+  //     personalPronounsIncluded: this.settings.personalPronounsIncluded,
+  //     adjectivesIncluded: this.settings.adjectivesIncluded,
+  //     nounsIncluded: this.settings.nounsIncluded,
+  //   );
+
+  //   this.settings = newSettings;
+  //   notifyListeners();
+  // }
 }

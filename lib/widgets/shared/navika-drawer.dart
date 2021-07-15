@@ -10,7 +10,12 @@ class NavikaDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var typeIconPadding = const EdgeInsets.all(12);
-    var provider = Provider.of<Settings>(context);
+
+    getEntryTypeSelections(EntryTypes entryType) => [
+          entryType == EntryTypes.FreeForm,
+          entryType == EntryTypes.Mixed,
+          entryType == EntryTypes.Select,
+        ];
 
     // TODO: Remove commented out code
     // EntryTypes getSelectedEntryType(List<bool> entryTypeSelections) {
@@ -57,7 +62,7 @@ class NavikaDrawer extends StatelessWidget {
                             label:
                                 Text(AppLocalizations.of(context)!.selectAll),
                             onPressed: () {
-                              provider.setSettings(
+                              model.setSettings(
                                 personalPronounsIncluded: true,
                                 possessivePronounsIncluded: true,
                                 adjectivesIncluded: true,
@@ -70,7 +75,7 @@ class NavikaDrawer extends StatelessWidget {
                             label:
                                 Text(AppLocalizations.of(context)!.unselectAll),
                             onPressed: () {
-                              provider.setSettings(
+                              model.setSettings(
                                 personalPronounsIncluded: false,
                                 possessivePronounsIncluded: false,
                                 adjectivesIncluded: false,
@@ -81,38 +86,37 @@ class NavikaDrawer extends StatelessWidget {
                         ],
                       ),
                       SwitchListTile(
-                        value: provider.settings.personalPronounsIncluded,
+                        value: model.settings.personalPronounsIncluded,
                         activeColor: ACCENT_COLOR,
                         title: Text(
                             AppLocalizations.of(context)!.personalPronouns),
                         onChanged: (bool value) {
-                          provider.setSettings(personalPronounsIncluded: value);
+                          model.setSettings(personalPronounsIncluded: value);
                         },
                       ),
                       SwitchListTile(
-                        value: provider.settings.adjectivesIncluded,
+                        value: model.settings.adjectivesIncluded,
                         activeColor: ACCENT_COLOR,
                         title: Text(AppLocalizations.of(context)!.adjectives),
                         onChanged: (bool value) {
-                          provider.setSettings(adjectivesIncluded: value);
+                          model.setSettings(adjectivesIncluded: value);
                         },
                       ),
                       SwitchListTile(
-                        value: provider.settings.nounsIncluded,
+                        value: model.settings.nounsIncluded,
                         activeColor: ACCENT_COLOR,
                         title: Text(AppLocalizations.of(context)!.nouns),
                         onChanged: (bool value) {
-                          provider.setSettings(nounsIncluded: value);
+                          model.setSettings(nounsIncluded: value);
                         },
                       ),
                       SwitchListTile(
-                        value: provider.settings.possessivePronounsIncluded,
+                        value: model.settings.possessivePronounsIncluded,
                         activeColor: ACCENT_COLOR,
                         title: Text(
                             AppLocalizations.of(context)!.possessivePronouns),
                         onChanged: (bool value) {
-                          provider.setSettings(
-                              possessivePronounsIncluded: value);
+                          model.setSettings(possessivePronounsIncluded: value);
                         },
                       ),
                       Padding(
@@ -169,16 +173,11 @@ class NavikaDrawer extends StatelessWidget {
                                 ),
                               ],
                               onPressed: (int selectedIndx) {
-                                model.settings.entryTypeSelections = [
-                                  selectedIndx == 0,
-                                  selectedIndx == 1,
-                                  selectedIndx == 2,
-                                ];
-
-                                provider.setSettings(
+                                model.setSettings(
                                     entryType: EntryTypes.values[selectedIndx]);
                               },
-                              isSelected: model.settings.entryTypeSelections,
+                              isSelected: getEntryTypeSelections(
+                                  model.settings.entryType),
                             ),
                           ],
                         ),
@@ -193,14 +192,14 @@ class NavikaDrawer extends StatelessWidget {
                             ],
                           ),
                           onPressed: () {
-                            // provider.setSettings(
+                            // model.setSettings(
                             //   personalPronounsIncluded:
-                            //       provider.settings.personalPronounsIncluded,
-                            //   nounsIncluded: provider.settings.nounsIncluded,
+                            //       model.settings.personalPronounsIncluded,
+                            //   nounsIncluded: model.settings.nounsIncluded,
                             //   adjectivesIncluded:
-                            //       provider.settings.adjectivesIncluded,
+                            //       model.settings.adjectivesIncluded,
                             //   possessivePronounsIncluded:
-                            //       provider.settings.possessivePronounsIncluded,
+                            //       model.settings.possessivePronounsIncluded,
                             //   entryType: getSelectedEntryType(entryTypeSelections),
                             // );
                             Navigator.pop(context);

@@ -28,7 +28,7 @@ class CaseExercise extends StatelessWidget {
     final controller = ScrollController();
 
     return ChangeNotifierProvider<CaseExercises>(
-      create: (context) => CaseExercises(),
+      create: (context) => CaseExercises(caseType: caseType),
       child: Consumer<CaseExercises>(
         builder: (context, model, child) => Scaffold(
           appBar: AppBar(
@@ -53,9 +53,7 @@ class CaseExercise extends StatelessWidget {
                       builder: (context, settingsModel, child) => Column(
                         children: [
                           banner,
-                          ...model.exerciseItems[caseType]!
-                              .take(BATCH_COUNT)
-                              .map(
+                          ...model.shuffle(caseType).take(BATCH_COUNT).map(
                                 (QuestionStateItem e) => QuestionContent(
                                   stateItem: e,
                                   entryType: settingsModel.settings.entryType,

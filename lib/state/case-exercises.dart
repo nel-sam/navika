@@ -11,14 +11,35 @@ import 'package:navika/widgets/content-generators/lokativ-generators.dart';
 class CaseExercises with ChangeNotifier {
   Map<Cases, List<QuestionStateItem>> exerciseItems = {};
 
-  CaseExercises() {
-    exerciseItems[Cases.Nom] = NominativGenerators.initializePANStateItems();
-    exerciseItems[Cases.Aku] = AkuzativGenerators.initializePANStateItems();
-    exerciseItems[Cases.Ins] = InstrumentalGenerators.initializePANStateItems();
-    exerciseItems[Cases.Dat] = DativGenerators.initializePANStateItems();
-    exerciseItems[Cases.Lok] = LokativGenerators.initializePANStateItems();
-    exerciseItems[Cases.Gen] = GenetivGenerators.initializePANStateItems();
-    exerciseItems[Cases.Vok] = [];
+  CaseExercises({Cases? caseType}) {
+    switch (caseType) {
+      case Cases.Nom:
+        exerciseItems[Cases.Nom] =
+            NominativGenerators.initializePANStateItems();
+        break;
+      case Cases.Aku:
+        exerciseItems[Cases.Aku] = AkuzativGenerators.initializePANStateItems();
+        break;
+      case Cases.Ins:
+        exerciseItems[Cases.Ins] =
+            InstrumentalGenerators.initializePANStateItems();
+        break;
+      case Cases.Dat:
+        exerciseItems[Cases.Dat] = DativGenerators.initializePANStateItems();
+        break;
+      case Cases.Lok:
+        exerciseItems[Cases.Lok] = LokativGenerators.initializePANStateItems();
+        break;
+      case Cases.Gen:
+        exerciseItems[Cases.Gen] = GenetivGenerators.initializePANStateItems();
+        break;
+      case Cases.Vok:
+        exerciseItems[Cases.Vok] = [];
+        break;
+      default:
+        break;
+    }
+
     notifyListeners();
   }
 
@@ -39,7 +60,7 @@ class CaseExercises with ChangeNotifier {
     notifyListeners();
   }
 
-  void shuffle(Cases caseType) {
+  List<QuestionStateItem> shuffle(Cases caseType) {
     exerciseItems[caseType]!.shuffle();
     exerciseItems[caseType]!.forEach((element) {
       element.userAdjResponse = '';
@@ -48,6 +69,8 @@ class CaseExercises with ChangeNotifier {
       element.userPersPronResponse = '';
       element.isCorrect = false;
     });
+
     notifyListeners();
+    return exerciseItems[caseType]!;
   }
 }
