@@ -53,7 +53,11 @@ class CaseExercise extends StatelessWidget {
                       builder: (context, settingsModel, child) => Column(
                         children: [
                           banner,
-                          ...model.shuffle(caseType).take(BATCH_COUNT).map(
+                          ...model
+                              .shuffleAndClear(
+                                  caseType: caseType, notify: false)
+                              .take(BATCH_COUNT)
+                              .map(
                                 (QuestionStateItem e) => QuestionContent(
                                   stateItem: e,
                                   entryType: settingsModel.settings.entryType,
@@ -99,7 +103,7 @@ class CaseExercise extends StatelessWidget {
             caseType: caseType,
             refreshFunction: () {
               N.scrollTo(0, controller);
-              model.shuffle(caseType);
+              model.shuffleAndClear(caseType: caseType);
             },
           ),
         ),

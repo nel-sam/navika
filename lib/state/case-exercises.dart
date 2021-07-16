@@ -60,7 +60,8 @@ class CaseExercises with ChangeNotifier {
     notifyListeners();
   }
 
-  List<QuestionStateItem> shuffle(Cases caseType) {
+  List<QuestionStateItem> shuffleAndClear(
+      {required Cases caseType, bool notify: true}) {
     exerciseItems[caseType]!.shuffle();
     exerciseItems[caseType]!.forEach((element) {
       element.userAdjResponse = '';
@@ -70,7 +71,7 @@ class CaseExercises with ChangeNotifier {
       element.isCorrect = false;
     });
 
-    notifyListeners();
+    if (notify) notifyListeners();
     return exerciseItems[caseType]!;
   }
 }
