@@ -3,11 +3,13 @@ import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 
 class Settings with ChangeNotifier {
-  late SettingsSet settings;
-
-  Settings() {
-    settings = SettingsSet();
-  }
+  final SettingsSet settings = SettingsSet(
+    entryType: EntryTypes.FreeForm,
+    possessivePronounsIncluded: true,
+    adjectivesIncluded: true,
+    nounsIncluded: true,
+    personalPronounsIncluded: true,
+  );
 
   void setSettings({
     EntryTypes? entryType,
@@ -16,35 +18,21 @@ class Settings with ChangeNotifier {
     bool? adjectivesIncluded,
     bool? nounsIncluded,
   }) {
-    var newSettings = SettingsSet(
-      entryType: entryType != null ? entryType : settings.entryType,
-      possessivePronounsIncluded: possessivePronounsIncluded != null
-          ? possessivePronounsIncluded
-          : settings.possessivePronounsIncluded,
-      personalPronounsIncluded: personalPronounsIncluded != null
-          ? personalPronounsIncluded
-          : settings.personalPronounsIncluded,
-      adjectivesIncluded: adjectivesIncluded != null
-          ? adjectivesIncluded
-          : settings.adjectivesIncluded,
-      nounsIncluded:
-          nounsIncluded != null ? nounsIncluded : settings.nounsIncluded,
-    );
+    settings.entryType = entryType != null ? entryType : settings.entryType;
+    settings.possessivePronounsIncluded = possessivePronounsIncluded != null
+        ? possessivePronounsIncluded
+        : settings.possessivePronounsIncluded;
+    settings.personalPronounsIncluded = personalPronounsIncluded != null
+        ? personalPronounsIncluded
+        : settings.personalPronounsIncluded;
+    settings.adjectivesIncluded = adjectivesIncluded != null
+        ? adjectivesIncluded
+        : settings.adjectivesIncluded;
+    settings.nounsIncluded =
+        nounsIncluded != null ? nounsIncluded : settings.nounsIncluded;
 
-    this.settings = newSettings;
+    // TODO: Rebuild exercise widget so user can
+    // start over
     notifyListeners();
   }
-
-  // setEntryType(EntryTypes entryType) {
-  //   var newSettings = SettingsSet(
-  //     entryType: entryType,
-  //     possessivePronounsIncluded: this.settings.possessivePronounsIncluded,
-  //     personalPronounsIncluded: this.settings.personalPronounsIncluded,
-  //     adjectivesIncluded: this.settings.adjectivesIncluded,
-  //     nounsIncluded: this.settings.nounsIncluded,
-  //   );
-
-  //   this.settings = newSettings;
-  //   notifyListeners();
-  // }
 }

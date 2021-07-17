@@ -30,7 +30,9 @@ class QuestionContent extends StatelessWidget {
       return [
         if (usePossPronouns)
           CaseDropDown(
-            activeValue: stateItem.userPronResponse,
+            activeValue: stateItem.userPossPronResponse == ''
+                ? stateItem.combos.initialPossPronDropDownValue
+                : stateItem.userPossPronResponse,
             correctValues: stateItem.combos.correctPossPronouns,
             dropDownOptions:
                 N.getDropdownItems(adjective: stateItem.combos.possPronoun),
@@ -40,7 +42,9 @@ class QuestionContent extends StatelessWidget {
           ),
         if (useAdj)
           CaseDropDown(
-            activeValue: stateItem.userAdjResponse,
+            activeValue: stateItem.userAdjResponse == ''
+                ? stateItem.combos.initialAdjDropDownValue
+                : stateItem.userAdjResponse,
             correctValues: stateItem.combos.correctAdjs,
             dropDownOptions:
                 N.getDropdownItems(adjective: stateItem.combos.adjective!),
@@ -50,7 +54,9 @@ class QuestionContent extends StatelessWidget {
           ),
         if (useNoun)
           CaseDropDown(
-            activeValue: stateItem.userNounResponse,
+            activeValue: stateItem.userNounResponse == ''
+                ? stateItem.combos.initialNounDropDownValue
+                : stateItem.userNounResponse,
             correctValues: stateItem.combos.correctNouns,
             dropDownOptions: N.getDropdownItems(noun: stateItem.combos.noun!),
             onChanged: (String newVal) {
@@ -59,7 +65,9 @@ class QuestionContent extends StatelessWidget {
           ),
         if (usePersPron)
           CaseDropDown(
-            activeValue: stateItem.userPersPronResponse,
+            activeValue: stateItem.userPersPronResponse == ''
+                ? stateItem.combos.initialPersPronDropDownValue
+                : stateItem.userPersPronResponse,
             correctValues: stateItem.combos.correctPersPronouns,
             dropDownOptions: N.getDropdownItems(
                 personalPronoun: stateItem.combos.personalPronoun!),
@@ -77,7 +85,7 @@ class QuestionContent extends StatelessWidget {
             hintValue: stateItem.combos.possPronoun!.dictionary,
             maxLength: stateItem.combos.possPronoun!
                 .longestForCase(stateItem.combos.caseType),
-            activeValue: stateItem.userPronResponse,
+            activeValue: stateItem.userPossPronResponse,
             correctValues: stateItem.combos.correctPossPronouns,
             onChanged: (String newVal) {
               onChanged(GrammarTypes.PossesivePronoun, newVal);
@@ -121,38 +129,38 @@ class QuestionContent extends StatelessWidget {
 
     // This is a deterministic function that still
     // tries to create variety in the exercises
-    // bool getIsFreeForm(int total, int i) {
-    //   final baseWord = stateItem.combos.personalPronoun != null
-    //       ? stateItem.combos.personalPronoun!.dictionary
-    //       : stateItem.combos.noun!.dictionary;
+    bool getIsFreeForm(int total, int i) {
+      final baseWord = stateItem.combos.personalPronoun != null
+          ? stateItem.combos.personalPronoun!.dictionary
+          : stateItem.combos.noun!.dictionary;
 
-    //   if (total == 1 && stateItem.combos.personalPronoun != null) {
-    //     return stateItem.combos.personalPronoun!.dictionary.contains('i');
-    //   } else if (total == 1) {
-    //     return stateItem.combos.noun!.dictionary.indexOf('e') > i;
-    //   } else if (total == 2) {
-    //     return stateItem.combos.noun!.dictionary.contains('n') ||
-    //         (total * baseWord.length + 1) % (i + 1) == 0;
-    //   } else if (stateItem.combos.noun!.dictionary.contains('j')) {
-    //     return (total + baseWord.length) % (i + 1) == 0;
-    //   }
+      if (total == 1 && stateItem.combos.personalPronoun != null) {
+        return stateItem.combos.personalPronoun!.dictionary.contains('i');
+      } else if (total == 1) {
+        return stateItem.combos.noun!.dictionary.indexOf('e') > i;
+      } else if (total == 2) {
+        return stateItem.combos.noun!.dictionary.contains('n') ||
+            (total * baseWord.length + 1) % (i + 1) == 0;
+      } else if (stateItem.combos.noun!.dictionary.contains('j')) {
+        return (total + baseWord.length) % (i + 1) == 0;
+      }
 
-    //   var t = baseWord.length % (i + total) == 0;
-    //   return stateItem.combos.noun!.dictionary.contains('e') || t;
-    // }
+      var t = baseWord.length % (i + total) == 0;
+      return stateItem.combos.noun!.dictionary.contains('e') || t;
+    }
 
-    // getMixedForms() {
-    //   var freeF = freeForms();
-    //   var dropD = dropDowns();
-    //   var result = List<Widget>.empty(growable: true);
+    getMixedForms() {
+      var freeF = freeForms();
+      var dropD = dropDowns();
+      var result = List<Widget>.empty(growable: true);
 
-    //   for (int i = 0; i < freeF.length; i++) {
-    //     final isFreeForm = getIsFreeForm(freeF.length, i);
-    //     result.add(isFreeForm ? freeF[i] : dropD[i]);
-    //   }
+      for (int i = 0; i < freeF.length; i++) {
+        final isFreeForm = getIsFreeForm(freeF.length, i);
+        result.add(isFreeForm ? freeF[i] : dropD[i]);
+      }
 
-    //   return result;
-    // }
+      return result;
+    }
 
     List<Widget> sentenceContent = [
       if (stateItem.combos.sentenceStarter != '')
@@ -162,7 +170,7 @@ class QuestionContent extends StatelessWidget {
         ),
       if (entryType == EntryTypes.Select) ...dropDowns(),
       if (entryType == EntryTypes.FreeForm) ...freeForms(),
-      //if (entryType == EntryTypes.Mixed) ...getMixedForms(),
+      if (entryType == EntryTypes.Mixed) ...getMixedForms(),
       if (stateItem.combos.sentenceEnder != '')
         Text(
           stateItem.combos.sentenceEnder,

@@ -60,12 +60,8 @@ class NavikaApp extends StatelessWidget {
       themeMode: ThemeMode.system,
       home: MultiProvider(
         providers: [
-          ChangeNotifierProvider<Settings>(
-            create: (contet) => Settings(),
-          ),
-          ChangeNotifierProvider<CaseExercises>(
-            create: (context) => CaseExercises(),
-          )
+          ChangeNotifierProvider(create: (_) => Settings()),
+          ChangeNotifierProvider(create: (_) => CaseExercises())
         ],
         child: NHomePage(),
       ),

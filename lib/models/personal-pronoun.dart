@@ -75,4 +75,11 @@ class PersonalPronoun {
 
     return longestFound;
   }
+
+  getDropDownInitial(Cases caseType) {
+    final toAvoid = getDeclensionsForCaseType(caseType);
+    final filtered = getUniqueDeclensions(shuffle: true);
+    filtered.removeWhere((element) => toAvoid.contains(element));
+    return filtered.last;
+  }
 }

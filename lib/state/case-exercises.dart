@@ -12,32 +12,37 @@ class CaseExercises with ChangeNotifier {
   Map<Cases, List<QuestionStateItem>> exerciseItems = {};
 
   CaseExercises({Cases? caseType}) {
+    List<QuestionStateItem> items = [];
+
     switch (caseType) {
       case Cases.Nom:
-        exerciseItems[Cases.Nom] =
-            NominativGenerators.initializePANStateItems();
+        items = NominativGenerators.initializePANStateItems();
         break;
       case Cases.Aku:
-        exerciseItems[Cases.Aku] = AkuzativGenerators.initializePANStateItems();
+        items = AkuzativGenerators.initializePANStateItems();
         break;
       case Cases.Ins:
-        exerciseItems[Cases.Ins] =
-            InstrumentalGenerators.initializePANStateItems();
+        items = InstrumentalGenerators.initializePANStateItems();
         break;
       case Cases.Dat:
-        exerciseItems[Cases.Dat] = DativGenerators.initializePANStateItems();
+        items = DativGenerators.initializePANStateItems();
         break;
       case Cases.Lok:
-        exerciseItems[Cases.Lok] = LokativGenerators.initializePANStateItems();
+        items = LokativGenerators.initializePANStateItems();
         break;
       case Cases.Gen:
-        exerciseItems[Cases.Gen] = GenetivGenerators.initializePANStateItems();
+        items = GenetivGenerators.initializePANStateItems();
         break;
       case Cases.Vok:
-        exerciseItems[Cases.Vok] = [];
+        items = [];
         break;
       default:
         break;
+    }
+
+    if (caseType != null) {
+      exerciseItems[caseType] = items;
+      exerciseItems[caseType]!.shuffle();
     }
 
     notifyListeners();
@@ -55,7 +60,7 @@ class CaseExercises with ChangeNotifier {
     toModify.userAdjResponse = newValue.userAdjResponse;
     toModify.userNounResponse = newValue.userNounResponse;
     toModify.userPersPronResponse = newValue.userPersPronResponse;
-    toModify.userPronResponse = newValue.userPronResponse;
+    toModify.userPossPronResponse = newValue.userPossPronResponse;
 
     notifyListeners();
   }
@@ -66,7 +71,7 @@ class CaseExercises with ChangeNotifier {
     exerciseItems[caseType]!.forEach((element) {
       element.userAdjResponse = '';
       element.userNounResponse = '';
-      element.userPronResponse = '';
+      element.userPossPronResponse = '';
       element.userPersPronResponse = '';
       element.isCorrect = false;
     });

@@ -4,18 +4,18 @@ import 'package:navika/models/personal-pronoun.dart';
 import 'enums.dart';
 
 class SettingsSet {
-  final EntryTypes entryType;
-  final bool possessivePronounsIncluded;
-  final bool personalPronounsIncluded;
-  final bool adjectivesIncluded;
-  final bool nounsIncluded;
+  late EntryTypes entryType;
+  late bool possessivePronounsIncluded;
+  late bool personalPronounsIncluded;
+  late bool adjectivesIncluded;
+  late bool nounsIncluded;
 
   SettingsSet({
-    this.entryType = EntryTypes.FreeForm,
-    this.possessivePronounsIncluded = true,
-    this.personalPronounsIncluded = true,
-    this.adjectivesIncluded = true,
-    this.nounsIncluded = true,
+    required this.entryType,
+    required this.possessivePronounsIncluded,
+    required this.personalPronounsIncluded,
+    required this.adjectivesIncluded,
+    required this.nounsIncluded,
   });
 }
 
@@ -157,19 +157,19 @@ class QuestionStateItem {
   PANCombo combos;
   late bool isCorrect = false;
   late String userNounResponse;
-  late String userPronResponse;
+  late String userPossPronResponse;
   late String userAdjResponse;
   late String userPersPronResponse;
 
   QuestionStateItem({required this.combos}) {
     userNounResponse = '';
-    userPronResponse = '';
+    userPossPronResponse = '';
     userAdjResponse = '';
     userPersPronResponse = '';
   }
 
   bool checkAnswers() {
-    final pos = getIsCorrect(this.combos.correctPossPronouns, userPronResponse);
+    final pos = getIsCorrect(this.combos.correctPossPronouns, userPossPronResponse);
     final adj = getIsCorrect(this.combos.correctAdjs, userAdjResponse);
     final noun = getIsCorrect(this.combos.correctNouns, userNounResponse);
     final persPron =
@@ -191,14 +191,23 @@ class QuestionStateItem {
 class PANCombo {
   String sentenceStarter;
   String sentenceEnder;
+
   Noun? noun;
   late List<String> correctNouns;
+  late String initialNounDropDownValue;
+
   Adjective? possPronoun;
   late List<String> correctPossPronouns;
+  late String initialPossPronDropDownValue;
+
   Adjective? adjective;
   late List<String> correctAdjs;
+  late String initialAdjDropDownValue;
+
   PersonalPronoun? personalPronoun;
   late List<String> correctPersPronouns;
+  late String initialPersPronDropDownValue;
+
   bool usePersonalPronounShortForm;
   Cases caseType;
   Genders gender;
@@ -218,18 +227,29 @@ class PANCombo {
   }) {
     this.correctNouns =
         this.noun == null ? [] : this.noun!.getDeclensionsForCaseType(caseType);
+    this.initialNounDropDownValue =
+        this.noun == null ? '' : this.noun!.getDropDownInitial(caseType);
 
     this.correctAdjs = this.adjective == null
         ? []
         : this.adjective!.getDeclensionsForCaseType(caseType);
+    this.initialAdjDropDownValue = this.adjective == null
+        ? ''
+        : this.adjective!.getDropDownInitial(caseType);
 
     this.correctPossPronouns = this.possPronoun == null
         ? []
         : this.possPronoun!.getDeclensionsForCaseType(caseType);
+    this.initialPossPronDropDownValue = this.possPronoun == null
+        ? ''
+        : this.possPronoun!.getDropDownInitial(caseType);
 
     this.correctPersPronouns = this.personalPronoun == null
         ? []
         : this.personalPronoun!.getDeclensionsForCaseType(caseType);
+    this.initialPersPronDropDownValue = this.personalPronoun == null
+        ? ''
+        : this.personalPronoun!.getDropDownInitial(caseType);
   }
 }
 

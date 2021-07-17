@@ -27,84 +27,82 @@ class CaseExercise extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = ScrollController();
 
-    return ChangeNotifierProvider<CaseExercises>(
-      create: (context) => CaseExercises(caseType: caseType),
-      child: Consumer<CaseExercises>(
-        builder: (context, model, child) => Scaffold(
-          appBar: AppBar(
-            leading: Builder(builder: (BuildContext context) => BackButton()),
-            elevation: APPBAR_ELEVATION,
-            backgroundColor: N.getAppBarColor(context),
-            textTheme: N.getAppBarTextTheme(context),
-            iconTheme: N.getAppBarIconTheme(context),
-            title: Text(title, style: HEADER_TEXT_STYLE),
-          ),
-          endDrawer: NavikaDrawer(),
-          body: GestureDetector(
-              onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-              child: Center(
-                child: SingleChildScrollView(
-                  physics: ClampingScrollPhysics(),
-                  controller: controller,
-                  padding: EXERCISE_LIST_PADDING,
-                  child: ChangeNotifierProvider<Settings>(
-                    create: (context) => Settings(),
-                    child: Consumer<Settings>(
-                      builder: (context, settingsModel, child) => Column(
-                        children: [
-                          banner,
-                          ...model
-                              .shuffleAndClear(
-                                  caseType: caseType, notify: false)
-                              .take(BATCH_COUNT)
-                              .map(
-                                (QuestionStateItem e) => QuestionContent(
-                                  stateItem: e,
-                                  entryType: settingsModel.settings.entryType,
-                                  onChanged: (GrammarTypes grammarType,
-                                      String newValue) {
-                                    final newItem =
-                                        QuestionStateItem(combos: e.combos);
+    return ChangeNotifierProvider<Settings>(
+      create: (context) => Settings(),
+      child: Consumer<Settings>(
+        builder: (context, settingsModel, child) =>
+            ChangeNotifierProvider<CaseExercises>(
+          create: (context) => CaseExercises(caseType: caseType),
+          child: Consumer<CaseExercises>(
+            builder: (context, model, child) => Scaffold(
+              appBar: AppBar(
+                leading:
+                    Builder(builder: (BuildContext context) => BackButton()),
+                elevation: APPBAR_ELEVATION,
+                backgroundColor: N.getAppBarColor(context),
+                textTheme: N.getAppBarTextTheme(context),
+                iconTheme: N.getAppBarIconTheme(context),
+                title: Text(title, style: HEADER_TEXT_STYLE),
+              ),
+              endDrawer: NavikaDrawer(settings: settingsModel),
+              body: GestureDetector(
+                onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+                child: Center(
+                  child: SingleChildScrollView(
+                    physics: ClampingScrollPhysics(),
+                    controller: controller,
+                    padding: EXERCISE_LIST_PADDING,
+                    child: Column(
+                      children: [
+                        banner,
+                        ...model.exerciseItems[caseType]!.take(BATCH_COUNT).map(
+                              (QuestionStateItem e) => QuestionContent(
+                                stateItem: e,
+                                entryType: settingsModel.settings.entryType,
+                                onChanged: (GrammarTypes grammarType,
+                                    String newValue) {
+                                  final newItem =
+                                      QuestionStateItem(combos: e.combos);
 
-                                    newItem.userAdjResponse =
-                                        grammarType == GrammarTypes.Adjective
-                                            ? newValue
-                                            : e.userAdjResponse;
+                                  newItem.userAdjResponse =
+                                      grammarType == GrammarTypes.Adjective
+                                          ? newValue
+                                          : e.userAdjResponse;
 
-                                    newItem.userNounResponse =
-                                        grammarType == GrammarTypes.Noun
-                                            ? newValue
-                                            : e.userNounResponse;
+                                  newItem.userNounResponse =
+                                      grammarType == GrammarTypes.Noun
+                                          ? newValue
+                                          : e.userNounResponse;
 
-                                    newItem.userPronResponse = grammarType ==
-                                            GrammarTypes.PossesivePronoun
-                                        ? newValue
-                                        : e.userPronResponse;
+                                  newItem.userPossPronResponse = grammarType ==
+                                          GrammarTypes.PossesivePronoun
+                                      ? newValue
+                                      : e.userPossPronResponse;
 
-                                    newItem.userPersPronResponse =
-                                        grammarType ==
-                                                GrammarTypes.PersonalPronoun
-                                            ? newValue
-                                            : e.userPersPronResponse;
+                                  newItem.userPersPronResponse = grammarType ==
+                                          GrammarTypes.PersonalPronoun
+                                      ? newValue
+                                      : e.userPersPronResponse;
 
-                                    newItem.isCorrect = newItem.checkAnswers();
-                                    model.modifyStateItem(caseType, e, newItem);
-                                  },
-                                ),
+                                  newItem.isCorrect = newItem.checkAnswers();
+                                  model.modifyStateItem(caseType, e, newItem);
+                                },
                               ),
-                        ],
-                      ),
+                            ),
+                      ],
                     ),
                   ),
                 ),
-              )),
-          persistentFooterButtons: NavikaChildFooterButtons(
-            context: context,
-            caseType: caseType,
-            refreshFunction: () {
-              N.scrollTo(0, controller);
-              model.shuffleAndClear(caseType: caseType);
-            },
+              ),
+              persistentFooterButtons: NavikaChildFooterButtons(
+                context: context,
+                caseType: caseType,
+                refreshFunction: () {
+                  N.scrollTo(0, controller);
+                  model.shuffleAndClear(caseType: caseType);
+                },
+              ),
+            ),
           ),
         ),
       ),
