@@ -4,7 +4,6 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/state/settings.dart';
 import 'package:navika/widgets/shared/navika-text.dart';
-import 'package:provider/provider.dart';
 
 class NavikaDrawer extends StatelessWidget {
   final Settings settings;

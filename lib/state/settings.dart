@@ -31,8 +31,6 @@ class Settings with ChangeNotifier {
     settings.nounsIncluded =
         nounsIncluded != null ? nounsIncluded : settings.nounsIncluded;
 
-    // TODO: Rebuild exercise widget so user can
-    // start over
     notifyListeners();
   }
 }
