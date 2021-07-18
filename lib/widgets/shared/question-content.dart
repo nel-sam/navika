@@ -179,6 +179,7 @@ class QuestionContent extends StatelessWidget {
     ];
 
     return ExerciseRowCard(
+      combos: stateItem.combos,
       isAllCorrect: isAllCorrect,
       isPlural: stateItem.combos.isPlural,
       isAnimate: stateItem.combos.noun == null

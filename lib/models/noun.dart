@@ -30,6 +30,25 @@ class Noun {
     required this.vokativ,
   });
 
+  DeclensionByCount getDeclensionObject(Cases caseType) {
+    switch (caseType) {
+      case Cases.Aku:
+        return this.akuzativ;
+      case Cases.Dat:
+        return this.dativ;
+      case Cases.Gen:
+        return this.genitiv;
+      case Cases.Ins:
+        return this.instrumental;
+      case Cases.Lok:
+        return this.lokativ;
+      case Cases.Nom:
+        return this.nominativ;
+      case Cases.Vok:
+        return this.vokativ;
+    }
+  }
+
   List<String> getDeclensions(bool isPlural, Cases caseType) {
     DeclensionByCount declension;
 

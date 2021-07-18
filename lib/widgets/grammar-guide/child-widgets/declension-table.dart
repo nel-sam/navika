@@ -7,12 +7,15 @@ import 'package:navika/widgets/grammar-guide/child-widgets/explanation-icon-cell
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DeclensionTable extends StatelessWidget {
-  final DeclensionTableCell masculineSingular;
-  final DeclensionTableCell feminineSingular;
-  final DeclensionTableCell neuterSingular;
-  final DeclensionTableCell masculinePlural;
-  final DeclensionTableCell femininePlural;
-  final DeclensionTableCell neuterPlural;
+  final DeclensionTableCell? masculineSingular;
+  final DeclensionTableCell? masculinePlural;
+
+  final DeclensionTableCell? feminineSingular;
+  final DeclensionTableCell? femininePlural;
+
+  final DeclensionTableCell? neuterSingular;
+  final DeclensionTableCell? neuterPlural;
+
   final String borderedItemNote;
   final bool showEqualItemNote;
   final Color additionalEqualItemColor;
@@ -20,12 +23,12 @@ class DeclensionTable extends StatelessWidget {
 
   const DeclensionTable({
     Key? key,
-    required this.masculineSingular,
-    required this.feminineSingular,
-    required this.neuterSingular,
-    required this.masculinePlural,
-    required this.femininePlural,
-    required this.neuterPlural,
+    this.masculineSingular,
+    this.feminineSingular,
+    this.neuterSingular,
+    this.masculinePlural,
+    this.femininePlural,
+    this.neuterPlural,
     this.notes,
     this.borderedItemNote = '',
     this.showEqualItemNote = false,
@@ -62,33 +65,36 @@ class DeclensionTable extends StatelessWidget {
                     width: firstColWidth,
                     height: 10.0,
                   ),
-                  Container(
-                    width: colWidth,
-                    child: Center(
-                      child: ExplanationIconCell(
-                        icon: N.getGenderIcon(Genders.Feminine),
-                        label: 'Fem.',
+                  if (feminineSingular != null && femininePlural != null)
+                    Container(
+                      width: colWidth,
+                      child: Center(
+                        child: ExplanationIconCell(
+                          icon: N.getGenderIcon(Genders.Feminine),
+                          label: AppLocalizations.of(context)!.feminine,
+                        ),
                       ),
                     ),
-                  ),
-                  Container(
-                    width: colWidth,
-                    child: Center(
-                      child: ExplanationIconCell(
-                        icon: N.getGenderIcon(Genders.Masculine),
-                        label: 'Masc.',
+                  if (masculineSingular != null && masculinePlural != null)
+                    Container(
+                      width: colWidth,
+                      child: Center(
+                        child: ExplanationIconCell(
+                          icon: N.getGenderIcon(Genders.Masculine),
+                          label: AppLocalizations.of(context)!.masculine,
+                        ),
                       ),
                     ),
-                  ),
-                  Container(
-                    width: colWidth,
-                    child: Center(
-                      child: ExplanationIconCell(
-                        icon: N.getGenderIcon(Genders.Neuter),
-                        label: 'Neut.',
+                  if (neuterSingular != null && neuterPlural != null)
+                    Container(
+                      width: colWidth,
+                      child: Center(
+                        child: ExplanationIconCell(
+                          icon: N.getGenderIcon(Genders.Neuter),
+                          label: AppLocalizations.of(context)!.neuter,
+                        ),
                       ),
                     ),
-                  ),
                 ],
               ),
               Row(children: [
@@ -96,24 +102,24 @@ class DeclensionTable extends StatelessWidget {
                   width: firstColWidth,
                   child: ExplanationIconCell(
                     icon: SINGULAR_ICON,
-                    label: 'Sing.',
+                    label: AppLocalizations.of(context)!.singular,
                   ),
                 ),
-                feminineSingular,
-                masculineSingular,
-                neuterSingular
+                if (feminineSingular != null) feminineSingular!,
+                if (masculineSingular != null) masculineSingular!,
+                if (neuterSingular != null) neuterSingular!,
               ]),
               Row(children: [
                 Container(
                   width: firstColWidth,
                   child: ExplanationIconCell(
                     icon: PLURAL_ICON,
-                    label: 'Pl.',
+                    label: AppLocalizations.of(context)!.plural,
                   ),
                 ),
-                femininePlural,
-                masculinePlural,
-                neuterPlural
+                if (femininePlural != null) femininePlural!,
+                if (masculinePlural != null) masculinePlural!,
+                if (neuterPlural != null) neuterPlural!,
               ]),
               Padding(
                 padding: EdgeInsets.all(16),

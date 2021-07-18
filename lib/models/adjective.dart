@@ -81,6 +81,25 @@ class Adjective {
     return shuffle ? result.shuffleStrings() : result;
   }
 
+  Declension getDeclensionObject(Cases caseType, bool isAnimate) {
+    switch (caseType) {
+      case Cases.Aku:
+        return isAnimate ? this.akuzativAnimate : this.akuzativ;
+      case Cases.Dat:
+        return this.dativ;
+      case Cases.Gen:
+        return this.genitiv;
+      case Cases.Ins:
+        return this.instrumental;
+      case Cases.Lok:
+        return this.lokativ;
+      case Cases.Nom:
+        return this.nominativ;
+      case Cases.Vok:
+        return this.vokativ;
+    }
+  }
+
   List<String> getDeclensions(
       Genders gender, bool isPlural, Cases caseType, bool isAnimate) {
     Declension declension;

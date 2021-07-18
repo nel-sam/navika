@@ -235,4 +235,23 @@ class N {
     });
     return longestFound;
   }
+
+  static String getCaseLabel(Cases caseType) {
+    switch (caseType) {
+      case Cases.Nom:
+        return 'Nominativ';
+      case Cases.Ins:
+        return 'Instrumental';
+      case Cases.Aku:
+        return 'Akuzativ';
+      case Cases.Vok:
+        return 'Vokativ';
+      case Cases.Lok:
+        return 'Lokativ';
+      case Cases.Gen:
+        return 'Genitiv';
+      case Cases.Dat:
+        return 'Dativ';
+    }
+  }
 }

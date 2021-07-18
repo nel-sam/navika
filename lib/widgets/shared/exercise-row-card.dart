@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
+import 'package:navika/models/models.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:navika/widgets/shared/exercise-help.dart';
 
 class ExerciseRowCard extends StatelessWidget {
+  final PANCombo combos;
   final bool isAllCorrect;
   final List<Widget> children;
   final bool isPlural;
@@ -18,6 +21,7 @@ class ExerciseRowCard extends StatelessWidget {
     required this.isPlural,
     required this.isAnimate,
     required this.gender,
+    required this.combos,
   }) : super(key: key);
 
   String getGenderString(BuildContext context) {
@@ -62,7 +66,7 @@ class ExerciseRowCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  getHeader(context),
+                  getHeader(context, combos),
                   getBody(),
                 ],
               ),
@@ -109,7 +113,7 @@ class ExerciseRowCard extends StatelessWidget {
     );
   }
 
-  Widget getHeader(BuildContext context) {
+  Widget getHeader(BuildContext context, PANCombo combos) {
     return Padding(
       padding: const EdgeInsets.only(top: 12, left: 10),
       child: Row(
@@ -136,6 +140,16 @@ class ExerciseRowCard extends StatelessWidget {
               Icons.person,
               AppLocalizations.of(context)!.animate,
             ),
+          IconButton(
+              onPressed: () => {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ExerciseHelp(combos: combos),
+                      ),
+                    ),
+                  },
+              icon: Icon(Icons.help))
         ],
       ),
     );
