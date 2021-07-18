@@ -246,7 +246,7 @@ class PANCombo {
 
     this.correctPersPronouns = this.personalPronoun == null
         ? []
-        : this.personalPronoun!.getDeclensionsForCaseType(caseType);
+        : this.personalPronoun!.getDeclensions(caseType);
     this.initialPersPronDropDownValue = this.personalPronoun == null
         ? ''
         : this.personalPronoun!.getDropDownInitial(caseType);

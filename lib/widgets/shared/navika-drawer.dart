@@ -97,14 +97,14 @@ class NavikaDrawer extends StatelessWidget {
                     model.setSettings(adjectivesIncluded: value);
                   },
                 ),
-                SwitchListTile(
-                  value: model.settings.nounsIncluded,
-                  activeColor: ACCENT_COLOR,
-                  title: Text(AppLocalizations.of(context)!.nouns),
-                  onChanged: (bool value) {
-                    model.setSettings(nounsIncluded: value);
-                  },
-                ),
+                // SwitchListTile(
+                //   value: model.settings.nounsIncluded,
+                //   activeColor: ACCENT_COLOR,
+                //   title: Text(AppLocalizations.of(context)!.nouns),
+                //   onChanged: (bool value) {
+                //     model.setSettings(nounsIncluded: value);
+                //   },
+                // ),
                 SwitchListTile(
                   value: model.settings.possessivePronounsIncluded,
                   activeColor: ACCENT_COLOR,

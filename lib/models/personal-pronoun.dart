@@ -30,7 +30,26 @@ class PersonalPronoun {
     required this.vokativ,
   });
 
-  List<String> getDeclensionsForCaseType(Cases caseType) {
+  DeclensionPronoun getDeclensionObject(Cases caseType) {
+    switch (caseType) {
+      case Cases.Aku:
+        return this.akuzativ;
+      case Cases.Dat:
+        return this.dativ;
+      case Cases.Gen:
+        return this.genitiv;
+      case Cases.Ins:
+        return this.instrumental;
+      case Cases.Lok:
+        return this.lokativ;
+      case Cases.Nom:
+        return this.nominativ;
+      case Cases.Vok:
+        return this.vokativ;
+    }
+  }
+
+  List<String> getDeclensions(Cases caseType) {
     switch (caseType) {
       case Cases.Aku:
         return this.akuzativ.forms;
@@ -67,7 +86,7 @@ class PersonalPronoun {
   longestForCase(Cases caseType) {
     int longestFound = 0;
 
-    this.getDeclensionsForCaseType(caseType).forEach((d) {
+    this.getDeclensions(caseType).forEach((d) {
       if (d.length > longestFound) {
         longestFound = d.length;
       }
@@ -77,7 +96,7 @@ class PersonalPronoun {
   }
 
   getDropDownInitial(Cases caseType) {
-    final toAvoid = getDeclensionsForCaseType(caseType);
+    final toAvoid = getDeclensions(caseType);
     final filtered = getUniqueDeclensions(shuffle: true);
     filtered.removeWhere((element) => toAvoid.contains(element));
     return filtered.last;
