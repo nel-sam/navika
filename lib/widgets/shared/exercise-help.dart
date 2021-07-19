@@ -9,6 +9,7 @@ import 'package:navika/models/personal-pronoun.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/grammar-guide/child-widgets/declension-table-cell.dart';
 import 'package:navika/widgets/grammar-guide/child-widgets/declension-table.dart';
+import 'package:navika/widgets/grammar-guide/child-widgets/explanation-icon-cell.dart';
 import 'package:navika/widgets/grammar-guide/child-widgets/navika-subheader.dart';
 import 'package:navika/widgets/shared/navika-text.dart';
 
@@ -63,64 +64,117 @@ class ExerciseHelp extends StatelessWidget {
   }
 
   getNounList(BuildContext context, Noun noun, Cases caseType, bool isPlural) {
-    double cellHeight = 40;
-
-    return Column(
-      children: [
-        NSubHeader(text: '${noun.dictionary}\n'),
-        Row(
-          children: [
-            Column(
-              children: [
-                Container(
-                  height: cellHeight,
-                ),
-                Container(
-                    height: cellHeight,
-                    child: NText([N.NTextSpan(N.getCaseLabel(Cases.Nom))])),
-              ],
-            ),
-            Column(
-              children: [
-                Container(
-                  height: cellHeight,
-                  child: NText([
-                    N.NTextSpan(
-                      AppLocalizations.of(context)!.singular,
-                      isBold: true,
-                    ),
-                  ]),
-                ),
-                Container(
-                    height: cellHeight,
-                    child: NText([
-                      N.NTextSpan(noun.nominativ.singular.join(joinChar),
-                          isBold: caseType == Cases.Nom && !isPlural)
-                    ])),
-              ],
-            ),
-            Column(
-              children: [
-                Container(
-                  height: cellHeight,
-                  child: NText([
-                    N.NTextSpan(
-                      AppLocalizations.of(context)!.plural,
-                      isBold: true,
-                    ),
-                  ]),
-                ),
-                Container(
-                    height: cellHeight,
-                    child: NText([
-                      N.NTextSpan(noun.nominativ.plural.join(joinChar),
-                          isBold: caseType == Cases.Nom && isPlural)
-                    ])),
-              ],
-            ),
-          ],
-        ),
-      ],
+    return Padding(
+      padding: const EdgeInsets.only(top: 18.0),
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(),
+              Column(
+                // Column 1
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Container(
+                      height: 62, child: NSubHeader(text: noun.dictionary)),
+                  Container(
+                      child: NText([N.NTextSpan(N.getCaseLabel(Cases.Nom))])),
+                  Container(
+                      child: NText([N.NTextSpan(N.getCaseLabel(Cases.Aku))])),
+                  Container(
+                      child: NText([N.NTextSpan(N.getCaseLabel(Cases.Ins))])),
+                  Container(
+                      child: NText([N.NTextSpan(N.getCaseLabel(Cases.Lok))])),
+                  Container(
+                      child: NText([N.NTextSpan(N.getCaseLabel(Cases.Dat))])),
+                  Container(
+                      child: NText([N.NTextSpan(N.getCaseLabel(Cases.Gen))])),
+                ],
+              ),
+              Column(
+                // Column 2
+                children: [
+                  ExplanationIconCell(
+                    icon: SINGULAR_ICON,
+                    label: AppLocalizations.of(context)!.singular,
+                  ),
+                  Container(
+                      child: NText([
+                    N.NTextSpan(noun.nominativ.singular.join(joinChar),
+                        isBold: caseType == Cases.Nom && !isPlural)
+                  ])),
+                  Container(
+                      child: NText([
+                    N.NTextSpan(noun.akuzativ.singular.join(joinChar),
+                        isBold: caseType == Cases.Aku && !isPlural)
+                  ])),
+                  Container(
+                      child: NText([
+                    N.NTextSpan(noun.instrumental.singular.join(joinChar),
+                        isBold: caseType == Cases.Ins && !isPlural)
+                  ])),
+                  Container(
+                      child: NText([
+                    N.NTextSpan(noun.lokativ.singular.join(joinChar),
+                        isBold: caseType == Cases.Lok && !isPlural)
+                  ])),
+                  Container(
+                      child: NText([
+                    N.NTextSpan(noun.dativ.singular.join(joinChar),
+                        isBold: caseType == Cases.Dat && !isPlural)
+                  ])),
+                  Container(
+                      child: NText([
+                    N.NTextSpan(noun.genitiv.singular.join(joinChar),
+                        isBold: caseType == Cases.Gen && !isPlural)
+                  ])),
+                ],
+              ),
+              Column(
+                // Column 3
+                children: [
+                  ExplanationIconCell(
+                    icon: PLURAL_ICON,
+                    label: AppLocalizations.of(context)!.plural,
+                  ),
+                  Container(
+                      child: NText([
+                    N.NTextSpan(noun.nominativ.plural.join(joinChar),
+                        isBold: caseType == Cases.Nom && isPlural)
+                  ])),
+                  Container(
+                      child: NText([
+                    N.NTextSpan(noun.akuzativ.plural.join(joinChar),
+                        isBold: caseType == Cases.Aku && isPlural)
+                  ])),
+                  Container(
+                      child: NText([
+                    N.NTextSpan(noun.instrumental.plural.join(joinChar),
+                        isBold: caseType == Cases.Ins && isPlural)
+                  ])),
+                  Container(
+                      child: NText([
+                    N.NTextSpan(noun.lokativ.plural.join(joinChar),
+                        isBold: caseType == Cases.Lok && isPlural)
+                  ])),
+                  Container(
+                      child: NText([
+                    N.NTextSpan(noun.dativ.plural.join(joinChar),
+                        isBold: caseType == Cases.Dat && isPlural)
+                  ])),
+                  Container(
+                      child: NText([
+                    N.NTextSpan(noun.genitiv.plural.join(joinChar),
+                        isBold: caseType == Cases.Gen && isPlural)
+                  ])),
+                ],
+              ),
+              Column(),
+            ],
+          ),
+        ],
+      ),
     );
   }
 
