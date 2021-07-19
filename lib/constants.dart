@@ -17,9 +17,7 @@ const EQUAL_ITEMS_BORDER_COLOR = Colors.amber;
 const CARD_PADDING = 10.0;
 const DECLINED_LETTER_STYLE =
     TextStyle(fontStyle: FontStyle.italic, fontWeight: FontWeight.bold);
-const TABLE_CELL_HEIGHT = 60.0;
 const CELL_TEXT_PADDING = 5.0;
-const TABLE_CELL_PADDING = EdgeInsets.all(10);
 const TABLE_BORDER =
     BorderSide(width: 1, color: Colors.grey, style: BorderStyle.solid);
 const TABLE_BORDERS = TableBorder(

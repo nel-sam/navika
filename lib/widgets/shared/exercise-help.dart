@@ -64,116 +64,118 @@ class ExerciseHelp extends StatelessWidget {
   }
 
   getNounList(BuildContext context, Noun noun, Cases caseType, bool isPlural) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 18.0),
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Column(),
-              Column(
-                // Column 1
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Container(
-                      height: 62, child: NSubHeader(text: noun.dictionary)),
-                  Container(
-                      child: NText([N.NTextSpan(N.getCaseLabel(Cases.Nom))])),
-                  Container(
-                      child: NText([N.NTextSpan(N.getCaseLabel(Cases.Aku))])),
-                  Container(
-                      child: NText([N.NTextSpan(N.getCaseLabel(Cases.Ins))])),
-                  Container(
-                      child: NText([N.NTextSpan(N.getCaseLabel(Cases.Lok))])),
-                  Container(
-                      child: NText([N.NTextSpan(N.getCaseLabel(Cases.Dat))])),
-                  Container(
-                      child: NText([N.NTextSpan(N.getCaseLabel(Cases.Gen))])),
-                ],
-              ),
-              Column(
-                // Column 2
-                children: [
-                  ExplanationIconCell(
-                    icon: SINGULAR_ICON,
-                    label: AppLocalizations.of(context)!.singular,
-                  ),
-                  Container(
-                      child: NText([
-                    N.NTextSpan(noun.nominativ.singular.join(joinChar),
-                        isBold: caseType == Cases.Nom && !isPlural)
-                  ])),
-                  Container(
-                      child: NText([
-                    N.NTextSpan(noun.akuzativ.singular.join(joinChar),
-                        isBold: caseType == Cases.Aku && !isPlural)
-                  ])),
-                  Container(
-                      child: NText([
-                    N.NTextSpan(noun.instrumental.singular.join(joinChar),
-                        isBold: caseType == Cases.Ins && !isPlural)
-                  ])),
-                  Container(
-                      child: NText([
-                    N.NTextSpan(noun.lokativ.singular.join(joinChar),
-                        isBold: caseType == Cases.Lok && !isPlural)
-                  ])),
-                  Container(
-                      child: NText([
-                    N.NTextSpan(noun.dativ.singular.join(joinChar),
-                        isBold: caseType == Cases.Dat && !isPlural)
-                  ])),
-                  Container(
-                      child: NText([
-                    N.NTextSpan(noun.genitiv.singular.join(joinChar),
-                        isBold: caseType == Cases.Gen && !isPlural)
-                  ])),
-                ],
-              ),
-              Column(
-                // Column 3
-                children: [
-                  ExplanationIconCell(
-                    icon: PLURAL_ICON,
-                    label: AppLocalizations.of(context)!.plural,
-                  ),
-                  Container(
-                      child: NText([
-                    N.NTextSpan(noun.nominativ.plural.join(joinChar),
-                        isBold: caseType == Cases.Nom && isPlural)
-                  ])),
-                  Container(
-                      child: NText([
-                    N.NTextSpan(noun.akuzativ.plural.join(joinChar),
-                        isBold: caseType == Cases.Aku && isPlural)
-                  ])),
-                  Container(
-                      child: NText([
-                    N.NTextSpan(noun.instrumental.plural.join(joinChar),
-                        isBold: caseType == Cases.Ins && isPlural)
-                  ])),
-                  Container(
-                      child: NText([
-                    N.NTextSpan(noun.lokativ.plural.join(joinChar),
-                        isBold: caseType == Cases.Lok && isPlural)
-                  ])),
-                  Container(
-                      child: NText([
-                    N.NTextSpan(noun.dativ.plural.join(joinChar),
-                        isBold: caseType == Cases.Dat && isPlural)
-                  ])),
-                  Container(
-                      child: NText([
-                    N.NTextSpan(noun.genitiv.plural.join(joinChar),
-                        isBold: caseType == Cases.Gen && isPlural)
-                  ])),
-                ],
-              ),
-              Column(),
-            ],
-          ),
-        ],
+    return Container(
+      child: Padding(
+        padding: const EdgeInsets.only(top: 18.0),
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(),
+                Column(
+                  // Column 1
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Container(
+                        height: 62, child: NSubHeader(text: noun.dictionary)),
+                    Container(
+                        child: NText([N.NTextSpan(N.getCaseLabel(Cases.Nom))])),
+                    Container(
+                        child: NText([N.NTextSpan(N.getCaseLabel(Cases.Aku))])),
+                    Container(
+                        child: NText([N.NTextSpan(N.getCaseLabel(Cases.Ins))])),
+                    Container(
+                        child: NText([N.NTextSpan(N.getCaseLabel(Cases.Lok))])),
+                    Container(
+                        child: NText([N.NTextSpan(N.getCaseLabel(Cases.Dat))])),
+                    Container(
+                        child: NText([N.NTextSpan(N.getCaseLabel(Cases.Gen))])),
+                  ],
+                ),
+                Column(
+                  // Column 2
+                  children: [
+                    ExplanationIconCell(
+                      icon: SINGULAR_ICON,
+                      label: AppLocalizations.of(context)!.singular,
+                    ),
+                    Container(
+                        child: NText([
+                      N.NTextSpan(noun.nominativ.singular.join(joinChar),
+                          isBold: caseType == Cases.Nom && !isPlural)
+                    ])),
+                    Container(
+                        child: NText([
+                      N.NTextSpan(noun.akuzativ.singular.join(joinChar),
+                          isBold: caseType == Cases.Aku && !isPlural)
+                    ])),
+                    Container(
+                        child: NText([
+                      N.NTextSpan(noun.instrumental.singular.join(joinChar),
+                          isBold: caseType == Cases.Ins && !isPlural)
+                    ])),
+                    Container(
+                        child: NText([
+                      N.NTextSpan(noun.lokativ.singular.join(joinChar),
+                          isBold: caseType == Cases.Lok && !isPlural)
+                    ])),
+                    Container(
+                        child: NText([
+                      N.NTextSpan(noun.dativ.singular.join(joinChar),
+                          isBold: caseType == Cases.Dat && !isPlural)
+                    ])),
+                    Container(
+                        child: NText([
+                      N.NTextSpan(noun.genitiv.singular.join(joinChar),
+                          isBold: caseType == Cases.Gen && !isPlural)
+                    ])),
+                  ],
+                ),
+                Column(
+                  // Column 3
+                  children: [
+                    ExplanationIconCell(
+                      icon: PLURAL_ICON,
+                      label: AppLocalizations.of(context)!.plural,
+                    ),
+                    Container(
+                        child: NText([
+                      N.NTextSpan(noun.nominativ.plural.join(joinChar),
+                          isBold: caseType == Cases.Nom && isPlural)
+                    ])),
+                    Container(
+                        child: NText([
+                      N.NTextSpan(noun.akuzativ.plural.join(joinChar),
+                          isBold: caseType == Cases.Aku && isPlural)
+                    ])),
+                    Container(
+                        child: NText([
+                      N.NTextSpan(noun.instrumental.plural.join(joinChar),
+                          isBold: caseType == Cases.Ins && isPlural)
+                    ])),
+                    Container(
+                        child: NText([
+                      N.NTextSpan(noun.lokativ.plural.join(joinChar),
+                          isBold: caseType == Cases.Lok && isPlural)
+                    ])),
+                    Container(
+                        child: NText([
+                      N.NTextSpan(noun.dativ.plural.join(joinChar),
+                          isBold: caseType == Cases.Dat && isPlural)
+                    ])),
+                    Container(
+                        child: NText([
+                      N.NTextSpan(noun.genitiv.plural.join(joinChar),
+                          isBold: caseType == Cases.Gen && isPlural)
+                    ])),
+                  ],
+                ),
+                Column(),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -278,6 +280,8 @@ class ExerciseHelp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       appBar: AppBar(
         leading: Builder(builder: (BuildContext context) => BackButton()),
@@ -288,38 +292,41 @@ class ExerciseHelp extends StatelessWidget {
         title: Text(N.getCaseLabel(combos.caseType)),
       ),
       body: Center(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: Column(
-              children: [
-                getCorrectSentence(context, combos),
-                if (combos.possPronoun != null)
-                  getAdjDeclensionTable(
-                    combos.possPronoun!,
-                    combos.caseType,
-                    combos.noun!.isAnimate,
-                  ),
-                if (combos.adjective != null)
-                  getAdjDeclensionTable(
-                    combos.adjective!,
-                    combos.caseType,
-                    combos.noun!.isAnimate,
-                  ),
-                if (combos.noun != null)
-                  getNounList(
-                    context,
-                    combos.noun!,
-                    combos.caseType,
-                    combos.isPlural,
-                  ),
-                if (combos.personalPronoun != null)
-                  getPersProneclensionList(
-                    context,
-                    combos.personalPronoun!,
-                    combos.caseType,
-                  ),
-              ],
+        child: Container(
+          width: screenWidth > 840 ? screenWidth / 2 : screenWidth,
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Column(
+                children: [
+                  getCorrectSentence(context, combos),
+                  if (combos.possPronoun != null)
+                    getAdjDeclensionTable(
+                      combos.possPronoun!,
+                      combos.caseType,
+                      combos.noun!.isAnimate,
+                    ),
+                  if (combos.adjective != null)
+                    getAdjDeclensionTable(
+                      combos.adjective!,
+                      combos.caseType,
+                      combos.noun!.isAnimate,
+                    ),
+                  if (combos.noun != null)
+                    getNounList(
+                      context,
+                      combos.noun!,
+                      combos.caseType,
+                      combos.isPlural,
+                    ),
+                  if (combos.personalPronoun != null)
+                    getPersProneclensionList(
+                      context,
+                      combos.personalPronoun!,
+                      combos.caseType,
+                    ),
+                ],
+              ),
             ),
           ),
         ),

@@ -33,8 +33,6 @@ class NavikaDrawer extends StatelessWidget {
       Settings model,
       EdgeInsets typeIconPadding,
       List<bool> getEntryTypeSelections(EntryTypes entryType)) {
-    print(model.settings.personalPronounsIncluded);
-
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,

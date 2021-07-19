@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:navika/constants.dart';
 
 class CaseFreeForm extends StatefulWidget {
-  final int maxLength;
   final String hintValue;
   final String activeValue;
   final List<String> correctValues;
@@ -15,7 +14,6 @@ class CaseFreeForm extends StatefulWidget {
     required this.onChanged,
     required this.activeValue,
     required this.correctValues,
-    required this.maxLength,
   }) : super(key: key);
 
   @override
@@ -30,7 +28,6 @@ class _CaseFreeFormState extends State<CaseFreeForm> {
     if (widget.activeValue == '') controller.text = '';
 
     return Container(
-      width: widget.maxLength * 14,
       child: TextField(
         key: widget.key,
         controller: controller,

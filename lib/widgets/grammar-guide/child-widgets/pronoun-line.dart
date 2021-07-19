@@ -17,37 +17,35 @@ class PronounLine extends StatelessWidget {
   Widget build(BuildContext context) {
     final labelText = N.getPronounLabel(pronoun, context);
 
-    return Container(
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Row(
-          children: [
-            Padding(
-              padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
-              child: Container(
-                height: 30,
-                decoration: BoxDecoration(
-                  border: Border(
-                      right: BorderSide(
-                    width: 2,
-                    color: Colors.grey,
-                  )),
-                ),
-                width: 100,
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
-                  child: Align(
-                    alignment: Alignment.centerRight,
-                    child: NText(
-                      [TextSpan(text: labelText)],
-                    ),
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Row(
+        children: [
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+            child: Container(
+              height: 30,
+              decoration: BoxDecoration(
+                border: Border(
+                    right: BorderSide(
+                  width: 2,
+                  color: Colors.grey,
+                )),
+              ),
+              width: 100,
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                child: Align(
+                  alignment: Alignment.centerRight,
+                  child: NText(
+                    [TextSpan(text: labelText)],
                   ),
                 ),
               ),
             ),
-            text
-          ],
-        ),
+          ),
+          text
+        ],
       ),
     );
   }

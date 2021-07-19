@@ -14,7 +14,7 @@ class ExplanationIconCell extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: TABLE_CELL_PADDING,
+      padding: EdgeInsets.only(top: 10, bottom: 10),
       child: Container(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

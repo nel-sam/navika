@@ -103,6 +103,8 @@ class _GrammarGuideState extends State<GrammarGuide> {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       appBar: N.NavikaAppBar(
           Text(AppLocalizations.of(context)!.grammarGuide,
@@ -111,35 +113,38 @@ class _GrammarGuideState extends State<GrammarGuide> {
           []),
       body: SingleChildScrollView(
         controller: controller,
-        child: Padding(
-          padding: EdgeInsets.all(20.0),
-          child: Column(
-            children: [
-              contentSection(
-                SectionHeader('Nominativ'),
-                NominativGrammarGuideContent(),
-              ),
-              contentSection(
-                SectionHeader('Akuzativ'),
-                AkuzativGrammarGuideContent(),
-              ),
-              contentSection(
-                SectionHeader('Instrumental'),
-                InstrumentalGrammarGuideContent(),
-              ),
-              contentSection(
-                SectionHeader('Lokativ'),
-                LokativGrammarGuideContent(),
-              ),
-              contentSection(
-                SectionHeader('Dativ'),
-                DativGrammarGuideContent(),
-              ),
-              contentSection(
-                SectionHeader('Genitiv'),
-                GenitivGrammarGuideContent(),
-              ),
-            ],
+        child: Center(
+          child: Container(
+            padding: EdgeInsets.all(20.0),
+            width: screenWidth > 840 ? screenWidth / 2 : screenWidth,
+            child: Column(
+              children: [
+                contentSection(
+                  SectionHeader('Nominativ'),
+                  NominativGrammarGuideContent(),
+                ),
+                contentSection(
+                  SectionHeader('Akuzativ'),
+                  AkuzativGrammarGuideContent(),
+                ),
+                contentSection(
+                  SectionHeader('Instrumental'),
+                  InstrumentalGrammarGuideContent(),
+                ),
+                contentSection(
+                  SectionHeader('Lokativ'),
+                  LokativGrammarGuideContent(),
+                ),
+                contentSection(
+                  SectionHeader('Dativ'),
+                  DativGrammarGuideContent(),
+                ),
+                contentSection(
+                  SectionHeader('Genitiv'),
+                  GenitivGrammarGuideContent(),
+                ),
+              ],
+            ),
           ),
         ),
       ),

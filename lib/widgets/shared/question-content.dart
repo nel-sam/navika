@@ -83,8 +83,6 @@ class QuestionContent extends StatelessWidget {
         if (usePossPronouns)
           CaseFreeForm(
             hintValue: stateItem.combos.possPronoun!.dictionary,
-            maxLength: stateItem.combos.possPronoun!
-                .longestForCase(stateItem.combos.caseType),
             activeValue: stateItem.userPossPronResponse,
             correctValues: stateItem.combos.correctPossPronouns,
             onChanged: (String newVal) {
@@ -94,8 +92,6 @@ class QuestionContent extends StatelessWidget {
         if (useAdj)
           CaseFreeForm(
             hintValue: stateItem.combos.adjective!.dictionary,
-            maxLength: stateItem.combos.adjective!
-                .longestForCase(stateItem.combos.caseType),
             activeValue: stateItem.userAdjResponse,
             correctValues: stateItem.combos.correctAdjs,
             onChanged: (String newVal) {
@@ -105,8 +101,6 @@ class QuestionContent extends StatelessWidget {
         if (useNoun)
           CaseFreeForm(
             hintValue: stateItem.combos.noun!.dictionary,
-            maxLength: stateItem.combos.noun!
-                .longestForCase(stateItem.combos.caseType),
             activeValue: stateItem.userNounResponse,
             correctValues: stateItem.combos.correctNouns,
             onChanged: (String newVal) {
@@ -116,8 +110,6 @@ class QuestionContent extends StatelessWidget {
         if (usePersPron)
           CaseFreeForm(
             hintValue: stateItem.combos.personalPronoun!.dictionary,
-            maxLength: stateItem.combos.personalPronoun!
-                .longestForCase(stateItem.combos.caseType),
             activeValue: stateItem.userPersPronResponse,
             correctValues: stateItem.combos.correctPersPronouns,
             onChanged: (String newVal) {

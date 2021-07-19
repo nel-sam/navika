@@ -38,49 +38,94 @@ class ExerciseRowCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
     final bgColor = N.isDarkTheme(context)
         ? Theme.of(context).backgroundColor
         : Colors.white;
 
-    return Row(
-      children: [
-        Flexible(
-          child: Padding(
-            padding: const EdgeInsets.only(bottom: 8.0),
-            child: Container(
-              padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
-              decoration: BoxDecoration(
-                color: bgColor,
-                boxShadow: [
-                  BoxShadow(
-                    color: this.isAllCorrect
-                        ? CORRECT_COLOR.withOpacity(0.4)
-                        : WRONG_COLOR.withOpacity(0.4),
-                    spreadRadius: 1,
-                    blurRadius: 1,
-                  ),
-                ],
-              ),
-              margin: EdgeInsets.only(top: 10),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  getHeader(context, combos),
-                  getBody(),
-                ],
+    return Container(
+      width: screenWidth > 840 ? screenWidth / 2.5 : screenWidth,
+      child: Row(
+        children: [
+          Flexible(
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 8.0),
+              child: Container(
+                padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
+                decoration: BoxDecoration(
+                  color: bgColor,
+                  boxShadow: [
+                    BoxShadow(
+                      color: this.isAllCorrect
+                          ? CORRECT_COLOR.withOpacity(0.4)
+                          : WRONG_COLOR.withOpacity(0.4),
+                      spreadRadius: 1,
+                      blurRadius: 1,
+                    ),
+                  ],
+                ),
+                margin: EdgeInsets.only(top: 10),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    getHeader(context, combos),
+                    getBody(),
+                  ],
+                ),
               ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
+    );
+  }
+
+  Widget getHeader(BuildContext context, PANCombo combos) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 4, left: 10, right: 10),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(right: 20),
+            child: this.isAllCorrect
+                ? Icon(Icons.check_circle_outline, color: CORRECT_COLOR)
+                : Icon(Icons.close_outlined, color: WRONG_COLOR),
+          ),
+          IconTextPair(
+            N.getGenderIcon(this.gender),
+            getGenderString(context),
+          ),
+          IconTextPair(
+            isPlural ? PLURAL_ICON : SINGULAR_ICON,
+            isPlural
+                ? AppLocalizations.of(context)!.plural
+                : AppLocalizations.of(context)!.singular,
+          ),
+          if (isAnimate)
+            IconTextPair(
+              Icons.person,
+              AppLocalizations.of(context)!.animate,
+            ),
+          ElevatedButton(
+              onPressed: () => {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ExerciseHelp(combos: combos),
+                      ),
+                    ),
+                  },
+              child: Icon(Icons.help)),
+        ],
+      ),
     );
   }
 
   Widget getBody() {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(
-          CELL_TEXT_PADDING * 2, CELL_TEXT_PADDING * 4, 0, 0),
+      padding: const EdgeInsets.all(10),
       child: Wrap(
           crossAxisAlignment: WrapCrossAlignment.center,
           children: children
@@ -109,48 +154,6 @@ class ExerciseRowCard extends StatelessWidget {
             Text(text),
           ],
         ),
-      ),
-    );
-  }
-
-  Widget getHeader(BuildContext context, PANCombo combos) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 12, left: 10),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(right: 20),
-            child: this.isAllCorrect
-                ? Icon(Icons.check_circle_outline, color: CORRECT_COLOR)
-                : Icon(Icons.close_outlined, color: WRONG_COLOR),
-          ),
-          IconTextPair(
-            N.getGenderIcon(this.gender),
-            getGenderString(context),
-          ),
-          IconTextPair(
-            isPlural ? PLURAL_ICON : SINGULAR_ICON,
-            isPlural
-                ? AppLocalizations.of(context)!.plural
-                : AppLocalizations.of(context)!.singular,
-          ),
-          if (isAnimate)
-            IconTextPair(
-              Icons.person,
-              AppLocalizations.of(context)!.animate,
-            ),
-          IconButton(
-              onPressed: () => {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => ExerciseHelp(combos: combos),
-                      ),
-                    ),
-                  },
-              icon: Icon(Icons.help))
-        ],
       ),
     );
   }
