@@ -22,7 +22,8 @@ class QuestionContent extends StatelessWidget {
   Widget build(BuildContext context) {
     bool isAllCorrect = stateItem.isCorrect;
     final bool usePossPronouns = stateItem.combos.possPronoun != null;
-    final bool useAdj = stateItem.combos.adjective != null;
+    final bool useAdj = stateItem.combos.adjective != null &&
+        stateItem.combos.adjective!.dictionary != '';
     final bool useNoun = stateItem.combos.noun != null;
     final bool usePersPron = stateItem.combos.personalPronoun != null;
 

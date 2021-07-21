@@ -24,7 +24,7 @@ class LokativGenerators {
     } else if (noun.tags.contains(Tags.Location)) {
       start = pronounVal == 'moj' ? 'On živi u' : 'Živim u';
     } else {
-      start = 'Razgovoramo o';
+      start = 'Razgovaramo o';
     }
 
     return StaticSentenceParts(start: start, end: end);
@@ -39,7 +39,7 @@ class LokativGenerators {
     if (N.coinFlip()) {
       start = actualValue != 'ja' ? 'Sanjam o' : 'On je kod';
     } else {
-      start = 'Razgovoramo o';
+      start = 'Razgovaramo o';
     }
 
     return StaticSentenceParts(start: start, end: end);

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
+import 'package:navika/generated/l10n.dart';
 import 'package:navika/models/adjective.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
@@ -12,6 +13,7 @@ import 'package:navika/widgets/grammar-guide/child-widgets/declension-table.dart
 import 'package:navika/widgets/grammar-guide/child-widgets/explanation-icon-cell.dart';
 import 'package:navika/widgets/grammar-guide/child-widgets/navika-subheader.dart';
 import 'package:navika/widgets/shared/navika-text.dart';
+import 'package:navika/widgets/shared/translation-link.dart';
 
 class ExerciseHelp extends StatelessWidget {
   final PANCombo combos;
@@ -246,7 +248,22 @@ class ExerciseHelp extends StatelessWidget {
     );
   }
 
+  String getSentenceAsString(PANCombo combo) {
+    String sentence = '${combo.sentenceStarter} ';
+
+    if (combo.possPronoun != null)
+      sentence += '${combo.correctPossPronouns[0]} ';
+    if (combo.adjective != null) sentence += '${combo.correctAdjs[0]} ';
+    if (combo.noun != null) sentence += '${combo.correctNouns[0]} ';
+    if (combo.personalPronoun != null)
+      sentence += '${combo.correctPersPronouns[0]} ';
+    sentence += combo.sentenceEnder;
+    return sentence;
+  }
+
   getCorrectSentence(BuildContext context, PANCombo combo) {
+    String sentence = getSentenceAsString(combo);
+
     return Column(
       children: [
         NSubHeader(text: AppLocalizations.of(context)!.correctAnswer),
@@ -273,7 +290,9 @@ class ExerciseHelp extends StatelessWidget {
               '${combo.personalPronoun!.getDeclensions(combos.caseType).join(joinChar)}',
               isBold: true,
             ),
+          if (combo.sentenceEnder != '') N.NTextSpan('${combo.sentenceEnder} '),
         ]),
+        TranslationLink(sentence: sentence),
       ],
     );
   }

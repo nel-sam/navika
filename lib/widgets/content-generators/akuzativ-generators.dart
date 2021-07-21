@@ -51,7 +51,7 @@ class AkuzativGenerators {
 
   static List<QuestionStateItem> initializePANStateItems() {
     final combos = N.getPANCombos(
-      caseType: Cases.Nom,
+      caseType: Cases.Aku,
       bank: wordBank,
       getPersonalPronounSentenceStaticParts:
           getPersonalPronounSentenceStaticParts,

@@ -51,5 +51,6 @@
   "softLettersOgEg": "A č, ć, đ, dž, š, ž, lj, & nj se agrega 'eg' y no 'og'.",
   "softLettersOmEm": "A č, ć, đ, dž, š, ž, lj, & nj se agrega 'em' y no 'om'.",
   "unselectAll": "Deseleccionar Todos",
-  "correctAnswer": "Repuesta correcta"
+  "correctAnswer": "Repuesta correcta",
+  "translate": "Traducir"
 }

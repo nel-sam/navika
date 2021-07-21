@@ -169,7 +169,8 @@ class QuestionStateItem {
   }
 
   bool checkAnswers() {
-    final pos = getIsCorrect(this.combos.correctPossPronouns, userPossPronResponse);
+    final pos =
+        getIsCorrect(this.combos.correctPossPronouns, userPossPronResponse);
     final adj = getIsCorrect(this.combos.correctAdjs, userAdjResponse);
     final noun = getIsCorrect(this.combos.correctNouns, userNounResponse);
     final persPron =
@@ -227,19 +228,26 @@ class PANCombo {
   }) {
     this.correctNouns =
         this.noun == null ? [] : this.noun!.getDeclensionsForCaseType(caseType);
+
     this.initialNounDropDownValue =
         this.noun == null ? '' : this.noun!.getDropDownInitial(caseType);
 
     this.correctAdjs = this.adjective == null
         ? []
-        : this.adjective!.getDeclensionsForCaseType(caseType);
+        : this
+            .adjective!
+            .getDeclensions(gender, isPlural, caseType, noun!.isAnimate);
+
     this.initialAdjDropDownValue = this.adjective == null
         ? ''
         : this.adjective!.getDropDownInitial(caseType);
 
     this.correctPossPronouns = this.possPronoun == null
         ? []
-        : this.possPronoun!.getDeclensionsForCaseType(caseType);
+        : this
+            .possPronoun!
+            .getDeclensions(gender, isPlural, caseType, noun!.isAnimate);
+
     this.initialPossPronDropDownValue = this.possPronoun == null
         ? ''
         : this.possPronoun!.getDropDownInitial(caseType);

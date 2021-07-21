@@ -87,7 +87,7 @@ class InstrumentalGenerators {
     ]);
 
     final combos = N.getPANCombos(
-      caseType: Cases.Nom,
+      caseType: Cases.Ins,
       bank: bank,
       getPersonalPronounSentenceStaticParts:
           getPersonalPronounSentenceStaticParts,

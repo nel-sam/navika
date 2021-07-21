@@ -286,9 +286,10 @@ final List<Adjective> adjectiveWordBank = [
       neuter: new DeclensionByGender(singular: ['vrućem'], plural: ['vrućim']),
     ),
     genitiv: new Declension(
-      masculine: new DeclensionByGender(singular: [''], plural: ['']),
-      feminine: new DeclensionByGender(singular: [''], plural: ['']),
-      neuter: new DeclensionByGender(singular: [''], plural: ['']),
+      masculine:
+          new DeclensionByGender(singular: ['vruća'], plural: ['vrućih']),
+      feminine: new DeclensionByGender(singular: ['vruće'], plural: ['vrućih']),
+      neuter: new DeclensionByGender(singular: ['vruća'], plural: ['vrućih']),
     ),
     vokativ: new Declension(
       masculine: new DeclensionByGender(singular: [''], plural: ['']),

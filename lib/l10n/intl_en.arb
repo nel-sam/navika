@@ -51,5 +51,6 @@
   "softLettersOgEg": "č, ć, đ, dž, š, ž, lj, & nj get 'eg' instead of 'og'.",
   "softLettersOmEm": "č, ć, đ, dž, š, ž, lj, & nj get 'em' instead of 'om'.",
   "unselectAll": "Unselect All",
-  "correctAnswer": "Correct Answer"
+  "correctAnswer": "Correct Answer",
+  "translate": "Translate"
 }

@@ -197,7 +197,7 @@ final List<Adjective> possessivePronounWordBank = [
     ),
     akuzativAnimate: new Declension(
       masculine:
-          new DeclensionByGender(singular: ['njegova'], plural: ['njegove']),
+          new DeclensionByGender(singular: ['njegovog'], plural: ['njegove']),
       feminine:
           new DeclensionByGender(singular: ['njegovu'], plural: ['njegove']),
       neuter:
