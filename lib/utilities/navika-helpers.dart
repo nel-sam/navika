@@ -206,27 +206,6 @@ class N {
     }
   }
 
-  static String getBitiConjugation(String pronoun) {
-    switch (pronoun) {
-      case 'ja':
-        return 'sam';
-      case 'ti':
-        return 'si';
-      case 'mi':
-        return 'smo';
-      case 'vi':
-        return 'ste';
-      case 'on':
-      case 'ona':
-        return 'je';
-      case 'oni':
-      case 'one':
-        return 'su';
-      default:
-        return '';
-    }
-  }
-
   static int longestFromList(List<String> values) {
     int longestFound = 0;
 
@@ -252,6 +231,27 @@ class N {
         return 'Genitiv';
       case Cases.Dat:
         return 'Dativ';
+    }
+  }
+
+  static String getBitiConjugation(String pronoun) {
+    switch (pronoun) {
+      case 'ja':
+        return 'sam';
+      case 'ti':
+        return 'si';
+      case 'mi':
+        return 'smo';
+      case 'vi':
+        return 'ste';
+      case 'on':
+      case 'ona':
+        return 'je';
+      case 'oni':
+      case 'one':
+        return 'su';
+      default:
+        return '';
     }
   }
 }

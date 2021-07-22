@@ -11,8 +11,12 @@ class GenetivGenerators {
       Noun noun, bool isPlural, Adjective? pronoun, Adjective? adjective) {
     String start = '';
     String end = '';
-
-    if (noun.tags.contains(Tags.Season)) {
+    if (noun.tags.contains(Tags.Portable)) {
+      start = N.coinFlip() ? 'Pas je sada ispred' : 'Čekaj iza';
+      end = '';
+    } else if (noun.tags.contains(Tags.WorkPlace)) {
+      start = N.coinFlip() ? 'Sad čekamo iza' : 'Bio je iza';
+    } else if (noun.tags.contains(Tags.Season)) {
       if (N.coinFlip())
         start = N.coinFlip() ? 'Prije' : 'Preko';
       else

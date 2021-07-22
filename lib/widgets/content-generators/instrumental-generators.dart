@@ -23,7 +23,9 @@ class InstrumentalGenerators {
       adjective,
     );
 
-    if (noun.tags.contains(Tags.BodyPart)) {
+    if (noun.tags.contains(Tags.FlatSurface)) {
+      start = N.coinFlip() ? 'Pas je nad' : 'Majka je pred';
+    } else if (noun.tags.contains(Tags.BodyPart)) {
       start =
           possPronouns == 'moj' ? 'Ovo ti dobro ide s' : 'Ovo mi dobro ide s';
     } else if (noun.tags.contains(Tags.Vehicle)) {
@@ -33,7 +35,7 @@ class InstrumentalGenerators {
       if (possPronouns != 'tvoj')
         start = N.coinFlip() ? 'Ti ideš $sSa' : 'Trebaš da ideš $sSa';
       else
-        start = 'Idemo $sSa';
+        start = N.coinFlip() ? 'Otići ću za' : 'Idemo $sSa';
     } else if (noun.tags.contains(Tags.Health)) {
       start = possPronouns == 'moj' ? 'Putovao je $sSa' : 'Putovao sam $sSa';
     } else if (noun.tags.contains(Tags.Location)) {
