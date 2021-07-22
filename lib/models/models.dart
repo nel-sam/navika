@@ -227,7 +227,7 @@ class PANCombo {
     this.usePersonalPronounShortForm = false,
   }) {
     this.correctNouns =
-        this.noun == null ? [] : this.noun!.getDeclensionsForCaseType(caseType);
+        this.noun == null ? [] : this.noun!.getDeclensions(isPlural, caseType);
 
     this.initialNounDropDownValue =
         this.noun == null ? '' : this.noun!.getDropDownInitial(caseType);

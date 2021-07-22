@@ -439,7 +439,7 @@ final List<Adjective> possessivePronounWordBank = [
       neuter: new DeclensionByGender(singular: ['naše'], plural: ['naša']),
     ),
   ),
-    Adjective(
+  Adjective(
     dictionary: 'vaš',
     nominativ: new Declension(
       masculine: new DeclensionByGender(singular: ['vaš'], plural: ['vaši']),
@@ -642,6 +642,61 @@ final List<Adjective> possessivePronounWordBank = [
       feminine: new DeclensionByGender(singular: ['one'], plural: ['onih']),
       neuter:
           new DeclensionByGender(singular: ['onoga', 'onog'], plural: ['onih']),
+    ),
+    vokativ: new Declension(
+      masculine: new DeclensionByGender(singular: [''], plural: ['']),
+      feminine: new DeclensionByGender(singular: [''], plural: ['']),
+      neuter: new DeclensionByGender(singular: [''], plural: ['']),
+    ),
+  ),
+  Adjective(
+    dictionary: 'svaki',
+    nominativ: new Declension(
+      masculine: new DeclensionByGender(singular: ['svaki'], plural: ['svaki']),
+      feminine: new DeclensionByGender(singular: ['svaka'], plural: ['svake']),
+      neuter: new DeclensionByGender(singular: ['svako'], plural: ['svaka']),
+    ),
+    akuzativ: new Declension(
+      masculine: new DeclensionByGender(singular: ['svaki'], plural: ['svake']),
+      feminine: new DeclensionByGender(singular: ['svaku'], plural: ['svake']),
+      neuter: new DeclensionByGender(singular: ['svako'], plural: ['svaka']),
+    ),
+    akuzativAnimate: new Declension(
+      masculine: new DeclensionByGender(
+          singular: ['svakoga', 'svakog'], plural: ['svake']),
+      feminine: new DeclensionByGender(singular: ['svaku'], plural: ['svake']),
+      neuter: new DeclensionByGender(singular: ['svako'], plural: ['svaka']),
+    ),
+    instrumental: new Declension(
+      masculine: new DeclensionByGender(
+          singular: ['svakime', 'svakim'], plural: ['svakim']),
+      feminine:
+          new DeclensionByGender(singular: ['svakom'], plural: ['svakim']),
+      neuter: new DeclensionByGender(
+          singular: ['svakime', 'svakim'], plural: ['svakim']),
+    ),
+    lokativ: new Declension(
+      masculine: new DeclensionByGender(
+          singular: ['svakime', 'svakimu', 'svakim'], plural: ['svakim']),
+      feminine:
+          new DeclensionByGender(singular: ['svakoj'], plural: ['svakim']),
+      neuter: new DeclensionByGender(
+          singular: ['svakime', 'svakimu', 'svakim'], plural: ['svakim']),
+    ),
+    dativ: new Declension(
+      masculine: new DeclensionByGender(
+          singular: ['svakime', 'svakimu', 'svakim'], plural: ['svakim']),
+      feminine:
+          new DeclensionByGender(singular: ['svakoj'], plural: ['svakim']),
+      neuter: new DeclensionByGender(
+          singular: ['svakime', 'svakimu', 'svakim'], plural: ['svakim']),
+    ),
+    genitiv: new Declension(
+      masculine: new DeclensionByGender(
+          singular: ['svakoga', 'svakog'], plural: ['svakih']),
+      feminine: new DeclensionByGender(singular: ['svake'], plural: ['svakih']),
+      neuter: new DeclensionByGender(
+          singular: ['svakoga', 'svakog'], plural: ['svakih']),
     ),
     vokativ: new Declension(
       masculine: new DeclensionByGender(singular: [''], plural: ['']),

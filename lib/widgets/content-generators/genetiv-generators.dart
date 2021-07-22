@@ -12,7 +12,15 @@ class GenetivGenerators {
     String start = '';
     String end = '';
 
-    if (noun.tags.contains(Tags.BodyPart) && !isPlural) {
+    if (noun.tags.contains(Tags.Season)) {
+      if (N.coinFlip())
+        start = N.coinFlip() ? 'Prije' : 'Preko';
+      else
+        start = 'U svemiru nema';
+    } else if (noun.tags.contains(Tags.FlatSurface)) {
+      start = 'Vrh';
+      end = 'je prljav';
+    } else if (noun.tags.contains(Tags.BodyPart) && !isPlural) {
       start = 'Boja';
       end = 'je lijepa';
     } else if (noun.tags.contains(Tags.Human) && N.coinFlip()) {
@@ -55,7 +63,9 @@ class GenetivGenerators {
     String end = '';
     final actualValue = personalPronoun.nominativ.forms.first;
 
-    if (actualValue != 'on') {
+    if (N.coinFlip() && N.coinFlip())
+      start = 'Kraj';
+    else if (actualValue != 'on') {
       start = N.coinFlip() ? 'Nisam spavala zbog' : 'On pleše';
     } else if (actualValue != 'oni') {
       start = N.coinFlip() ? 'Oni su išli bez' : 'Ne možeš spavati zbog';

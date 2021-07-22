@@ -25,6 +25,19 @@ final List<Noun> nounWordBank = [
         new DeclensionByCount(singular: ['ananasom'], plural: ['ananasima']),
   ),
   Noun(
+    dictionary: 'Francuska',
+    tags: [Tags.Location, Tags.Country],
+    gender: Genders.Feminine,
+    isAnimate: false,
+    nominativ: new DeclensionByCount(singular: ['Francuska'], plural: ['']),
+    genitiv: new DeclensionByCount(singular: ['Francuske'], plural: ['']),
+    dativ: new DeclensionByCount(singular: ['Francuskoj'], plural: ['']),
+    akuzativ: new DeclensionByCount(singular: ['Francusku'], plural: ['']),
+    lokativ: new DeclensionByCount(singular: ['Francuskoj'], plural: ['']),
+    vokativ: new DeclensionByCount(singular: ['Francuska'], plural: ['']),
+    instrumental: new DeclensionByCount(singular: ['Francuskom'], plural: ['']),
+  ),
+  Noun(
     dictionary: 'Bosna',
     tags: [Tags.Location, Tags.Country],
     gender: Genders.Feminine,
@@ -36,6 +49,20 @@ final List<Noun> nounWordBank = [
     lokativ: new DeclensionByCount(singular: ['Bosni'], plural: ['']),
     vokativ: new DeclensionByCount(singular: ['Bosno'], plural: ['']),
     instrumental: new DeclensionByCount(singular: ['Bosnom'], plural: ['']),
+  ),
+  Noun(
+    dictionary: 'Srbija',
+    tags: [Tags.Location, Tags.Country],
+    gender: Genders.Feminine,
+    isAnimate: false,
+    nominativ: new DeclensionByCount(singular: ['Srbija'], plural: ['']),
+    genitiv: new DeclensionByCount(singular: ['Srbije'], plural: ['']),
+    dativ: new DeclensionByCount(singular: ['Srbiji'], plural: ['']),
+    akuzativ: new DeclensionByCount(singular: ['Srbiju'], plural: ['']),
+    lokativ: new DeclensionByCount(singular: ['Srbiji'], plural: ['']),
+    vokativ:
+        new DeclensionByCount(singular: ['Srbijo', 'Srbija'], plural: ['']),
+    instrumental: new DeclensionByCount(singular: ['Srbijom'], plural: ['']),
   ),
   Noun(
     dictionary: 'lice',
@@ -190,6 +217,26 @@ final List<Noun> nounWordBank = [
         new DeclensionByCount(singular: ['knjigom'], plural: ['knjigama']),
   ),
   Noun(
+    dictionary: 'proljeće',
+    tags: [Tags.Season, Tags.Weather],
+    gender: Genders.Neuter,
+    isAnimate: false,
+    nominativ:
+        new DeclensionByCount(singular: ['proljeće'], plural: ['proljeća']),
+    genitiv:
+        new DeclensionByCount(singular: ['proljeća'], plural: ['proljeća']),
+    dativ:
+        new DeclensionByCount(singular: ['proljeću'], plural: ['proljećima']),
+    akuzativ:
+        new DeclensionByCount(singular: ['proljeće'], plural: ['proljeća']),
+    lokativ:
+        new DeclensionByCount(singular: ['proljeću'], plural: ['proljećima']),
+    vokativ:
+        new DeclensionByCount(singular: ['proljeće'], plural: ['proljeća']),
+    instrumental:
+        new DeclensionByCount(singular: ['proljećem'], plural: ['proljećima']),
+  ),
+  Noun(
     dictionary: 'ljeto',
     tags: [Tags.Season, Tags.Weather],
     gender: Genders.Neuter,
@@ -202,6 +249,34 @@ final List<Noun> nounWordBank = [
     vokativ: new DeclensionByCount(singular: ['ljeto'], plural: ['ljeta']),
     instrumental:
         new DeclensionByCount(singular: ['ljetom'], plural: ['ljetima']),
+  ),
+  Noun(
+    dictionary: 'jesen',
+    tags: [Tags.Season, Tags.Weather],
+    gender: Genders.Feminine,
+    isAnimate: false,
+    nominativ: new DeclensionByCount(singular: ['jesen'], plural: ['jeseni']),
+    genitiv: new DeclensionByCount(singular: ['jeseni'], plural: ['jeseni']),
+    dativ: new DeclensionByCount(singular: ['jeseni'], plural: ['jesenima']),
+    akuzativ: new DeclensionByCount(singular: ['jesen'], plural: ['jeseni']),
+    lokativ: new DeclensionByCount(singular: ['jeseni'], plural: ['jesenima']),
+    vokativ: new DeclensionByCount(singular: ['jeseni'], plural: ['jesenima']),
+    instrumental:
+        new DeclensionByCount(singular: ['jeseni'], plural: ['jesenima']),
+  ),
+  Noun(
+    dictionary: 'zima',
+    tags: [Tags.Season, Tags.Weather],
+    gender: Genders.Feminine,
+    isAnimate: false,
+    nominativ: new DeclensionByCount(singular: ['zima'], plural: ['zime']),
+    genitiv: new DeclensionByCount(singular: ['zime'], plural: ['zima']),
+    dativ: new DeclensionByCount(singular: ['zimi'], plural: ['zimama']),
+    akuzativ: new DeclensionByCount(singular: ['zimu'], plural: ['zume']),
+    lokativ: new DeclensionByCount(singular: ['zimi'], plural: ['zimama']),
+    vokativ: new DeclensionByCount(singular: ['zimo'], plural: ['zime']),
+    instrumental:
+        new DeclensionByCount(singular: ['zimom'], plural: ['zimama']),
   ),
   Noun(
     dictionary: 'bolnica',

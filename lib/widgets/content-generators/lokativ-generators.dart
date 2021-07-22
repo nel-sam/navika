@@ -17,7 +17,15 @@ class LokativGenerators {
     String start = '';
     String end = '';
 
-    if (noun.tags.contains(Tags.FlatSurface)) {
+    if (noun.tags.contains(Tags.Season)) {
+      if (pronounVal != 'moj') {
+        start = '';
+        end = 'radim kao turistički vodič';
+      } else {
+        start = 'Da li';
+        end = 'puno radite?';
+      }
+    } else if (noun.tags.contains(Tags.FlatSurface)) {
       start = N.coinFlip() ? 'Spavam u' : 'Jabuka je na';
     } else if (noun.tags.contains(Tags.WorkPlace)) {
       start = pronounVal == 'moj' ? 'On rade u' : 'Radim u';

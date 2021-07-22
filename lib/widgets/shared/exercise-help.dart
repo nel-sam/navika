@@ -290,7 +290,7 @@ class ExerciseHelp extends StatelessWidget {
               '${combo.personalPronoun!.getDeclensions(combos.caseType).join(joinChar)}',
               isBold: true,
             ),
-          if (combo.sentenceEnder != '') N.NTextSpan('${combo.sentenceEnder} '),
+          if (combo.sentenceEnder != '') N.NTextSpan(' ${combo.sentenceEnder}'),
         ]),
         TranslationLink(sentence: sentence),
       ],
