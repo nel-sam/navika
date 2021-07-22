@@ -15,12 +15,16 @@ class GenetivGenerators {
     if (noun.tags.contains(Tags.BodyPart) && !isPlural) {
       start = 'Boja';
       end = 'je lijepa';
+    } else if (noun.tags.contains(Tags.Human) && N.coinFlip()) {
+      start = 'Ja sam kod';
     } else if (noun.tags.contains(Tags.Human) ||
         noun.tags.contains(Tags.Portable)) {
-      if (pronoun!.dictionary != 'moj')
+      if (pronoun!.dictionary != 'moj') if (N.coinFlip())
         start = N.coinFlip() ? 'Otkad sam bez' : 'Ići ću bez';
       else
-        start = 'Ići ćeš bez';
+        start = 'Kraj';
+      else
+        start = N.coinFlip() ? 'Kraj' : 'Ići ćeš bez';
     } else if (noun.tags.contains(Tags.Country)) {
       start = pronoun!.dictionary != 'moj' ? 'Ja sam iz' : 'On je iz';
     } else if (noun.tags.contains(Tags.Location)) {
