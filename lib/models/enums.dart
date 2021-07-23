@@ -12,6 +12,7 @@ enum Genders {
 }
 
 enum Cases {
+  All,
   Ins,
   Nom,
   Aku,
@@ -76,6 +77,7 @@ enum PronounEnum {
 }
 
 const CaseImagePaths = <Cases, String>{
+  Cases.All: 'assets/banners/montenegro.jpg',
   Cases.Nom: 'assets/banners/seaside_city.jpg',
   Cases.Aku: 'assets/banners/pay.jpg',
   Cases.Ins: 'assets/banners/vespa.jpg',

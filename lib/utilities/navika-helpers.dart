@@ -218,6 +218,7 @@ class N {
   static String getCaseLabel(Cases caseType) {
     switch (caseType) {
       case Cases.Nom:
+      case Cases.All:
         return 'Nominativ';
       case Cases.Ins:
         return 'Instrumental';

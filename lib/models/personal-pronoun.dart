@@ -43,6 +43,7 @@ class PersonalPronoun {
       case Cases.Lok:
         return this.lokativ;
       case Cases.Nom:
+      case Cases.All:
         return this.nominativ;
       case Cases.Vok:
         return this.vokativ;
@@ -62,6 +63,7 @@ class PersonalPronoun {
       case Cases.Lok:
         return this.lokativ.forms;
       case Cases.Nom:
+      case Cases.All:
         return this.nominativ.forms;
       case Cases.Vok:
         return this.vokativ.forms;

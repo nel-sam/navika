@@ -15,6 +15,14 @@ class CaseExercises with ChangeNotifier {
     List<QuestionStateItem> items = [];
 
     switch (caseType) {
+      case Cases.All:
+        items = NominativGenerators.initializePANStateItems();
+        items.addAll(AkuzativGenerators.initializePANStateItems());
+        items.addAll(InstrumentalGenerators.initializePANStateItems());
+        items.addAll(DativGenerators.initializePANStateItems());
+        items.addAll(LokativGenerators.initializePANStateItems());
+        items.addAll(GenetivGenerators.initializePANStateItems());
+        break;
       case Cases.Nom:
         items = NominativGenerators.initializePANStateItems();
         break;

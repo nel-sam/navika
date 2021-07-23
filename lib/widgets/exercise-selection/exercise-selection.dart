@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/widgets/akusativ/akuzativ.dart';
+import 'package:navika/widgets/all-cases.dart';
 import 'package:navika/widgets/dativ/dativ.dart';
 import 'package:navika/widgets/exercise-selection/exercise-button.dart';
 import 'package:navika/widgets/genitiv/genitiv.dart';
@@ -19,6 +20,12 @@ class ExerciseSelection extends StatelessWidget {
         icon: Icons.menu_book,
         label: AppLocalizations.of(context)!.grammarGuide,
         imagePath: 'assets/banners/books.jpg',
+      ),
+      ExerciseButton(
+        destination: AllCases(),
+        icon: Icons.group,
+        label: AppLocalizations.of(context)!.allCases,
+        imagePath: CaseImagePaths[Cases.All]!,
       ),
       ExerciseButton(
         destination: Nominativ(),

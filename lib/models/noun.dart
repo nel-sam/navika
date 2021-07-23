@@ -43,6 +43,7 @@ class Noun {
       case Cases.Lok:
         return this.lokativ;
       case Cases.Nom:
+      case Cases.All:
         return this.nominativ;
       case Cases.Vok:
         return this.vokativ;
@@ -69,6 +70,7 @@ class Noun {
         declension = this.lokativ;
         break;
       case Cases.Nom:
+      case Cases.All:
         declension = this.nominativ;
         break;
       case Cases.Vok:
@@ -106,6 +108,7 @@ class Noun {
       case Cases.Ins:
         return this.instrumental.getAll();
       case Cases.Nom:
+      case Cases.All:
         return this.nominativ.getAll();
       case Cases.Aku:
         return this.akuzativ.getAll();
