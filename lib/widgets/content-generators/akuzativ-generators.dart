@@ -13,7 +13,9 @@ class AkuzativGenerators {
     String end = '';
     final pron = pronoun != null ? pronoun.nominativ.masculine.singular : '';
 
-    if (noun.tags.contains(Tags.Location)) {
+    if (noun.tags.contains(Tags.Season)) {
+      start = N.coinFlip() ? 'Volim' : 'Ne volim';
+    } else if (noun.tags.contains(Tags.Location)) {
       start = 'Idemo u';
     } else if (noun.tags.contains(Tags.Food)) {
       start = N.coinFlip() ? 'Ću jesti' : 'Želi';

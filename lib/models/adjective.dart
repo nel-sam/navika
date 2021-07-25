@@ -12,6 +12,7 @@ class Adjective {
   final Declension dativ;
   final Declension genitiv;
   final Declension vokativ;
+  late List<Tags> toAvoid;
 
   Adjective({
     required this.dictionary,
@@ -23,6 +24,7 @@ class Adjective {
     required this.dativ,
     required this.genitiv,
     required this.vokativ,
+    this.toAvoid = const [],
   });
 
   List<String> getUniqueDeclensions({bool shuffle = false}) {
@@ -180,5 +182,15 @@ class Adjective {
     final filtered = getUniqueDeclensions(shuffle: true);
     filtered.removeWhere((element) => toAvoid.contains(element));
     return filtered.last;
+  }
+
+  bool isCompatible(List<Tags> tags) {
+    for (var avoid in this.toAvoid) {
+      if (tags.contains(avoid)) {
+        return false;
+      }
+    }
+
+    return true;
   }
 }

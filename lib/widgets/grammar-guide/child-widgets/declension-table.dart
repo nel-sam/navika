@@ -54,6 +54,7 @@ class DeclensionTable extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
               border: Border.all(color: Colors.grey),
+              borderRadius: BorderRadius.circular(5),
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,

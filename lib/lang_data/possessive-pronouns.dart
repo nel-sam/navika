@@ -1,9 +1,11 @@
 import 'package:navika/models/adjective.dart';
+import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 
 final List<Adjective> possessivePronounWordBank = [
   Adjective(
     dictionary: 'moj',
+    toAvoid: [Tags.Season, Tags.Country],
     nominativ: new Declension(
       masculine: new DeclensionByGender(singular: ['moj'], plural: ['moji']),
       feminine: new DeclensionByGender(singular: ['moja'], plural: ['moje']),
@@ -63,6 +65,7 @@ final List<Adjective> possessivePronounWordBank = [
   ),
   Adjective(
     dictionary: 'tvoj',
+    toAvoid: [Tags.Season, Tags.Country],
     nominativ: new Declension(
       masculine: new DeclensionByGender(singular: ['tvoj'], plural: ['tvoji']),
       feminine: new DeclensionByGender(singular: ['tvoja'], plural: ['tvoje']),
@@ -120,6 +123,7 @@ final List<Adjective> possessivePronounWordBank = [
   ),
   Adjective(
     dictionary: 'svoj',
+    toAvoid: [Tags.Season, Tags.Country],
     nominativ: new Declension(
       masculine: new DeclensionByGender(singular: ['svoj'], plural: ['svoji']),
       feminine: new DeclensionByGender(singular: ['svoja'], plural: ['svoje']),
@@ -179,6 +183,7 @@ final List<Adjective> possessivePronounWordBank = [
   ),
   Adjective(
     dictionary: 'njegov',
+    toAvoid: [Tags.Season, Tags.Country],
     nominativ: new Declension(
       masculine:
           new DeclensionByGender(singular: ['njegov'], plural: ['njegovi']),
@@ -248,6 +253,7 @@ final List<Adjective> possessivePronounWordBank = [
   ),
   Adjective(
     dictionary: 'njezin',
+    toAvoid: [Tags.Season, Tags.Country],
     nominativ: new Declension(
       masculine:
           new DeclensionByGender(singular: ['njezin'], plural: ['njezini']),
@@ -318,6 +324,7 @@ final List<Adjective> possessivePronounWordBank = [
   ),
   Adjective(
     dictionary: 'njihov',
+    toAvoid: [Tags.Season, Tags.Country],
     nominativ: new Declension(
       masculine:
           new DeclensionByGender(singular: ['njihov'], plural: ['njihovi']),
@@ -387,6 +394,7 @@ final List<Adjective> possessivePronounWordBank = [
   ),
   Adjective(
     dictionary: 'naš',
+    toAvoid: [Tags.Season, Tags.Country],
     nominativ: new Declension(
       masculine: new DeclensionByGender(singular: ['naš'], plural: ['naši']),
       feminine: new DeclensionByGender(singular: ['naša'], plural: ['naše']),
@@ -441,6 +449,7 @@ final List<Adjective> possessivePronounWordBank = [
   ),
   Adjective(
     dictionary: 'vaš',
+    toAvoid: [Tags.Season, Tags.Country],
     nominativ: new Declension(
       masculine: new DeclensionByGender(singular: ['vaš'], plural: ['vaši']),
       feminine: new DeclensionByGender(singular: ['vaša'], plural: ['vaše']),
@@ -495,6 +504,7 @@ final List<Adjective> possessivePronounWordBank = [
   ),
   Adjective(
     dictionary: 'ovaj',
+    toAvoid: [Tags.Season, Tags.Country],
     nominativ: new Declension(
       masculine: new DeclensionByGender(singular: ['ovaj'], plural: ['ovi']),
       feminine: new DeclensionByGender(singular: ['ova'], plural: ['ove']),
@@ -547,6 +557,7 @@ final List<Adjective> possessivePronounWordBank = [
   ),
   Adjective(
     dictionary: 'taj',
+    toAvoid: [Tags.Season, Tags.Country],
     nominativ: new Declension(
       masculine: new DeclensionByGender(singular: ['taj'], plural: ['ti']),
       feminine: new DeclensionByGender(singular: ['ta'], plural: ['te']),
@@ -599,6 +610,7 @@ final List<Adjective> possessivePronounWordBank = [
   ),
   Adjective(
     dictionary: 'onaj',
+    toAvoid: [Tags.Season, Tags.Country],
     nominativ: new Declension(
       masculine: new DeclensionByGender(singular: ['onaj'], plural: ['oni']),
       feminine: new DeclensionByGender(singular: ['ona'], plural: ['one']),
@@ -651,6 +663,7 @@ final List<Adjective> possessivePronounWordBank = [
   ),
   Adjective(
     dictionary: 'svaki',
+    toAvoid: [Tags.Country],
     nominativ: new Declension(
       masculine: new DeclensionByGender(singular: ['svaki'], plural: ['svaki']),
       feminine: new DeclensionByGender(singular: ['svaka'], plural: ['svake']),

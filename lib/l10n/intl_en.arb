@@ -1,5 +1,6 @@
 {
   "allCases": "All Cases",
+  "allCasesDesc": "Practice all the cases here. You have to use the context of the sentence to determine which case/declension to use. Press the help button on each exercise if you need help or hints.",
   "adjectives": "Adjectives",
   "akuzativDescription": "Direct objects are in the accusative case. This case is also used to indicate a point of destination, when there is movement towards the destination.",
   "animate": "Animate",
@@ -46,7 +47,7 @@
   "sameAsLok": "The same as in the Locative case",
   "sameAsNom": "The same as in the Nominative case",
   "selectAll": "Select All",
-  "selectExercises": "What kind of sentences do you want to see?",
+  "selectExercises": "What kind of exercises do you want to do?",
   "selectMode": "Choose it",
   "singular": "Sing",
   "softLettersOgEg": "č, ć, đ, dž, š, ž, lj, & nj get 'eg' instead of 'og'.",

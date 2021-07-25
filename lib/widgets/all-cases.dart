@@ -17,7 +17,7 @@ class AllCases extends StatelessWidget {
       banner: NavikaBanner(
         imagePath: CaseImagePaths[Cases.All]!,
         caseName: title,
-        description: '', // TODO: Add description
+        description: AppLocalizations.of(context)!.allCasesDesc,
         icons: [
           Icons.group,
         ],

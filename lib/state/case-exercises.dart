@@ -12,6 +12,15 @@ class CaseExercises with ChangeNotifier {
   Map<Cases, List<QuestionStateItem>> exerciseItems = {};
 
   CaseExercises({Cases? caseType}) {
+    if (caseType == null) return;
+
+    List<QuestionStateItem> items = getItems(caseType);
+    exerciseItems[caseType] = items;
+
+    notifyListeners();
+  }
+
+  List<QuestionStateItem> getItems(Cases caseType) {
     List<QuestionStateItem> items = [];
 
     switch (caseType) {
@@ -48,18 +57,15 @@ class CaseExercises with ChangeNotifier {
         break;
     }
 
-    if (caseType != null) {
-      exerciseItems[caseType] = items;
-      exerciseItems[caseType]!.shuffle();
-    }
-
-    notifyListeners();
+    items.shuffle();
+    return items;
   }
 
   void add(Cases caseType, QuestionStateItem item) {
     exerciseItems[caseType]!.add(item);
     notifyListeners();
   }
+
 
   void modifyStateItem(
       Cases caseType, QuestionStateItem toModify, QuestionStateItem newValue) {

@@ -1,5 +1,6 @@
 {
   "allCases": "Todos Casos",
+  "allCasesDesc": "Ensaya todos los casos aquí. Tienes que usar el context de la oración para decidir qué caso es mejor usar. Presiona el botón de ayuda en cada ejercisio si necesitas ayuda o sugerencias.",
   "adjectives": "Adjetivos",
   "akuzativDescription": "Los objetos directos deberían estar en el caso acusativo. También se usa para indicar un destino cuando hay movimiento hacia ese destino.",
   "animate": "Vivo",
@@ -46,7 +47,7 @@
   "sameAsLok": "Igual al caso Locativo",
   "sameAsNom": "Igual al caso Nominativo",
   "selectAll": "Seleccionar Todos",
-  "selectExercises": "¿Qué quieres practicar?",
+  "selectExercises": "¿Cómo quieres practicar?",
   "selectMode": "Escojer",
   "singular": "Sing",
   "softLettersOgEg": "A č, ć, đ, dž, š, ž, lj, & nj se agrega 'eg' y no 'og'.",
