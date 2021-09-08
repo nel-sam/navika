@@ -20,10 +20,23 @@ class NominativGenerators {
         start = noun.gender == Genders.Feminine ? 'One su' : 'Oni su';
       }
     } else if (!noun.isAnimate && isPlural) {
-      if (tense == TenseEnum.Future || tense == TenseEnum.Conditional)
-        start = isPlural ? 'One će biti' : 'To će biti';
-      else {
-        start = 'To su';
+      if (pronoun != null && pronoun.dictionary == 'svaki') {
+        start = '';
+        end = 'je ';
+
+        if (noun.gender == Genders.Feminine) {
+          end += noun.tags.contains(Tags.Season) ? 'hladna' : 'crvena';
+        } else if (noun.gender == Genders.Masculine) {
+          end += noun.tags.contains(Tags.Season) ? 'hladni' : 'crven';
+        } else {
+          end += noun.tags.contains(Tags.Season) ? 'hladno' : 'crveno';
+        }
+      } else {
+        if (tense == TenseEnum.Future || tense == TenseEnum.Conditional)
+          start = isPlural ? 'One će biti' : 'To će biti';
+        else {
+          start = 'To su';
+        }
       }
     } else if (noun.isAnimate && !isPlural) {
       if (tense == TenseEnum.Past || tense == TenseEnum.Conditional) {

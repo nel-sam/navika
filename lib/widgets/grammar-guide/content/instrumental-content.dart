@@ -60,7 +60,7 @@ Widget getPossessivePronounSection(BuildContext context) {
       PronounLine(
           pronoun: PronounEnum.We,
           text: NText([
-            N.NTextSpan('Trebaš da ideš s '),
+            N.NTextSpan('Treba ti da ideš s '),
             N.NTextSpan('nama', isBold: true)
           ])),
       PronounLine(

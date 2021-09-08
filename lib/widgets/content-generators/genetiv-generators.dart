@@ -11,16 +11,32 @@ class GenetivGenerators {
       Noun noun, bool isPlural, Adjective? pronoun, Adjective? adjective) {
     String start = '';
     String end = '';
-    if (noun.tags.contains(Tags.Portable)) {
-      start = N.coinFlip() ? 'Pas je sada ispred' : 'Čekaj iza';
-      end = '';
-    } else if (noun.tags.contains(Tags.WorkPlace)) {
-      start = N.coinFlip() ? 'Sad čekamo iza' : 'Bio je iza';
+
+    if (noun.tags.contains(Tags.Health)) {
+      if (pronoun!.dictionary == 'ja')
+        start = 'Ne mogu raditi zbog';
+      else {
+        start = 'Život bez';
+        end = 'je naibolji';
+      }
+    } else if (noun.tags.contains(Tags.Emotion)) {
+      start = 'Prije';
+      end = 'treba se smiriti';
+    } else if (noun.tags.contains(Tags.Country)) {
+      start = pronoun!.dictionary != 'moj' ? 'Ja sam iz' : 'On je iz';
+    } else if (noun.tags.contains(Tags.Location)) {
+      start =
+          pronoun!.dictionary != 'mi' ? 'Idemo od kuće do' : 'Idem od kuće do';
     } else if (noun.tags.contains(Tags.Season)) {
       if (N.coinFlip())
         start = N.coinFlip() ? 'Prije' : 'Preko';
       else
         start = 'U svemiru nema';
+    } else if (noun.tags.contains(Tags.Portable)) {
+      start = N.coinFlip() ? 'Pas je sada ispred' : 'Čekaj iza';
+      end = '';
+    } else if (noun.tags.contains(Tags.WorkPlace)) {
+      start = N.coinFlip() ? 'Sad čekamo iza' : 'Bio je iza';
     } else if (noun.tags.contains(Tags.FlatSurface)) {
       start = 'Vrh';
       end = 'je prljav';
@@ -37,21 +53,8 @@ class GenetivGenerators {
         start = 'Kraj';
       else
         start = N.coinFlip() ? 'Kraj' : 'Ići ćeš bez';
-    } else if (noun.tags.contains(Tags.Country)) {
-      start = pronoun!.dictionary != 'moj' ? 'Ja sam iz' : 'On je iz';
-    } else if (noun.tags.contains(Tags.Location)) {
-      start =
-          pronoun!.dictionary != 'mi' ? 'Idemo od kuće do' : 'Idem od kuće do';
-    } else if (noun.tags.contains(Tags.Health)) {
-      if (pronoun!.dictionary == 'ja')
-        start = 'Ne mogu raditi zbog';
-      else {
-        start = 'Život bez';
-        end = 'je naibolji';
-      }
-    } else if (noun.tags.contains(Tags.Emotion)) {
-      start = 'Prije';
-      end = 'treba se smiriti';
+    } else if (pronoun == null) {
+      start = 'Vidim puno';
     } else if (N.coinFlip()) {
       start = 'Volim boja';
     } else {

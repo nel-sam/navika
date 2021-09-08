@@ -23,7 +23,9 @@ class InstrumentalGenerators {
       adjective,
     );
 
-    if (noun.tags.contains(Tags.FlatSurface)) {
+    if (noun.tags.contains(Tags.Season)) {
+      start = 'Povezana je $sSa';
+    } else if (noun.tags.contains(Tags.FlatSurface)) {
       start = N.coinFlip() ? 'Pas je nad' : 'Majka je pred';
     } else if (noun.tags.contains(Tags.BodyPart)) {
       start =
@@ -33,7 +35,7 @@ class InstrumentalGenerators {
     } else if (noun.tags.contains(Tags.Human) ||
         noun.tags.contains(Tags.Portable)) {
       if (possPronouns != 'tvoj')
-        start = N.coinFlip() ? 'Ti ideš $sSa' : 'Trebaš da ideš $sSa';
+        start = N.coinFlip() ? 'Ti ideš $sSa' : 'Treba ti da ideš $sSa';
       else
         start = N.coinFlip() ? 'Otići ću za' : 'Idemo $sSa';
     } else if (noun.tags.contains(Tags.Health)) {

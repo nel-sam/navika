@@ -272,7 +272,7 @@ final List<Noun> nounWordBank = [
     nominativ: new DeclensionByCount(singular: ['zima'], plural: ['zime']),
     genitiv: new DeclensionByCount(singular: ['zime'], plural: ['zima']),
     dativ: new DeclensionByCount(singular: ['zimi'], plural: ['zimama']),
-    akuzativ: new DeclensionByCount(singular: ['zimu'], plural: ['zume']),
+    akuzativ: new DeclensionByCount(singular: ['zimu'], plural: ['zime']),
     lokativ: new DeclensionByCount(singular: ['zimi'], plural: ['zimama']),
     vokativ: new DeclensionByCount(singular: ['zimo'], plural: ['zime']),
     instrumental:
