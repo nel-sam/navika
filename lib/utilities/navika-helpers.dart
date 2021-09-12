@@ -121,7 +121,8 @@ class N {
     bank.possessivePronouns.forEach((possPronoun) {
       bank.adjectives.forEach((adj) {
         bank.nouns.forEach((noun) {
-          final includePossPronoun = possPronoun.isCompatible(noun.tags) && N.coinFlip();
+          final includePossPronoun =
+              possPronoun.isCompatible(noun.tags) && N.coinFlip();
           final includeAdjective = adj.isCompatible(noun.tags) && N.coinFlip();
           final isPlural = noun.nominativ.plural.first != '' && N.coinFlip();
           final staticParts =

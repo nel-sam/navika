@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
-import 'package:navika/widgets/grammar-guide/grammar-guide.dart';
+import 'package:navika/widgets/grammar/grammar-guide/grammar-guide.dart';
 import 'package:navika/widgets/shared/footer-button.dart';
 import 'package:navika/widgets/shared/home-button.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';

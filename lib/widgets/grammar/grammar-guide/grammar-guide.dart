@@ -3,13 +3,13 @@ import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:navika/widgets/grammar-guide/child-widgets/section-header.dart';
-import 'package:navika/widgets/grammar-guide/content/akuzativ-content.dart';
-import 'package:navika/widgets/grammar-guide/content/dativ-content.dart';
-import 'package:navika/widgets/grammar-guide/content/genitiv-content.dart';
-import 'package:navika/widgets/grammar-guide/content/instrumental-content.dart';
-import 'package:navika/widgets/grammar-guide/content/lokativ-content.dart';
-import 'package:navika/widgets/grammar-guide/content/nominativ-content.dart';
+import 'package:navika/widgets/grammar/grammar-guide/child-widgets/section-header.dart';
+import 'package:navika/widgets/grammar/grammar-guide/content/akuzativ-content.dart';
+import 'package:navika/widgets/grammar/grammar-guide/content/dativ-content.dart';
+import 'package:navika/widgets/grammar/grammar-guide/content/genitiv-content.dart';
+import 'package:navika/widgets/grammar/grammar-guide/content/instrumental-content.dart';
+import 'package:navika/widgets/grammar/grammar-guide/content/lokativ-content.dart';
+import 'package:navika/widgets/grammar/grammar-guide/content/nominativ-content.dart';
 import 'package:navika/widgets/shared/footer-button.dart';
 
 const double CONTENT_HEIGHT = 1200.0;
@@ -120,7 +120,7 @@ class _GrammarGuideState extends State<GrammarGuide> {
             child: Column(
               children: [
                 contentSection(
-                  SectionHeader('Nominativ'),
+                  SectionHeader(N.getCaseLabel(Cases.Nom)),
                   NominativGrammarGuideContent(),
                 ),
                 contentSection(

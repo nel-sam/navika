@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:navika/models/enums.dart';
+import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/akusativ/akuzativ.dart';
 import 'package:navika/widgets/all-cases.dart';
 import 'package:navika/widgets/dativ/dativ.dart';
 import 'package:navika/widgets/exercise-selection/exercise-button.dart';
+import 'package:navika/widgets/exercise-selection/grammar-menu.dart';
 import 'package:navika/widgets/genitiv/genitiv.dart';
-import 'package:navika/widgets/grammar-guide/grammar-guide.dart';
 import 'package:navika/widgets/instrumental/instrumental.dart';
 import 'package:navika/widgets/lokativ/lokativ.dart';
 import 'package:navika/widgets/nominativ/nominativ.dart';
@@ -16,7 +17,7 @@ class ExerciseSelection extends StatelessWidget {
   Widget build(BuildContext context) {
     var buttons = <Widget>[
       ExerciseButton(
-        destination: GrammarGuide(),
+        destination: GrammarMenu(),
         icon: Icons.menu_book,
         label: AppLocalizations.of(context)!.grammarGuide,
         imagePath: 'assets/banners/books.jpg',
@@ -30,7 +31,7 @@ class ExerciseSelection extends StatelessWidget {
       ExerciseButton(
         destination: Nominativ(),
         icon: Icons.category_outlined,
-        label: 'Nominativ',
+        label: N.getCaseLabel(Cases.Nom),
         imagePath: CaseImagePaths[Cases.Nom]!,
       ),
       ExerciseButton(

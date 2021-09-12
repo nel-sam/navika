@@ -7,10 +7,10 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/models/noun.dart';
 import 'package:navika/models/personal-pronoun.dart';
 import 'package:navika/utilities/navika-helpers.dart';
-import 'package:navika/widgets/grammar-guide/child-widgets/declension-table-cell.dart';
-import 'package:navika/widgets/grammar-guide/child-widgets/declension-table.dart';
-import 'package:navika/widgets/grammar-guide/child-widgets/explanation-icon-cell.dart';
-import 'package:navika/widgets/grammar-guide/child-widgets/navika-subheader.dart';
+import 'package:navika/widgets/grammar/grammar-guide/child-widgets/declension-table-cell.dart';
+import 'package:navika/widgets/grammar/grammar-guide/child-widgets/declension-table.dart';
+import 'package:navika/widgets/grammar/grammar-guide/child-widgets/explanation-icon-cell.dart';
+import 'package:navika/widgets/grammar/grammar-guide/child-widgets/navika-subheader.dart';
 import 'package:navika/widgets/shared/navika-text.dart';
 import 'package:navika/widgets/shared/translation-link.dart';
 
