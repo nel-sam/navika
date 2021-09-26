@@ -3,13 +3,13 @@ import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:navika/widgets/grammar/grammar-guide/content/declension-tables/akuzativ-table.dart';
-import 'package:navika/widgets/grammar/grammar-guide/content/declension-tables/dativ-lokativ-table.dart';
-import 'package:navika/widgets/grammar/grammar-guide/content/declension-tables/genitiv-table.dart';
-import 'package:navika/widgets/grammar/grammar-guide/content/declension-tables/instrumental-table.dart';
+import 'package:navika/widgets/grammar/grammar-guide/declension/declension-tables/akuzativ-table.dart';
+import 'package:navika/widgets/grammar/grammar-guide/declension/declension-tables/dativ-lokativ-table.dart';
+import 'package:navika/widgets/grammar/grammar-guide/declension/declension-tables/genitiv-table.dart';
+import 'package:navika/widgets/grammar/grammar-guide/declension/declension-tables/instrumental-table.dart';
+import 'package:navika/widgets/grammar/grammar-guide/declension/declension-tables/nominativ-table.dart';
 import 'package:navika/widgets/shared/home-button.dart';
 import 'package:navika/widgets/shared/navika-text.dart';
-import 'content/declension-tables/nominativ-table.dart';
 
 class Tables extends StatefulWidget {
   const Tables({
@@ -42,7 +42,7 @@ class _TablesState extends State<Tables> {
 
     return Scaffold(
       appBar: N.NavikaAppBar(
-          Text(AppLocalizations.of(context)!.justTables,
+          Text(AppLocalizations.of(context)!.justCaseTables,
               style: HEADER_TEXT_STYLE),
           context,
           []),

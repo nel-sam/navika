@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
-import 'package:navika/widgets/grammar/grammar-guide/grammar-guide.dart';
+import 'package:navika/widgets/grammar/grammar-guide/declension-guide.dart';
 import 'package:navika/widgets/shared/footer-button.dart';
 import 'package:navika/widgets/shared/home-button.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -33,11 +33,11 @@ List<Widget> NavikaChildFooterButtons({
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => GrammarGuide(startingCase: caseType)),
+                    builder: (context) => DeclensionGuide(startingCase: caseType)),
               );
             },
             icon: Icons.help_center_outlined,
-            text: AppLocalizations.of(context)!.grammarGuide,
+            text: AppLocalizations.of(context)!.grammar,
             context: context,
           ),
         ),

@@ -4,12 +4,12 @@ import 'package:navika/models/enums.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/section-header.dart';
-import 'package:navika/widgets/grammar/grammar-guide/content/akuzativ-content.dart';
-import 'package:navika/widgets/grammar/grammar-guide/content/dativ-content.dart';
-import 'package:navika/widgets/grammar/grammar-guide/content/genitiv-content.dart';
-import 'package:navika/widgets/grammar/grammar-guide/content/instrumental-content.dart';
-import 'package:navika/widgets/grammar/grammar-guide/content/lokativ-content.dart';
-import 'package:navika/widgets/grammar/grammar-guide/content/nominativ-content.dart';
+import 'package:navika/widgets/grammar/grammar-guide/declension/akuzativ-content.dart';
+import 'package:navika/widgets/grammar/grammar-guide/declension/dativ-content.dart';
+import 'package:navika/widgets/grammar/grammar-guide/declension/genitiv-content.dart';
+import 'package:navika/widgets/grammar/grammar-guide/declension/instrumental-content.dart';
+import 'package:navika/widgets/grammar/grammar-guide/declension/lokativ-content.dart';
+import 'package:navika/widgets/grammar/grammar-guide/declension/nominativ-content.dart';
 import 'package:navika/widgets/shared/footer-button.dart';
 
 const double CONTENT_HEIGHT = 1200.0;
@@ -24,20 +24,20 @@ const CasesInOrder = [
   // Cases.Vokativ,
 ];
 
-class GrammarGuide extends StatefulWidget {
+class DeclensionGuide extends StatefulWidget {
   final Cases startingCase;
 
-  const GrammarGuide({
+  const DeclensionGuide({
     Key? key,
     this.startingCase = Cases.Nom,
   }) : super(key: key);
 
   @override
-  _GrammarGuideState createState() => _GrammarGuideState();
+  _DeclensionGuideState createState() => _DeclensionGuideState();
 }
 
 // TODO: Add cases similarities map and remove "same as" from individual tables
-class _GrammarGuideState extends State<GrammarGuide> {
+class _DeclensionGuideState extends State<DeclensionGuide> {
   late ScrollController controller;
   late bool isAtTop = false;
   late bool isAtBottom = false;
@@ -107,10 +107,8 @@ class _GrammarGuideState extends State<GrammarGuide> {
 
     return Scaffold(
       appBar: N.NavikaAppBar(
-          Text(AppLocalizations.of(context)!.grammarGuide,
-              style: HEADER_TEXT_STYLE),
-          context,
-          []),
+          Text(AppLocalizations.of(context)!.cases, style: HEADER_TEXT_STYLE),
+          context, []),
       body: SingleChildScrollView(
         controller: controller,
         child: Center(
