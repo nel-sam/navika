@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/utilities/navika-helpers.dart';
-import 'package:navika/widgets/akusativ/akuzativ.dart';
+import 'package:navika/widgets/exercises/declension/akusativ/akuzativ.dart';
 import 'package:navika/widgets/all-cases.dart';
-import 'package:navika/widgets/dativ/dativ.dart';
+import 'package:navika/widgets/exercises/declension/dativ/dativ.dart';
 import 'package:navika/widgets/exercise-selection/exercise-button.dart';
-import 'package:navika/widgets/genitiv/genitiv.dart';
-import 'package:navika/widgets/instrumental/instrumental.dart';
-import 'package:navika/widgets/lokativ/lokativ.dart';
-import 'package:navika/widgets/nominativ/nominativ.dart';
+import 'package:navika/widgets/exercises/declension/nominativ/nominativ.dart';
+import 'package:navika/widgets/exercises/declension/genitiv/genitiv.dart';
+import 'package:navika/widgets/exercises/declension/instrumental/instrumental.dart';
+import 'package:navika/widgets/exercises/declension/lokativ/lokativ.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DeclensionMenu extends StatelessWidget {
