@@ -17,7 +17,7 @@ class ExplanationIconCell extends StatelessWidget {
       padding: EdgeInsets.only(top: 10, bottom: 10),
       child: Container(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Icon(icon, color: ACCENT_COLOR),
             Text(

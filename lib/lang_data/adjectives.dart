@@ -1,4 +1,5 @@
 import 'package:navika/models/adjective.dart';
+import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 
 /*
@@ -12,6 +13,7 @@ import 'package:navika/models/models.dart';
 final List<Adjective> adjectiveWordBank = [
   Adjective(
     dictionary: 'velik',
+    toAvoid: [Tags.Season],
     nominativ: new Declension(
       masculine:
           new DeclensionByGender(singular: ['veliki'], plural: ['veliki']),
