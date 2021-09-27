@@ -44,6 +44,18 @@ class N {
     }
   }
 
+  static String getGenderString(BuildContext context, Genders gender) {
+    switch (gender) {
+      case Genders.Masculine:
+        return AppLocalizations.of(context)!.masculine;
+      case Genders.Feminine:
+        return AppLocalizations.of(context)!.feminine;
+      case Genders.Neuter:
+      case Genders.Unspecific:
+        return AppLocalizations.of(context)!.neuter;
+    }
+  }
+
   static bool coinFlip() {
     var result = (new Random()).nextInt(4) % 2 == 0;
     return result;

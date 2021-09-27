@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
-import 'package:navika/models/models.dart';
+import 'package:navika/state/cases/case-question-state-item.dart';
 import 'package:navika/utilities/navika-helpers.dart';
-import 'package:navika/widgets/shared/case-drop-down.dart';
-import 'package:navika/widgets/shared/case-free-form.dart';
-import 'package:navika/widgets/shared/exercise-row-card.dart';
+import 'package:navika/widgets/exercises/declension/shared/case-drop-down.dart';
+import 'package:navika/widgets/exercises/declension/shared/case-free-form.dart';
+import 'package:navika/widgets/exercises/declension/shared/case-exercise-row-card.dart';
 
-class QuestionContent extends StatelessWidget {
+class CaseQuestionContent extends StatelessWidget {
   final Function(GrammarTypes, String) onChanged;
-  final QuestionStateItem stateItem;
+  final CaseQuestionStateItem stateItem;
   final EntryTypes entryType;
 
-  QuestionContent({
+  CaseQuestionContent({
     required this.onChanged,
     required this.stateItem,
     required this.entryType,
@@ -171,7 +171,7 @@ class QuestionContent extends StatelessWidget {
         ),
     ];
 
-    return ExerciseRowCard(
+    return CaseExerciseRowCard(
       combos: stateItem.combos,
       isAllCorrect: isAllCorrect,
       isPlural: stateItem.combos.isPlural,

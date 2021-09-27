@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
-import 'package:navika/models/models.dart';
-import 'package:navika/state/case-exercises.dart';
+import 'package:navika/state/cases/case-exercises.dart';
+import 'package:navika/state/cases/case-question-state-item.dart';
 import 'package:navika/state/settings.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/shared/footer-buttons.dart';
 import 'package:navika/widgets/shared/navika-banner.dart';
 import 'package:navika/widgets/shared/navika-drawer.dart';
-import 'package:navika/widgets/shared/question-content.dart';
+import 'package:navika/widgets/exercises/declension/shared/case-question-content.dart';
 import 'package:provider/provider.dart';
 
 class CaseExercise extends StatelessWidget {
@@ -56,13 +56,13 @@ class CaseExercise extends StatelessWidget {
                       children: [
                         banner,
                         ...model.exerciseItems[caseType]!.take(BATCH_COUNT).map(
-                              (QuestionStateItem e) => QuestionContent(
+                              (CaseQuestionStateItem e) => CaseQuestionContent(
                                 stateItem: e,
                                 entryType: settingsModel.settings.entryType,
                                 onChanged: (GrammarTypes grammarType,
                                     String newValue) {
                                   final newItem =
-                                      QuestionStateItem(combos: e.combos);
+                                      CaseQuestionStateItem(combos: e.combos);
 
                                   newItem.userAdjResponse =
                                       grammarType == GrammarTypes.Adjective

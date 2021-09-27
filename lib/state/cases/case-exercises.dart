@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:navika/models/enums.dart';
-import 'package:navika/models/models.dart';
+import 'package:navika/state/cases/case-question-state-item.dart';
 import 'package:navika/widgets/content-generators/akuzativ-generators.dart';
 import 'package:navika/widgets/content-generators/nominativ-generators.dart';
 import 'package:navika/widgets/content-generators/instrumental-generators.dart';
@@ -9,19 +9,19 @@ import 'package:navika/widgets/content-generators/genetiv-generators.dart';
 import 'package:navika/widgets/content-generators/lokativ-generators.dart';
 
 class CaseExercises with ChangeNotifier {
-  Map<Cases, List<QuestionStateItem>> exerciseItems = {};
+  Map<Cases, List<CaseQuestionStateItem>> exerciseItems = {};
 
   CaseExercises({Cases? caseType}) {
     if (caseType == null) return;
 
-    List<QuestionStateItem> items = getItems(caseType);
+    List<CaseQuestionStateItem> items = getItems(caseType);
     exerciseItems[caseType] = items;
 
     notifyListeners();
   }
 
-  List<QuestionStateItem> getItems(Cases caseType) {
-    List<QuestionStateItem> items = [];
+  List<CaseQuestionStateItem> getItems(Cases caseType) {
+    List<CaseQuestionStateItem> items = [];
 
     switch (caseType) {
       case Cases.All:
@@ -61,14 +61,14 @@ class CaseExercises with ChangeNotifier {
     return items;
   }
 
-  void add(Cases caseType, QuestionStateItem item) {
+  void add(Cases caseType, CaseQuestionStateItem item) {
     exerciseItems[caseType]!.add(item);
     notifyListeners();
   }
 
 
   void modifyStateItem(
-      Cases caseType, QuestionStateItem toModify, QuestionStateItem newValue) {
+      Cases caseType, CaseQuestionStateItem toModify, CaseQuestionStateItem newValue) {
     toModify.combos = newValue.combos;
     toModify.isCorrect = newValue.isCorrect;
     toModify.userAdjResponse = newValue.userAdjResponse;
@@ -79,7 +79,7 @@ class CaseExercises with ChangeNotifier {
     notifyListeners();
   }
 
-  List<QuestionStateItem> shuffleAndClear(
+  List<CaseQuestionStateItem> shuffleAndClear(
       {required Cases caseType, bool notify: true}) {
     exerciseItems[caseType]!.shuffle();
     exerciseItems[caseType]!.forEach((element) {

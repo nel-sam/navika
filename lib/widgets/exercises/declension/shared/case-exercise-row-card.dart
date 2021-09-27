@@ -4,9 +4,10 @@ import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:navika/widgets/shared/exercise-help.dart';
+import 'package:navika/widgets/exercises/declension/shared/case-exercise-help.dart';
+import 'package:navika/widgets/shared/icon-text-pair.dart';
 
-class ExerciseRowCard extends StatelessWidget {
+class CaseExerciseRowCard extends StatelessWidget {
   final PANCombo combos;
   final bool isAllCorrect;
   final List<Widget> children;
@@ -14,7 +15,7 @@ class ExerciseRowCard extends StatelessWidget {
   final bool isAnimate;
   final Genders gender;
 
-  const ExerciseRowCard({
+  const CaseExerciseRowCard({
     Key? key,
     required this.isAllCorrect,
     required this.children,
@@ -23,18 +24,6 @@ class ExerciseRowCard extends StatelessWidget {
     required this.gender,
     required this.combos,
   }) : super(key: key);
-
-  String getGenderString(BuildContext context) {
-    switch (gender) {
-      case Genders.Masculine:
-        return AppLocalizations.of(context)!.masculine;
-      case Genders.Feminine:
-        return AppLocalizations.of(context)!.feminine;
-      case Genders.Neuter:
-      case Genders.Unspecific:
-        return AppLocalizations.of(context)!.neuter;
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -94,26 +83,26 @@ class ExerciseRowCard extends StatelessWidget {
                 : Icon(Icons.close_outlined, color: WRONG_COLOR),
           ),
           IconTextPair(
-            N.getGenderIcon(this.gender),
-            getGenderString(context),
+            icon: N.getGenderIcon(this.gender),
+            text: N.getGenderString(context, this.gender),
           ),
           IconTextPair(
-            isPlural ? PLURAL_ICON : SINGULAR_ICON,
-            isPlural
+            icon: isPlural ? PLURAL_ICON : SINGULAR_ICON,
+            text: isPlural
                 ? AppLocalizations.of(context)!.plural
                 : AppLocalizations.of(context)!.singular,
           ),
           if (isAnimate)
             IconTextPair(
-              Icons.person,
-              AppLocalizations.of(context)!.animate,
+              icon: Icons.person,
+              text: AppLocalizations.of(context)!.animate,
             ),
           ElevatedButton(
               onPressed: () => {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => ExerciseHelp(combos: combos),
+                        builder: (context) => CaseExerciseHelp(combos: combos),
                       ),
                     ),
                   },
@@ -131,30 +120,6 @@ class ExerciseRowCard extends StatelessWidget {
           children: children
               .map((c) => Padding(padding: const EdgeInsets.all(3), child: c))
               .toList()),
-    );
-  }
-
-  // ignore: non_constant_identifier_names
-  Widget IconTextPair(IconData icon, String text) {
-    const double iconPadding = 4;
-
-    return Container(
-      //width: 120,
-      child: Padding(
-        padding: const EdgeInsets.only(left: 10),
-        child: Row(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(right: iconPadding),
-              child: Icon(
-                icon,
-                color: ACCENT_COLOR,
-              ),
-            ),
-            Text(text),
-          ],
-        ),
-      ),
     );
   }
 }

@@ -3,7 +3,7 @@ import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/exercises/declension/akusativ/akuzativ.dart';
-import 'package:navika/widgets/all-cases.dart';
+import 'package:navika/widgets/exercises/declension/all-cases.dart';
 import 'package:navika/widgets/exercises/declension/dativ/dativ.dart';
 import 'package:navika/widgets/exercise-selection/exercise-button.dart';
 import 'package:navika/widgets/exercises/declension/nominativ/nominativ.dart';

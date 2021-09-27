@@ -4,6 +4,7 @@ import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/models/noun.dart';
 import 'package:navika/models/personal-pronoun.dart';
+import 'package:navika/state/cases/case-question-state-item.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 
 class DativGenerators {
@@ -46,7 +47,7 @@ class DativGenerators {
     return StaticSentenceParts(start: start, end: end);
   }
 
-  static List<QuestionStateItem> initializePANStateItems() {
+  static List<CaseQuestionStateItem> initializePANStateItems() {
     final combos = N.getPANCombos(
       caseType: Cases.Dat,
       bank: wordBank,
@@ -56,7 +57,7 @@ class DativGenerators {
     );
 
     final result = combos.map((c) {
-      return QuestionStateItem(combos: c);
+      return CaseQuestionStateItem(combos: c);
     });
 
     return result.toList();

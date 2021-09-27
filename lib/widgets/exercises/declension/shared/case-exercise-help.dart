@@ -14,11 +14,11 @@ import 'package:navika/widgets/grammar/grammar-guide/child-widgets/navika-subhea
 import 'package:navika/widgets/shared/navika-text.dart';
 import 'package:navika/widgets/shared/translation-link.dart';
 
-class ExerciseHelp extends StatelessWidget {
+class CaseExerciseHelp extends StatelessWidget {
   final PANCombo combos;
   final String joinChar = '/';
 
-  const ExerciseHelp({
+  const CaseExerciseHelp({
     Key? key,
     required this.combos,
   }) : super(key: key);
