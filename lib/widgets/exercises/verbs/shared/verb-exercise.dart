@@ -36,26 +36,28 @@ class VerbExercise extends StatelessWidget {
               child: Column(
                 children: [
                   banner,
-                  ...model.exerciseItems.map((e) => VerbQuestionContent(
-                        verb: e.verb,
-                        gender: e.gender,
-                        isPlural: e.isPlural,
-                        isAllCorrect: e.isCorrect,
-                        onChanged: (String newValue) {
-                          String correctVal = e.verb
-                              .getConjugation(e.tense, e.conjPronounTypes);
+                  ...model.exerciseItems.map(
+                    (e) => VerbQuestionContent(
+                      verb: e.verb,
+                      gender: e.gender,
+                      isPlural: e.isPlural,
+                      isAllCorrect: e.isCorrect,
+                      onChanged: (String newValue) {
+                        String correctVal =
+                            e.verb.getConjugation(e.tense, e.conjPronounTypes);
 
-                          final newState = VerbQuestionStateItem(
-                            tense: e.tense,
-                            verb: e.verb,
-                            gender: e.gender,
-                            isPlural: e.isPlural,
-                            conjPronounTypes: e.conjPronounTypes,
-                            isCorrect: newValue == correctVal,
-                          );
-                          model.modifyStateItem(e, newState);
-                        },
-                      ))
+                        final newState = VerbQuestionStateItem(
+                          tense: e.tense,
+                          verb: e.verb,
+                          gender: e.gender,
+                          isPlural: e.isPlural,
+                          conjPronounTypes: e.conjPronounTypes,
+                          isCorrect: newValue == correctVal,
+                        );
+                        model.modifyStateItem(e, newState);
+                      },
+                    ),
+                  )
                 ],
               ),
             ),

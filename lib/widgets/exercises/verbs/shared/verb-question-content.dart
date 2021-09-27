@@ -26,7 +26,9 @@ class VerbQuestionContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Column(
-        children: [getHeader(context, verb)],
+        children: [
+          getHeader(context, verb),
+        ],
       ),
     );
   }

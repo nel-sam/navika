@@ -45,6 +45,7 @@ class CaseExerciseRowCard extends StatelessWidget {
                   color: bgColor,
                   boxShadow: [
                     BoxShadow(
+                      // TODO: Make the box shadow stuff a shared widget
                       color: this.isAllCorrect
                           ? CORRECT_COLOR.withOpacity(0.4)
                           : WRONG_COLOR.withOpacity(0.4),
