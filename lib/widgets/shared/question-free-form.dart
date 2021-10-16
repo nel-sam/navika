@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:navika/constants.dart';
 
-class CaseFreeForm extends StatefulWidget {
+class QuestionFreeForm extends StatefulWidget {
   final String hintValue;
   final String activeValue;
   final List<String> correctValues;
   final Function(String) onChanged;
 
-  const CaseFreeForm({
+  const QuestionFreeForm({
     Key? key,
     required this.hintValue,
     required this.onChanged,
@@ -17,10 +17,10 @@ class CaseFreeForm extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _CaseFreeFormState createState() => _CaseFreeFormState();
+  _QuestionFreeFormState createState() => _QuestionFreeFormState();
 }
 
-class _CaseFreeFormState extends State<CaseFreeForm> {
+class _QuestionFreeFormState extends State<QuestionFreeForm> {
   final controller = TextEditingController();
 
   @override

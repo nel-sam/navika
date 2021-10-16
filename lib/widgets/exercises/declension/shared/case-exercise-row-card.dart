@@ -6,6 +6,7 @@ import 'package:navika/utilities/navika-helpers.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/widgets/exercises/declension/shared/case-exercise-help.dart';
 import 'package:navika/widgets/shared/icon-text-pair.dart';
+import 'package:navika/widgets/shared/shadow-box.dart';
 
 class CaseExerciseRowCard extends StatelessWidget {
   final PANCombo combos;
@@ -28,9 +29,6 @@ class CaseExerciseRowCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
-    final bgColor = N.isDarkTheme(context)
-        ? Theme.of(context).backgroundColor
-        : Colors.white;
 
     return Container(
       width: screenWidth > 840 ? screenWidth / 2.5 : screenWidth,
@@ -39,22 +37,8 @@ class CaseExerciseRowCard extends StatelessWidget {
           Flexible(
             child: Padding(
               padding: const EdgeInsets.only(bottom: 8.0),
-              child: Container(
-                padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
-                decoration: BoxDecoration(
-                  color: bgColor,
-                  boxShadow: [
-                    BoxShadow(
-                      // TODO: Make the box shadow stuff a shared widget
-                      color: this.isAllCorrect
-                          ? CORRECT_COLOR.withOpacity(0.4)
-                          : WRONG_COLOR.withOpacity(0.4),
-                      spreadRadius: 1,
-                      blurRadius: 1,
-                    ),
-                  ],
-                ),
-                margin: EdgeInsets.only(top: 10),
+              child: ShadowBox(
+                isCorrect: this.isAllCorrect,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,

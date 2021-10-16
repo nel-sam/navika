@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
+import 'package:navika/models/verb.dart';
 import 'package:navika/state/verbs/verb-exercises.dart';
 import 'package:navika/state/verbs/verb-question-state-item.dart';
 import 'package:navika/utilities/navika-helpers.dart';
@@ -39,21 +40,26 @@ class VerbExercise extends StatelessWidget {
                   ...model.exerciseItems.map(
                     (e) => VerbQuestionContent(
                       verb: e.verb,
-                      gender: e.gender,
-                      isPlural: e.isPlural,
+                      // gender: e.gender,
+                      // isPlural: e.isPlural,
+                      state: e.userEntryState,
                       isAllCorrect: e.isCorrect,
-                      onChanged: (String newValue) {
+                      onChanged: (ConjPronounTypes pronoun, String newValue) {
                         String correctVal =
-                            e.verb.getConjugation(e.tense, e.conjPronounTypes);
+                            e.verb.getConjugation(e.tense, pronoun);
 
                         final newState = VerbQuestionStateItem(
                           tense: e.tense,
                           verb: e.verb,
-                          gender: e.gender,
-                          isPlural: e.isPlural,
-                          conjPronounTypes: e.conjPronounTypes,
-                          isCorrect: newValue == correctVal,
+                          // gender: e.gender,
+                          // isPlural: e.isPlural,
+                          // conjPronounTypes: e.conjPronounTypes,
+                          // isCorrect: newValue == correctVal,
                         );
+
+                        newState.userEntryState[pronoun] = newValue;
+                        newState.updateIsCorrect();
+
                         model.modifyStateItem(e, newState);
                       },
                     ),

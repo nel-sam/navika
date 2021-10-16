@@ -4,7 +4,7 @@ import 'package:navika/models/enums.dart';
 import 'package:navika/state/cases/case-question-state-item.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/exercises/declension/shared/case-drop-down.dart';
-import 'package:navika/widgets/exercises/declension/shared/case-free-form.dart';
+import 'package:navika/widgets/shared/question-free-form.dart';
 import 'package:navika/widgets/exercises/declension/shared/case-exercise-row-card.dart';
 
 class CaseQuestionContent extends StatelessWidget {
@@ -82,7 +82,7 @@ class CaseQuestionContent extends StatelessWidget {
     freeForms() {
       return [
         if (usePossPronouns)
-          CaseFreeForm(
+          QuestionFreeForm(
             hintValue: stateItem.combos.possPronoun!.dictionary,
             activeValue: stateItem.userPossPronResponse,
             correctValues: stateItem.combos.correctPossPronouns,
@@ -91,7 +91,7 @@ class CaseQuestionContent extends StatelessWidget {
             },
           ),
         if (useAdj)
-          CaseFreeForm(
+          QuestionFreeForm(
             hintValue: stateItem.combos.adjective!.dictionary,
             activeValue: stateItem.userAdjResponse,
             correctValues: stateItem.combos.correctAdjs,
@@ -100,7 +100,7 @@ class CaseQuestionContent extends StatelessWidget {
             },
           ),
         if (useNoun)
-          CaseFreeForm(
+          QuestionFreeForm(
             hintValue: stateItem.combos.noun!.dictionary,
             activeValue: stateItem.userNounResponse,
             correctValues: stateItem.combos.correctNouns,
@@ -109,7 +109,7 @@ class CaseQuestionContent extends StatelessWidget {
             },
           ),
         if (usePersPron)
-          CaseFreeForm(
+          QuestionFreeForm(
             hintValue: stateItem.combos.personalPronoun!.dictionary,
             activeValue: stateItem.userPersPronResponse,
             correctValues: stateItem.combos.correctPersPronouns,
