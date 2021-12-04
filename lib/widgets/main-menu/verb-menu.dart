@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:navika/widgets/exercise-selection/exercise-button.dart';
 import 'package:navika/widgets/exercises/verbs/past-tense.dart';
+import 'package:navika/widgets/main-menu/exercise-button.dart';
 
 class VerbMenu extends StatelessWidget {
   @override

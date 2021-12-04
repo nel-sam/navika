@@ -5,12 +5,12 @@ import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/exercises/declension/akusativ/akuzativ.dart';
 import 'package:navika/widgets/exercises/declension/all-cases.dart';
 import 'package:navika/widgets/exercises/declension/dativ/dativ.dart';
-import 'package:navika/widgets/exercise-selection/exercise-button.dart';
 import 'package:navika/widgets/exercises/declension/nominativ/nominativ.dart';
 import 'package:navika/widgets/exercises/declension/genitiv/genitiv.dart';
 import 'package:navika/widgets/exercises/declension/instrumental/instrumental.dart';
 import 'package:navika/widgets/exercises/declension/lokativ/lokativ.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:navika/widgets/main-menu/exercise-button.dart';
 
 class DeclensionMenu extends StatelessWidget {
   @override

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/utilities/navika-helpers.dart';
-import 'package:navika/widgets/exercise-selection/exercise-button.dart';
 import 'package:navika/widgets/grammar/grammar-guide/declension-guide.dart';
 import 'package:navika/widgets/grammar/grammar-guide/tables.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:navika/widgets/main-menu/exercise-button.dart';
 
 class GrammarMenu extends StatelessWidget {
   @override

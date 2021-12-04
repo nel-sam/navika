@@ -20,7 +20,9 @@ class NominativGenerators {
       } else {
         start = noun.gender == Genders.Feminine ? 'One su' : 'Oni su';
       }
-    } else if (!noun.isAnimate && isPlural) {
+    } else if (!noun.isAnimate &&
+        isPlural &&
+        !noun.tags.contains(Tags.Location)) {
       if (pronoun != null && pronoun.dictionary == 'svaki') {
         start = '';
         end = 'je ';
@@ -54,6 +56,8 @@ class NominativGenerators {
         else
           start = 'To je bilo';
       }
+    } else if (!noun.isAnimate && isPlural) {
+      start = "Te stvari su";
     }
 
     if (start == '' && end == '') {

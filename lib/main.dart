@@ -8,8 +8,8 @@ import 'package:navika/state/cases/case-exercises.dart';
 import 'package:navika/state/settings.dart';
 import 'package:navika/state/verbs/verb-exercises.dart';
 import 'package:navika/utilities/navika-helpers.dart';
-import 'package:navika/widgets/exercise-selection/exercise-selection.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:navika/widgets/main-menu/main-menu.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -95,7 +95,7 @@ class NHomePage extends StatelessWidget {
               width: adBanner.size.width.toDouble(),
               height: adBanner.size.height.toDouble(),
             ),
-            ExerciseSelection(),
+            MainMenu(),
           ],
         ),
       ),
