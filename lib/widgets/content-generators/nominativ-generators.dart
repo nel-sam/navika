@@ -10,58 +10,25 @@ import 'package:navika/utilities/navika-helpers.dart';
 class NominativGenerators {
   static StaticSentenceParts getStaticSentenceParts(
       Noun noun, bool isPlural, Adjective? pronoun, Adjective? adjective) {
-    final tense = N.getRandomTense();
     String start = '';
     String end = '';
 
-    if (noun.isAnimate && isPlural) {
-      if (tense == TenseEnum.Past || tense == TenseEnum.Conditional) {
-        start = noun.gender == Genders.Feminine ? 'One su bile' : 'Oni su bili';
-      } else {
-        start = noun.gender == Genders.Feminine ? 'One su' : 'Oni su';
+    if (noun.isAnimate) {
+      switch (noun.gender) {
+        case Genders.Masculine:
+          start = isPlural ? 'Oni su' : 'On je';
+          break;
+        case Genders.Feminine:
+          start = isPlural ? 'One su' : 'Ona je';
+          break;
+        case Genders.Unspecific:
+        case Genders.Neuter:
+          break;
       }
-    } else if (!noun.isAnimate &&
-        isPlural &&
-        !noun.tags.contains(Tags.Location)) {
-      if (pronoun != null && pronoun.dictionary == 'svaki') {
-        start = '';
-        end = 'je ';
-
-        if (noun.gender == Genders.Feminine) {
-          end += noun.tags.contains(Tags.Season) ? 'hladna' : 'crvena';
-        } else if (noun.gender == Genders.Masculine) {
-          end += noun.tags.contains(Tags.Season) ? 'hladni' : 'crven';
-        } else {
-          end += noun.tags.contains(Tags.Season) ? 'hladno' : 'crveno';
-        }
-      } else {
-        if (tense == TenseEnum.Future || tense == TenseEnum.Conditional)
-          start = isPlural ? 'One će biti' : 'To će biti';
-        else {
-          start = 'To su';
-        }
-      }
-    } else if (noun.isAnimate && !isPlural) {
-      if (tense == TenseEnum.Past || tense == TenseEnum.Conditional) {
-        start = noun.gender == Genders.Feminine ? 'Ona će biti' : 'On će biti';
-      } else {
-        start = noun.gender == Genders.Feminine ? 'Ona je' : 'On su';
-      }
-    } else if (!noun.isAnimate && !isPlural) {
-      if (tense == TenseEnum.Past || tense == TenseEnum.Conditional) {
-        if (noun.gender == Genders.Feminine) {
-          start = 'To je bila';
-        } else if (noun.gender == Genders.Masculine)
-          start = 'To je bio';
-        else
-          start = 'To je bilo';
-      }
-    } else if (!noun.isAnimate && isPlural) {
-      start = "Te stvari su";
-    }
-
-    if (start == '' && end == '') {
-      start = 'To je';
+    } else if (N.coinFlip()) {
+      start = '';
+    } else {
+      start = isPlural ? 'To su' : 'To je';
     }
 
     return StaticSentenceParts(start: start, end: end);
@@ -74,7 +41,7 @@ class NominativGenerators {
     final verb = N.getBitiConjugation(personalPronoun.nominativ.forms.first);
 
     if (N.coinFlip()) {
-      start = 'To ' + verb;
+      end = verb;
     } else {
       var ocupation = personalPronoun.gender == Genders.Feminine
           ? (personalPronoun.isPlural ? 'učiteljice' : 'učiteljica')

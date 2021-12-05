@@ -36,9 +36,10 @@ class _QuestionFreeFormState extends State<QuestionFreeForm> {
         decoration: InputDecoration(
           isDense: true,
           contentPadding: EdgeInsets.fromLTRB(4, 18, 0, 1),
-          labelText: widget.correctValues.contains(widget.activeValue)
-              ? ''
-              : widget.hintValue,
+          labelText:
+              widget.correctValues.contains(widget.activeValue.toLowerCase())
+                  ? ''
+                  : widget.hintValue,
           enabledBorder: getBorder(),
           focusedBorder: getBorder(),
         ),
@@ -56,7 +57,7 @@ class _QuestionFreeFormState extends State<QuestionFreeForm> {
   OutlineInputBorder getBorder() {
     return OutlineInputBorder(
       borderSide: BorderSide(
-        color: widget.correctValues.contains(widget.activeValue)
+        color: widget.correctValues.contains(widget.activeValue.toLowerCase())
             ? CORRECT_COLOR
             : WRONG_COLOR,
       ),

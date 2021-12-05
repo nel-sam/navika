@@ -32,6 +32,6 @@ class CaseQuestionStateItem {
       return true;
     }
 
-    return acceptedAnswers.contains(actualAnswer);
+    return acceptedAnswers.contains(actualAnswer!.toLowerCase());
   }
 }
