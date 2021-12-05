@@ -11,19 +11,15 @@ class VerbExercises with ChangeNotifier {
         .map((verb) => VerbQuestionStateItem(
               verb: verb,
               tense: VerbTenses.PastPerfect,
-              // isPlural: false,
-              // gender: Genders.Masculine,
-              // conjPronounTypes: ConjPronounTypes.JaMasc,
             ))
         .toList();
   }
 
   void modifyStateItem(
       VerbQuestionStateItem toModify, VerbQuestionStateItem newValue) {
-    //toModify.gender = newValue.gender;
     toModify.isCorrect = newValue.isCorrect;
     toModify.verb = newValue.verb;
-
+    toModify.userEntryState = newValue.userEntryState;
     notifyListeners();
   }
 }

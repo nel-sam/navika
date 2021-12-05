@@ -40,9 +40,6 @@ class VerbQuestionUserEntryStateItem {
 class VerbQuestionStateItem {
   Verb verb;
   VerbTenses tense;
-  // ConjPronounTypes conjPronounTypes;
-  // Genders gender;
-  // bool isPlural;
   late HashMap<ConjPronounTypes, String> userEntryState =
       new HashMap<ConjPronounTypes, String>();
   late bool isCorrect;
@@ -50,9 +47,6 @@ class VerbQuestionStateItem {
   VerbQuestionStateItem({
     required this.tense,
     required this.verb,
-    // required this.gender,
-    // required this.isPlural,
-    // required this.conjPronounTypes,
     this.isCorrect = false,
   });
 

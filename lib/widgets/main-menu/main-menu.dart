@@ -22,12 +22,12 @@ class MainMenu extends StatelessWidget {
         label: AppLocalizations.of(context)!.cases,
         imagePath: CaseImagePaths[Cases.All]!,
       ),
-      // ExerciseButton(
-      //   destination: VerbMenu(),
-      //   icon: Icons.movie_filter,
-      //   label: AppLocalizations.of(context)!.verbs,
-      //   imagePath: 'assets/banners/vespa.jpg',
-      // ),
+      ExerciseButton(
+        destination: VerbMenu(),
+        icon: Icons.movie_filter,
+        label: AppLocalizations.of(context)!.verbs,
+        imagePath: 'assets/banners/vespa.jpg',
+      ),
     ];
 
     return Expanded(

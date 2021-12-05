@@ -13,7 +13,7 @@ class PastTense extends StatelessWidget {
       banner: NavikaBanner(
         imagePath: 'assets/banners/bosna.jpg',
         caseName: title,
-        description: 'TODO: ADD DESC',
+        description: AppLocalizations.of(context)!.pastTenseDesc,
         icons: [Icons.keyboard_return],
       ),
     );

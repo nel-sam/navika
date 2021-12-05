@@ -40,8 +40,6 @@ class VerbExercise extends StatelessWidget {
                   ...model.exerciseItems.map(
                     (e) => VerbQuestionContent(
                       verb: e.verb,
-                      // gender: e.gender,
-                      // isPlural: e.isPlural,
                       state: e.userEntryState,
                       isAllCorrect: e.isCorrect,
                       onChanged: (ConjPronounTypes pronoun, String newValue) {
@@ -51,10 +49,6 @@ class VerbExercise extends StatelessWidget {
                         final newState = VerbQuestionStateItem(
                           tense: e.tense,
                           verb: e.verb,
-                          // gender: e.gender,
-                          // isPlural: e.isPlural,
-                          // conjPronounTypes: e.conjPronounTypes,
-                          // isCorrect: newValue == correctVal,
                         );
 
                         newState.userEntryState[pronoun] = newValue;
