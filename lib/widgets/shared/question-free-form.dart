@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:navika/constants.dart';
+import 'package:navika/extensions.dart';
 
 class QuestionFreeForm extends StatefulWidget {
   final String hintValue;
@@ -37,7 +38,7 @@ class _QuestionFreeFormState extends State<QuestionFreeForm> {
           isDense: true,
           contentPadding: EdgeInsets.fromLTRB(4, 18, 0, 1),
           labelText:
-              widget.correctValues.contains(widget.activeValue.toLowerCase())
+              widget.correctValues.containsCaseInsensitive(widget.activeValue)
                   ? ''
                   : widget.hintValue,
           enabledBorder: getBorder(),
@@ -57,7 +58,7 @@ class _QuestionFreeFormState extends State<QuestionFreeForm> {
   OutlineInputBorder getBorder() {
     return OutlineInputBorder(
       borderSide: BorderSide(
-        color: widget.correctValues.contains(widget.activeValue.toLowerCase())
+        color: widget.correctValues.containsCaseInsensitive(widget.activeValue)
             ? CORRECT_COLOR
             : WRONG_COLOR,
       ),

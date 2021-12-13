@@ -68,14 +68,14 @@ class CaseExerciseRowCard extends StatelessWidget {
                 : Icon(Icons.close_outlined, color: WRONG_COLOR),
           ),
           IconTextPair(
-            icon: N.getGenderIcon(this.gender),
-            text: N.getGenderString(context, this.gender),
-          ),
-          IconTextPair(
             icon: isPlural ? PLURAL_ICON : SINGULAR_ICON,
             text: isPlural
                 ? AppLocalizations.of(context)!.plural
                 : AppLocalizations.of(context)!.singular,
+          ),
+          IconTextPair(
+            icon: N.getGenderIcon(this.gender),
+            text: N.getGenderString(context, this.gender),
           ),
           if (isAnimate)
             IconTextPair(

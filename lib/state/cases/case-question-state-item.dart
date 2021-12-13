@@ -1,4 +1,5 @@
 import 'package:navika/models/models.dart';
+import 'package:navika/extensions.dart';
 
 class CaseQuestionStateItem {
   PANCombo combos;
@@ -32,6 +33,6 @@ class CaseQuestionStateItem {
       return true;
     }
 
-    return acceptedAnswers.contains(actualAnswer!.toLowerCase());
+    return acceptedAnswers.containsCaseInsensitive(actualAnswer ?? "");
   }
 }

@@ -3,6 +3,10 @@ import 'dart:math';
 import 'package:navika/models/models.dart';
 
 extension ExtendedText on List<String> {
+  bool containsCaseInsensitive(String toCheck) {
+    return this.map((e) => e.toLowerCase()).contains(toCheck.toLowerCase());
+  }
+
   List<String> removeList(List<String> toRemove) {
     List<String> result = [...this];
 
