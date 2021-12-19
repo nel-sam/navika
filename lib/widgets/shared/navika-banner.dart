@@ -1,11 +1,15 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
+import 'package:navika/widgets/grammar/grammar-guide/child-widgets/youtube-link.dart';
 
 class NavikaBanner extends StatelessWidget {
   final String imagePath;
   final String caseName;
   final String description;
   final List<IconData> icons;
+  final String youtubeLink;
 
   const NavikaBanner({
     Key? key,
@@ -13,12 +17,22 @@ class NavikaBanner extends StatelessWidget {
     required this.caseName,
     required this.description,
     required this.icons,
+    this.youtubeLink = '',
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    bool hasYouTubeLink = this.youtubeLink.length > 0;
+    double height = this.description.length.toDouble();
+
+    if (height > 300)
+      height = 300;
+    else if (height < 145) height = 145;
+
+    if (hasYouTubeLink) height += 40;
+
     return Container(
-      height: 180,
+      height: height,
       decoration: BoxDecoration(
         image: DecorationImage(
           image: AssetImage(imagePath),
@@ -53,6 +67,7 @@ class NavikaBanner extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(top: 10),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
                     description,
@@ -62,6 +77,11 @@ class NavikaBanner extends StatelessWidget {
                       fontSize: 16,
                     ),
                   ),
+                  if (hasYouTubeLink)
+                    Padding(
+                      padding: const EdgeInsets.only(right: 12.0),
+                      child: YouTubeLink(context, this.youtubeLink),
+                    )
                 ],
               ),
             ),

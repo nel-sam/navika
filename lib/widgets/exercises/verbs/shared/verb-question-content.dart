@@ -12,8 +12,6 @@ import 'package:navika/widgets/shared/shadow-box.dart';
 
 class VerbQuestionContent extends StatelessWidget {
   final Verb verb;
-  // final Genders gender;
-  // final bool isPlural;
   final bool isAllCorrect;
   final Function(ConjPronounTypes, String) onChanged;
   final HashMap<ConjPronounTypes, String> state;
@@ -21,8 +19,6 @@ class VerbQuestionContent extends StatelessWidget {
   const VerbQuestionContent({
     Key? key,
     required this.verb,
-    // required this.gender,
-    // required this.isPlural,
     required this.isAllCorrect,
     required this.onChanged,
     required this.state,
@@ -44,70 +40,127 @@ class VerbQuestionContent extends StatelessWidget {
   Widget getBody(BuildContext context) {
     return Padding(
         padding: const EdgeInsets.all(10),
-        child: Column(
+        child: Row(
           children: [
-            // Ja masc
-            Blah(
-              startText: 'Ja sam',
-              gender: Genders.Masculine,
-              activeValue: this.state[ConjPronounTypes.JaMasc] ?? '.',
-              correctValues: [this.verb.pastPerfect!.jaMasc],
-              verb: verb,
-              onChanged: onChanged,
+            Column(
+              children: [
+                VerbFreeForm(
+                  startText: 'Ja sam',
+                  gender: Genders.Masculine,
+                  activeValue: this.state[ConjPronounTypes.JaMasc] ?? '.',
+                  correctValues: [this.verb.pastPerfect!.jaMasc],
+                  verb: verb,
+                  onChanged: onChanged,
+                ),
+                VerbFreeForm(
+                  startText: 'Ja sam',
+                  gender: Genders.Feminine,
+                  activeValue: this.state[ConjPronounTypes.JaFem] ?? '.',
+                  correctValues: [this.verb.pastPerfect!.jaFem],
+                  verb: verb,
+                  onChanged: onChanged,
+                ),
+                VerbFreeForm(
+                  startText: 'Ti si',
+                  gender: Genders.Masculine,
+                  activeValue: this.state[ConjPronounTypes.tiMasc] ?? '.',
+                  correctValues: [this.verb.pastPerfect!.tiMasc],
+                  verb: verb,
+                  onChanged: onChanged,
+                ),
+                VerbFreeForm(
+                  startText: 'Ti si',
+                  gender: Genders.Feminine,
+                  activeValue: this.state[ConjPronounTypes.tiFem] ?? '.',
+                  correctValues: [this.verb.pastPerfect!.tiFem],
+                  verb: verb,
+                  onChanged: onChanged,
+                ),
+                VerbFreeForm(
+                  startText: 'On je',
+                  gender: Genders.Masculine,
+                  activeValue: this.state[ConjPronounTypes.on] ?? '.',
+                  correctValues: [this.verb.pastPerfect!.on],
+                  verb: verb,
+                  onChanged: onChanged,
+                ),
+                VerbFreeForm(
+                  startText: 'Ona je',
+                  gender: Genders.Feminine,
+                  activeValue: this.state[ConjPronounTypes.ona] ?? '.',
+                  correctValues: [this.verb.pastPerfect!.ona],
+                  verb: verb,
+                  onChanged: onChanged,
+                ),
+                VerbFreeForm(
+                  startText: 'Ono je',
+                  gender: Genders.Neuter,
+                  activeValue: this.state[ConjPronounTypes.ono] ?? '.',
+                  correctValues: [this.verb.pastPerfect!.ono],
+                  verb: verb,
+                  onChanged: onChanged,
+                ),
+              ],
             ),
-            // Ja fem
-            Blah(
-              startText: 'Ja sam',
-              gender: Genders.Feminine,
-              activeValue: this.state[ConjPronounTypes.JaFem] ?? '.',
-              correctValues: [this.verb.pastPerfect!.jaFem],
-              verb: verb,
-              onChanged: onChanged,
-            ),
-            // Ti masc
-            Blah(
-              startText: 'Ti si',
-              gender: Genders.Masculine,
-              activeValue: this.state[ConjPronounTypes.tiMasc] ?? '.',
-              correctValues: [this.verb.pastPerfect!.tiMasc],
-              verb: verb,
-              onChanged: onChanged,
-            ),
-            // Ti fem
-            Blah(
-              startText: 'Ti si',
-              gender: Genders.Feminine,
-              activeValue: this.state[ConjPronounTypes.tiFem] ?? '.',
-              correctValues: [this.verb.pastPerfect!.tiFem],
-              verb: verb,
-              onChanged: onChanged,
-            ),
-            // On
-            Blah(
-              startText: 'On je',
-              gender: Genders.Masculine,
-              activeValue: this.state[ConjPronounTypes.on] ?? '.',
-              correctValues: [this.verb.pastPerfect!.on],
-              verb: verb,
-              onChanged: onChanged,
-            ),
-            // Ona
-            Blah(
-              startText: 'Ona je',
-              gender: Genders.Feminine,
-              activeValue: this.state[ConjPronounTypes.ona] ?? '.',
-              correctValues: [this.verb.pastPerfect!.ona],
-              verb: verb,
-              onChanged: onChanged,
-            ),
-            // Ona
-            Blah(
-              startText: 'Ono je',
-              gender: Genders.Neuter,
-              activeValue: this.state[ConjPronounTypes.ono] ?? '.',
-              correctValues: [this.verb.pastPerfect!.ono],
-              verb: verb,
-              onChanged: onChanged,
+            Column(
+              children: [
+                VerbFreeForm(
+                  startText: 'Mi smo',
+                  gender: Genders.Masculine,
+                  activeValue: this.state[ConjPronounTypes.miMasc] ?? '.',
+                  correctValues: [this.verb.pastPerfect!.miMasc],
+                  verb: verb,
+                  onChanged: onChanged,
+                ),
+                VerbFreeForm(
+                  startText: 'Mi smo',
+                  gender: Genders.Feminine,
+                  activeValue: this.state[ConjPronounTypes.miFem] ?? '.',
+                  correctValues: [this.verb.pastPerfect!.miFem],
+                  verb: verb,
+                  onChanged: onChanged,
+                ),
+                VerbFreeForm(
+                  startText: 'Vi ste',
+                  gender: Genders.Masculine,
+                  activeValue: this.state[ConjPronounTypes.viMasc] ?? '.',
+                  correctValues: [this.verb.pastPerfect!.viMasc],
+                  verb: verb,
+                  onChanged: onChanged,
+                ),
+                VerbFreeForm(
+                  startText: 'Vi ste',
+                  gender: Genders.Feminine,
+                  activeValue: this.state[ConjPronounTypes.viFem] ?? '.',
+                  correctValues: [this.verb.pastPerfect!.viFem],
+                  verb: verb,
+                  onChanged: onChanged,
+                ),
+                VerbFreeForm(
+                  startText: 'Oni su',
+                  gender: Genders.Masculine,
+                  activeValue: this.state[ConjPronounTypes.oni] ?? '.',
+                  correctValues: [this.verb.pastPerfect!.oni],
+                  verb: verb,
+                  onChanged: onChanged,
+                ),
+                VerbFreeForm(
+                  startText: 'One su',
+                  gender: Genders.Feminine,
+                  activeValue: this.state[ConjPronounTypes.one] ?? '.',
+                  correctValues: [this.verb.pastPerfect!.one],
+                  verb: verb,
+                  onChanged: onChanged,
+                ),
+                VerbFreeForm(
+                  startText: 'Ona su',
+                  gender: Genders.Neuter,
+                  activeValue: this.state[ConjPronounTypes.onaPl] ?? '.',
+                  correctValues: [this.verb.pastPerfect!.onaPl],
+                  verb: verb,
+                  onChanged: onChanged,
+                ),
+              ],
             ),
           ],
         ));
@@ -117,13 +170,13 @@ class VerbQuestionContent extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 4, left: 10, right: 10),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Padding(
             padding: const EdgeInsets.only(right: 20),
             child: this.isAllCorrect
-                ? Icon(Icons.check_circle_outline, color: CORRECT_COLOR)
-                : Icon(Icons.close_outlined, color: WRONG_COLOR),
+                ? Icon(CORRECT_ANSWER_ICON, color: CORRECT_COLOR)
+                : Icon(WRONG_ANSWER_ICON, color: WRONG_COLOR),
           ),
           Padding(
             padding: const EdgeInsets.only(right: 20),
@@ -145,8 +198,8 @@ class VerbQuestionContent extends StatelessWidget {
   }
 }
 
-class Blah extends StatelessWidget {
-  const Blah({
+class VerbFreeForm extends StatelessWidget {
+  const VerbFreeForm({
     Key? key,
     required this.startText,
     required this.activeValue,
@@ -165,32 +218,35 @@ class Blah extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 18.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              Text(
-                this.startText,
-                style: TextStyle(fontSize: EXERCISE_FONT_STYLE),
-              ),
-              IconTextPair(
-                icon: N.getGenderIcon(gender),
-                text: N.getGenderString(context, gender),
-              ),
-            ],
-          ),
-          QuestionFreeForm(
-            hintValue: this.verb.infinitive,
-            onChanged: (String newValue) =>
-                this.onChanged(ConjPronounTypes.JaMasc, newValue),
-            activeValue: this.activeValue,
-            correctValues: this.correctValues,
-          ),
-        ],
+    return Container(
+      width: 200,
+      child: Padding(
+        padding: const EdgeInsets.all(18.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Text(
+                  this.startText,
+                  style: TextStyle(fontSize: EXERCISE_FONT_STYLE),
+                ),
+                IconTextPair(
+                  icon: N.getGenderIcon(gender),
+                  text: N.getGenderString(context, gender),
+                ),
+              ],
+            ),
+            QuestionFreeForm(
+              hintValue: this.verb.infinitive,
+              onChanged: (String newValue) =>
+                  this.onChanged(ConjPronounTypes.JaMasc, newValue),
+              activeValue: this.activeValue,
+              correctValues: this.correctValues,
+            ),
+          ],
+        ),
       ),
     );
   }

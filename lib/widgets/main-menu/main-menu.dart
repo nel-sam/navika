@@ -18,13 +18,13 @@ class MainMenu extends StatelessWidget {
       ),
       ExerciseButton(
         destination: DeclensionMenu(),
-        icon: Icons.group,
+        icon: Icons.change_circle,
         label: AppLocalizations.of(context)!.cases,
         imagePath: CaseImagePaths[Cases.All]!,
       ),
       ExerciseButton(
         destination: VerbMenu(),
-        icon: Icons.movie_filter,
+        icon: Icons.nordic_walking,
         label: AppLocalizations.of(context)!.verbs,
         imagePath: 'assets/banners/vespa.jpg',
       ),

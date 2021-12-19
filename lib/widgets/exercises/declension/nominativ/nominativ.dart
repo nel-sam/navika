@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/exercises/declension/shared/case-exercise.dart';
@@ -17,6 +18,7 @@ class Nominativ extends StatelessWidget {
         imagePath: CaseImagePaths[Cases.Nom]!,
         caseName: title,
         description: AppLocalizations.of(context)!.nominativDescription,
+        youtubeLink: RECOMMENDED_VIDEO_NOM,
         icons: [
           Icons.category_outlined,
           Icons.nature,

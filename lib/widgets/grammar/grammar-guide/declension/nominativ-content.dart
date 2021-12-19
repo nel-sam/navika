@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -114,7 +115,7 @@ Widget getDescription(BuildContext context) {
   return Column(
     children: [
       NText([N.NTextSpan(AppLocalizations.of(context)!.nominativDescription)]),
-      YouTubeLink(context, 'https://www.youtube.com/watch?v=Vj6nT2UTfH0')
+      YouTubeLink(context, RECOMMENDED_VIDEO_NOM)
     ],
   );
 }

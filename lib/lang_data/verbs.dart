@@ -3,6 +3,7 @@ import 'package:navika/models/verb.dart';
 final List<Verb> verbWordBank = [
   Verb(
     infinitive: 'biti',
+    isIrregular: true,
     isReflexive: true,
     present: ConjugationSet(
       ja: 'sam',
@@ -32,5 +33,38 @@ final List<Verb> verbWordBank = [
       one: 'bile',
       onaPl: 'bila',
     ),
-  )
+  ),
+  Verb(
+    infinitive: 'vidjeti',
+    isIrregular: true,
+    isReflexive: true,
+    present: ConjugationSet(
+      ja: 'vidim',
+      ti: 'vidiš',
+      on: 'vidi',
+      ona: 'vidi',
+      ono: 'vidi',
+      mi: 'vidimo',
+      vi: 'vidite',
+      oni: 'vide',
+      one: 'vide',
+      onaPl: 'vide',
+    ),
+    pastPerfect: ParticipleSet(
+      jaMasc: 'vidio',
+      jaFem: 'vidjela',
+      tiMasc: 'vidio',
+      tiFem: 'vidjela',
+      miMasc: 'vidjeli',
+      miFem: 'vidjele',
+      on: 'vidio',
+      ona: 'vidjela',
+      ono: 'vidjelo',
+      viMasc: 'vidjeli',
+      viFem: 'vidjele',
+      oni: 'vidjeli',
+      one: 'vidjele',
+      onaPl: 'vidjela',
+    ),
+  ),
 ];

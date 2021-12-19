@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:navika/models/enums.dart';
+import 'package:navika/widgets/grammar/grammar-guide/child-widgets/youtube-link.dart';
 
 const BATCH_COUNT = 30;
 
@@ -40,6 +42,9 @@ const MASCULINE_ICON = Icons.male;
 const FEMININE_ICON = Icons.female;
 const NEUTER_ICON = Icons.hide_source_outlined;
 
+const CORRECT_ANSWER_ICON = Icons.check_circle_outline;
+const WRONG_ANSWER_ICON = Icons.close_outlined;
+
 const MASCULINE_COLOR = Colors.blue;
 const FEMININE_COLOR = Colors.red;
 const NEUTER_COLOR = Colors.green;
@@ -50,3 +55,10 @@ const APP_BAR_TEXTTHEME_LIGHT = TextTheme(
 );
 const APP_BAR_ICONTHEME_DARK = IconThemeData();
 const APP_BAR_ICONTHEME_LIGHT = IconThemeData(color: ACCENT_COLOR);
+
+const RECOMMENDED_VIDEO_NOM = 'https://www.youtube.com/watch?v=Vj6nT2UTfH0';
+const RECOMMENDED_VIDEO_AKU = 'https://www.youtube.com/watch?v=MaDzMpCP34A';
+const RECOMMENDED_VIDEO_INST = 'https://www.youtube.com/watch?v=sOX2Z70g73Q';
+const RECOMMENDED_VIDEO_LOK = 'https://www.youtube.com/watch?v=w1g5IV6cbY8';
+const RECOMMENDED_VIDEO_PAST_SIMPLE =
+    'https://www.youtube.com/watch?v=9m4sMQ_qnjs';

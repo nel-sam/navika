@@ -5,9 +5,9 @@ class ExerciseButton extends StatelessWidget {
   const ExerciseButton({
     Key? key,
     required this.destination,
-    required this.icon,
     required this.label,
     required this.imagePath,
+    required this.icon,
   }) : super(key: key);
 
   final Widget destination;

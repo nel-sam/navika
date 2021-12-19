@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/widgets/exercises/declension/shared/case-exercise.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -16,6 +17,7 @@ class Lokativ extends StatelessWidget {
         imagePath: CaseImagePaths[Cases.Lok]!,
         caseName: title,
         description: AppLocalizations.of(context)!.lokativDescription,
+        youtubeLink: RECOMMENDED_VIDEO_LOK,
         icons: [
           Icons.location_on_outlined,
           Icons.message,

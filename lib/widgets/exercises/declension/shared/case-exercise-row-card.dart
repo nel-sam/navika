@@ -64,8 +64,8 @@ class CaseExerciseRowCard extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(right: 20),
             child: this.isAllCorrect
-                ? Icon(Icons.check_circle_outline, color: CORRECT_COLOR)
-                : Icon(Icons.close_outlined, color: WRONG_COLOR),
+                ? Icon(CORRECT_ANSWER_ICON, color: CORRECT_COLOR)
+                : Icon(WRONG_ANSWER_ICON, color: WRONG_COLOR),
           ),
           IconTextPair(
             icon: isPlural ? PLURAL_ICON : SINGULAR_ICON,

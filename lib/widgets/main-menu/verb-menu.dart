@@ -11,7 +11,7 @@ class VerbMenu extends StatelessWidget {
     var buttons = <Widget>[
       ExerciseButton(
         destination: PastTense(),
-        icon: Icons.keyboard_return,
+        icon: Icons.history,
         label: AppLocalizations.of(context)!.pastTense,
         imagePath: 'assets/banners/bosna.jpg',
       ),
