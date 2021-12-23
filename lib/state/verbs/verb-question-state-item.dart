@@ -63,8 +63,9 @@ class VerbQuestionStateItem {
         allCorrect = false;
       }
 
-      var entryValue = this.userEntryState[key] ?? '';
+      var entryValue = this.userEntryState[key.toString()] ?? '';
       String correctAnsw = this.verb.getConjugation(this.tense, key);
+
       if (!entryValue.containsCaseInsensitive(correctAnsw)) {
         allCorrect = false;
       }
