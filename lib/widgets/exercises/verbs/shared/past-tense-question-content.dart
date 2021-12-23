@@ -10,13 +10,13 @@ import 'package:navika/widgets/shared/question-free-form.dart';
 import 'package:navika/widgets/shared/navika-text.dart';
 import 'package:navika/widgets/shared/shadow-box.dart';
 
-class VerbQuestionContent extends StatelessWidget {
+class PastTenseQuestionContent extends StatelessWidget {
   final Verb verb;
   final bool isAllCorrect;
   final Function(ConjPronounTypes, String) onChanged;
-  final HashMap<ConjPronounTypes, String> state;
+  final HashMap<String, String> state;
 
-  const VerbQuestionContent({
+  const PastTenseQuestionContent({
     Key? key,
     required this.verb,
     required this.isAllCorrect,
@@ -47,6 +47,7 @@ class VerbQuestionContent extends StatelessWidget {
                 VerbFreeForm(
                   startText: 'Ja sam',
                   gender: Genders.Masculine,
+                  conjPronounType: ConjPronounTypes.JaMasc,
                   activeValue: this.state[ConjPronounTypes.JaMasc] ?? '.',
                   correctValues: [this.verb.pastPerfect!.jaMasc],
                   verb: verb,
@@ -55,6 +56,7 @@ class VerbQuestionContent extends StatelessWidget {
                 VerbFreeForm(
                   startText: 'Ja sam',
                   gender: Genders.Feminine,
+                  conjPronounType: ConjPronounTypes.JaFem,
                   activeValue: this.state[ConjPronounTypes.JaFem] ?? '.',
                   correctValues: [this.verb.pastPerfect!.jaFem],
                   verb: verb,
@@ -63,6 +65,7 @@ class VerbQuestionContent extends StatelessWidget {
                 VerbFreeForm(
                   startText: 'Ti si',
                   gender: Genders.Masculine,
+                  conjPronounType: ConjPronounTypes.tiMasc,
                   activeValue: this.state[ConjPronounTypes.tiMasc] ?? '.',
                   correctValues: [this.verb.pastPerfect!.tiMasc],
                   verb: verb,
@@ -71,6 +74,7 @@ class VerbQuestionContent extends StatelessWidget {
                 VerbFreeForm(
                   startText: 'Ti si',
                   gender: Genders.Feminine,
+                  conjPronounType: ConjPronounTypes.tiFem,
                   activeValue: this.state[ConjPronounTypes.tiFem] ?? '.',
                   correctValues: [this.verb.pastPerfect!.tiFem],
                   verb: verb,
@@ -79,6 +83,7 @@ class VerbQuestionContent extends StatelessWidget {
                 VerbFreeForm(
                   startText: 'On je',
                   gender: Genders.Masculine,
+                  conjPronounType: ConjPronounTypes.on,
                   activeValue: this.state[ConjPronounTypes.on] ?? '.',
                   correctValues: [this.verb.pastPerfect!.on],
                   verb: verb,
@@ -87,6 +92,7 @@ class VerbQuestionContent extends StatelessWidget {
                 VerbFreeForm(
                   startText: 'Ona je',
                   gender: Genders.Feminine,
+                  conjPronounType: ConjPronounTypes.ona,
                   activeValue: this.state[ConjPronounTypes.ona] ?? '.',
                   correctValues: [this.verb.pastPerfect!.ona],
                   verb: verb,
@@ -95,6 +101,7 @@ class VerbQuestionContent extends StatelessWidget {
                 VerbFreeForm(
                   startText: 'Ono je',
                   gender: Genders.Neuter,
+                  conjPronounType: ConjPronounTypes.ono,
                   activeValue: this.state[ConjPronounTypes.ono] ?? '.',
                   correctValues: [this.verb.pastPerfect!.ono],
                   verb: verb,
@@ -107,6 +114,7 @@ class VerbQuestionContent extends StatelessWidget {
                 VerbFreeForm(
                   startText: 'Mi smo',
                   gender: Genders.Masculine,
+                  conjPronounType: ConjPronounTypes.miMasc,
                   activeValue: this.state[ConjPronounTypes.miMasc] ?? '.',
                   correctValues: [this.verb.pastPerfect!.miMasc],
                   verb: verb,
@@ -115,6 +123,7 @@ class VerbQuestionContent extends StatelessWidget {
                 VerbFreeForm(
                   startText: 'Mi smo',
                   gender: Genders.Feminine,
+                  conjPronounType: ConjPronounTypes.miFem,
                   activeValue: this.state[ConjPronounTypes.miFem] ?? '.',
                   correctValues: [this.verb.pastPerfect!.miFem],
                   verb: verb,
@@ -123,6 +132,7 @@ class VerbQuestionContent extends StatelessWidget {
                 VerbFreeForm(
                   startText: 'Vi ste',
                   gender: Genders.Masculine,
+                  conjPronounType: ConjPronounTypes.viMasc,
                   activeValue: this.state[ConjPronounTypes.viMasc] ?? '.',
                   correctValues: [this.verb.pastPerfect!.viMasc],
                   verb: verb,
@@ -131,6 +141,7 @@ class VerbQuestionContent extends StatelessWidget {
                 VerbFreeForm(
                   startText: 'Vi ste',
                   gender: Genders.Feminine,
+                  conjPronounType: ConjPronounTypes.viFem,
                   activeValue: this.state[ConjPronounTypes.viFem] ?? '.',
                   correctValues: [this.verb.pastPerfect!.viFem],
                   verb: verb,
@@ -139,6 +150,7 @@ class VerbQuestionContent extends StatelessWidget {
                 VerbFreeForm(
                   startText: 'Oni su',
                   gender: Genders.Masculine,
+                  conjPronounType: ConjPronounTypes.oni,
                   activeValue: this.state[ConjPronounTypes.oni] ?? '.',
                   correctValues: [this.verb.pastPerfect!.oni],
                   verb: verb,
@@ -147,6 +159,7 @@ class VerbQuestionContent extends StatelessWidget {
                 VerbFreeForm(
                   startText: 'One su',
                   gender: Genders.Feminine,
+                  conjPronounType: ConjPronounTypes.one,
                   activeValue: this.state[ConjPronounTypes.one] ?? '.',
                   correctValues: [this.verb.pastPerfect!.one],
                   verb: verb,
@@ -155,6 +168,7 @@ class VerbQuestionContent extends StatelessWidget {
                 VerbFreeForm(
                   startText: 'Ona su',
                   gender: Genders.Neuter,
+                  conjPronounType: ConjPronounTypes.onaPl,
                   activeValue: this.state[ConjPronounTypes.onaPl] ?? '.',
                   correctValues: [this.verb.pastPerfect!.onaPl],
                   verb: verb,
@@ -199,6 +213,14 @@ class VerbQuestionContent extends StatelessWidget {
 }
 
 class VerbFreeForm extends StatelessWidget {
+  final String startText;
+  final String activeValue;
+  final List<String> correctValues;
+  final ConjPronounTypes conjPronounType;
+  final Genders gender;
+  final Verb verb;
+  final Function(ConjPronounTypes p1, String p2) onChanged;
+
   const VerbFreeForm({
     Key? key,
     required this.startText,
@@ -207,14 +229,8 @@ class VerbFreeForm extends StatelessWidget {
     required this.gender,
     required this.verb,
     required this.onChanged,
+    required this.conjPronounType,
   }) : super(key: key);
-
-  final String startText;
-  final String activeValue;
-  final List<String> correctValues;
-  final Genders gender;
-  final Verb verb;
-  final Function(ConjPronounTypes p1, String p2) onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -241,7 +257,7 @@ class VerbFreeForm extends StatelessWidget {
             QuestionFreeForm(
               hintValue: this.verb.infinitive,
               onChanged: (String newValue) =>
-                  this.onChanged(ConjPronounTypes.JaMasc, newValue),
+                  this.onChanged(conjPronounType, newValue),
               activeValue: this.activeValue,
               correctValues: this.correctValues,
             ),

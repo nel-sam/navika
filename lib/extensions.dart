@@ -2,7 +2,13 @@ import 'dart:math';
 
 import 'package:navika/models/models.dart';
 
-extension ExtendedText on List<String> {
+extension ExtendedString on String {
+  bool containsCaseInsensitive(String toCheck) {
+    return this.toLowerCase() == toCheck.toLowerCase();
+  }
+}
+
+extension ExtendedStringList on List<String> {
   bool containsCaseInsensitive(String toCheck) {
     return this.map((e) => e.toLowerCase()).contains(toCheck.toLowerCase());
   }

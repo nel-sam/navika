@@ -1,7 +1,8 @@
 import 'dart:collection';
-
-import 'package:navika/models/enums.dart';
+import 'dart:developer';
+import 'package:flutter/foundation.dart';
 import 'package:navika/models/verb.dart';
+import 'package:navika/extensions.dart';
 
 class VerbQuestionUserEntryStateItem {
   late String jaMasc;
@@ -40,30 +41,36 @@ class VerbQuestionUserEntryStateItem {
 class VerbQuestionStateItem {
   Verb verb;
   VerbTenses tense;
-  late HashMap<ConjPronounTypes, String> userEntryState =
-      new HashMap<ConjPronounTypes, String>();
-  late bool isCorrect;
+  late var userEntryState = new HashMap<String, String>();
+  late bool isAllCorrect;
+  Function notifyListeners;
 
   VerbQuestionStateItem({
     required this.tense,
     required this.verb,
-    this.isCorrect = false,
-  });
+    required this.notifyListeners,
+    this.isAllCorrect = false,
+  }) {
+    log('aqui');
+  }
 
-  void updateIsCorrect() {
-    if (this.userEntryState.length == 0) {
-      this.isCorrect = false;
-      return;
-    }
+  void updateIsAllCorrect() {
+    var allCorrect = true;
 
-    this.isCorrect = true;
+    ConjPronounTypes.values.forEach((key) {
+      if (this.userEntryState.length == 0 ||
+          !this.userEntryState.containsKey(key.toString())) {
+        allCorrect = false;
+      }
 
-    this.userEntryState.forEach((key, value) {
+      var entryValue = this.userEntryState[key] ?? '';
       String correctAnsw = this.verb.getConjugation(this.tense, key);
-      if (value != correctAnsw) {
-        this.isCorrect = false;
-        return;
+      if (!entryValue.containsCaseInsensitive(correctAnsw)) {
+        allCorrect = false;
       }
     });
+
+    this.isAllCorrect = allCorrect;
+    this.notifyListeners();
   }
 }

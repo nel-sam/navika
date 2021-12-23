@@ -1,19 +1,23 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/verb.dart';
 import 'package:navika/state/verbs/verb-exercises.dart';
 import 'package:navika/state/verbs/verb-question-state-item.dart';
 import 'package:navika/utilities/navika-helpers.dart';
-import 'package:navika/widgets/exercises/verbs/shared/verb-question-content.dart';
+import 'package:navika/widgets/exercises/verbs/shared/past-tense-question-content.dart';
 import 'package:navika/widgets/shared/navika-banner.dart';
 import 'package:provider/provider.dart';
 
 class VerbExercise extends StatelessWidget {
   final String title;
   final NavikaBanner banner;
+  final VerbTenses tense;
 
   const VerbExercise({
     Key? key,
+    required this.tense,
     required this.title,
     required this.banner,
   }) : super(key: key);
@@ -37,27 +41,19 @@ class VerbExercise extends StatelessWidget {
               child: Column(
                 children: [
                   banner,
-                  ...model.exerciseItems.map(
-                    (e) => VerbQuestionContent(
-                      verb: e.verb,
-                      state: e.userEntryState,
-                      isAllCorrect: e.isCorrect,
-                      onChanged: (ConjPronounTypes pronoun, String newValue) {
-                        String correctVal =
-                            e.verb.getConjugation(e.tense, pronoun);
-
-                        final newState = VerbQuestionStateItem(
-                          tense: e.tense,
-                          verb: e.verb,
-                        );
-
-                        newState.userEntryState[pronoun] = newValue;
-                        newState.updateIsCorrect();
-
-                        model.modifyStateItem(e, newState);
-                      },
-                    ),
-                  )
+                  if (this.tense == VerbTenses.PastPerfect)
+                    ...model.exerciseItems.map(
+                      (e) => PastTenseQuestionContent(
+                        verb: e.verb,
+                        state: e.userEntryState,
+                        isAllCorrect: e.isAllCorrect,
+                        onChanged: (ConjPronounTypes pronoun, String newValue) {
+                          e.userEntryState = e.userEntryState;
+                          e.userEntryState[pronoun.toString()] = newValue;
+                          e.updateIsAllCorrect();
+                        },
+                      ),
+                    )
                 ],
               ),
             ),

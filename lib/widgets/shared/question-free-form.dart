@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:navika/constants.dart';
@@ -56,11 +58,14 @@ class _QuestionFreeFormState extends State<QuestionFreeForm> {
   }
 
   OutlineInputBorder getBorder() {
+    var isCorrect =
+        widget.correctValues.containsCaseInsensitive(widget.activeValue);
+
+    //log(widget.activeValue + " " + isCorrect.toString());
+
     return OutlineInputBorder(
       borderSide: BorderSide(
-        color: widget.correctValues.containsCaseInsensitive(widget.activeValue)
-            ? CORRECT_COLOR
-            : WRONG_COLOR,
+        color: isCorrect ? CORRECT_COLOR : WRONG_COLOR,
       ),
     );
   }

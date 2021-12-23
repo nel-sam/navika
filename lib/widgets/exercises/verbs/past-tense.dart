@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
+import 'package:navika/models/verb.dart';
 import 'package:navika/widgets/exercises/verbs/shared/verb-exercise.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/widgets/shared/navika-banner.dart';
@@ -11,6 +12,7 @@ class PastTense extends StatelessWidget {
 
     return VerbExercise(
       title: title,
+      tense: VerbTenses.PastPerfect,
       banner: NavikaBanner(
         imagePath: 'assets/banners/bosna.jpg',
         caseName: title,

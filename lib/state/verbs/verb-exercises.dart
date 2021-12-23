@@ -11,15 +11,8 @@ class VerbExercises with ChangeNotifier {
         .map((verb) => VerbQuestionStateItem(
               verb: verb,
               tense: VerbTenses.PastPerfect,
+              notifyListeners: notifyListeners,
             ))
         .toList();
-  }
-
-  void modifyStateItem(
-      VerbQuestionStateItem toModify, VerbQuestionStateItem newValue) {
-    toModify.isCorrect = newValue.isCorrect;
-    toModify.verb = newValue.verb;
-    toModify.userEntryState = newValue.userEntryState;
-    notifyListeners();
   }
 }
