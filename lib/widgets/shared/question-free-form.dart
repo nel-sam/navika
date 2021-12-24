@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:navika/constants.dart';
@@ -60,8 +58,6 @@ class _QuestionFreeFormState extends State<QuestionFreeForm> {
   OutlineInputBorder getBorder() {
     var isCorrect =
         widget.correctValues.containsCaseInsensitive(widget.activeValue);
-
-    //log(widget.activeValue + " " + isCorrect.toString());
 
     return OutlineInputBorder(
       borderSide: BorderSide(

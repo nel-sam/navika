@@ -18,6 +18,7 @@
   "grammar": "Gramática",
   "grammarGuides": "Guías de Gramática",
   "cases": "Casos",
+  "caseExercises": "Ejercicios de Declensión",
   "justCaseTables": "Tablas de Casos",
   "home": "Inicio",
   "instrumentalDescription": "Para indicar herramientas, medios de transporte o para indicar un lugar en el que se cruza. La preposición s/sa se utiliza para mostrar acompañamiento. Se usa 's' normalmente, pero 'sa' cuando la siguiente palabra comienza con s, š, z o ž (ej: Idem sa ženom). El instrumental también se usa con ciertas preposiciones espaciales como među (en medio de), nad (encima de), pod (abajo de), pred (en frente de) y za (después de).",
@@ -30,6 +31,7 @@
   "nominativDescription": "El nominativo se usa para nombrar cosas e indicar el sujeto de la frase. Cuando se hace una comparación usando 'nego', los dos sujectos deberían estar en nominativo.",
   "nouns": "Sustantivos",
   "verbs": "Verbos",
+  "verbExercises": "Ejercicios de Vebos",
   "personalPronouns": "Pronombres Personales",
   "plural": "Plural",
   "possessivePronouns": "Pronombres Posesivos",
@@ -60,5 +62,7 @@
   "correctAnswer": "Repuesta correcta",
   "translate": "Traducir",
   "pastTense": "Pasado Simple",
-  "pastTenseDesc" : "El pasado simple indica algo que ya ha ocurrido. Se forma combinando el verbo conjugado 'biti' y la forma verbal de participio de acuerdo al género y la cantidad. Por ejemplo, 'Ja sam bio'. Para más información, puedes ver el video recomendado."
+  "pastTenseDesc" : "El pasado simple indica algo que ya ha ocurrido. Se forma combinando el verbo conjugado 'biti' y la forma verbal de participio de acuerdo al género y la cantidad. Por ejemplo, 'Ja sam bio'. Para más información, puedes ver el video recomendado.",
+  "presentTense": "El Presente",
+  "presentTenseDesc": "..."
 }

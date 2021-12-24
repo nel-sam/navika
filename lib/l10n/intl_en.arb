@@ -18,6 +18,7 @@
   "grammar": "Grammar",
   "grammarGuides": "Grammar Guides",
   "cases": "Cases",
+  "caseExercises": "Case/Declension Drills",
   "justCaseTables": "Just Case Tables",
   "home": "Home",
   "instrumentalDescription": "Using things as tools, means of transport, or using something as a place to go through. The preposition s/sa is used as 'with'. Use 's' in most cases but 'sa' when the next word begins with s, š, z or ž (ex: Idem sa ženom). Instrumental is also used with certain spatial prepositions like među (between), nad (above), pod (underneath), pred (in front of) and za (after).",
@@ -30,6 +31,7 @@
   "nominativDescription": "Nominativ is used when naming things and it indicates the subject of the sentence. When comparing two words, both are in the nominativ case.",
   "nouns": "Nouns",
   "verbs": "Verbs",
+  "verbExercises": "Verb Drills",
   "personalPronouns": "Personal Pronouns",
   "plural": "Plural",
   "possessivePronouns": "Possessive Pronouns",
@@ -60,5 +62,7 @@
   "correctAnswer": "Correct Answer",
   "translate": "Translate",
   "pastTense": "Simple Past",
-  "pastTenseDesc" : "The simple past tense specifies something that has happened. It is formed by conjugating the verb biti and then attaching the past participle of the verb (which declines according to gender and count). Examples: Ja sam bio. See recommended video for more info."
+  "pastTenseDesc" : "The simple past tense specifies something that has happened. It is formed by conjugating the verb biti and then attaching the past participle of the verb (which declines according to gender and count). Examples: Ja sam bio. See recommended video for more info.",
+  "presentTense": "Present Tense",
+  "presentTenseDesc": "..."
 }

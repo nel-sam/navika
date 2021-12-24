@@ -2,13 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:navika/widgets/exercises/verbs/past-tense.dart';
+import 'package:navika/widgets/exercises/verbs/past-tense/past-tense.dart';
+import 'package:navika/widgets/exercises/verbs/present-tense/present-tense.dart';
 import 'package:navika/widgets/main-menu/exercise-button.dart';
 
 class VerbMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var buttons = <Widget>[
+      ExerciseButton(
+        destination: PresentTense(),
+        icon: Icons.checklist_outlined,
+        label: AppLocalizations.of(context)!.presentTense,
+        imagePath: 'assets/banners/hills.jpg',
+      ),
       ExerciseButton(
         destination: PastTense(),
         icon: Icons.history,

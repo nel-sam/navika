@@ -1,12 +1,10 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/verb.dart';
 import 'package:navika/state/verbs/verb-exercises.dart';
-import 'package:navika/state/verbs/verb-question-state-item.dart';
 import 'package:navika/utilities/navika-helpers.dart';
-import 'package:navika/widgets/exercises/verbs/shared/past-tense-question-content.dart';
+import 'package:navika/widgets/exercises/verbs/present-tense/present-tense-question-content.dart';
+import 'package:navika/widgets/exercises/verbs/past-tense/past-tense-question-content.dart';
 import 'package:navika/widgets/shared/navika-banner.dart';
 import 'package:provider/provider.dart';
 
@@ -53,7 +51,10 @@ class VerbExercise extends StatelessWidget {
                           e.updateIsAllCorrect();
                         },
                       ),
-                    )
+                    ),
+                  if (this.tense == VerbTenses.Present)
+                    ...model.exerciseItems
+                        .map((e) => PresentTenseQuestionContent()),
                 ],
               ),
             ),

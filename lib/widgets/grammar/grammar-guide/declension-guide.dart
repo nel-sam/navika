@@ -36,7 +36,6 @@ class DeclensionGuide extends StatefulWidget {
   _DeclensionGuideState createState() => _DeclensionGuideState();
 }
 
-// TODO: Add cases similarities map and remove "same as" from individual tables
 class _DeclensionGuideState extends State<DeclensionGuide> {
   late ScrollController controller;
   late bool isAtTop = false;

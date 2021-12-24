@@ -1,6 +1,4 @@
 import 'dart:collection';
-import 'dart:developer';
-import 'package:flutter/foundation.dart';
 import 'package:navika/models/verb.dart';
 import 'package:navika/extensions.dart';
 
@@ -50,9 +48,7 @@ class VerbQuestionStateItem {
     required this.verb,
     required this.notifyListeners,
     this.isAllCorrect = false,
-  }) {
-    log('aqui');
-  }
+  });
 
   void updateIsAllCorrect() {
     var allCorrect = true;

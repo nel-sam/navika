@@ -53,7 +53,7 @@ class Verb {
     switch (tense) {
       case VerbTenses.PastPerfect:
         if (pastPerfect == null) {
-          return ''; // TODO: auto generate regular verb conjugation
+          return '';
         } else {
           return getParticleConj(pastPerfect!, conjPronounType);
         }
