@@ -1,23 +1,27 @@
+import 'package:flutter/material.dart';
+import 'package:navika/extensions.dart';
+
 class Verb {
   String infinitive;
   String root;
   bool isReflexive;
   bool isIrregular;
-  ConjugationSet? present;
-  ParticipleSet? pastPerfect;
+  ConjugationSet present;
+  ParticipleSet pastPerfect;
+  Function(BuildContext context) getTranslation;
 
   Verb({
     required this.infinitive,
     required this.isReflexive,
+    required this.getTranslation,
     this.isIrregular = false,
-    this.present,
-    this.pastPerfect,
+    required this.present,
+    required this.pastPerfect,
     this.root = '',
   });
 
-  String getParticleConj(
-      ParticipleSet partSet, ConjPronounTypes conjPronounType) {
-    switch (conjPronounType) {
+  String getParticleConj(ParticipleSet partSet, ConjPronounTypes key) {
+    switch (key) {
       case ConjPronounTypes.JaMasc:
         return partSet.jaMasc;
       case ConjPronounTypes.JaFem:
@@ -49,16 +53,37 @@ class Verb {
     }
   }
 
-  String getConjugation(VerbTenses tense, ConjPronounTypes conjPronounType) {
+  String getPresentCaseConj(ConjPronounTypes key) {
+    switch (key) {
+      case ConjPronounTypes.JaMasc:
+      case ConjPronounTypes.JaFem:
+        return this.present.ja.toString();
+      case ConjPronounTypes.tiMasc:
+      case ConjPronounTypes.tiFem:
+        return this.present.ti.toString();
+      case ConjPronounTypes.on:
+      case ConjPronounTypes.ona:
+      case ConjPronounTypes.ono:
+        return this.present.on.toString();
+      case ConjPronounTypes.miMasc:
+      case ConjPronounTypes.miFem:
+        return this.present.mi.toString();
+      case ConjPronounTypes.viMasc:
+      case ConjPronounTypes.viFem:
+        return this.present.vi.toString();
+      case ConjPronounTypes.oni:
+      case ConjPronounTypes.one:
+      case ConjPronounTypes.onaPl:
+        return this.present.oni.toString();
+    }
+  }
+
+  String getConjugation(VerbTenses tense, ConjPronounTypes key) {
     switch (tense) {
       case VerbTenses.PastPerfect:
-        if (pastPerfect == null) {
-          return '';
-        } else {
-          return getParticleConj(pastPerfect!, conjPronounType);
-        }
+        return getParticleConj(pastPerfect, key);
       case VerbTenses.Present:
-        return '';
+        return getPresentCaseConj(key);
       case VerbTenses.PlusPerfect:
         return '';
       case VerbTenses.Future:

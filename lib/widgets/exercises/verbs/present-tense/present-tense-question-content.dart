@@ -1,17 +1,16 @@
 import 'dart:collection';
 
-import 'package:navika/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/models/verb.dart';
-import 'package:navika/widgets/exercises/verbs/shared/verb-exercise.dart';
-import 'package:navika/widgets/shared/navika-banner.dart';
+import 'package:navika/widgets/exercises/verbs/shared/verb-free-form.dart';
+import 'package:navika/widgets/exercises/verbs/shared/verb-header.dart';
+import 'package:navika/models/enums.dart';
 import 'package:navika/widgets/shared/shadow-box.dart';
 
 class PresentTenseQuestionContent extends StatelessWidget {
   final Verb verb;
   final bool isAllCorrect;
-  final Function(ConjPronounTypes, String) onChanged;
+  final Function(String, String) onChanged;
   final HashMap<String, String> state;
 
   const PresentTenseQuestionContent({
@@ -25,11 +24,35 @@ class PresentTenseQuestionContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ShadowBox(
-      isCorrect: isAllCorrect,
+      isCorrect: this.isAllCorrect,
       child: Column(
         children: [
-          getHeader(context, verb),
+          VerbHeader(verb: this.verb, isAllCorrect: this.isAllCorrect),
           getBody(context),
+        ],
+      ),
+    );
+  }
+
+  Widget getBody(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(10),
+      child: Row(
+        children: [
+          Column(
+            children: [
+              VerbFreeForm(
+                startText: 'Ja',
+                activeValue:
+                    this.state[ConjPronounTypes.JaMasc.toString()] ?? '.',
+                correctValues: [this.verb.present.ja],
+                gender: Genders.Unspecific,
+                verb: verb,
+                onChanged: onChanged,
+                stateKey: ConjPronounTypes.JaMasc.toString(),
+              ),
+            ],
+          ),
         ],
       ),
     );

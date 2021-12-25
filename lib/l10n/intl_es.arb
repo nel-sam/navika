@@ -1,4 +1,8 @@
 {
+  "trans_biti": "Ser/Estar",
+  "trans_vidjeti": "Ver",
+  "trans_spavati": "Dormir",
+
   "allCases": "Todos los Casos",
   "allCasesDesc": "Practica todos los casos aquí. Tienes que usar el contexto de la oración para decidir cual caso es el más apropiado. Presiona el botón de ayuda en cada ejercicio si necesitas ayuda o sugerencias.",
   "adjectives": "Adjetivos",
@@ -31,7 +35,7 @@
   "nominativDescription": "El nominativo se usa para nombrar cosas e indicar el sujeto de la frase. Cuando se hace una comparación usando 'nego', los dos sujectos deberían estar en nominativo.",
   "nouns": "Sustantivos",
   "verbs": "Verbos",
-  "verbExercises": "Ejercicios de Vebos",
+  "verbExercises": "Ejercicios de Verbos",
   "personalPronouns": "Pronombres Personales",
   "plural": "Plural",
   "possessivePronouns": "Pronombres Posesivos",

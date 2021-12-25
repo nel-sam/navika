@@ -38,29 +38,45 @@ class VerbQuestionUserEntryStateItem {
 
 class VerbQuestionStateItem {
   Verb verb;
-  VerbTenses tense;
+  //VerbTenses tense;
   late var userEntryState = new HashMap<String, String>();
   late bool isAllCorrect;
   Function notifyListeners;
 
   VerbQuestionStateItem({
-    required this.tense,
+    //required this.tense,
     required this.verb,
     required this.notifyListeners,
     this.isAllCorrect = false,
   });
 
-  void updateIsAllCorrect() {
-    var allCorrect = true;
+  List<String> getKeyCollection(VerbTenses tense) {
+    if (tense == VerbTenses.Present) {
+      return [
+        ConjPronounTypes.JaMasc.toString(),
+      ];
+    } else if (tense == VerbTenses.PastPerfect) {
+      return ConjPronounTypes.values.map((v) => v.toString()).toList();
+    }
 
-    ConjPronounTypes.values.forEach((key) {
+    return [];
+  }
+
+  void updateState(String stateKey, String newValue, VerbTenses tense) {
+    this.userEntryState[stateKey] = newValue;
+    var allCorrect = true;
+    var keyCollection = getKeyCollection(tense);
+
+    keyCollection.forEach((key) {
       if (this.userEntryState.length == 0 ||
-          !this.userEntryState.containsKey(key.toString())) {
+          !this.userEntryState.containsKey(key)) {
         allCorrect = false;
       }
 
-      var entryValue = this.userEntryState[key.toString()] ?? '';
-      String correctAnsw = this.verb.getConjugation(this.tense, key);
+      var entryValue = this.userEntryState[key] ?? '';
+      var conjPronounType = ConjPronounTypes.values
+          .firstWhere((e) => e.toString().containsCaseInsensitive(stateKey));
+      var correctAnsw = this.verb.getConjugation(tense, conjPronounType);
 
       if (!entryValue.containsCaseInsensitive(correctAnsw)) {
         allCorrect = false;

@@ -1,4 +1,8 @@
 {
+  "trans_biti": "To be",
+  "trans_vidjeti": "To see",
+  "trans_spavati": "To sleep",
+
   "allCases": "All Cases",
   "allCasesDesc": "Practice all the cases here. You have to use the context of the sentence to determine which case/declension to use. Press the help button on each exercise if you need help or hints.",
   "adjectives": "Adjectives",

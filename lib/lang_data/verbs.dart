@@ -1,10 +1,13 @@
+import 'package:flutter/material.dart';
 import 'package:navika/models/verb.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 final List<Verb> verbWordBank = [
   Verb(
     infinitive: 'biti',
     isIrregular: true,
     isReflexive: true,
+    getTranslation: (BuildContext context) => AppLocalizations.of(context)!.trans_biti,
     present: ConjugationSet(
       ja: 'sam',
       ti: 'si',
@@ -36,6 +39,8 @@ final List<Verb> verbWordBank = [
   ),
   Verb(
     infinitive: 'vidjeti',
+    getTranslation: (BuildContext context) =>
+        AppLocalizations.of(context)!.trans_vidjeti,
     isIrregular: true,
     isReflexive: true,
     present: ConjugationSet(
@@ -71,6 +76,8 @@ final List<Verb> verbWordBank = [
     infinitive: 'spavati',
     isIrregular: false,
     isReflexive: false,
+        getTranslation: (BuildContext context) =>
+        AppLocalizations.of(context)!.trans_spavati,
     present: ConjugationSet(
       ja: 'spavam',
       ti: 'spavaš',

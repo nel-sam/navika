@@ -25,6 +25,5 @@ class PresentTense extends StatelessWidget {
         ],
       ),
     );
-    ;
   }
 }

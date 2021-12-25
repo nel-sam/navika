@@ -160,18 +160,21 @@ class N {
   static TextSpan NTextSpan(String text,
       {bool isBold = false,
       bool isItalic = false,
+      double fontSize = 13,
       Color color = Colors.transparent}) {
     var textStyle;
 
     if (isBold && isItalic && color != Colors.transparent) {
       textStyle = TextStyle(
         color: color,
+        fontSize: fontSize,
         fontWeight: FontWeight.bold,
         fontStyle: FontStyle.italic,
       );
     } else if (isItalic && color != Colors.transparent) {
       textStyle = TextStyle(
         color: color,
+        fontSize: fontSize,
         fontStyle: FontStyle.italic,
       );
       // } else if (isBold && color != Colors.transparent) {
@@ -187,6 +190,7 @@ class N {
     } else if (isBold) {
       textStyle = TextStyle(
         color: ACCENT_COLOR,
+        fontSize: fontSize,
         fontWeight: FontWeight.bold,
       );
     }

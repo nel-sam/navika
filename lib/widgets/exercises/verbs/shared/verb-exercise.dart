@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/verb.dart';
 import 'package:navika/state/verbs/verb-exercises.dart';
+import 'package:navika/state/verbs/verb-question-state-item.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/exercises/verbs/present-tense/present-tense-question-content.dart';
 import 'package:navika/widgets/exercises/verbs/past-tense/past-tense-question-content.dart';
@@ -41,20 +42,26 @@ class VerbExercise extends StatelessWidget {
                   banner,
                   if (this.tense == VerbTenses.PastPerfect)
                     ...model.exerciseItems.map(
-                      (e) => PastTenseQuestionContent(
+                      (VerbQuestionStateItem e) => PastTenseQuestionContent(
                         verb: e.verb,
                         state: e.userEntryState,
                         isAllCorrect: e.isAllCorrect,
-                        onChanged: (ConjPronounTypes pronoun, String newValue) {
-                          e.userEntryState = e.userEntryState;
-                          e.userEntryState[pronoun.toString()] = newValue;
-                          e.updateIsAllCorrect();
-                        },
+                        onChanged: (String pronoun, String newValue) =>
+                            e.updateState(
+                                pronoun.toString(), newValue, this.tense),
                       ),
                     ),
                   if (this.tense == VerbTenses.Present)
-                    ...model.exerciseItems
-                        .map((e) => PresentTenseQuestionContent()),
+                    ...model.exerciseItems.map(
+                      (VerbQuestionStateItem e) => PresentTenseQuestionContent(
+                        verb: e.verb,
+                        isAllCorrect: e.isAllCorrect,
+                        state: e.userEntryState,
+                        onChanged: (String pronoun, String newValue) =>
+                            e.updateState(
+                                pronoun.toString(), newValue, this.tense),
+                      ),
+                    ),
                 ],
               ),
             ),
