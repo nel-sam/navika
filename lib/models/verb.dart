@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:navika/models/enums.dart';
 
 class Verb {
   String infinitive;
   String root;
   bool isReflexive;
   bool isIrregular;
+  VerbPerfectiveTypes verbPerfectiveType;
   ConjugationSet present;
   ParticipleSet pastPerfect;
   Function(BuildContext context) getTranslation;
@@ -13,6 +15,7 @@ class Verb {
     required this.infinitive,
     required this.isReflexive,
     required this.getTranslation,
+    required this.verbPerfectiveType,
     this.isIrregular = false,
     required this.present,
     required this.pastPerfect,

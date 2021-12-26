@@ -58,8 +58,7 @@ class VerbExercise extends StatelessWidget {
                         isAllCorrect: e.isAllCorrect,
                         state: e.userEntryState,
                         onChanged: (String pronoun, String newValue) =>
-                            e.updateState(
-                                pronoun, newValue, this.tense),
+                            e.updateState(pronoun, newValue, this.tense),
                       ),
                     ),
                 ],

@@ -2,7 +2,14 @@
   "trans_biti": "To be",
   "trans_vidjeti": "To see",
   "trans_spavati": "To sleep",
+  "trans_citati": "To read",
+  "trans_govoriti": "To speak",
+  "trans_putovati": "To travel",
+  "trans_razumjeti": "To understand",
+  "trans_ici": "To go",
 
+  "perfective": "Perfective",
+  "imperfective": "Imperfective",
   "allCases": "All Cases",
   "allCasesDesc": "Practice all the cases here. You have to use the context of the sentence to determine which case/declension to use. Press the help button on each exercise if you need help or hints.",
   "adjectives": "Adjectives",
@@ -68,5 +75,5 @@
   "pastTense": "Simple Past",
   "pastTenseDesc" : "The simple past tense specifies something that has happened. It is formed by conjugating the verb biti and then attaching the past participle of the verb (which declines according to gender and count). Examples: Ja sam bio. See recommended video for more info.",
   "presentTense": "Present Tense",
-  "presentTenseDesc": "..."
+  "presentTenseDesc": "Verbs can be categorized as Perfective and Imperfective. Perfective verbs indicate a completed action (I did it = uradio sam). Imperfective verbs indicate a process (I was working/doing = radio sam)"
 }

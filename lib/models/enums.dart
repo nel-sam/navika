@@ -1,3 +1,9 @@
+enum VerbPerfectiveTypes {
+  Perfective,
+  Imperfective,
+  Unspecified,
+}
+
 enum EntryTypes {
   FreeForm,
   Mixed,

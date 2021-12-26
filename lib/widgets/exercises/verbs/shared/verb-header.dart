@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
+import 'package:navika/models/enums.dart';
 import 'package:navika/models/verb.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/shared/navika-text.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class VerbHeader extends StatelessWidget {
   final Verb verb;
@@ -14,9 +16,25 @@ class VerbHeader extends StatelessWidget {
     required this.isAllCorrect,
   }) : super(key: key);
 
+  String getPerfectiveness(
+      BuildContext context, VerbPerfectiveTypes verbPerfectiveType) {
+    switch (verbPerfectiveType) {
+      case VerbPerfectiveTypes.Perfective:
+        return AppLocalizations.of(context)!.perfective;
+      case VerbPerfectiveTypes.Imperfective:
+        return AppLocalizations.of(context)!.imperfective;
+      case VerbPerfectiveTypes.Unspecified:
+        return '';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    String translation = verb.getTranslation(context);
+    var translation = verb.getTranslation(context);
+    var perfectiveness = getPerfectiveness(context, verb.verbPerfectiveType);
+    var translationFull = perfectiveness.length > 0
+        ? '$translation ($perfectiveness)'
+        : translation;
 
     return Container(
       child: Padding(
@@ -33,22 +51,12 @@ class VerbHeader extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(right: 20),
               child: NText(
-                  [N.NTextSpan(verb.infinitive, isBold: true, fontSize: 18)]),
+                  [N.NTextSpan(verb.infinitive, isBold: true, fontSize: 16)]),
             ),
             Padding(
-              padding: const EdgeInsets.only(right: 20, top: 5),
-              child: NText([N.NTextSpan(translation, fontSize: 16)]),
+              padding: const EdgeInsets.only(right: 20, top: 2),
+              child: NText([N.NTextSpan(translationFull, fontSize: 16)]),
             ),
-            // ElevatedButton(
-            //     onPressed: () => {
-            //           Navigator.push(
-            //             context,
-            //             MaterialPageRoute(
-            //               builder: (context) => CaseExerciseHelp(combos: combos),
-            //             ),
-            //           ),
-            //         },
-            //     child: Icon(Icons.help)),
           ],
         ),
       ),

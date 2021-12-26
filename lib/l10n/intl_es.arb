@@ -2,7 +2,14 @@
   "trans_biti": "Ser/Estar",
   "trans_vidjeti": "Ver",
   "trans_spavati": "Dormir",
+  "trans_citati": "Leer",
+  "trans_govoriti": "Hablar",
+  "trans_putovati": "Viajar",
+  "trans_razumjeti": "Comprender",
+  "trans_ici": "Ir",
 
+  "perfective": "Perfectivo",
+  "imperfective": "Imperfectivo",
   "allCases": "Todos los Casos",
   "allCasesDesc": "Practica todos los casos aquí. Tienes que usar el contexto de la oración para decidir cual caso es el más apropiado. Presiona el botón de ayuda en cada ejercicio si necesitas ayuda o sugerencias.",
   "adjectives": "Adjetivos",
@@ -68,5 +75,5 @@
   "pastTense": "Pasado Simple",
   "pastTenseDesc" : "El pasado simple indica algo que ya ha ocurrido. Se forma combinando el verbo conjugado 'biti' y la forma verbal de participio de acuerdo al género y la cantidad. Por ejemplo, 'Ja sam bio'. Para más información, puedes ver el video recomendado.",
   "presentTense": "El Presente",
-  "presentTenseDesc": "..."
+  "presentTenseDesc": "Los verbos se pueden clasificar por verbos perfectivos y verbos imperfectivos. Verbos perfectivos indican algo completo (Yo hice = uradio sam). Verbos imperfectivos indican un proceso (Yo estaba trabajando/haciendo = radio sam)"
 }
