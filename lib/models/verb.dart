@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:navika/extensions.dart';
 
 class Verb {
   String infinitive;
@@ -22,7 +21,7 @@ class Verb {
 
   String getParticleConj(ParticipleSet partSet, ConjPronounTypes key) {
     switch (key) {
-      case ConjPronounTypes.JaMasc:
+      case ConjPronounTypes.jaMasc:
         return partSet.jaMasc;
       case ConjPronounTypes.JaFem:
         return partSet.jaFem;
@@ -55,7 +54,7 @@ class Verb {
 
   String getPresentCaseConj(ConjPronounTypes key) {
     switch (key) {
-      case ConjPronounTypes.JaMasc:
+      case ConjPronounTypes.jaMasc:
       case ConjPronounTypes.JaFem:
         return this.present.ja.toString();
       case ConjPronounTypes.tiMasc:
@@ -178,7 +177,7 @@ enum VerbTenses {
 }
 
 enum ConjPronounTypes {
-  JaMasc,
+  jaMasc,
   JaFem,
   tiMasc,
   tiFem,

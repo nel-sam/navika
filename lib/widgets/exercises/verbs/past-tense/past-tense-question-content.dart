@@ -44,9 +44,9 @@ class PastTenseQuestionContent extends StatelessWidget {
                 VerbFreeForm(
                   startText: 'Ja sam',
                   gender: Genders.Masculine,
-                  stateKey: ConjPronounTypes.JaMasc.toString(),
+                  stateKey: ConjPronounTypes.jaMasc.toString(),
                   activeValue:
-                      this.state[ConjPronounTypes.JaMasc.toString()] ?? '.',
+                      this.state[ConjPronounTypes.jaMasc.toString()] ?? '.',
                   correctValues: [this.verb.pastPerfect.jaMasc],
                   verb: verb,
                   onChanged: onChanged,

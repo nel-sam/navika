@@ -53,7 +53,12 @@ class VerbQuestionStateItem {
   List<String> getKeyCollection(VerbTenses tense) {
     if (tense == VerbTenses.Present) {
       return [
-        ConjPronounTypes.JaMasc.toString(),
+        ConjPronounTypes.jaMasc.toString(),
+        ConjPronounTypes.tiMasc.toString(),
+        ConjPronounTypes.on.toString(),
+        ConjPronounTypes.miMasc.toString(),
+        ConjPronounTypes.viMasc.toString(),
+        ConjPronounTypes.oni.toString(),
       ];
     } else if (tense == VerbTenses.PastPerfect) {
       return ConjPronounTypes.values.map((v) => v.toString()).toList();
@@ -75,7 +80,7 @@ class VerbQuestionStateItem {
 
       var entryValue = this.userEntryState[key] ?? '';
       var conjPronounType = ConjPronounTypes.values
-          .firstWhere((e) => e.toString().containsCaseInsensitive(stateKey));
+          .firstWhere((e) => e.toString().containsCaseInsensitive(key));
       var correctAnsw = this.verb.getConjugation(tense, conjPronounType);
 
       if (!entryValue.containsCaseInsensitive(correctAnsw)) {
