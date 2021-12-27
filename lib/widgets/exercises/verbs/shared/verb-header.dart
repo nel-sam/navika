@@ -3,6 +3,7 @@ import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/verb.dart';
 import 'package:navika/utilities/navika-helpers.dart';
+import 'package:navika/widgets/shared/icon-text-pair.dart';
 import 'package:navika/widgets/shared/navika-text.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -57,6 +58,14 @@ class VerbHeader extends StatelessWidget {
               padding: const EdgeInsets.only(right: 20, top: 2),
               child: NText([N.NTextSpan(translationFull, fontSize: 16)]),
             ),
+            if (this.verb.isIrregular)
+              Padding(
+                padding: const EdgeInsets.only(right: 20, top: 2),
+                child: IconTextPair(
+                  icon: Icons.error_outline,
+                  text: AppLocalizations.of(context)!.irregular,
+                ),
+              ),
           ],
         ),
       ),

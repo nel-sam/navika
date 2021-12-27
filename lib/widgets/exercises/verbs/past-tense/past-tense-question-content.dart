@@ -47,7 +47,7 @@ class PastTenseQuestionContent extends StatelessWidget {
                   stateKey: ConjPronounTypes.jaMasc.toString(),
                   activeValue:
                       this.state[ConjPronounTypes.jaMasc.toString()] ?? '.',
-                  correctValues: [this.verb.pastPerfect.jaMasc],
+                  correctValues: [this.verb.pastPerfect.singularMasc],
                   verb: verb,
                   onChanged: onChanged,
                 ),
@@ -57,7 +57,7 @@ class PastTenseQuestionContent extends StatelessWidget {
                   stateKey: ConjPronounTypes.JaFem.toString(),
                   activeValue:
                       this.state[ConjPronounTypes.JaFem.toString()] ?? '.',
-                  correctValues: [this.verb.pastPerfect.jaFem],
+                  correctValues: [this.verb.pastPerfect.singularFem],
                   verb: verb,
                   onChanged: onChanged,
                 ),
@@ -67,7 +67,7 @@ class PastTenseQuestionContent extends StatelessWidget {
                   stateKey: ConjPronounTypes.tiMasc.toString(),
                   activeValue:
                       this.state[ConjPronounTypes.tiMasc.toString()] ?? '.',
-                  correctValues: [this.verb.pastPerfect.tiMasc],
+                  correctValues: [this.verb.pastPerfect.singularMasc],
                   verb: verb,
                   onChanged: onChanged,
                 ),
@@ -77,7 +77,7 @@ class PastTenseQuestionContent extends StatelessWidget {
                   stateKey: ConjPronounTypes.tiFem.toString(),
                   activeValue:
                       this.state[ConjPronounTypes.tiFem.toString()] ?? '.',
-                  correctValues: [this.verb.pastPerfect.tiFem],
+                  correctValues: [this.verb.pastPerfect.singularFem],
                   verb: verb,
                   onChanged: onChanged,
                 ),
@@ -87,7 +87,7 @@ class PastTenseQuestionContent extends StatelessWidget {
                   stateKey: ConjPronounTypes.on.toString(),
                   activeValue:
                       this.state[ConjPronounTypes.on.toString()] ?? '.',
-                  correctValues: [this.verb.pastPerfect.on],
+                  correctValues: [this.verb.pastPerfect.singularMasc],
                   verb: verb,
                   onChanged: onChanged,
                 ),
@@ -97,7 +97,7 @@ class PastTenseQuestionContent extends StatelessWidget {
                   stateKey: ConjPronounTypes.ona.toString(),
                   activeValue:
                       this.state[ConjPronounTypes.ona.toString()] ?? '.',
-                  correctValues: [this.verb.pastPerfect.ona],
+                  correctValues: [this.verb.pastPerfect.singularFem],
                   verb: verb,
                   onChanged: onChanged,
                 ),
@@ -121,7 +121,7 @@ class PastTenseQuestionContent extends StatelessWidget {
                   stateKey: ConjPronounTypes.miMasc.toString(),
                   activeValue:
                       this.state[ConjPronounTypes.miMasc.toString()] ?? '.',
-                  correctValues: [this.verb.pastPerfect.miMasc],
+                  correctValues: [this.verb.pastPerfect.pluralMasc],
                   verb: verb,
                   onChanged: onChanged,
                 ),
@@ -131,7 +131,7 @@ class PastTenseQuestionContent extends StatelessWidget {
                   stateKey: ConjPronounTypes.miFem.toString(),
                   activeValue:
                       this.state[ConjPronounTypes.miFem.toString()] ?? '.',
-                  correctValues: [this.verb.pastPerfect.miFem],
+                  correctValues: [this.verb.pastPerfect.pluralFem],
                   verb: verb,
                   onChanged: onChanged,
                 ),
@@ -141,7 +141,7 @@ class PastTenseQuestionContent extends StatelessWidget {
                   stateKey: ConjPronounTypes.viMasc.toString(),
                   activeValue:
                       this.state[ConjPronounTypes.viMasc.toString()] ?? '.',
-                  correctValues: [this.verb.pastPerfect.viMasc],
+                  correctValues: [this.verb.pastPerfect.pluralMasc],
                   verb: verb,
                   onChanged: onChanged,
                 ),
@@ -151,7 +151,7 @@ class PastTenseQuestionContent extends StatelessWidget {
                   stateKey: ConjPronounTypes.viFem.toString(),
                   activeValue:
                       this.state[ConjPronounTypes.viFem.toString()] ?? '.',
-                  correctValues: [this.verb.pastPerfect.viFem],
+                  correctValues: [this.verb.pastPerfect.pluralFem],
                   verb: verb,
                   onChanged: onChanged,
                 ),
@@ -161,7 +161,7 @@ class PastTenseQuestionContent extends StatelessWidget {
                   stateKey: ConjPronounTypes.oni.toString(),
                   activeValue:
                       this.state[ConjPronounTypes.oni.toString()] ?? '.',
-                  correctValues: [this.verb.pastPerfect.oni],
+                  correctValues: [this.verb.pastPerfect.pluralMasc],
                   verb: verb,
                   onChanged: onChanged,
                 ),
@@ -171,7 +171,7 @@ class PastTenseQuestionContent extends StatelessWidget {
                   stateKey: ConjPronounTypes.one.toString(),
                   activeValue:
                       this.state[ConjPronounTypes.one.toString()] ?? '.',
-                  correctValues: [this.verb.pastPerfect.one],
+                  correctValues: [this.verb.pastPerfect.pluralFem],
                   verb: verb,
                   onChanged: onChanged,
                 ),

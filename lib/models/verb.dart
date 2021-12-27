@@ -25,31 +25,31 @@ class Verb {
   String getParticleConj(ParticipleSet partSet, ConjPronounTypes key) {
     switch (key) {
       case ConjPronounTypes.jaMasc:
-        return partSet.jaMasc;
+        return partSet.singularMasc;
       case ConjPronounTypes.JaFem:
-        return partSet.jaFem;
+        return partSet.singularFem;
       case ConjPronounTypes.tiMasc:
-        return partSet.tiMasc;
+        return partSet.singularMasc;
       case ConjPronounTypes.tiFem:
-        return partSet.tiFem;
+        return partSet.singularFem;
       case ConjPronounTypes.on:
-        return partSet.on;
+        return partSet.singularMasc;
       case ConjPronounTypes.ona:
-        return partSet.ona;
+        return partSet.singularFem;
       case ConjPronounTypes.ono:
         return partSet.ono;
       case ConjPronounTypes.miMasc:
-        return partSet.miMasc;
+        return partSet.pluralMasc;
       case ConjPronounTypes.miFem:
-        return partSet.miFem;
+        return partSet.pluralFem;
       case ConjPronounTypes.viMasc:
-        return partSet.viMasc;
+        return partSet.pluralMasc;
       case ConjPronounTypes.viFem:
-        return partSet.viFem;
+        return partSet.pluralFem;
       case ConjPronounTypes.oni:
-        return partSet.oni;
+        return partSet.pluralMasc;
       case ConjPronounTypes.one:
-        return partSet.one;
+        return partSet.pluralFem;
       case ConjPronounTypes.onaPl:
         return partSet.onaPl;
     }
@@ -105,65 +105,35 @@ class Verb {
 class ConjugationSet {
   String ja;
   String ti;
-
   String on;
-  String ona;
-  String ono;
-
   String mi;
   String vi;
-
   String oni;
-  String one;
-  String onaPl;
 
   ConjugationSet({
     this.ja = '',
     this.ti = '',
     this.on = '',
-    this.ona = '',
-    this.ono = '',
     this.mi = '',
     this.vi = '',
     this.oni = '',
-    this.one = '',
-    this.onaPl = '',
   });
 }
 
 class ParticipleSet {
-  String jaMasc;
-  String jaFem;
-  String tiMasc;
-  String tiFem;
-
-  String on;
-  String ona;
+  String singularMasc;
+  String singularFem;
   String ono;
-
-  String miMasc;
-  String miFem;
-  String viMasc;
-  String viFem;
-
-  String oni;
-  String one;
+  String pluralMasc;
+  String pluralFem;
   String onaPl;
 
   ParticipleSet({
-    required this.jaMasc,
-    required this.jaFem,
-    required this.tiMasc,
-    required this.tiFem,
-    required this.on,
-    required this.ona,
+    required this.singularMasc,
+    required this.singularFem,
     required this.ono,
-    required this.miMasc,
-    required this.miFem,
-    required this.viMasc,
-    required this.viFem,
-    required this.oni,
-    required this.one,
+    required this.pluralMasc,
+    required this.pluralFem,
     required this.onaPl,
   });
 }
