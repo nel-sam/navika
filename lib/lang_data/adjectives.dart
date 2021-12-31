@@ -75,6 +75,7 @@ final List<Adjective> adjectiveWordBank = [
   ),
   Adjective(
     dictionary: 'nov',
+    toAvoid: [Tags.Season],
     nominativ: new Declension(
       masculine: new DeclensionByGender(singular: ['novi'], plural: ['novi']),
       feminine: new DeclensionByGender(singular: ['nova'], plural: ['nove']),
@@ -130,6 +131,7 @@ final List<Adjective> adjectiveWordBank = [
   ),
   Adjective(
     dictionary: 'star',
+    toAvoid: [Tags.Season],
     nominativ: new Declension(
       masculine: new DeclensionByGender(singular: ['stari'], plural: ['stari']),
       feminine: new DeclensionByGender(singular: ['stara'], plural: ['stare']),
@@ -189,6 +191,7 @@ final List<Adjective> adjectiveWordBank = [
   ),
   Adjective(
     dictionary: 'hladno',
+    toAvoid: [Tags.Human, Tags.Animal],
     nominativ: new Declension(
       masculine:
           new DeclensionByGender(singular: ['hladni'], plural: ['hladni']),
@@ -250,6 +253,7 @@ final List<Adjective> adjectiveWordBank = [
   ),
   Adjective(
     dictionary: 'vruć',
+    toAvoid: [Tags.Human, Tags.Animal],
     nominativ: new Declension(
       masculine: new DeclensionByGender(singular: ['vrući'], plural: ['vrući']),
       feminine: new DeclensionByGender(singular: ['vruća'], plural: ['vruće']),

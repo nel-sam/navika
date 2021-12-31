@@ -15,6 +15,7 @@ class CaseExerciseRowCard extends StatelessWidget {
   final bool isPlural;
   final bool isAnimate;
   final Genders gender;
+  final String Function(BuildContext context)? getExtraInfo;
 
   const CaseExerciseRowCard({
     Key? key,
@@ -24,11 +25,13 @@ class CaseExerciseRowCard extends StatelessWidget {
     required this.isAnimate,
     required this.gender,
     required this.combos,
+    required this.getExtraInfo,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
+    String extraInfo = this.getExtraInfo!(context);
 
     return Container(
       width: screenWidth > 840 ? screenWidth / 2.5 : screenWidth,
@@ -44,6 +47,8 @@ class CaseExerciseRowCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     getHeader(context, combos),
+                    if (extraInfo.length > 0)
+                      ExtraInfo(screenWidth: screenWidth, extraInfo: extraInfo),
                     getBody(),
                   ],
                 ),
@@ -105,6 +110,33 @@ class CaseExerciseRowCard extends StatelessWidget {
           children: children
               .map((c) => Padding(padding: const EdgeInsets.all(3), child: c))
               .toList()),
+    );
+  }
+}
+
+class ExtraInfo extends StatelessWidget {
+  const ExtraInfo({
+    Key? key,
+    required this.screenWidth,
+    required this.extraInfo,
+  }) : super(key: key);
+
+  final double screenWidth;
+  final String extraInfo;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 18, right: 18),
+      child: Container(
+        width: screenWidth,
+        child: Text(
+          extraInfo,
+          style: TextStyle(
+            fontStyle: FontStyle.italic,
+          ),
+        ),
+      ),
     );
   }
 }

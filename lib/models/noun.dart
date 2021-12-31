@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/extensions.dart';
@@ -16,6 +17,8 @@ class Noun {
   final DeclensionByCount genitiv;
   final DeclensionByCount vokativ;
 
+  String Function(BuildContext context)? getExtraInfo;
+
   Noun({
     required this.tags,
     required this.dictionary,
@@ -28,7 +31,12 @@ class Noun {
     required this.dativ,
     required this.genitiv,
     required this.vokativ,
-  });
+    this.getExtraInfo,
+  }) {
+    if (this.getExtraInfo == null) {
+      this.getExtraInfo = (BuildContext context) => '';
+    }
+  }
 
   DeclensionByCount getDeclensionObject(Cases caseType) {
     switch (caseType) {

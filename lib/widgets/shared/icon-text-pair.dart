@@ -5,18 +5,14 @@ class IconTextPair extends StatelessWidget {
   final IconData icon;
   final String text;
 
-  const IconTextPair({
-    Key? key,
-    required this.icon,
-    required this.text,
-  }) : super(key: key);
+  const IconTextPair({Key? key, required this.icon, required this.text})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     const double iconPadding = 4;
 
     return Container(
-      //width: 120,
       child: Padding(
         padding: const EdgeInsets.only(left: 10),
         child: Row(

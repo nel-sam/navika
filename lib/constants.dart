@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-const BATCH_COUNT = 30;
+const BATCH_COUNT = 40;
 
 const TABLE_CELL_WIDTH = 87.0;
 const TextStyle HEADER_TEXT_STYLE =

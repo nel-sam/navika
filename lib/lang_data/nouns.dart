@@ -1,3 +1,5 @@
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter/material.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/models/noun.dart';
@@ -135,6 +137,22 @@ final List<Noun> nounWordBank = [
     vokativ: new DeclensionByCount(singular: ['sestro'], plural: ['sestre']),
   ),
   Noun(
+    dictionary: 'brat/braća',
+    getExtraInfo: (BuildContext context) =>
+        AppLocalizations.of(context)!.extrainfo_brat,
+    tags: [Tags.Human, Tags.Adult],
+    gender: Genders.Masculine,
+    isAnimate: true,
+    nominativ: new DeclensionByCount(singular: ['brat'], plural: ['braća']),
+    akuzativ: new DeclensionByCount(singular: ['brata'], plural: ['braću']),
+    instrumental:
+        new DeclensionByCount(singular: ['bratom'], plural: ['braćom']),
+    lokativ: new DeclensionByCount(singular: ['bratu'], plural: ['braći']),
+    dativ: new DeclensionByCount(singular: ['bratu'], plural: ['braći']),
+    genitiv: new DeclensionByCount(singular: ['brata'], plural: ['braće']),
+    vokativ: new DeclensionByCount(singular: ['brate'], plural: ['braćo']),
+  ),
+  Noun(
     dictionary: 'muškarac',
     tags: [Tags.Human, Tags.Adult],
     gender: Genders.Masculine,
@@ -148,7 +166,7 @@ final List<Noun> nounWordBank = [
     lokativ:
         new DeclensionByCount(singular: ['muškarcu'], plural: ['muškarcima']),
     dativ:
-        new DeclensionByCount(singular: ['muškarca'], plural: ['muškarcima']),
+        new DeclensionByCount(singular: ['muškarcu'], plural: ['muškarcima']),
     genitiv:
         new DeclensionByCount(singular: ['muškarca'], plural: ['muškaraca']),
     vokativ:
@@ -401,3 +419,5 @@ final List<Noun> nounWordBank = [
         singular: ['obitelji', 'obitelju'], plural: ['obitelju']),
   ),
 ];
+// .where((e) => e.dictionary.contains('brat'))
+// .toList();

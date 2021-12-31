@@ -185,6 +185,10 @@ class Adjective {
   }
 
   bool isCompatible(List<Tags> tags) {
+    if (tags.contains(Tags.Season)) {
+      return false;
+    }
+
     for (var avoid in this.toAvoid) {
       if (tags.contains(avoid)) {
         return false;
