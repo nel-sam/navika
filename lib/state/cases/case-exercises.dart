@@ -7,6 +7,7 @@ import 'package:navika/widgets/content-generators/instrumental-generators.dart';
 import 'package:navika/widgets/content-generators/dativ-generators.dart';
 import 'package:navika/widgets/content-generators/genetiv-generators.dart';
 import 'package:navika/widgets/content-generators/lokativ-generators.dart';
+import 'package:navika/widgets/content-generators/vokativ-generators.dart';
 
 class CaseExercises with ChangeNotifier {
   Map<Cases, List<CaseQuestionStateItem>> exerciseItems = {};
@@ -31,6 +32,7 @@ class CaseExercises with ChangeNotifier {
         items.addAll(DativGenerators.initializePANStateItems());
         items.addAll(LokativGenerators.initializePANStateItems());
         items.addAll(GenetivGenerators.initializePANStateItems());
+        items.addAll(VokativGenerators.initializePANStateItems());
         break;
       case Cases.Nom:
         items = NominativGenerators.initializePANStateItems();
@@ -51,7 +53,7 @@ class CaseExercises with ChangeNotifier {
         items = GenetivGenerators.initializePANStateItems();
         break;
       case Cases.Vok:
-        items = [];
+        items = VokativGenerators.initializePANStateItems();
         break;
       default:
         break;
@@ -66,9 +68,8 @@ class CaseExercises with ChangeNotifier {
     notifyListeners();
   }
 
-
-  void modifyStateItem(
-      Cases caseType, CaseQuestionStateItem toModify, CaseQuestionStateItem newValue) {
+  void modifyStateItem(Cases caseType, CaseQuestionStateItem toModify,
+      CaseQuestionStateItem newValue) {
     toModify.combos = newValue.combos;
     toModify.isCorrect = newValue.isCorrect;
     toModify.userAdjResponse = newValue.userAdjResponse;

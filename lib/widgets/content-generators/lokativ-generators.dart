@@ -14,7 +14,7 @@ class LokativGenerators {
     Adjective? pronoun,
     Adjective? adjective,
   ) {
-    final pronounVal = pronoun!.dictionary;
+    final pronounVal = pronoun == null ? '' : pronoun.dictionary;
     String start = '';
     String end = '';
 

@@ -62,3 +62,4 @@ const RECOMMENDED_VIDEO_PAST_SIMPLE =
     'https://www.youtube.com/watch?v=9m4sMQ_qnjs';
 const RECOMMENDED_VIDEO_PRESENT_SIMPLE =
     'https://www.youtube.com/watch?v=9m4sMQ_qnjs';
+const RECOMMENDED_VIDEO_VOK = '';

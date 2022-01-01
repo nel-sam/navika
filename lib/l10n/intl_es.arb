@@ -51,6 +51,7 @@
   "neuter": "Neutro",
   "next": "Siguiente",
   "nominativDescription": "El nominativo se usa para nombrar cosas e indicar el sujeto de la frase. Cuando se hace una comparación usando 'nego', los dos sujectos deberían estar en nominativo.",
+  "vokativDescription": "El vocativo se para llamar a alguien o algo. La mayoría de las declinaciones son como en nominativo, pero algunas declinaciones terminan en 'e' o 'u'",
   "nouns": "Sustantivos",
   "verbs": "Verbos",
   "verbExercises": "Ejercicios de Verbos",

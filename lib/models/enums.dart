@@ -90,4 +90,5 @@ const CaseImagePaths = <Cases, String>{
   Cases.Lok: 'assets/banners/ladies.jpg',
   Cases.Dat: 'assets/banners/giving.jpg',
   Cases.Gen: 'assets/banners/bosna.jpg',
+  Cases.Vok: 'assets/banners/woman.jpg',
 };

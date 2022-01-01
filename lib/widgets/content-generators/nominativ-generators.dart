@@ -25,8 +25,6 @@ class NominativGenerators {
         case Genders.Neuter:
           break;
       }
-    } else if (N.coinFlip()) {
-      start = '';
     } else {
       start = isPlural ? 'To su' : 'To je';
     }

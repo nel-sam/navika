@@ -108,7 +108,7 @@ class N {
   static List<PANCombo> getPANCombos(
       {required Cases caseType,
       required WordBank bank,
-      required StaticSentenceParts Function(Noun, bool, Adjective, Adjective)
+      required StaticSentenceParts Function(Noun, bool, Adjective?, Adjective?)
           getStaticSentenceParts,
       required StaticSentenceParts Function(PersonalPronoun, bool)
           getPersonalPronounSentenceStaticParts}) {
@@ -119,38 +119,52 @@ class N {
       final staticParts =
           getPersonalPronounSentenceStaticParts(persPronoun, isPlural);
 
-      listItems.add(PANCombo(
-        caseType: caseType,
-        sentenceStarter: staticParts.start,
-        sentenceEnder: staticParts.end,
-        gender: persPronoun.gender,
-        isPlural: isPlural,
-        personalPronoun: persPronoun,
-        usePersonalPronounShortForm: N.coinFlip(),
-      ));
+      if (N.coinFlip())
+        listItems.add(PANCombo(
+          caseType: caseType,
+          sentenceStarter: staticParts.start,
+          sentenceEnder: staticParts.end,
+          gender: persPronoun.gender,
+          isPlural: isPlural,
+          personalPronoun: persPronoun,
+          usePersonalPronounShortForm: N.coinFlip(),
+        ));
     });
 
     bank.possessivePronouns.forEach((possPronoun) {
       bank.adjectives.forEach((adj) {
         bank.nouns.forEach((noun) {
-          final includePossPronoun =
-              possPronoun.isCompatible(noun.tags) && N.coinFlip();
-          final includeAdjective = adj.isCompatible(noun.tags) && N.coinFlip();
           final isPlural = noun.nominativ.plural.first != '' && N.coinFlip();
           final staticParts =
               getStaticSentenceParts(noun, isPlural, possPronoun, adj);
 
-          listItems.add(PANCombo(
-              caseType: caseType,
-              sentenceStarter: staticParts.start,
-              sentenceEnder: staticParts.end,
-              possPronoun: includePossPronoun ? possPronoun : null,
-              adjective: includeAdjective ? adj : null,
-              gender: noun.gender,
-              isPlural: isPlural,
-              noun: noun));
+          if (N.coinFlip())
+            listItems.add(PANCombo(
+                caseType: caseType,
+                sentenceStarter: staticParts.start,
+                sentenceEnder: staticParts.end,
+                possPronoun: possPronoun,
+                adjective: adj,
+                gender: noun.gender,
+                isPlural: isPlural,
+                noun: noun));
         });
       });
+    });
+
+    bank.nouns.forEach((noun) {
+      final isPlural = noun.nominativ.plural.first != '' && N.coinFlip();
+      final staticParts = getStaticSentenceParts(noun, isPlural, null, null);
+
+      listItems.add(PANCombo(
+          caseType: caseType,
+          sentenceStarter: staticParts.start,
+          sentenceEnder: staticParts.end,
+          possPronoun: null,
+          adjective: null,
+          gender: noun.gender,
+          isPlural: isPlural,
+          noun: noun));
     });
 
     return listItems;

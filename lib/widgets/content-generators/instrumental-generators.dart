@@ -17,7 +17,8 @@ class InstrumentalGenerators {
   ) {
     String start = '';
     String end = '';
-    String possPronouns = pronoun!.nominativ.masculine.singular.first;
+    String possPronouns =
+        pronoun == null ? '' : pronoun.nominativ.masculine.singular.first;
     String sSa = getsSa(
       noun,
       pronoun,

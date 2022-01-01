@@ -10,6 +10,7 @@ import 'package:navika/widgets/exercises/declension/genitiv/genitiv.dart';
 import 'package:navika/widgets/exercises/declension/instrumental/instrumental.dart';
 import 'package:navika/widgets/exercises/declension/lokativ/lokativ.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:navika/widgets/exercises/declension/vokativ/vokativ.dart';
 import 'package:navika/widgets/main-menu/exercise-button.dart';
 
 class DeclensionMenu extends StatelessWidget {
@@ -53,10 +54,12 @@ class DeclensionMenu extends StatelessWidget {
           icon: Icons.coffee,
           label: 'Genitiv',
           imagePath: CaseImagePaths[Cases.Gen]!),
-      // ExerciseButton(
-      //     destination: Vokativ(),
-      //     icon: Icons.call_rounded,
-      //     label: 'Vokativ'),
+      ExerciseButton(
+        destination: Vokativ(),
+        icon: Icons.call_rounded,
+        label: 'Vokativ',
+        imagePath: CaseImagePaths[Cases.Vok]!,
+      ),
     ];
 
     return Scaffold(

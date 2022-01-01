@@ -61,6 +61,19 @@ class WordBank {
     return result;
   }
 
+  WordBank includeOnlyNounsByTags(List<Tags> tagsToFilter) {
+    var result = WordBank(
+      nouns: [
+        ...this.nouns.where((n) => listsShareElements(tagsToFilter, n.tags))
+      ],
+      adjectives: [],
+      possessivePronouns: [],
+      personalPronouns: [],
+    );
+
+    return result;
+  }
+
   WordBank excludeNounsByTags(List<Tags> tagsToFilter) {
     var result = WordBank(
       nouns: [

@@ -12,9 +12,10 @@ class GenetivGenerators {
       Noun noun, bool isPlural, Adjective? pronoun, Adjective? adjective) {
     String start = '';
     String end = '';
+    String pronounStr = pronoun == null ? '' : pronoun.dictionary;
 
     if (noun.tags.contains(Tags.Health)) {
-      if (pronoun!.dictionary == 'ja')
+      if (pronounStr == 'ja')
         start = 'Ne mogu raditi zbog';
       else {
         start = 'Život bez';
@@ -24,10 +25,9 @@ class GenetivGenerators {
       start = 'Prije';
       end = 'treba se smiriti';
     } else if (noun.tags.contains(Tags.Country)) {
-      start = pronoun!.dictionary != 'moj' ? 'Ja sam iz' : 'On je iz';
+      start = pronounStr != 'moj' ? 'Ja sam iz' : 'On je iz';
     } else if (noun.tags.contains(Tags.Location)) {
-      start =
-          pronoun!.dictionary != 'mi' ? 'Idemo od kuće do' : 'Idem od kuće do';
+      start = pronounStr != 'mi' ? 'Idemo od kuće do' : 'Idem od kuće do';
     } else if (noun.tags.contains(Tags.Season)) {
       if (N.coinFlip())
         start = N.coinFlip() ? 'Prije' : 'Preko';
@@ -48,7 +48,7 @@ class GenetivGenerators {
       start = 'Ja sam kod';
     } else if (noun.tags.contains(Tags.Human) ||
         noun.tags.contains(Tags.Portable)) {
-      if (pronoun!.dictionary != 'moj') if (N.coinFlip())
+      if (pronounStr != 'moj') if (N.coinFlip())
         start = N.coinFlip() ? 'Otkad sam bez' : 'Ići ću bez';
       else
         start = 'Kraj';
