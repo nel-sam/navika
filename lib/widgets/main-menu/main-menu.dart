@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:navika/models/enums.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:navika/widgets/exercises/cyrillic/cyrillic-exercise.dart';
 import 'package:navika/widgets/main-menu/declension-menu.dart';
 import 'package:navika/widgets/main-menu/exercise-button.dart';
 import 'package:navika/widgets/main-menu/grammar-menu.dart';
@@ -27,6 +28,12 @@ class MainMenu extends StatelessWidget {
         icon: Icons.nordic_walking,
         label: AppLocalizations.of(context)!.verbExercises,
         imagePath: 'assets/banners/vespa.jpg',
+      ),
+      ExerciseButton(
+        destination: CyrillicExercise(),
+        icon: Icons.note,
+        label: AppLocalizations.of(context)!.cyrillic,
+        imagePath: 'assets/banners/writing.jpg',
       ),
     ];
 
