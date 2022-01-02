@@ -40,32 +40,41 @@ class VerbHeader extends StatelessWidget {
     return Container(
       child: Padding(
         padding: const EdgeInsets.only(top: 14, left: 10, right: 10),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
+        child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.only(right: 20),
-              child: isAllCorrect
-                  ? Icon(CORRECT_ANSWER_ICON, color: CORRECT_COLOR)
-                  : Icon(WRONG_ANSWER_ICON, color: WRONG_COLOR),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(right: 20),
-              child: NText(
-                  [N.NTextSpan(verb.infinitive, isBold: true, fontSize: 16)]),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(right: 20, top: 2),
-              child: NText([N.NTextSpan(translationFull, fontSize: 16)]),
-            ),
-            if (this.verb.isIrregular)
-              Padding(
-                padding: const EdgeInsets.only(right: 20, top: 2),
-                child: IconTextPair(
-                  icon: Icons.error_outline,
-                  text: AppLocalizations.of(context)!.irregular,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(right: 20),
+                  child: isAllCorrect
+                      ? Icon(CORRECT_ANSWER_ICON, color: CORRECT_COLOR)
+                      : Icon(WRONG_ANSWER_ICON, color: WRONG_COLOR),
                 ),
-              ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 20),
+                  child: NText([
+                    N.NTextSpan(verb.infinitive, isBold: true, fontSize: 16)
+                  ]),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 20, top: 2),
+                  child: NText([N.NTextSpan(translationFull, fontSize: 16)]),
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                if (this.verb.isIrregular)
+                  Padding(
+                    padding: const EdgeInsets.only(left: 30, right: 20, top: 2),
+                    child: IconTextPair(
+                      icon: Icons.error_outline,
+                      text: AppLocalizations.of(context)!.irregular,
+                    ),
+                  ),
+              ],
+            )
           ],
         ),
       ),

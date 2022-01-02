@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -10,6 +8,7 @@ import 'package:navika/state/verbs/verb-exercises.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:navika/widgets/main-menu/main-menu.dart';
+import 'package:navika/widgets/shared/ad-card.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -18,16 +17,6 @@ void main() {
 
   runApp(new NavikaApp());
 }
-
-final BannerAd adBanner = BannerAd(
-  //adUnitId: 'ca-app-pub-3940256099942544/2934735716', // TEST AD ID
-  adUnitId: Platform.isIOS
-      ? 'ca-app-pub-8911581163547766/5161441469'
-      : 'ca-app-pub-8911581163547766/8506817770',
-  size: AdSize.banner,
-  request: AdRequest(),
-  listener: BannerAdListener(),
-);
 
 class NavikaApp extends StatelessWidget {
   @override
@@ -74,8 +63,6 @@ class NavikaApp extends StatelessWidget {
 class NHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    adBanner.load();
-
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: N.NavikaAppBar(
@@ -89,12 +76,7 @@ class NHomePage extends StatelessWidget {
       body: Center(
         child: Column(
           children: [
-            Container(
-              alignment: Alignment.center,
-              child: AdWidget(ad: adBanner),
-              width: adBanner.size.width.toDouble(),
-              height: adBanner.size.height.toDouble(),
-            ),
+            AdCard(),
             MainMenu(),
           ],
         ),

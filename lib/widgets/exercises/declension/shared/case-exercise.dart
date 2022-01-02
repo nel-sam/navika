@@ -5,6 +5,7 @@ import 'package:navika/state/cases/case-exercises.dart';
 import 'package:navika/state/cases/case-question-state-item.dart';
 import 'package:navika/state/settings.dart';
 import 'package:navika/utilities/navika-helpers.dart';
+import 'package:navika/widgets/shared/ad-card.dart';
 import 'package:navika/widgets/shared/footer-buttons.dart';
 import 'package:navika/widgets/shared/navika-banner.dart';
 import 'package:navika/widgets/shared/navika-drawer.dart';
@@ -55,6 +56,7 @@ class CaseExercise extends StatelessWidget {
                     child: Column(
                       children: [
                         banner,
+                        AdCard(),
                         ...model.exerciseItems[caseType]!.take(BATCH_COUNT).map(
                               (CaseQuestionStateItem e) => CaseQuestionContent(
                                 stateItem: e,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/state/cyrillic/cyrillic-exercises.dart';
 import 'package:navika/utilities/navika-helpers.dart';
+import 'package:navika/widgets/shared/ad-card.dart';
 import 'package:navika/widgets/shared/navika-banner.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -38,6 +39,7 @@ class CyrillicExercise extends StatelessWidget {
                       Icons.note,
                     ],
                   ),
+                  AdCard(),
                 ],
               ),
             ),
