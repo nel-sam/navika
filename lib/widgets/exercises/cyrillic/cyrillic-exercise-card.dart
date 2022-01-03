@@ -1,11 +1,7 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/state/cyrillic/cyrillic-state-item.dart';
-import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/shared/icon-text-pair.dart';
-import 'package:navika/widgets/shared/navika-text.dart';
 import 'package:navika/extensions.dart';
 import 'package:navika/widgets/shared/question-free-form-multi-status.dart';
 import 'package:navika/widgets/shared/shadow-box.dart';
@@ -27,66 +23,35 @@ class CyrillicExerciseCard extends StatelessWidget {
       return this.state.latinString.equalsCaseInsensitive(userInput);
   }
 
-  bool isDualLetter(String fullStr, int index) {
-    if (fullStr.length <= index) return false;
+  int getContainsCount(String fullStr, String charToSearch) {
+    int foundCount = 0;
 
-    var compareToChar =
-        fullStr.characters.characterAt(index).first.toLowerCase() +
-            fullStr.characters.characterAt(index + 1).first.toLowerCase();
-
-    if (compareToChar == 'lj' ||
-        compareToChar == 'dž' ||
-        compareToChar == 'nj') {
-      return true;
+    for (int i = 0; i < fullStr.length; i++) {
+      if (getSubString(fullStr, i, i + 1).toLowerCase() == charToSearch) {
+        foundCount++;
+      }
     }
 
-    return false;
-  }
-
-  int mapsUntilForCyrillicInput(String userInput, String latinString) {
-    int latinIndex = 0, userInputIndex = 0;
-    var maxLen = userInput.length < latinString.length
-        ? userInput.length
-        : latinString.length;
-
-    for (; latinIndex < maxLen; latinIndex++, userInputIndex++) {
-      var compareToChar =
-          latinString.characters.characterAt(latinIndex).first.toLowerCase();
-
-      var _isDualLetter = isDualLetter(latinString, latinIndex);
-
-      if (_isDualLetter) {
-        compareToChar +=
-            getSubString(latinString, latinIndex + 1, latinIndex + 2);
-      }
-
-      var cyrChar = N.getCyrillicForLatin(compareToChar);
-      var userEnteredChar =
-          userInput.characters.characterAt(userInputIndex).first.toLowerCase();
-
-      if (cyrChar != userEnteredChar) {
-        return latinIndex - 1;
-      }
-
-      if (_isDualLetter) latinIndex++;
-    }
-
-    return latinIndex;
+    return foundCount;
   }
 
   int getProgressIndex() {
-    int index = 0;
+    if (this.state.userInput.length == 0) return 0;
 
-    if (this.state.userInput.length == 0) return index;
+    var correct =
+        this.state.cyrillicString.containsCaseInsensitive(this.state.userInput);
 
-    if (userInputsCyrillic) {
-      index = mapsUntilForCyrillicInput(
-          this.state.userInput, this.state.latinString);
-    } else {
-      // TODO: Finish this
-    }
+    if (!correct) return 0;
 
-    return index;
+    int index = this.state.userInput.length;
+    var loweredCyr =
+        getSubString(this.state.cyrillicString.toLowerCase(), 0, index);
+
+    int ljCount = getContainsCount(loweredCyr, 'љ');
+    int njCount = getContainsCount(loweredCyr, 'њ');
+    int dzCount = getContainsCount(loweredCyr, 'џ');
+
+    return index + ljCount + njCount + dzCount;
   }
 
   String getSubString(String string, int start, int end) {
@@ -97,10 +62,7 @@ class CyrillicExerciseCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     int progressIndex = getProgressIndex();
-    var inputSub = getSubString(this.state.latinString, 0, progressIndex);
-
-    // if (this.state.userInput.length > 0)
-    //   log('Index: $progressIndex Input: ${this.state.userInput} ${inputSub}'); // Remove this
+    var highlightSub = getSubString(this.state.latinString, 0, progressIndex);
 
     return ShadowBox(
       isCorrect: getIsAllCorrect(this.state.userInput),
@@ -122,7 +84,7 @@ class CyrillicExerciseCard extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        inputSub,
+                        highlightSub,
                         style: TextStyle(
                             color: CORRECT_COLOR,
                             fontStyle: FontStyle.italic,

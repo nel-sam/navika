@@ -316,31 +316,6 @@ final List<Verb> verbWordBank = [
       onaPl: 'pitale',
     ),
   ),
-  // TODO: propitati ili zapitati?
-  // Verb(
-  //   infinitive: 'propitati',
-  //   isIrregular: false,
-  //   isReflexive: false,
-  //   verbPerfectiveType: VerbPerfectiveTypes.Perfective,
-  //   getTranslation: (BuildContext context) =>
-  //       AppLocalizations.of(context)!.trans_pitati,
-  //   present: ConjugationSet(
-  //     ja: 'propitam',
-  //     ti: 'propitaš',
-  //     on: 'propita',
-  //     mi: 'propitamo',
-  //     vi: 'propitate',
-  //     oni: 'propitaju',
-  //   ),
-  //   pastPerfect: ParticipleSet(
-  //     singularMasc: 'propitao',
-  //     singularFem: 'propitala',
-  //     pluralMasc: 'propitali',
-  //     pluralFem: 'propitale',
-  //     ono: 'propitalo',
-  //     onaPl: 'propitale',
-  //   ),
-  // ),
   Verb(
     infinitive: 'pisati',
     isIrregular: true,
