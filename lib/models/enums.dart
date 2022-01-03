@@ -92,3 +92,10 @@ const CaseImagePaths = <Cases, String>{
   Cases.Gen: 'assets/banners/bosna.jpg',
   Cases.Vok: 'assets/banners/woman.jpg',
 };
+
+enum CorrectStatus {
+  correct,
+  wrong,
+  unstarted,
+  inprogressCorrect,
+}

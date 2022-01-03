@@ -27,7 +27,7 @@ class NavikaBanner extends StatelessWidget {
       height = 300;
     else if (height < 145) height = 145;
 
-    if (hasYouTubeLink) height += 40;
+    if (hasYouTubeLink) height += 60;
 
     return Container(
       height: height,

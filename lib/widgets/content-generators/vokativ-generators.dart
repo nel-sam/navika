@@ -10,12 +10,14 @@ import 'package:navika/utilities/navika-helpers.dart';
 class VokativGenerators {
   static StaticSentenceParts getStaticSentenceParts(
       Noun noun, bool isPlural, Adjective? pronoun, Adjective? adjective) {
-    return StaticSentenceParts(start: 'Zdravo, ', end: '!');
+    var start = N.coinFlip() ? 'Zdravo, ' : 'Hej, ';
+    return StaticSentenceParts(start: start, end: '');
   }
 
   static StaticSentenceParts getPersonalPronounSentenceStaticParts(
       PersonalPronoun personalPronoun, bool isShortForm) {
-    return StaticSentenceParts(start: 'Zdravo, ', end: '!');
+    var start = N.coinFlip() ? 'Zdravo, ' : 'Hej, ';
+    return StaticSentenceParts(start: start, end: '');
   }
 
   static List<CaseQuestionStateItem> initializePANStateItems() {

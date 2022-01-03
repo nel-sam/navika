@@ -62,12 +62,12 @@ class CaseExerciseRowCard extends StatelessWidget {
 
   Widget getHeader(BuildContext context, PANCombo combos) {
     return Padding(
-      padding: const EdgeInsets.only(top: 4, left: 10, right: 10),
+      padding: const EdgeInsets.only(top: 4, left: 5, right: 5),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Padding(
-            padding: const EdgeInsets.only(right: 20),
+            padding: const EdgeInsets.only(right: 5),
             child: this.isAllCorrect
                 ? Icon(CORRECT_ANSWER_ICON, color: CORRECT_COLOR)
                 : Icon(WRONG_ANSWER_ICON, color: WRONG_COLOR),

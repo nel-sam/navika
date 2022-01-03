@@ -80,10 +80,10 @@ class VerbQuestionStateItem {
 
       var entryValue = this.userEntryState[key] ?? '';
       var conjPronounType = ConjPronounTypes.values
-          .firstWhere((e) => e.toString().containsCaseInsensitive(key));
+          .firstWhere((e) => e.toString().equalsCaseInsensitive(key));
       var correctAnsw = this.verb.getConjugation(tense, conjPronounType);
 
-      if (!entryValue.containsCaseInsensitive(correctAnsw)) {
+      if (!entryValue.equalsCaseInsensitive(correctAnsw)) {
         allCorrect = false;
       }
     });

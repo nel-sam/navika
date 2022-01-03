@@ -6,6 +6,7 @@ import 'package:navika/widgets/shared/footer-button.dart';
 import 'package:navika/widgets/shared/home-button.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+// TODO: Make this into widget in declension folder
 // ignore: non_constant_identifier_names
 List<Widget> NavikaChildFooterButtons({
   required Cases caseType,
@@ -33,7 +34,8 @@ List<Widget> NavikaChildFooterButtons({
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => DeclensionGuide(startingCase: caseType)),
+                    builder: (context) =>
+                        DeclensionGuide(startingCase: caseType)),
               );
             },
             icon: Icons.help_center_outlined,

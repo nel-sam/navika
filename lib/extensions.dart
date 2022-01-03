@@ -3,14 +3,30 @@ import 'dart:math';
 import 'package:navika/models/models.dart';
 
 extension ExtendedString on String {
-  bool containsCaseInsensitive(String toCheck) {
+  bool equalsCaseInsensitive(String toCheck) {
     return this.toLowerCase() == toCheck.toLowerCase();
+  }
+
+  bool containsCaseInsensitive(String toCheck) {
+    return this.toLowerCase().contains(toCheck.toLowerCase());
   }
 }
 
 extension ExtendedStringList on List<String> {
   bool containsCaseInsensitive(String toCheck) {
     return this.map((e) => e.toLowerCase()).contains(toCheck.toLowerCase());
+  }
+
+  bool containsSubCaseInsensitive(String toCheck) {
+    var lowered = this.map((e) => e.toLowerCase()).toList();
+
+    for (int i = 0; i < lowered.length; i++) {
+      if (lowered[i].contains(toCheck.toLowerCase())) {
+        return true;
+      }
+    }
+
+    return false;
   }
 
   List<String> removeList(List<String> toRemove) {
