@@ -16,10 +16,17 @@
   "trans_dati": "To give",
   "trans_zatvoriti": "To close",
 
+  "trans_pada_kisa": "It is raining today",
+  "trans_najbolji_cevapi": "This is the best cevapi",
+  "trans_srbija_je": "Serbia is a Balkan country",
+  "trans_plaza_nego_grad": "I like the beach more than the city",
+  "trans_otici_na_rucak": "Is it possible to go to lunch tomorrow?",
+  "trans_ne_koristi_mnogo": "Cyrillic is not used much in Croatia",
+
   "extrainfo_brat": "Braća is used when referring to multiple brothers. Braća refers to males, but declines like a feminine noun.",
 
   "cyrillic": "Cyrillic",
-  "cyrillicDesc": "Cyrillic is used in Serbia, Montenegro, and Bosnia and Herzegovina.",
+  "cyrillicDesc": "Cyrillic is used in Serbia, Montenegro, and Bosnia and Herzegovina. Practice by writing the sentences in cyrillic or latin script in the exercises below.",
   "irregular": "Irregular",
   "perfective": "Perfective",
   "imperfective": "Imperfective",

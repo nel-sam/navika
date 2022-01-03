@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
-import 'package:navika/models/enums.dart';
 import 'package:navika/state/cyrillic/cyrillic-state-item.dart';
 import 'package:navika/utilities/navika-helpers.dart';
+import 'package:navika/widgets/shared/icon-text-pair.dart';
 import 'package:navika/widgets/shared/navika-text.dart';
 import 'package:navika/extensions.dart';
 import 'package:navika/widgets/shared/question-free-form-multi-status.dart';
@@ -55,6 +55,13 @@ class CyrillicExerciseCard extends StatelessWidget {
                   ),
                 ],
               ),
+            Padding(
+              padding: const EdgeInsets.only(top: 12.0),
+              child: IconTextPair(
+                icon: Icons.translate,
+                text: this.state.getTranslation(context),
+              ),
+            ),
           ],
         ),
       ),
