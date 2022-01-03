@@ -9,8 +9,8 @@ List<CyrillicBankItem> cyrillicWordBank = [
       getTranslation: (BuildContext context) =>
           AppLocalizations.of(context)!.trans_pada_kisa),
   CyrillicBankItem(
-      latinString: 'Ovo je najbolji cevapi',
-      cyrillicString: 'Ово је најбољи цевапи',
+      latinString: 'Ovo je najbolji čevapi',
+      cyrillicString: 'Ово је најбољи чевапи',
       getTranslation: (BuildContext context) =>
           AppLocalizations.of(context)!.trans_najbolji_cevapi),
   CyrillicBankItem(
@@ -24,7 +24,7 @@ List<CyrillicBankItem> cyrillicWordBank = [
       getTranslation: (BuildContext context) =>
           AppLocalizations.of(context)!.trans_plaza_nego_grad),
   CyrillicBankItem(
-      latinString: 'Može li se sutra otići na ručak?',
+      latinString: 'Može li se sutra otići na ručak?',
       cyrillicString: 'Може ли се сутра отићи на ручак?',
       getTranslation: (BuildContext context) =>
           AppLocalizations.of(context)!.trans_otici_na_rucak),

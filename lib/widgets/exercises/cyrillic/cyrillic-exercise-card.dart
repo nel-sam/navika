@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/state/cyrillic/cyrillic-state-item.dart';
@@ -25,8 +27,81 @@ class CyrillicExerciseCard extends StatelessWidget {
       return this.state.latinString.equalsCaseInsensitive(userInput);
   }
 
+  bool isDualLetter(String fullStr, int index) {
+    if (fullStr.length <= index) return false;
+
+    var compareToChar =
+        fullStr.characters.characterAt(index).first.toLowerCase() +
+            fullStr.characters.characterAt(index + 1).first.toLowerCase();
+
+    if (compareToChar == 'lj' ||
+        compareToChar == 'dž' ||
+        compareToChar == 'nj') {
+      return true;
+    }
+
+    return false;
+  }
+
+  int mapsUntilForCyrillicInput(String userInput, String latinString) {
+    int latinIndex = 0, userInputIndex = 0;
+    var maxLen = userInput.length < latinString.length
+        ? userInput.length
+        : latinString.length;
+
+    for (; latinIndex < maxLen; latinIndex++, userInputIndex++) {
+      var compareToChar =
+          latinString.characters.characterAt(latinIndex).first.toLowerCase();
+
+      var _isDualLetter = isDualLetter(latinString, latinIndex);
+
+      if (_isDualLetter) {
+        compareToChar +=
+            getSubString(latinString, latinIndex + 1, latinIndex + 2);
+      }
+
+      var cyrChar = N.getCyrillicForLatin(compareToChar);
+      var userEnteredChar =
+          userInput.characters.characterAt(userInputIndex).first.toLowerCase();
+
+      if (cyrChar != userEnteredChar) {
+        return latinIndex - 1;
+      }
+
+      if (_isDualLetter) latinIndex++;
+    }
+
+    return latinIndex;
+  }
+
+  int getProgressIndex() {
+    int index = 0;
+
+    if (this.state.userInput.length == 0) return index;
+
+    if (userInputsCyrillic) {
+      index = mapsUntilForCyrillicInput(
+          this.state.userInput, this.state.latinString);
+    } else {
+      // TODO: Finish this
+    }
+
+    return index;
+  }
+
+  String getSubString(String string, int start, int end) {
+    var chars = string.characters.getRange(start, end);
+    return chars.join();
+  }
+
   @override
   Widget build(BuildContext context) {
+    int progressIndex = getProgressIndex();
+    var inputSub = getSubString(this.state.latinString, 0, progressIndex);
+
+    // if (this.state.userInput.length > 0)
+    //   log('Index: $progressIndex Input: ${this.state.userInput} ${inputSub}'); // Remove this
+
     return ShadowBox(
       isCorrect: getIsAllCorrect(this.state.userInput),
       child: Padding(
@@ -44,7 +119,19 @@ class CyrillicExerciseCard extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  NText([N.NTextSpan(this.state.latinString)]),
+                  Row(
+                    children: [
+                      Text(
+                        inputSub,
+                        style: TextStyle(
+                            color: CORRECT_COLOR,
+                            fontStyle: FontStyle.italic,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      Text(getSubString(this.state.latinString, progressIndex,
+                          this.state.latinString.length)),
+                    ],
+                  ),
                   QuestionFreeFormMultiStatus(
                     activeValue: this.state.userInput,
                     correctValues: [this.state.cyrillicString],
