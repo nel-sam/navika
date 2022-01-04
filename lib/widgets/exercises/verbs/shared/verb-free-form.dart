@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
