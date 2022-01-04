@@ -13,20 +13,17 @@ class IconTextPair extends StatelessWidget {
     const double iconPadding = 4;
 
     return Container(
-      child: Padding(
-        padding: const EdgeInsets.only(left: 10),
-        child: Row(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(right: iconPadding),
-              child: Icon(
-                icon,
-                color: ACCENT_COLOR,
-              ),
+      child: Row(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(right: iconPadding),
+            child: Icon(
+              icon,
+              color: ACCENT_COLOR,
             ),
-            Text(text),
-          ],
-        ),
+          ),
+          Text(text),
+        ],
       ),
     );
   }

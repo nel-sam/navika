@@ -7,9 +7,12 @@ import 'package:navika/widgets/shared/navika-text.dart';
 import 'package:navika/extensions.dart';
 
 class CyrillicChart extends StatelessWidget {
-  final String highlightString;
+  final String latinString;
+  final String cyrillicString;
 
-  const CyrillicChart({Key? key, this.highlightString = ''}) : super(key: key);
+  const CyrillicChart(
+      {Key? key, this.cyrillicString = '', this.latinString = ''})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,10 +28,15 @@ class CyrillicChart extends StatelessWidget {
           padding: const EdgeInsets.all(20.0),
           child: Column(
             children: [
-              if (this.highlightString.isNotEmpty)
-                Container(
-                    height: 40,
-                    child: NText([N.NTextSpan(this.highlightString)])),
+              if (this.cyrillicString.isNotEmpty || this.latinString.isNotEmpty)
+                Column(
+                  children: [
+                    if (this.latinString.isNotEmpty)
+                      NText([N.NTextSpan(this.latinString)]),
+                    if (this.cyrillicString.isNotEmpty)
+                      NText([N.NTextSpan(this.cyrillicString, isBold: true)]),
+                  ],
+                ),
               Expanded(
                 child: GridView.extent(
                     maxCrossAxisExtent: 110, children: children),
@@ -39,8 +47,8 @@ class CyrillicChart extends StatelessWidget {
   }
 
   bool charInHighlightString(String char) {
-    if (this.highlightString.isEmpty) return false;
-    return this.highlightString.containsCaseInsensitive(char);
+    if (this.cyrillicString.isEmpty) return false;
+    return this.cyrillicString.containsCaseInsensitive(char);
   }
 
   List<Widget> createCharacterWidgets() {
@@ -61,7 +69,7 @@ class CyrillicChart extends StatelessWidget {
                 NText([N.NTextSpan('${key.toUpperCase()} $key')]),
                 NText([
                   N.NTextSpan('${value.toUpperCase()} $value',
-                      isBold: true, fontSize: 22)
+                      isBold: true, fontSize: 20)
                 ]),
               ],
             ),

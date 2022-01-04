@@ -130,7 +130,8 @@ class CyrillicExerciseCard extends StatelessWidget {
               context,
               MaterialPageRoute(
                 builder: (context) => CyrillicChart(
-                  highlightString: this.state.cyrillicString,
+                  cyrillicString: this.state.cyrillicString,
+                  latinString: this.state.latinString,
                 ),
               ),
             ),

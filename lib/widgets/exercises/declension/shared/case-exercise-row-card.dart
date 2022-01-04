@@ -87,7 +87,7 @@ class CaseExerciseRowCard extends StatelessWidget {
               icon: Icons.person,
               text: AppLocalizations.of(context)!.animate,
             ),
-          OutlinedButton(
+          IconButton(
               onPressed: () => {
                     Navigator.push(
                       context,
@@ -96,7 +96,8 @@ class CaseExerciseRowCard extends StatelessWidget {
                       ),
                     ),
                   },
-              child: Icon(Icons.help)),
+              color: ACCENT_COLOR,
+              icon: Icon(Icons.help)),
         ],
       ),
     );
