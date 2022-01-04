@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/state/cyrillic/cyrillic-exercises.dart';
 import 'package:navika/utilities/navika-helpers.dart';
+import 'package:navika/widgets/exercises/cyrillic/cyrillic-exec-footer-buttons.dart';
 import 'package:navika/widgets/exercises/cyrillic/cyrillic-exercise-card.dart';
 import 'package:navika/widgets/shared/ad-card.dart';
 import 'package:navika/widgets/shared/navika-banner.dart';
@@ -53,6 +54,8 @@ class CyrillicExercise extends StatelessWidget {
           ),
         ),
       ),
+      persistentFooterButtons:
+          CyrillicExecFooterButtons(context: context, refreshFunction: () {}),
     );
   }
 }

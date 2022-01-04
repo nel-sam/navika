@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/state/cyrillic/cyrillic-state-item.dart';
+import 'package:navika/widgets/exercises/cyrillic/cyrillic-chart.dart';
 import 'package:navika/widgets/shared/icon-text-pair.dart';
 import 'package:navika/extensions.dart';
 import 'package:navika/widgets/shared/question-free-form-multi-status.dart';
@@ -71,12 +72,7 @@ class CyrillicExerciseCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: const EdgeInsets.only(right: 5),
-              child: getIsAllCorrect(this.state.userInput)
-                  ? Icon(CORRECT_ANSWER_ICON, color: CORRECT_COLOR)
-                  : Icon(WRONG_ANSWER_ICON, color: WRONG_COLOR),
-            ),
+            getHeader(context),
             if (userInputsCyrillic)
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -114,6 +110,33 @@ class CyrillicExerciseCard extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  Widget getHeader(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(right: 5),
+          child: getIsAllCorrect(this.state.userInput)
+              ? Icon(CORRECT_ANSWER_ICON, color: CORRECT_COLOR)
+              : Icon(WRONG_ANSWER_ICON, color: WRONG_COLOR),
+        ),
+        OutlinedButton(
+          child: Icon(Icons.info),
+          onPressed: () => {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => CyrillicChart(
+                  highlightString: this.state.cyrillicString,
+                ),
+              ),
+            ),
+          },
+        )
+      ],
     );
   }
 }

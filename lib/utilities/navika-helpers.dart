@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
+import 'package:navika/lang_data/cyrillic-bank.dart';
 import 'package:navika/models/adjective.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
@@ -10,78 +11,6 @@ import 'package:navika/models/personal-pronoun.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class N {
-  static String getCyrillicForLatin(String latinCharacter) {
-    var lowered = latinCharacter.toLowerCase();
-
-    switch (lowered) {
-      case ' ':
-        return ' ';
-      case 'a':
-        return 'а';
-      case 'b':
-        return 'б';
-      case 'v':
-        return 'в';
-      case 'g':
-        return 'г';
-      case 'd':
-        return 'д';
-      case 'đ':
-        return 'ђ';
-      case 'e':
-        return 'е';
-      case 'ž':
-        return 'ж';
-      case 'z':
-        return 'з';
-      case 'i':
-        return 'и';
-      case 'j':
-        return 'ј';
-      case 'k':
-        return 'к';
-      case 'l':
-        return 'л';
-      case 'lj':
-        return 'љ';
-      case 'm':
-        return 'м';
-      case 'n':
-        return 'н';
-      case 'nj':
-        return 'њ';
-      case 'o':
-        return 'о';
-      case 'p':
-        return 'п';
-      case 'r':
-        return 'р';
-      case 's':
-        return 'с';
-      case 't':
-        return 'т';
-      case 'ć':
-        return 'ћ';
-      case 'u':
-        return 'у';
-      case 'f':
-        return 'ф';
-      case 'h':
-        return 'х';
-      case 'c':
-        return 'ц';
-      case 'č':
-        return 'ч';
-      case 'dž':
-        return 'џ';
-      case 'š':
-        return 'ш';
-
-      default:
-        return lowered;
-    }
-  }
-
   static scrollTo(double point, controller) {
     controller.animateTo(point,
         curve: Curves.linearToEaseOut, duration: SCROLL_DURATION);

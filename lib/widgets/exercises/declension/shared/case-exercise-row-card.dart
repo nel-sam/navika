@@ -87,7 +87,7 @@ class CaseExerciseRowCard extends StatelessWidget {
               icon: Icons.person,
               text: AppLocalizations.of(context)!.animate,
             ),
-          ElevatedButton(
+          OutlinedButton(
               onPressed: () => {
                     Navigator.push(
                       context,

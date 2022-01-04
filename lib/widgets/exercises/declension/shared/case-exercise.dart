@@ -6,7 +6,7 @@ import 'package:navika/state/cases/case-question-state-item.dart';
 import 'package:navika/state/settings.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/shared/ad-card.dart';
-import 'package:navika/widgets/shared/footer-buttons.dart';
+import 'package:navika/state/cases/case-exec-footer-buttons.dart';
 import 'package:navika/widgets/shared/navika-banner.dart';
 import 'package:navika/widgets/shared/navika-drawer.dart';
 import 'package:navika/widgets/exercises/declension/shared/case-question-content.dart';
@@ -96,7 +96,7 @@ class CaseExercise extends StatelessWidget {
                   ),
                 ),
               ),
-              persistentFooterButtons: NavikaChildFooterButtons(
+              persistentFooterButtons: CaseExecFooterButtons(
                 context: context,
                 caseType: caseType,
                 refreshFunction: () {
