@@ -29,41 +29,49 @@ class VerbExercise extends StatelessWidget {
         leading: Builder(builder: (BuildContext context) => BackButton()),
         elevation: APPBAR_ELEVATION,
         backgroundColor: N.getAppBarColor(context),
-        textTheme: N.getAppBarTextTheme(context),
         iconTheme: N.getAppBarIconTheme(context),
         title: Text(title, style: HEADER_TEXT_STYLE),
       ),
-      body: ChangeNotifierProvider<VerbExercises>(
-        create: (context) => VerbExercises(),
-        child: Consumer<VerbExercises>(
-          builder: (context, model, child) => Center(
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  banner,
-                  AdCard(),
-                  if (this.tense == VerbTenses.PastPerfect)
-                    ...model.exerciseItems.map(
-                      (VerbQuestionStateItem e) => PastTenseQuestionContent(
-                        verb: e.verb,
-                        state: e.userEntryState,
-                        isAllCorrect: e.isAllCorrect,
-                        onChanged: (String pronoun, String newValue) =>
-                            e.updateState(
-                                pronoun.toString(), newValue, this.tense),
+      body: GestureDetector(
+        onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+        child: ChangeNotifierProvider<VerbExercises>(
+          create: (context) => VerbExercises(),
+          child: Consumer<VerbExercises>(
+            builder: (context, model, child) => Center(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    banner,
+                    AdCard(),
+                    if (this.tense == VerbTenses.PastPerfect)
+                      ...model.exerciseItems.map(
+                        (VerbQuestionStateItem e) => Padding(
+                          padding: const EdgeInsets.only(top: 12.0),
+                          child: PastTenseQuestionContent(
+                            verb: e.verb,
+                            state: e.userEntryState,
+                            isAllCorrect: e.isAllCorrect,
+                            onChanged: (String pronoun, String newValue) =>
+                                e.updateState(
+                                    pronoun.toString(), newValue, this.tense),
+                          ),
+                        ),
                       ),
-                    ),
-                  if (this.tense == VerbTenses.Present)
-                    ...model.exerciseItems.map(
-                      (VerbQuestionStateItem e) => PresentTenseQuestionContent(
-                        verb: e.verb,
-                        isAllCorrect: e.isAllCorrect,
-                        state: e.userEntryState,
-                        onChanged: (String pronoun, String newValue) =>
-                            e.updateState(pronoun, newValue, this.tense),
+                    if (this.tense == VerbTenses.Present)
+                      ...model.exerciseItems.map(
+                        (VerbQuestionStateItem e) => Padding(
+                          padding: const EdgeInsets.all(12.0),
+                          child: PresentTenseQuestionContent(
+                            verb: e.verb,
+                            isAllCorrect: e.isAllCorrect,
+                            state: e.userEntryState,
+                            onChanged: (String pronoun, String newValue) =>
+                                e.updateState(pronoun, newValue, this.tense),
+                          ),
+                        ),
                       ),
-                    ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),

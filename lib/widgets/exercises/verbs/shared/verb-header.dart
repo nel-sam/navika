@@ -35,50 +35,52 @@ class VerbHeader extends StatelessWidget {
     var perfectiveness = getPerfectiveness(context, verb.verbPerfectiveType);
 
     return Container(
-      child: Padding(
-        padding: const EdgeInsets.only(top: 14, left: 10, right: 10),
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(right: 20),
-                  child: isAllCorrect
+      padding: EdgeInsets.all(12),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Column(
+            children: [
+              Row(
+                children: [
+                  isAllCorrect
                       ? Icon(CORRECT_ANSWER_ICON, color: CORRECT_COLOR)
                       : Icon(WRONG_ANSWER_ICON, color: WRONG_COLOR),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(right: 20),
-                  child: NText([
-                    N.NTextSpan(verb.infinitive, isBold: true, fontSize: 16)
-                  ]),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(right: 20, top: 2),
-                  child: NText([N.NTextSpan(translation, fontSize: 16)]),
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                // TODO: Improve styling
-                Padding(
-                  padding: const EdgeInsets.only(left: 44),
-                  child: NText([N.NTextSpan(perfectiveness, fontSize: 16)]),
-                ),
-                if (this.verb.isIrregular)
                   Padding(
-                    padding: const EdgeInsets.only(left: 30, right: 20, top: 2),
-                    child: IconTextPair(
-                      icon: Icons.error_outline,
-                      text: AppLocalizations.of(context)!.irregular,
+                    padding: const EdgeInsets.only(left: 18.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        NText([
+                          N.NTextSpan(verb.infinitive.toUpperCase(),
+                              isBold: true, fontSize: 16)
+                        ]),
+                        Text(
+                          perfectiveness,
+                          style: TextStyle(fontStyle: FontStyle.italic),
+                        ),
+                      ],
                     ),
                   ),
-              ],
-            )
-          ],
-        ),
+                ],
+              )
+            ],
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              IconTextPair(
+                text: translation,
+                icon: Icons.translate,
+              ),
+              if (this.verb.isIrregular)
+                IconTextPair(
+                  icon: Icons.error_outline,
+                  text: AppLocalizations.of(context)!.irregular,
+                ),
+            ],
+          )
+        ],
       ),
     );
   }

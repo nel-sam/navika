@@ -21,34 +21,36 @@ class CyrillicExercise extends StatelessWidget {
         leading: Builder(builder: (BuildContext context) => BackButton()),
         elevation: APPBAR_ELEVATION,
         backgroundColor: N.getAppBarColor(context),
-        textTheme: N.getAppBarTextTheme(context),
         iconTheme: N.getAppBarIconTheme(context),
         title: Text(title, style: HEADER_TEXT_STYLE),
       ),
-      body: ChangeNotifierProvider<CyrillicExercises>(
-        create: (context) => CyrillicExercises(),
-        child: Consumer<CyrillicExercises>(
-          builder: (context, model, child) => Center(
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  NavikaBanner(
-                    imagePath: 'assets/banners/writing.jpg',
-                    caseName: title,
-                    description: AppLocalizations.of(context)!.cyrillicDesc,
-                    //youtubeLink: RECOMMENDED_VIDEO_CYRILLIC,
-                    icons: [
-                      Icons.note,
-                    ],
-                  ),
-                  AdCard(),
-                  ...model.exerciseItems.map(
-                    (e) => CyrillicExerciseCard(
-                      state: e,
+      body: GestureDetector(
+        onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+        child: ChangeNotifierProvider<CyrillicExercises>(
+          create: (context) => CyrillicExercises(),
+          child: Consumer<CyrillicExercises>(
+            builder: (context, model, child) => Center(
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    NavikaBanner(
+                      imagePath: 'assets/banners/writing.jpg',
+                      caseName: title,
+                      description: AppLocalizations.of(context)!.cyrillicDesc,
+                      //youtubeLink: RECOMMENDED_VIDEO_CYRILLIC,
+                      icons: [
+                        Icons.note,
+                      ],
                     ),
-                  ),
-                ],
+                    AdCard(),
+                    ...model.exerciseItems.map(
+                      (e) => CyrillicExerciseCard(
+                        state: e,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

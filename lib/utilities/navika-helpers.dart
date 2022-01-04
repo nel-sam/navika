@@ -27,7 +27,6 @@ class N {
     return AppBar(
       elevation: APPBAR_ELEVATION,
       backgroundColor: N.getAppBarColor(context),
-      textTheme: N.getAppBarTextTheme(context),
       iconTheme: N.getAppBarIconTheme(context),
       title: title,
       actions: actions,

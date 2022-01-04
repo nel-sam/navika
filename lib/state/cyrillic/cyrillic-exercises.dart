@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:navika/lang_data/cyrillic-bank.dart';
 import 'package:navika/state/cyrillic/cyrillic-state-item.dart';

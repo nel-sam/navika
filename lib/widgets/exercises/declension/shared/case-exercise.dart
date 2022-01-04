@@ -41,7 +41,6 @@ class CaseExercise extends StatelessWidget {
                     Builder(builder: (BuildContext context) => BackButton()),
                 elevation: APPBAR_ELEVATION,
                 backgroundColor: N.getAppBarColor(context),
-                textTheme: N.getAppBarTextTheme(context),
                 iconTheme: N.getAppBarIconTheme(context),
                 title: Text(title, style: HEADER_TEXT_STYLE),
               ),
