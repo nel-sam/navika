@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
@@ -28,8 +30,10 @@ class VerbFreeForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+
     return Container(
-      width: 200,
+      width: (screenWidth / 2) - 10,
       child: Padding(
         padding: const EdgeInsets.all(18.0),
         child: Column(
@@ -37,6 +41,7 @@ class VerbFreeForm extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
                   this.startText,
@@ -45,7 +50,8 @@ class VerbFreeForm extends StatelessWidget {
                 if (this.gender != Genders.Unspecific)
                   IconTextPair(
                     icon: N.getGenderIcon(gender),
-                    text: N.getGenderString(context, gender),
+                    text:
+                        '${N.getGenderString(context, gender).substring(0, 3)}.',
                   ),
               ],
             ),

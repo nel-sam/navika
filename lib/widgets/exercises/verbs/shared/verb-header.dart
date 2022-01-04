@@ -33,9 +33,6 @@ class VerbHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     var translation = verb.getTranslation(context);
     var perfectiveness = getPerfectiveness(context, verb.verbPerfectiveType);
-    var translationFull = perfectiveness.length > 0
-        ? '$translation ($perfectiveness)'
-        : translation;
 
     return Container(
       child: Padding(
@@ -59,12 +56,17 @@ class VerbHeader extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(right: 20, top: 2),
-                  child: NText([N.NTextSpan(translationFull, fontSize: 16)]),
+                  child: NText([N.NTextSpan(translation, fontSize: 16)]),
                 ),
               ],
             ),
             Row(
               children: [
+                // TODO: Improve styling
+                Padding(
+                  padding: const EdgeInsets.only(left: 44),
+                  child: NText([N.NTextSpan(perfectiveness, fontSize: 16)]),
+                ),
                 if (this.verb.isIrregular)
                   Padding(
                     padding: const EdgeInsets.only(left: 30, right: 20, top: 2),
