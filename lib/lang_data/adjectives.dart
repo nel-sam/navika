@@ -243,7 +243,7 @@ final List<Adjective> adjectiveWordBank = [
       feminine:
           new DeclensionByGender(singular: ['hladne'], plural: ['hladnih']),
       neuter:
-          new DeclensionByGender(singular: ['hladneg'], plural: ['hladnih']),
+          new DeclensionByGender(singular: ['hladnog'], plural: ['hladnih']),
     ),
     vokativ: new Declension(
       masculine: new DeclensionByGender(singular: [''], plural: ['']),
