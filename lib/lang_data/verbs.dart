@@ -226,7 +226,7 @@ final List<Verb> verbWordBank = [
     isReflexive: false,
     verbPerfectiveType: VerbPerfectiveTypes.Perfective,
     getTranslation: (BuildContext context) =>
-        AppLocalizations.of(context)!.trans_ici,
+        AppLocalizations.of(context)!.trans_izaci,
     present: ConjugationSet(
       ja: 'izađem',
       ti: 'izađeš',

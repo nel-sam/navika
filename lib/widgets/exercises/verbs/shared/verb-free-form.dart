@@ -31,7 +31,7 @@ class VerbFreeForm extends StatelessWidget {
     double screenWidth = MediaQuery.of(context).size.width;
 
     return Container(
-      width: (screenWidth / 2) - 10,
+      width: (screenWidth / 2) - 14,
       child: Padding(
         padding: const EdgeInsets.all(18.0),
         child: Column(

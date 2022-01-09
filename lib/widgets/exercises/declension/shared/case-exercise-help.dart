@@ -31,7 +31,9 @@ class CaseExerciseHelp extends StatelessWidget {
       child: Column(
         children: [
           NText([
-            N.NTextSpan(adj.dictionary, isBold: true),
+            N.NTextSpan(
+                '${adj.dictionary} - ${N.getCaseLabel(combos.caseType)}',
+                isBold: true),
           ]),
           DeclensionTable(
             masculineSingular: getTableCell(
@@ -70,6 +72,11 @@ class CaseExerciseHelp extends StatelessWidget {
         padding: const EdgeInsets.only(top: 18.0),
         child: Column(
           children: [
+            NText([
+              N.NTextSpan(
+                  '${noun.dictionary} - ${N.getCaseLabel(combos.caseType)}',
+                  isBold: true),
+            ]),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -78,8 +85,6 @@ class CaseExerciseHelp extends StatelessWidget {
                   // Column 1
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Container(
-                        height: 62, child: NSubHeader(text: noun.dictionary)),
                     Container(
                         child: NText([N.NTextSpan(N.getCaseLabel(Cases.Nom))])),
                     Container(
@@ -306,7 +311,7 @@ class CaseExerciseHelp extends StatelessWidget {
         elevation: APPBAR_ELEVATION,
         backgroundColor: N.getAppBarColor(context),
         iconTheme: N.getAppBarIconTheme(context),
-        title: Text(N.getCaseLabel(combos.caseType)),
+        title: Text(N.getCaseLabel(combos.caseType), style: HEADER_TEXT_STYLE),
       ),
       body: Center(
         child: Container(

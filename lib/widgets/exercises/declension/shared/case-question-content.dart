@@ -179,8 +179,8 @@ class CaseQuestionContent extends StatelessWidget {
           ? false
           : stateItem.combos.noun!.isAnimate,
       getExtraInfo: stateItem.combos.noun == null
-        ? (BuildContext context) => ''
-        : stateItem.combos.noun!.getExtraInfo,
+          ? (BuildContext context) => ''
+          : stateItem.combos.noun!.getExtraInfo,
       children: sentenceContent,
       gender: stateItem.combos.gender,
     );

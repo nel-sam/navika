@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/extensions.dart';
+import 'package:navika/models/enums.dart';
 
 class QuestionFreeForm extends StatefulWidget {
   final String hintValue;
@@ -54,13 +55,45 @@ class _QuestionFreeFormState extends State<QuestionFreeForm> {
     );
   }
 
+  CorrectStatus getCorrectStatus(String userInput) {
+    if (userInput.length == 0) {
+      return CorrectStatus.unstarted;
+    }
+
+    if (widget.correctValues.containsCaseInsensitive(userInput)) {
+      return CorrectStatus.correct;
+    }
+
+    if (widget.correctValues.containsSubCaseInsensitive(userInput)) {
+      return CorrectStatus.inprogressCorrect;
+    }
+
+    return CorrectStatus.wrong;
+  }
+
   OutlineInputBorder getBorder() {
-    var isCorrect =
-        widget.correctValues.containsCaseInsensitive(widget.activeValue);
+    var status = getCorrectStatus(widget.activeValue);
+
+    var color = WRONG_COLOR;
+
+    switch (status) {
+      case CorrectStatus.correct:
+        color = CORRECT_COLOR;
+        break;
+      case CorrectStatus.wrong:
+        color = WRONG_COLOR;
+        break;
+      case CorrectStatus.unstarted:
+        color = Colors.grey;
+        break;
+      case CorrectStatus.inprogressCorrect:
+        color = ACCENT_COLOR;
+        break;
+    }
 
     return OutlineInputBorder(
       borderSide: BorderSide(
-        color: isCorrect ? CORRECT_COLOR : WRONG_COLOR,
+        color: color,
       ),
     );
   }
