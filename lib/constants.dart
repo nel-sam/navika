@@ -18,21 +18,7 @@ const CARD_PADDING = 10.0;
 const DECLINED_LETTER_STYLE =
     TextStyle(fontStyle: FontStyle.italic, fontWeight: FontWeight.bold);
 const CELL_TEXT_PADDING = 5.0;
-const TABLE_BORDER =
-    BorderSide(width: 1, color: Colors.grey, style: BorderStyle.solid);
-const TABLE_BORDERS = TableBorder(
-  right: TABLE_BORDER,
-  top: TABLE_BORDER,
-  left: TABLE_BORDER,
-  bottom: TABLE_BORDER,
-  horizontalInside:
-      BorderSide(width: 1, color: Colors.grey, style: BorderStyle.solid),
-  verticalInside: BorderSide(
-    width: 1,
-    color: Colors.grey,
-    style: BorderStyle.solid,
-  ),
-);
+
 const SINGULAR_ICON = Icons.looks_one_outlined;
 const PLURAL_ICON = Icons.widgets_outlined;
 

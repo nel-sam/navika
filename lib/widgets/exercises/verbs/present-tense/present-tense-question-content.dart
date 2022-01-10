@@ -59,7 +59,7 @@ class PresentTenseQuestionContent extends StatelessWidget {
               stateKey: ConjPronounTypes.tiMasc.toString(),
             ),
             VerbFreeForm(
-              startText: 'On/Ona/Oni',
+              startText: 'On/Ona/Ono',
               activeValue: this.state[ConjPronounTypes.on.toString()] ?? '',
               correctValues: [this.verb.present.on],
               gender: Genders.Unspecific,

@@ -12,12 +12,15 @@ class NSubHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(0, 20, 0, 10),
-      child: SelectableText.rich(TextSpan(
+      child: SelectableText.rich(
+        TextSpan(
           text: text,
           style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-              decoration: TextDecoration.underline))),
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
     );
   }
 }

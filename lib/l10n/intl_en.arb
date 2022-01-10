@@ -97,5 +97,6 @@
   "pastTense": "Simple Past",
   "pastTenseDesc" : "The simple past tense specifies something that has happened. It is formed by conjugating the verb biti and then attaching the past participle of the verb (which declines according to gender and count). Examples: Ja sam bio. See recommended video for more info.",
   "presentTense": "Present Tense",
-  "presentTenseDesc": "Verbs can be categorized as Perfective and Imperfective. Perfective verbs indicate a completed action (I did it = uradio sam). Imperfective verbs indicate a process (I was working/doing = radio sam)"
+  "presentTenseDesc": "Verbs can be categorized as Perfective and Imperfective. Perfective verbs indicate a completed action (I did it = uradio sam). Imperfective verbs indicate a process (I was working/doing = radio sam)",
+  "futureTense" : "Future Tense"
 }
