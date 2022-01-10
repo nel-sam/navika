@@ -111,47 +111,39 @@ class N {
           getStaticSentenceParts,
       required StaticSentenceParts Function(PersonalPronoun, bool)
           getPersonalPronounSentenceStaticParts}) {
+    const limitCount = 15;
+    var halfLimitCount = (limitCount / 2).floor();
     var listItems = List<PANCombo>.empty(growable: true);
 
-    bank.personalPronouns.forEach((persPronoun) {
-      final isPlural = persPronoun.isPlural;
-      final staticParts =
-          getPersonalPronounSentenceStaticParts(persPronoun, isPlural);
-
-      if (N.coinFlip())
-        listItems.add(PANCombo(
-          caseType: caseType,
-          sentenceStarter: staticParts.start,
-          sentenceEnder: staticParts.end,
-          gender: persPronoun.gender,
-          isPlural: isPlural,
-          personalPronoun: persPronoun,
-          usePersonalPronounShortForm: N.coinFlip(),
-        ));
-    });
+    bank.nouns.shuffle();
+    bank.adjectives.shuffle();
+    bank.personalPronouns.shuffle();
+    bank.possessivePronouns.shuffle();
 
     bank.possessivePronouns.forEach((possPronoun) {
-      bank.adjectives.forEach((adj) {
-        bank.nouns.forEach((noun) {
+      bank.adjectives.getRange(0, halfLimitCount).forEach((adj) {
+        bank.nouns.getRange(0, halfLimitCount).forEach((noun) {
           final isPlural = noun.nominativ.plural.first != '' && N.coinFlip();
           final staticParts =
               getStaticSentenceParts(noun, isPlural, possPronoun, adj);
 
-          if (N.coinFlip())
-            listItems.add(PANCombo(
-                caseType: caseType,
-                sentenceStarter: staticParts.start,
-                sentenceEnder: staticParts.end,
-                possPronoun: possPronoun,
-                adjective: adj,
-                gender: noun.gender,
-                isPlural: isPlural,
-                noun: noun));
+          listItems.add(PANCombo(
+              caseType: caseType,
+              sentenceStarter: staticParts.start,
+              sentenceEnder: staticParts.end,
+              possPronoun: possPronoun,
+              adjective: adj,
+              gender: noun.gender,
+              isPlural: isPlural,
+              noun: noun));
         });
       });
     });
 
-    bank.nouns.forEach((noun) {
+    listItems.shuffle();
+    listItems = listItems.getRange(0, limitCount).toList();
+
+    bank.nouns.getRange(0, limitCount).forEach((noun) {
       final isPlural = noun.nominativ.plural.first != '' && N.coinFlip();
       final staticParts = getStaticSentenceParts(noun, isPlural, null, null);
 
@@ -166,6 +158,23 @@ class N {
           noun: noun));
     });
 
+    bank.personalPronouns.forEach((persPronoun) {
+      final isPlural = persPronoun.isPlural;
+      final staticParts =
+          getPersonalPronounSentenceStaticParts(persPronoun, isPlural);
+
+      listItems.add(PANCombo(
+        caseType: caseType,
+        sentenceStarter: staticParts.start,
+        sentenceEnder: staticParts.end,
+        gender: persPronoun.gender,
+        isPlural: isPlural,
+        personalPronoun: persPronoun,
+        usePersonalPronounShortForm: N.coinFlip(),
+      ));
+    });
+
+    listItems.shuffle();
     return listItems;
   }
 

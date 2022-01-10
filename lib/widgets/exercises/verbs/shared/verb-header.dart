@@ -3,6 +3,7 @@ import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/verb.dart';
 import 'package:navika/utilities/navika-helpers.dart';
+import 'package:navika/widgets/exercises/verbs/shared/verb-help-guide.dart';
 import 'package:navika/widgets/shared/icon-text-pair.dart';
 import 'package:navika/widgets/shared/navika-text.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -78,6 +79,25 @@ class VerbHeader extends StatelessWidget {
                   icon: Icons.error_outline,
                   text: AppLocalizations.of(context)!.irregular,
                 ),
+            ],
+          ),
+          Column(
+            children: [
+              IconButton(
+                icon: Icon(Icons.info),
+                color: ACCENT_COLOR,
+                onPressed: () => {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => VerbHelpGuide(
+                        verb: verb,
+                        perfectiveness: perfectiveness,
+                      ),
+                    ),
+                  ),
+                },
+              )
             ],
           )
         ],

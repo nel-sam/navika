@@ -16,52 +16,6 @@ import 'package:navika/widgets/main-menu/exercise-button.dart';
 class DeclensionMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var buttons = <Widget>[
-      ExerciseButton(
-        destination: AllCases(),
-        icon: Icons.group,
-        label: AppLocalizations.of(context)!.allCases,
-        imagePath: CaseImagePaths[Cases.All]!,
-      ),
-      ExerciseButton(
-        destination: Nominativ(),
-        icon: Icons.category_outlined,
-        label: N.getCaseLabel(Cases.Nom),
-        imagePath: CaseImagePaths[Cases.Nom]!,
-      ),
-      ExerciseButton(
-          destination: Akuzativ(),
-          icon: Icons.remove_red_eye_outlined,
-          label: 'Akuzativ',
-          imagePath: CaseImagePaths[Cases.Aku]!),
-      ExerciseButton(
-          destination: Instrumental(),
-          icon: Icons.handyman_outlined,
-          label: 'Instrumental',
-          imagePath: CaseImagePaths[Cases.Ins]!),
-      ExerciseButton(
-          destination: Lokativ(),
-          icon: Icons.location_on_outlined,
-          label: 'Lokativ',
-          imagePath: CaseImagePaths[Cases.Lok]!),
-      ExerciseButton(
-          destination: Dativ(),
-          icon: Icons.arrow_forward,
-          label: 'Dativ',
-          imagePath: CaseImagePaths[Cases.Dat]!),
-      ExerciseButton(
-          destination: Genitiv(),
-          icon: Icons.coffee,
-          label: 'Genitiv',
-          imagePath: CaseImagePaths[Cases.Gen]!),
-      ExerciseButton(
-        destination: Vokativ(),
-        icon: Icons.call_rounded,
-        label: 'Vokativ',
-        imagePath: CaseImagePaths[Cases.Vok]!,
-      ),
-    ];
-
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: N.NavikaAppBar(
@@ -77,8 +31,69 @@ class DeclensionMenu extends StatelessWidget {
           children: [
             Expanded(
               child: SingleChildScrollView(
-                child: Column(
-                  children: buttons,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Column(
+                      children: [
+                        ExerciseButton(
+                          halfWidth: true,
+                          destination: AllCases(),
+                          icon: Icons.group,
+                          label: AppLocalizations.of(context)!.allCases,
+                          imagePath: CaseImagePaths[Cases.All]!,
+                        ),
+                        ExerciseButton(
+                          halfWidth: true,
+                          destination: Nominativ(),
+                          icon: Icons.category_outlined,
+                          label: N.getCaseLabel(Cases.Nom),
+                          imagePath: CaseImagePaths[Cases.Nom]!,
+                        ),
+                        ExerciseButton(
+                            halfWidth: true,
+                            destination: Akuzativ(),
+                            icon: Icons.remove_red_eye_outlined,
+                            label: 'Akuzativ',
+                            imagePath: CaseImagePaths[Cases.Aku]!),
+                        ExerciseButton(
+                            halfWidth: true,
+                            destination: Instrumental(),
+                            icon: Icons.handyman_outlined,
+                            label: 'Instrumental',
+                            imagePath: CaseImagePaths[Cases.Ins]!),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        ExerciseButton(
+                            halfWidth: true,
+                            destination: Lokativ(),
+                            icon: Icons.location_on_outlined,
+                            label: 'Lokativ',
+                            imagePath: CaseImagePaths[Cases.Lok]!),
+                        ExerciseButton(
+                            halfWidth: true,
+                            destination: Dativ(),
+                            icon: Icons.arrow_forward,
+                            label: 'Dativ',
+                            imagePath: CaseImagePaths[Cases.Dat]!),
+                        ExerciseButton(
+                            halfWidth: true,
+                            destination: Genitiv(),
+                            icon: Icons.coffee,
+                            label: 'Genitiv',
+                            imagePath: CaseImagePaths[Cases.Gen]!),
+                        ExerciseButton(
+                          halfWidth: true,
+                          destination: Vokativ(),
+                          icon: Icons.call_rounded,
+                          label: 'Vokativ',
+                          imagePath: CaseImagePaths[Cases.Vok]!,
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
               ),
             ),

@@ -2,26 +2,32 @@ import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
 
 class ExerciseButton extends StatelessWidget {
+  final Widget destination;
+  final IconData icon;
+  final String label;
+  final String imagePath;
+  final bool halfWidth;
+
   const ExerciseButton({
     Key? key,
     required this.destination,
     required this.label,
     required this.imagePath,
     required this.icon,
+    this.halfWidth = false,
   }) : super(key: key);
-
-  final Widget destination;
-  final IconData icon;
-  final String label;
-  final String imagePath;
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    var buttonWidth =
+        this.halfWidth ? (screenWidth / 2) - 20 : screenWidth - 30;
+
     return Padding(
       padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
       child: Container(
-        height: 140,
-        width: 370,
+        height: halfWidth ? 110 : 130,
+        width: buttonWidth,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(10)),
           image: DecorationImage(
@@ -49,7 +55,7 @@ class ExerciseButton extends StatelessWidget {
                         )),
                     child: Padding(
                       padding: const EdgeInsets.all(4),
-                      child: Icon(icon, size: 25),
+                      child: Icon(icon, size: halfWidth ? 20 : 25),
                     ),
                   ),
                 ],
@@ -57,7 +63,7 @@ class ExerciseButton extends StatelessWidget {
               Row(
                 children: [
                   Container(
-                    width: 300,
+                    width: buttonWidth - 40,
                     decoration: BoxDecoration(
                       border: Border(
                         bottom: BorderSide(width: 2, color: ACCENT_COLOR),
@@ -70,7 +76,8 @@ class ExerciseButton extends StatelessWidget {
                       ),
                       child: Text(
                         label,
-                        style: TextStyle(fontSize: 25, color: Colors.white),
+                        style: TextStyle(
+                            fontSize: halfWidth ? 17 : 24, color: Colors.white),
                       ),
                     ),
                   )

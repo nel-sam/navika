@@ -56,7 +56,7 @@ class CaseExercise extends StatelessWidget {
                       children: [
                         banner,
                         AdCard(),
-                        ...model.exerciseItems[caseType]!.take(BATCH_COUNT).map(
+                        ...model.exerciseItems[caseType]!.map(
                               (CaseQuestionStateItem e) => CaseQuestionContent(
                                 stateItem: e,
                                 entryType: settingsModel.settings.entryType,

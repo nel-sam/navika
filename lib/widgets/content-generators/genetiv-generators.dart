@@ -1,3 +1,4 @@
+import 'package:navika/constants.dart';
 import 'package:navika/lang_data/word-bank.dart';
 import 'package:navika/models/adjective.dart';
 import 'package:navika/models/enums.dart';
@@ -96,7 +97,9 @@ class GenetivGenerators {
       getStaticSentenceParts: getStaticSentenceParts,
     );
 
-    final result = combos.map((c) {
+    combos.shuffle();
+
+    final result = combos.take(BATCH_COUNT).map((c) {
       return CaseQuestionStateItem(combos: c);
     });
 

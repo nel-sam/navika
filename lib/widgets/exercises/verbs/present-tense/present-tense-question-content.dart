@@ -42,8 +42,7 @@ class PresentTenseQuestionContent extends StatelessWidget {
           children: [
             VerbFreeForm(
               startText: 'Ja',
-              activeValue:
-                  this.state[ConjPronounTypes.jaMasc.toString()] ?? '.',
+              activeValue: this.state[ConjPronounTypes.jaMasc.toString()] ?? '',
               correctValues: [this.verb.present.ja],
               gender: Genders.Unspecific,
               verb: verb,
@@ -52,8 +51,7 @@ class PresentTenseQuestionContent extends StatelessWidget {
             ),
             VerbFreeForm(
               startText: 'Ti',
-              activeValue:
-                  this.state[ConjPronounTypes.tiMasc.toString()] ?? '.',
+              activeValue: this.state[ConjPronounTypes.tiMasc.toString()] ?? '',
               correctValues: [this.verb.present.ti],
               gender: Genders.Unspecific,
               verb: verb,
@@ -62,7 +60,7 @@ class PresentTenseQuestionContent extends StatelessWidget {
             ),
             VerbFreeForm(
               startText: 'On/Ona/Oni',
-              activeValue: this.state[ConjPronounTypes.on.toString()] ?? '.',
+              activeValue: this.state[ConjPronounTypes.on.toString()] ?? '',
               correctValues: [this.verb.present.on],
               gender: Genders.Unspecific,
               verb: verb,
@@ -75,8 +73,7 @@ class PresentTenseQuestionContent extends StatelessWidget {
           children: [
             VerbFreeForm(
               startText: 'Mi',
-              activeValue:
-                  this.state[ConjPronounTypes.miMasc.toString()] ?? '.',
+              activeValue: this.state[ConjPronounTypes.miMasc.toString()] ?? '',
               correctValues: [this.verb.present.mi],
               gender: Genders.Unspecific,
               verb: verb,
@@ -85,8 +82,7 @@ class PresentTenseQuestionContent extends StatelessWidget {
             ),
             VerbFreeForm(
               startText: 'Vi',
-              activeValue:
-                  this.state[ConjPronounTypes.viMasc.toString()] ?? '.',
+              activeValue: this.state[ConjPronounTypes.viMasc.toString()] ?? '',
               correctValues: [this.verb.present.vi],
               gender: Genders.Unspecific,
               verb: verb,
@@ -95,7 +91,7 @@ class PresentTenseQuestionContent extends StatelessWidget {
             ),
             VerbFreeForm(
               startText: 'Oni/One/Ona (pl)',
-              activeValue: this.state[ConjPronounTypes.oni.toString()] ?? '.',
+              activeValue: this.state[ConjPronounTypes.oni.toString()] ?? '',
               correctValues: [this.verb.present.oni],
               gender: Genders.Unspecific,
               verb: verb,

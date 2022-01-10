@@ -354,4 +354,175 @@ final List<Adjective> adjectiveWordBank = [
       neuter: new DeclensionByGender(singular: [''], plural: ['']),
     ),
   ),
+  Adjective(
+    dictionary: 'skup',
+    toAvoid: [
+      Tags.Human,
+      Tags.Animal,
+      Tags.Health,
+      Tags.Location,
+      Tags.Country,
+      Tags.Emotion
+    ],
+    nominativ: new Declension(
+      masculine: new DeclensionByGender(singular: ['skupi'], plural: ['skupi']),
+      feminine: new DeclensionByGender(singular: ['skupa'], plural: ['skupe']),
+      neuter: new DeclensionByGender(singular: ['skupo'], plural: ['skupa']),
+    ),
+    akuzativ: new Declension(
+      masculine: new DeclensionByGender(singular: ['skupi'], plural: ['skupe']),
+      feminine: new DeclensionByGender(singular: ['skupu'], plural: ['skupe']),
+      neuter: new DeclensionByGender(singular: ['skupo'], plural: ['skupa']),
+    ),
+    akuzativAnimate: new Declension(
+      masculine: new DeclensionByGender(singular: ['skupa'], plural: ['skupe']),
+      feminine: new DeclensionByGender(singular: ['skupu'], plural: ['skupe']),
+      neuter: new DeclensionByGender(singular: ['skupo'], plural: ['skupa']),
+    ),
+    instrumental: new Declension(
+      masculine:
+          new DeclensionByGender(singular: ['skupim'], plural: ['skupim']),
+      feminine:
+          new DeclensionByGender(singular: ['skupom'], plural: ['skupim']),
+      neuter: new DeclensionByGender(singular: ['skupim'], plural: ['skupim']),
+    ),
+    lokativ: new Declension(
+      masculine:
+          new DeclensionByGender(singular: ['skupom'], plural: ['skupim']),
+      feminine:
+          new DeclensionByGender(singular: ['skupoj'], plural: ['skupim']),
+      neuter: new DeclensionByGender(singular: ['skupom'], plural: ['skupim']),
+    ),
+    dativ: new Declension(
+      masculine:
+          new DeclensionByGender(singular: ['skupom'], plural: ['skupim']),
+      feminine:
+          new DeclensionByGender(singular: ['skupoj'], plural: ['skupim']),
+      neuter: new DeclensionByGender(singular: ['skupom'], plural: ['skupim']),
+    ),
+    genitiv: new Declension(
+      masculine:
+          new DeclensionByGender(singular: ['skupog'], plural: ['skupih']),
+      feminine: new DeclensionByGender(singular: ['skupe'], plural: ['skupih']),
+      neuter: new DeclensionByGender(singular: ['skupog'], plural: ['skupih']),
+    ),
+    vokativ: new Declension(
+      masculine: new DeclensionByGender(singular: [''], plural: ['']),
+      feminine: new DeclensionByGender(singular: [''], plural: ['']),
+      neuter: new DeclensionByGender(singular: [''], plural: ['']),
+    ),
+  ),
+  Adjective(
+    dictionary: 'tužan',
+    toAvoid: [Tags.Thing, Tags.Emotion],
+    nominativ: new Declension(
+      masculine: new DeclensionByGender(singular: ['tužni'], plural: ['tužni']),
+      feminine: new DeclensionByGender(singular: ['tužna'], plural: ['tužne']),
+      neuter: new DeclensionByGender(singular: ['tužno'], plural: ['tužna']),
+    ),
+    akuzativ: new Declension(
+      masculine: new DeclensionByGender(singular: ['tužni'], plural: ['tužne']),
+      feminine: new DeclensionByGender(singular: ['tužnu'], plural: ['tužne']),
+      neuter: new DeclensionByGender(singular: ['tužno'], plural: ['tužna']),
+    ),
+    akuzativAnimate: new Declension(
+      masculine: new DeclensionByGender(singular: ['tužna'], plural: ['tužne']),
+      feminine: new DeclensionByGender(singular: ['tužnu'], plural: ['tužne']),
+      neuter: new DeclensionByGender(singular: ['tužno'], plural: ['tužna']),
+    ),
+    instrumental: new Declension(
+      masculine:
+          new DeclensionByGender(singular: ['tužnim'], plural: ['tužnim']),
+      feminine:
+          new DeclensionByGender(singular: ['tužnom'], plural: ['tužnim']),
+      neuter: new DeclensionByGender(singular: ['tužnim'], plural: ['tužnim']),
+    ),
+    lokativ: new Declension(
+      masculine:
+          new DeclensionByGender(singular: ['tužnom'], plural: ['tužnim']),
+      feminine:
+          new DeclensionByGender(singular: ['tužnoj'], plural: ['tužnim']),
+      neuter: new DeclensionByGender(singular: ['tužnom'], plural: ['tužnim']),
+    ),
+    dativ: new Declension(
+      masculine:
+          new DeclensionByGender(singular: ['tužnom'], plural: ['tužnim']),
+      feminine:
+          new DeclensionByGender(singular: ['tužnoj'], plural: ['tužnim']),
+      neuter: new DeclensionByGender(singular: ['tužnom'], plural: ['tužnim']),
+    ),
+    genitiv: new Declension(
+      masculine:
+          new DeclensionByGender(singular: ['tužnog'], plural: ['tužnih']),
+      feminine: new DeclensionByGender(singular: ['tužne'], plural: ['tužnih']),
+      neuter: new DeclensionByGender(singular: ['tužnog'], plural: ['tužnih']),
+    ),
+    vokativ: new Declension(
+      masculine: new DeclensionByGender(singular: [''], plural: ['']),
+      feminine: new DeclensionByGender(singular: [''], plural: ['']),
+      neuter: new DeclensionByGender(singular: [''], plural: ['']),
+    ),
+  ),
+  Adjective(
+    dictionary: 'sretan',
+    toAvoid: [Tags.Thing, Tags.Emotion],
+    nominativ: new Declension(
+      masculine:
+          new DeclensionByGender(singular: ['sretni'], plural: ['sretni']),
+      feminine:
+          new DeclensionByGender(singular: ['sretna'], plural: ['sretne']),
+      neuter: new DeclensionByGender(singular: ['sretno'], plural: ['sretna']),
+    ),
+    akuzativ: new Declension(
+      masculine:
+          new DeclensionByGender(singular: ['sretni'], plural: ['sretne']),
+      feminine:
+          new DeclensionByGender(singular: ['sretnu'], plural: ['sretne']),
+      neuter: new DeclensionByGender(singular: ['sretno'], plural: ['sretna']),
+    ),
+    akuzativAnimate: new Declension(
+      masculine:
+          new DeclensionByGender(singular: ['sretna'], plural: ['sretne']),
+      feminine:
+          new DeclensionByGender(singular: ['sretnu'], plural: ['sretne']),
+      neuter: new DeclensionByGender(singular: ['sretno'], plural: ['sretna']),
+    ),
+    instrumental: new Declension(
+      masculine:
+          new DeclensionByGender(singular: ['sretnim'], plural: ['sretnim']),
+      feminine:
+          new DeclensionByGender(singular: ['sretnom'], plural: ['sretnim']),
+      neuter:
+          new DeclensionByGender(singular: ['sretnim'], plural: ['sretnim']),
+    ),
+    lokativ: new Declension(
+      masculine:
+          new DeclensionByGender(singular: ['sretnom'], plural: ['sretnim']),
+      feminine:
+          new DeclensionByGender(singular: ['sretnoj'], plural: ['sretnim']),
+      neuter:
+          new DeclensionByGender(singular: ['sretnom'], plural: ['sretnim']),
+    ),
+    dativ: new Declension(
+      masculine:
+          new DeclensionByGender(singular: ['sretnom'], plural: ['sretnim']),
+      feminine:
+          new DeclensionByGender(singular: ['sretnoj'], plural: ['sretnim']),
+      neuter:
+          new DeclensionByGender(singular: ['sretnom'], plural: ['sretnim']),
+    ),
+    genitiv: new Declension(
+      masculine:
+          new DeclensionByGender(singular: ['sretnog'], plural: ['sretnih']),
+      feminine:
+          new DeclensionByGender(singular: ['sretne'], plural: ['sretnih']),
+      neuter:
+          new DeclensionByGender(singular: ['sretnog'], plural: ['sretnih']),
+    ),
+    vokativ: new Declension(
+      masculine: new DeclensionByGender(singular: [''], plural: ['']),
+      feminine: new DeclensionByGender(singular: [''], plural: ['']),
+      neuter: new DeclensionByGender(singular: [''], plural: ['']),
+    ),
+  ),
 ];

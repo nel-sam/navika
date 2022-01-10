@@ -1,3 +1,4 @@
+import 'package:navika/constants.dart';
 import 'package:navika/lang_data/word-bank.dart';
 import 'package:navika/models/adjective.dart';
 import 'package:navika/models/enums.dart';
@@ -32,10 +33,10 @@ class DativGenerators {
     String end = '';
 
     if (N.coinFlip()) {
-      start = 'Pas je došlo do';
+      start = 'Danas';
+      end = 'je rođendan';
     } else if (N.coinFlip()) {
-      start = 'Odakle';
-      end = 'to dolazi';
+      start = 'Pas je došlo do';
     } else if (N.coinFlip()) {
       start = 'Pas';
       end = 'je donio igračku';
@@ -56,7 +57,9 @@ class DativGenerators {
       getStaticSentenceParts: getStaticSentenceParts,
     );
 
-    final result = combos.map((c) {
+    combos.shuffle();
+
+    final result = combos.take(BATCH_COUNT).map((c) {
       return CaseQuestionStateItem(combos: c);
     });
 
