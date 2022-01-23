@@ -67,6 +67,8 @@ class CaseExerciseHelp extends StatelessWidget {
   }
 
   getNounList(BuildContext context, Noun noun, Cases caseType, bool isPlural) {
+    final double topRowHeight = 65;
+
     return Container(
       child: Padding(
         padding: const EdgeInsets.only(top: 18.0),
@@ -86,6 +88,9 @@ class CaseExerciseHelp extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Container(
+                      height: topRowHeight,
+                    ),
+                    Container(
                         child: NText([N.NTextSpan(N.getCaseLabel(Cases.Nom))])),
                     Container(
                         child: NText([N.NTextSpan(N.getCaseLabel(Cases.Aku))])),
@@ -102,9 +107,12 @@ class CaseExerciseHelp extends StatelessWidget {
                 Column(
                   // Column 2
                   children: [
-                    ExplanationIconCell(
-                      icon: SINGULAR_ICON,
-                      label: AppLocalizations.of(context)!.singular,
+                    Container(
+                      height: topRowHeight,
+                      child: ExplanationIconCell(
+                        icon: SINGULAR_ICON,
+                        label: AppLocalizations.of(context)!.singular,
+                      ),
                     ),
                     Container(
                         child: NText([
@@ -141,9 +149,12 @@ class CaseExerciseHelp extends StatelessWidget {
                 Column(
                   // Column 3
                   children: [
-                    ExplanationIconCell(
-                      icon: PLURAL_ICON,
-                      label: AppLocalizations.of(context)!.plural,
+                    Container(
+                      height: topRowHeight,
+                      child: ExplanationIconCell(
+                        icon: PLURAL_ICON,
+                        label: AppLocalizations.of(context)!.plural,
+                      ),
                     ),
                     Container(
                         child: NText([

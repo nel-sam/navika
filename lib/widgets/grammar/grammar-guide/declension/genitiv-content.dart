@@ -118,7 +118,7 @@ Widget getExampleSentences(BuildContext context) {
       ]),
       NText([
         N.NTextSpan('Ja sam '),
-        N.NTextSpan('kod zuruba', isBold: true),
+        N.NTextSpan('kod zubara', isBold: true),
       ]),
       NText([
         N.NTextSpan('Pas je mokar '),

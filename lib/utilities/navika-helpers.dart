@@ -199,16 +199,6 @@ class N {
         fontSize: fontSize,
         fontStyle: FontStyle.italic,
       );
-      // } else if (isBold && color != Colors.transparent) {
-      //   textStyle = TextStyle(
-      //     color: color,
-      //     fontWeight: FontWeight.bold,
-      //   );
-      // } else if (isBold) {
-      //   textStyle = TextStyle(
-      //     fontWeight: FontWeight.bold,
-      //   );
-      // }
     } else if (isBold) {
       textStyle = TextStyle(
         color: ACCENT_COLOR,

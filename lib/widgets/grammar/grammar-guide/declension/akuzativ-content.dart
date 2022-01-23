@@ -37,11 +37,10 @@ Widget getPossessivePronounSection(BuildContext context) {
       PronounLine(
           pronoun: PronounEnum.I,
           text: NText([
-            N.NTextSpan('Da li '),
-            N.NTextSpan('me ', isBold: true),
-            N.NTextSpan('čuješ?\n'),
-            N.NTextSpan('Da li čuješ '),
-            N.NTextSpan('mene', isBold: true),
+            N.NTextSpan('Čuješ li'),
+            N.NTextSpan('me?\n', isBold: true),
+            N.NTextSpan('Čuješ li'),
+            N.NTextSpan('mene?', isBold: true),
           ])),
       PronounLine(
           pronoun: PronounEnum.You,

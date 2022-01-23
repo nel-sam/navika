@@ -97,9 +97,9 @@ Widget getPossessivePronounSection(BuildContext context) {
       PronounLine(
           pronoun: PronounEnum.You_Plural,
           text: NText([
-            N.NTextSpan('Da li '),
+            N.NTextSpan('Govorite li '),
             N.NTextSpan('vi ', isBold: true),
-            N.NTextSpan('pričate Engleski?'),
+            N.NTextSpan('Engleski?'),
           ])),
       PronounLine(
           pronoun: PronounEnum.They_Ungendered,

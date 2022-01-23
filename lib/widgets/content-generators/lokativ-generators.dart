@@ -24,7 +24,6 @@ class LokativGenerators {
         start = '';
         end = 'radim kao turistički vodič';
       } else {
-        start = 'Da li';
         end = 'puno radite?';
       }
     } else if (noun.tags.contains(Tags.FlatSurface)) {
