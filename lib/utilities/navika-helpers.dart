@@ -141,9 +141,16 @@ class N {
     });
 
     listItems.shuffle();
-    listItems = listItems.getRange(0, limitCount).toList();
 
-    bank.nouns.getRange(0, limitCount).forEach((noun) {
+    if (listItems.length > limitCount) {
+      listItems = listItems.getRange(0, limitCount).toList();
+    }
+
+    var nouns = bank.nouns.length > limitCount
+        ? bank.nouns.getRange(0, limitCount)
+        : bank.nouns;
+
+    nouns.forEach((noun) {
       final isPlural = noun.nominativ.plural.first != '' && N.coinFlip();
       final staticParts = getStaticSentenceParts(noun, isPlural, null, null);
 

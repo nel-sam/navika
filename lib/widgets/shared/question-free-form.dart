@@ -3,13 +3,13 @@ import 'package:navika/constants.dart';
 import 'package:navika/extensions.dart';
 import 'package:navika/models/enums.dart';
 
-class QuestionFreeForm extends StatefulWidget {
+class QuestionFreeForm extends StatelessWidget {
   final String hintValue;
   final String activeValue;
   final List<String> correctValues;
   final Function(String) onChanged;
 
-  const QuestionFreeForm({
+  QuestionFreeForm({
     Key? key,
     required this.hintValue,
     required this.onChanged,
@@ -17,40 +17,38 @@ class QuestionFreeForm extends StatefulWidget {
     required this.correctValues,
   }) : super(key: key);
 
-  @override
-  _QuestionFreeFormState createState() => _QuestionFreeFormState();
-}
-
-class _QuestionFreeFormState extends State<QuestionFreeForm> {
   final controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    if (widget.activeValue == '') controller.text = '';
+    controller.text = activeValue;
+    controller.selection = TextSelection.fromPosition(
+        TextPosition(offset: controller.text.length));
 
-    return Container(
-      child: TextField(
-        key: widget.key,
-        controller: controller,
-        textInputAction: TextInputAction.next,
-        keyboardType: TextInputType.text,
-        decoration: InputDecoration(
-          isDense: true,
-          contentPadding: EdgeInsets.fromLTRB(4, 18, 0, 1),
-          labelText:
-              widget.correctValues.containsCaseInsensitive(widget.activeValue)
-                  ? ''
-                  : widget.hintValue,
-          enabledBorder: getBorder(),
-          focusedBorder: getBorder(),
+    return Padding(
+      padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
+      child: Container(
+        width: 100,
+        child: TextField(
+          key: key,
+          controller: controller,
+          textInputAction: TextInputAction.next,
+          keyboardType: TextInputType.text,
+          decoration: InputDecoration(
+            isDense: true,
+            contentPadding: EdgeInsets.fromLTRB(4, 18, 0, 1),
+            labelText: correctValues.containsCaseInsensitive(activeValue)
+                ? ''
+                : hintValue,
+            enabledBorder: getBorder(),
+            focusedBorder: getBorder(),
+          ),
+          onChanged: (String? newVal) {
+            if (newVal != null) {
+              onChanged(newVal);
+            }
+          },
         ),
-        onChanged: (String? newVal) {
-          if (newVal != null) {
-            setState(() {
-              widget.onChanged(newVal);
-            });
-          }
-        },
       ),
     );
   }
@@ -60,11 +58,11 @@ class _QuestionFreeFormState extends State<QuestionFreeForm> {
       return CorrectStatus.unstarted;
     }
 
-    if (widget.correctValues.containsCaseInsensitive(userInput)) {
+    if (correctValues.containsCaseInsensitive(userInput)) {
       return CorrectStatus.correct;
     }
 
-    if (widget.correctValues.containsSubCaseInsensitive(userInput)) {
+    if (correctValues.containsSubCaseInsensitive(userInput)) {
       return CorrectStatus.inprogressCorrect;
     }
 
@@ -72,7 +70,7 @@ class _QuestionFreeFormState extends State<QuestionFreeForm> {
   }
 
   OutlineInputBorder getBorder() {
-    var status = getCorrectStatus(widget.activeValue);
+    var status = getCorrectStatus(activeValue);
 
     var color = WRONG_COLOR;
 
