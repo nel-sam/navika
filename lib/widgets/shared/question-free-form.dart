@@ -1,12 +1,15 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/extensions.dart';
 import 'package:navika/models/enums.dart';
+import 'package:navika/utilities/navika-helpers.dart';
 
 class QuestionFreeForm extends StatelessWidget {
   final String hintValue;
   final String activeValue;
   final List<String> correctValues;
+  final bool isHalfWidth;
   final Function(String) onChanged;
 
   QuestionFreeForm({
@@ -15,20 +18,23 @@ class QuestionFreeForm extends StatelessWidget {
     required this.onChanged,
     required this.activeValue,
     required this.correctValues,
+    this.isHalfWidth = false,
   }) : super(key: key);
 
   final controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    Timer _debounce = Timer(const Duration(milliseconds: 0), () {});
     controller.text = activeValue;
     controller.selection = TextSelection.fromPosition(
         TextPosition(offset: controller.text.length));
+    var screenWidth = N.getScreenWidth(context);
 
     return Padding(
       padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
       child: Container(
-        width: 100,
+        width: isHalfWidth ? (screenWidth / 2) - 60 : screenWidth - 80,
         child: TextField(
           key: key,
           controller: controller,
@@ -45,7 +51,13 @@ class QuestionFreeForm extends StatelessWidget {
           ),
           onChanged: (String? newVal) {
             if (newVal != null) {
-              onChanged(newVal);
+              if (!_debounce.isActive) {
+                _debounce.cancel();
+              }
+
+              _debounce = Timer(const Duration(milliseconds: 350), () {
+                onChanged(newVal);
+              });
             }
           },
         ),

@@ -28,7 +28,7 @@ class VerbFreeForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
+    double screenWidth = N.getScreenWidth(context);
 
     return Container(
       width: (screenWidth / 2) - 14,
@@ -54,6 +54,7 @@ class VerbFreeForm extends StatelessWidget {
               ],
             ),
             QuestionFreeForm(
+              isHalfWidth: true,
               hintValue: this.verb.infinitive,
               onChanged: (String newValue) =>
                   this.onChanged(stateKey, newValue),

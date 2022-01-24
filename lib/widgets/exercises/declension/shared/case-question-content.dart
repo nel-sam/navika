@@ -155,19 +155,26 @@ class CaseQuestionContent extends StatelessWidget {
       return result;
     }
 
+    var textFildWidth = N.getScreenWidth(context) - 10;
     List<Widget> sentenceContent = [
       if (stateItem.combos.sentenceStarter != '')
-        Text(
-          stateItem.combos.sentenceStarter,
-          style: TextStyle(fontSize: EXERCISE_FONT_STYLE),
+        Container(
+          width: textFildWidth,
+          child: Text(
+            stateItem.combos.sentenceStarter,
+            style: TextStyle(fontSize: EXERCISE_FONT_STYLE),
+          ),
         ),
       if (entryType == EntryTypes.Select) ...dropDowns(),
       if (entryType == EntryTypes.FreeForm) ...freeForms(),
       if (entryType == EntryTypes.Mixed) ...getMixedForms(),
       if (stateItem.combos.sentenceEnder != '')
-        Text(
-          stateItem.combos.sentenceEnder,
-          style: TextStyle(fontSize: EXERCISE_FONT_STYLE),
+        Container(
+          width: textFildWidth,
+          child: Text(
+            stateItem.combos.sentenceEnder,
+            style: TextStyle(fontSize: EXERCISE_FONT_STYLE),
+          ),
         ),
     ];
 

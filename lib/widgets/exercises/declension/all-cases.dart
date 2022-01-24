@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/widgets/exercises/declension/shared/case-exercise.dart';
-import 'package:navika/widgets/shared/navika-banner.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AllCases extends StatelessWidget {
@@ -14,14 +13,8 @@ class AllCases extends StatelessWidget {
     return CaseExercise(
       title: title,
       caseType: Cases.All,
-      banner: NavikaBanner(
-        imagePath: CaseImagePaths[Cases.All]!,
-        caseName: title,
-        description: AppLocalizations.of(context)!.allCasesDesc,
-        icons: [
-          Icons.group,
-        ],
-      ),
+      imagePath: CaseImagePaths[Cases.All]!,
+      description: AppLocalizations.of(context)!.allCasesDesc,
     );
   }
 }

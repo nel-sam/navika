@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
-import 'package:navika/state/cases/case-exercises.dart';
+import 'package:navika/state/cases/case-notifier.dart';
 import 'package:navika/state/cases/case-question-state-item.dart';
 import 'package:navika/state/settings.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/shared/ad-card.dart';
 import 'package:navika/state/cases/case-exec-footer-buttons.dart';
-import 'package:navika/widgets/shared/navika-banner.dart';
+import 'package:navika/widgets/shared/exercise-header.dart';
+import 'package:navika/widgets/shared/info-banner.dart';
 import 'package:navika/widgets/shared/navika-drawer.dart';
 import 'package:navika/widgets/exercises/declension/shared/case-question-content.dart';
 import 'package:provider/provider.dart';
@@ -15,13 +16,17 @@ import 'package:provider/provider.dart';
 class CaseExercise extends StatelessWidget {
   final String title;
   final Cases caseType;
-  final NavikaBanner banner;
+  final String description;
+  final String imagePath;
+  final String? youtubeLink;
 
   CaseExercise({
     Key? key,
     required this.title,
     required this.caseType,
-    required this.banner,
+    required this.description,
+    required this.imagePath,
+    this.youtubeLink,
   }) : super(key: key);
 
   @override
@@ -32,9 +37,9 @@ class CaseExercise extends StatelessWidget {
       create: (context) => Settings(),
       child: Consumer<Settings>(
         builder: (context, settingsModel, child) =>
-            ChangeNotifierProvider<CaseExercises>(
-          create: (context) => CaseExercises(caseType: caseType),
-          child: Consumer<CaseExercises>(
+            ChangeNotifierProvider<CaseNotifier>(
+          create: (context) => CaseNotifier(caseType: caseType),
+          child: Consumer<CaseNotifier>(
             builder: (context, model, child) => Scaffold(
               appBar: AppBar(
                 leading:
@@ -53,43 +58,61 @@ class CaseExercise extends StatelessWidget {
                     controller: controller,
                     padding: EXERCISE_LIST_PADDING,
                     child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        banner,
-                        AdCard(),
-                        ...model.exerciseItems[caseType]!.map(
-                              (CaseQuestionStateItem e) => CaseQuestionContent(
-                                stateItem: e,
+                        InfoBanner(
+                          imagePath: imagePath,
+                          label: title,
+                          description: description,
+                          youtubeLink: youtubeLink,
+                          callBack: (bool isExpanded) {
+                            model.updateIsInfoExpanded(isExpanded);
+                          },
+                        ),
+                        if (!model.isInfoExpanded)
+                          Column(
+                            children: [
+                              ExerciseHeader(
+                                setPrevious: model.setPrevious,
+                                setNext: model.setNext,
+                                clear: model.clearInput,
+                              ),
+                              CaseQuestionContent(
+                                stateItem: model.getActive(),
                                 entryType: settingsModel.settings.entryType,
                                 onChanged: (GrammarTypes grammarType,
                                     String newValue) {
-                                  final newItem =
-                                      CaseQuestionStateItem(combos: e.combos);
+                                  final newItem = CaseQuestionStateItem(
+                                      combos: model.getActive().combos);
 
                                   newItem.userAdjResponse =
                                       grammarType == GrammarTypes.Adjective
                                           ? newValue
-                                          : e.userAdjResponse;
+                                          : model.getActive().userAdjResponse;
 
                                   newItem.userNounResponse =
                                       grammarType == GrammarTypes.Noun
                                           ? newValue
-                                          : e.userNounResponse;
+                                          : model.getActive().userNounResponse;
 
                                   newItem.userPossPronResponse = grammarType ==
                                           GrammarTypes.PossesivePronoun
                                       ? newValue
-                                      : e.userPossPronResponse;
+                                      : model.getActive().userPossPronResponse;
 
                                   newItem.userPersPronResponse = grammarType ==
                                           GrammarTypes.PersonalPronoun
                                       ? newValue
-                                      : e.userPersPronResponse;
+                                      : model.getActive().userPersPronResponse;
 
                                   newItem.isCorrect = newItem.checkAnswers();
-                                  model.modifyStateItem(caseType, e, newItem);
+                                  model.modifyStateItem(
+                                      caseType, model.getActive(), newItem);
                                 },
                               ),
-                            ),
+                              AdCard(),
+                            ],
+                          ),
                       ],
                     ),
                   ),
@@ -100,7 +123,7 @@ class CaseExercise extends StatelessWidget {
                 caseType: caseType,
                 refreshFunction: () {
                   N.scrollTo(0, controller);
-                  model.shuffleAndClear(caseType: caseType);
+                  model.shuffleAndClear();
                 },
               ),
             ),

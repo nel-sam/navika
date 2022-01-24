@@ -6,7 +6,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/navika-subheader.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/youtube-link.dart';
 import 'package:navika/widgets/grammar/grammar-guide/declension/declension-tables/dativ-lokativ-table.dart';
-import 'package:navika/widgets/shared/navika-text.dart';
+import 'package:navika/widgets/shared/navika-text-multi.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/pronoun-line.dart';
 
 class LokativGrammarGuideContent extends StatelessWidget {
@@ -36,49 +36,49 @@ Widget getPossessivePronounSection(BuildContext context) {
       ),
       PronounLine(
           pronoun: PronounEnum.I,
-          text: NText([
+          text: NTextMulti([
             N.NTextSpan('Ova knjiga je o '),
             N.NTextSpan('meni', isBold: true),
           ])),
       PronounLine(
           pronoun: PronounEnum.You,
-          text: NText([
+          text: NTextMulti([
             N.NTextSpan('Ja mislim o '),
             N.NTextSpan('tebi', isBold: true),
           ])),
       PronounLine(
           pronoun: PronounEnum.He,
-          text: NText([
+          text: NTextMulti([
             N.NTextSpan('Ona se brini o '),
             N.NTextSpan('njemu', isBold: true),
           ])),
       PronounLine(
           pronoun: PronounEnum.She,
-          text: NText([
+          text: NTextMulti([
             N.NTextSpan('On samo priča o '),
             N.NTextSpan('njoj', isBold: true),
           ])),
       PronounLine(
           pronoun: PronounEnum.We,
-          text: NText([
+          text: NTextMulti([
             N.NTextSpan('Ona kaže nešto o '),
             N.NTextSpan('nama', isBold: true),
           ])),
       PronounLine(
           pronoun: PronounEnum.You_Plural,
-          text: NText([
+          text: NTextMulti([
             N.NTextSpan('Ja ne znam ništa o '),
             N.NTextSpan('vama', isBold: true),
           ])),
       PronounLine(
           pronoun: PronounEnum.They_Ungendered,
-          text: NText([
+          text: NTextMulti([
             N.NTextSpan('Hoćemo govoriti o '),
             N.NTextSpan('njima', isBold: true),
           ])),
       PronounLine(
           pronoun: PronounEnum.Oneself,
-          text: NText([
+          text: NTextMulti([
             N.NTextSpan('I o '),
             N.NTextSpan('sebi ', isBold: true),
             N.NTextSpan('isto'),
@@ -90,7 +90,7 @@ Widget getPossessivePronounSection(BuildContext context) {
 Widget getDescription(BuildContext context) {
   return Column(
     children: [
-      NText([N.NTextSpan(AppLocalizations.of(context)!.lokativDescription)]),
+      NTextMulti([N.NTextSpan(AppLocalizations.of(context)!.lokativDescription)]),
       YouTubeLink(context, RECOMMENDED_VIDEO_LOK)
     ],
   );
@@ -100,23 +100,23 @@ Widget getExampleSentences(BuildContext context) {
   return Column(
     children: [
       NSubHeader(text: AppLocalizations.of(context)!.exampleSentences),
-      NText([
+      NTextMulti([
         N.NTextSpan('Ova priča govori '),
         N.NTextSpan('o njemu', isBold: true),
       ]),
-      NText([
+      NTextMulti([
         N.NTextSpan('On gleda film '),
         N.NTextSpan('u kinu', isBold: true),
       ]),
-      NText([
+      NTextMulti([
         N.NTextSpan('Živim '),
         N.NTextSpan('u gradu', isBold: true),
       ]),
-      NText([
+      NTextMulti([
         N.NTextSpan('U kuhinji ', isBold: true),
         N.NTextSpan('ima mnogo'),
       ]),
-      NText([
+      NTextMulti([
         N.NTextSpan('Idemo ', isBold: true),
         N.NTextSpan('na ručak'),
       ]),

@@ -291,4 +291,27 @@ class N {
         return '';
     }
   }
+
+  static double getScreenWidth(BuildContext context) {
+    return MediaQuery.of(context).size.width;
+  }
+
+  static double getScreenHeight(BuildContext context) {
+    return MediaQuery.of(context).size.height;
+  }
+
+  static fontStyleNormal({double fontSize = FONT_SIZE}) {
+    return TextStyle(
+      fontSize: fontSize,
+      fontStyle: FontStyle.normal,
+    );
+  }
+
+  static TextStyle fontStyleBold({double fontSize = FONT_SIZE}) {
+    return TextStyle(
+      color: ACCENT_COLOR,
+      fontSize: fontSize,
+      fontWeight: FontWeight.bold,
+    );
+  }
 }

@@ -4,7 +4,7 @@ import 'package:navika/utilities/navika-helpers.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/navika-subheader.dart';
 import 'package:navika/widgets/grammar/grammar-guide/declension/declension-tables/dativ-lokativ-table.dart';
-import 'package:navika/widgets/shared/navika-text.dart';
+import 'package:navika/widgets/shared/navika-text-multi.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/pronoun-line.dart';
 
 class DativGrammarGuideContent extends StatelessWidget {
@@ -34,7 +34,7 @@ Widget getPossessivePronounSection(BuildContext context) {
       ),
       PronounLine(
           pronoun: PronounEnum.I,
-          text: NText([
+          text: NTextMulti([
             N.NTextSpan('Objasni '),
             N.NTextSpan('mi ', isBold: true),
             N.NTextSpan('dativ\n'),
@@ -44,7 +44,7 @@ Widget getPossessivePronounSection(BuildContext context) {
           ])),
       PronounLine(
           pronoun: PronounEnum.You,
-          text: NText([
+          text: NTextMulti([
             N.NTextSpan('Ja ću pokazati '),
             N.NTextSpan('tebi ', isBold: true),
             N.NTextSpan('nešto\n'),
@@ -54,7 +54,7 @@ Widget getPossessivePronounSection(BuildContext context) {
           ])),
       PronounLine(
           pronoun: PronounEnum.He,
-          text: NText([
+          text: NTextMulti([
             N.NTextSpan('Poklonio sam knjigu '),
             N.NTextSpan('njemu\n', isBold: true),
             N.NTextSpan('Ja '),
@@ -63,7 +63,7 @@ Widget getPossessivePronounSection(BuildContext context) {
           ])),
       PronounLine(
           pronoun: PronounEnum.She,
-          text: NText([
+          text: NTextMulti([
             N.NTextSpan('On kazao '),
             N.NTextSpan('njoj ', isBold: true),
             N.NTextSpan('nešto\n'),
@@ -73,7 +73,7 @@ Widget getPossessivePronounSection(BuildContext context) {
           ])),
       PronounLine(
           pronoun: PronounEnum.We,
-          text: NText([
+          text: NTextMulti([
             N.NTextSpan('Trabamo kupiti '),
             N.NTextSpan('nama ', isBold: true),
             N.NTextSpan('auto\n'),
@@ -83,7 +83,7 @@ Widget getPossessivePronounSection(BuildContext context) {
           ])),
       PronounLine(
           pronoun: PronounEnum.You_Plural,
-          text: NText([
+          text: NTextMulti([
             N.NTextSpan('Pokažat ćemo '),
             N.NTextSpan('vam ', isBold: true),
             N.NTextSpan('grad\n'),
@@ -92,7 +92,7 @@ Widget getPossessivePronounSection(BuildContext context) {
           ])),
       PronounLine(
           pronoun: PronounEnum.They_Ungendered,
-          text: NText([
+          text: NTextMulti([
             N.NTextSpan('Daj '),
             N.NTextSpan('im ', isBold: true),
             N.NTextSpan('naše knjige\n'),
@@ -101,7 +101,7 @@ Widget getPossessivePronounSection(BuildContext context) {
           ])),
       PronounLine(
           pronoun: PronounEnum.Oneself,
-          text: NText([
+          text: NTextMulti([
             N.NTextSpan('Napravi '),
             N.NTextSpan('si ', isBold: true),
             N.NTextSpan('kavu\n'),
@@ -115,7 +115,7 @@ Widget getPossessivePronounSection(BuildContext context) {
 Widget getDescription(BuildContext context) {
   return Column(
     children: [
-      NText([N.NTextSpan(AppLocalizations.of(context)!.dativDescription)])
+      NTextMulti([N.NTextSpan(AppLocalizations.of(context)!.dativDescription)])
     ],
   );
 }
@@ -124,15 +124,15 @@ Widget getExampleSentences(BuildContext context) {
   return Column(
     children: [
       NSubHeader(text: AppLocalizations.of(context)!.exampleSentences),
-      NText([
+      NTextMulti([
         N.NTextSpan('On je kupio igračku '),
         N.NTextSpan('sinu', isBold: true),
       ]),
-      NText([
+      NTextMulti([
         N.NTextSpan('Došao je na posao usprkos '),
         N.NTextSpan('bolesti', isBold: true),
       ]),
-      NText([
+      NTextMulti([
         N.NTextSpan('Dao sam '),
         N.NTextSpan('mami ', isBold: true),
         N.NTextSpan('čaj'),

@@ -3,8 +3,8 @@ import 'package:navika/constants.dart';
 import 'package:navika/lang_data/cyrillic-bank.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:navika/widgets/shared/navika-text.dart';
 import 'package:navika/extensions.dart';
+import 'package:navika/widgets/shared/navika-text.dart';
 
 class CyrillicChart extends StatelessWidget {
   final String latinString;
@@ -31,10 +31,9 @@ class CyrillicChart extends StatelessWidget {
               if (this.cyrillicString.isNotEmpty || this.latinString.isNotEmpty)
                 Column(
                   children: [
-                    if (this.latinString.isNotEmpty)
-                      NText([N.NTextSpan(this.latinString)]),
+                    if (this.latinString.isNotEmpty) NText(this.latinString),
                     if (this.cyrillicString.isNotEmpty)
-                      NText([N.NTextSpan(this.cyrillicString, isBold: true)]),
+                      NText(this.cyrillicString, isBold: true),
                   ],
                 ),
               Expanded(
@@ -66,11 +65,9 @@ class CyrillicChart extends StatelessWidget {
             padding: EdgeInsets.all(8),
             child: Column(
               children: [
-                NText([N.NTextSpan('${key.toUpperCase()} $key')]),
-                NText([
-                  N.NTextSpan('${value.toUpperCase()} $value',
-                      isBold: true, fontSize: 20)
-                ]),
+                NText('${key.toUpperCase()} $key'),
+                NText('${value.toUpperCase()} $value',
+                    isBold: true, fontSize: 20),
               ],
             ),
             height: 100,

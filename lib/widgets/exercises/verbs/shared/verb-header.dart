@@ -5,7 +5,7 @@ import 'package:navika/models/verb.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/exercises/verbs/shared/verb-help-guide.dart';
 import 'package:navika/widgets/shared/icon-text-pair.dart';
-import 'package:navika/widgets/shared/navika-text.dart';
+import 'package:navika/widgets/shared/navika-text-multi.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class VerbHeader extends StatelessWidget {
@@ -52,7 +52,7 @@ class VerbHeader extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        NText([
+                        NTextMulti([
                           N.NTextSpan(verb.infinitive.toUpperCase(),
                               isBold: true, fontSize: 16)
                         ]),

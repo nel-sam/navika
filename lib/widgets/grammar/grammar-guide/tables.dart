@@ -23,7 +23,7 @@ class Tables extends StatefulWidget {
 class _TablesState extends State<Tables> {
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
+    double screenWidth = N.getScreenWidth(context);
 
     Widget tableSection(String title, Widget table) {
       return Column(
@@ -31,7 +31,8 @@ class _TablesState extends State<Tables> {
           Padding(
             padding: EdgeInsets.only(top: 15),
             child: NText(
-              [N.NTextSpan(title, isBold: true)],
+              title,
+              isBold: true,
               textAlign: TextAlign.center,
             ),
           ),

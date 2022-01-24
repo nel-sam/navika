@@ -11,6 +11,7 @@ import 'package:navika/widgets/grammar/grammar-guide/child-widgets/declension-ta
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/declension-table.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/explanation-icon-cell.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/navika-subheader.dart';
+import 'package:navika/widgets/shared/navika-text-multi.dart';
 import 'package:navika/widgets/shared/navika-text.dart';
 import 'package:navika/widgets/shared/translation-link.dart';
 
@@ -30,11 +31,8 @@ class CaseExerciseHelp extends StatelessWidget {
       padding: const EdgeInsets.only(top: 28.0),
       child: Column(
         children: [
-          NText([
-            N.NTextSpan(
-                '${adj.dictionary} - ${N.getCaseLabel(combos.caseType)}',
-                isBold: true),
-          ]),
+          NText('${adj.dictionary} - ${N.getCaseLabel(combos.caseType)}',
+              isBold: true),
           DeclensionTable(
             masculineSingular: getTableCell(
               declensions.masculine.singular,
@@ -74,11 +72,8 @@ class CaseExerciseHelp extends StatelessWidget {
         padding: const EdgeInsets.only(top: 18.0),
         child: Column(
           children: [
-            NText([
-              N.NTextSpan(
-                  '${noun.dictionary} - ${N.getCaseLabel(combos.caseType)}',
-                  isBold: true),
-            ]),
+            NText('${noun.dictionary} - ${N.getCaseLabel(combos.caseType)}',
+                isBold: true),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -90,18 +85,12 @@ class CaseExerciseHelp extends StatelessWidget {
                     Container(
                       height: topRowHeight,
                     ),
-                    Container(
-                        child: NText([N.NTextSpan(N.getCaseLabel(Cases.Nom))])),
-                    Container(
-                        child: NText([N.NTextSpan(N.getCaseLabel(Cases.Aku))])),
-                    Container(
-                        child: NText([N.NTextSpan(N.getCaseLabel(Cases.Ins))])),
-                    Container(
-                        child: NText([N.NTextSpan(N.getCaseLabel(Cases.Lok))])),
-                    Container(
-                        child: NText([N.NTextSpan(N.getCaseLabel(Cases.Dat))])),
-                    Container(
-                        child: NText([N.NTextSpan(N.getCaseLabel(Cases.Gen))])),
+                    Container(child: NText(N.getCaseLabel(Cases.Nom))),
+                    Container(child: NText(N.getCaseLabel(Cases.Aku))),
+                    Container(child: NText(N.getCaseLabel(Cases.Ins))),
+                    Container(child: NText(N.getCaseLabel(Cases.Lok))),
+                    Container(child: NText(N.getCaseLabel(Cases.Dat))),
+                    Container(child: NText(N.getCaseLabel(Cases.Gen))),
                   ],
                 ),
                 Column(
@@ -115,35 +104,23 @@ class CaseExerciseHelp extends StatelessWidget {
                       ),
                     ),
                     Container(
-                        child: NText([
-                      N.NTextSpan(noun.nominativ.singular.join(joinChar),
-                          isBold: caseType == Cases.Nom && !isPlural)
-                    ])),
+                        child: NText(noun.nominativ.singular.join(joinChar),
+                            isBold: caseType == Cases.Nom && !isPlural)),
                     Container(
-                        child: NText([
-                      N.NTextSpan(noun.akuzativ.singular.join(joinChar),
-                          isBold: caseType == Cases.Aku && !isPlural)
-                    ])),
+                        child: NText(noun.akuzativ.singular.join(joinChar),
+                            isBold: caseType == Cases.Aku && !isPlural)),
                     Container(
-                        child: NText([
-                      N.NTextSpan(noun.instrumental.singular.join(joinChar),
-                          isBold: caseType == Cases.Ins && !isPlural)
-                    ])),
+                        child: NText(noun.instrumental.singular.join(joinChar),
+                            isBold: caseType == Cases.Ins && !isPlural)),
                     Container(
-                        child: NText([
-                      N.NTextSpan(noun.lokativ.singular.join(joinChar),
-                          isBold: caseType == Cases.Lok && !isPlural)
-                    ])),
+                        child: NText(noun.lokativ.singular.join(joinChar),
+                            isBold: caseType == Cases.Lok && !isPlural)),
                     Container(
-                        child: NText([
-                      N.NTextSpan(noun.dativ.singular.join(joinChar),
-                          isBold: caseType == Cases.Dat && !isPlural)
-                    ])),
+                        child: NText(noun.dativ.singular.join(joinChar),
+                            isBold: caseType == Cases.Dat && !isPlural)),
                     Container(
-                        child: NText([
-                      N.NTextSpan(noun.genitiv.singular.join(joinChar),
-                          isBold: caseType == Cases.Gen && !isPlural)
-                    ])),
+                        child: NText(noun.genitiv.singular.join(joinChar),
+                            isBold: caseType == Cases.Gen && !isPlural)),
                   ],
                 ),
                 Column(
@@ -157,35 +134,23 @@ class CaseExerciseHelp extends StatelessWidget {
                       ),
                     ),
                     Container(
-                        child: NText([
-                      N.NTextSpan(noun.nominativ.plural.join(joinChar),
-                          isBold: caseType == Cases.Nom && isPlural)
-                    ])),
+                        child: NText(noun.nominativ.plural.join(joinChar),
+                            isBold: caseType == Cases.Nom && isPlural)),
                     Container(
-                        child: NText([
-                      N.NTextSpan(noun.akuzativ.plural.join(joinChar),
-                          isBold: caseType == Cases.Aku && isPlural)
-                    ])),
+                        child: NText(noun.akuzativ.plural.join(joinChar),
+                            isBold: caseType == Cases.Aku && isPlural)),
                     Container(
-                        child: NText([
-                      N.NTextSpan(noun.instrumental.plural.join(joinChar),
-                          isBold: caseType == Cases.Ins && isPlural)
-                    ])),
+                        child: NText(noun.instrumental.plural.join(joinChar),
+                            isBold: caseType == Cases.Ins && isPlural)),
                     Container(
-                        child: NText([
-                      N.NTextSpan(noun.lokativ.plural.join(joinChar),
-                          isBold: caseType == Cases.Lok && isPlural)
-                    ])),
+                        child: NText(noun.lokativ.plural.join(joinChar),
+                            isBold: caseType == Cases.Lok && isPlural)),
                     Container(
-                        child: NText([
-                      N.NTextSpan(noun.dativ.plural.join(joinChar),
-                          isBold: caseType == Cases.Dat && isPlural)
-                    ])),
+                        child: NText(noun.dativ.plural.join(joinChar),
+                            isBold: caseType == Cases.Dat && isPlural)),
                     Container(
-                        child: NText([
-                      N.NTextSpan(noun.genitiv.plural.join(joinChar),
-                          isBold: caseType == Cases.Gen && isPlural)
-                    ])),
+                        child: NText(noun.genitiv.plural.join(joinChar),
+                            isBold: caseType == Cases.Gen && isPlural)),
                   ],
                 ),
                 Column(),
@@ -213,17 +178,14 @@ class CaseExerciseHelp extends StatelessWidget {
             ),
             child: Padding(
               padding: const EdgeInsets.only(right: 8.0),
-              child: NText(
-                [N.NTextSpan(label)],
-                textAlign: TextAlign.right,
-              ),
+              child: NText(label, textAlign: TextAlign.right),
             ),
           ),
           Container(
             width: 120,
             child: Padding(
               padding: const EdgeInsets.only(left: 8.0),
-              child: NText([N.NTextSpan(value, isBold: isBold)]),
+              child: NText(value, isBold: isBold),
             ),
           )
         ],
@@ -282,7 +244,7 @@ class CaseExerciseHelp extends StatelessWidget {
     return Column(
       children: [
         NSubHeader(text: AppLocalizations.of(context)!.correctAnswer),
-        NText([
+        NTextMulti([
           if (combo.sentenceStarter != '')
             N.NTextSpan('${combo.sentenceStarter} '),
           if (combo.possPronoun != null)
@@ -314,7 +276,7 @@ class CaseExerciseHelp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
+    double screenWidth = N.getScreenWidth(context);
 
     return Scaffold(
       appBar: AppBar(

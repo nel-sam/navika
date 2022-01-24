@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/utilities/navika-helpers.dart';
+import 'package:navika/widgets/shared/navika-text-multi.dart';
 import 'package:navika/widgets/shared/navika-text.dart';
 
 class PronounLine extends StatelessWidget {
   final PronounEnum pronoun;
-  final NText text;
+  final NTextMulti text;
 
   const PronounLine({
     Key? key,
@@ -37,9 +38,7 @@ class PronounLine extends StatelessWidget {
                 padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
                 child: Align(
                   alignment: Alignment.centerRight,
-                  child: NText(
-                    [TextSpan(text: labelText)],
-                  ),
+                  child: NText(labelText),
                 ),
               ),
             ),

@@ -3,7 +3,6 @@ import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/widgets/exercises/declension/shared/case-exercise.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:navika/widgets/shared/navika-banner.dart';
 
 class Akuzativ extends StatelessWidget {
   @override
@@ -13,18 +12,9 @@ class Akuzativ extends StatelessWidget {
     return CaseExercise(
       title: title,
       caseType: Cases.Aku,
-      banner: NavikaBanner(
-        imagePath: CaseImagePaths[Cases.Aku]!,
-        caseName: title,
-        description: AppLocalizations.of(context)!.akuzativDescription,
-        youtubeLink: RECOMMENDED_VIDEO_AKU,
-        icons: [
-          Icons.remove_red_eye_outlined,
-          Icons.car_rental,
-          Icons.arrow_forward,
-          Icons.euro,
-        ],
-      ),
+      imagePath: CaseImagePaths[Cases.Aku]!,
+      description: AppLocalizations.of(context)!.akuzativDescription,
+      youtubeLink: RECOMMENDED_VIDEO_AKU,
     );
   }
 }

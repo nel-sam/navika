@@ -7,12 +7,12 @@ import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/exercises/verbs/present-tense/present-tense-question-content.dart';
 import 'package:navika/widgets/exercises/verbs/past-tense/past-tense-question-content.dart';
 import 'package:navika/widgets/shared/ad-card.dart';
-import 'package:navika/widgets/shared/navika-banner.dart';
+import 'package:navika/widgets/shared/info-banner.dart';
 import 'package:provider/provider.dart';
 
 class VerbExercise extends StatelessWidget {
   final String title;
-  final NavikaBanner banner;
+  final InfoBanner banner;
   final VerbTenses tense;
 
   const VerbExercise({

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
+import 'package:navika/utilities/navika-helpers.dart';
 
 class ExerciseButton extends StatelessWidget {
   final Widget destination;
@@ -19,7 +20,7 @@ class ExerciseButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
+    double screenWidth = N.getScreenWidth(context);
     var buttonWidth =
         this.halfWidth ? (screenWidth / 2) - 20 : screenWidth - 30;
 

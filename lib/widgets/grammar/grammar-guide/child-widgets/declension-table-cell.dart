@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
-import 'package:navika/widgets/shared/navika-text.dart';
+import 'package:navika/widgets/shared/navika-text-multi.dart';
 
 class DeclensionTableCell extends StatelessWidget {
   final List<TextSpan> children;
@@ -60,7 +60,7 @@ class DeclensionTableCell extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(4),
               child: Center(
-                child: NText(
+                child: NTextMulti(
                   children,
                 ),
               ),

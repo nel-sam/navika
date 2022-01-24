@@ -4,7 +4,7 @@ import 'package:navika/utilities/navika-helpers.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/navika-subheader.dart';
 import 'package:navika/widgets/grammar/grammar-guide/declension/declension-tables/genitiv-table.dart';
-import 'package:navika/widgets/shared/navika-text.dart';
+import 'package:navika/widgets/shared/navika-text-multi.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/pronoun-line.dart';
 
 class GenitivGrammarGuideContent extends StatelessWidget {
@@ -34,7 +34,7 @@ Widget getPossessivePronounSection(BuildContext context) {
       ),
       PronounLine(
           pronoun: PronounEnum.I,
-          text: NText([
+          text: NTextMulti([
             N.NTextSpan('On pleše '),
             N.NTextSpan('mene\n', isBold: true),
             N.NTextSpan('Evo '),
@@ -42,7 +42,7 @@ Widget getPossessivePronounSection(BuildContext context) {
           ])),
       PronounLine(
           pronoun: PronounEnum.You,
-          text: NText([
+          text: NTextMulti([
             N.NTextSpan('Nisam spavala zbog '),
             N.NTextSpan('tebe\n', isBold: true),
             N.NTextSpan('Evo '),
@@ -50,7 +50,7 @@ Widget getPossessivePronounSection(BuildContext context) {
           ])),
       PronounLine(
           pronoun: PronounEnum.He,
-          text: NText([
+          text: NTextMulti([
             N.NTextSpan('Ona stoji iza '),
             N.NTextSpan('njega\n', isBold: true),
             N.NTextSpan('Nema '),
@@ -59,25 +59,25 @@ Widget getPossessivePronounSection(BuildContext context) {
           ])),
       PronounLine(
           pronoun: PronounEnum.She,
-          text: NText([
+          text: NTextMulti([
             N.NTextSpan('Ona stoji iza '),
             N.NTextSpan('nje', isBold: true),
           ])),
       PronounLine(
           pronoun: PronounEnum.We,
-          text: NText([
+          text: NTextMulti([
             N.NTextSpan('Oni su išli bez '),
             N.NTextSpan('nas', isBold: true)
           ])),
       PronounLine(
           pronoun: PronounEnum.You_Plural,
-          text: NText([
+          text: NTextMulti([
             N.NTextSpan('Moj brat stoji između nas i '),
             N.NTextSpan('vas', isBold: true)
           ])),
       PronounLine(
           pronoun: PronounEnum.They_Ungendered,
-          text: NText([
+          text: NTextMulti([
             N.NTextSpan('Bojim se '),
             N.NTextSpan('njih\n', isBold: true),
             N.NTextSpan('Ja se '),
@@ -91,7 +91,7 @@ Widget getPossessivePronounSection(BuildContext context) {
 Widget getDescription(BuildContext context) {
   return Column(
     children: [
-      NText([N.NTextSpan(AppLocalizations.of(context)!.genitiveDescription)])
+      NTextMulti([N.NTextSpan(AppLocalizations.of(context)!.genitiveDescription)])
     ],
   );
 }
@@ -100,31 +100,31 @@ Widget getExampleSentences(BuildContext context) {
   return Column(
     children: [
       NSubHeader(text: AppLocalizations.of(context)!.exampleSentences),
-      NText([
+      NTextMulti([
         N.NTextSpan('Kraj '),
         N.NTextSpan('filma', isBold: true),
       ]),
-      NText([
+      NTextMulti([
         N.NTextSpan('Ne mogu živjeti '),
         N.NTextSpan('bez tebe', isBold: true),
       ]),
-      NText([
+      NTextMulti([
         N.NTextSpan('Vrh '),
         N.NTextSpan('planine', isBold: true),
       ]),
-      NText([
+      NTextMulti([
         N.NTextSpan('Broj '),
         N.NTextSpan('telefona', isBold: true),
       ]),
-      NText([
+      NTextMulti([
         N.NTextSpan('Ja sam '),
         N.NTextSpan('kod zubara', isBold: true),
       ]),
-      NText([
+      NTextMulti([
         N.NTextSpan('Pas je mokar '),
         N.NTextSpan('zbog kiše', isBold: true),
       ]),
-      NText([
+      NTextMulti([
         N.NTextSpan('Nema '),
         N.NTextSpan('problema', isBold: true),
       ]),

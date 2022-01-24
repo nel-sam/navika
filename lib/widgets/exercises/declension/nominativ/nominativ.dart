@@ -4,7 +4,6 @@ import 'package:navika/models/enums.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/exercises/declension/shared/case-exercise.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:navika/widgets/shared/navika-banner.dart';
 
 class Nominativ extends StatelessWidget {
   @override
@@ -12,19 +11,10 @@ class Nominativ extends StatelessWidget {
     final title = N.getCaseLabel(Cases.Nom);
 
     return CaseExercise(
-      title: title,
-      caseType: Cases.Nom,
-      banner: NavikaBanner(
+        title: title,
+        caseType: Cases.Nom,
         imagePath: CaseImagePaths[Cases.Nom]!,
-        caseName: title,
-        description: AppLocalizations.of(context)!.nominativDescription,
         youtubeLink: RECOMMENDED_VIDEO_NOM,
-        icons: [
-          Icons.category_outlined,
-          Icons.nature,
-          Icons.people,
-        ],
-      ),
-    );
+        description: AppLocalizations.of(context)!.nominativDescription);
   }
 }

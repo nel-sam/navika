@@ -9,15 +9,15 @@ import 'package:navika/widgets/content-generators/genetiv-generators.dart';
 import 'package:navika/widgets/content-generators/lokativ-generators.dart';
 import 'package:navika/widgets/content-generators/vokativ-generators.dart';
 
-class CaseExercises with ChangeNotifier {
-  Map<Cases, List<CaseQuestionStateItem>> exerciseItems = {};
+class CaseNotifier with ChangeNotifier {
+  List<CaseQuestionStateItem> _exerciseItems = [];
+  int _activeIndex = 0;
+  bool isInfoExpanded = false;
 
-  CaseExercises({Cases? caseType}) {
+  CaseNotifier({Cases? caseType}) {
     if (caseType == null) return;
 
-    List<CaseQuestionStateItem> items = getItems(caseType);
-    exerciseItems[caseType] = items;
-
+    _exerciseItems = getItems(caseType);
     notifyListeners();
   }
 
@@ -63,11 +63,6 @@ class CaseExercises with ChangeNotifier {
     return items;
   }
 
-  void add(Cases caseType, CaseQuestionStateItem item) {
-    exerciseItems[caseType]!.add(item);
-    notifyListeners();
-  }
-
   void modifyStateItem(Cases caseType, CaseQuestionStateItem toModify,
       CaseQuestionStateItem newValue) {
     toModify.combos = newValue.combos;
@@ -80,18 +75,67 @@ class CaseExercises with ChangeNotifier {
     notifyListeners();
   }
 
-  List<CaseQuestionStateItem> shuffleAndClear(
-      {required Cases caseType, bool notify: true}) {
-    exerciseItems[caseType]!.shuffle();
-    exerciseItems[caseType]!.forEach((element) {
-      element.userAdjResponse = '';
-      element.userNounResponse = '';
-      element.userPossPronResponse = '';
-      element.userPersPronResponse = '';
-      element.isCorrect = false;
+  List<CaseQuestionStateItem> shuffleAndClear({bool notify: true}) {
+    _exerciseItems.shuffle();
+    _exerciseItems.forEach((element) {
+      element.clear();
     });
 
     if (notify) notifyListeners();
-    return exerciseItems[caseType]!;
+    return _exerciseItems;
+  }
+
+  CaseQuestionStateItem getActive() {
+    return _exerciseItems[_activeIndex];
+  }
+
+  updateIsInfoExpanded(bool newValue) {
+    isInfoExpanded = newValue;
+    notifyListeners();
+  }
+
+  updateNoun(String newValue) {
+    getActive().userNounResponse = newValue;
+    notifyListeners();
+  }
+
+  updatePossPronoun(String newValue) {
+    getActive().userPossPronResponse = newValue;
+    notifyListeners();
+  }
+
+  updateAdj(String newValue) {
+    getActive().userAdjResponse = newValue;
+    notifyListeners();
+  }
+
+  updatePersPronoun(String newValue) {
+    getActive().userPersPronResponse = newValue;
+    notifyListeners();
+  }
+
+  clearInput() {
+    getActive().clear();
+    notifyListeners();
+  }
+
+  setPrevious() {
+    if (_activeIndex <= 0) {
+      _activeIndex = _exerciseItems.length - 1;
+    } else {
+      _activeIndex--;
+    }
+
+    notifyListeners();
+  }
+
+  setNext() {
+    if (_activeIndex >= _exerciseItems.length - 1) {
+      _activeIndex = 0;
+    } else {
+      _activeIndex++;
+    }
+
+    notifyListeners();
   }
 }

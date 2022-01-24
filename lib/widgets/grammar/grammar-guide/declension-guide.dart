@@ -102,7 +102,7 @@ class _DeclensionGuideState extends State<DeclensionGuide> {
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
+    double screenWidth = N.getScreenWidth(context);
 
     return Scaffold(
       appBar: N.NavikaAppBar(

@@ -5,7 +5,7 @@ import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/exercises/cyrillic/cyrillic-exec-footer-buttons.dart';
 import 'package:navika/widgets/exercises/cyrillic/cyrillic-exercise-card.dart';
 import 'package:navika/widgets/shared/ad-card.dart';
-import 'package:navika/widgets/shared/navika-banner.dart';
+import 'package:navika/widgets/shared/info-banner.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -34,14 +34,12 @@ class CyrillicExercise extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    NavikaBanner(
+                    InfoBanner(
                       imagePath: 'assets/banners/writing.jpg',
-                      caseName: title,
+                      label: title,
                       description: AppLocalizations.of(context)!.cyrillicDesc,
+                      callBack: (bool) {},
                       //youtubeLink: RECOMMENDED_VIDEO_CYRILLIC,
-                      icons: [
-                        Icons.note,
-                      ],
                     ),
                     AdCard(),
                     ...model.exerciseItems.map(

@@ -98,17 +98,17 @@ class VerbHelpGuide extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    NText([N.NTextSpan('Ja ${verb.present.ja}')]),
-                    NText([N.NTextSpan('Ti ${verb.present.ti}')]),
-                    NText([N.NTextSpan('On/Ona/Ono ${verb.present.on}')]),
+                    NText('Ja ${verb.present.ja}'),
+                    NText('Ti ${verb.present.ti}'),
+                    NText('On/Ona/Ono ${verb.present.on}'),
                   ],
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    NText([N.NTextSpan('Mi ${verb.present.mi}')]),
-                    NText([N.NTextSpan('Vi ${verb.present.vi}')]),
-                    NText([N.NTextSpan('Oni/One/Ona ${verb.present.oni}')]),
+                    NText('Mi ${verb.present.mi}'),
+                    NText('Vi ${verb.present.vi}'),
+                    NText('Oni/One/Ona ${verb.present.oni}'),
                   ],
                 )
               ],
@@ -137,17 +137,17 @@ class VerbHelpGuide extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    NText([N.NTextSpan('Ja ću ${verb.infinitive}')]),
-                    NText([N.NTextSpan('Ti ćeš ${verb.infinitive}')]),
-                    NText([N.NTextSpan('On/Ona/Ono će ${verb.infinitive}')]),
+                    NText('Ja ću ${verb.infinitive}'),
+                    NText('Ti ćeš ${verb.infinitive}'),
+                    NText('On/Ona/Ono će ${verb.infinitive}'),
                   ],
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    NText([N.NTextSpan('Mi ćemo ${verb.infinitive}')]),
-                    NText([N.NTextSpan('Vi ćete ${verb.infinitive}')]),
-                    NText([N.NTextSpan('Oni/One/Ona će ${verb.infinitive}')]),
+                    NText('Mi ćemo ${verb.infinitive}'),
+                    NText('Vi ćete ${verb.infinitive}'),
+                    NText('Oni/One/Ona će ${verb.infinitive}'),
                   ],
                 )
               ],
@@ -167,25 +167,25 @@ class VerbHelpGuide extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Icon(MASCULINE_ICON, color: MASCULINE_COLOR),
-            NText([N.NTextSpan('Ja sam ${verb.pastPerfect.singularMasc}')]),
-            NText([N.NTextSpan('Ti si ${verb.pastPerfect.singularMasc}')]),
-            NText([N.NTextSpan('On ${verb.pastPerfect.singularMasc}')]),
+            NText('Ja sam ${verb.pastPerfect.singularMasc}'),
+            NText('Ti si ${verb.pastPerfect.singularMasc}'),
+            NText('On ${verb.pastPerfect.singularMasc}'),
           ],
         ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Icon(FEMININE_ICON, color: FEMININE_COLOR),
-            NText([N.NTextSpan('Ja sam ${verb.pastPerfect.singularFem}')]),
-            NText([N.NTextSpan('Ti si ${verb.pastPerfect.singularFem}')]),
-            NText([N.NTextSpan('Ona ${verb.pastPerfect.singularFem}')]),
+            NText('Ja sam ${verb.pastPerfect.singularFem}'),
+            NText('Ti si ${verb.pastPerfect.singularFem}'),
+            NText('Ona ${verb.pastPerfect.singularFem}'),
           ],
         ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Icon(NEUTER_ICON, color: NEUTER_COLOR),
-            NText([N.NTextSpan('Ono je ${verb.pastPerfect.ono}')]),
+            NText('Ono je ${verb.pastPerfect.ono}'),
           ],
         ),
       ],
@@ -202,23 +202,23 @@ class VerbHelpGuide extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              NText([N.NTextSpan('Mi smo ${verb.pastPerfect.pluralMasc}')]),
-              NText([N.NTextSpan('Vi ste ${verb.pastPerfect.pluralMasc}')]),
-              NText([N.NTextSpan('Oni ste ${verb.pastPerfect.pluralMasc}')]),
+              NText('Mi smo ${verb.pastPerfect.pluralMasc}'),
+              NText('Vi ste ${verb.pastPerfect.pluralMasc}'),
+              NText('Oni ste ${verb.pastPerfect.pluralMasc}'),
             ],
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              NText([N.NTextSpan('Mi smo ${verb.pastPerfect.pluralFem}')]),
-              NText([N.NTextSpan('Vi ste ${verb.pastPerfect.pluralFem}')]),
-              NText([N.NTextSpan('One su ${verb.pastPerfect.pluralFem}')]),
+              NText('Mi smo ${verb.pastPerfect.pluralFem}'),
+              NText('Vi ste ${verb.pastPerfect.pluralFem}'),
+              NText('One su ${verb.pastPerfect.pluralFem}'),
             ],
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              NText([N.NTextSpan('Ona su ${verb.pastPerfect.onaPl}')]),
+              NText('Ona su ${verb.pastPerfect.onaPl}'),
             ],
           ),
         ],

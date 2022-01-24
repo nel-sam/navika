@@ -6,7 +6,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/youtube-link.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/navika-subheader.dart';
 import 'package:navika/widgets/grammar/grammar-guide/declension/declension-tables/nominativ-table.dart';
-import 'package:navika/widgets/shared/navika-text.dart';
+import 'package:navika/widgets/shared/navika-text-multi.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/pronoun-line.dart';
 
 class NominativGrammarGuideContent extends StatelessWidget {
@@ -29,23 +29,23 @@ Widget getExampleSentences(BuildContext context) {
   return Column(
     children: [
       NSubHeader(text: AppLocalizations.of(context)!.exampleSentences),
-      NText([
+      NTextMulti([
         N.NTextSpan('Ja ', isBold: true),
         N.NTextSpan('sam '),
         N.NTextSpan('Denis', isBold: true),
       ]),
-      NText([
+      NTextMulti([
         N.NTextSpan('Moja '),
         N.NTextSpan('žena ', isBold: true),
         N.NTextSpan('je '),
         N.NTextSpan('učiteljica', isBold: true),
       ]),
-      NText([
+      NTextMulti([
         N.NTextSpan('Bijelo ', isBold: true),
         N.NTextSpan('kao '),
         N.NTextSpan('mlijeko', isBold: true),
       ]),
-      NText([
+      NTextMulti([
         N.NTextSpan('Mlijeko ', isBold: true),
         N.NTextSpan('je ukusnije nego '),
         N.NTextSpan('limunada', isBold: true),
@@ -65,45 +65,45 @@ Widget getPossessivePronounSection(BuildContext context) {
       ),
       PronounLine(
           pronoun: PronounEnum.I,
-          text: NText([
+          text: NTextMulti([
             N.NTextSpan('Ja ', isBold: true),
             N.NTextSpan('sam Azat'),
           ])),
       PronounLine(
           pronoun: PronounEnum.You,
-          text: NText([
+          text: NTextMulti([
             N.NTextSpan('Tko si '),
             N.NTextSpan('ti', isBold: true),
           ])),
       PronounLine(
           pronoun: PronounEnum.He,
-          text: NText([
+          text: NTextMulti([
             N.NTextSpan('Trčim brže nego '),
             N.NTextSpan('on ', isBold: true),
             N.NTextSpan('i ti'),
           ])),
       PronounLine(
           pronoun: PronounEnum.She,
-          text: NText([
+          text: NTextMulti([
             N.NTextSpan('Ona ', isBold: true),
             N.NTextSpan('uči hrvatski'),
           ])),
       PronounLine(
           pronoun: PronounEnum.We,
-          text: NText([
+          text: NTextMulti([
             N.NTextSpan('Mi ', isBold: true),
             N.NTextSpan('plivamo skoro kao vi'),
           ])),
       PronounLine(
           pronoun: PronounEnum.You_Plural,
-          text: NText([
+          text: NTextMulti([
             N.NTextSpan('Govorite li '),
             N.NTextSpan('vi ', isBold: true),
             N.NTextSpan('Engleski?'),
           ])),
       PronounLine(
           pronoun: PronounEnum.They_Ungendered,
-          text: NText([
+          text: NTextMulti([
             N.NTextSpan('Oni ', isBold: true),
             N.NTextSpan('plivaju u moru'),
           ])),
@@ -114,7 +114,7 @@ Widget getPossessivePronounSection(BuildContext context) {
 Widget getDescription(BuildContext context) {
   return Column(
     children: [
-      NText([N.NTextSpan(AppLocalizations.of(context)!.nominativDescription)]),
+      NTextMulti([N.NTextSpan(AppLocalizations.of(context)!.nominativDescription)]),
       YouTubeLink(context, RECOMMENDED_VIDEO_NOM)
     ],
   );

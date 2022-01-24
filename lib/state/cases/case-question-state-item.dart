@@ -35,4 +35,11 @@ class CaseQuestionStateItem {
 
     return acceptedAnswers.containsCaseInsensitive(actualAnswer ?? "");
   }
+
+  void clear() {
+    userNounResponse = '';
+    userPossPronResponse = '';
+    userAdjResponse = '';
+    userPersPronResponse = '';
+  }
 }

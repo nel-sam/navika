@@ -51,77 +51,14 @@ class NavikaDrawer extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Column(
               children: [
-                // Column(
-                //   children: [
-                //     TextButton.icon(
-                //       icon: Icon(Icons.list),
-                //       label: Text(AppLocalizations.of(context)!.selectAll),
-                //       onPressed: () {
-                //         model.setSettings(
-                //           personalPronounsIncluded: true,
-                //           possessivePronounsIncluded: true,
-                //           adjectivesIncluded: true,
-                //           nounsIncluded: true,
-                //         );
-                //       },
-                //     ),
-                //     TextButton.icon(
-                //       icon: Icon(Icons.close_outlined),
-                //       label: Text(AppLocalizations.of(context)!.unselectAll),
-                //       onPressed: () {
-                //         model.setSettings(
-                //           personalPronounsIncluded: false,
-                //           possessivePronounsIncluded: false,
-                //           adjectivesIncluded: false,
-                //           //nounsIncluded: false,
-                //         );
-                //       },
-                //     ),
-                //   ],
-                // ),
-                // SwitchListTile(
-                //   value: model.settings.personalPronounsIncluded,
-                //   activeColor: ACCENT_COLOR,
-                //   title: Text(AppLocalizations.of(context)!.personalPronouns),
-                //   onChanged: (bool value) {
-                //     model.setSettings(personalPronounsIncluded: value);
-                //   },
-                // ),
-                // SwitchListTile(
-                //   value: model.settings.adjectivesIncluded,
-                //   activeColor: ACCENT_COLOR,
-                //   title: Text(AppLocalizations.of(context)!.adjectives),
-                //   onChanged: (bool value) {
-                //     model.setSettings(adjectivesIncluded: value);
-                //   },
-                // ),
-                // SwitchListTile(
-                //   value: model.settings.nounsIncluded,
-                //   activeColor: ACCENT_COLOR,
-                //   title: Text(AppLocalizations.of(context)!.nouns),
-                //   onChanged: (bool value) {
-                //     model.setSettings(nounsIncluded: value);
-                //   },
-                // ),
-                // SwitchListTile(
-                //   value: model.settings.possessivePronounsIncluded,
-                //   activeColor: ACCENT_COLOR,
-                //   title: Text(AppLocalizations.of(context)!.possessivePronouns),
-                //   onChanged: (bool value) {
-                //     model.setSettings(possessivePronounsIncluded: value);
-                //   },
-                // ),
                 Padding(
                   padding: const EdgeInsets.all(14.0),
                   child: Column(
                     children: [
                       Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: NText([
-                          TextSpan(
-                              text: AppLocalizations.of(context)!
-                                  .chooseExerciseType)
-                        ]),
+                        child: NText(
+                            AppLocalizations.of(context)!.chooseExerciseType),
                       ),
                       ToggleButtons(
                         borderRadius: BorderRadius.all(Radius.circular(5.0)),
