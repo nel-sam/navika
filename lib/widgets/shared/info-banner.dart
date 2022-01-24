@@ -9,14 +9,12 @@ class InfoBanner extends StatefulWidget {
   final String label;
   final String description;
   final String? youtubeLink;
-  final void Function(bool) callBack;
 
   const InfoBanner({
     Key? key,
     required this.imagePath,
     required this.label,
     required this.description,
-    required this.callBack,
     this.youtubeLink,
   }) : super(key: key);
 
@@ -31,7 +29,7 @@ class _InfoBannerState extends State<InfoBanner> {
   Widget build(BuildContext context) {
     bool hasYouTubeLink =
         this.widget.youtubeLink != null && this.widget.youtubeLink!.length > 0;
-    double height = 500;
+    double height = 420;
 
     var content = Container(
       height: height,
@@ -60,13 +58,12 @@ class _InfoBannerState extends State<InfoBanner> {
     );
 
     return ExpansionPanelList(
-      animationDuration: Duration(milliseconds: 1000),
+      animationDuration: Duration(milliseconds: 400),
       dividerColor: Colors.red,
       elevation: 1,
       expansionCallback: (int item, bool status) {
         setState(() {
           isExpanded = !isExpanded;
-          widget.callBack(isExpanded);
         });
       },
       children: [

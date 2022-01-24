@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
-import 'package:navika/state/cyrillic/cyrillic-exercises.dart';
+import 'package:navika/state/cyrillic/cyrillic-notifier.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/exercises/cyrillic/cyrillic-exec-footer-buttons.dart';
 import 'package:navika/widgets/exercises/cyrillic/cyrillic-exercise-card.dart';
@@ -22,13 +22,13 @@ class CyrillicExercise extends StatelessWidget {
         elevation: APPBAR_ELEVATION,
         backgroundColor: N.getAppBarColor(context),
         iconTheme: N.getAppBarIconTheme(context),
-        title: Text(title, style: HEADER_TEXT_STYLE),
+        title: Text(APP_NAME, style: HEADER_TEXT_STYLE),
       ),
       body: GestureDetector(
         onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-        child: ChangeNotifierProvider<CyrillicExercises>(
-          create: (context) => CyrillicExercises(),
-          child: Consumer<CyrillicExercises>(
+        child: ChangeNotifierProvider<CyrillicNotifier>(
+          create: (context) => CyrillicNotifier(),
+          child: Consumer<CyrillicNotifier>(
             builder: (context, model, child) => Center(
               child: SingleChildScrollView(
                 child: Column(
@@ -38,7 +38,6 @@ class CyrillicExercise extends StatelessWidget {
                       imagePath: 'assets/banners/writing.jpg',
                       label: title,
                       description: AppLocalizations.of(context)!.cyrillicDesc,
-                      callBack: (bool) {},
                       //youtubeLink: RECOMMENDED_VIDEO_CYRILLIC,
                     ),
                     AdCard(),

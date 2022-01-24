@@ -12,13 +12,11 @@ import 'package:navika/widgets/content-generators/vokativ-generators.dart';
 class CaseNotifier with ChangeNotifier {
   List<CaseQuestionStateItem> _exerciseItems = [];
   int _activeIndex = 0;
-  bool isInfoExpanded = false;
 
   CaseNotifier({Cases? caseType}) {
     if (caseType == null) return;
 
     _exerciseItems = getItems(caseType);
-    notifyListeners();
   }
 
   List<CaseQuestionStateItem> getItems(Cases caseType) {
@@ -87,11 +85,6 @@ class CaseNotifier with ChangeNotifier {
 
   CaseQuestionStateItem getActive() {
     return _exerciseItems[_activeIndex];
-  }
-
-  updateIsInfoExpanded(bool newValue) {
-    isInfoExpanded = newValue;
-    notifyListeners();
   }
 
   updateNoun(String newValue) {

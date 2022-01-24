@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/extensions.dart';
@@ -25,7 +24,6 @@ class QuestionFreeForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Timer _debounce = Timer(const Duration(milliseconds: 0), () {});
     controller.text = activeValue;
     controller.selection = TextSelection.fromPosition(
         TextPosition(offset: controller.text.length));
@@ -50,14 +48,10 @@ class QuestionFreeForm extends StatelessWidget {
             focusedBorder: getBorder(),
           ),
           onChanged: (String? newVal) {
-            if (newVal != null) {
-              if (!_debounce.isActive) {
-                _debounce.cancel();
-              }
+            if (newVal == ' ') newVal = '';
 
-              _debounce = Timer(const Duration(milliseconds: 350), () {
-                onChanged(newVal);
-              });
+            if (newVal != null) {
+              onChanged(newVal);
             }
           },
         ),

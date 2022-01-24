@@ -33,24 +33,21 @@ class CaseExerciseRowCard extends StatelessWidget {
     double screenWidth = N.getScreenWidth(context);
     String extraInfo = this.getExtraInfo!(context);
 
-    return Row(
-      children: [
-        Expanded(
-          child: ShadowBox(
-            isCorrect: this.isAllCorrect,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                getHeader(context, combos),
-                if (extraInfo.length > 0)
-                  ExtraInfo(screenWidth: screenWidth, extraInfo: extraInfo),
-                getBody(),
-              ],
-            ),
-          ),
+    return Container(
+      height: 350,
+      child: ShadowBox(
+        isCorrect: this.isAllCorrect,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            getHeader(context, combos),
+            if (extraInfo.length > 0)
+              ExtraInfo(screenWidth: screenWidth, extraInfo: extraInfo),
+            getBody(),
+          ],
         ),
-      ],
+      ),
     );
   }
 

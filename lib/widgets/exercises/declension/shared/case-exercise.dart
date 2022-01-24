@@ -47,7 +47,7 @@ class CaseExercise extends StatelessWidget {
                 elevation: APPBAR_ELEVATION,
                 backgroundColor: N.getAppBarColor(context),
                 iconTheme: N.getAppBarIconTheme(context),
-                title: Text(title, style: HEADER_TEXT_STYLE),
+                title: Text(APP_NAME, style: HEADER_TEXT_STYLE),
               ),
               endDrawer: NavikaDrawer(settings: settingsModel),
               body: GestureDetector(
@@ -65,54 +65,50 @@ class CaseExercise extends StatelessWidget {
                           label: title,
                           description: description,
                           youtubeLink: youtubeLink,
-                          callBack: (bool isExpanded) {
-                            model.updateIsInfoExpanded(isExpanded);
-                          },
                         ),
-                        if (!model.isInfoExpanded)
-                          Column(
-                            children: [
-                              ExerciseHeader(
-                                setPrevious: model.setPrevious,
-                                setNext: model.setNext,
-                                clear: model.clearInput,
-                              ),
-                              CaseQuestionContent(
-                                stateItem: model.getActive(),
-                                entryType: settingsModel.settings.entryType,
-                                onChanged: (GrammarTypes grammarType,
-                                    String newValue) {
-                                  final newItem = CaseQuestionStateItem(
-                                      combos: model.getActive().combos);
+                        AdCard(),
+                        Column(
+                          children: [
+                            ExerciseHeader(
+                              setPrevious: model.setPrevious,
+                              setNext: model.setNext,
+                              clear: model.clearInput,
+                            ),
+                            CaseQuestionContent(
+                              stateItem: model.getActive(),
+                              entryType: settingsModel.settings.entryType,
+                              onChanged:
+                                  (GrammarTypes grammarType, String newValue) {
+                                final newItem = CaseQuestionStateItem(
+                                    combos: model.getActive().combos);
 
-                                  newItem.userAdjResponse =
-                                      grammarType == GrammarTypes.Adjective
-                                          ? newValue
-                                          : model.getActive().userAdjResponse;
+                                newItem.userAdjResponse =
+                                    grammarType == GrammarTypes.Adjective
+                                        ? newValue
+                                        : model.getActive().userAdjResponse;
 
-                                  newItem.userNounResponse =
-                                      grammarType == GrammarTypes.Noun
-                                          ? newValue
-                                          : model.getActive().userNounResponse;
+                                newItem.userNounResponse =
+                                    grammarType == GrammarTypes.Noun
+                                        ? newValue
+                                        : model.getActive().userNounResponse;
 
-                                  newItem.userPossPronResponse = grammarType ==
-                                          GrammarTypes.PossesivePronoun
-                                      ? newValue
-                                      : model.getActive().userPossPronResponse;
+                                newItem.userPossPronResponse = grammarType ==
+                                        GrammarTypes.PossesivePronoun
+                                    ? newValue
+                                    : model.getActive().userPossPronResponse;
 
-                                  newItem.userPersPronResponse = grammarType ==
-                                          GrammarTypes.PersonalPronoun
-                                      ? newValue
-                                      : model.getActive().userPersPronResponse;
+                                newItem.userPersPronResponse = grammarType ==
+                                        GrammarTypes.PersonalPronoun
+                                    ? newValue
+                                    : model.getActive().userPersPronResponse;
 
-                                  newItem.isCorrect = newItem.checkAnswers();
-                                  model.modifyStateItem(
-                                      caseType, model.getActive(), newItem);
-                                },
-                              ),
-                              AdCard(),
-                            ],
-                          ),
+                                newItem.isCorrect = newItem.checkAnswers();
+                                model.modifyStateItem(
+                                    caseType, model.getActive(), newItem);
+                              },
+                            ),
+                          ],
+                        ),
                       ],
                     ),
                   ),

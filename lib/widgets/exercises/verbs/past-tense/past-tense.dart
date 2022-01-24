@@ -3,7 +3,6 @@ import 'package:navika/constants.dart';
 import 'package:navika/models/verb.dart';
 import 'package:navika/widgets/exercises/verbs/shared/verb-exercise.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:navika/widgets/shared/info-banner.dart';
 
 class PastTense extends StatelessWidget {
   @override
@@ -13,13 +12,9 @@ class PastTense extends StatelessWidget {
     return VerbExercise(
       title: title,
       tense: VerbTenses.PastPerfect,
-      banner: InfoBanner(
-        imagePath: 'assets/banners/bosna.jpg',
-        label: title,
-        description: AppLocalizations.of(context)!.pastTenseDesc,
-        youtubeLink: RECOMMENDED_VIDEO_PAST_SIMPLE,
-        callBack: (bool) {},
-      ),
+      imagePath: 'assets/banners/bosna.jpg',
+      description: AppLocalizations.of(context)!.pastTenseDesc,
+      youtubeLink: RECOMMENDED_VIDEO_PAST_SIMPLE,
     );
   }
 }

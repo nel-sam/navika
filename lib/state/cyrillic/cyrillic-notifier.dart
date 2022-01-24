@@ -14,10 +14,10 @@ class CyrillicBankItem {
   });
 }
 
-class CyrillicExercises with ChangeNotifier {
+class CyrillicNotifier with ChangeNotifier {
   late List<CyrillicStateItem> exerciseItems;
 
-  CyrillicExercises() {
+  CyrillicNotifier() {
     exerciseItems = cyrillicWordBank
         .map((e) => CyrillicStateItem(
               latinString: e.latinString,

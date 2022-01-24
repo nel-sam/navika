@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:navika/state/cyrillic/cyrillic-exercises.dart';
+import 'package:navika/state/cyrillic/cyrillic-notifier.dart';
 
 List<CyrillicBankItem> cyrillicWordBank = [
   CyrillicBankItem(

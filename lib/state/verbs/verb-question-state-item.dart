@@ -91,4 +91,8 @@ class VerbQuestionStateItem {
     this.isAllCorrect = allCorrect;
     this.notifyListeners();
   }
+
+  void clear() {
+    userEntryState.clear();
+  }
 }

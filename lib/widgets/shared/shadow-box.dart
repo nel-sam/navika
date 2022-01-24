@@ -16,7 +16,6 @@ class ShadowBox extends StatelessWidget {
         : Colors.white;
 
     return Container(
-      padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
       decoration: BoxDecoration(
         color: bgColor,
         boxShadow: [
@@ -29,7 +28,6 @@ class ShadowBox extends StatelessWidget {
           ),
         ],
       ),
-      margin: EdgeInsets.only(top: 10),
       child: child,
     );
   }

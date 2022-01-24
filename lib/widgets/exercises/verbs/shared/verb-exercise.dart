@@ -1,25 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/verb.dart';
-import 'package:navika/state/verbs/verb-exercises.dart';
-import 'package:navika/state/verbs/verb-question-state-item.dart';
+import 'package:navika/state/verbs/verb-notifier.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/exercises/verbs/present-tense/present-tense-question-content.dart';
 import 'package:navika/widgets/exercises/verbs/past-tense/past-tense-question-content.dart';
 import 'package:navika/widgets/shared/ad-card.dart';
+import 'package:navika/widgets/shared/exercise-header.dart';
 import 'package:navika/widgets/shared/info-banner.dart';
 import 'package:provider/provider.dart';
 
 class VerbExercise extends StatelessWidget {
   final String title;
-  final InfoBanner banner;
   final VerbTenses tense;
+  final String description;
+  final String imagePath;
+  final String? youtubeLink;
 
   const VerbExercise({
     Key? key,
     required this.tense,
     required this.title,
-    required this.banner,
+    required this.description,
+    required this.imagePath,
+    this.youtubeLink,
   }) : super(key: key);
 
   @override
@@ -30,45 +34,45 @@ class VerbExercise extends StatelessWidget {
         elevation: APPBAR_ELEVATION,
         backgroundColor: N.getAppBarColor(context),
         iconTheme: N.getAppBarIconTheme(context),
-        title: Text(title, style: HEADER_TEXT_STYLE),
+        title: Text(APP_NAME, style: HEADER_TEXT_STYLE),
       ),
       body: GestureDetector(
         onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-        child: ChangeNotifierProvider<VerbExercises>(
-          create: (context) => VerbExercises(),
-          child: Consumer<VerbExercises>(
+        child: ChangeNotifierProvider<VerbNotifier>(
+          create: (context) => VerbNotifier(),
+          child: Consumer<VerbNotifier>(
             builder: (context, model, child) => Center(
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    banner,
+                    InfoBanner(
+                      imagePath: imagePath,
+                      label: title,
+                      description: description,
+                      youtubeLink: youtubeLink,
+                    ),
                     AdCard(),
+                    ExerciseHeader(
+                      setPrevious: model.setPrevious,
+                      setNext: model.setNext,
+                      clear: model.clearInput,
+                    ),
                     if (this.tense == VerbTenses.PastPerfect)
-                      ...model.exerciseItems.map(
-                        (VerbQuestionStateItem e) => Padding(
-                          padding: const EdgeInsets.only(top: 12.0),
-                          child: PastTenseQuestionContent(
-                            verb: e.verb,
-                            state: e.userEntryState,
-                            isAllCorrect: e.isAllCorrect,
-                            onChanged: (String pronoun, String newValue) =>
-                                e.updateState(
-                                    pronoun.toString(), newValue, this.tense),
-                          ),
-                        ),
+                      PastTenseQuestionContent(
+                        verb: model.getActive().verb,
+                        state: model.getActive().userEntryState,
+                        isAllCorrect: model.getActive().isAllCorrect,
+                        onChanged: (String pronoun, String newValue) =>
+                            model.updateState(
+                                pronoun.toString(), newValue, this.tense),
                       ),
                     if (this.tense == VerbTenses.Present)
-                      ...model.exerciseItems.map(
-                        (VerbQuestionStateItem e) => Padding(
-                          padding: const EdgeInsets.all(12.0),
-                          child: PresentTenseQuestionContent(
-                            verb: e.verb,
-                            isAllCorrect: e.isAllCorrect,
-                            state: e.userEntryState,
-                            onChanged: (String pronoun, String newValue) =>
-                                e.updateState(pronoun, newValue, this.tense),
-                          ),
-                        ),
+                      PresentTenseQuestionContent(
+                        verb: model.getActive().verb,
+                        isAllCorrect: model.getActive().isAllCorrect,
+                        state: model.getActive().userEntryState,
+                        onChanged: (String pronoun, String newValue) =>
+                            model.updateState(pronoun, newValue, this.tense),
                       ),
                   ],
                 ),

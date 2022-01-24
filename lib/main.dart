@@ -4,7 +4,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/state/cases/case-notifier.dart';
 import 'package:navika/state/settings.dart';
-import 'package:navika/state/verbs/verb-exercises.dart';
+import 'package:navika/state/verbs/verb-notifier.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:navika/widgets/main-menu/main-menu.dart';
@@ -23,7 +23,7 @@ class NavikaApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Navika',
+      title: APP_NAME,
       localizationsDelegates: [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
@@ -50,7 +50,7 @@ class NavikaApp extends StatelessWidget {
         providers: [
           ChangeNotifierProvider(create: (_) => Settings()),
           ChangeNotifierProvider(create: (_) => CaseNotifier()),
-          ChangeNotifierProvider(create: (_) => VerbExercises()),
+          ChangeNotifierProvider(create: (_) => VerbNotifier()),
         ],
         child: NHomePage(),
       ),
@@ -65,7 +65,7 @@ class NHomePage extends StatelessWidget {
       resizeToAvoidBottomInset: false,
       appBar: N.NavikaAppBar(
           Text(
-            'navika',
+            APP_NAME,
             style: TextStyle(
                 fontSize: 30, fontFamily: 'helvetica', color: ACCENT_COLOR),
           ),
