@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/verb.dart';
+import 'package:navika/state/exercise-nav-notifier.dart';
 import 'package:navika/state/verbs/verb-notifier.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/exercises/verbs/present-tense/present-tense-question-content.dart';
@@ -38,10 +39,10 @@ class VerbExercise extends StatelessWidget {
       ),
       body: GestureDetector(
         onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-        child: ChangeNotifierProvider<VerbNotifier>(
-          create: (context) => VerbNotifier(),
-          child: Consumer<VerbNotifier>(
-            builder: (context, model, child) => Center(
+        child: ChangeNotifierProvider<ExerciseNavNotifier>(
+          create: (context) => ExerciseNavNotifier(isVerb: true),
+          child: Consumer<ExerciseNavNotifier>(
+            builder: (context, navNotifier, child) => Center(
               child: SingleChildScrollView(
                 child: Column(
                   children: [
@@ -53,27 +54,40 @@ class VerbExercise extends StatelessWidget {
                     ),
                     AdCard(),
                     ExerciseHeader(
-                      setPrevious: model.setPrevious,
-                      setNext: model.setNext,
-                      clear: model.clearInput,
+                      setPrevious: navNotifier.setPrevious,
+                      setNext: navNotifier.setNext,
+                      clear: navNotifier.clearInput,
                     ),
-                    if (this.tense == VerbTenses.PastPerfect)
-                      PastTenseQuestionContent(
-                        verb: model.getActive().verb,
-                        state: model.getActive().userEntryState,
-                        isAllCorrect: model.getActive().isAllCorrect,
-                        onChanged: (String pronoun, String newValue) =>
-                            model.updateState(
-                                pronoun.toString(), newValue, this.tense),
+                    ChangeNotifierProvider<VerbNotifier>(
+                      create: (context) => VerbNotifier(navNotifier.getActive),
+                      child: Consumer<VerbNotifier>(
+                        builder: (context, verbNotifier, child) => Container(
+                          child: this.tense == VerbTenses.PastPerfect
+                              ? PastTenseQuestionContent(
+                                  verb: navNotifier.getActive().verb,
+                                  state: navNotifier.getActive().userEntryState,
+                                  isAllCorrect:
+                                      navNotifier.getActive().isAllCorrect,
+                                  onChanged:
+                                      (String pronoun, String newValue) =>
+                                          verbNotifier.updateState(
+                                              pronoun.toString(),
+                                              newValue,
+                                              this.tense),
+                                )
+                              : PresentTenseQuestionContent(
+                                  verb: navNotifier.getActive().verb,
+                                  isAllCorrect:
+                                      navNotifier.getActive().isAllCorrect,
+                                  state: navNotifier.getActive().userEntryState,
+                                  onChanged:
+                                      (String pronoun, String newValue) =>
+                                          verbNotifier.updateState(
+                                              pronoun, newValue, this.tense),
+                                ),
+                        ),
                       ),
-                    if (this.tense == VerbTenses.Present)
-                      PresentTenseQuestionContent(
-                        verb: model.getActive().verb,
-                        isAllCorrect: model.getActive().isAllCorrect,
-                        state: model.getActive().userEntryState,
-                        onChanged: (String pronoun, String newValue) =>
-                            model.updateState(pronoun, newValue, this.tense),
-                      ),
+                    ),
                   ],
                 ),
               ),

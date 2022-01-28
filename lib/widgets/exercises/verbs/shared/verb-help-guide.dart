@@ -84,7 +84,7 @@ class VerbHelpGuide extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 24.0),
       child: Container(
-        padding: const EdgeInsets.only(bottom: 14.0),
+        padding: const EdgeInsets.all(14.0),
         decoration: BoxDecoration(
           border: Border.all(color: ACCENT_COLOR, width: 1),
           borderRadius: BorderRadius.circular(5),
@@ -92,25 +92,15 @@ class VerbHelpGuide extends StatelessWidget {
         child: Column(
           children: [
             NSubHeader(text: AppLocalizations.of(context)!.presentTense),
-            Row(
+            Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    NText('Ja ${verb.present.ja}'),
-                    NText('Ti ${verb.present.ti}'),
-                    NText('On/Ona/Ono ${verb.present.on}'),
-                  ],
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    NText('Mi ${verb.present.mi}'),
-                    NText('Vi ${verb.present.vi}'),
-                    NText('Oni/One/Ona ${verb.present.oni}'),
-                  ],
-                )
+                NText('Ja ${verb.present.ja}'),
+                NText('Ti ${verb.present.ti}'),
+                NText('On/Ona/Ono ${verb.present.on}'),
+                NText('Mi ${verb.present.mi}'),
+                NText('Vi ${verb.present.vi}'),
+                NText('Oni/One/Ona ${verb.present.oni}'),
               ],
             ),
           ],
@@ -123,7 +113,7 @@ class VerbHelpGuide extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 24.0),
       child: Container(
-        padding: const EdgeInsets.only(bottom: 14.0),
+        padding: const EdgeInsets.all(14.0),
         decoration: BoxDecoration(
           border: Border.all(color: ACCENT_COLOR, width: 1),
           borderRadius: BorderRadius.circular(5),
@@ -131,25 +121,15 @@ class VerbHelpGuide extends StatelessWidget {
         child: Column(
           children: [
             NSubHeader(text: AppLocalizations.of(context)!.futureTense),
-            Row(
+            Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    NText('Ja ću ${verb.infinitive}'),
-                    NText('Ti ćeš ${verb.infinitive}'),
-                    NText('On/Ona/Ono će ${verb.infinitive}'),
-                  ],
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    NText('Mi ćemo ${verb.infinitive}'),
-                    NText('Vi ćete ${verb.infinitive}'),
-                    NText('Oni/One/Ona će ${verb.infinitive}'),
-                  ],
-                )
+                NText('Ja ću ${verb.infinitive}'),
+                NText('Ti ćeš ${verb.infinitive}'),
+                NText('On/Ona/Ono će ${verb.infinitive}'),
+                NText('Mi ćemo ${verb.infinitive}'),
+                NText('Vi ćete ${verb.infinitive}'),
+                NText('Oni/One/Ona će ${verb.infinitive}'),
               ],
             ),
           ],
@@ -159,14 +139,13 @@ class VerbHelpGuide extends StatelessWidget {
   }
 
   Widget getPastSingularChart(BuildContext context, Verb verb) {
-    return Row(
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Icon(MASCULINE_ICON, color: MASCULINE_COLOR),
             NText('Ja sam ${verb.pastPerfect.singularMasc}'),
             NText('Ti si ${verb.pastPerfect.singularMasc}'),
             NText('On ${verb.pastPerfect.singularMasc}'),
@@ -175,7 +154,6 @@ class VerbHelpGuide extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Icon(FEMININE_ICON, color: FEMININE_COLOR),
             NText('Ja sam ${verb.pastPerfect.singularFem}'),
             NText('Ti si ${verb.pastPerfect.singularFem}'),
             NText('Ona ${verb.pastPerfect.singularFem}'),
@@ -184,7 +162,6 @@ class VerbHelpGuide extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Icon(NEUTER_ICON, color: NEUTER_COLOR),
             NText('Ono je ${verb.pastPerfect.ono}'),
           ],
         ),
@@ -205,19 +182,9 @@ class VerbHelpGuide extends StatelessWidget {
               NText('Mi smo ${verb.pastPerfect.pluralMasc}'),
               NText('Vi ste ${verb.pastPerfect.pluralMasc}'),
               NText('Oni ste ${verb.pastPerfect.pluralMasc}'),
-            ],
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
               NText('Mi smo ${verb.pastPerfect.pluralFem}'),
               NText('Vi ste ${verb.pastPerfect.pluralFem}'),
               NText('One su ${verb.pastPerfect.pluralFem}'),
-            ],
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
               NText('Ona su ${verb.pastPerfect.onaPl}'),
             ],
           ),

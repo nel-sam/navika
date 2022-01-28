@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 import 'package:navika/constants.dart';
+import 'package:navika/lang_data/verbs.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/state/cases/case-question-state.dart';
 import 'package:navika/state/content-generators/akuzativ-generators.dart';
@@ -11,19 +12,29 @@ import 'package:navika/state/content-generators/instrumental-generators.dart';
 import 'package:navika/state/content-generators/lokativ-generators.dart';
 import 'package:navika/state/content-generators/nominativ-generators.dart';
 import 'package:navika/state/content-generators/vokativ-generators.dart';
+import 'package:navika/state/verbs/verb-question-state-item.dart';
 
 class ExerciseNavNotifier with ChangeNotifier {
   Timer _debounce = Timer(const Duration(milliseconds: 0), () {});
-  List<CaseQuestionState> _states = [];
+  List _states = [];
   int _activeIndex = 0;
 
-  ExerciseNavNotifier({Cases? caseType}) {
+  ExerciseNavNotifier({Cases? caseType, bool isVerb = false}) {
+    if (isVerb) {
+      _states = verbWordBank
+          .map((verb) => VerbQuestionStateItem(
+                verb: verb,
+                notifyListeners: notifyListeners,
+              ))
+          .toList();
+    }
+
     if (caseType == null) return;
 
-    _states = getItems(caseType);
+    _states = getCaseItems(caseType);
   }
 
-  List<CaseQuestionState> getItems(Cases caseType) {
+  List<CaseQuestionState> getCaseItems(Cases caseType) {
     List<CaseQuestionState> items = [];
 
     switch (caseType) {

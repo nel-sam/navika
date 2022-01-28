@@ -1,54 +1,32 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
-import 'package:navika/lang_data/verbs.dart';
+import 'package:navika/constants.dart';
 import 'package:navika/models/verb.dart';
-import 'package:navika/state/verbs/verb-question-state-item.dart';
 
 class VerbNotifier with ChangeNotifier {
-  late List<VerbQuestionStateItem> _exerciseItems;
-  int _activeIndex = 0;
+  late Function() _getStateItem;
+  Timer _debounce = Timer(const Duration(milliseconds: 0), () {});
 
-  VerbNotifier() {
-    _exerciseItems = verbWordBank
-        .map((verb) => VerbQuestionStateItem(
-              verb: verb,
-              notifyListeners: notifyListeners,
-            ))
-        .toList();
+  VerbNotifier(Function() getStateItem) {
+    _getStateItem = getStateItem;
+  }
 
-    _exerciseItems.shuffle();
+  deboucedNotifyListeners() {
+    if (!_debounce.isActive) {
+      _debounce.cancel();
+    }
+
+    _debounce = Timer(
+        const Duration(milliseconds: DEBOUNCE_TIME), () => notifyListeners());
+  }
+
+  getStateItem() {
+    return _getStateItem();
   }
 
   updateState(String stateKey, String newValue, VerbTenses tense) {
-    getActive().updateState(stateKey, newValue, tense);
-    notifyListeners();
-  }
-
-  VerbQuestionStateItem getActive() {
-    return _exerciseItems[_activeIndex];
-  }
-
-  clearInput() {
-    getActive().clear();
-    notifyListeners();
-  }
-
-  setPrevious() {
-    if (_activeIndex <= 0) {
-      _activeIndex = _exerciseItems.length - 1;
-    } else {
-      _activeIndex--;
-    }
-
-    notifyListeners();
-  }
-
-  setNext() {
-    if (_activeIndex >= _exerciseItems.length - 1) {
-      _activeIndex = 0;
-    } else {
-      _activeIndex++;
-    }
-
-    notifyListeners();
+    _getStateItem().updateState(stateKey, newValue, tense);
+    deboucedNotifyListeners();
   }
 }
