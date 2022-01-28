@@ -5,7 +5,7 @@ import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/models/noun.dart';
 import 'package:navika/models/personal-pronoun.dart';
-import 'package:navika/state/cases/case-question-state-item.dart';
+import 'package:navika/state/cases/case-question-state.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:flutter/material.dart';
 
@@ -87,7 +87,7 @@ class InstrumentalGenerators {
     return StaticSentenceParts(start: start, end: end);
   }
 
-  static List<CaseQuestionStateItem> initializePANStateItems() {
+  static List<CaseQuestionState> initializePANStateItems() {
     final WordBank bank = wordBank.excludeNounsByTags([
       Tags.Location,
       Tags.Health,
@@ -104,7 +104,7 @@ class InstrumentalGenerators {
     combos.shuffle();
 
     final result = combos.take(BATCH_COUNT).map((c) {
-      return CaseQuestionStateItem(combos: c);
+      return CaseQuestionState(combos: c);
     });
 
     return result.toList();

@@ -5,29 +5,35 @@ import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/models/noun.dart';
 import 'package:navika/models/personal-pronoun.dart';
-import 'package:navika/state/cases/case-question-state-item.dart';
+import 'package:navika/state/cases/case-question-state.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 
-class NominativGenerators {
+class LokativGenerators {
   static StaticSentenceParts getStaticSentenceParts(
-      Noun noun, bool isPlural, Adjective? pronoun, Adjective? adjective) {
+    Noun noun,
+    bool isPlural,
+    Adjective? pronoun,
+    Adjective? adjective,
+  ) {
+    final pronounVal = pronoun == null ? '' : pronoun.dictionary;
     String start = '';
     String end = '';
 
-    if (noun.isAnimate) {
-      switch (noun.gender) {
-        case Genders.Masculine:
-          start = isPlural ? 'Oni su' : 'On je';
-          break;
-        case Genders.Feminine:
-          start = isPlural ? 'One su' : 'Ona je';
-          break;
-        case Genders.Unspecific:
-        case Genders.Neuter:
-          break;
+    if (noun.tags.contains(Tags.Season)) {
+      if (pronounVal != 'moj') {
+        start = '';
+        end = 'radim kao turistički vodič';
+      } else {
+        end = 'puno radite?';
       }
+    } else if (noun.tags.contains(Tags.FlatSurface)) {
+      start = N.coinFlip() ? 'Spavam u' : 'Jabuka je na';
+    } else if (noun.tags.contains(Tags.WorkPlace)) {
+      start = pronounVal == 'moj' ? 'On rade u' : 'Radim u';
+    } else if (noun.tags.contains(Tags.Location)) {
+      start = pronounVal == 'moj' ? 'On živi u' : 'Živim u';
     } else {
-      start = isPlural ? 'To su' : 'To je';
+      start = 'Razgovaramo o';
     }
 
     return StaticSentenceParts(start: start, end: end);
@@ -35,26 +41,23 @@ class NominativGenerators {
 
   static StaticSentenceParts getPersonalPronounSentenceStaticParts(
       PersonalPronoun personalPronoun, bool isShortForm) {
+    final actualValue = personalPronoun.nominativ.forms.first;
     String start = '';
     String end = '';
-    final verb = N.getBitiConjugation(personalPronoun.nominativ.forms.first);
 
     if (N.coinFlip()) {
-      end = verb;
+      start = actualValue != 'ja' ? 'Sanjam o' : 'On je kod';
     } else {
-      var ocupation = personalPronoun.gender == Genders.Feminine
-          ? (personalPronoun.isPlural ? 'učiteljice' : 'učiteljica')
-          : (personalPronoun.isPlural ? 'učitelji' : 'učitelj');
-      end = '$verb $ocupation';
+      start = 'Razgovaramo o';
     }
 
     return StaticSentenceParts(start: start, end: end);
   }
 
-  static List<CaseQuestionStateItem> initializePANStateItems() {
+  static List<CaseQuestionState> initializePANStateItems() {
     final combos = N.getPANCombos(
-      caseType: Cases.Nom,
-      bank: wordBank.excludePronoun('svoj'),
+      caseType: Cases.Lok,
+      bank: wordBank,
       getPersonalPronounSentenceStaticParts:
           getPersonalPronounSentenceStaticParts,
       getStaticSentenceParts: getStaticSentenceParts,
@@ -63,7 +66,7 @@ class NominativGenerators {
     combos.shuffle();
 
     final result = combos.take(BATCH_COUNT).map((c) {
-      return CaseQuestionStateItem(combos: c);
+      return CaseQuestionState(combos: c);
     });
 
     return result.toList();

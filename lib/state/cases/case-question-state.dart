@@ -1,14 +1,14 @@
 import 'package:navika/models/models.dart';
 import 'package:navika/extensions.dart';
 
-class CaseQuestionStateItem {
+class CaseQuestionState {
   PANCombo combos;
   late String userNounResponse;
   late String userPossPronResponse;
   late String userAdjResponse;
   late String userPersPronResponse;
 
-  CaseQuestionStateItem({required this.combos}) {
+  CaseQuestionState({required this.combos}) {
     userNounResponse = '';
     userPossPronResponse = '';
     userAdjResponse = '';
@@ -16,17 +16,17 @@ class CaseQuestionStateItem {
   }
 
   bool getIsCorrect() {
-    final pos = getIsCorrectSingle(
-        this.combos.correctPossPronouns, userPossPronResponse);
-    final adj = getIsCorrectSingle(this.combos.correctAdjs, userAdjResponse);
-    final noun = getIsCorrectSingle(this.combos.correctNouns, userNounResponse);
-    final persPron = getIsCorrectSingle(
-        this.combos.correctPersPronouns, userPersPronResponse);
+    final pos =
+        _isCorrectSingle(this.combos.correctPossPronouns, userPossPronResponse);
+    final adj = _isCorrectSingle(this.combos.correctAdjs, userAdjResponse);
+    final noun = _isCorrectSingle(this.combos.correctNouns, userNounResponse);
+    final persPron =
+        _isCorrectSingle(this.combos.correctPersPronouns, userPersPronResponse);
 
     return pos && adj && noun && persPron;
   }
 
-  bool getIsCorrectSingle(List<String> acceptedAnswers, String? actualAnswer) {
+  bool _isCorrectSingle(List<String> acceptedAnswers, String? actualAnswer) {
     if (acceptedAnswers.length == 0 ||
         (acceptedAnswers.length == 0 && actualAnswer == '')) {
       return true;

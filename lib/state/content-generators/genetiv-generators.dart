@@ -5,7 +5,7 @@ import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/models/noun.dart';
 import 'package:navika/models/personal-pronoun.dart';
-import 'package:navika/state/cases/case-question-state-item.dart';
+import 'package:navika/state/cases/case-question-state.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 
 class GenetivGenerators {
@@ -88,7 +88,7 @@ class GenetivGenerators {
     return StaticSentenceParts(start: start, end: end);
   }
 
-  static List<CaseQuestionStateItem> initializePANStateItems() {
+  static List<CaseQuestionState> initializePANStateItems() {
     final combos = N.getPANCombos(
       caseType: Cases.Gen,
       bank: wordBank,
@@ -100,7 +100,7 @@ class GenetivGenerators {
     combos.shuffle();
 
     final result = combos.take(BATCH_COUNT).map((c) {
-      return CaseQuestionStateItem(combos: c);
+      return CaseQuestionState(combos: c);
     });
 
     return result.toList();

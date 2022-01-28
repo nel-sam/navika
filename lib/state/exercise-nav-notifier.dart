@@ -3,18 +3,18 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
-import 'package:navika/state/cases/case-question-state-item.dart';
-import 'package:navika/state/cases/content-generators/akuzativ-generators.dart';
-import 'package:navika/state/cases/content-generators/dativ-generators.dart';
-import 'package:navika/state/cases/content-generators/genetiv-generators.dart';
-import 'package:navika/state/cases/content-generators/instrumental-generators.dart';
-import 'package:navika/state/cases/content-generators/lokativ-generators.dart';
-import 'package:navika/state/cases/content-generators/nominativ-generators.dart';
-import 'package:navika/state/cases/content-generators/vokativ-generators.dart';
+import 'package:navika/state/cases/case-question-state.dart';
+import 'package:navika/state/content-generators/akuzativ-generators.dart';
+import 'package:navika/state/content-generators/dativ-generators.dart';
+import 'package:navika/state/content-generators/genetiv-generators.dart';
+import 'package:navika/state/content-generators/instrumental-generators.dart';
+import 'package:navika/state/content-generators/lokativ-generators.dart';
+import 'package:navika/state/content-generators/nominativ-generators.dart';
+import 'package:navika/state/content-generators/vokativ-generators.dart';
 
 class ExerciseNavNotifier with ChangeNotifier {
   Timer _debounce = Timer(const Duration(milliseconds: 0), () {});
-  List<CaseQuestionStateItem> _states = [];
+  List<CaseQuestionState> _states = [];
   int _activeIndex = 0;
 
   ExerciseNavNotifier({Cases? caseType}) {
@@ -23,8 +23,8 @@ class ExerciseNavNotifier with ChangeNotifier {
     _states = getItems(caseType);
   }
 
-  List<CaseQuestionStateItem> getItems(Cases caseType) {
-    List<CaseQuestionStateItem> items = [];
+  List<CaseQuestionState> getItems(Cases caseType) {
+    List<CaseQuestionState> items = [];
 
     switch (caseType) {
       case Cases.All:
@@ -64,18 +64,6 @@ class ExerciseNavNotifier with ChangeNotifier {
     items.shuffle();
     return items;
   }
-
-  // void modifyStateItem(Cases caseType, CaseQuestionStateItem toModify,
-  //     CaseQuestionStateItem newValue) {
-  //   toModify.combos = newValue.combos;
-  //   toModify.isCorrect = newValue.isCorrect;
-  //   toModify.userAdjResponse = newValue.userAdjResponse;
-  //   toModify.userNounResponse = newValue.userNounResponse;
-  //   toModify.userPersPronResponse = newValue.userPersPronResponse;
-  //   toModify.userPossPronResponse = newValue.userPossPronResponse;
-
-  //   notifyListeners();
-  // }
 
   deboucedNotifyListeners() {
     if (!_debounce.isActive) {
@@ -123,25 +111,5 @@ class ExerciseNavNotifier with ChangeNotifier {
     }
 
     deboucedNotifyListeners();
-  }
-
-  updateNoun(String newValue) {
-    getActive().userNounResponse = newValue;
-    notifyListeners();
-  }
-
-  updatePossPronoun(String newValue) {
-    getActive().userPossPronResponse = newValue;
-    notifyListeners();
-  }
-
-  updateAdj(String newValue) {
-    getActive().userAdjResponse = newValue;
-    notifyListeners();
-  }
-
-  updatePersPronoun(String newValue) {
-    getActive().userPersPronResponse = newValue;
-    notifyListeners();
   }
 }

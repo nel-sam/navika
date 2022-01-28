@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
-import 'package:navika/state/cases/case-question-state-item.dart';
+import 'package:navika/state/cases/case-question-state.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/exercises/declension/shared/case-drop-down.dart';
 import 'package:navika/widgets/shared/question-free-form.dart';
@@ -9,7 +9,7 @@ import 'package:navika/widgets/exercises/declension/shared/case-exercise-row-car
 
 class CaseQuestionContent extends StatelessWidget {
   final Function(GrammarTypes, String) onChanged;
-  final CaseQuestionStateItem stateItem;
+  final CaseQuestionState stateItem;
   final EntryTypes entryType;
 
   CaseQuestionContent({

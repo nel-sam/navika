@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
+import 'package:navika/state/cases/case-notifier.dart';
 import 'package:navika/state/exercise-nav-notifier.dart';
 import 'package:navika/state/settings.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/shared/ad-card.dart';
-import 'package:navika/state/cases/case-exec-footer-buttons.dart';
+import 'package:navika/widgets/exercises/declension/shared/case-exec-footer-buttons.dart';
 import 'package:navika/widgets/shared/exercise-header.dart';
 import 'package:navika/widgets/shared/info-banner.dart';
 import 'package:navika/widgets/shared/navika-drawer.dart';
@@ -39,7 +40,7 @@ class CaseExercise extends StatelessWidget {
             ChangeNotifierProvider<ExerciseNavNotifier>(
           create: (context) => ExerciseNavNotifier(caseType: caseType),
           child: Consumer<ExerciseNavNotifier>(
-            builder: (context, model, child) => Scaffold(
+            builder: (context, navNotifier, child) => Scaffold(
               appBar: AppBar(
                 leading:
                     Builder(builder: (BuildContext context) => BackButton()),
@@ -69,30 +70,37 @@ class CaseExercise extends StatelessWidget {
                         Column(
                           children: [
                             ExerciseHeader(
-                              setPrevious: model.setPrevious,
-                              setNext: model.setNext,
-                              clear: model.clearInput,
+                              setPrevious: navNotifier.setPrevious,
+                              setNext: navNotifier.setNext,
+                              clear: navNotifier.clearInput,
                             ),
-                            CaseQuestionContent(
-                              stateItem: model.getActive(),
-                              entryType: settingsModel.settings.entryType,
-                              onChanged:
-                                  (GrammarTypes grammarType, String newValue) {
-                                switch (grammarType) {
-                                  case GrammarTypes.Noun:
-                                    model.updateNoun(newValue);
-                                    break;
-                                  case GrammarTypes.PersonalPronoun:
-                                    model.updatePersPronoun(newValue);
-                                    break;
-                                  case GrammarTypes.PossesivePronoun:
-                                    model.updatePossPronoun(newValue);
-                                    break;
-                                  case GrammarTypes.Adjective:
-                                    model.updateAdj(newValue);
-                                    break;
-                                }
-                              },
+                            ChangeNotifierProvider<CaseNotifier>(
+                              create: (context) =>
+                                  CaseNotifier(navNotifier.getActive),
+                              child: Consumer<CaseNotifier>(
+                                builder: (context, cNotifier, child) =>
+                                    CaseQuestionContent(
+                                  stateItem: cNotifier.getStateItem(),
+                                  entryType: settingsModel.settings.entryType,
+                                  onChanged: (GrammarTypes grammarType,
+                                      String newValue) {
+                                    switch (grammarType) {
+                                      case GrammarTypes.Noun:
+                                        cNotifier.updateNoun(newValue);
+                                        break;
+                                      case GrammarTypes.PersonalPronoun:
+                                        cNotifier.updatePersPronoun(newValue);
+                                        break;
+                                      case GrammarTypes.PossesivePronoun:
+                                        cNotifier.updatePossPronoun(newValue);
+                                        break;
+                                      case GrammarTypes.Adjective:
+                                        cNotifier.updateAdj(newValue);
+                                        break;
+                                    }
+                                  },
+                                ),
+                              ),
                             ),
                           ],
                         ),
@@ -106,7 +114,7 @@ class CaseExercise extends StatelessWidget {
                 caseType: caseType,
                 refreshFunction: () {
                   N.scrollTo(0, controller);
-                  model.shuffleAndClear();
+                  navNotifier.shuffleAndClear();
                 },
               ),
             ),
