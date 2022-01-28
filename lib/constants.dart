@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 const String APP_NAME = 'navika';
 const BATCH_COUNT = 10;
+const int DEBOUNCE_TIME = 350;
 
 const double FONT_SIZE = 16;
 const TABLE_CELL_WIDTH = 87.0;

@@ -20,7 +20,7 @@ class CaseQuestionContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isAllCorrect = stateItem.isCorrect;
+    bool isAllCorrect = stateItem.getIsCorrect();
     final bool usePossPronouns = stateItem.combos.possPronoun != null;
     final bool useAdj = stateItem.combos.adjective != null &&
         stateItem.combos.adjective!.dictionary != '';

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
-import 'package:navika/state/cases/case-notifier.dart';
-import 'package:navika/state/cases/case-question-state-item.dart';
+import 'package:navika/state/exercise-nav-notifier.dart';
 import 'package:navika/state/settings.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/shared/ad-card.dart';
@@ -37,9 +36,9 @@ class CaseExercise extends StatelessWidget {
       create: (context) => Settings(),
       child: Consumer<Settings>(
         builder: (context, settingsModel, child) =>
-            ChangeNotifierProvider<CaseNotifier>(
-          create: (context) => CaseNotifier(caseType: caseType),
-          child: Consumer<CaseNotifier>(
+            ChangeNotifierProvider<ExerciseNavNotifier>(
+          create: (context) => ExerciseNavNotifier(caseType: caseType),
+          child: Consumer<ExerciseNavNotifier>(
             builder: (context, model, child) => Scaffold(
               appBar: AppBar(
                 leading:
@@ -79,32 +78,20 @@ class CaseExercise extends StatelessWidget {
                               entryType: settingsModel.settings.entryType,
                               onChanged:
                                   (GrammarTypes grammarType, String newValue) {
-                                final newItem = CaseQuestionStateItem(
-                                    combos: model.getActive().combos);
-
-                                newItem.userAdjResponse =
-                                    grammarType == GrammarTypes.Adjective
-                                        ? newValue
-                                        : model.getActive().userAdjResponse;
-
-                                newItem.userNounResponse =
-                                    grammarType == GrammarTypes.Noun
-                                        ? newValue
-                                        : model.getActive().userNounResponse;
-
-                                newItem.userPossPronResponse = grammarType ==
-                                        GrammarTypes.PossesivePronoun
-                                    ? newValue
-                                    : model.getActive().userPossPronResponse;
-
-                                newItem.userPersPronResponse = grammarType ==
-                                        GrammarTypes.PersonalPronoun
-                                    ? newValue
-                                    : model.getActive().userPersPronResponse;
-
-                                newItem.isCorrect = newItem.checkAnswers();
-                                model.modifyStateItem(
-                                    caseType, model.getActive(), newItem);
+                                switch (grammarType) {
+                                  case GrammarTypes.Noun:
+                                    model.updateNoun(newValue);
+                                    break;
+                                  case GrammarTypes.PersonalPronoun:
+                                    model.updatePersPronoun(newValue);
+                                    break;
+                                  case GrammarTypes.PossesivePronoun:
+                                    model.updatePossPronoun(newValue);
+                                    break;
+                                  case GrammarTypes.Adjective:
+                                    model.updateAdj(newValue);
+                                    break;
+                                }
                               },
                             ),
                           ],

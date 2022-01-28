@@ -3,7 +3,6 @@ import 'package:navika/extensions.dart';
 
 class CaseQuestionStateItem {
   PANCombo combos;
-  late bool isCorrect = false;
   late String userNounResponse;
   late String userPossPronResponse;
   late String userAdjResponse;
@@ -16,18 +15,18 @@ class CaseQuestionStateItem {
     userPersPronResponse = '';
   }
 
-  bool checkAnswers() {
-    final pos =
-        getIsCorrect(this.combos.correctPossPronouns, userPossPronResponse);
-    final adj = getIsCorrect(this.combos.correctAdjs, userAdjResponse);
-    final noun = getIsCorrect(this.combos.correctNouns, userNounResponse);
-    final persPron =
-        getIsCorrect(this.combos.correctPersPronouns, userPersPronResponse);
+  bool getIsCorrect() {
+    final pos = getIsCorrectSingle(
+        this.combos.correctPossPronouns, userPossPronResponse);
+    final adj = getIsCorrectSingle(this.combos.correctAdjs, userAdjResponse);
+    final noun = getIsCorrectSingle(this.combos.correctNouns, userNounResponse);
+    final persPron = getIsCorrectSingle(
+        this.combos.correctPersPronouns, userPersPronResponse);
 
     return pos && adj && noun && persPron;
   }
 
-  bool getIsCorrect(List<String> acceptedAnswers, String? actualAnswer) {
+  bool getIsCorrectSingle(List<String> acceptedAnswers, String? actualAnswer) {
     if (acceptedAnswers.length == 0 ||
         (acceptedAnswers.length == 0 && actualAnswer == '')) {
       return true;

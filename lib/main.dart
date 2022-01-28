@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:navika/constants.dart';
-import 'package:navika/state/cases/case-notifier.dart';
+import 'package:navika/state/exercise-nav-notifier.dart';
 import 'package:navika/state/settings.dart';
 import 'package:navika/state/verbs/verb-notifier.dart';
 import 'package:navika/utilities/navika-helpers.dart';
@@ -49,7 +49,7 @@ class NavikaApp extends StatelessWidget {
       home: MultiProvider(
         providers: [
           ChangeNotifierProvider(create: (_) => Settings()),
-          ChangeNotifierProvider(create: (_) => CaseNotifier()),
+          ChangeNotifierProvider(create: (_) => ExerciseNavNotifier()),
           ChangeNotifierProvider(create: (_) => VerbNotifier()),
         ],
         child: NHomePage(),
