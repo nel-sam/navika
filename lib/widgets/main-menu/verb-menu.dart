@@ -14,13 +14,13 @@ class VerbMenu extends StatelessWidget {
         destination: PresentTense(),
         icon: Icons.checklist_outlined,
         label: AppLocalizations.of(context)!.presentTense,
-        imagePath: 'assets/banners/hills.jpg',
+        imagePath: 'assets/banners/hills_lg.jpg',
       ),
       ExerciseButton(
         destination: PastTense(),
         icon: Icons.history,
         label: AppLocalizations.of(context)!.pastTense,
-        imagePath: 'assets/banners/bosna.jpg',
+        imagePath: 'assets/banners/bosna_lg.jpg',
       ),
     ];
 

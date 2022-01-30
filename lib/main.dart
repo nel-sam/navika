@@ -2,13 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:navika/constants.dart';
-import 'package:navika/state/exercise-nav-notifier.dart';
-import 'package:navika/state/verbs/verb-notifier.dart';
-import 'package:navika/utilities/navika-helpers.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:navika/widgets/main-menu/main-menu.dart';
-import 'package:navika/widgets/shared/ad-card.dart';
-import 'package:provider/provider.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -55,21 +50,8 @@ class NHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: N.NavikaAppBar(
-          Text(
-            APP_NAME,
-            style: TextStyle(
-                fontSize: 30, fontFamily: 'helvetica', color: ACCENT_COLOR),
-          ),
-          context,
-          []),
       body: Center(
-        child: Column(
-          children: [
-            AdCard(),
-            MainMenu(),
-          ],
-        ),
+        child: MainMenu(),
       ),
     );
   }

@@ -82,17 +82,6 @@ enum PronounEnum {
   Oneself,
 }
 
-const CaseImagePaths = <Cases, String>{
-  Cases.All: 'assets/banners/montenegro.jpg',
-  Cases.Nom: 'assets/banners/seaside_city.jpg',
-  Cases.Aku: 'assets/banners/pay.jpg',
-  Cases.Ins: 'assets/banners/vespa.jpg',
-  Cases.Lok: 'assets/banners/ladies.jpg',
-  Cases.Dat: 'assets/banners/giving.jpg',
-  Cases.Gen: 'assets/banners/bosna.jpg',
-  Cases.Vok: 'assets/banners/woman.jpg',
-};
-
 enum CorrectStatus {
   correct,
   wrong,

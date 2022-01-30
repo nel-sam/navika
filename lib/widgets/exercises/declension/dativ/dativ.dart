@@ -11,7 +11,7 @@ class Dativ extends StatelessWidget {
     return CaseExercise(
       title: title,
       caseType: Cases.Dat,
-      imagePath: CaseImagePaths[Cases.Dat]!,
+      imagePath: 'assets/banners/giving.jpg',
       description: AppLocalizations.of(context)!.dativDescription,
     );
   }

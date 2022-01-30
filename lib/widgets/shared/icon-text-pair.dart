@@ -4,8 +4,15 @@ import 'package:navika/constants.dart';
 class IconTextPair extends StatelessWidget {
   final IconData icon;
   final String text;
+  final Color color;
+  final MainAxisAlignment alignment;
 
-  const IconTextPair({Key? key, required this.icon, required this.text})
+  IconTextPair(
+      {Key? key,
+      required this.icon,
+      required this.text,
+      this.alignment = MainAxisAlignment.start,
+      this.color = ACCENT_COLOR})
       : super(key: key);
 
   @override
@@ -14,15 +21,19 @@ class IconTextPair extends StatelessWidget {
 
     return Container(
       child: Row(
+        mainAxisAlignment: alignment,
         children: [
           Padding(
             padding: const EdgeInsets.only(right: iconPadding),
             child: Icon(
               icon,
-              color: ACCENT_COLOR,
+              color: color,
             ),
           ),
-          Text(text),
+          Padding(
+            padding: const EdgeInsets.only(right: iconPadding),
+            child: Text(text),
+          ),
         ],
       ),
     );

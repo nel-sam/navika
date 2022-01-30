@@ -41,7 +41,7 @@ class GenitivDeclensionTable extends StatelessWidget {
         N.NTextSpan('Moj'),
         N.NTextSpan('ih\n', isItalic: true, color: FEMININE_COLOR),
         N.NTextSpan('kuć'),
-        N.NTextSpan('e', isItalic: true, color: FEMININE_COLOR),
+        N.NTextSpan('a', isItalic: true, color: FEMININE_COLOR),
       ]),
       neuterSingular: DeclensionTableCell(
         isEqualItem: true,

@@ -13,7 +13,7 @@ class AllCases extends StatelessWidget {
     return CaseExercise(
       title: title,
       caseType: Cases.All,
-      imagePath: CaseImagePaths[Cases.All]!,
+      imagePath: 'assets/banners/montenegro.jpg',
       description: AppLocalizations.of(context)!.allCasesDesc,
     );
   }

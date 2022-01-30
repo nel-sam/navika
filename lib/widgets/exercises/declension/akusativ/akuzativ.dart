@@ -12,7 +12,7 @@ class Akuzativ extends StatelessWidget {
     return CaseExercise(
       title: title,
       caseType: Cases.Aku,
-      imagePath: CaseImagePaths[Cases.Aku]!,
+      imagePath: 'assets/banners/pay.jpg',
       description: AppLocalizations.of(context)!.akuzativDescription,
       youtubeLink: RECOMMENDED_VIDEO_AKU,
     );

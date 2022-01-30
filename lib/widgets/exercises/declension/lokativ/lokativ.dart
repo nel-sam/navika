@@ -11,7 +11,7 @@ class Lokativ extends StatelessWidget {
     return CaseExercise(
       title: title,
       caseType: Cases.Lok,
-      imagePath: CaseImagePaths[Cases.Lok]!,
+      imagePath: 'assets/banners/ladies.jpg',
       description: AppLocalizations.of(context)!.lokativDescription,
     );
   }

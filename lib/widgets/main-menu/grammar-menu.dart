@@ -14,13 +14,13 @@ class GrammarMenu extends StatelessWidget {
         destination: DeclensionGuide(),
         icon: Icons.menu_book,
         label: AppLocalizations.of(context)!.cases,
-        imagePath: 'assets/banners/books.jpg',
+        imagePath: 'assets/banners/books_lg.jpg',
       ),
       ExerciseButton(
         destination: Tables(),
-        icon: Icons.menu_book,
+        icon: Icons.square,
         label: AppLocalizations.of(context)!.justCaseTables,
-        imagePath: 'assets/banners/tables.jpg',
+        imagePath: 'assets/banners/tables_lg.jpg',
       ),
     ];
 

@@ -101,7 +101,9 @@ class N {
   static Color getAppBarColor(BuildContext context) {
     var brightness = MediaQuery.of(context).platformBrightness;
     bool darkModeOn = brightness == Brightness.dark;
-    return darkModeOn ? const Color(0xFF212121) : Colors.white;
+    return darkModeOn
+        ? Color.fromARGB(255, 48, 48, 48)
+        : Color.fromARGB(255, 250, 250, 250);
   }
 
   static List<PANCombo> getPANCombos(

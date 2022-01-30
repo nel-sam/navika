@@ -12,7 +12,7 @@ class Instrumental extends StatelessWidget {
     return CaseExercise(
       title: title,
       caseType: Cases.Ins,
-      imagePath: CaseImagePaths[Cases.Ins]!,
+      imagePath: 'assets/banners/vespa.jpg',
       description: AppLocalizations.of(context)!.instrumentalDescription,
       youtubeLink: RECOMMENDED_VIDEO_INST,
     );

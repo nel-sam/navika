@@ -13,7 +13,7 @@ class Nominativ extends StatelessWidget {
     return CaseExercise(
         title: title,
         caseType: Cases.Nom,
-        imagePath: CaseImagePaths[Cases.Nom]!,
+        imagePath: 'assets/banners/seaside_city.jpg',
         youtubeLink: RECOMMENDED_VIDEO_NOM,
         description: AppLocalizations.of(context)!.nominativDescription);
   }
