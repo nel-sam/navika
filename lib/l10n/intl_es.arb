@@ -100,5 +100,7 @@
   "presentTenseDesc": "Los verbos se pueden clasificar por verbos perfectivos y verbos imperfectivos. Verbos perfectivos indican algo completo (Yo hice = uradio sam). Verbos imperfectivos indican un proceso (Yo estaba trabajando/haciendo = radio sam)",
   "futureTense" : "El Futuro",
   "clear": "Clear",
-  "expand_for_more": "Expandir para más info"
+  "expand_for_more": "Expandir para más info",
+  "word_order": "Orden de palabras",
+  "word_order_desc": ""
 }

@@ -106,8 +106,10 @@ class _DeclensionGuideState extends State<DeclensionGuide> {
 
     return Scaffold(
       appBar: N.NavikaAppBar(
-          Text(AppLocalizations.of(context)!.cases, style: HEADER_TEXT_STYLE),
-          context, []),
+        title: SbcLabels.cases,
+        transTitle: AppLocalizations.of(context)!.cases,
+        context: context,
+      ),
       body: SingleChildScrollView(
         controller: controller,
         child: Center(

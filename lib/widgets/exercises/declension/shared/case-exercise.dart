@@ -40,7 +40,7 @@ class CaseExercise extends StatelessWidget {
             elevation: APPBAR_ELEVATION,
             backgroundColor: N.getAppBarColor(context),
             iconTheme: N.getAppBarIconTheme(context),
-            title: Text(APP_NAME, style: HEADER_TEXT_STYLE),
+            title: Text(SbcLabels.cases, style: HEADER_TEXT_STYLE),
           ),
           body: GestureDetector(
             onTap: () => FocusManager.instance.primaryFocus?.unfocus(),

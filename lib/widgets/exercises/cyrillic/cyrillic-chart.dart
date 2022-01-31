@@ -20,10 +20,10 @@ class CyrillicChart extends StatelessWidget {
 
     return Scaffold(
         appBar: N.NavikaAppBar(
-            Text(AppLocalizations.of(context)!.cyrillic,
-                style: HEADER_TEXT_STYLE),
-            context,
-            []),
+          title: SbcLabels.cyrlilic,
+          transTitle: AppLocalizations.of(context)!.cyrillic,
+          context: context,
+        ),
         body: Padding(
           padding: const EdgeInsets.all(20.0),
           child: Column(

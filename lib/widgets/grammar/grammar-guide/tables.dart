@@ -43,10 +43,10 @@ class _TablesState extends State<Tables> {
 
     return Scaffold(
       appBar: N.NavikaAppBar(
-          Text(AppLocalizations.of(context)!.justCaseTables,
-              style: HEADER_TEXT_STYLE),
-          context,
-          []),
+        title: SbcLabels.justTables,
+       transTitle: AppLocalizations.of(context)!.justCaseTables,
+        context: context,
+      ),
       body: SingleChildScrollView(
         child: Center(
           child: Container(

@@ -100,5 +100,7 @@
   "presentTenseDesc": "Verbs can be categorized as Perfective and Imperfective. Perfective verbs indicate a completed action (I did it = uradio sam). Imperfective verbs indicate a process (I was working/doing = radio sam)",
   "futureTense" : "Future Tense",
   "clear": "Clear",
-  "expand_for_more": "Expand for more info"
+  "expand_for_more": "Expand for more info",
+  "word_order": "Word order",
+  "word_order_desc": ""
 }

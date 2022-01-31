@@ -17,12 +17,9 @@ class CyrillicExercise extends StatelessWidget {
     var title = AppLocalizations.of(context)!.cyrillic;
 
     return Scaffold(
-      appBar: AppBar(
-        leading: Builder(builder: (BuildContext context) => BackButton()),
-        elevation: APPBAR_ELEVATION,
-        backgroundColor: N.getAppBarColor(context),
-        iconTheme: N.getAppBarIconTheme(context),
-        title: Text(APP_NAME, style: HEADER_TEXT_STYLE),
+      appBar: N.NavikaAppBar(
+        title: SbcLabels.cyrlilic,
+        context: context,
       ),
       body: GestureDetector(
         onTap: () => FocusManager.instance.primaryFocus?.unfocus(),

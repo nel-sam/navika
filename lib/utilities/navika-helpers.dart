@@ -22,14 +22,18 @@ class N {
   }
 
   // ignore: non_constant_identifier_names
-  static AppBar NavikaAppBar(
-      Widget title, BuildContext context, List<Widget> actions) {
+  static AppBar NavikaAppBar({
+    required String title,
+    String transTitle = '',
+    required BuildContext context,
+  }) {
     return AppBar(
       elevation: APPBAR_ELEVATION,
       backgroundColor: N.getAppBarColor(context),
       iconTheme: N.getAppBarIconTheme(context),
-      title: title,
-      actions: actions,
+      title: transTitle == ''
+          ? Text('$title', style: HEADER_TEXT_STYLE)
+          : Text('$title - $transTitle', style: HEADER_TEXT_STYLE),
     );
   }
 

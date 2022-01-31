@@ -18,6 +18,7 @@ class MainMenu extends StatelessWidget {
         destination: GrammarMenu(),
         icon: Icons.menu_book,
         label: AppLocalizations.of(context)!.grammarGuides,
+        sbcLabel: SbcLabels.grammarGuide,
         imagePath: 'assets/banners/books_sm.jpg',
       ),
       ExerciseButton(
@@ -25,6 +26,7 @@ class MainMenu extends StatelessWidget {
         destination: DeclensionMenu(),
         icon: Icons.change_circle,
         label: AppLocalizations.of(context)!.caseExercises,
+        sbcLabel: SbcLabels.cases,
         imagePath: 'assets/banners/seaside_sm.jpg',
       ),
       ExerciseButton(
@@ -32,6 +34,7 @@ class MainMenu extends StatelessWidget {
         destination: VerbMenu(),
         icon: Icons.nordic_walking,
         label: AppLocalizations.of(context)!.verbExercises,
+        sbcLabel: SbcLabels.verbs,
         imagePath: 'assets/banners/vespa_sm.jpg',
       ),
       ExerciseButton(
@@ -39,8 +42,17 @@ class MainMenu extends StatelessWidget {
         destination: CyrillicExercise(),
         icon: Icons.abc,
         label: AppLocalizations.of(context)!.cyrillic,
+        sbcLabel: SbcLabels.cyrlilic,
         imagePath: 'assets/banners/writing_sm.jpg',
       ),
+      // ExerciseButton(
+      //   halfWidth: true,
+      //   destination: WordOrderExercise(),
+      //   icon: Icons.bubble_chart,
+      //   label: AppLocalizations.of(context)!.word_order,
+      //   sbcLabel: SbcLabels.wordOrder,
+      //   imagePath: 'assets/banners/flags_sm.jpg',
+      // ),
     ];
 
     return Column(
@@ -49,21 +61,26 @@ class MainMenu extends StatelessWidget {
           height: N.getScreenHeight(context) / 3.5,
           decoration: BoxDecoration(
             image: DecorationImage(
+              opacity: N.isDarkTheme(context) ? 0.7 : 1,
               image: AssetImage('assets/banners/sea.jpg'),
               fit: BoxFit.cover,
             ),
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(top: FONT_SIZE, left: FONT_SIZE),
-          child: Row(
-            children: [
-              Text(
-                APP_NAME,
-                style: TextStyle(
-                    fontSize: 30, fontFamily: 'helvetica', color: ACCENT_COLOR),
-              ),
-            ],
+          child: Padding(
+            padding: const EdgeInsets.only(top: FONT_SIZE * 3, left: FONT_SIZE),
+            child: Row(
+              children: [
+                Text(
+                  APP_NAME,
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontFamily: 'helvetica',
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
         Expanded(

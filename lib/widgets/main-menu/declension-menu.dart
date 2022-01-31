@@ -22,6 +22,7 @@ class DeclensionMenu extends StatelessWidget {
         destination: AllCases(),
         icon: Icons.group,
         label: AppLocalizations.of(context)!.allCases,
+        sbcLabel: 'Sve padeže',
         imagePath: 'assets/banners/montenegro_sm.jpg',
       ),
       ExerciseButton(
@@ -72,13 +73,10 @@ class DeclensionMenu extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: N.NavikaAppBar(
-          Text(
-            AppLocalizations.of(context)!.cases,
-            style: TextStyle(
-                fontSize: 30, fontFamily: 'helvetica', color: ACCENT_COLOR),
-          ),
-          context,
-          []),
+        title: SbcLabels.cases,
+        transTitle: AppLocalizations.of(context)!.cases,
+        context:  context,
+      ),
       body: Center(
         child: Column(
           children: [

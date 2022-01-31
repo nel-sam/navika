@@ -6,8 +6,8 @@ const int DEBOUNCE_TIME = 350;
 
 const double FONT_SIZE = 16;
 const TABLE_CELL_WIDTH = 87.0;
-const TextStyle HEADER_TEXT_STYLE =
-    TextStyle(fontSize: 20, fontFamily: 'helvetica', color: ACCENT_COLOR);
+const TextStyle HEADER_TEXT_STYLE = TextStyle(
+    fontSize: FONT_SIZE, fontFamily: 'helvetica', color: ACCENT_COLOR);
 const double EXERCISE_FONT_STYLE = 15;
 const SCROLL_DURATION = Duration(milliseconds: 800);
 const EdgeInsets EXERCISE_LIST_PADDING = const EdgeInsets.only(bottom: 10);
@@ -53,3 +53,12 @@ const RECOMMENDED_VIDEO_PRESENT_SIMPLE =
     'https://www.youtube.com/watch?v=9m4sMQ_qnjs';
 const RECOMMENDED_VIDEO_VOK = '';
 const RECOMMENDED_VIDEO_CYRILLIC = '';
+
+class SbcLabels {
+  static String cyrlilic = 'Ћирилица';
+  static String cases = 'Padež';
+  static String verbs = 'Glagoli';
+  static String justTables = 'Samo tablice';
+  static String grammarGuide = 'Vodič za gramatiku';
+  static String wordOrder = 'Poredak riječi';
+}

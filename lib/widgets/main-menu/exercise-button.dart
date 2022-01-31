@@ -6,16 +6,18 @@ class ExerciseButton extends StatelessWidget {
   final Widget destination;
   final IconData icon;
   final String label;
+  final String sbcLabel;
   final String imagePath;
   final bool halfWidth;
 
-  const ExerciseButton({
+  ExerciseButton({
     Key? key,
     required this.destination,
     required this.label,
     required this.imagePath,
     required this.icon,
     this.halfWidth = false,
+    this.sbcLabel = '',
   }) : super(key: key);
 
   @override
@@ -23,11 +25,46 @@ class ExerciseButton extends StatelessWidget {
     double screenWidth = N.getScreenWidth(context);
     double buttonWidth =
         this.halfWidth ? (screenWidth / 2) - 20 : screenWidth - 30;
-    double buttonHeight = halfWidth ? 110 : 130;
+    double buttonHeight = halfWidth ? 130 : 130;
     var appBarColor = N.isDarkTheme(context)
         ? Color.fromARGB(255, 58, 58, 58)
         : N.getAppBarColor(context);
     double radius = 10;
+
+    Widget getLabel() {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Wrap(
+            children: [
+              Text(
+                sbcLabel == '' ? label : sbcLabel,
+                style: TextStyle(
+                  fontSize: 22,
+                  color: N.isDarkTheme(context) ? Colors.white : ACCENT_COLOR,
+                ),
+              ),
+            ],
+          ),
+          Text(
+            label,
+            style: TextStyle(
+              fontSize: halfWidth ? 12 : 14,
+              fontStyle: FontStyle.italic,
+              color: ACCENT_COLOR,
+            ),
+          ),
+        ],
+      );
+    }
+
+    Icon getIcon() {
+      return Icon(
+        icon,
+        size: 30,
+        color: N.isDarkTheme(context) ? Colors.white : ACCENT_COLOR,
+      );
+    }
 
     return Padding(
       padding: const EdgeInsets.all(FONT_SIZE / 2),
@@ -53,8 +90,10 @@ class ExerciseButton extends StatelessWidget {
           child: halfWidth
               ? Column(
                   mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
+                      child: getIcon(),
                       width: buttonWidth,
                       height: buttonHeight / 2,
                       decoration: BoxDecoration(
@@ -68,8 +107,10 @@ class ExerciseButton extends StatelessWidget {
                         ),
                       ),
                     ),
-                    getIcon(),
-                    getLabel(),
+                    Padding(
+                      padding: EdgeInsets.only(top: FONT_SIZE, left: FONT_SIZE),
+                      child: getLabel(),
+                    ),
                   ],
                 )
               : Row(
@@ -106,32 +147,6 @@ class ExerciseButton extends StatelessWidget {
                   ],
                 ),
         ),
-      ),
-    );
-  }
-
-  Padding getLabel() {
-    return Padding(
-      padding: const EdgeInsets.only(
-        top: 10,
-      ),
-      child: Text(
-        label,
-        style: TextStyle(
-          fontSize: halfWidth ? 17 : 24,
-          color: ACCENT_COLOR,
-        ),
-      ),
-    );
-  }
-
-  Padding getIcon() {
-    return Padding(
-      padding: const EdgeInsets.only(top: FONT_SIZE),
-      child: Icon(
-        icon,
-        size: halfWidth ? 50 : 25,
-        color: ACCENT_COLOR,
       ),
     );
   }
