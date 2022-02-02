@@ -37,9 +37,9 @@ Widget getPossessivePronounSection(BuildContext context) {
       PronounLine(
           pronoun: PronounEnum.I,
           text: NTextMulti([
-            N.NTextSpan('Čuješ li'),
+            N.NTextSpan('Čuješ li '),
             N.NTextSpan('me?\n', isBold: true),
-            N.NTextSpan('Čuješ li'),
+            N.NTextSpan('Čuješ li '),
             N.NTextSpan('mene?', isBold: true),
           ])),
       PronounLine(
@@ -96,7 +96,8 @@ Widget getPossessivePronounSection(BuildContext context) {
 Widget getDescription(BuildContext context) {
   return Column(
     children: [
-      NTextMulti([N.NTextSpan(AppLocalizations.of(context)!.akuzativDescription)]),
+      NTextMulti(
+          [N.NTextSpan(AppLocalizations.of(context)!.akuzativDescription)]),
       YouTubeLink(context, RECOMMENDED_VIDEO_AKU)
     ],
   );
