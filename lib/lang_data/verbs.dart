@@ -49,7 +49,7 @@ final List<Verb> verbWordBank = [
       pluralMasc: 'vidjeli',
       pluralFem: 'vidjele',
       ono: 'vidjelo',
-      onaPl: 'vidjala',
+      onaPl: 'vidjela',
     ),
   ),
   Verb(

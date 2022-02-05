@@ -81,7 +81,7 @@ class VerbHelpGuide extends StatelessWidget {
                 children: [
                   NText('Ja sam ${verb.pastPerfect.singularMasc}'),
                   NText('Ti si ${verb.pastPerfect.singularMasc}'),
-                  NText('On ${verb.pastPerfect.singularMasc}'),
+                  NText('On je ${verb.pastPerfect.singularMasc}'),
                   NText('Mi smo ${verb.pastPerfect.pluralMasc}'),
                   NText('Vi ste ${verb.pastPerfect.pluralMasc}'),
                   NText('Oni ste ${verb.pastPerfect.pluralMasc}'),
@@ -111,7 +111,7 @@ class VerbHelpGuide extends StatelessWidget {
                   children: [
                     NText('Ja sam ${verb.pastPerfect.singularFem}'),
                     NText('Ti si ${verb.pastPerfect.singularFem}'),
-                    NText('Ona ${verb.pastPerfect.singularFem}'),
+                    NText('Ona je ${verb.pastPerfect.singularFem}'),
                     NText('Mi smo ${verb.pastPerfect.pluralFem}'),
                     NText('Vi ste ${verb.pastPerfect.pluralFem}'),
                     NText('One su ${verb.pastPerfect.pluralFem}'),
