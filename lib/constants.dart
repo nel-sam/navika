@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 const String APP_NAME = 'navika';
-const BATCH_COUNT = 10;
+const BATCH_COUNT = 20;
 const int DEBOUNCE_TIME = 350;
 
 const double FONT_SIZE = 16;

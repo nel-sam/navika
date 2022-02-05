@@ -1,4 +1,3 @@
-import 'package:navika/constants.dart';
 import 'package:navika/lang_data/word-bank.dart';
 import 'package:navika/models/adjective.dart';
 import 'package:navika/models/enums.dart';
@@ -87,26 +86,24 @@ class InstrumentalGenerators {
     return StaticSentenceParts(start: start, end: end);
   }
 
-  static List<CaseQuestionState> initializePANStateItems() {
+  static CaseQuestionState createExercise(List toAvoid, Function? b) {
     final WordBank bank = wordBank.excludeNounsByTags([
       Tags.Location,
       Tags.Health,
     ]);
 
-    final combos = N.getPANCombos(
-      caseType: Cases.Ins,
-      bank: bank,
-      getPersonalPronounSentenceStaticParts:
-          getPersonalPronounSentenceStaticParts,
-      getStaticSentenceParts: getStaticSentenceParts,
-    );
+    PANCombo? c;
 
-    combos.shuffle();
+    while (c == null || N.containsCaseQuestionState(toAvoid, c)) {
+      c = N.getPANCombos(
+        caseType: Cases.Ins,
+        bank: bank,
+        getPersonalPronounSentenceStaticParts:
+            getPersonalPronounSentenceStaticParts,
+        getStaticSentenceParts: getStaticSentenceParts,
+      );
+    }
 
-    final result = combos.take(BATCH_COUNT).map((c) {
-      return CaseQuestionState(combos: c);
-    });
-
-    return result.toList();
+    return CaseQuestionState(combos: c);
   }
 }

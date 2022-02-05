@@ -2,78 +2,88 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 import 'package:navika/constants.dart';
-import 'package:navika/lang_data/verbs.dart';
 import 'package:navika/models/enums.dart';
-import 'package:navika/state/cases/case-question-state.dart';
 import 'package:navika/state/content-generators/akuzativ-generators.dart';
 import 'package:navika/state/content-generators/dativ-generators.dart';
 import 'package:navika/state/content-generators/genetiv-generators.dart';
 import 'package:navika/state/content-generators/instrumental-generators.dart';
 import 'package:navika/state/content-generators/lokativ-generators.dart';
 import 'package:navika/state/content-generators/nominativ-generators.dart';
+import 'package:navika/state/content-generators/verb-generators.dart';
 import 'package:navika/state/content-generators/vokativ-generators.dart';
-import 'package:navika/state/verbs/verb-question-state-item.dart';
+import 'package:navika/utilities/navika-helpers.dart';
 
 class ExerciseNavNotifier with ChangeNotifier {
   Timer _debounce = Timer(const Duration(milliseconds: 0), () {});
   List _states = [];
   int _activeIndex = 0;
+  int _maxIndex = 0;
+  late Function(List, Function?) createExercise;
 
   ExerciseNavNotifier({Cases? caseType, bool isVerb = false}) {
     if (isVerb) {
-      _states = verbWordBank
-          .map((verb) => VerbQuestionStateItem(
-                verb: verb,
-                notifyListeners: notifyListeners,
-              ))
-          .toList();
+      this._maxIndex = VerbGenerators.getMaxIndex();
+      createExercise = VerbGenerators.createExercise;
+    } else {
+      _maxIndex = BATCH_COUNT;
+      _setCaseGenerator(caseType!);
     }
 
-    if (caseType == null) return;
-
-    _states = getCaseItems(caseType);
+    _states.add(createExercise(_states, deboucedNotifyListeners));
   }
 
-  List<CaseQuestionState> getCaseItems(Cases caseType) {
-    List<CaseQuestionState> items = [];
-
+  _setCaseGenerator(Cases caseType) {
     switch (caseType) {
       case Cases.All:
-        items = NominativGenerators.initializePANStateItems();
-        items.addAll(AkuzativGenerators.initializePANStateItems());
-        items.addAll(InstrumentalGenerators.initializePANStateItems());
-        items.addAll(DativGenerators.initializePANStateItems());
-        items.addAll(LokativGenerators.initializePANStateItems());
-        items.addAll(GenetivGenerators.initializePANStateItems());
-        items.addAll(VokativGenerators.initializePANStateItems());
+        createExercise = _getRandomCaseExec;
         break;
       case Cases.Nom:
-        items = NominativGenerators.initializePANStateItems();
+        createExercise = NominativGenerators.createExercise;
         break;
       case Cases.Aku:
-        items = AkuzativGenerators.initializePANStateItems();
+        createExercise = AkuzativGenerators.createExercise;
         break;
       case Cases.Ins:
-        items = InstrumentalGenerators.initializePANStateItems();
+        createExercise = InstrumentalGenerators.createExercise;
         break;
       case Cases.Dat:
-        items = DativGenerators.initializePANStateItems();
+        createExercise = DativGenerators.createExercise;
         break;
       case Cases.Lok:
-        items = LokativGenerators.initializePANStateItems();
+        createExercise = LokativGenerators.createExercise;
         break;
       case Cases.Gen:
-        items = GenetivGenerators.initializePANStateItems();
+        createExercise = GenetivGenerators.createExercise;
         break;
       case Cases.Vok:
-        items = VokativGenerators.initializePANStateItems();
+        createExercise = VokativGenerators.createExercise;
         break;
       default:
         break;
     }
+  }
 
-    items.shuffle();
-    return items;
+  _getRandomCaseExec(List a, Function? b) {
+    final random = N.getRandomNumber(max: Cases.values.length);
+    final caseType = Cases.values[random];
+
+    switch (caseType) {
+      case Cases.Nom:
+        return NominativGenerators.createExercise(a, b);
+      case Cases.Aku:
+        return AkuzativGenerators.createExercise(a, b);
+      case Cases.Ins:
+        return InstrumentalGenerators.createExercise(a, b);
+      case Cases.Dat:
+        return DativGenerators.createExercise(a, b);
+      case Cases.Lok:
+        return LokativGenerators.createExercise(a, b);
+      case Cases.All:
+      case Cases.Gen:
+        return GenetivGenerators.createExercise(a, b);
+      case Cases.Vok:
+        return VokativGenerators.createExercise(a, b);
+    }
   }
 
   deboucedNotifyListeners() {
@@ -115,10 +125,14 @@ class ExerciseNavNotifier with ChangeNotifier {
   }
 
   setNext() {
-    if (_activeIndex >= _states.length - 1) {
+    if (_activeIndex >= _maxIndex - 1) {
       _activeIndex = 0;
     } else {
       _activeIndex++;
+    }
+
+    if (_activeIndex > _states.length - 1) {
+      this._states.add(this.createExercise(_states, deboucedNotifyListeners));
     }
 
     deboucedNotifyListeners();

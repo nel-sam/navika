@@ -8,6 +8,8 @@ import 'package:navika/models/models.dart';
 import 'package:navika/models/noun.dart';
 import 'package:navika/models/personal-pronoun.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:navika/state/cases/case-question-state.dart';
+import 'package:navika/extensions.dart';
 
 class N {
   static scrollTo(double point, controller) {
@@ -57,6 +59,11 @@ class N {
       case Genders.Unspecific:
         return AppLocalizations.of(context)!.neuter;
     }
+  }
+
+  static int getRandomNumber({int min = 0, int max = 99999}) {
+    var random = new Random();
+    return random.nextInt(max - min) + min;
   }
 
   static bool coinFlip() {
@@ -110,57 +117,58 @@ class N {
         : Color.fromARGB(255, 250, 250, 250);
   }
 
-  static List<PANCombo> getPANCombos(
+  static PANCombo getPANCombos(
       {required Cases caseType,
       required WordBank bank,
       required StaticSentenceParts Function(Noun, bool, Adjective?, Adjective?)
           getStaticSentenceParts,
       required StaticSentenceParts Function(PersonalPronoun, bool)
           getPersonalPronounSentenceStaticParts}) {
-    const limitCount = 15;
-    var halfLimitCount = (limitCount / 2).floor();
-    var listItems = List<PANCombo>.empty(growable: true);
+    if (caseType == Cases.Vok) {
+      final noun = bank.nouns[N.getRandomNumber(max: bank.nouns.length)];
+      final staticParts = getStaticSentenceParts(noun, false, null, null);
 
-    bank.nouns.shuffle();
-    bank.adjectives.shuffle();
-    bank.personalPronouns.shuffle();
-    bank.possessivePronouns.shuffle();
-
-    bank.possessivePronouns.forEach((possPronoun) {
-      bank.adjectives.getRange(0, halfLimitCount).forEach((adj) {
-        bank.nouns.getRange(0, halfLimitCount).forEach((noun) {
-          final isPlural = noun.nominativ.plural.first != '' && N.coinFlip();
-          final staticParts =
-              getStaticSentenceParts(noun, isPlural, possPronoun, adj);
-
-          listItems.add(PANCombo(
-              caseType: caseType,
-              sentenceStarter: staticParts.start,
-              sentenceEnder: staticParts.end,
-              possPronoun: possPronoun,
-              adjective: adj,
-              gender: noun.gender,
-              isPlural: isPlural,
-              noun: noun));
-        });
-      });
-    });
-
-    listItems.shuffle();
-
-    if (listItems.length > limitCount) {
-      listItems = listItems.getRange(0, limitCount).toList();
+      return PANCombo(
+          caseType: caseType,
+          sentenceStarter: staticParts.start,
+          sentenceEnder: staticParts.end,
+          possPronoun: null,
+          adjective: null,
+          gender: noun.gender,
+          isPlural: false,
+          noun: noun);
     }
 
-    var nouns = bank.nouns.length > limitCount
-        ? bank.nouns.getRange(0, limitCount)
-        : bank.nouns;
+    final maxRandom = bank.personalPronouns.length == 0 ? 2 : 3;
+    var exType = N.getRandomNumber(max: maxRandom);
 
-    nouns.forEach((noun) {
+    if (exType == 0) {
+      final possPronoun = bank.possessivePronouns.length == 0
+          ? null
+          : bank.possessivePronouns[
+              N.getRandomNumber(max: bank.possessivePronouns.length)];
+      final adj =
+          bank.adjectives[N.getRandomNumber(max: bank.adjectives.length)];
+      final noun = bank.nouns[N.getRandomNumber(max: bank.nouns.length)];
+      final isPlural = noun.nominativ.plural.first != '' && N.coinFlip();
+      final staticParts =
+          getStaticSentenceParts(noun, isPlural, possPronoun, adj);
+
+      return PANCombo(
+          caseType: caseType,
+          sentenceStarter: staticParts.start,
+          sentenceEnder: staticParts.end,
+          possPronoun: possPronoun,
+          adjective: adj,
+          gender: noun.gender,
+          isPlural: isPlural,
+          noun: noun);
+    } else if (exType == 1) {
+      final noun = bank.nouns[N.getRandomNumber(max: bank.nouns.length)];
       final isPlural = noun.nominativ.plural.first != '' && N.coinFlip();
       final staticParts = getStaticSentenceParts(noun, isPlural, null, null);
 
-      listItems.add(PANCombo(
+      return PANCombo(
           caseType: caseType,
           sentenceStarter: staticParts.start,
           sentenceEnder: staticParts.end,
@@ -168,15 +176,15 @@ class N {
           adjective: null,
           gender: noun.gender,
           isPlural: isPlural,
-          noun: noun));
-    });
-
-    bank.personalPronouns.forEach((persPronoun) {
+          noun: noun);
+    } else {
+      final persPronoun = bank.personalPronouns[
+          N.getRandomNumber(max: bank.personalPronouns.length)];
       final isPlural = persPronoun.isPlural;
       final staticParts =
           getPersonalPronounSentenceStaticParts(persPronoun, isPlural);
 
-      listItems.add(PANCombo(
+      return PANCombo(
         caseType: caseType,
         sentenceStarter: staticParts.start,
         sentenceEnder: staticParts.end,
@@ -184,11 +192,8 @@ class N {
         isPlural: isPlural,
         personalPronoun: persPronoun,
         usePersonalPronounShortForm: N.coinFlip(),
-      ));
-    });
-
-    listItems.shuffle();
-    return listItems;
+      );
+    }
   }
 
   // ignore: non_constant_identifier_names
@@ -319,5 +324,75 @@ class N {
       fontSize: fontSize,
       fontWeight: FontWeight.bold,
     );
+  }
+
+  static bool containsCaseQuestionState(List list, PANCombo item) {
+    if (list.isEmpty) return false;
+
+    for (int i = 0; i < list.length; i++) {
+      var testItem = list[i].combos;
+
+      if (testItem.noun?.dictionary.toString() == item.noun?.dictionary &&
+          testItem.personalPronoun?.nominativ.forms[0].toString() ==
+              item.personalPronoun?.nominativ.forms[0] &&
+          testItem.possPronoun?.dictionary.toString() ==
+              item.possPronoun?.dictionary &&
+          testItem.adjective?.dictionary.toString() ==
+              item.adjective?.dictionary) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  static bool containsCaseQuestionState___(List list, PANCombo item) {
+    if (list.isEmpty) return false;
+
+    if (item.personalPronoun != null) {
+      final strList = list
+          .where((e) => e.combos.personalPronoun != null)
+          .map((e) => e.combos.personalPronoun!.nominativ.forms[0].toString())
+          .toList();
+
+      final contains = strList
+          .containsCaseInsensitive(item.personalPronoun!.nominativ.forms[0]);
+
+      if (contains) return true;
+    }
+    if (item.possPronoun != null) {
+      final strList = list
+          .where((e) => e.combos.possPronoun != null)
+          .map((e) => e.combos.possPronoun!.dictionary.toString())
+          .toList();
+
+      final contains =
+          strList.containsCaseInsensitive(item.possPronoun!.dictionary);
+
+      if (contains) return true;
+    }
+    if (item.adjective != null) {
+      final strList = list
+          .where((e) => e.combos.adjective != null)
+          .map((e) => e.combos.adjective!.dictionary.toString())
+          .toList();
+
+      final contains =
+          strList.containsCaseInsensitive(item.adjective!.dictionary);
+
+      if (contains) return true;
+    }
+    if (item.noun != null) {
+      final strList = list
+          .where((e) => e.combos.noun != null)
+          .map((e) => e.combos.noun!.dictionary.toString())
+          .toList();
+
+      final contains = strList.containsCaseInsensitive(item.noun!.dictionary);
+
+      if (contains) return true;
+    }
+
+    return false;
   }
 }

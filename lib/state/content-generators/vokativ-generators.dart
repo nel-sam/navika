@@ -1,4 +1,3 @@
-import 'package:navika/constants.dart';
 import 'package:navika/lang_data/word-bank.dart';
 import 'package:navika/models/adjective.dart';
 import 'package:navika/models/enums.dart';
@@ -21,21 +20,18 @@ class VokativGenerators {
     return StaticSentenceParts(start: start, end: '');
   }
 
-  static List<CaseQuestionState> initializePANStateItems() {
-    final combos = N.getPANCombos(
-      caseType: Cases.Vok,
-      bank: wordBank.includeOnlyNounsByTags([Tags.Human]),
-      getPersonalPronounSentenceStaticParts:
-          getPersonalPronounSentenceStaticParts,
-      getStaticSentenceParts: getStaticSentenceParts,
-    );
+  static CaseQuestionState createExercise(List toAvoid, Function? b) {
+    PANCombo? c;
 
-    combos.shuffle();
-
-    final result = combos.take(BATCH_COUNT).map((c) {
-      return CaseQuestionState(combos: c);
-    });
-
-    return result.toList();
+    while (c == null || N.containsCaseQuestionState(toAvoid, c)) {
+      c = N.getPANCombos(
+        caseType: Cases.Vok,
+        bank: wordBank.includeOnlyNounsByTags([Tags.Human]),
+        getPersonalPronounSentenceStaticParts:
+            getPersonalPronounSentenceStaticParts,
+        getStaticSentenceParts: getStaticSentenceParts,
+      );
+    }
+    return CaseQuestionState(combos: c);
   }
 }
