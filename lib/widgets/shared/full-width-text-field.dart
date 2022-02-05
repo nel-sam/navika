@@ -3,58 +3,65 @@ import 'package:navika/constants.dart';
 import 'package:navika/extensions.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/utilities/navika-helpers.dart';
+import 'package:navika/widgets/shared/answer-status-icon.dart';
 
-class QuestionFreeForm extends StatelessWidget {
+class FullWidthTextField extends StatelessWidget {
   final String hintValue;
   final String activeValue;
   final List<String> correctValues;
-  final bool isHalfWidth;
   final Function(String) onChanged;
+  final controller = TextEditingController();
 
-  QuestionFreeForm({
+  FullWidthTextField({
     Key? key,
     required this.hintValue,
     required this.onChanged,
     required this.activeValue,
     required this.correctValues,
-    this.isHalfWidth = false,
-  }) : super(key: key);
-
-  final controller = TextEditingController();
+  }) : super(key: key) {
+    controller.text = activeValue;
+    controller.selection = TextSelection.fromPosition(
+      TextPosition(offset: controller.text.length),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
-    controller.text = activeValue;
-    controller.selection = TextSelection.fromPosition(
-        TextPosition(offset: controller.text.length));
-    var screenWidth = N.getScreenWidth(context);
+    final status = getCorrectStatus(activeValue);
+
+    OutlineInputBorder border = getBorder(status);
+    String labelText =
+        correctValues.containsCaseInsensitive(activeValue) ? '' : hintValue;
 
     return Padding(
       padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-      child: Container(
-        width: isHalfWidth ? (screenWidth / 2) - 60 : screenWidth - 80,
-        child: TextField(
-          key: key,
-          controller: controller,
-          textInputAction: TextInputAction.next,
-          keyboardType: TextInputType.text,
-          decoration: InputDecoration(
-            isDense: true,
-            contentPadding: EdgeInsets.fromLTRB(4, 18, 0, 1),
-            labelText: correctValues.containsCaseInsensitive(activeValue)
-                ? ''
-                : hintValue,
-            enabledBorder: getBorder(),
-            focusedBorder: getBorder(),
-          ),
-          onChanged: (String? newVal) {
-            if (newVal == ' ') newVal = '';
+      child: Row(
+        children: [
+          Container(
+            width: N.getScreenWidth(reduction: 100),
+            child: TextField(
+              key: key,
+              controller: controller,
+              textInputAction: TextInputAction.next,
+              keyboardType: TextInputType.text,
+              decoration: InputDecoration(
+                isDense: true,
+                contentPadding: const EdgeInsets.fromLTRB(4, 18, 0, 1),
+                labelText: labelText,
+                enabledBorder: border,
+                focusedBorder: border,
+              ),
+              onChanged: (String? newVal) {
+                if (newVal == ' ') newVal = '';
 
-            if (newVal != null) {
-              onChanged(newVal);
-            }
-          },
-        ),
+                if (newVal != null) {
+                  onChanged(newVal);
+                }
+              },
+            ),
+          ),
+          AnswerStatusIcon(status: status),
+        ],
       ),
     );
   }
@@ -75,9 +82,7 @@ class QuestionFreeForm extends StatelessWidget {
     return CorrectStatus.wrong;
   }
 
-  OutlineInputBorder getBorder() {
-    var status = getCorrectStatus(activeValue);
-
+  OutlineInputBorder getBorder(CorrectStatus status) {
     var color = WRONG_COLOR;
 
     switch (status) {

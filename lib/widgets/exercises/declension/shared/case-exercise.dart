@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
-import 'package:navika/state/cases/case-notifier.dart';
 import 'package:navika/state/exercise-nav-notifier.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/shared/ad-card.dart';
 import 'package:navika/widgets/exercises/declension/shared/case-exec-footer-buttons.dart';
 import 'package:navika/widgets/shared/exercise-header.dart';
 import 'package:navika/widgets/shared/info-banner.dart';
-import 'package:navika/widgets/exercises/declension/shared/case-question-content.dart';
+import 'package:navika/widgets/exercises/declension/shared/case-exercise-entry-section.dart';
 import 'package:provider/provider.dart';
 
 class CaseExercise extends StatelessWidget {
@@ -66,33 +65,8 @@ class CaseExercise extends StatelessWidget {
                           setNext: navNotifier.setNext,
                           clear: navNotifier.clearInput,
                         ),
-                        ChangeNotifierProvider<CaseNotifier>(
-                          create: (context) =>
-                              CaseNotifier(navNotifier.getActive),
-                          child: Consumer<CaseNotifier>(
-                            builder: (context, cNotifier, child) =>
-                                CaseQuestionContent(
-                              stateItem: cNotifier.getStateItem(),
-                              entryType: EntryTypes.FreeForm,
-                              onChanged:
-                                  (GrammarTypes grammarType, String newValue) {
-                                switch (grammarType) {
-                                  case GrammarTypes.Noun:
-                                    cNotifier.updateNoun(newValue);
-                                    break;
-                                  case GrammarTypes.PersonalPronoun:
-                                    cNotifier.updatePersPronoun(newValue);
-                                    break;
-                                  case GrammarTypes.PossesivePronoun:
-                                    cNotifier.updatePossPronoun(newValue);
-                                    break;
-                                  case GrammarTypes.Adjective:
-                                    cNotifier.updateAdj(newValue);
-                                    break;
-                                }
-                              },
-                            ),
-                          ),
+                        CaseExerciseEntrySection(
+                          getActive: navNotifier.getActive,
                         ),
                       ],
                     ),

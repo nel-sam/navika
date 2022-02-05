@@ -20,9 +20,7 @@ class ShadowBox extends StatelessWidget {
         color: bgColor,
         boxShadow: [
           BoxShadow(
-            color: this.isCorrect
-                ? CORRECT_COLOR.withOpacity(0.4)
-                : WRONG_COLOR.withOpacity(0.4),
+            color: this.isCorrect ? CORRECT_COLOR : WRONG_COLOR,
             spreadRadius: 1,
             blurRadius: 1,
           ),

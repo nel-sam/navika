@@ -23,7 +23,7 @@ class Tables extends StatefulWidget {
 class _TablesState extends State<Tables> {
   @override
   Widget build(BuildContext context) {
-    double screenWidth = N.getScreenWidth(context);
+    double screenWidth = N.getScreenWidth();
 
     Widget tableSection(String title, Widget table) {
       return Column(
@@ -44,7 +44,7 @@ class _TablesState extends State<Tables> {
     return Scaffold(
       appBar: N.NavikaAppBar(
         title: SbcLabels.justTables,
-       transTitle: AppLocalizations.of(context)!.justCaseTables,
+        transTitle: AppLocalizations.of(context)!.justCaseTables,
         context: context,
       ),
       body: SingleChildScrollView(

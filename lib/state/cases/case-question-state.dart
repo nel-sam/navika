@@ -7,15 +7,17 @@ class CaseQuestionState {
   late String userPossPronResponse;
   late String userAdjResponse;
   late String userPersPronResponse;
+  late bool isCorrect;
 
   CaseQuestionState({required this.combos}) {
     userNounResponse = '';
     userPossPronResponse = '';
     userAdjResponse = '';
     userPersPronResponse = '';
+    isCorrect = false;
   }
 
-  bool getIsCorrect() {
+  void setIsCorrect() {
     final pos =
         _isCorrectSingle(this.combos.correctPossPronouns, userPossPronResponse);
     final adj = _isCorrectSingle(this.combos.correctAdjs, userAdjResponse);
@@ -23,7 +25,7 @@ class CaseQuestionState {
     final persPron =
         _isCorrectSingle(this.combos.correctPersPronouns, userPersPronResponse);
 
-    return pos && adj && noun && persPron;
+    isCorrect = pos && adj && noun && persPron;
   }
 
   bool _isCorrectSingle(List<String> acceptedAnswers, String? actualAnswer) {

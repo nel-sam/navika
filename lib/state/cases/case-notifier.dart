@@ -26,21 +26,26 @@ class CaseNotifier extends ChangeNotifier {
 
   updateNoun(String newValue) {
     _getStateItem().userNounResponse = newValue;
+    _getStateItem().setIsCorrect();
     deboucedNotifyListeners();
   }
 
   updatePossPronoun(String newValue) {
     _getStateItem().userPossPronResponse = newValue;
+    _getStateItem().setIsCorrect();
+
     deboucedNotifyListeners();
   }
 
   updateAdj(String newValue) {
     _getStateItem().userAdjResponse = newValue;
+    _getStateItem().setIsCorrect();
     deboucedNotifyListeners();
   }
 
   updatePersPronoun(String newValue) {
     _getStateItem().userPersPronResponse = newValue;
+    _getStateItem().setIsCorrect();
     deboucedNotifyListeners();
   }
 }

@@ -4,7 +4,7 @@ import 'package:navika/state/cyrillic/cyrillic-state-item.dart';
 import 'package:navika/widgets/exercises/cyrillic/cyrillic-chart.dart';
 import 'package:navika/widgets/shared/icon-text-pair.dart';
 import 'package:navika/extensions.dart';
-import 'package:navika/widgets/shared/question-free-form.dart';
+import 'package:navika/widgets/shared/full-width-text-field.dart';
 import 'package:navika/widgets/shared/shadow-box.dart';
 
 class CyrillicExerciseCard extends StatelessWidget {
@@ -90,7 +90,7 @@ class CyrillicExerciseCard extends StatelessWidget {
                           this.state.latinString.length)),
                     ],
                   ),
-                  QuestionFreeForm(
+                  FullWidthTextField(
                     activeValue: this.state.userInput,
                     correctValues: [this.state.cyrillicString],
                     hintValue: '',

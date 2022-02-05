@@ -22,7 +22,7 @@ class ExerciseButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = N.getScreenWidth(context);
+    double screenWidth = N.getScreenWidth();
     double buttonWidth =
         this.halfWidth ? (screenWidth / 2) - 20 : screenWidth - 30;
     double buttonHeight = halfWidth ? 130 : 130;

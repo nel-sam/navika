@@ -3,8 +3,8 @@ import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/verb.dart';
 import 'package:navika/utilities/navika-helpers.dart';
+import 'package:navika/widgets/shared/half-width-text-form.dart';
 import 'package:navika/widgets/shared/icon-text-pair.dart';
-import 'package:navika/widgets/shared/question-free-form.dart';
 
 class VerbFreeForm extends StatelessWidget {
   final String startText;
@@ -28,7 +28,7 @@ class VerbFreeForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = N.getScreenWidth(context);
+    double screenWidth = N.getScreenWidth();
 
     return Container(
       width: (screenWidth / 2) - 14,
@@ -53,8 +53,7 @@ class VerbFreeForm extends StatelessWidget {
                   ),
               ],
             ),
-            QuestionFreeForm(
-              isHalfWidth: true,
+            HalfWidthTextForm(
               hintValue: this.verb.infinitive,
               onChanged: (String newValue) =>
                   this.onChanged(stateKey, newValue),

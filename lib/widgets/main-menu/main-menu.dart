@@ -12,7 +12,7 @@ import 'package:navika/widgets/shared/ad-card.dart';
 class MainMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var buttons = <Widget>[
+    final buttons = <Widget>[
       ExerciseButton(
         halfWidth: true,
         destination: GrammarMenu(),
@@ -58,7 +58,7 @@ class MainMenu extends StatelessWidget {
     return Column(
       children: [
         Container(
-          height: N.getScreenHeight(context) / 3.5,
+          height: N.getScreenHeight() / 3.5,
           decoration: BoxDecoration(
             image: DecorationImage(
               opacity: N.isDarkTheme(context) ? 0.7 : 1,

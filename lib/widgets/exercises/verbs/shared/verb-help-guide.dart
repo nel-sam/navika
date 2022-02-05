@@ -57,7 +57,7 @@ class VerbHelpGuide extends StatelessWidget {
   }
 
   Widget getPastTenseChart(BuildContext context, Verb verb) {
-    double iconPairContWidth = (N.getScreenWidth(context) / 2) - 40;
+    double iconPairContWidth = (N.getScreenWidth() / 2) - 40;
 
     return Column(
       children: [

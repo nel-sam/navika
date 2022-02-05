@@ -276,7 +276,7 @@ class CaseExerciseHelp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = N.getScreenWidth(context);
+    double screenWidth = N.getScreenWidth();
 
     return Scaffold(
       appBar: AppBar(

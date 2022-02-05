@@ -8,7 +8,6 @@ import 'package:navika/models/models.dart';
 import 'package:navika/models/noun.dart';
 import 'package:navika/models/personal-pronoun.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:navika/state/cases/case-question-state.dart';
 import 'package:navika/extensions.dart';
 
 class N {
@@ -110,11 +109,7 @@ class N {
   }
 
   static Color getAppBarColor(BuildContext context) {
-    var brightness = MediaQuery.of(context).platformBrightness;
-    bool darkModeOn = brightness == Brightness.dark;
-    return darkModeOn
-        ? Color.fromARGB(255, 48, 48, 48)
-        : Color.fromARGB(255, 250, 250, 250);
+    return Colors.transparent;
   }
 
   static PANCombo getPANCombos(
@@ -303,12 +298,16 @@ class N {
     }
   }
 
-  static double getScreenWidth(BuildContext context) {
-    return MediaQuery.of(context).size.width;
+  static double getScreenWidth({bool halfWidth = false, int reduction = 0}) {
+    final width =
+        MediaQueryData.fromWindow(WidgetsBinding.instance.window).size.width;
+    return (halfWidth ? width / 2 : width) - reduction;
   }
 
-  static double getScreenHeight(BuildContext context) {
-    return MediaQuery.of(context).size.height;
+  static double getScreenHeight() {
+    return MediaQueryData.fromWindow(WidgetsBinding.instance.window)
+        .size
+        .height;
   }
 
   static fontStyleNormal({double fontSize = FONT_SIZE}) {
