@@ -41,7 +41,6 @@ class HalfWidthTextForm extends StatelessWidget {
             child: TextField(
               key: key,
               controller: controller,
-              textInputAction: TextInputAction.next,
               keyboardType: TextInputType.text,
               decoration: InputDecoration(
                 isDense: true,

@@ -49,7 +49,7 @@ class ExerciseButton extends StatelessWidget {
           Text(
             label,
             style: TextStyle(
-              fontSize: halfWidth ? 12 : 14,
+              fontSize: FONT_SIZE,
               fontStyle: FontStyle.italic,
               color: ACCENT_COLOR,
             ),
