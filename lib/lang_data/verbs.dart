@@ -49,7 +49,7 @@ final List<Verb> verbWordBank = [
       pluralMasc: 'vidjeli',
       pluralFem: 'vidjele',
       ono: 'vidjelo',
-      onaPl: 'vidjela',
+      onaPl: 'vidjala',
     ),
   ),
   Verb(
@@ -265,7 +265,7 @@ final List<Verb> verbWordBank = [
       pluralMasc: 'pili',
       pluralFem: 'pile',
       ono: 'pilo',
-      onaPl: 'pile',
+      onaPl: 'pila',
     ),
   ),
   Verb(
@@ -289,7 +289,7 @@ final List<Verb> verbWordBank = [
       pluralMasc: 'popili',
       pluralFem: 'popile',
       ono: 'popilo',
-      onaPl: 'popile',
+      onaPl: 'popila',
     ),
   ),
   Verb(
@@ -313,7 +313,7 @@ final List<Verb> verbWordBank = [
       pluralMasc: 'pitali',
       pluralFem: 'pitale',
       ono: 'pitalo',
-      onaPl: 'pitale',
+      onaPl: 'pitala',
     ),
   ),
   Verb(
@@ -337,7 +337,7 @@ final List<Verb> verbWordBank = [
       pluralMasc: 'pisali',
       pluralFem: 'pisale',
       ono: 'pisalo',
-      onaPl: 'pisale',
+      onaPl: 'pisala',
     ),
   ),
   Verb(
@@ -361,7 +361,7 @@ final List<Verb> verbWordBank = [
       pluralMasc: 'napisali',
       pluralFem: 'napisale',
       ono: 'napisalo',
-      onaPl: 'napisale',
+      onaPl: 'napisala',
     ),
   ),
   Verb(
@@ -409,7 +409,7 @@ final List<Verb> verbWordBank = [
       pluralMasc: 'jeli',
       pluralFem: 'jele',
       ono: 'jelo',
-      onaPl: 'jele',
+      onaPl: 'jela',
     ),
   ),
   Verb(
@@ -433,7 +433,7 @@ final List<Verb> verbWordBank = [
       pluralMasc: 'pojeli',
       pluralFem: 'pojele',
       ono: 'pojelo',
-      onaPl: 'pojele',
+      onaPl: 'pojela',
     ),
   ),
   Verb(
@@ -457,7 +457,7 @@ final List<Verb> verbWordBank = [
       pluralMasc: 'prali',
       pluralFem: 'prale',
       ono: 'pralo',
-      onaPl: 'prale',
+      onaPl: 'prala',
     ),
   ),
   Verb(
@@ -481,7 +481,7 @@ final List<Verb> verbWordBank = [
       pluralMasc: 'oprali',
       pluralFem: 'oprale',
       ono: 'opralo',
-      onaPl: 'oprale',
+      onaPl: 'oprala',
     ),
   ),
   Verb(
@@ -505,7 +505,7 @@ final List<Verb> verbWordBank = [
       pluralMasc: 'davali',
       pluralFem: 'davale',
       ono: 'davalo',
-      onaPl: 'davale',
+      onaPl: 'davala',
     ),
   ),
   Verb(
@@ -529,7 +529,7 @@ final List<Verb> verbWordBank = [
       pluralMasc: 'dali',
       pluralFem: 'dale',
       ono: 'dalo',
-      onaPl: 'dale',
+      onaPl: 'dala',
     ),
   ),
   Verb(
@@ -553,7 +553,79 @@ final List<Verb> verbWordBank = [
       pluralMasc: 'zatvorili',
       pluralFem: 'zatvorile',
       ono: 'zatvorilo',
-      onaPl: 'zatvorile',
+      onaPl: 'zatvorila',
+    ),
+  ),
+  Verb(
+    infinitive: 'iznaći',
+    isIrregular: true,
+    isReflexive: false,
+    verbPerfectiveType: VerbPerfectiveTypes.Perfective,
+    getTranslation: (BuildContext context) =>
+        AppLocalizations.of(context)!.trans_iznaci,
+    present: ConjugationSet(
+      ja: 'izađem',
+      ti: 'izađeš',
+      on: 'izađe',
+      mi: 'izađemo',
+      vi: 'izađete',
+      oni: 'izađu',
+    ),
+    pastPerfect: ParticipleSet(
+      singularMasc: 'izašao',
+      singularFem: 'izašla',
+      ono: 'izašlo',
+      pluralMasc: 'izašli',
+      pluralFem: 'izašle',
+      onaPl: 'izašla',
+    ),
+  ),
+  Verb(
+    infinitive: 'gledati',
+    isIrregular: false,
+    isReflexive: false,
+    verbPerfectiveType: VerbPerfectiveTypes.Imperfective,
+    getTranslation: (BuildContext context) =>
+        AppLocalizations.of(context)!.trans_gledati,
+    present: ConjugationSet(
+      ja: 'gledam',
+      ti: 'gledaš',
+      on: 'gleda',
+      mi: 'gledamo',
+      vi: 'gledate',
+      oni: 'gledaju',
+    ),
+    pastPerfect: ParticipleSet(
+      singularMasc: 'gledao',
+      singularFem: 'gledala',
+      ono: 'gledalo',
+      pluralMasc: 'gledali',
+      pluralFem: 'gledale',
+      onaPl: 'gledala',
+    ),
+  ),
+  Verb(
+    infinitive: 'izgledati',
+    isIrregular: false,
+    isReflexive: false,
+    verbPerfectiveType: VerbPerfectiveTypes.Perfective,
+    getTranslation: (BuildContext context) =>
+        AppLocalizations.of(context)!.trans_gledati,
+    present: ConjugationSet(
+      ja: 'izgledam',
+      ti: 'izgledaš',
+      on: 'izgleda',
+      mi: 'izgledamo',
+      vi: 'izgledate',
+      oni: 'izgledaju',
+    ),
+    pastPerfect: ParticipleSet(
+      singularMasc: 'izgledao',
+      singularFem: 'izgledala',
+      ono: 'izgledalo',
+      pluralMasc: 'izgledali',
+      pluralFem: 'izgledale',
+      onaPl: 'izgledala',
     ),
   ),
 ];
@@ -576,9 +648,9 @@ final List<Verb> verbWordBank = [
   //   pastPerfect: ParticipleSet(
   //     singularMasc: '',
   //     singularFem: '',
+  //     ono: '',
   //     pluralMasc: '',
   //     pluralFem: '',
-  //     ono: '',
   //     onaPl: '',
   //   ),
   // ),
