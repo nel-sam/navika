@@ -28,6 +28,13 @@
 
   "extrainfo_brat": "Braća is used when referring to multiple brothers. Braća refers to males, but declines like a feminine noun.",
 
+  "nominativ": "Nominative",
+  "akuzativ": "Accusative",
+  "instrumental": "Instrumental",
+  "lokativ": "Locative",
+  "dativ": "Dative",
+  "genitiv": "Genitive",
+  "vokativ": "Vocative",
   "cyrillic": "Cyrillic",
   "cyrillicDesc": "Cyrillic is used in Serbia, Montenegro, and Bosnia and Herzegovina. Practice by writing the sentences in cyrillic or latin script in the exercises below.",
   "irregular": "Irregular",

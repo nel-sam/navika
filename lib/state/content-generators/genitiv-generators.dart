@@ -7,7 +7,7 @@ import 'package:navika/models/personal-pronoun.dart';
 import 'package:navika/state/cases/case-question-state.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 
-class GenetivGenerators {
+class GenitivGenerators {
   static StaticSentenceParts getStaticSentenceParts(
       Noun noun, bool isPlural, Adjective? pronoun, Adjective? adjective) {
     String start = '';

@@ -5,7 +5,7 @@ import 'package:navika/models/enums.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/shared/answer-status-icon.dart';
 
-class HalfWidthTextForm extends StatelessWidget {
+class HalfWidthTextForm extends StatefulWidget {
   final String hintValue;
   final String activeValue;
   final List<String> correctValues;
@@ -26,11 +26,24 @@ class HalfWidthTextForm extends StatelessWidget {
   }
 
   @override
+  State<HalfWidthTextForm> createState() => _HalfWidthTextFormState();
+}
+
+class _HalfWidthTextFormState extends State<HalfWidthTextForm> {
+  @override
+  void dispose() {
+    widget.controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final status = getCorrectStatus(activeValue);
+    final status = getCorrectStatus(widget.activeValue);
     OutlineInputBorder border = getBorder(status);
     String labelText =
-        correctValues.containsCaseInsensitive(activeValue) ? '' : hintValue;
+        widget.correctValues.containsCaseInsensitive(widget.activeValue)
+            ? ''
+            : widget.hintValue;
 
     return Padding(
       padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
@@ -39,8 +52,8 @@ class HalfWidthTextForm extends StatelessWidget {
           Container(
             width: N.getScreenWidth(halfWidth: true, reduction: 90),
             child: TextField(
-              key: key,
-              controller: controller,
+              key: widget.key,
+              controller: widget.controller,
               keyboardType: TextInputType.text,
               decoration: InputDecoration(
                 isDense: true,
@@ -53,7 +66,7 @@ class HalfWidthTextForm extends StatelessWidget {
                 if (newVal == ' ') newVal = '';
 
                 if (newVal != null) {
-                  onChanged(newVal);
+                  widget.onChanged(newVal);
                 }
               },
             ),
@@ -69,11 +82,11 @@ class HalfWidthTextForm extends StatelessWidget {
       return CorrectStatus.unstarted;
     }
 
-    if (correctValues.containsCaseInsensitive(userInput)) {
+    if (widget.correctValues.containsCaseInsensitive(userInput)) {
       return CorrectStatus.correct;
     }
 
-    if (correctValues.containsSubCaseInsensitive(userInput)) {
+    if (widget.correctValues.containsSubCaseInsensitive(userInput)) {
       return CorrectStatus.inprogressCorrect;
     }
 

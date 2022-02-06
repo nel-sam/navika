@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/extensions.dart';
@@ -5,12 +7,12 @@ import 'package:navika/models/enums.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/shared/answer-status-icon.dart';
 
-class FullWidthTextField extends StatelessWidget {
+class FullWidthTextField extends StatefulWidget {
   final String hintValue;
   final String activeValue;
   final List<String> correctValues;
   final Function(String) onChanged;
-  final controller = TextEditingController();
+  final _controller = TextEditingController();
 
   FullWidthTextField({
     Key? key,
@@ -19,19 +21,34 @@ class FullWidthTextField extends StatelessWidget {
     required this.activeValue,
     required this.correctValues,
   }) : super(key: key) {
-    controller.text = activeValue;
-    controller.selection = TextSelection.fromPosition(
-      TextPosition(offset: controller.text.length),
+    _controller.text = activeValue;
+    _controller.selection = TextSelection.fromPosition(
+      TextPosition(offset: _controller.text.length),
     );
   }
 
   @override
+  State<FullWidthTextField> createState() => _FullWidthTextFieldState();
+}
+
+class _FullWidthTextFieldState extends State<FullWidthTextField> {
+  Timer _debounce = Timer(const Duration(milliseconds: 0), () {});
+
+  @override
+  void dispose() {
+    widget._controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final status = getCorrectStatus(activeValue);
+    final status = getCorrectStatus(widget.activeValue);
 
     OutlineInputBorder border = getBorder(status);
     String labelText =
-        correctValues.containsCaseInsensitive(activeValue) ? '' : hintValue;
+        widget.correctValues.containsCaseInsensitive(widget.activeValue)
+            ? ''
+            : widget.hintValue;
 
     return Padding(
       padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
@@ -40,8 +57,8 @@ class FullWidthTextField extends StatelessWidget {
           Container(
             width: N.getScreenWidth(reduction: 100),
             child: TextField(
-              key: key,
-              controller: controller,
+              key: widget.key,
+              controller: widget._controller,
               keyboardType: TextInputType.text,
               decoration: InputDecoration(
                 isDense: true,
@@ -53,9 +70,19 @@ class FullWidthTextField extends StatelessWidget {
               onChanged: (String? newVal) {
                 if (newVal == ' ') newVal = '';
 
-                if (newVal != null) {
-                  onChanged(newVal);
+                if (!_debounce.isActive) {
+                  _debounce.cancel();
                 }
+
+                _debounce = Timer(
+                  const Duration(milliseconds: DEBOUNCE_TIME),
+                  () {
+                    if (newVal != null &&
+                        widget.correctValues.containsCaseInsensitive(newVal)) {
+                      widget.onChanged(newVal);
+                    }
+                  },
+                );
               },
             ),
           ),
@@ -70,11 +97,11 @@ class FullWidthTextField extends StatelessWidget {
       return CorrectStatus.unstarted;
     }
 
-    if (correctValues.containsCaseInsensitive(userInput)) {
+    if (widget.correctValues.containsCaseInsensitive(userInput)) {
       return CorrectStatus.correct;
     }
 
-    if (correctValues.containsSubCaseInsensitive(userInput)) {
+    if (widget.correctValues.containsSubCaseInsensitive(userInput)) {
       return CorrectStatus.inprogressCorrect;
     }
 

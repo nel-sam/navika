@@ -5,7 +5,7 @@ import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/state/content-generators/akuzativ-generators.dart';
 import 'package:navika/state/content-generators/dativ-generators.dart';
-import 'package:navika/state/content-generators/genetiv-generators.dart';
+import 'package:navika/state/content-generators/genitiv-generators.dart';
 import 'package:navika/state/content-generators/instrumental-generators.dart';
 import 'package:navika/state/content-generators/lokativ-generators.dart';
 import 'package:navika/state/content-generators/nominativ-generators.dart';
@@ -53,7 +53,7 @@ class ExerciseNavNotifier with ChangeNotifier {
         createExercise = LokativGenerators.createExercise;
         break;
       case Cases.Gen:
-        createExercise = GenetivGenerators.createExercise;
+        createExercise = GenitivGenerators.createExercise;
         break;
       case Cases.Vok:
         createExercise = VokativGenerators.createExercise;
@@ -80,7 +80,7 @@ class ExerciseNavNotifier with ChangeNotifier {
         return LokativGenerators.createExercise(a, b);
       case Cases.All:
       case Cases.Gen:
-        return GenetivGenerators.createExercise(a, b);
+        return GenitivGenerators.createExercise(a, b);
       case Cases.Vok:
         return VokativGenerators.createExercise(a, b);
     }
@@ -105,7 +105,7 @@ class ExerciseNavNotifier with ChangeNotifier {
     return _states;
   }
 
-  getActive() {
+  dynamic getActive() {
     return _states[_activeIndex];
   }
 

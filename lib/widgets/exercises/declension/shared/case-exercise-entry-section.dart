@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 class CaseExerciseEntrySection extends StatelessWidget {
   final Function() getActive;
 
-  CaseExerciseEntrySection({
+  const CaseExerciseEntrySection({
     Key? key,
     required this.getActive,
   }) : super(key: key);

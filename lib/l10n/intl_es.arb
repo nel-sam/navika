@@ -28,6 +28,13 @@
 
   "extrainfo_brat": "Braća se usa para hablar de various hermanos. Braća se refiere a hombres pero tiene declinaciones como si fuera sustantivo femenino.",
 
+  "nominativ": "Nominativo",
+  "akuzativ": "Acusativo",
+  "instrumental": "Instrumental",
+  "lokativ": "Locativo",
+  "dativ": "Dativo",
+  "genitiv": "Genitivo",
+  "vokativ": "Vocativo",
   "cyrillic": "Cirílico",
   "cyrillicDesc": "El cirílico se usa en Serbia, Montenegro y Bosnia y Herzegovina. Convierta las frases de los ejercicios abajo para practicar el cirílico.",
   "irregular": "Irregular",
