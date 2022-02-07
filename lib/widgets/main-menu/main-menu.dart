@@ -45,14 +45,6 @@ class MainMenu extends StatelessWidget {
         sbcLabel: SbcLabels.cyrlilic,
         imagePath: 'assets/banners/writing_sm.jpg',
       ),
-      // ExerciseButton(
-      //   halfWidth: true,
-      //   destination: WordOrderExercise(),
-      //   icon: Icons.bubble_chart,
-      //   label: AppLocalizations.of(context)!.word_order,
-      //   sbcLabel: SbcLabels.wordOrder,
-      //   imagePath: 'assets/banners/flags_sm.jpg',
-      // ),
     ];
 
     return Column(

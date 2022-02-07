@@ -28,8 +28,6 @@ class CaseExercise extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = ScrollController();
-
     return ChangeNotifierProvider<ExerciseNavNotifier>(
       create: (context) => ExerciseNavNotifier(caseType: caseType),
       child: Consumer<ExerciseNavNotifier>(
@@ -43,8 +41,6 @@ class CaseExercise extends StatelessWidget {
           ),
           body: Center(
             child: SingleChildScrollView(
-              physics: ClampingScrollPhysics(),
-              controller: controller,
               padding: EXERCISE_LIST_PADDING,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -77,7 +73,6 @@ class CaseExercise extends StatelessWidget {
             context: context,
             caseType: caseType,
             refreshFunction: () {
-              N.scrollTo(0, controller);
               navNotifier.shuffleAndClear();
             },
           ),
