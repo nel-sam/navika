@@ -37,7 +37,7 @@ class CyrillicExercise extends StatelessWidget {
                       description: AppLocalizations.of(context)!.cyrillicDesc,
                       //youtubeLink: RECOMMENDED_VIDEO_CYRILLIC,
                     ),
-                    AdCard(),
+                    const AdCard(),
                     ...model.exerciseItems.map(
                       (e) => CyrillicExerciseCard(
                         state: e,

@@ -45,6 +45,17 @@ class _FreeFormEntryState extends State<FreeFormEntry> {
   }
 
   @override
+  void didUpdateWidget(FreeFormEntry oldWidget) {
+    _controller.text = widget.initialValue.length > 0
+        ? widget.initialValue
+        : widget.state.userInput;
+    _controller.selection = TextSelection.fromPosition(
+        TextPosition(offset: _controller.text.length));
+    widget.state.userInput = widget.initialValue;
+    super.didUpdateWidget(oldWidget);
+  }
+
+  @override
   void dispose() {
     _controller.dispose();
     super.dispose();
@@ -64,11 +75,11 @@ class _FreeFormEntryState extends State<FreeFormEntry> {
 
   @override
   Widget build(BuildContext context) {
-    log('${widget.hintValue} ${widget.state.userInput}');
     var status = getCorrectStatus(widget.state.userInput);
+    final border = getBorder(status);
+    final labelText = status == CorrectStatus.correct ? '' : widget.hintValue;
 
-    OutlineInputBorder border = getBorder(status);
-    String labelText = status == CorrectStatus.correct ? '' : widget.hintValue;
+    log('${widget.hintValue} ${widget.state.userInput}');
 
     return Padding(
       padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),

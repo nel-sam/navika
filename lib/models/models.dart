@@ -3,22 +3,6 @@ import 'package:navika/models/noun.dart';
 import 'package:navika/models/personal-pronoun.dart';
 import 'enums.dart';
 
-class SettingsSet {
-  late EntryTypes entryType;
-  late bool possessivePronounsIncluded;
-  late bool personalPronounsIncluded;
-  late bool adjectivesIncluded;
-  late bool nounsIncluded;
-
-  SettingsSet({
-    required this.entryType,
-    required this.possessivePronounsIncluded,
-    required this.personalPronounsIncluded,
-    required this.adjectivesIncluded,
-    required this.nounsIncluded,
-  });
-}
-
 class WordBank {
   final List<Noun> nouns;
   final List<Adjective> adjectives;
@@ -30,21 +14,6 @@ class WordBank {
       required this.adjectives,
       required this.possessivePronouns,
       required this.personalPronouns});
-
-  WordBank filter(SettingsSet settingsSet) {
-    var result = WordBank(
-      nouns: settingsSet.nounsIncluded ? [...this.nouns] : [],
-      adjectives: settingsSet.adjectivesIncluded ? [...this.adjectives] : [],
-      possessivePronouns: settingsSet.possessivePronounsIncluded
-          ? [...this.possessivePronouns]
-          : [],
-      personalPronouns: settingsSet.personalPronounsIncluded
-          ? [...this.personalPronouns]
-          : [],
-    );
-
-    return result;
-  }
 
   WordBank excludePronoun(String toFilter) {
     var result = WordBank(

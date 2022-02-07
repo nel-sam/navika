@@ -81,7 +81,7 @@ class MainMenu extends StatelessWidget {
             children: buttons,
           ),
         ),
-        AdCard(),
+        const AdCard(),
       ],
     );
   }

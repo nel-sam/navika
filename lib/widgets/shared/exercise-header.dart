@@ -18,13 +18,15 @@ class ExerciseHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final counter = getCounter();
+
     return Padding(
       padding: const EdgeInsets.only(top: 12.0, bottom: 8.0),
       child: Column(
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [Text(getCounter())],
+            children: [Text(counter)],
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,

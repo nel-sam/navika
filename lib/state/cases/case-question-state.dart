@@ -42,6 +42,7 @@ class CaseQuestionState {
     userPossPronResponse = '';
     userAdjResponse = '';
     userPersPronResponse = '';
+    setIsCorrect();
   }
 
   updateNoun(String newValue) {

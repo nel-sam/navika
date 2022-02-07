@@ -4,6 +4,11 @@ import 'package:navika/widgets/grammar/grammar-guide/child-widgets/youtube-link.
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/widgets/shared/navika-text.dart';
 
+class StateObj {
+  bool isExpanded = false;
+  bool hasYouTubeLink = false;
+}
+
 class InfoBanner extends StatefulWidget {
   final String imagePath;
   final String label;
@@ -23,55 +28,32 @@ class InfoBanner extends StatefulWidget {
 }
 
 class _InfoBannerState extends State<InfoBanner> {
-  bool isExpanded = false;
+  final state = StateObj();
+
+  @override
+  void initState() {
+    state.isExpanded = false;
+    state.hasYouTubeLink =
+        this.widget.youtubeLink != null && this.widget.youtubeLink!.length > 0;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    bool hasYouTubeLink =
-        this.widget.youtubeLink != null && this.widget.youtubeLink!.length > 0;
-    double height = 420;
-
-    var content = Container(
-      height: height,
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage(widget.imagePath),
-          fit: BoxFit.cover,
-        ),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(10),
-        child: Column(
-          children: [
-            Text(
-              widget.description,
-              softWrap: true,
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 15,
-              ),
-            ),
-            if (hasYouTubeLink) YouTubeLink(context, this.widget.youtubeLink!)
-          ],
-        ),
-      ),
-    );
-
     return ExpansionPanelList(
-      animationDuration: Duration(milliseconds: 400),
+      animationDuration: const Duration(milliseconds: 400),
       dividerColor: Colors.red,
       elevation: 1,
       expansionCallback: (int item, bool status) {
         setState(() {
-          isExpanded = !isExpanded;
+          state.isExpanded = !state.isExpanded;
         });
       },
       children: [
         ExpansionPanel(
             headerBuilder: (BuildContext context, bool isExpanded) {
               return Container(
-                padding: EdgeInsets.all(10),
-                decoration: BoxDecoration(),
+                padding: const EdgeInsets.all(10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -90,8 +72,33 @@ class _InfoBannerState extends State<InfoBanner> {
                 ),
               );
             },
-            isExpanded: isExpanded,
-            body: content)
+            isExpanded: state.isExpanded,
+            body: Container(
+              height: 420,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(widget.imagePath),
+                  fit: BoxFit.cover,
+                ),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(10),
+                child: Column(
+                  children: [
+                    Text(
+                      widget.description,
+                      softWrap: true,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 15,
+                      ),
+                    ),
+                    if (state.hasYouTubeLink)
+                      YouTubeLink(context, this.widget.youtubeLink!)
+                  ],
+                ),
+              ),
+            ))
       ],
     );
   }

@@ -48,7 +48,7 @@ class GrammarMenu extends StatelessWidget {
         child: Column(
           children: [
             getMain(),
-            AdCard(),
+            const AdCard(),
           ],
         ),
       ),

@@ -4,12 +4,6 @@ enum VerbPerfectiveTypes {
   Unspecified,
 }
 
-enum EntryTypes {
-  FreeForm,
-  Mixed,
-  Select,
-}
-
 enum Genders {
   Masculine,
   Feminine,

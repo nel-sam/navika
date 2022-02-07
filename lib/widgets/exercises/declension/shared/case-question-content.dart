@@ -7,15 +7,28 @@ import 'package:navika/widgets/shared/free-form-entry.dart';
 import 'package:navika/widgets/exercises/declension/shared/case-exercise-row-card.dart';
 
 class CaseQuestionContent extends StatelessWidget {
-  final Function(GrammarTypes, String) onChanged;
   final CaseQuestionState stateItem;
-  final EntryTypes entryType;
 
   CaseQuestionContent({
-    required this.onChanged,
     required this.stateItem,
-    required this.entryType,
   });
+
+  handleOnChange(GrammarTypes grammarType, String newValue) {
+    switch (grammarType) {
+      case GrammarTypes.Noun:
+        stateItem.updateNoun(newValue);
+        break;
+      case GrammarTypes.PersonalPronoun:
+        stateItem.updatePersPronoun(newValue);
+        break;
+      case GrammarTypes.PossesivePronoun:
+        stateItem.updatePossPronoun(newValue);
+        break;
+      case GrammarTypes.Adjective:
+        stateItem.updateAdj(newValue);
+        break;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +54,7 @@ class CaseQuestionContent extends StatelessWidget {
           initialValue: stateItem.userPossPronResponse,
           correctValues: stateItem.combos.correctPossPronouns,
           onChanged: (String newVal) {
-            onChanged(GrammarTypes.PossesivePronoun, newVal);
+            handleOnChange(GrammarTypes.PossesivePronoun, newVal);
           },
         ),
       if (useAdj)
@@ -50,7 +63,7 @@ class CaseQuestionContent extends StatelessWidget {
           initialValue: stateItem.userAdjResponse,
           correctValues: stateItem.combos.correctAdjs,
           onChanged: (String newVal) {
-            onChanged(GrammarTypes.Adjective, newVal);
+            handleOnChange(GrammarTypes.Adjective, newVal);
           },
         ),
       if (useNoun)
@@ -59,7 +72,7 @@ class CaseQuestionContent extends StatelessWidget {
           initialValue: stateItem.userNounResponse,
           correctValues: stateItem.combos.correctNouns,
           onChanged: (String newVal) {
-            onChanged(GrammarTypes.Noun, newVal);
+            handleOnChange(GrammarTypes.Noun, newVal);
           },
         ),
       if (usePersPron)
@@ -68,7 +81,7 @@ class CaseQuestionContent extends StatelessWidget {
           initialValue: stateItem.userPersPronResponse,
           correctValues: stateItem.combos.correctPersPronouns,
           onChanged: (String newVal) {
-            onChanged(GrammarTypes.PersonalPronoun, newVal);
+            handleOnChange(GrammarTypes.PersonalPronoun, newVal);
           },
         ),
       if (stateItem.combos.sentenceEnder != '')

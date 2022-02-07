@@ -16,7 +16,7 @@ class NavikaApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      //showPerformanceOverlay: true,
+      showPerformanceOverlay: true,
       //debugShowCheckedModeBanner: false,
       title: APP_NAME,
       localizationsDelegates: [

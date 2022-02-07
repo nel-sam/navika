@@ -54,7 +54,7 @@ class VerbExercise extends StatelessWidget {
                         description: description,
                         youtubeLink: youtubeLink,
                       ),
-                      AdCard(),
+                      const AdCard(),
                       ExerciseHeader(
                         setPrevious: navNotifier.setPrevious,
                         setNext: navNotifier.setNext,

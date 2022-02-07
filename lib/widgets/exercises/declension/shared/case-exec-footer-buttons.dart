@@ -31,7 +31,6 @@ List<Widget> CaseExecFooterButtons({
           child: FooterButton(
             onPressed: () {
               final dest = DeclensionGuide(startingCase: caseType);
-
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => dest),
