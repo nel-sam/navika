@@ -8,7 +8,6 @@ import 'package:navika/models/models.dart';
 import 'package:navika/models/noun.dart';
 import 'package:navika/models/personal-pronoun.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:navika/extensions.dart';
 
 class N {
   static scrollTo(double point, controller) {
@@ -340,56 +339,6 @@ class N {
               item.adjective?.dictionary) {
         return true;
       }
-    }
-
-    return false;
-  }
-
-  static bool containsCaseQuestionState___(List list, PANCombo item) {
-    if (list.isEmpty) return false;
-
-    if (item.personalPronoun != null) {
-      final strList = list
-          .where((e) => e.combos.personalPronoun != null)
-          .map((e) => e.combos.personalPronoun!.nominativ.forms[0].toString())
-          .toList();
-
-      final contains = strList
-          .containsCaseInsensitive(item.personalPronoun!.nominativ.forms[0]);
-
-      if (contains) return true;
-    }
-    if (item.possPronoun != null) {
-      final strList = list
-          .where((e) => e.combos.possPronoun != null)
-          .map((e) => e.combos.possPronoun!.dictionary.toString())
-          .toList();
-
-      final contains =
-          strList.containsCaseInsensitive(item.possPronoun!.dictionary);
-
-      if (contains) return true;
-    }
-    if (item.adjective != null) {
-      final strList = list
-          .where((e) => e.combos.adjective != null)
-          .map((e) => e.combos.adjective!.dictionary.toString())
-          .toList();
-
-      final contains =
-          strList.containsCaseInsensitive(item.adjective!.dictionary);
-
-      if (contains) return true;
-    }
-    if (item.noun != null) {
-      final strList = list
-          .where((e) => e.combos.noun != null)
-          .map((e) => e.combos.noun!.dictionary.toString())
-          .toList();
-
-      final contains = strList.containsCaseInsensitive(item.noun!.dictionary);
-
-      if (contains) return true;
     }
 
     return false;

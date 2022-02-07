@@ -79,14 +79,16 @@ class CaseExerciseRowCard extends StatelessWidget {
               text: AppLocalizations.of(context)!.animate,
             ),
           IconButton(
-              onPressed: () => {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => CaseExerciseHelp(combos: combos),
-                      ),
-                    ),
-                  },
+              onPressed: () {
+                final dest = CaseExerciseHelp(combos: combos);
+
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => dest,
+                  ),
+                );
+              },
               color: ACCENT_COLOR,
               icon: Icon(Icons.help)),
         ],

@@ -18,7 +18,7 @@ class ExerciseNavNotifier with ChangeNotifier {
   List _states = [];
   int _activeIndex = 0;
   int _maxIndex = 0;
-  late Function(List, Function?) createExercise;
+  late Function(List) createExercise;
 
   ExerciseNavNotifier({Cases? caseType, bool isVerb = false}) {
     if (isVerb) {
@@ -29,7 +29,7 @@ class ExerciseNavNotifier with ChangeNotifier {
       _setCaseGenerator(caseType!);
     }
 
-    _states.add(createExercise(_states, deboucedNotifyListeners));
+    _states.add(createExercise(_states));
   }
 
   _setCaseGenerator(Cases caseType) {
@@ -63,31 +63,31 @@ class ExerciseNavNotifier with ChangeNotifier {
     }
   }
 
-  _getRandomCaseExec(List a, Function? b) {
+  _getRandomCaseExec(List a) {
     final random = N.getRandomNumber(max: Cases.values.length);
     final caseType = Cases.values[random];
 
     switch (caseType) {
       case Cases.Nom:
-        return NominativGenerators.createExercise(a, b);
+        return NominativGenerators.createExercise(a);
       case Cases.Aku:
-        return AkuzativGenerators.createExercise(a, b);
+        return AkuzativGenerators.createExercise(a);
       case Cases.Ins:
-        return InstrumentalGenerators.createExercise(a, b);
+        return InstrumentalGenerators.createExercise(a);
       case Cases.Dat:
-        return DativGenerators.createExercise(a, b);
+        return DativGenerators.createExercise(a);
       case Cases.Lok:
-        return LokativGenerators.createExercise(a, b);
+        return LokativGenerators.createExercise(a);
       case Cases.All:
       case Cases.Gen:
-        return GenitivGenerators.createExercise(a, b);
+        return GenitivGenerators.createExercise(a);
       case Cases.Vok:
-        return VokativGenerators.createExercise(a, b);
+        return VokativGenerators.createExercise(a);
     }
   }
 
   deboucedNotifyListeners() {
-    if (!_debounce.isActive) {
+    if (_debounce.isActive) {
       _debounce.cancel();
     }
 
@@ -107,6 +107,10 @@ class ExerciseNavNotifier with ChangeNotifier {
 
   dynamic getActive() {
     return _states[_activeIndex];
+  }
+
+  String getCounter() {
+    return '${_activeIndex + 1}/$_maxIndex';
   }
 
   void clearInput() {
@@ -132,7 +136,7 @@ class ExerciseNavNotifier with ChangeNotifier {
     }
 
     if (_activeIndex > _states.length - 1) {
-      this._states.add(this.createExercise(_states, deboucedNotifyListeners));
+      this._states.add(this.createExercise(_states));
     }
 
     deboucedNotifyListeners();

@@ -14,12 +14,16 @@ import 'package:navika/widgets/exercises/declension/vokativ/vokativ.dart';
 import 'package:navika/widgets/main-menu/exercise-button.dart';
 
 class DeclensionMenu extends StatelessWidget {
+  final allCases = AllCases();
+  final nom = Nominativ();
+// TODO: Make all ExerciseBUtton destinations final
+
   @override
   Widget build(BuildContext context) {
     var buttons = [
       ExerciseButton(
         halfWidth: true,
-        destination: AllCases(),
+        destination: allCases,
         icon: Icons.group,
         label: AppLocalizations.of(context)!.allCases,
         sbcLabel: 'Sve padeže',
@@ -27,7 +31,7 @@ class DeclensionMenu extends StatelessWidget {
       ),
       ExerciseButton(
         halfWidth: true,
-        destination: Nominativ(),
+        destination: nom,
         icon: Icons.category_outlined,
         label: N.getCaseLabel(Cases.Nom),
         imagePath: 'assets/banners/seaside_sm.jpg',
@@ -81,7 +85,7 @@ class DeclensionMenu extends StatelessWidget {
       appBar: N.NavikaAppBar(
         title: SbcLabels.cases,
         transTitle: AppLocalizations.of(context)!.cases,
-        context:  context,
+        context: context,
       ),
       body: Center(
         child: Column(

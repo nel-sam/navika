@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/verb.dart';
 import 'package:navika/state/exercise-nav-notifier.dart';
-import 'package:navika/state/verbs/verb-notifier.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/exercises/verbs/present-tense/present-tense-question-content.dart';
 import 'package:navika/widgets/exercises/verbs/past-tense/past-tense-question-content.dart';
@@ -42,56 +41,50 @@ class VerbExercise extends StatelessWidget {
         child: ChangeNotifierProvider<ExerciseNavNotifier>(
           create: (context) => ExerciseNavNotifier(isVerb: true),
           child: Consumer<ExerciseNavNotifier>(
-            builder: (context, navNotifier, child) => Center(
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    InfoBanner(
-                      imagePath: imagePath,
-                      label: title,
-                      description: description,
-                      youtubeLink: youtubeLink,
-                    ),
-                    AdCard(),
-                    ExerciseHeader(
-                      setPrevious: navNotifier.setPrevious,
-                      setNext: navNotifier.setNext,
-                      clear: navNotifier.clearInput,
-                    ),
-                    ChangeNotifierProvider<VerbNotifier>(
-                      create: (context) => VerbNotifier(navNotifier.getActive),
-                      child: Consumer<VerbNotifier>(
-                        builder: (context, verbNotifier, child) => Container(
-                          child: this.tense == VerbTenses.PastPerfect
-                              ? PastTenseQuestionContent(
-                                  verb: navNotifier.getActive().verb,
-                                  state: navNotifier.getActive().userEntryState,
-                                  isAllCorrect:
-                                      navNotifier.getActive().isAllCorrect,
-                                  onChanged:
-                                      (String pronoun, String newValue) =>
-                                          verbNotifier.updateState(
-                                              pronoun.toString(),
-                                              newValue,
-                                              this.tense),
-                                )
-                              : PresentTenseQuestionContent(
-                                  verb: navNotifier.getActive().verb,
-                                  isAllCorrect:
-                                      navNotifier.getActive().isAllCorrect,
-                                  state: navNotifier.getActive().userEntryState,
-                                  onChanged:
-                                      (String pronoun, String newValue) =>
-                                          verbNotifier.updateState(
-                                              pronoun, newValue, this.tense),
-                                ),
-                        ),
+            builder: (context, navNotifier, child) {
+              final stateITem = navNotifier.getActive();
+
+              return Center(
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      InfoBanner(
+                        imagePath: imagePath,
+                        label: title,
+                        description: description,
+                        youtubeLink: youtubeLink,
                       ),
-                    ),
-                  ],
+                      AdCard(),
+                      ExerciseHeader(
+                        setPrevious: navNotifier.setPrevious,
+                        setNext: navNotifier.setNext,
+                        clear: navNotifier.clearInput,
+                        getCounter: navNotifier.getCounter,
+                      ),
+                      Container(
+                        child: this.tense == VerbTenses.PastPerfect
+                            ? PastTenseQuestionContent(
+                                verb: stateITem.verb,
+                                state: stateITem.userEntryState,
+                                isAllCorrect: stateITem.isCorrect,
+                                onChanged: (String pronoun, String newValue) =>
+                                    stateITem.updateState(pronoun.toString(),
+                                        newValue, this.tense),
+                              )
+                            : PresentTenseQuestionContent(
+                                verb: stateITem.verb,
+                                isAllCorrect: stateITem.isCorrect,
+                                state: stateITem.userEntryState,
+                                onChanged: (String pronoun, String newValue) =>
+                                    stateITem.updateState(
+                                        pronoun, newValue, this.tense),
+                              ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ),
+              );
+            },
           ),
         ),
       ),

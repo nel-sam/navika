@@ -30,11 +30,11 @@ List<Widget> CaseExecFooterButtons({
           padding: const EdgeInsets.only(bottom: FOOTER_ICON_BOTTOM_PADDING),
           child: FooterButton(
             onPressed: () {
+              final dest = DeclensionGuide(startingCase: caseType);
+
               Navigator.push(
                 context,
-                MaterialPageRoute(
-                    builder: (context) =>
-                        DeclensionGuide(startingCase: caseType)),
+                MaterialPageRoute(builder: (context) => dest),
               );
             },
             icon: Icons.help_center_outlined,

@@ -55,7 +55,7 @@ flutter_native_splash:
 
 
   # Commands:
-  # Build deployable IOS:         flutter build --release ipa
-  # Build deployable Android:     flutter build --release appbundle
-  # Build debug installable IOS:  flutter build --release ios
+  # Build deployable IOS:         flutter build ipa --release
+  # Build deployable Android:     flutter build appbundle --release
+  # Build debug installable IOS:  flutter build ios --release
   # Install on phone:             flutter install

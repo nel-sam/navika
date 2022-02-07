@@ -86,16 +86,18 @@ class VerbHeader extends StatelessWidget {
               IconButton(
                 icon: Icon(Icons.info),
                 color: ACCENT_COLOR,
-                onPressed: () => {
+                onPressed: () {
+                  final dest = VerbHelpGuide(
+                    verb: verb,
+                    perfectiveness: perfectiveness,
+                  );
+
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => VerbHelpGuide(
-                        verb: verb,
-                        perfectiveness: perfectiveness,
-                      ),
+                      builder: (context) => dest,
                     ),
-                  ),
+                  );
                 },
               )
             ],

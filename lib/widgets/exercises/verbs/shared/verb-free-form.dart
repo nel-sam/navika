@@ -3,7 +3,7 @@ import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/verb.dart';
 import 'package:navika/utilities/navika-helpers.dart';
-import 'package:navika/widgets/shared/half-width-text-form.dart';
+import 'package:navika/widgets/shared/free-form-entry.dart';
 import 'package:navika/widgets/shared/icon-text-pair.dart';
 
 class VerbFreeForm extends StatelessWidget {
@@ -53,11 +53,12 @@ class VerbFreeForm extends StatelessWidget {
                   ),
               ],
             ),
-            HalfWidthTextForm(
+            FreeFormEntry(
+              isHalfWidth: true,
               hintValue: this.verb.infinitive,
               onChanged: (String newValue) =>
                   this.onChanged(stateKey, newValue),
-              activeValue: this.activeValue,
+              initialValue: this.activeValue,
               correctValues: this.correctValues,
             ),
           ],

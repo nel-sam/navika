@@ -53,7 +53,7 @@ class LokativGenerators {
     return StaticSentenceParts(start: start, end: end);
   }
 
-  static CaseQuestionState createExercise(List toAvoid, Function? b) {
+  static CaseQuestionState createExercise(List toAvoid) {
     PANCombo? c;
 
     while (c == null || N.containsCaseQuestionState(toAvoid, c)) {

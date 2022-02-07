@@ -86,7 +86,7 @@ class InstrumentalGenerators {
     return StaticSentenceParts(start: start, end: end);
   }
 
-  static CaseQuestionState createExercise(List toAvoid, Function? b) {
+  static CaseQuestionState createExercise(List toAvoid) {
     final WordBank bank = wordBank.excludeNounsByTags([
       Tags.Location,
       Tags.Health,

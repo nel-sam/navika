@@ -41,37 +41,35 @@ class CaseExercise extends StatelessWidget {
             iconTheme: N.getAppBarIconTheme(context),
             title: Text(SbcLabels.cases, style: HEADER_TEXT_STYLE),
           ),
-          body: GestureDetector(
-            onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-            child: Center(
-              child: SingleChildScrollView(
-                physics: ClampingScrollPhysics(),
-                controller: controller,
-                padding: EXERCISE_LIST_PADDING,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    InfoBanner(
-                      imagePath: imagePath,
-                      label: title,
-                      description: description,
-                      youtubeLink: youtubeLink,
-                    ),
-                    AdCard(),
-                    Column(
-                      children: [
-                        ExerciseHeader(
-                          setPrevious: navNotifier.setPrevious,
-                          setNext: navNotifier.setNext,
-                          clear: navNotifier.clearInput,
-                        ),
-                        CaseExerciseEntrySection(
-                          getActive: navNotifier.getActive,
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
+          body: Center(
+            child: SingleChildScrollView(
+              physics: ClampingScrollPhysics(),
+              controller: controller,
+              padding: EXERCISE_LIST_PADDING,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  InfoBanner(
+                    imagePath: imagePath,
+                    label: title,
+                    description: description,
+                    youtubeLink: youtubeLink,
+                  ),
+                  AdCard(),
+                  Column(
+                    children: [
+                      ExerciseHeader(
+                        setPrevious: navNotifier.setPrevious,
+                        setNext: navNotifier.setNext,
+                        clear: navNotifier.clearInput,
+                        getCounter: navNotifier.getCounter,
+                      ),
+                      CaseExerciseEntrySection(
+                        stateItem: navNotifier.getActive(),
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ),
           ),

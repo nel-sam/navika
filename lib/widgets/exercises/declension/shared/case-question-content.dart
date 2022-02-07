@@ -3,7 +3,7 @@ import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/state/cases/case-question-state.dart';
 import 'package:navika/utilities/navika-helpers.dart';
-import 'package:navika/widgets/shared/full-width-text-field.dart';
+import 'package:navika/widgets/shared/free-form-entry.dart';
 import 'package:navika/widgets/exercises/declension/shared/case-exercise-row-card.dart';
 
 class CaseQuestionContent extends StatelessWidget {
@@ -25,49 +25,8 @@ class CaseQuestionContent extends StatelessWidget {
     final bool useNoun = stateItem.combos.noun != null;
     final bool usePersPron = stateItem.combos.personalPronoun != null;
 
-    inputForms() {
-      return [
-        if (usePossPronouns)
-          FullWidthTextField(
-            hintValue: stateItem.combos.possPronoun!.dictionary,
-            activeValue: stateItem.userPossPronResponse,
-            correctValues: stateItem.combos.correctPossPronouns,
-            onChanged: (String newVal) {
-              onChanged(GrammarTypes.PossesivePronoun, newVal);
-            },
-          ),
-        if (useAdj)
-          FullWidthTextField(
-            hintValue: stateItem.combos.adjective!.dictionary,
-            activeValue: stateItem.userAdjResponse,
-            correctValues: stateItem.combos.correctAdjs,
-            onChanged: (String newVal) {
-              onChanged(GrammarTypes.Adjective, newVal);
-            },
-          ),
-        if (useNoun)
-          FullWidthTextField(
-            hintValue: stateItem.combos.noun!.dictionary,
-            activeValue: stateItem.userNounResponse,
-            correctValues: stateItem.combos.correctNouns,
-            onChanged: (String newVal) {
-              onChanged(GrammarTypes.Noun, newVal);
-            },
-          ),
-        if (usePersPron)
-          FullWidthTextField(
-            hintValue: stateItem.combos.personalPronoun!.dictionary,
-            activeValue: stateItem.userPersPronResponse,
-            correctValues: stateItem.combos.correctPersPronouns,
-            onChanged: (String newVal) {
-              onChanged(GrammarTypes.PersonalPronoun, newVal);
-            },
-          ),
-      ];
-    }
-
     var textFildWidth = N.getScreenWidth(reduction: 10);
-    List<Widget> sentenceContent = [
+    final List<Widget> sentenceContent = [
       if (stateItem.combos.sentenceStarter != '')
         Container(
           width: textFildWidth,
@@ -76,7 +35,42 @@ class CaseQuestionContent extends StatelessWidget {
             style: TextStyle(fontSize: EXERCISE_FONT_STYLE),
           ),
         ),
-      ...inputForms(),
+      if (usePossPronouns)
+        FreeFormEntry(
+          hintValue: stateItem.combos.possPronoun!.dictionary,
+          initialValue: stateItem.userPossPronResponse,
+          correctValues: stateItem.combos.correctPossPronouns,
+          onChanged: (String newVal) {
+            onChanged(GrammarTypes.PossesivePronoun, newVal);
+          },
+        ),
+      if (useAdj)
+        FreeFormEntry(
+          hintValue: stateItem.combos.adjective!.dictionary,
+          initialValue: stateItem.userAdjResponse,
+          correctValues: stateItem.combos.correctAdjs,
+          onChanged: (String newVal) {
+            onChanged(GrammarTypes.Adjective, newVal);
+          },
+        ),
+      if (useNoun)
+        FreeFormEntry(
+          hintValue: stateItem.combos.noun!.dictionary,
+          initialValue: stateItem.userNounResponse,
+          correctValues: stateItem.combos.correctNouns,
+          onChanged: (String newVal) {
+            onChanged(GrammarTypes.Noun, newVal);
+          },
+        ),
+      if (usePersPron)
+        FreeFormEntry(
+          hintValue: stateItem.combos.personalPronoun!.dictionary,
+          initialValue: stateItem.userPersPronResponse,
+          correctValues: stateItem.combos.correctPersPronouns,
+          onChanged: (String newVal) {
+            onChanged(GrammarTypes.PersonalPronoun, newVal);
+          },
+        ),
       if (stateItem.combos.sentenceEnder != '')
         Container(
           width: textFildWidth,

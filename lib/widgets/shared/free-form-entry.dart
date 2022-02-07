@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/extensions.dart';
@@ -5,55 +8,79 @@ import 'package:navika/models/enums.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/shared/answer-status-icon.dart';
 
-class HalfWidthTextForm extends StatefulWidget {
+class StateObject {
+  String userInput = '';
+}
+
+class FreeFormEntry extends StatefulWidget {
+  final bool isHalfWidth;
   final String hintValue;
-  final String activeValue;
+  final String initialValue;
   final List<String> correctValues;
   final Function(String) onChanged;
-  final controller = TextEditingController();
+  final StateObject state = StateObject();
 
-  HalfWidthTextForm({
+  FreeFormEntry({
     Key? key,
     required this.hintValue,
     required this.onChanged,
-    required this.activeValue,
+    required this.initialValue,
     required this.correctValues,
-  }) : super(key: key) {
-    controller.text = activeValue;
-    controller.selection = TextSelection.fromPosition(
-      TextPosition(offset: controller.text.length),
-    );
+    this.isHalfWidth = false,
+  }) : super(key: key);
+
+  @override
+  State<FreeFormEntry> createState() => _FreeFormEntryState();
+}
+
+class _FreeFormEntryState extends State<FreeFormEntry> {
+  final _controller = TextEditingController();
+  Timer _debounce = Timer(const Duration(milliseconds: 0), () {});
+
+  @override
+  void initState() {
+    widget.state.userInput = widget.initialValue;
+    _controller.text = widget.state.userInput;
+    super.initState();
   }
 
   @override
-  State<HalfWidthTextForm> createState() => _HalfWidthTextFormState();
-}
-
-class _HalfWidthTextFormState extends State<HalfWidthTextForm> {
-  @override
   void dispose() {
-    widget.controller.dispose();
+    _controller.dispose();
     super.dispose();
+  }
+
+  updateState() {
+    if (_debounce.isActive) {
+      _debounce.cancel();
+    }
+
+    _debounce = Timer(const Duration(milliseconds: DEBOUNCE_TIME), () {
+      if (widget.state.userInput != widget.initialValue) {
+        widget.onChanged(widget.state.userInput);
+      }
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    final status = getCorrectStatus(widget.activeValue);
+    log('${widget.hintValue} ${widget.state.userInput}');
+    var status = getCorrectStatus(widget.state.userInput);
+
     OutlineInputBorder border = getBorder(status);
-    String labelText =
-        widget.correctValues.containsCaseInsensitive(widget.activeValue)
-            ? ''
-            : widget.hintValue;
+    String labelText = status == CorrectStatus.correct ? '' : widget.hintValue;
 
     return Padding(
       padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
       child: Row(
         children: [
           Container(
-            width: N.getScreenWidth(halfWidth: true, reduction: 90),
+            width: widget.isHalfWidth
+                ? N.getScreenWidth(halfWidth: true, reduction: 90)
+                : N.getScreenWidth(reduction: 100),
             child: TextField(
               key: widget.key,
-              controller: widget.controller,
+              controller: _controller,
               keyboardType: TextInputType.text,
               decoration: InputDecoration(
                 isDense: true,
@@ -65,8 +92,12 @@ class _HalfWidthTextFormState extends State<HalfWidthTextForm> {
               onChanged: (String? newVal) {
                 if (newVal == ' ') newVal = '';
 
-                if (newVal != null) {
-                  widget.onChanged(newVal);
+                if (newVal != null && newVal != '') {
+                  setState(() {
+                    widget.state.userInput = newVal!;
+                    status = getCorrectStatus(widget.state.userInput);
+                    updateState();
+                  });
                 }
               },
             ),

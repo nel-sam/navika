@@ -38,16 +38,12 @@ class VerbQuestionUserEntryStateItem {
 
 class VerbQuestionStateItem {
   Verb verb;
-  //VerbTenses tense;
   late var userEntryState = new HashMap<String, String>();
-  late bool isAllCorrect;
-  Function notifyListeners;
+  late bool isCorrect;
 
   VerbQuestionStateItem({
-    //required this.tense,
     required this.verb,
-    required this.notifyListeners,
-    this.isAllCorrect = false,
+    this.isCorrect = false,
   });
 
   List<String> getKeyCollection(VerbTenses tense) {
@@ -88,8 +84,7 @@ class VerbQuestionStateItem {
       }
     });
 
-    this.isAllCorrect = allCorrect;
-    this.notifyListeners();
+    this.isCorrect = allCorrect;
   }
 
   void clear() {

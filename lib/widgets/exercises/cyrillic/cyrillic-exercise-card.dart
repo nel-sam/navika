@@ -4,7 +4,7 @@ import 'package:navika/state/cyrillic/cyrillic-state-item.dart';
 import 'package:navika/widgets/exercises/cyrillic/cyrillic-chart.dart';
 import 'package:navika/widgets/shared/icon-text-pair.dart';
 import 'package:navika/extensions.dart';
-import 'package:navika/widgets/shared/full-width-text-field.dart';
+import 'package:navika/widgets/shared/free-form-entry.dart';
 import 'package:navika/widgets/shared/shadow-box.dart';
 
 class CyrillicExerciseCard extends StatelessWidget {
@@ -90,8 +90,8 @@ class CyrillicExerciseCard extends StatelessWidget {
                           this.state.latinString.length)),
                     ],
                   ),
-                  FullWidthTextField(
-                    activeValue: this.state.userInput,
+                  FreeFormEntry(
+                    initialValue: this.state.userInput,
                     correctValues: [this.state.cyrillicString],
                     hintValue: '',
                     onChanged: (newVal) {
@@ -125,16 +125,18 @@ class CyrillicExerciseCard extends StatelessWidget {
         ),
         OutlinedButton(
           child: Icon(Icons.info),
-          onPressed: () => {
+          onPressed: () {
+            final dest = CyrillicChart(
+              cyrillicString: this.state.cyrillicString,
+              latinString: this.state.latinString,
+            );
+
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => CyrillicChart(
-                  cyrillicString: this.state.cyrillicString,
-                  latinString: this.state.latinString,
-                ),
+                builder: (context) => dest,
               ),
-            ),
+            );
           },
         )
       ],

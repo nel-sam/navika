@@ -28,9 +28,10 @@ List<Widget> CyrillicExecFooterButtons({
           padding: const EdgeInsets.only(bottom: FOOTER_ICON_BOTTOM_PADDING),
           child: FooterButton(
             onPressed: () {
+              final dest = CyrillicChart();
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => CyrillicChart()),
+                MaterialPageRoute(builder: (context) => dest),
               );
             },
             icon: Icons.help_center_outlined,

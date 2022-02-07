@@ -6,16 +6,13 @@ class VerbGenerators {
     return verbWordBank.length;
   }
 
-  static createExercise(List avoidList, Function? notifyListeners) {
+  static createExercise(List avoidList) {
     verbWordBank.shuffle();
 
     var verb =
         avoidList.length == 0 ? verbWordBank[0] : _getFirstNewVerb(avoidList);
 
-    return VerbQuestionStateItem(
-      verb: verb,
-      notifyListeners: notifyListeners!,
-    );
+    return VerbQuestionStateItem(verb: verb);
   }
 
   static _getFirstNewVerb(List avoidList) {

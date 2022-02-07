@@ -40,7 +40,7 @@ class AkuzativGenerators {
     String end = '';
 
     if (actualValue != 'mi' && N.coinFlip()) {
-      start = 'Mi vidimo';
+      start = 'Vidimo';
     } else if (actualValue != 'ti' && N.coinFlip()) {
       start = 'Daj to ';
     } else if (isShortForm) {
@@ -52,7 +52,7 @@ class AkuzativGenerators {
     return StaticSentenceParts(start: start, end: end);
   }
 
-  static CaseQuestionState createExercise(List toAvoid, Function? b) {
+  static CaseQuestionState createExercise(List toAvoid) {
     PANCombo? c;
 
     while (c == null || N.containsCaseQuestionState(toAvoid, c)) {
