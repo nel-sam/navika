@@ -41,17 +41,48 @@ class CaseExerciseRowCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            getHeader(context, combos),
+            CaseExerciseRowCardHeader(
+                combos: combos,
+                isAllCorrect: isAllCorrect,
+                isPlural: isPlural,
+                gender: gender,
+                isAnimate: isAnimate),
             if (extraInfo.length > 0)
               ExtraInfo(screenWidth: screenWidth, extraInfo: extraInfo),
-            getBody(),
+            Padding(
+              padding: const EdgeInsets.all(10),
+              child: Wrap(
+                  crossAxisAlignment: WrapCrossAlignment.center,
+                  children: children
+                      .map((c) =>
+                          Padding(padding: const EdgeInsets.all(3), child: c))
+                      .toList()),
+            ),
           ],
         ),
       ),
     );
   }
+}
 
-  Widget getHeader(BuildContext context, PANCombo combos) {
+class CaseExerciseRowCardHeader extends StatelessWidget {
+  const CaseExerciseRowCardHeader({
+    Key? key,
+    required this.isAllCorrect,
+    required this.isPlural,
+    required this.gender,
+    required this.isAnimate,
+    required this.combos,
+  }) : super(key: key);
+
+  final PANCombo combos;
+  final bool isAllCorrect;
+  final bool isPlural;
+  final Genders gender;
+  final bool isAnimate;
+
+  @override
+  Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 4, left: 5, right: 5),
       child: Row(
@@ -93,17 +124,6 @@ class CaseExerciseRowCard extends StatelessWidget {
               icon: Icon(Icons.help)),
         ],
       ),
-    );
-  }
-
-  Widget getBody() {
-    return Padding(
-      padding: const EdgeInsets.all(10),
-      child: Wrap(
-          crossAxisAlignment: WrapCrossAlignment.center,
-          children: children
-              .map((c) => Padding(padding: const EdgeInsets.all(3), child: c))
-              .toList()),
     );
   }
 }
