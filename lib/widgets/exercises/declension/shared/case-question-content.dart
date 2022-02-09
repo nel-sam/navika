@@ -37,62 +37,7 @@ class CaseQuestionContent extends StatelessWidget {
         stateItem.combos.adjective!.dictionary != '';
     final bool useNoun = stateItem.combos.noun != null;
     final bool usePersPron = stateItem.combos.personalPronoun != null;
-
-    var textFildWidth = N.getScreenWidth(reduction: 10);
-    final List<Widget> sentenceContent = [
-      if (stateItem.combos.sentenceStarter != '')
-        Container(
-          width: textFildWidth,
-          child: Text(
-            stateItem.combos.sentenceStarter,
-            style: TextStyle(fontSize: EXERCISE_FONT_STYLE),
-          ),
-        ),
-      if (usePossPronouns)
-        FreeFormEntry(
-          hintValue: stateItem.combos.possPronoun!.dictionary,
-          initialValue: stateItem.userPossPronResponse,
-          correctValues: stateItem.combos.correctPossPronouns,
-          onChanged: (String newVal) {
-            handleOnChange(GrammarTypes.PossesivePronoun, newVal);
-          },
-        ),
-      if (useAdj)
-        FreeFormEntry(
-          hintValue: stateItem.combos.adjective!.dictionary,
-          initialValue: stateItem.userAdjResponse,
-          correctValues: stateItem.combos.correctAdjs,
-          onChanged: (String newVal) {
-            handleOnChange(GrammarTypes.Adjective, newVal);
-          },
-        ),
-      if (useNoun)
-        FreeFormEntry(
-          hintValue: stateItem.combos.noun!.dictionary,
-          initialValue: stateItem.userNounResponse,
-          correctValues: stateItem.combos.correctNouns,
-          onChanged: (String newVal) {
-            handleOnChange(GrammarTypes.Noun, newVal);
-          },
-        ),
-      if (usePersPron)
-        FreeFormEntry(
-          hintValue: stateItem.combos.personalPronoun!.dictionary,
-          initialValue: stateItem.userPersPronResponse,
-          correctValues: stateItem.combos.correctPersPronouns,
-          onChanged: (String newVal) {
-            handleOnChange(GrammarTypes.PersonalPronoun, newVal);
-          },
-        ),
-      if (stateItem.combos.sentenceEnder != '')
-        Container(
-          width: textFildWidth,
-          child: Text(
-            stateItem.combos.sentenceEnder,
-            style: TextStyle(fontSize: EXERCISE_FONT_STYLE),
-          ),
-        ),
-    ];
+    final textFildWidth = N.getScreenWidth(reduction: 10);
 
     return CaseExerciseRowCard(
       combos: stateItem.combos,
@@ -104,7 +49,60 @@ class CaseQuestionContent extends StatelessWidget {
       getExtraInfo: stateItem.combos.noun == null
           ? (BuildContext context) => ''
           : stateItem.combos.noun!.getExtraInfo,
-      children: sentenceContent,
+      children: [
+        if (stateItem.combos.sentenceStarter != '')
+          Container(
+            width: textFildWidth,
+            child: Text(
+              stateItem.combos.sentenceStarter,
+              style: TextStyle(fontSize: EXERCISE_FONT_STYLE),
+            ),
+          ),
+        if (usePossPronouns)
+          FreeFormEntry(
+            hintValue: stateItem.combos.possPronoun!.dictionary,
+            initialValue: stateItem.userPossPronResponse,
+            correctValues: stateItem.combos.correctPossPronouns,
+            onChanged: (String newVal) {
+              handleOnChange(GrammarTypes.PossesivePronoun, newVal);
+            },
+          ),
+        if (useAdj)
+          FreeFormEntry(
+            hintValue: stateItem.combos.adjective!.dictionary,
+            initialValue: stateItem.userAdjResponse,
+            correctValues: stateItem.combos.correctAdjs,
+            onChanged: (String newVal) {
+              handleOnChange(GrammarTypes.Adjective, newVal);
+            },
+          ),
+        if (useNoun)
+          FreeFormEntry(
+            hintValue: stateItem.combos.noun!.dictionary,
+            initialValue: stateItem.userNounResponse,
+            correctValues: stateItem.combos.correctNouns,
+            onChanged: (String newVal) {
+              handleOnChange(GrammarTypes.Noun, newVal);
+            },
+          ),
+        if (usePersPron)
+          FreeFormEntry(
+            hintValue: stateItem.combos.personalPronoun!.dictionary,
+            initialValue: stateItem.userPersPronResponse,
+            correctValues: stateItem.combos.correctPersPronouns,
+            onChanged: (String newVal) {
+              handleOnChange(GrammarTypes.PersonalPronoun, newVal);
+            },
+          ),
+        if (stateItem.combos.sentenceEnder != '')
+          Container(
+            width: textFildWidth,
+            child: Text(
+              stateItem.combos.sentenceEnder,
+              style: TextStyle(fontSize: EXERCISE_FONT_STYLE),
+            ),
+          ),
+      ],
       gender: stateItem.combos.gender,
     );
   }

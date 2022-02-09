@@ -30,8 +30,8 @@ class CaseExerciseRowCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = N.getScreenWidth();
-    String extraInfo = this.getExtraInfo!(context);
+    final screenWidth = N.getScreenWidth();
+    final extraInfo = this.getExtraInfo!(context);
 
     return Container(
       height: 350,

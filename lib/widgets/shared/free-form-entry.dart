@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
@@ -78,8 +77,6 @@ class _FreeFormEntryState extends State<FreeFormEntry> {
     var status = getCorrectStatus(widget.state.userInput);
     final border = getBorder(status);
     final labelText = status == CorrectStatus.correct ? '' : widget.hintValue;
-
-    log('${widget.hintValue} ${widget.state.userInput}');
 
     return Padding(
       padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),

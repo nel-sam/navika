@@ -7,7 +7,7 @@ class IconTextPair extends StatelessWidget {
   final Color color;
   final MainAxisAlignment alignment;
 
-  IconTextPair(
+  const IconTextPair(
       {Key? key,
       required this.icon,
       required this.text,
