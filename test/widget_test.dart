@@ -7,25 +7,26 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:navika/constants.dart';
 
 import 'package:navika/main.dart';
+import 'package:navika/widgets/main-menu/exercise-button.dart';
 
-// TODO: Write tests
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
+  testWidgets('Main page contains menu options', (WidgetTester tester) async {
     await tester.pumpWidget(NavikaApp());
-
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
-
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
-
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    expect(find.text(APP_NAME), findsOneWidget);
+    //expect(find.textContaining(SbcLabels.cyrlilic), findsOneWidget);
+    expect(find.text(SbcLabels.cases), findsOneWidget);
+    //expect(find.text(SbcLabels.verbs), findsOneWidget);
+    //expect(find.text(SbcLabels.justTables), findsOneWidget);
+    // expect(find.text(SbcLabels.grammarGuide), findsOneWidget);
   });
+
+  // testWidgets('FreeForm indicates wrong answer', (WidgetTester tester) async {
+  //   await tester.pumpWidget(NavikaApp());
+  //   await tester.tap(find.text(SbcLabels.cases));
+  //   await tester.scrollUntilVisible(find.textContaining('Nom'), 10);
+  //   await tester.tap(find.textContaining('Nom'));
+  // });
 }

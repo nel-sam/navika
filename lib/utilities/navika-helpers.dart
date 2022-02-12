@@ -2,11 +2,8 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
-import 'package:navika/models/adjective.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
-import 'package:navika/models/noun.dart';
-import 'package:navika/models/personal-pronoun.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class N {
@@ -69,28 +66,6 @@ class N {
     return result;
   }
 
-  static List<DropdownMenuItem<String>> getDropdownItems({
-    PersonalPronoun? personalPronoun,
-    Noun? noun,
-    Adjective? adjective,
-  }) {
-    List<String> items = List<String>.empty(growable: true);
-
-    if (personalPronoun != null)
-      items = personalPronoun.getUniqueDeclensions();
-    else if (noun != null)
-      items = noun.getUniqueDeclensions();
-    else
-      items = adjective!.getUniqueDeclensions();
-
-    return items
-        .map((e) => DropdownMenuItem<String>(
-              value: e,
-              child: Text(e),
-            ))
-        .toList();
-  }
-
   static bool isDarkTheme(BuildContext context) {
     return MediaQuery.of(context).platformBrightness == Brightness.dark;
   }
@@ -108,86 +83,12 @@ class N {
   }
 
   static Color getAppBarColor(BuildContext context) {
-    return Colors.transparent;
-  }
-
-  static PANCombo getPANCombos(
-      {required Cases caseType,
-      required WordBank bank,
-      required StaticSentenceParts Function(Noun, bool, Adjective?, Adjective?)
-          getStaticSentenceParts,
-      required StaticSentenceParts Function(PersonalPronoun, bool)
-          getPersonalPronounSentenceStaticParts}) {
-    if (caseType == Cases.Vok) {
-      final noun = bank.nouns[N.getRandomNumber(max: bank.nouns.length)];
-      final staticParts = getStaticSentenceParts(noun, false, null, null);
-
-      return PANCombo(
-          caseType: caseType,
-          sentenceStarter: staticParts.start,
-          sentenceEnder: staticParts.end,
-          possPronoun: null,
-          adjective: null,
-          gender: noun.gender,
-          isPlural: false,
-          noun: noun);
-    }
-
-    final maxRandom = bank.personalPronouns.length == 0 ? 2 : 3;
-    var exType = N.getRandomNumber(max: maxRandom);
-
-    if (exType == 0) {
-      final possPronoun = bank.possessivePronouns.length == 0
-          ? null
-          : bank.possessivePronouns[
-              N.getRandomNumber(max: bank.possessivePronouns.length)];
-      final adj =
-          bank.adjectives[N.getRandomNumber(max: bank.adjectives.length)];
-      final noun = bank.nouns[N.getRandomNumber(max: bank.nouns.length)];
-      final isPlural = noun.nominativ.plural.first != '' && N.coinFlip();
-      final staticParts =
-          getStaticSentenceParts(noun, isPlural, possPronoun, adj);
-
-      return PANCombo(
-          caseType: caseType,
-          sentenceStarter: staticParts.start,
-          sentenceEnder: staticParts.end,
-          possPronoun: possPronoun,
-          adjective: adj,
-          gender: noun.gender,
-          isPlural: isPlural,
-          noun: noun);
-    } else if (exType == 1) {
-      final noun = bank.nouns[N.getRandomNumber(max: bank.nouns.length)];
-      final isPlural = noun.nominativ.plural.first != '' && N.coinFlip();
-      final staticParts = getStaticSentenceParts(noun, isPlural, null, null);
-
-      return PANCombo(
-          caseType: caseType,
-          sentenceStarter: staticParts.start,
-          sentenceEnder: staticParts.end,
-          possPronoun: null,
-          adjective: null,
-          gender: noun.gender,
-          isPlural: isPlural,
-          noun: noun);
-    } else {
-      final persPronoun = bank.personalPronouns[
-          N.getRandomNumber(max: bank.personalPronouns.length)];
-      final isPlural = persPronoun.isPlural;
-      final staticParts =
-          getPersonalPronounSentenceStaticParts(persPronoun, isPlural);
-
-      return PANCombo(
-        caseType: caseType,
-        sentenceStarter: staticParts.start,
-        sentenceEnder: staticParts.end,
-        gender: persPronoun.gender,
-        isPlural: isPlural,
-        personalPronoun: persPronoun,
-        usePersonalPronounShortForm: N.coinFlip(),
-      );
-    }
+    var brightness = MediaQueryData.fromWindow(WidgetsBinding.instance.window)
+        .platformBrightness;
+    bool darkModeOn = brightness == Brightness.dark;
+    return darkModeOn
+        ? Color.fromARGB(255, 48, 48, 48)
+        : Color.fromARGB(255, 250, 250, 250);
   }
 
   // ignore: non_constant_identifier_names

@@ -26,7 +26,7 @@
   "trans_otici_na_rucak": "Is it possible to go to lunch tomorrow?",
   "trans_ne_koristi_mnogo": "Cyrillic is not used much in Croatia",
 
-  "extrainfo_brat": "Braća is used when referring to multiple brothers. Braća refers to males, but declines like a feminine noun.",
+  "extrainfo_brat": "Braća is used when referring to multiple brothers. Braća refers to males, but declines like a singular feminine noun.",
 
   "nominativ": "Nominative",
   "akuzativ": "Accusative",
@@ -110,6 +110,7 @@
   "futureTense" : "Future Tense",
   "clear": "Clear",
   "expand_for_more": "Expand for more info",
-  "word_order": "Word order",
-  "word_order_desc": ""
+  "multipleCorrect": "There are more than one correct answers",
+  "alsoCorrect": "Also correct",
+  "exercise": "Exercise"
 }

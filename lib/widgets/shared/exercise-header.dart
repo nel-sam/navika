@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:navika/constants.dart';
 import 'package:navika/widgets/shared/icon-text-button.dart';
 
 class ExerciseHeader extends StatelessWidget {
@@ -25,10 +26,6 @@ class ExerciseHeader extends StatelessWidget {
       child: Column(
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [Text(counter)],
-          ),
-          Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               IconTextButton(
@@ -46,6 +43,17 @@ class ExerciseHeader extends StatelessWidget {
                 onPressed: setNext,
                 icon: Icons.skip_next_outlined,
               ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  '${AppLocalizations.of(context)!.exercise} $counter',
+                ),
+              )
             ],
           ),
         ],

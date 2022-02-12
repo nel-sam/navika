@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/verb.dart';
@@ -28,6 +30,8 @@ class VerbExercise extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Timer _debounce = Timer(const Duration(milliseconds: 0), () {});
+
     return Scaffold(
       appBar: AppBar(
         leading: Builder(builder: (BuildContext context) => BackButton()),
@@ -36,15 +40,31 @@ class VerbExercise extends StatelessWidget {
         iconTheme: N.getAppBarIconTheme(context),
         title: Text(SbcLabels.verbs, style: HEADER_TEXT_STYLE),
       ),
-      body: GestureDetector(
-        onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-        child: ChangeNotifierProvider<ExerciseNavNotifier>(
-          create: (context) => ExerciseNavNotifier(isVerb: true),
-          child: Consumer<ExerciseNavNotifier>(
-            builder: (context, navNotifier, child) {
-              final stateITem = navNotifier.getActive();
+      body: ChangeNotifierProvider<ExerciseNavNotifier>(
+        create: (context) => ExerciseNavNotifier(isVerb: true),
+        child: Consumer<ExerciseNavNotifier>(
+          builder: (context, navNotifier, child) {
+            final stateITem = navNotifier.getActive();
 
-              return Center(
+            return GestureDetector(
+              onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+              onHorizontalDragUpdate: (details) {
+                if (_debounce.isActive) {
+                  _debounce.cancel();
+                }
+
+                _debounce =
+                    Timer(const Duration(milliseconds: DEBOUNCE_TIME), () {
+                  if (details.delta.dx > 0) {
+                    navNotifier.setPrevious();
+                  }
+
+                  if (details.delta.dx < 0) {
+                    navNotifier.setNext();
+                  }
+                });
+              },
+              child: Center(
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
@@ -83,9 +103,9 @@ class VerbExercise extends StatelessWidget {
                     ],
                   ),
                 ),
-              );
-            },
-          ),
+              ),
+            );
+          },
         ),
       ),
     );

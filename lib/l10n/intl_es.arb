@@ -26,7 +26,7 @@
   "trans_otici_na_rucak": "Es possible ir a almorzar mañana?",
   "trans_ne_koristi_mnogo": "El cirílico no se usa much en Croacia",
 
-  "extrainfo_brat": "Braća se usa para hablar de various hermanos. Braća se refiere a hombres pero tiene declinaciones como si fuera sustantivo femenino.",
+  "extrainfo_brat": "Braća se usa para hablar de various hermanos. Braća se refiere a hombres pero tiene declinaciones como si fuera sustantivo femenino en singular.",
 
   "nominativ": "Nominativo",
   "akuzativ": "Acusativo",
@@ -110,6 +110,7 @@
   "futureTense" : "El Futuro",
   "clear": "Clear",
   "expand_for_more": "Expandir para más info",
-  "word_order": "Orden de palabras",
-  "word_order_desc": ""
+  "multipleCorrect": "Hay más de una repuesta correcta",
+  "alsoCorrect": "Tambíen se acepta",
+  "exercise": "Ejercicio"
 }

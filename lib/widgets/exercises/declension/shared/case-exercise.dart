@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
@@ -28,6 +30,8 @@ class CaseExercise extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Timer _debounce = Timer(const Duration(milliseconds: 0), () {});
+
     return ChangeNotifierProvider<ExerciseNavNotifier>(
       create: (context) => ExerciseNavNotifier(caseType: caseType),
       child: Consumer<ExerciseNavNotifier>(
@@ -58,8 +62,26 @@ class CaseExercise extends StatelessWidget {
                       clear: navNotifier.clearInput,
                       getCounter: navNotifier.getCounter,
                     ),
-                    CaseQuestionContent(
-                      stateItem: navNotifier.getActive(),
+                    GestureDetector(
+                      onHorizontalDragUpdate: (details) {
+                        if (_debounce.isActive) {
+                          _debounce.cancel();
+                        }
+
+                        _debounce = Timer(
+                            const Duration(milliseconds: DEBOUNCE_TIME), () {
+                          if (details.delta.dx > 0) {
+                            navNotifier.setPrevious();
+                          }
+
+                          if (details.delta.dx < 0) {
+                            navNotifier.setNext();
+                          }
+                        });
+                      },
+                      child: CaseQuestionContent(
+                        stateItem: navNotifier.getActive(),
+                      ),
                     ),
                   ],
                 ),

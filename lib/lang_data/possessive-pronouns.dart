@@ -394,7 +394,7 @@ final List<Adjective> possessivePronounWordBank = [
   ),
   Adjective(
     dictionary: 'naš',
-    toAvoid: [Tags.Season, Tags.Country],
+    toAvoid: [Tags.Season, Tags.Country, Tags.Weather],
     nominativ: new Declension(
       masculine: new DeclensionByGender(singular: ['naš'], plural: ['naši']),
       feminine: new DeclensionByGender(singular: ['naša'], plural: ['naše']),

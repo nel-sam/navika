@@ -5,6 +5,7 @@ import 'package:navika/models/models.dart';
 import 'package:navika/models/noun.dart';
 import 'package:navika/models/personal-pronoun.dart';
 import 'package:navika/state/cases/case-question-state.dart';
+import 'package:navika/state/content-generators/pan-generator.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 
 class AkuzativGenerators {
@@ -56,7 +57,7 @@ class AkuzativGenerators {
     PANCombo? c;
 
     while (c == null || N.containsCaseQuestionState(toAvoid, c)) {
-      c = N.getPANCombos(
+      c = PanGenerator.getPANCombos(
         caseType: Cases.Aku,
         bank: wordBank,
         getPersonalPronounSentenceStaticParts:

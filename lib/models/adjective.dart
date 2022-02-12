@@ -185,16 +185,14 @@ class Adjective {
   }
 
   bool isCompatible(List<Tags> tags) {
-    if (tags.contains(Tags.Season)) {
+    if (tags.contains(Tags.Season) || tags.contains(Tags.Country)) {
       return false;
     }
 
-    for (var avoid in this.toAvoid) {
-      if (tags.contains(avoid)) {
-        return false;
-      }
-    }
+    final lists = [tags, toAvoid];
+    final commonElements = lists.fold<Set>(
+        lists.first.toSet(), (a, b) => a.intersection(b.toSet()));
 
-    return true;
+    return commonElements.isEmpty;
   }
 }

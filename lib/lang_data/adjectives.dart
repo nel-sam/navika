@@ -362,7 +362,9 @@ final List<Adjective> adjectiveWordBank = [
       Tags.Health,
       Tags.Location,
       Tags.Country,
-      Tags.Emotion
+      Tags.Emotion,
+      Tags.Weather,
+      Tags.Season,
     ],
     nominativ: new Declension(
       masculine: new DeclensionByGender(singular: ['skupi'], plural: ['skupi']),

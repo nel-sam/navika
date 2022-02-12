@@ -67,7 +67,7 @@ class ExerciseButton extends StatelessWidget {
     }
 
     return Padding(
-      padding: const EdgeInsets.all(FONT_SIZE / 2),
+      padding: const EdgeInsets.all(FONT_SIZE),
       child: Container(
         height: buttonHeight,
         width: buttonWidth,

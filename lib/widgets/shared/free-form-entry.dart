@@ -6,6 +6,8 @@ import 'package:navika/extensions.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/shared/answer-status-icon.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:navika/widgets/shared/navika-text.dart';
 
 class StateObject {
   String userInput = '';
@@ -77,40 +79,56 @@ class _FreeFormEntryState extends State<FreeFormEntry> {
     var status = getCorrectStatus(widget.state.userInput);
     final border = getBorder(status);
     final labelText = status == CorrectStatus.correct ? '' : widget.hintValue;
+    final multipleCorrect = widget.correctValues.length > 1;
 
     return Padding(
       padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-      child: Row(
+      child: Column(
         children: [
-          Container(
-            width: widget.isHalfWidth
-                ? N.getScreenWidth(halfWidth: true, reduction: 90)
-                : N.getScreenWidth(reduction: 100),
-            child: TextField(
-              key: widget.key,
-              controller: _controller,
-              keyboardType: TextInputType.text,
-              decoration: InputDecoration(
-                isDense: true,
-                contentPadding: const EdgeInsets.fromLTRB(4, 18, 0, 1),
-                labelText: labelText,
-                enabledBorder: border,
-                focusedBorder: border,
-              ),
-              onChanged: (String? newVal) {
-                if (newVal == ' ') newVal = '';
+          Row(
+            children: [
+              Container(
+                width: widget.isHalfWidth
+                    ? N.getScreenWidth(halfWidth: true, reduction: 90)
+                    : N.getScreenWidth(reduction: 100),
+                child: TextField(
+                  key: widget.key,
+                  controller: _controller,
+                  keyboardType: TextInputType.text,
+                  decoration: InputDecoration(
+                    isDense: true,
+                    contentPadding: const EdgeInsets.fromLTRB(4, 18, 0, 1),
+                    labelText: labelText,
+                    enabledBorder: border,
+                    focusedBorder: border,
+                  ),
+                  onChanged: (String? newVal) {
+                    if (newVal == ' ') newVal = '';
 
-                if (newVal != null && newVal != '') {
-                  setState(() {
-                    widget.state.userInput = newVal!;
-                    status = getCorrectStatus(widget.state.userInput);
-                    updateState();
-                  });
-                }
-              },
-            ),
+                    if (newVal != null && newVal != '') {
+                      setState(() {
+                        widget.state.userInput = newVal!;
+                        status = getCorrectStatus(widget.state.userInput);
+                        updateState();
+                      });
+                    }
+                  },
+                ),
+              ),
+              AnswerStatusIcon(status: status),
+            ],
           ),
-          AnswerStatusIcon(status: status),
+          if (multipleCorrect)
+            Row(children: [
+              status == CorrectStatus.correct
+                  ? NText(
+                      '${AppLocalizations.of(context)!.alsoCorrect}: ${widget.correctValues.join(',')}',
+                      fontSize: FONT_SIZE - 3)
+                  : NText(
+                      '${AppLocalizations.of(context)!.multipleCorrect}',
+                      fontSize: FONT_SIZE - 3,
+                    )
+            ]),
         ],
       ),
     );
