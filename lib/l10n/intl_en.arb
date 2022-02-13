@@ -18,6 +18,7 @@
   "trans_zatvoriti": "To close",
   "trans_iznaci": "To leave/go out",
   "trans_gledati": "To watch",
+  "trans_pomoci": "To help",
 
   "trans_pada_kisa": "It is raining today",
   "trans_najbolji_cevapi": "This is the best cevapi",
@@ -55,7 +56,7 @@
   "exampleSentences": "Example sentences",
   "feminine": "Feminine",
   "freeForm": "Type it",
-  "genitiveDescription": "Genitive is used with prepositions and is used to show possession, origin, or lack of something (nema, bez). If used without prepositions, it can indicate what something is made of.",
+  "genitiveDescription": "Genitive is used with prepositions and is used to show possession, origin, or lack of something (nema, bez). If used without prepositions, it can indicate what something is made of. Note that the accent is normally moved one syllable to the right, and that syllable becomes a long vowel.",
   "grammar": "Grammar",
   "grammarGuides": "Grammar Guides",
   "cases": "Cases",

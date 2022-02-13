@@ -173,6 +173,20 @@ final List<Noun> nounWordBank = [
         new DeclensionByCount(singular: ['muškarče'], plural: ['muškarci']),
   ),
   Noun(
+    dictionary: 'otac',
+    tags: [Tags.Human, Tags.Adult],
+    gender: Genders.Masculine,
+    isAnimate: true,
+    nominativ: new DeclensionByCount(singular: ['otac'], plural: ['očevi']),
+    akuzativ: new DeclensionByCount(singular: ['oca'], plural: ['očeve']),
+    instrumental:
+        new DeclensionByCount(singular: ['ocem'], plural: ['očevima']),
+    lokativ: new DeclensionByCount(singular: ['ocu'], plural: ['očevima']),
+    dativ: new DeclensionByCount(singular: ['ocu'], plural: ['očevima']),
+    genitiv: new DeclensionByCount(singular: ['oca'], plural: ['očeva']),
+    vokativ: new DeclensionByCount(singular: ['oče'], plural: ['očevi']),
+  ),
+  Noun(
     dictionary: 'sin',
     tags: [Tags.Human],
     gender: Genders.Masculine,
@@ -185,6 +199,26 @@ final List<Noun> nounWordBank = [
     vokativ: new DeclensionByCount(singular: ['sine'], plural: ['sinovi']),
     instrumental:
         new DeclensionByCount(singular: ['sinom'], plural: ['sinovima']),
+  ),
+  Noun(
+    dictionary: 'djevojka',
+    tags: [Tags.Human],
+    gender: Genders.Feminine,
+    isAnimate: true,
+    nominativ:
+        new DeclensionByCount(singular: ['djevojka'], plural: ['djevojke']),
+    genitiv:
+        new DeclensionByCount(singular: ['djevojke'], plural: ['djevojaka']),
+    dativ:
+        new DeclensionByCount(singular: ['djevojci'], plural: ['djevojkama']),
+    akuzativ:
+        new DeclensionByCount(singular: ['djevojku'], plural: ['djevojke']),
+    lokativ:
+        new DeclensionByCount(singular: ['djevojci'], plural: ['djevojkama']),
+    vokativ:
+        new DeclensionByCount(singular: ['djevojko'], plural: ['djevojke']),
+    instrumental:
+        new DeclensionByCount(singular: ['djevojkom'], plural: ['djevojkama']),
   ),
   Noun(
     dictionary: 'ljubav',

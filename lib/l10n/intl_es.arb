@@ -18,6 +18,7 @@
   "trans_zatvoriti": "Cerrar",
   "trans_iznaci": "Salir",
   "trans_gledati": "Mirar",
+    "trans_pomoci": "Ayudar",
 
   "trans_pada_kisa": "Está lloviendo hoy",
   "trans_najbolji_cevapi": "Esto es el mejor cevapi",
@@ -55,7 +56,7 @@
   "exampleSentences": "Ejemplos",
   "feminine": "Femenino",
   "freeForm": "Escribir",
-  "genitiveDescription": "El caso genitivo se usa con preposiciones e indica posesión, origen o falta de algo (nema, bez). Si se usa sin preposiciones, puede indicar el material de lo cual está hecho algo.",
+  "genitiveDescription": "El caso genitivo se usa con preposiciones e indica posesión, origen o falta de algo (nema, bez). Si se usa sin preposiciones, puede indicar el material de lo cual está hecho algo. Es importante notar que el accento de la palabra se mueve una sílaba a la derecha, y la vocal de esa síliba se dice más larga.",
   "grammar": "Gramática",
   "grammarGuides": "Guías de Gramática",
   "cases": "Casos",

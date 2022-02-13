@@ -28,7 +28,7 @@ class ExerciseButton extends StatelessWidget {
     double buttonHeight = halfWidth ? 130 : 130;
     var appBarColor = N.isDarkTheme(context)
         ? Color.fromARGB(255, 58, 58, 58)
-        : N.getAppBarColor(context);
+        : N.getAppBarColor();
     double radius = 10;
 
     Widget getLabel() {

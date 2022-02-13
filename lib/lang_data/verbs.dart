@@ -628,6 +628,30 @@ final List<Verb> verbWordBank = [
       onaPl: 'izgledala',
     ),
   ),
+  Verb(
+    infinitive: 'pomoći',
+    isIrregular: true,
+    isReflexive: false,
+    verbPerfectiveType: VerbPerfectiveTypes.Perfective,
+    getTranslation: (BuildContext context) =>
+        AppLocalizations.of(context)!.trans_pomoci,
+    present: ConjugationSet(
+      ja: 'pomognem',
+      ti: 'pomogneš',
+      on: 'pomogne',
+      mi: 'pomognemo',
+      vi: 'pomognete',
+      oni: 'pomognu',
+    ),
+    pastPerfect: ParticipleSet(
+      singularMasc: 'pomogao',
+      singularFem: 'pomogla',
+      pluralMasc: 'pomogli',
+      pluralFem: 'pomogle',
+      ono: 'pomoglo',
+      onaPl: 'pomogla',
+    ),
+  ),
 ];
 
   // Verb(

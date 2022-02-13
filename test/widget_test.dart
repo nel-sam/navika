@@ -10,17 +10,33 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:navika/constants.dart';
 
 import 'package:navika/main.dart';
+import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/main-menu/exercise-button.dart';
 
 void main() {
   testWidgets('Main page contains menu options', (WidgetTester tester) async {
     await tester.pumpWidget(NavikaApp());
     expect(find.text(APP_NAME), findsOneWidget);
-    //expect(find.textContaining(SbcLabels.cyrlilic), findsOneWidget);
+    //expect(find.textContaining(SbcLabels.cyrlilic), findsWidgets);
     expect(find.text(SbcLabels.cases), findsOneWidget);
     //expect(find.text(SbcLabels.verbs), findsOneWidget);
     //expect(find.text(SbcLabels.justTables), findsOneWidget);
     // expect(find.text(SbcLabels.grammarGuide), findsOneWidget);
+  });
+
+  testWidgets('Colors on exercise buttons', (WidgetTester tester) async {
+    final testedTheme = Brightness.dark;
+    await tester.pumpWidget(MaterialApp(
+      theme: ThemeData(brightness: testedTheme),
+      home: NavikaApp(),
+    ));
+
+    final BuildContext context = tester.element(find.byType(NavikaApp));
+    expect(testedTheme, Theme.of(context).brightness);
+
+    final bgColor = N.getAppBarColor().toString();
+    final expectedColor = Color.fromARGB(255, 250, 250, 250).toString();
+    expect(bgColor, expectedColor);
   });
 
   // testWidgets('FreeForm indicates wrong answer', (WidgetTester tester) async {

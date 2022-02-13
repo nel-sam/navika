@@ -40,7 +40,7 @@ class CaseExercise extends StatelessWidget {
             appBar: AppBar(
               leading: Builder(builder: (BuildContext context) => BackButton()),
               elevation: APPBAR_ELEVATION,
-              backgroundColor: N.getAppBarColor(context),
+              backgroundColor: N.getAppBarColor(),
               iconTheme: N.getAppBarIconTheme(context),
               title: Text(SbcLabels.cases, style: HEADER_TEXT_STYLE),
             ),

@@ -26,7 +26,7 @@ class N {
   }) {
     return AppBar(
       elevation: APPBAR_ELEVATION,
-      backgroundColor: N.getAppBarColor(context),
+      backgroundColor: N.getAppBarColor(),
       iconTheme: N.getAppBarIconTheme(context),
       title: transTitle == ''
           ? Text('$title', style: HEADER_TEXT_STYLE)
@@ -82,7 +82,7 @@ class N {
         : APP_BAR_ICONTHEME_LIGHT;
   }
 
-  static Color getAppBarColor(BuildContext context) {
+  static Color getAppBarColor() {
     var brightness = MediaQueryData.fromWindow(WidgetsBinding.instance.window)
         .platformBrightness;
     bool darkModeOn = brightness == Brightness.dark;
