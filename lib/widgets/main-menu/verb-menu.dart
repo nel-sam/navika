@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
-import 'package:navika/utilities/navika-helpers.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/widgets/exercises/verbs/past-tense/past-tense.dart';
 import 'package:navika/widgets/exercises/verbs/present-tense/present-tense.dart';
 import 'package:navika/widgets/main-menu/exercise-button.dart';
+import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
 class VerbMenu extends StatelessWidget {
   @override
@@ -28,7 +28,7 @@ class VerbMenu extends StatelessWidget {
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: N.NavikaAppBar(
+      appBar: Nrs.NrsAppBar(
         title: SbcLabels.verbs,
         transTitle: AppLocalizations.of(context)!.verbs,
         context: context,

@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/verb.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/navika-subheader.dart';
 import 'package:navika/widgets/shared/icon-text-pair.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/widgets/shared/navika-text.dart';
+import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
 class VerbHelpGuide extends StatelessWidget {
+  static const double sidePadding = 38;
   final Verb verb;
   final String perfectiveness;
-  static const double sidePadding = 38;
 
   const VerbHelpGuide({
     Key? key,
@@ -18,22 +19,45 @@ class VerbHelpGuide extends StatelessWidget {
     required this.perfectiveness,
   }) : super(key: key);
 
-  Widget getPresentTenseChart(BuildContext context) {
-    return Column(
-      children: [
-        NSubHeader(text: AppLocalizations.of(context)!.presentTense),
-        Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            NText('Ja ${verb.present.ja}'),
-            NText('Ti ${verb.present.ti}'),
-            NText('On/Ona/Ono ${verb.present.on}'),
-            NText('Mi ${verb.present.mi}'),
-            NText('Vi ${verb.present.vi}'),
-            NText('Oni/One/Ona ${verb.present.oni}'),
-          ],
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        leading: Builder(builder: (BuildContext context) => BackButton()),
+        elevation: APPBAR_ELEVATION,
+        backgroundColor: Nrs.getAppBarColor(),
+        title: Text(verb.infinitive),
+      ),
+      body: Center(
+        child: SingleChildScrollView(
+          padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  IconTextPair(
+                    text: verb.getTranslation(context),
+                    icon: Icons.translate,
+                  ),
+                  Text(
+                    perfectiveness,
+                    style: TextStyle(fontStyle: FontStyle.italic),
+                  ),
+                  if (this.verb.isIrregular)
+                    IconTextPair(
+                      icon: Icons.error_outline,
+                      text: AppLocalizations.of(context)!.irregular,
+                    ),
+                ],
+              ),
+              getPresentTenseChart(context),
+              getPastTenseChart(context, verb),
+              getFutureTenseChart(context),
+            ],
+          ),
         ),
-      ],
+      ),
     );
   }
 
@@ -152,46 +176,22 @@ class VerbHelpGuide extends StatelessWidget {
     );
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: Builder(builder: (BuildContext context) => BackButton()),
-        elevation: APPBAR_ELEVATION,
-        backgroundColor: N.getAppBarColor(),
-        iconTheme: N.getAppBarIconTheme(context),
-        title: Text(verb.infinitive, style: HEADER_TEXT_STYLE),
-      ),
-      body: Center(
-        child: SingleChildScrollView(
-          padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  IconTextPair(
-                    text: verb.getTranslation(context),
-                    icon: Icons.translate,
-                  ),
-                  Text(
-                    perfectiveness,
-                    style: TextStyle(fontStyle: FontStyle.italic),
-                  ),
-                  if (this.verb.isIrregular)
-                    IconTextPair(
-                      icon: Icons.error_outline,
-                      text: AppLocalizations.of(context)!.irregular,
-                    ),
-                ],
-              ),
-              getPresentTenseChart(context),
-              getPastTenseChart(context, verb),
-              getFutureTenseChart(context),
-            ],
-          ),
+  Widget getPresentTenseChart(BuildContext context) {
+    return Column(
+      children: [
+        NSubHeader(text: AppLocalizations.of(context)!.presentTense),
+        Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            NText('Ja ${verb.present.ja}'),
+            NText('Ti ${verb.present.ti}'),
+            NText('On/Ona/Ono ${verb.present.on}'),
+            NText('Mi ${verb.present.mi}'),
+            NText('Vi ${verb.present.vi}'),
+            NText('Oni/One/Ona ${verb.present.oni}'),
+          ],
         ),
-      ),
+      ],
     );
   }
 }

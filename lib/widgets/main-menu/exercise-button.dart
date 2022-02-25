@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/utilities/navika-helpers.dart';
+import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
 class ExerciseButton extends StatelessWidget {
   final Widget destination;
@@ -26,9 +27,9 @@ class ExerciseButton extends StatelessWidget {
     double buttonWidth =
         this.halfWidth ? (screenWidth / 2) - 20 : screenWidth - 30;
     double buttonHeight = halfWidth ? 130 : 130;
-    var appBarColor = N.isDarkTheme(context)
+    var appBarColor = Nrs.isDarkTheme(context)
         ? Color.fromARGB(255, 58, 58, 58)
-        : N.getAppBarColor();
+        : Nrs.getAppBarColor();
     double radius = 10;
 
     Widget getLabel() {
@@ -41,7 +42,7 @@ class ExerciseButton extends StatelessWidget {
                 sbcLabel == '' ? label : sbcLabel,
                 style: TextStyle(
                   fontSize: 22,
-                  color: N.isDarkTheme(context) ? Colors.white : ACCENT_COLOR,
+                  color: Nrs.isDarkTheme(context) ? Colors.white : ACCENT_COLOR,
                 ),
               ),
             ],
@@ -62,7 +63,7 @@ class ExerciseButton extends StatelessWidget {
       return Icon(
         icon,
         size: 30,
-        color: N.isDarkTheme(context) ? Colors.white : ACCENT_COLOR,
+        color: Nrs.isDarkTheme(context) ? Colors.white : ACCENT_COLOR,
       );
     }
 

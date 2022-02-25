@@ -62,8 +62,8 @@ ios/build/**/*
 !**/ios/**/default.pbxuser
 !**/ios/**/default.perspectivev3
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
+
 .dart_tool/chrome-device/*
 .dart_tool/flutter_build/*
-.DS_Store
-ios/.DS_Store
 .idea/workspace.xml
+.DS_Store

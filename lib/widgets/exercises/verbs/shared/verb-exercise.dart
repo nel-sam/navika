@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/verb.dart';
 import 'package:navika/state/exercise-nav-notifier.dart';
-import 'package:navika/utilities/navika-helpers.dart';
-import 'package:navika/widgets/exercises/verbs/present-tense/present-tense-question-content.dart';
 import 'package:navika/widgets/exercises/verbs/past-tense/past-tense-question-content.dart';
+import 'package:navika/widgets/exercises/verbs/present-tense/present-tense-question-content.dart';
 import 'package:navika/widgets/shared/ad-card.dart';
 import 'package:navika/widgets/shared/exercise-header.dart';
 import 'package:navika/widgets/shared/info-banner.dart';
+import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 import 'package:provider/provider.dart';
 
 class VerbExercise extends StatelessWidget {
@@ -33,13 +33,7 @@ class VerbExercise extends StatelessWidget {
     Timer _debounce = Timer(const Duration(milliseconds: 0), () {});
 
     return Scaffold(
-      appBar: AppBar(
-        leading: Builder(builder: (BuildContext context) => BackButton()),
-        elevation: APPBAR_ELEVATION,
-        backgroundColor: N.getAppBarColor(),
-        iconTheme: N.getAppBarIconTheme(context),
-        title: Text(SbcLabels.verbs, style: HEADER_TEXT_STYLE),
-      ),
+      appBar: Nrs.NrsAppBar(title: SbcLabels.verbs, context: context),
       body: ChangeNotifierProvider<ExerciseNavNotifier>(
         create: (context) => ExerciseNavNotifier(isVerb: true),
         child: Consumer<ExerciseNavNotifier>(

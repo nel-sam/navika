@@ -18,6 +18,9 @@ dependencies:
   url_launcher: ^6.0.6
   provider: ^5.0.0
 
+  nrs_flutter_lib:
+    path: ../nrs-flutter-lib
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

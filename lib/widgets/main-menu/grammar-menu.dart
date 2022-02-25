@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/constants.dart';
-import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/grammar/grammar-guide/declension-guide.dart';
 import 'package:navika/widgets/grammar/grammar-guide/tables.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/widgets/main-menu/exercise-button.dart';
 import 'package:navika/widgets/shared/ad-card.dart';
+import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
 class GrammarMenu extends StatelessWidget {
   @override
@@ -39,7 +39,7 @@ class GrammarMenu extends StatelessWidget {
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: N.NavikaAppBar(
+      appBar: Nrs.NrsAppBar(
         title: SbcLabels.grammarGuide,
         transTitle: AppLocalizations.of(context)!.grammarGuides,
         context: context,

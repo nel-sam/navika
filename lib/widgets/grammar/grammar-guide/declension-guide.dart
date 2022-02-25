@@ -11,6 +11,7 @@ import 'package:navika/widgets/grammar/grammar-guide/declension/instrumental-con
 import 'package:navika/widgets/grammar/grammar-guide/declension/lokativ-content.dart';
 import 'package:navika/widgets/grammar/grammar-guide/declension/nominativ-content.dart';
 import 'package:navika/widgets/shared/footer-button.dart';
+import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
 const double CONTENT_HEIGHT = 1200.0;
 
@@ -40,6 +41,11 @@ class _DeclensionGuideState extends State<DeclensionGuide> {
   late ScrollController controller;
   late bool isAtTop = false;
   late bool isAtBottom = false;
+
+  static scrollTo(double point, controller) {
+    controller.animateTo(point,
+        curve: Curves.linearToEaseOut, duration: Duration(milliseconds: 800));
+  }
 
   @override
   void initState() {
@@ -77,16 +83,16 @@ class _DeclensionGuideState extends State<DeclensionGuide> {
     bool isAtHeader = (currentPoint % CONTENT_HEIGHT) == 0;
 
     if (isAtHeader && toNext) {
-      N.scrollTo(currentPoint + CONTENT_HEIGHT, controller);
+      scrollTo(currentPoint + CONTENT_HEIGHT, controller);
     } else if (isAtHeader) {
-      N.scrollTo(currentPoint - CONTENT_HEIGHT, controller);
+      scrollTo(currentPoint - CONTENT_HEIGHT, controller);
     } else {
       final multFactor = toNext
           ? (currentPoint / CONTENT_HEIGHT).ceil()
           : (currentPoint / CONTENT_HEIGHT).floor();
 
       double scrollPoint = multFactor * CONTENT_HEIGHT;
-      N.scrollTo(scrollPoint, controller);
+      scrollTo(scrollPoint, controller);
     }
   }
 
@@ -105,7 +111,7 @@ class _DeclensionGuideState extends State<DeclensionGuide> {
     double screenWidth = N.getScreenWidth();
 
     return Scaffold(
-      appBar: N.NavikaAppBar(
+      appBar: Nrs.NrsAppBar(
         title: SbcLabels.cases,
         transTitle: AppLocalizations.of(context)!.cases,
         context: context,

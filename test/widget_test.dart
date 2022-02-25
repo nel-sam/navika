@@ -8,10 +8,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:navika/constants.dart';
-
 import 'package:navika/main.dart';
-import 'package:navika/utilities/navika-helpers.dart';
-import 'package:navika/widgets/main-menu/exercise-button.dart';
+import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
 void main() {
   testWidgets('Main page contains menu options', (WidgetTester tester) async {
@@ -34,7 +32,7 @@ void main() {
     final BuildContext context = tester.element(find.byType(NavikaApp));
     expect(testedTheme, Theme.of(context).brightness);
 
-    final bgColor = N.getAppBarColor().toString();
+    final bgColor = Nrs.getAppBarColor().toString();
     final expectedColor = Color.fromARGB(255, 250, 250, 250).toString();
     expect(bgColor, expectedColor);
   });

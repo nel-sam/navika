@@ -10,6 +10,7 @@ import 'package:navika/widgets/grammar/grammar-guide/declension/declension-table
 import 'package:navika/widgets/grammar/grammar-guide/declension/declension-tables/nominativ-table.dart';
 import 'package:navika/widgets/shared/home-button.dart';
 import 'package:navika/widgets/shared/navika-text.dart';
+import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
 class Tables extends StatefulWidget {
   const Tables({
@@ -42,7 +43,7 @@ class _TablesState extends State<Tables> {
     }
 
     return Scaffold(
-      appBar: N.NavikaAppBar(
+      appBar: Nrs.NrsAppBar(
         title: SbcLabels.justTables,
         transTitle: AppLocalizations.of(context)!.justCaseTables,
         context: context,

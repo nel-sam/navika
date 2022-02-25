@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/lang_data/cyrillic-bank.dart';
-import 'package:navika/utilities/navika-helpers.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/extensions.dart';
 import 'package:navika/widgets/shared/navika-text.dart';
+import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
 class CyrillicChart extends StatelessWidget {
   final String latinString;
@@ -19,8 +19,8 @@ class CyrillicChart extends StatelessWidget {
     List<Widget> children = createCharacterWidgets();
 
     return Scaffold(
-        appBar: N.NavikaAppBar(
-          title: SbcLabels.cyrlilic,
+        appBar: Nrs.NrsAppBar(
+          title: SbcLabels.cyrillic,
           transTitle: AppLocalizations.of(context)!.cyrillic,
           context: context,
         ),

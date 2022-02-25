@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/declension-table-cell.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/explanation-icon-cell.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
 class DeclensionTable extends StatelessWidget {
   final DeclensionTableCell masculineSingular;
@@ -34,16 +35,6 @@ class DeclensionTable extends StatelessWidget {
     this.showEqualItemNote = false,
     this.additionalEqualItemColor = EQUAL_ITEMS_BORDER_COLOR,
   }) : super(key: key);
-
-  String getAsterix(int count) {
-    var result = '';
-
-    for (int i = 0; i < count; i++) {
-      result += '*';
-    }
-
-    return result;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -144,7 +135,7 @@ class DeclensionTable extends StatelessWidget {
                       text: TextSpan(
                         style: TextStyle(
                             fontSize: 12,
-                            color: N.isDarkTheme(context)
+                            color: Nrs.isDarkTheme(context)
                                 ? Colors.white
                                 : Colors.black),
                         children: [
@@ -189,8 +180,9 @@ class DeclensionTable extends StatelessWidget {
                 text: TextSpan(
                   style: TextStyle(
                       fontSize: 12,
-                      color:
-                          N.isDarkTheme(context) ? Colors.white : Colors.black),
+                      color: Nrs.isDarkTheme(context)
+                          ? Colors.white
+                          : Colors.black),
                   children: [
                     TextSpan(
                       text: AppLocalizations.of(context)!.equalDeclensions,
@@ -222,7 +214,7 @@ class DeclensionTable extends StatelessWidget {
                       text: TextSpan(
                         style: TextStyle(
                             fontSize: 12,
-                            color: N.isDarkTheme(context)
+                            color: Nrs.isDarkTheme(context)
                                 ? Colors.white
                                 : Colors.black),
                         children: [
@@ -238,5 +230,15 @@ class DeclensionTable extends StatelessWidget {
             : Container(),
       ],
     );
+  }
+
+  String getAsterix(int count) {
+    var result = '';
+
+    for (int i = 0; i < count; i++) {
+      result += '*';
+    }
+
+    return result;
   }
 }

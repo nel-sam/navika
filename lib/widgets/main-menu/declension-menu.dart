@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/exercises/declension/akusativ/akuzativ.dart';
 import 'package:navika/widgets/exercises/declension/all-cases.dart';
 import 'package:navika/widgets/exercises/declension/dativ/dativ.dart';
-import 'package:navika/widgets/exercises/declension/nominativ/nominativ.dart';
 import 'package:navika/widgets/exercises/declension/genitiv/genitiv.dart';
 import 'package:navika/widgets/exercises/declension/instrumental/instrumental.dart';
 import 'package:navika/widgets/exercises/declension/lokativ/lokativ.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:navika/widgets/exercises/declension/nominativ/nominativ.dart';
 import 'package:navika/widgets/exercises/declension/vokativ/vokativ.dart';
 import 'package:navika/widgets/main-menu/exercise-button.dart';
+import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
 class DeclensionMenu extends StatelessWidget {
   final allCases = AllCases();
@@ -27,7 +28,7 @@ class DeclensionMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: N.NavikaAppBar(
+      appBar: Nrs.NrsAppBar(
         title: SbcLabels.cases,
         transTitle: AppLocalizations.of(context)!.cases,
         context: context,

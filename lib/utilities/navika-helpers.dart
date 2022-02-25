@@ -7,32 +7,13 @@ import 'package:navika/models/models.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class N {
-  static scrollTo(double point, controller) {
-    controller.animateTo(point,
-        curve: Curves.linearToEaseOut, duration: SCROLL_DURATION);
-  }
-
   static getRandomTense() {
     final tenses = TenseEnum.values;
     var index = (new Random()).nextInt(tenses.length - 1);
     return tenses[index];
   }
 
-  // ignore: non_constant_identifier_names
-  static AppBar NavikaAppBar({
-    required String title,
-    String transTitle = '',
-    required BuildContext context,
-  }) {
-    return AppBar(
-      elevation: APPBAR_ELEVATION,
-      backgroundColor: N.getAppBarColor(),
-      iconTheme: N.getAppBarIconTheme(context),
-      title: transTitle == ''
-          ? Text('$title', style: HEADER_TEXT_STYLE)
-          : Text('$title - $transTitle', style: HEADER_TEXT_STYLE),
-    );
-  }
+
 
   static IconData getGenderIcon(Genders gender) {
     if (gender == Genders.Feminine) {
@@ -64,31 +45,6 @@ class N {
   static bool coinFlip() {
     var result = (new Random()).nextInt(4) % 2 == 0;
     return result;
-  }
-
-  static bool isDarkTheme(BuildContext context) {
-    return MediaQuery.of(context).platformBrightness == Brightness.dark;
-  }
-
-  static TextTheme getAppBarTextTheme(BuildContext context) {
-    return isDarkTheme(context)
-        ? APP_BAR_TEXTTHEME_DARK
-        : APP_BAR_TEXTTHEME_LIGHT;
-  }
-
-  static IconThemeData getAppBarIconTheme(BuildContext context) {
-    return isDarkTheme(context)
-        ? APP_BAR_ICONTHEME_DARK
-        : APP_BAR_ICONTHEME_LIGHT;
-  }
-
-  static Color getAppBarColor() {
-    var brightness = MediaQueryData.fromWindow(WidgetsBinding.instance.window)
-        .platformBrightness;
-    bool darkModeOn = brightness == Brightness.dark;
-    return darkModeOn
-        ? Color.fromARGB(255, 48, 48, 48)
-        : Color.fromARGB(255, 250, 250, 250);
   }
 
   // ignore: non_constant_identifier_names

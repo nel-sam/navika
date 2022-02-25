@@ -8,6 +8,7 @@ import 'package:navika/widgets/main-menu/exercise-button.dart';
 import 'package:navika/widgets/main-menu/grammar-menu.dart';
 import 'package:navika/widgets/main-menu/verb-menu.dart';
 import 'package:navika/widgets/shared/ad-card.dart';
+import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
 class MainMenu extends StatelessWidget {
   @override
@@ -18,7 +19,7 @@ class MainMenu extends StatelessWidget {
           height: N.getScreenHeight() / 3.5,
           decoration: BoxDecoration(
             image: DecorationImage(
-              opacity: N.isDarkTheme(context) ? 0.7 : 1,
+              opacity: Nrs.isDarkTheme(context) ? 0.7 : 1,
               image: AssetImage('assets/banners/sea.jpg'),
               fit: BoxFit.cover,
             ),
@@ -73,7 +74,7 @@ class MainMenu extends StatelessWidget {
                 destination: CyrillicExercise(),
                 icon: Icons.abc,
                 label: AppLocalizations.of(context)!.cyrillic,
-                sbcLabel: SbcLabels.cyrlilic,
+                sbcLabel: SbcLabels.cyrillic,
                 imagePath: 'assets/banners/writing_sm.jpg',
               ),
             ],

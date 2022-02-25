@@ -6,10 +6,7 @@ const int DEBOUNCE_TIME = 600;
 
 const double FONT_SIZE = 16;
 const TABLE_CELL_WIDTH = 87.0;
-const TextStyle HEADER_TEXT_STYLE = TextStyle(
-    fontSize: FONT_SIZE, fontFamily: 'helvetica', color: ACCENT_COLOR);
 const double EXERCISE_FONT_STYLE = 15;
-const SCROLL_DURATION = Duration(milliseconds: 800);
 const EdgeInsets EXERCISE_LIST_PADDING = const EdgeInsets.only(bottom: 10);
 const double FOOTER_ICON_BOTTOM_PADDING = 0;
 const double APPBAR_ELEVATION = 0;
@@ -40,8 +37,6 @@ const APP_BAR_TEXTTHEME_DARK = TextTheme();
 const APP_BAR_TEXTTHEME_LIGHT = TextTheme(
   headline6: TextStyle(color: Colors.black),
 );
-const APP_BAR_ICONTHEME_DARK = IconThemeData();
-const APP_BAR_ICONTHEME_LIGHT = IconThemeData(color: ACCENT_COLOR);
 
 const RECOMMENDED_VIDEO_NOM = 'https://www.youtube.com/watch?v=Vj6nT2UTfH0';
 const RECOMMENDED_VIDEO_AKU = 'https://www.youtube.com/watch?v=MaDzMpCP34A';
@@ -55,7 +50,7 @@ const RECOMMENDED_VIDEO_VOK = '';
 const RECOMMENDED_VIDEO_CYRILLIC = '';
 
 class SbcLabels {
-  static String cyrlilic = 'Ћирилица';
+  static String cyrillic = 'Ћирилица';
   static String cases = 'Padež';
   static String verbs = 'Glagoli';
   static String justTables = 'Samo tablice';

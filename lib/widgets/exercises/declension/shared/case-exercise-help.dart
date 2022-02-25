@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/adjective.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/models/noun.dart';
 import 'package:navika/models/personal-pronoun.dart';
 import 'package:navika/utilities/navika-helpers.dart';
@@ -14,6 +14,7 @@ import 'package:navika/widgets/grammar/grammar-guide/child-widgets/navika-subhea
 import 'package:navika/widgets/shared/navika-text-multi.dart';
 import 'package:navika/widgets/shared/navika-text.dart';
 import 'package:navika/widgets/shared/translation-link.dart';
+import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
 class CaseExerciseHelp extends StatelessWidget {
   final PANCombo combos;
@@ -23,6 +24,56 @@ class CaseExerciseHelp extends StatelessWidget {
     Key? key,
     required this.combos,
   }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    double screenWidth = N.getScreenWidth();
+
+    return Scaffold(
+      appBar: Nrs.NrsAppBar(
+          title: N.getCaseLabel(combos.caseType), context: context),
+      body: Center(
+        child: Container(
+          width: screenWidth > 840 ? screenWidth / 2 : screenWidth,
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Column(
+                children: [
+                  getCorrectSentence(context, combos),
+                  if (combos.possPronoun != null)
+                    getAdjDeclensionTable(
+                      combos.possPronoun!,
+                      combos.caseType,
+                      combos.noun!.isAnimate,
+                    ),
+                  if (combos.adjective != null)
+                    getAdjDeclensionTable(
+                      combos.adjective!,
+                      combos.caseType,
+                      combos.noun!.isAnimate,
+                    ),
+                  if (combos.noun != null)
+                    getNounList(
+                      context,
+                      combos.noun!,
+                      combos.caseType,
+                      combos.isPlural,
+                    ),
+                  if (combos.personalPronoun != null)
+                    getPersProneclensionList(
+                      context,
+                      combos.personalPronoun!,
+                      combos.caseType,
+                    ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
 
   getAdjDeclensionTable(Adjective adj, Cases caseType, bool isAnimate) {
     final declensions = adj.getDeclensionObject(caseType, isAnimate);
@@ -59,6 +110,73 @@ class CaseExerciseHelp extends StatelessWidget {
               combos.gender == Genders.Neuter && combos.isPlural,
             ),
           ),
+        ],
+      ),
+    );
+  }
+
+  getCorrectSentence(BuildContext context, PANCombo combo) {
+    String sentence = getSentenceAsString(combo);
+
+    return Column(
+      children: [
+        NSubHeader(text: AppLocalizations.of(context)!.correctAnswer),
+        NTextMulti([
+          if (combo.sentenceStarter != '')
+            N.NTextSpan('${combo.sentenceStarter} '),
+          if (combo.possPronoun != null)
+            N.NTextSpan(
+              '${combo.possPronoun!.getDeclensions(combos.gender, combos.isPlural, combos.caseType, combos.noun!.isAnimate).join(joinChar)} ',
+              isBold: true,
+            ),
+          if (combo.adjective != null)
+            N.NTextSpan(
+              '${combo.adjective!.getDeclensions(combos.gender, combos.isPlural, combos.caseType, combos.noun!.isAnimate).join(joinChar)} ',
+              isBold: true,
+            ),
+          if (combo.noun != null)
+            N.NTextSpan(
+              '${combo.noun!.getDeclensions(combos.isPlural, combos.caseType).join(joinChar)}',
+              isBold: true,
+            ),
+          if (combo.personalPronoun != null)
+            N.NTextSpan(
+              '${combo.personalPronoun!.getDeclensions(combos.caseType).join(joinChar)}',
+              isBold: true,
+            ),
+          if (combo.sentenceEnder != '') N.NTextSpan(' ${combo.sentenceEnder}'),
+        ]),
+        TranslationLink(sentence: sentence),
+      ],
+    );
+  }
+
+  getDeclensionListItem(String label, String value, bool isBold) {
+    return Container(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            width: 120,
+            decoration: BoxDecoration(
+              border: Border(
+                  right: BorderSide(
+                width: 2,
+                color: Colors.grey,
+              )),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.only(right: 8.0),
+              child: NText(label, textAlign: TextAlign.right),
+            ),
+          ),
+          Container(
+            width: 120,
+            child: Padding(
+              padding: const EdgeInsets.only(left: 8.0),
+              child: NText(value, isBold: isBold),
+            ),
+          )
         ],
       ),
     );
@@ -162,37 +280,6 @@ class CaseExerciseHelp extends StatelessWidget {
     );
   }
 
-  getDeclensionListItem(String label, String value, bool isBold) {
-    return Container(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            width: 120,
-            decoration: BoxDecoration(
-              border: Border(
-                  right: BorderSide(
-                width: 2,
-                color: Colors.grey,
-              )),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.only(right: 8.0),
-              child: NText(label, textAlign: TextAlign.right),
-            ),
-          ),
-          Container(
-            width: 120,
-            child: Padding(
-              padding: const EdgeInsets.only(left: 8.0),
-              child: NText(value, isBold: isBold),
-            ),
-          )
-        ],
-      ),
-    );
-  }
-
   getPersProneclensionList(
       BuildContext context, PersonalPronoun pp, Cases caseType) {
     return Column(
@@ -218,13 +305,6 @@ class CaseExerciseHelp extends StatelessWidget {
     );
   }
 
-  DeclensionTableCell getTableCell(List<String> declensions, bool highlight) {
-    return DeclensionTableCell(
-      children: declensions.map((e) => N.NTextSpan('$e\n')).toList(),
-      highlightItem: highlight,
-    );
-  }
-
   String getSentenceAsString(PANCombo combo) {
     String sentence = '${combo.sentenceStarter} ';
 
@@ -238,94 +318,10 @@ class CaseExerciseHelp extends StatelessWidget {
     return sentence;
   }
 
-  getCorrectSentence(BuildContext context, PANCombo combo) {
-    String sentence = getSentenceAsString(combo);
-
-    return Column(
-      children: [
-        NSubHeader(text: AppLocalizations.of(context)!.correctAnswer),
-        NTextMulti([
-          if (combo.sentenceStarter != '')
-            N.NTextSpan('${combo.sentenceStarter} '),
-          if (combo.possPronoun != null)
-            N.NTextSpan(
-              '${combo.possPronoun!.getDeclensions(combos.gender, combos.isPlural, combos.caseType, combos.noun!.isAnimate).join(joinChar)} ',
-              isBold: true,
-            ),
-          if (combo.adjective != null)
-            N.NTextSpan(
-              '${combo.adjective!.getDeclensions(combos.gender, combos.isPlural, combos.caseType, combos.noun!.isAnimate).join(joinChar)} ',
-              isBold: true,
-            ),
-          if (combo.noun != null)
-            N.NTextSpan(
-              '${combo.noun!.getDeclensions(combos.isPlural, combos.caseType).join(joinChar)}',
-              isBold: true,
-            ),
-          if (combo.personalPronoun != null)
-            N.NTextSpan(
-              '${combo.personalPronoun!.getDeclensions(combos.caseType).join(joinChar)}',
-              isBold: true,
-            ),
-          if (combo.sentenceEnder != '') N.NTextSpan(' ${combo.sentenceEnder}'),
-        ]),
-        TranslationLink(sentence: sentence),
-      ],
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    double screenWidth = N.getScreenWidth();
-
-    return Scaffold(
-      appBar: AppBar(
-        leading: Builder(builder: (BuildContext context) => BackButton()),
-        elevation: APPBAR_ELEVATION,
-        backgroundColor: N.getAppBarColor(),
-        iconTheme: N.getAppBarIconTheme(context),
-        title: Text(N.getCaseLabel(combos.caseType), style: HEADER_TEXT_STYLE),
-      ),
-      body: Center(
-        child: Container(
-          width: screenWidth > 840 ? screenWidth / 2 : screenWidth,
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Column(
-                children: [
-                  getCorrectSentence(context, combos),
-                  if (combos.possPronoun != null)
-                    getAdjDeclensionTable(
-                      combos.possPronoun!,
-                      combos.caseType,
-                      combos.noun!.isAnimate,
-                    ),
-                  if (combos.adjective != null)
-                    getAdjDeclensionTable(
-                      combos.adjective!,
-                      combos.caseType,
-                      combos.noun!.isAnimate,
-                    ),
-                  if (combos.noun != null)
-                    getNounList(
-                      context,
-                      combos.noun!,
-                      combos.caseType,
-                      combos.isPlural,
-                    ),
-                  if (combos.personalPronoun != null)
-                    getPersProneclensionList(
-                      context,
-                      combos.personalPronoun!,
-                      combos.caseType,
-                    ),
-                ],
-              ),
-            ),
-          ),
-        ),
-      ),
+  DeclensionTableCell getTableCell(List<String> declensions, bool highlight) {
+    return DeclensionTableCell(
+      children: declensions.map((e) => N.NTextSpan('$e\n')).toList(),
+      highlightItem: highlight,
     );
   }
 }
