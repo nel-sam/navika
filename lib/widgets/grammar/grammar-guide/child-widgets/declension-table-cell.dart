@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
-import 'package:navika/widgets/shared/navika-text-multi.dart';
+import 'package:nrs_flutter_lib/widgets/n-text-multi.dart';
 
 class DeclensionTableCell extends StatelessWidget {
   final List<TextSpan> children;
@@ -15,21 +15,6 @@ class DeclensionTableCell extends StatelessWidget {
     this.isEqualItem = false,
     this.equalItemColor = EQUAL_ITEMS_BORDER_COLOR,
   }) : super(key: key);
-
-  getDecoration() {
-    if (highlightItem)
-      return BoxDecoration(
-        border: Border.all(color: ACCENT_COLOR),
-        borderRadius: BorderRadius.circular(5),
-      );
-    else if (isEqualItem)
-      return BoxDecoration(
-        border: Border.all(color: EQUAL_ITEMS_BORDER_COLOR),
-        borderRadius: BorderRadius.circular(5),
-      );
-    else
-      return null;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -69,5 +54,20 @@ class DeclensionTableCell extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  getDecoration() {
+    if (highlightItem)
+      return BoxDecoration(
+        border: Border.all(color: ACCENT_COLOR),
+        borderRadius: BorderRadius.circular(5),
+      );
+    else if (isEqualItem)
+      return BoxDecoration(
+        border: Border.all(color: EQUAL_ITEMS_BORDER_COLOR),
+        borderRadius: BorderRadius.circular(5),
+      );
+    else
+      return null;
   }
 }

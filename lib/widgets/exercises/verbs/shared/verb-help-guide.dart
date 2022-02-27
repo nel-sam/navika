@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/verb.dart';
-import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/navika-subheader.dart';
 import 'package:navika/widgets/shared/icon-text-pair.dart';
-import 'package:navika/widgets/shared/navika-text.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
+import 'package:nrs_flutter_lib/widgets/n-text-span.dart';
 
 class VerbHelpGuide extends StatelessWidget {
   static const double sidePadding = 38;
@@ -68,12 +67,12 @@ class VerbHelpGuide extends StatelessWidget {
         Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            NText('Ja ću ${verb.infinitive}'),
-            NText('Ti ćeš ${verb.infinitive}'),
-            NText('On/Ona/Ono će ${verb.infinitive}'),
-            NText('Mi ćemo ${verb.infinitive}'),
-            NText('Vi ćete ${verb.infinitive}'),
-            NText('Oni/One/Ona će ${verb.infinitive}'),
+            NTextSpan('Ja ću ${verb.infinitive}'),
+            NTextSpan('Ti ćeš ${verb.infinitive}'),
+            NTextSpan('On/Ona/Ono će ${verb.infinitive}'),
+            NTextSpan('Mi ćemo ${verb.infinitive}'),
+            NTextSpan('Vi ćete ${verb.infinitive}'),
+            NTextSpan('Oni/One/Ona će ${verb.infinitive}'),
           ],
         ),
       ],
@@ -81,7 +80,7 @@ class VerbHelpGuide extends StatelessWidget {
   }
 
   Widget getPastTenseChart(BuildContext context, Verb verb) {
-    double iconPairContWidth = (N.getScreenWidth() / 2) - 40;
+    double iconPairContWidth = (Nrs.getScreenWidth() / 2) - 40;
 
     return Column(
       children: [
@@ -103,12 +102,12 @@ class VerbHelpGuide extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  NText('Ja sam ${verb.pastPerfect.singularMasc}'),
-                  NText('Ti si ${verb.pastPerfect.singularMasc}'),
-                  NText('On je ${verb.pastPerfect.singularMasc}'),
-                  NText('Mi smo ${verb.pastPerfect.pluralMasc}'),
-                  NText('Vi ste ${verb.pastPerfect.pluralMasc}'),
-                  NText('Oni ste ${verb.pastPerfect.pluralMasc}'),
+                  NTextSpan('Ja sam ${verb.pastPerfect.singularMasc}'),
+                  NTextSpan('Ti si ${verb.pastPerfect.singularMasc}'),
+                  NTextSpan('On je ${verb.pastPerfect.singularMasc}'),
+                  NTextSpan('Mi smo ${verb.pastPerfect.pluralMasc}'),
+                  NTextSpan('Vi ste ${verb.pastPerfect.pluralMasc}'),
+                  NTextSpan('Oni ste ${verb.pastPerfect.pluralMasc}'),
                 ],
               ),
             ),
@@ -133,12 +132,12 @@ class VerbHelpGuide extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    NText('Ja sam ${verb.pastPerfect.singularFem}'),
-                    NText('Ti si ${verb.pastPerfect.singularFem}'),
-                    NText('Ona je ${verb.pastPerfect.singularFem}'),
-                    NText('Mi smo ${verb.pastPerfect.pluralFem}'),
-                    NText('Vi ste ${verb.pastPerfect.pluralFem}'),
-                    NText('One su ${verb.pastPerfect.pluralFem}'),
+                    NTextSpan('Ja sam ${verb.pastPerfect.singularFem}'),
+                    NTextSpan('Ti si ${verb.pastPerfect.singularFem}'),
+                    NTextSpan('Ona je ${verb.pastPerfect.singularFem}'),
+                    NTextSpan('Mi smo ${verb.pastPerfect.pluralFem}'),
+                    NTextSpan('Vi ste ${verb.pastPerfect.pluralFem}'),
+                    NTextSpan('One su ${verb.pastPerfect.pluralFem}'),
                   ],
                 ),
               ),
@@ -164,8 +163,8 @@ class VerbHelpGuide extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    NText('Ono je ${verb.pastPerfect.ono}'),
-                    NText('Ona su ${verb.pastPerfect.onaPl}'),
+                    NTextSpan('Ono je ${verb.pastPerfect.ono}'),
+                    NTextSpan('Ona su ${verb.pastPerfect.onaPl}'),
                   ],
                 ),
               ),
@@ -183,12 +182,12 @@ class VerbHelpGuide extends StatelessWidget {
         Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            NText('Ja ${verb.present.ja}'),
-            NText('Ti ${verb.present.ti}'),
-            NText('On/Ona/Ono ${verb.present.on}'),
-            NText('Mi ${verb.present.mi}'),
-            NText('Vi ${verb.present.vi}'),
-            NText('Oni/One/Ona ${verb.present.oni}'),
+            NTextSpan('Ja ${verb.present.ja}'),
+            NTextSpan('Ti ${verb.present.ti}'),
+            NTextSpan('On/Ona/Ono ${verb.present.on}'),
+            NTextSpan('Mi ${verb.present.mi}'),
+            NTextSpan('Vi ${verb.present.vi}'),
+            NTextSpan('Oni/One/Ona ${verb.present.oni}'),
           ],
         ),
       ],

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:navika/constants.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:navika/utilities/navika-helpers.dart';
+import 'package:navika/constants.dart';
 import 'package:navika/widgets/exercises/cyrillic/cyrillic-exercise.dart';
 import 'package:navika/widgets/main-menu/declension-menu.dart';
 import 'package:navika/widgets/main-menu/exercise-button.dart';
@@ -16,7 +15,7 @@ class MainMenu extends StatelessWidget {
     return Column(
       children: [
         Container(
-          height: N.getScreenHeight() / 3.5,
+          height: Nrs.getScreenHeight() / 3.5,
           decoration: BoxDecoration(
             image: DecorationImage(
               opacity: Nrs.isDarkTheme(context) ? 0.7 : 1,

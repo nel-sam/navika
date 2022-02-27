@@ -7,8 +7,47 @@ import 'package:navika/models/personal-pronoun.dart';
 import 'package:navika/state/cases/case-question-state.dart';
 import 'package:navika/state/content-generators/pan-generator.dart';
 import 'package:navika/utilities/navika-helpers.dart';
+import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
 class GenitivGenerators {
+  static CaseQuestionState createExercise(List toAvoid) {
+    PANCombo? c;
+
+    while (c == null || N.containsCaseQuestionState(toAvoid, c)) {
+      c = PanGenerator.getPANCombos(
+        caseType: Cases.Gen,
+        bank: wordBank,
+        getPersonalPronounSentenceStaticParts:
+            getPersonalPronounSentenceStaticParts,
+        getStaticSentenceParts: getStaticSentenceParts,
+      );
+    }
+
+    return CaseQuestionState(combos: c);
+  }
+
+  static StaticSentenceParts getPersonalPronounSentenceStaticParts(
+      PersonalPronoun personalPronoun, bool isShortForm) {
+    String start = '';
+    String end = '';
+    final actualValue = personalPronoun.nominativ.forms.first;
+
+    if (Nrs.coinFlip() && Nrs.coinFlip())
+      start = 'Kraj';
+    else if (actualValue != 'on') {
+      start = Nrs.coinFlip() ? 'Nisam spavala zbog' : 'On pleše';
+    } else if (actualValue != 'oni') {
+      start = Nrs.coinFlip() ? 'Oni su išli bez' : 'Ne možeš spavati zbog';
+    } else if (actualValue != 'ja') {
+      start = Nrs.coinFlip() ? 'Ne mogu spavati zbog' : 'Stojim iza';
+    } else {
+      start = 'Stanite iza';
+      end = ', molim vas';
+    }
+
+    return StaticSentenceParts(start: start, end: end);
+  }
+
   static StaticSentenceParts getStaticSentenceParts(
       Noun noun, bool isPlural, Adjective? pronoun, Adjective? adjective) {
     String start = '';
@@ -30,77 +69,39 @@ class GenitivGenerators {
     } else if (noun.tags.contains(Tags.Location)) {
       start = pronounStr != 'mi' ? 'Idemo od kuće do' : 'Idem od kuće do';
     } else if (noun.tags.contains(Tags.Season)) {
-      if (N.coinFlip())
-        start = N.coinFlip() ? 'Prije' : 'Preko';
+      if (Nrs.coinFlip())
+        start = Nrs.coinFlip() ? 'Prije' : 'Preko';
       else
         start = 'U svemiru nema';
     } else if (noun.tags.contains(Tags.Portable)) {
-      start = N.coinFlip() ? 'Pas je sada ispred' : 'Čekaj iza';
+      start = Nrs.coinFlip() ? 'Pas je sada ispred' : 'Čekaj iza';
       end = '';
     } else if (noun.tags.contains(Tags.WorkPlace)) {
-      start = N.coinFlip() ? 'Sad čekamo iza' : 'Bio je iza';
+      start = Nrs.coinFlip() ? 'Sad čekamo iza' : 'Bio je iza';
     } else if (noun.tags.contains(Tags.FlatSurface)) {
       start = 'Vrh';
       end = 'je prljav';
     } else if (noun.tags.contains(Tags.BodyPart) && !isPlural) {
       start = 'Boja';
       end = 'je lijepa';
-    } else if (noun.tags.contains(Tags.Human) && N.coinFlip()) {
+    } else if (noun.tags.contains(Tags.Human) && Nrs.coinFlip()) {
       start = 'Ja sam kod';
     } else if (noun.tags.contains(Tags.Human) ||
         noun.tags.contains(Tags.Portable)) {
-      if (pronounStr != 'moj') if (N.coinFlip())
-        start = N.coinFlip() ? 'Otkad sam bez' : 'Ići ću bez';
+      if (pronounStr != 'moj') if (Nrs.coinFlip())
+        start = Nrs.coinFlip() ? 'Otkad sam bez' : 'Ići ću bez';
       else
         start = 'Kraj';
       else
-        start = N.coinFlip() ? 'Kraj' : 'Ići ćeš bez';
+        start = Nrs.coinFlip() ? 'Kraj' : 'Ići ćeš bez';
     } else if (pronoun == null) {
       start = 'Vidim puno';
-    } else if (N.coinFlip()) {
+    } else if (Nrs.coinFlip()) {
       start = 'Volim boja';
     } else {
       start = 'Nema';
     }
 
     return StaticSentenceParts(start: start, end: end);
-  }
-
-  static StaticSentenceParts getPersonalPronounSentenceStaticParts(
-      PersonalPronoun personalPronoun, bool isShortForm) {
-    String start = '';
-    String end = '';
-    final actualValue = personalPronoun.nominativ.forms.first;
-
-    if (N.coinFlip() && N.coinFlip())
-      start = 'Kraj';
-    else if (actualValue != 'on') {
-      start = N.coinFlip() ? 'Nisam spavala zbog' : 'On pleše';
-    } else if (actualValue != 'oni') {
-      start = N.coinFlip() ? 'Oni su išli bez' : 'Ne možeš spavati zbog';
-    } else if (actualValue != 'ja') {
-      start = N.coinFlip() ? 'Ne mogu spavati zbog' : 'Stojim iza';
-    } else {
-      start = 'Stanite iza';
-      end = ', molim vas';
-    }
-
-    return StaticSentenceParts(start: start, end: end);
-  }
-
-  static CaseQuestionState createExercise(List toAvoid) {
-    PANCombo? c;
-
-    while (c == null || N.containsCaseQuestionState(toAvoid, c)) {
-      c = PanGenerator.getPANCombos(
-        caseType: Cases.Gen,
-        bank: wordBank,
-        getPersonalPronounSentenceStaticParts:
-            getPersonalPronounSentenceStaticParts,
-        getStaticSentenceParts: getStaticSentenceParts,
-      );
-    }
-
-    return CaseQuestionState(combos: c);
   }
 }

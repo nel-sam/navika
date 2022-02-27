@@ -1,17 +1,13 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/extensions.dart';
 import 'package:navika/models/enums.dart';
-import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/shared/answer-status-icon.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:navika/widgets/shared/navika-text.dart';
-
-class StateObject {
-  String userInput = '';
-}
+import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
+import 'package:nrs_flutter_lib/widgets/n-text-span.dart';
 
 class FreeFormEntry extends StatefulWidget {
   final bool isHalfWidth;
@@ -34,45 +30,13 @@ class FreeFormEntry extends StatefulWidget {
   State<FreeFormEntry> createState() => _FreeFormEntryState();
 }
 
+class StateObject {
+  String userInput = '';
+}
+
 class _FreeFormEntryState extends State<FreeFormEntry> {
   final _controller = TextEditingController();
   Timer _debounce = Timer(const Duration(milliseconds: 0), () {});
-
-  @override
-  void initState() {
-    widget.state.userInput = widget.initialValue;
-    _controller.text = widget.state.userInput;
-    super.initState();
-  }
-
-  @override
-  void didUpdateWidget(FreeFormEntry oldWidget) {
-    _controller.text = widget.initialValue.length > 0
-        ? widget.initialValue
-        : widget.state.userInput;
-    _controller.selection = TextSelection.fromPosition(
-        TextPosition(offset: _controller.text.length));
-    widget.state.userInput = widget.initialValue;
-    super.didUpdateWidget(oldWidget);
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  updateState() {
-    if (_debounce.isActive) {
-      _debounce.cancel();
-    }
-
-    _debounce = Timer(const Duration(milliseconds: DEBOUNCE_TIME), () {
-      if (widget.state.userInput != widget.initialValue) {
-        widget.onChanged(widget.state.userInput);
-      }
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -89,8 +53,8 @@ class _FreeFormEntryState extends State<FreeFormEntry> {
             children: [
               Container(
                 width: widget.isHalfWidth
-                    ? N.getScreenWidth(halfWidth: true, reduction: 90)
-                    : N.getScreenWidth(reduction: 100),
+                    ? Nrs.getScreenWidth(halfWidth: true, reduction: 90)
+                    : Nrs.getScreenWidth(reduction: 100),
                 child: TextField(
                   key: widget.key,
                   controller: _controller,
@@ -121,33 +85,35 @@ class _FreeFormEntryState extends State<FreeFormEntry> {
           if (multipleCorrect)
             Row(children: [
               status == CorrectStatus.correct
-                  ? NText(
+                  ? NTextSpan(
                       '${AppLocalizations.of(context)!.alsoCorrect}: ${widget.correctValues.join(',')}',
-                      fontSize: FONT_SIZE - 3)
-                  : NText(
+                      textStyle: Nrs.getTextStyle(
+                          context: context, fontSize: FONT_SIZE - 3))
+                  : NTextSpan(
                       '${AppLocalizations.of(context)!.multipleCorrect}',
-                      fontSize: FONT_SIZE - 3,
-                    )
+                      textStyle: Nrs.getTextStyle(
+                          context: context, fontSize: FONT_SIZE - 3))
             ]),
         ],
       ),
     );
   }
 
-  CorrectStatus getCorrectStatus(String userInput) {
-    if (userInput.length == 0) {
-      return CorrectStatus.unstarted;
-    }
+  @override
+  void didUpdateWidget(FreeFormEntry oldWidget) {
+    _controller.text = widget.initialValue.length > 0
+        ? widget.initialValue
+        : widget.state.userInput;
+    _controller.selection = TextSelection.fromPosition(
+        TextPosition(offset: _controller.text.length));
+    widget.state.userInput = widget.initialValue;
+    super.didUpdateWidget(oldWidget);
+  }
 
-    if (widget.correctValues.containsCaseInsensitive(userInput)) {
-      return CorrectStatus.correct;
-    }
-
-    if (widget.correctValues.containsSubCaseInsensitive(userInput)) {
-      return CorrectStatus.inprogressCorrect;
-    }
-
-    return CorrectStatus.wrong;
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   OutlineInputBorder getBorder(CorrectStatus status) {
@@ -173,5 +139,40 @@ class _FreeFormEntryState extends State<FreeFormEntry> {
         color: color,
       ),
     );
+  }
+
+  CorrectStatus getCorrectStatus(String userInput) {
+    if (userInput.length == 0) {
+      return CorrectStatus.unstarted;
+    }
+
+    if (widget.correctValues.containsCaseInsensitive(userInput)) {
+      return CorrectStatus.correct;
+    }
+
+    if (widget.correctValues.containsSubCaseInsensitive(userInput)) {
+      return CorrectStatus.inprogressCorrect;
+    }
+
+    return CorrectStatus.wrong;
+  }
+
+  @override
+  void initState() {
+    widget.state.userInput = widget.initialValue;
+    _controller.text = widget.state.userInput;
+    super.initState();
+  }
+
+  updateState() {
+    if (_debounce.isActive) {
+      _debounce.cancel();
+    }
+
+    _debounce = Timer(const Duration(milliseconds: DEBOUNCE_TIME), () {
+      if (widget.state.userInput != widget.initialValue) {
+        widget.onChanged(widget.state.userInput);
+      }
+    });
   }
 }

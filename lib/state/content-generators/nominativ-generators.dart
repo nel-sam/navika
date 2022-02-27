@@ -7,8 +7,43 @@ import 'package:navika/models/personal-pronoun.dart';
 import 'package:navika/state/cases/case-question-state.dart';
 import 'package:navika/state/content-generators/pan-generator.dart';
 import 'package:navika/utilities/navika-helpers.dart';
+import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
 class NominativGenerators {
+  static CaseQuestionState createExercise(List toAvoid) {
+    PANCombo? c;
+
+    while (c == null || N.containsCaseQuestionState(toAvoid, c)) {
+      c = PanGenerator.getPANCombos(
+        caseType: Cases.Nom,
+        bank: wordBank.excludePronoun('svoj'),
+        getPersonalPronounSentenceStaticParts:
+            getPersonalPronounSentenceStaticParts,
+        getStaticSentenceParts: getStaticSentenceParts,
+      );
+    }
+
+    return CaseQuestionState(combos: c);
+  }
+
+  static StaticSentenceParts getPersonalPronounSentenceStaticParts(
+      PersonalPronoun personalPronoun, bool isShortForm) {
+    String start = '';
+    String end = '';
+    final verb = N.getBitiConjugation(personalPronoun.nominativ.forms.first);
+
+    if (Nrs.coinFlip()) {
+      end = verb;
+    } else {
+      var ocupation = personalPronoun.gender == Genders.Feminine
+          ? (personalPronoun.isPlural ? 'učiteljice' : 'učiteljica')
+          : (personalPronoun.isPlural ? 'učitelji' : 'učitelj');
+      end = '$verb $ocupation';
+    }
+
+    return StaticSentenceParts(start: start, end: end);
+  }
+
   static StaticSentenceParts getStaticSentenceParts(
       Noun noun, bool isPlural, Adjective? pronoun, Adjective? adjective) {
     String start = '';
@@ -31,39 +66,5 @@ class NominativGenerators {
     }
 
     return StaticSentenceParts(start: start, end: end);
-  }
-
-  static StaticSentenceParts getPersonalPronounSentenceStaticParts(
-      PersonalPronoun personalPronoun, bool isShortForm) {
-    String start = '';
-    String end = '';
-    final verb = N.getBitiConjugation(personalPronoun.nominativ.forms.first);
-
-    if (N.coinFlip()) {
-      end = verb;
-    } else {
-      var ocupation = personalPronoun.gender == Genders.Feminine
-          ? (personalPronoun.isPlural ? 'učiteljice' : 'učiteljica')
-          : (personalPronoun.isPlural ? 'učitelji' : 'učitelj');
-      end = '$verb $ocupation';
-    }
-
-    return StaticSentenceParts(start: start, end: end);
-  }
-
-  static CaseQuestionState createExercise(List toAvoid) {
-    PANCombo? c;
-
-    while (c == null || N.containsCaseQuestionState(toAvoid, c)) {
-      c = PanGenerator.getPANCombos(
-        caseType: Cases.Nom,
-        bank: wordBank.excludePronoun('svoj'),
-        getPersonalPronounSentenceStaticParts:
-            getPersonalPronounSentenceStaticParts,
-        getStaticSentenceParts: getStaticSentenceParts,
-      );
-    }
-
-    return CaseQuestionState(combos: c);
   }
 }

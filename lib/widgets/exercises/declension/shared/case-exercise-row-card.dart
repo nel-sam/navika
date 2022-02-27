@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/utilities/navika-helpers.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/widgets/exercises/declension/shared/case-exercise-help.dart';
 import 'package:navika/widgets/shared/icon-text-pair.dart';
 import 'package:navika/widgets/shared/shadow-box.dart';
+import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
 class CaseExerciseRowCard extends StatelessWidget {
   final PANCombo combos;
@@ -30,7 +31,7 @@ class CaseExerciseRowCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = N.getScreenWidth();
+    final screenWidth = Nrs.getScreenWidth();
     final extraInfo = this.getExtraInfo!(context);
 
     return Container(
@@ -66,6 +67,12 @@ class CaseExerciseRowCard extends StatelessWidget {
 }
 
 class CaseExerciseRowCardHeader extends StatelessWidget {
+  final PANCombo combos;
+
+  final bool isAllCorrect;
+  final bool isPlural;
+  final Genders gender;
+  final bool isAnimate;
   const CaseExerciseRowCardHeader({
     Key? key,
     required this.isAllCorrect,
@@ -74,12 +81,6 @@ class CaseExerciseRowCardHeader extends StatelessWidget {
     required this.isAnimate,
     required this.combos,
   }) : super(key: key);
-
-  final PANCombo combos;
-  final bool isAllCorrect;
-  final bool isPlural;
-  final Genders gender;
-  final bool isAnimate;
 
   @override
   Widget build(BuildContext context) {
@@ -129,14 +130,14 @@ class CaseExerciseRowCardHeader extends StatelessWidget {
 }
 
 class ExtraInfo extends StatelessWidget {
+  final double screenWidth;
+
+  final String extraInfo;
   const ExtraInfo({
     Key? key,
     required this.screenWidth,
     required this.extraInfo,
   }) : super(key: key);
-
-  final double screenWidth;
-  final String extraInfo;
 
   @override
   Widget build(BuildContext context) {

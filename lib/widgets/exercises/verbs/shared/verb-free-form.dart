@@ -5,6 +5,7 @@ import 'package:navika/models/verb.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/shared/free-form-entry.dart';
 import 'package:navika/widgets/shared/icon-text-pair.dart';
+import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
 class VerbFreeForm extends StatelessWidget {
   final String startText;
@@ -28,7 +29,7 @@ class VerbFreeForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = N.getScreenWidth();
+    double screenWidth = Nrs.getScreenWidth();
 
     return Container(
       width: (screenWidth / 2) - 14,

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/verb.dart';
-import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/exercises/verbs/shared/verb-help-guide.dart';
 import 'package:navika/widgets/shared/icon-text-pair.dart';
-import 'package:navika/widgets/shared/navika-text-multi.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
+import 'package:nrs_flutter_lib/widgets/n-text-span.dart';
 
 class VerbHeader extends StatelessWidget {
   final Verb verb;
@@ -17,18 +17,6 @@ class VerbHeader extends StatelessWidget {
     required this.verb,
     required this.isAllCorrect,
   }) : super(key: key);
-
-  String getPerfectiveness(
-      BuildContext context, VerbPerfectiveTypes verbPerfectiveType) {
-    switch (verbPerfectiveType) {
-      case VerbPerfectiveTypes.Perfective:
-        return AppLocalizations.of(context)!.perfective;
-      case VerbPerfectiveTypes.Imperfective:
-        return AppLocalizations.of(context)!.imperfective;
-      case VerbPerfectiveTypes.Unspecified:
-        return '';
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,13 +40,13 @@ class VerbHeader extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        NTextMulti([
-                          N.NTextSpan(verb.infinitive.toUpperCase(),
-                              isBold: true, fontSize: 16)
-                        ]),
-                        Text(
+                        NTextSpan(verb.infinitive.toUpperCase(),
+                            textStyle: Nrs.getTextStyle(
+                                context: context, isBold: true, fontSize: 16)),
+                        NTextSpan(
                           perfectiveness,
-                          style: TextStyle(fontStyle: FontStyle.italic),
+                          textStyle: Nrs.getTextStyle(
+                              context: context, isItalic: true, fontSize: 16),
                         ),
                       ],
                     ),
@@ -105,5 +93,17 @@ class VerbHeader extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  String getPerfectiveness(
+      BuildContext context, VerbPerfectiveTypes verbPerfectiveType) {
+    switch (verbPerfectiveType) {
+      case VerbPerfectiveTypes.Perfective:
+        return AppLocalizations.of(context)!.perfective;
+      case VerbPerfectiveTypes.Imperfective:
+        return AppLocalizations.of(context)!.imperfective;
+      case VerbPerfectiveTypes.Unspecified:
+        return '';
+    }
   }
 }

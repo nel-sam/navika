@@ -1,28 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:navika/constants.dart';
-import 'package:navika/models/enums.dart';
-import 'package:navika/utilities/navika-helpers.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:navika/widgets/grammar/grammar-guide/child-widgets/youtube-link.dart';
+import 'package:navika/models/enums.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/navika-subheader.dart';
-import 'package:navika/widgets/grammar/grammar-guide/declension/declension-tables/akuzativ-table.dart';
-import 'package:navika/widgets/shared/navika-text-multi.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/pronoun-line.dart';
+import 'package:navika/widgets/grammar/grammar-guide/declension/declension-tables/akuzativ-table.dart';
+import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
+import 'package:nrs_flutter_lib/widgets/n-text-multi.dart';
+import 'package:nrs_flutter_lib/widgets/n-text-span.dart';
 
-class AkuzativGrammarGuideContent extends StatelessWidget {
-  const AkuzativGrammarGuideContent({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        getDescription(context),
-        getExampleSentences(context),
-        AkuzativDeclensionTable(),
-        getPossessivePronounSection(context),
-      ],
-    );
-  }
+Widget getExampleSentences(BuildContext context) {
+  return Column(
+    children: [
+      NSubHeader(text: AppLocalizations.of(context)!.exampleSentences),
+      NTextMulti([
+        TextSpan(text: 'Volim '),
+        TextSpan(
+            text: 'svog psa',
+            style: Nrs.getTextStyle(context: context, isBold: true)),
+      ]),
+      NTextMulti([
+        TextSpan(text: 'Vidiš li '),
+        TextSpan(
+            text: 'veliku kuću',
+            style: Nrs.getTextStyle(context: context, isBold: true)),
+        TextSpan(text: '?'),
+      ]),
+      NTextMulti([
+        TextSpan(text: 'Popijmo '),
+        TextSpan(
+            text: 'toplo mlijeko ',
+            style: Nrs.getTextStyle(context: context, isBold: true)),
+      ]),
+    ],
+  );
 }
 
 Widget getPossessivePronounSection(BuildContext context) {
@@ -37,89 +47,98 @@ Widget getPossessivePronounSection(BuildContext context) {
       PronounLine(
           pronoun: PronounEnum.I,
           text: NTextMulti([
-            N.NTextSpan('Čuješ li '),
-            N.NTextSpan('me?\n', isBold: true),
-            N.NTextSpan('Čuješ li '),
-            N.NTextSpan('mene?', isBold: true),
+            TextSpan(text: 'Čuješ li '),
+            TextSpan(
+                text: 'me?\n',
+                style: Nrs.getTextStyle(context: context, isBold: true)),
+            TextSpan(text: 'Čuješ li '),
+            TextSpan(
+                text: 'mene?',
+                style: Nrs.getTextStyle(context: context, isBold: true)),
           ])),
       PronounLine(
           pronoun: PronounEnum.You,
           text: NTextMulti([
-            N.NTextSpan('Volim '),
-            N.NTextSpan('te\n', isBold: true),
-            N.NTextSpan('Ja volim '),
-            N.NTextSpan('tebe', isBold: true),
+            TextSpan(text: 'Volim '),
+            TextSpan(
+                text: 'te\n',
+                style: Nrs.getTextStyle(context: context, isBold: true)),
+            TextSpan(text: 'Ja volim '),
+            TextSpan(
+                text: 'tebe',
+                style: Nrs.getTextStyle(context: context, isBold: true)),
           ])),
       PronounLine(
           pronoun: PronounEnum.He,
           text: NTextMulti([
-            N.NTextSpan('Ona '),
-            N.NTextSpan('ga ', isBold: true),
-            N.NTextSpan('voli\n'),
-            N.NTextSpan('Ona voli '),
-            N.NTextSpan('njega', isBold: true),
+            TextSpan(text: 'Ona '),
+            TextSpan(
+                text: 'ga ',
+                style: Nrs.getTextStyle(context: context, isBold: true)),
+            TextSpan(text: 'voli\n'),
+            TextSpan(text: 'Ona voli '),
+            TextSpan(
+                text: 'njega',
+                style: Nrs.getTextStyle(context: context, isBold: true)),
           ])),
       PronounLine(
           pronoun: PronounEnum.She,
           text: NTextMulti([
-            N.NTextSpan('Ja '),
-            N.NTextSpan('ju ', isBold: true),
-            N.NTextSpan('volim\n'),
-            N.NTextSpan('Ja volim '),
-            N.NTextSpan('nju', isBold: true),
+            TextSpan(text: 'Ja '),
+            TextSpan(
+                text: 'ju ',
+                style: Nrs.getTextStyle(context: context, isBold: true)),
+            TextSpan(text: 'volim\n'),
+            TextSpan(text: 'Ja volim '),
+            TextSpan(
+                text: 'nju',
+                style: Nrs.getTextStyle(context: context, isBold: true)),
           ])),
       PronounLine(
           pronoun: PronounEnum.We,
           text: NTextMulti([
-            N.NTextSpan('Oni znaju '),
-            N.NTextSpan('nas', isBold: true),
+            TextSpan(text: 'Oni znaju '),
+            TextSpan(
+                text: 'nas',
+                style: Nrs.getTextStyle(context: context, isBold: true)),
           ])),
       PronounLine(
           pronoun: PronounEnum.You_Plural,
           text: NTextMulti([
-            N.NTextSpan('Mi znamo '),
-            N.NTextSpan('vas', isBold: true),
+            TextSpan(text: 'Mi znamo '),
+            TextSpan(
+                text: 'vas',
+                style: Nrs.getTextStyle(context: context, isBold: true)),
           ])),
       PronounLine(
           pronoun: PronounEnum.They_Ungendered,
           text: NTextMulti([
-            N.NTextSpan('Vi ne znate '),
-            N.NTextSpan('njih\n', isBold: true),
-            N.NTextSpan('Vi '),
-            N.NTextSpan('ih ', isBold: true),
-            N.NTextSpan('ne znate'),
+            TextSpan(text: 'Vi ne znate '),
+            TextSpan(
+                text: 'njih\n',
+                style: Nrs.getTextStyle(context: context, isBold: true)),
+            TextSpan(text: 'Vi '),
+            TextSpan(
+                text: 'ih ',
+                style: Nrs.getTextStyle(context: context, isBold: true)),
+            TextSpan(text: 'ne znate'),
           ])),
     ],
   );
 }
 
-Widget getDescription(BuildContext context) {
-  return Column(
-    children: [
-      NTextMulti(
-          [N.NTextSpan(AppLocalizations.of(context)!.akuzativDescription)]),
-      YouTubeLink(context, RECOMMENDED_VIDEO_AKU)
-    ],
-  );
-}
+class AkuzativGrammarGuideContent extends StatelessWidget {
+  const AkuzativGrammarGuideContent({Key? key}) : super(key: key);
 
-Widget getExampleSentences(BuildContext context) {
-  return Column(
-    children: [
-      NSubHeader(text: AppLocalizations.of(context)!.exampleSentences),
-      NTextMulti([
-        N.NTextSpan('Volim '),
-        N.NTextSpan('svog psa', isBold: true),
-      ]),
-      NTextMulti([
-        N.NTextSpan('Vidiš li '),
-        N.NTextSpan('veliku kuću', isBold: true),
-        N.NTextSpan('?'),
-      ]),
-      NTextMulti([
-        N.NTextSpan('Popijmo '),
-        N.NTextSpan('toplo mlijeko ', isBold: true),
-      ]),
-    ],
-  );
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        NTextSpan(AppLocalizations.of(context)!.akuzativDescription),
+        getExampleSentences(context),
+        AkuzativDeclensionTable(),
+        getPossessivePronounSection(context),
+      ],
+    );
+  }
 }

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/utilities/navika-helpers.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/section-header.dart';
 import 'package:navika/widgets/grammar/grammar-guide/declension/akuzativ-content.dart';
 import 'package:navika/widgets/grammar/grammar-guide/declension/dativ-content.dart';
@@ -13,8 +13,6 @@ import 'package:navika/widgets/grammar/grammar-guide/declension/nominativ-conten
 import 'package:navika/widgets/shared/footer-button.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
-const double CONTENT_HEIGHT = 1200.0;
-
 const CasesInOrder = [
   Cases.Nom,
   Cases.Aku,
@@ -24,6 +22,8 @@ const CasesInOrder = [
   Cases.Gen,
   // Cases.Vokativ,
 ];
+
+const double CONTENT_HEIGHT = 1200.0;
 
 class DeclensionGuide extends StatefulWidget {
   final Cases startingCase;
@@ -42,73 +42,9 @@ class _DeclensionGuideState extends State<DeclensionGuide> {
   late bool isAtTop = false;
   late bool isAtBottom = false;
 
-  static scrollTo(double point, controller) {
-    controller.animateTo(point,
-        curve: Curves.linearToEaseOut, duration: Duration(milliseconds: 800));
-  }
-
-  @override
-  void initState() {
-    controller = ScrollController(
-        initialScrollOffset: getScrollPoint(widget.startingCase));
-    controller.addListener(scrollListener);
-    super.initState();
-  }
-
-  scrollListener() => setState(() {
-        isAtTop = getIsAtTop();
-        isAtBottom = getIsAtBottom();
-      });
-
-  bool getIsAtTop() => controller.position.pixels <= 10;
-
-  bool getIsAtBottom() =>
-      controller.position.pixels >= CONTENT_HEIGHT * (CasesInOrder.length - 1);
-
-  double getScrollPoint(Cases caseType) =>
-      CasesInOrder.indexOf(caseType) * CONTENT_HEIGHT;
-
-  moveToPrev() => setState(() {
-        if (isAtTop) return;
-        scrollPrevOrNext(toNext: false);
-      });
-
-  moveToNext() => setState(() {
-        if (isAtBottom) return;
-        scrollPrevOrNext(toNext: true);
-      });
-
-  scrollPrevOrNext({required bool toNext}) {
-    double currentPoint = controller.position.pixels;
-    bool isAtHeader = (currentPoint % CONTENT_HEIGHT) == 0;
-
-    if (isAtHeader && toNext) {
-      scrollTo(currentPoint + CONTENT_HEIGHT, controller);
-    } else if (isAtHeader) {
-      scrollTo(currentPoint - CONTENT_HEIGHT, controller);
-    } else {
-      final multFactor = toNext
-          ? (currentPoint / CONTENT_HEIGHT).ceil()
-          : (currentPoint / CONTENT_HEIGHT).floor();
-
-      double scrollPoint = multFactor * CONTENT_HEIGHT;
-      scrollTo(scrollPoint, controller);
-    }
-  }
-
-  contentSection(Widget header, Widget content) => Container(
-        height: CONTENT_HEIGHT,
-        child: Column(
-          children: [
-            header,
-            content,
-          ],
-        ),
-      );
-
   @override
   Widget build(BuildContext context) {
-    double screenWidth = N.getScreenWidth();
+    double screenWidth = Nrs.getScreenWidth();
 
     return Scaffold(
       appBar: Nrs.NrsAppBar(
@@ -184,5 +120,69 @@ class _DeclensionGuideState extends State<DeclensionGuide> {
         ),
       ],
     );
+  }
+
+  contentSection(Widget header, Widget content) => Container(
+        height: CONTENT_HEIGHT,
+        child: Column(
+          children: [
+            header,
+            content,
+          ],
+        ),
+      );
+
+  bool getIsAtBottom() =>
+      controller.position.pixels >= CONTENT_HEIGHT * (CasesInOrder.length - 1);
+
+  bool getIsAtTop() => controller.position.pixels <= 10;
+
+  double getScrollPoint(Cases caseType) =>
+      CasesInOrder.indexOf(caseType) * CONTENT_HEIGHT;
+
+  @override
+  void initState() {
+    controller = ScrollController(
+        initialScrollOffset: getScrollPoint(widget.startingCase));
+    controller.addListener(scrollListener);
+    super.initState();
+  }
+
+  moveToNext() => setState(() {
+        if (isAtBottom) return;
+        scrollPrevOrNext(toNext: true);
+      });
+
+  moveToPrev() => setState(() {
+        if (isAtTop) return;
+        scrollPrevOrNext(toNext: false);
+      });
+
+  scrollListener() => setState(() {
+        isAtTop = getIsAtTop();
+        isAtBottom = getIsAtBottom();
+      });
+
+  scrollPrevOrNext({required bool toNext}) {
+    double currentPoint = controller.position.pixels;
+    bool isAtHeader = (currentPoint % CONTENT_HEIGHT) == 0;
+
+    if (isAtHeader && toNext) {
+      scrollTo(currentPoint + CONTENT_HEIGHT, controller);
+    } else if (isAtHeader) {
+      scrollTo(currentPoint - CONTENT_HEIGHT, controller);
+    } else {
+      final multFactor = toNext
+          ? (currentPoint / CONTENT_HEIGHT).ceil()
+          : (currentPoint / CONTENT_HEIGHT).floor();
+
+      double scrollPoint = multFactor * CONTENT_HEIGHT;
+      scrollTo(scrollPoint, controller);
+    }
+  }
+
+  static scrollTo(double point, controller) {
+    controller.animateTo(point,
+        curve: Curves.linearToEaseOut, duration: Duration(milliseconds: 800));
   }
 }

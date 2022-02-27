@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
-import 'package:navika/utilities/navika-helpers.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
 class ExerciseButton extends StatelessWidget {
@@ -23,7 +22,7 @@ class ExerciseButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = N.getScreenWidth();
+    double screenWidth = Nrs.getScreenWidth();
     double buttonWidth =
         this.halfWidth ? (screenWidth / 2) - 20 : screenWidth - 30;
     double buttonHeight = halfWidth ? 130 : 130;

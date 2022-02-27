@@ -1,50 +1,59 @@
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
-import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/declension-table-cell.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/declension-table.dart';
+import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
 class NominativDeclensionTable extends StatelessWidget {
   const NominativDeclensionTable({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final mascStyle = Nrs.getTextStyle(
+        context: context, isItalic: true, color: MASCULINE_COLOR);
+
+    final femStyle = Nrs.getTextStyle(
+        context: context, isItalic: true, color: FEMININE_COLOR);
+
+    final neutStyle =
+        Nrs.getTextStyle(context: context, isItalic: true, color: NEUTER_COLOR);
+
     return DeclensionTable(
       masculineSingular: DeclensionTableCell(children: [
-        N.NTextSpan('Lijep'),
-        N.NTextSpan('i\n', isItalic: true, color: MASCULINE_COLOR),
-        N.NTextSpan('jezi'),
-        N.NTextSpan('k', isItalic: true, color: MASCULINE_COLOR),
+        TextSpan(text: 'Lijep'),
+        TextSpan(text: 'i\n', style: mascStyle),
+        TextSpan(text: 'jezi'),
+        TextSpan(text: 'k', style: mascStyle),
       ]),
       masculinePlural: DeclensionTableCell(children: [
-        N.NTextSpan('Lijep'),
-        N.NTextSpan('i\n', isItalic: true, color: MASCULINE_COLOR),
-        N.NTextSpan('jezic'),
-        N.NTextSpan('i', isItalic: true, color: MASCULINE_COLOR),
+        TextSpan(text: 'Lijep'),
+        TextSpan(text: 'i\n', style: mascStyle),
+        TextSpan(text: 'jezic'),
+        TextSpan(text: 'i', style: mascStyle),
       ]),
       feminineSingular: DeclensionTableCell(children: [
-        N.NTextSpan('Moj'),
-        N.NTextSpan('a\n', isItalic: true, color: FEMININE_COLOR),
-        N.NTextSpan('kuć'),
-        N.NTextSpan('a', isItalic: true, color: FEMININE_COLOR),
+        TextSpan(text: 'Moj'),
+        TextSpan(text: 'a\n', style: femStyle),
+        TextSpan(text: 'kuć'),
+        TextSpan(text: 'a', style: femStyle),
       ]),
       femininePlural: DeclensionTableCell(children: [
-        N.NTextSpan('Moj'),
-        N.NTextSpan('e\n', isItalic: true, color: FEMININE_COLOR),
-        N.NTextSpan('kuć'),
-        N.NTextSpan('e', isItalic: true, color: FEMININE_COLOR),
+        TextSpan(text: 'Moj'),
+        TextSpan(text: 'e\n', style: femStyle),
+        TextSpan(text: 'kuć'),
+        TextSpan(text: 'e', style: femStyle),
       ]),
       neuterSingular: DeclensionTableCell(children: [
-        N.NTextSpan('Vruć'),
-        N.NTextSpan('e\n', isItalic: true, color: NEUTER_COLOR),
-        N.NTextSpan('mlijek'),
-        N.NTextSpan('o', isItalic: true, color: NEUTER_COLOR),
+        TextSpan(text: 'Vruć'),
+        TextSpan(text: 'e\n', style: neutStyle),
+        TextSpan(text: 'mlijek'),
+        TextSpan(text: 'o', style: neutStyle),
       ]),
       neuterPlural: DeclensionTableCell(children: [
-        N.NTextSpan('Vruć'),
-        N.NTextSpan('a\n', isItalic: true, color: NEUTER_COLOR),
-        N.NTextSpan('mlijek'),
-        N.NTextSpan('a', isItalic: true, color: NEUTER_COLOR),
+        TextSpan(text: 'Vruć'),
+        TextSpan(text: 'a\n', style: neutStyle),
+        TextSpan(text: 'mlijek'),
+        TextSpan(text: 'a', style: neutStyle),
       ]),
     );
   }

@@ -11,7 +11,7 @@ import 'package:navika/state/content-generators/lokativ-generators.dart';
 import 'package:navika/state/content-generators/nominativ-generators.dart';
 import 'package:navika/state/content-generators/verb-generators.dart';
 import 'package:navika/state/content-generators/vokativ-generators.dart';
-import 'package:navika/utilities/navika-helpers.dart';
+import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
 class ExerciseNavNotifier with ChangeNotifier {
   Timer _debounce = Timer(const Duration(milliseconds: 0), () {});
@@ -30,6 +30,85 @@ class ExerciseNavNotifier with ChangeNotifier {
     }
 
     _states.add(createExercise(_states));
+  }
+
+  void clearInput() {
+    _states[_activeIndex].clear();
+    deboucedNotifyListeners();
+  }
+
+  deboucedNotifyListeners() {
+    if (_debounce.isActive) {
+      _debounce.cancel();
+    }
+
+    _debounce = Timer(
+        const Duration(milliseconds: DEBOUNCE_TIME), () => notifyListeners());
+  }
+
+  dynamic getActive() {
+    return _states[_activeIndex];
+  }
+
+  String getCounter() {
+    return '${_activeIndex + 1}/$_maxIndex';
+  }
+
+  setNext() {
+    if (_activeIndex >= _maxIndex - 1) {
+      _activeIndex = 0;
+    } else {
+      _activeIndex++;
+    }
+
+    if (_activeIndex > _states.length - 1) {
+      this._states.add(this.createExercise(_states));
+    }
+
+    deboucedNotifyListeners();
+  }
+
+  setPrevious() {
+    if (_activeIndex <= 0) {
+      _activeIndex = _states.length - 1;
+    } else {
+      _activeIndex--;
+    }
+
+    deboucedNotifyListeners();
+  }
+
+  List shuffleAndClear({bool notify: true}) {
+    _states.shuffle();
+    _states.forEach((element) {
+      element.clear();
+    });
+
+    if (notify) deboucedNotifyListeners();
+    return _states;
+  }
+
+  _getRandomCaseExec(List a) {
+    final random = Nrs.getRandomNumber(max: Cases.values.length);
+    final caseType = Cases.values[random];
+
+    switch (caseType) {
+      case Cases.Nom:
+        return NominativGenerators.createExercise(a);
+      case Cases.Aku:
+        return AkuzativGenerators.createExercise(a);
+      case Cases.Ins:
+        return InstrumentalGenerators.createExercise(a);
+      case Cases.Dat:
+        return DativGenerators.createExercise(a);
+      case Cases.Lok:
+        return LokativGenerators.createExercise(a);
+      case Cases.All:
+      case Cases.Gen:
+        return GenitivGenerators.createExercise(a);
+      case Cases.Vok:
+        return VokativGenerators.createExercise(a);
+    }
   }
 
   _setCaseGenerator(Cases caseType) {
@@ -61,84 +140,5 @@ class ExerciseNavNotifier with ChangeNotifier {
       default:
         break;
     }
-  }
-
-  _getRandomCaseExec(List a) {
-    final random = N.getRandomNumber(max: Cases.values.length);
-    final caseType = Cases.values[random];
-
-    switch (caseType) {
-      case Cases.Nom:
-        return NominativGenerators.createExercise(a);
-      case Cases.Aku:
-        return AkuzativGenerators.createExercise(a);
-      case Cases.Ins:
-        return InstrumentalGenerators.createExercise(a);
-      case Cases.Dat:
-        return DativGenerators.createExercise(a);
-      case Cases.Lok:
-        return LokativGenerators.createExercise(a);
-      case Cases.All:
-      case Cases.Gen:
-        return GenitivGenerators.createExercise(a);
-      case Cases.Vok:
-        return VokativGenerators.createExercise(a);
-    }
-  }
-
-  deboucedNotifyListeners() {
-    if (_debounce.isActive) {
-      _debounce.cancel();
-    }
-
-    _debounce = Timer(
-        const Duration(milliseconds: DEBOUNCE_TIME), () => notifyListeners());
-  }
-
-  List shuffleAndClear({bool notify: true}) {
-    _states.shuffle();
-    _states.forEach((element) {
-      element.clear();
-    });
-
-    if (notify) deboucedNotifyListeners();
-    return _states;
-  }
-
-  dynamic getActive() {
-    return _states[_activeIndex];
-  }
-
-  String getCounter() {
-    return '${_activeIndex + 1}/$_maxIndex';
-  }
-
-  void clearInput() {
-    _states[_activeIndex].clear();
-    deboucedNotifyListeners();
-  }
-
-  setPrevious() {
-    if (_activeIndex <= 0) {
-      _activeIndex = _states.length - 1;
-    } else {
-      _activeIndex--;
-    }
-
-    deboucedNotifyListeners();
-  }
-
-  setNext() {
-    if (_activeIndex >= _maxIndex - 1) {
-      _activeIndex = 0;
-    } else {
-      _activeIndex++;
-    }
-
-    if (_activeIndex > _states.length - 1) {
-      this._states.add(this.createExercise(_states));
-    }
-
-    deboucedNotifyListeners();
   }
 }

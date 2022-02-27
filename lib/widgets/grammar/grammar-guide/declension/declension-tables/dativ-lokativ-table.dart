@@ -1,15 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/constants.dart';
-import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/declension-table-cell.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/declension-table.dart';
+import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
 class DativLokativDeclensionTable extends StatelessWidget {
   const DativLokativDeclensionTable({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final mascStyle = Nrs.getTextStyle(
+        context: context, isItalic: true, color: MASCULINE_COLOR);
+
+    final femStyle = Nrs.getTextStyle(
+        context: context, isItalic: true, color: FEMININE_COLOR);
+
+    final neutStyle =
+        Nrs.getTextStyle(context: context, isItalic: true, color: NEUTER_COLOR);
+
     return DeclensionTable(
       notes: [
         AppLocalizations.of(context)!.assibilation,
@@ -20,55 +29,55 @@ class DativLokativDeclensionTable extends StatelessWidget {
       masculineSingular: DeclensionTableCell(
         isEqualItem: true,
         children: [
-          N.NTextSpan('Lijep'),
-          N.NTextSpan('om', isItalic: true, color: MASCULINE_COLOR),
-          N.NTextSpan('**\n'),
-          N.NTextSpan('jezik'),
-          N.NTextSpan('u', isItalic: true, color: MASCULINE_COLOR),
+          TextSpan(text: 'Lijep'),
+          TextSpan(text: 'om', style: mascStyle),
+          TextSpan(text: '**\n'),
+          TextSpan(text: 'jezik'),
+          TextSpan(text: 'u', style: mascStyle),
         ],
       ),
       masculinePlural: DeclensionTableCell(
         children: [
-          N.NTextSpan('Lijep'),
-          N.NTextSpan('im\n', isItalic: true, color: MASCULINE_COLOR),
-          N.NTextSpan('jezic'),
-          N.NTextSpan('ima', isItalic: true, color: MASCULINE_COLOR),
-          N.NTextSpan('*'),
+          TextSpan(text: 'Lijep'),
+          TextSpan(text: 'im\n', style: mascStyle),
+          TextSpan(text: 'jezic'),
+          TextSpan(text: 'ima', style: mascStyle),
+          TextSpan(text: '*'),
         ],
         highlightItem: true,
       ),
       feminineSingular: DeclensionTableCell(children: [
-        N.NTextSpan('Moj'),
-        N.NTextSpan('oj\n', isItalic: true, color: FEMININE_COLOR),
-        N.NTextSpan('kuć'),
-        N.NTextSpan('i', isItalic: true, color: FEMININE_COLOR),
-        N.NTextSpan('*'),
+        TextSpan(text: 'Moj'),
+        TextSpan(text: 'oj\n', style: femStyle),
+        TextSpan(text: 'kuć'),
+        TextSpan(text: 'i', style: femStyle),
+        TextSpan(text: '*'),
       ]),
       femininePlural: DeclensionTableCell(
         children: [
-          N.NTextSpan('Moj'),
-          N.NTextSpan('im\n', isItalic: true, color: FEMININE_COLOR),
-          N.NTextSpan('kuć'),
-          N.NTextSpan('ama', isItalic: true, color: FEMININE_COLOR),
+          TextSpan(text: 'Moj'),
+          TextSpan(text: 'im\n', style: femStyle),
+          TextSpan(text: 'kuć'),
+          TextSpan(text: 'ama', style: femStyle),
         ],
         highlightItem: true,
       ),
       neuterSingular: DeclensionTableCell(
         isEqualItem: true,
         children: [
-          N.NTextSpan('Vruć'),
-          N.NTextSpan('em', isItalic: true, color: NEUTER_COLOR),
-          N.NTextSpan('**\n'),
-          N.NTextSpan('mlijek'),
-          N.NTextSpan('u', isItalic: true, color: NEUTER_COLOR),
+          TextSpan(text: 'Vruć'),
+          TextSpan(text: 'em', style: neutStyle),
+          TextSpan(text: '**\n'),
+          TextSpan(text: 'mlijek'),
+          TextSpan(text: 'u', style: neutStyle),
         ],
       ),
       neuterPlural: DeclensionTableCell(
         children: [
-          N.NTextSpan('Vruć'),
-          N.NTextSpan('im\n', isItalic: true, color: NEUTER_COLOR),
-          N.NTextSpan('mlijek'),
-          N.NTextSpan('ima', isItalic: true, color: NEUTER_COLOR),
+          TextSpan(text: 'Vruć'),
+          TextSpan(text: 'im\n', style: neutStyle),
+          TextSpan(text: 'mlijek'),
+          TextSpan(text: 'ima', style: neutStyle),
         ],
         highlightItem: true,
       ),

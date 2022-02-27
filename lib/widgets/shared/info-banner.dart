@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/youtube-link.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:navika/widgets/shared/navika-text.dart';
-
-class StateObj {
-  bool isExpanded = false;
-  bool hasYouTubeLink = false;
-}
+import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
+import 'package:nrs_flutter_lib/widgets/n-text-span.dart';
 
 class InfoBanner extends StatefulWidget {
   final String imagePath;
@@ -27,16 +23,13 @@ class InfoBanner extends StatefulWidget {
   State<InfoBanner> createState() => _InfoBannerState();
 }
 
+class StateObj {
+  bool isExpanded = false;
+  bool hasYouTubeLink = false;
+}
+
 class _InfoBannerState extends State<InfoBanner> {
   final state = StateObj();
-
-  @override
-  void initState() {
-    state.isExpanded = false;
-    state.hasYouTubeLink =
-        this.widget.youtubeLink != null && this.widget.youtubeLink!.length > 0;
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -64,9 +57,10 @@ class _InfoBannerState extends State<InfoBanner> {
                         fontSize: 18,
                       ),
                     ),
-                    NText(
+                    NTextSpan(
                       AppLocalizations.of(context)!.expand_for_more,
-                      fontSize: 12,
+                      textStyle:
+                          Nrs.getTextStyle(context: context, fontSize: 12),
                     )
                   ],
                 ),
@@ -101,5 +95,13 @@ class _InfoBannerState extends State<InfoBanner> {
             ))
       ],
     );
+  }
+
+  @override
+  void initState() {
+    state.isExpanded = false;
+    state.hasYouTubeLink =
+        this.widget.youtubeLink != null && this.widget.youtubeLink!.length > 0;
+    super.initState();
   }
 }

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/state/cases/case-question-state.dart';
-import 'package:navika/utilities/navika-helpers.dart';
-import 'package:navika/widgets/shared/free-form-entry.dart';
 import 'package:navika/widgets/exercises/declension/shared/case-exercise-row-card.dart';
+import 'package:navika/widgets/shared/free-form-entry.dart';
+import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
 class CaseQuestionContent extends StatelessWidget {
   final CaseQuestionState stateItem;
@@ -13,23 +13,6 @@ class CaseQuestionContent extends StatelessWidget {
     required this.stateItem,
   });
 
-  handleOnChange(GrammarTypes grammarType, String newValue) {
-    switch (grammarType) {
-      case GrammarTypes.Noun:
-        stateItem.updateNoun(newValue);
-        break;
-      case GrammarTypes.PersonalPronoun:
-        stateItem.updatePersPronoun(newValue);
-        break;
-      case GrammarTypes.PossesivePronoun:
-        stateItem.updatePossPronoun(newValue);
-        break;
-      case GrammarTypes.Adjective:
-        stateItem.updateAdj(newValue);
-        break;
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     final bool usePossPronouns = stateItem.combos.possPronoun != null;
@@ -37,7 +20,7 @@ class CaseQuestionContent extends StatelessWidget {
         stateItem.combos.adjective!.dictionary != '';
     final bool useNoun = stateItem.combos.noun != null;
     final bool usePersPron = stateItem.combos.personalPronoun != null;
-    final textFildWidth = N.getScreenWidth(reduction: 10);
+    final textFildWidth = Nrs.getScreenWidth(reduction: 10);
 
     return CaseExerciseRowCard(
       combos: stateItem.combos,
@@ -105,5 +88,22 @@ class CaseQuestionContent extends StatelessWidget {
       ],
       gender: stateItem.combos.gender,
     );
+  }
+
+  handleOnChange(GrammarTypes grammarType, String newValue) {
+    switch (grammarType) {
+      case GrammarTypes.Noun:
+        stateItem.updateNoun(newValue);
+        break;
+      case GrammarTypes.PersonalPronoun:
+        stateItem.updatePersPronoun(newValue);
+        break;
+      case GrammarTypes.PossesivePronoun:
+        stateItem.updatePossPronoun(newValue);
+        break;
+      case GrammarTypes.Adjective:
+        stateItem.updateAdj(newValue);
+        break;
+    }
   }
 }

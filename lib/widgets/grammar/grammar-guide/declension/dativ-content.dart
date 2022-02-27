@@ -1,26 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:navika/models/enums.dart';
-import 'package:navika/utilities/navika-helpers.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:navika/models/enums.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/navika-subheader.dart';
-import 'package:navika/widgets/grammar/grammar-guide/declension/declension-tables/dativ-lokativ-table.dart';
-import 'package:navika/widgets/shared/navika-text-multi.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/pronoun-line.dart';
+import 'package:navika/widgets/grammar/grammar-guide/declension/declension-tables/dativ-lokativ-table.dart';
+import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
+import 'package:nrs_flutter_lib/widgets/n-text-multi.dart';
+import 'package:nrs_flutter_lib/widgets/n-text-span.dart';
 
-class DativGrammarGuideContent extends StatelessWidget {
-  const DativGrammarGuideContent({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        getDescription(context),
-        getExampleSentences(context),
-        DativLokativDeclensionTable(),
-        getPossessivePronounSection(context),
-      ],
-    );
-  }
+Widget getExampleSentences(BuildContext context) {
+  return Column(
+    children: [
+      NSubHeader(text: AppLocalizations.of(context)!.exampleSentences),
+      NTextMulti([
+        TextSpan(text: 'On je kupio igračku '),
+        TextSpan(
+            text: 'sinu',
+            style: Nrs.getTextStyle(context: context, isBold: true)),
+      ]),
+      NTextMulti([
+        TextSpan(text: 'Došao je na posao usprkos '),
+        TextSpan(
+            text: 'bolesti',
+            style: Nrs.getTextStyle(context: context, isBold: true)),
+      ]),
+      NTextMulti([
+        TextSpan(text: 'Dao sam '),
+        TextSpan(
+            text: 'mami ',
+            style: Nrs.getTextStyle(context: context, isBold: true)),
+        TextSpan(text: 'čaj'),
+      ]),
+    ],
+  );
 }
 
 Widget getPossessivePronounSection(BuildContext context) {
@@ -35,108 +47,127 @@ Widget getPossessivePronounSection(BuildContext context) {
       PronounLine(
           pronoun: PronounEnum.I,
           text: NTextMulti([
-            N.NTextSpan('Objasni '),
-            N.NTextSpan('mi ', isBold: true),
-            N.NTextSpan('dativ\n'),
-            N.NTextSpan('Objasni dativ '),
-            N.NTextSpan('meni', isBold: true),
-            N.NTextSpan(', molim te!'),
+            TextSpan(text: 'Objasni '),
+            TextSpan(
+                text: 'mi ',
+                style: Nrs.getTextStyle(context: context, isBold: true)),
+            TextSpan(text: 'dativ\n'),
+            TextSpan(text: 'Objasni dativ '),
+            TextSpan(
+                text: 'meni',
+                style: Nrs.getTextStyle(context: context, isBold: true)),
+            TextSpan(text: ', molim te!'),
           ])),
       PronounLine(
           pronoun: PronounEnum.You,
           text: NTextMulti([
-            N.NTextSpan('Ja ću pokazati '),
-            N.NTextSpan('tebi ', isBold: true),
-            N.NTextSpan('nešto\n'),
-            N.NTextSpan('Ja '),
-            N.NTextSpan('ti ', isBold: true),
-            N.NTextSpan('ću pokazati nešto'),
+            TextSpan(text: 'Ja ću pokazati '),
+            TextSpan(
+                text: 'tebi ',
+                style: Nrs.getTextStyle(context: context, isBold: true)),
+            TextSpan(text: 'nešto\n'),
+            TextSpan(text: 'Ja '),
+            TextSpan(
+                text: 'ti ',
+                style: Nrs.getTextStyle(context: context, isBold: true)),
+            TextSpan(text: 'ću pokazati nešto'),
           ])),
       PronounLine(
           pronoun: PronounEnum.He,
           text: NTextMulti([
-            N.NTextSpan('Poklonio sam knjigu '),
-            N.NTextSpan('njemu\n', isBold: true),
-            N.NTextSpan('Ja '),
-            N.NTextSpan('mu ', isBold: true),
-            N.NTextSpan('nešto poklonio'),
+            TextSpan(text: 'Poklonio sam knjigu '),
+            TextSpan(
+                text: 'njemu\n',
+                style: Nrs.getTextStyle(context: context, isBold: true)),
+            TextSpan(text: 'Ja '),
+            TextSpan(
+                text: 'mu ',
+                style: Nrs.getTextStyle(context: context, isBold: true)),
+            TextSpan(text: 'nešto poklonio'),
           ])),
       PronounLine(
           pronoun: PronounEnum.She,
           text: NTextMulti([
-            N.NTextSpan('On kazao '),
-            N.NTextSpan('njoj ', isBold: true),
-            N.NTextSpan('nešto\n'),
-            N.NTextSpan('On '),
-            N.NTextSpan('joj ', isBold: true),
-            N.NTextSpan('nešto pokazao '),
+            TextSpan(text: 'On kazao '),
+            TextSpan(
+                text: 'njoj ',
+                style: Nrs.getTextStyle(context: context, isBold: true)),
+            TextSpan(text: 'nešto\n'),
+            TextSpan(text: 'On '),
+            TextSpan(
+                text: 'joj ',
+                style: Nrs.getTextStyle(context: context, isBold: true)),
+            TextSpan(text: 'nešto pokazao '),
           ])),
       PronounLine(
           pronoun: PronounEnum.We,
           text: NTextMulti([
-            N.NTextSpan('Trabamo kupiti '),
-            N.NTextSpan('nama ', isBold: true),
-            N.NTextSpan('auto\n'),
-            N.NTextSpan('Pokaži '),
-            N.NTextSpan('nam ', isBold: true),
-            N.NTextSpan('gdje je pekara'),
+            TextSpan(text: 'Trabamo kupiti '),
+            TextSpan(
+                text: 'nama ',
+                style: Nrs.getTextStyle(context: context, isBold: true)),
+            TextSpan(text: 'auto\n'),
+            TextSpan(text: 'Pokaži '),
+            TextSpan(
+                text: 'nam ',
+                style: Nrs.getTextStyle(context: context, isBold: true)),
+            TextSpan(text: 'gdje je pekara'),
           ])),
       PronounLine(
           pronoun: PronounEnum.You_Plural,
           text: NTextMulti([
-            N.NTextSpan('Pokažat ćemo '),
-            N.NTextSpan('vam ', isBold: true),
-            N.NTextSpan('grad\n'),
-            N.NTextSpan('Pokažat ćemo grad '),
-            N.NTextSpan('vama', isBold: true),
+            TextSpan(text: 'Pokažat ćemo '),
+            TextSpan(
+                text: 'vam ',
+                style: Nrs.getTextStyle(context: context, isBold: true)),
+            TextSpan(text: 'grad\n'),
+            TextSpan(text: 'Pokažat ćemo grad '),
+            TextSpan(
+                text: 'vama',
+                style: Nrs.getTextStyle(context: context, isBold: true)),
           ])),
       PronounLine(
           pronoun: PronounEnum.They_Ungendered,
           text: NTextMulti([
-            N.NTextSpan('Daj '),
-            N.NTextSpan('im ', isBold: true),
-            N.NTextSpan('naše knjige\n'),
-            N.NTextSpan('Daj naše knjige  '),
-            N.NTextSpan('njima', isBold: true),
+            TextSpan(text: 'Daj '),
+            TextSpan(
+                text: 'im ',
+                style: Nrs.getTextStyle(context: context, isBold: true)),
+            TextSpan(text: 'naše knjige\n'),
+            TextSpan(text: 'Daj naše knjige  '),
+            TextSpan(
+                text: 'njima',
+                style: Nrs.getTextStyle(context: context, isBold: true)),
           ])),
       PronounLine(
           pronoun: PronounEnum.Oneself,
           text: NTextMulti([
-            N.NTextSpan('Napravi '),
-            N.NTextSpan('si ', isBold: true),
-            N.NTextSpan('kavu\n'),
-            N.NTextSpan('Napravi kavu '),
-            N.NTextSpan('sebi', isBold: true),
+            TextSpan(text: 'Napravi '),
+            TextSpan(
+                text: 'si ',
+                style: Nrs.getTextStyle(context: context, isBold: true)),
+            TextSpan(text: 'kavu\n'),
+            TextSpan(text: 'Napravi kavu '),
+            TextSpan(
+                text: 'sebi',
+                style: Nrs.getTextStyle(context: context, isBold: true)),
           ])),
     ],
   );
 }
 
-Widget getDescription(BuildContext context) {
-  return Column(
-    children: [
-      NTextMulti([N.NTextSpan(AppLocalizations.of(context)!.dativDescription)])
-    ],
-  );
-}
+class DativGrammarGuideContent extends StatelessWidget {
+  const DativGrammarGuideContent({Key? key}) : super(key: key);
 
-Widget getExampleSentences(BuildContext context) {
-  return Column(
-    children: [
-      NSubHeader(text: AppLocalizations.of(context)!.exampleSentences),
-      NTextMulti([
-        N.NTextSpan('On je kupio igračku '),
-        N.NTextSpan('sinu', isBold: true),
-      ]),
-      NTextMulti([
-        N.NTextSpan('Došao je na posao usprkos '),
-        N.NTextSpan('bolesti', isBold: true),
-      ]),
-      NTextMulti([
-        N.NTextSpan('Dao sam '),
-        N.NTextSpan('mami ', isBold: true),
-        N.NTextSpan('čaj'),
-      ]),
-    ],
-  );
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        NTextSpan(AppLocalizations.of(context)!.dativDescription),
+        getExampleSentences(context),
+        DativLokativDeclensionTable(),
+        getPossessivePronounSection(context),
+      ],
+    );
+  }
 }

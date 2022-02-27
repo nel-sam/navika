@@ -7,20 +7,9 @@ import 'package:navika/models/personal-pronoun.dart';
 import 'package:navika/state/cases/case-question-state.dart';
 import 'package:navika/state/content-generators/pan-generator.dart';
 import 'package:navika/utilities/navika-helpers.dart';
+import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
 class VokativGenerators {
-  static StaticSentenceParts getStaticSentenceParts(
-      Noun noun, bool isPlural, Adjective? pronoun, Adjective? adjective) {
-    var start = N.coinFlip() ? 'Zdravo, ' : 'Hej, ';
-    return StaticSentenceParts(start: start, end: '');
-  }
-
-  static StaticSentenceParts getPersonalPronounSentenceStaticParts(
-      PersonalPronoun personalPronoun, bool isShortForm) {
-    var start = N.coinFlip() ? 'Zdravo, ' : 'Hej, ';
-    return StaticSentenceParts(start: start, end: '');
-  }
-
   static CaseQuestionState createExercise(List toAvoid) {
     PANCombo? c;
 
@@ -34,5 +23,17 @@ class VokativGenerators {
       );
     }
     return CaseQuestionState(combos: c);
+  }
+
+  static StaticSentenceParts getPersonalPronounSentenceStaticParts(
+      PersonalPronoun personalPronoun, bool isShortForm) {
+    var start = Nrs.coinFlip() ? 'Zdravo, ' : 'Hej, ';
+    return StaticSentenceParts(start: start, end: '');
+  }
+
+  static StaticSentenceParts getStaticSentenceParts(
+      Noun noun, bool isPlural, Adjective? pronoun, Adjective? adjective) {
+    var start = Nrs.coinFlip() ? 'Zdravo, ' : 'Hej, ';
+    return StaticSentenceParts(start: start, end: '');
   }
 }
