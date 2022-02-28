@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/verb.dart';
-import 'package:navika/widgets/grammar/grammar-guide/child-widgets/navika-subheader.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 import 'package:nrs_flutter_lib/widgets/n-icon-text-pair.dart';
+import 'package:nrs_flutter_lib/widgets/n-sub-header.dart';
 import 'package:nrs_flutter_lib/widgets/n-text-span.dart';
 
 class VerbHelpGuide extends StatelessWidget {
@@ -63,7 +63,7 @@ class VerbHelpGuide extends StatelessWidget {
   Widget getFutureTenseChart(BuildContext context) {
     return Column(
       children: [
-        NSubHeader(text: AppLocalizations.of(context)!.futureTense),
+        NSubHeader(AppLocalizations.of(context)!.futureTense),
         Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
@@ -84,7 +84,7 @@ class VerbHelpGuide extends StatelessWidget {
 
     return Column(
       children: [
-        NSubHeader(text: AppLocalizations.of(context)!.pastTense),
+        NSubHeader(AppLocalizations.of(context)!.pastTense),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
@@ -178,7 +178,7 @@ class VerbHelpGuide extends StatelessWidget {
   Widget getPresentTenseChart(BuildContext context) {
     return Column(
       children: [
-        NSubHeader(text: AppLocalizations.of(context)!.presentTense),
+        NSubHeader(AppLocalizations.of(context)!.presentTense),
         Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [

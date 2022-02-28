@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/state/cyrillic/cyrillic-notifier.dart';
-import 'package:navika/widgets/exercises/cyrillic/cyrillic-exec-footer-buttons.dart';
+import 'package:navika/widgets/exercises/cyrillic/cyrillic-chart.dart';
 import 'package:navika/widgets/exercises/cyrillic/cyrillic-exercise-card.dart';
 import 'package:navika/widgets/shared/ad-card.dart';
+import 'package:navika/widgets/shared/home-button-wrapper.dart';
 import 'package:navika/widgets/shared/info-banner.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
+import 'package:nrs_flutter_lib/widgets/n-footer-button.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CyrillicExercise extends StatelessWidget {
   const CyrillicExercise({Key? key}) : super(key: key);
@@ -50,8 +52,29 @@ class CyrillicExercise extends StatelessWidget {
           ),
         ),
       ),
-      persistentFooterButtons:
-          CyrillicExecFooterButtons(context: context, refreshFunction: () {}),
+      persistentFooterButtons: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            HomeButtonWrapper(),
+            Padding(
+              padding:
+                  const EdgeInsets.only(bottom: FOOTER_ICON_BOTTOM_PADDING),
+              child: NFooterButton(
+                onPressed: () {
+                  final dest = CyrillicChart();
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => dest),
+                  );
+                },
+                icon: Icons.help_center_outlined,
+                text: AppLocalizations.of(context)!.cyrillic,
+              ),
+            ),
+          ],
+        )
+      ],
     );
   }
 }

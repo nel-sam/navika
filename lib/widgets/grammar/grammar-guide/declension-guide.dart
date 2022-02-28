@@ -10,8 +10,8 @@ import 'package:navika/widgets/grammar/grammar-guide/declension/genitiv-content.
 import 'package:navika/widgets/grammar/grammar-guide/declension/instrumental-content.dart';
 import 'package:navika/widgets/grammar/grammar-guide/declension/lokativ-content.dart';
 import 'package:navika/widgets/grammar/grammar-guide/declension/nominativ-content.dart';
-import 'package:navika/widgets/shared/footer-button.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
+import 'package:nrs_flutter_lib/widgets/n-footer-button.dart';
 
 const CasesInOrder = [
   Cases.Nom,
@@ -96,24 +96,22 @@ class _DeclensionGuideState extends State<DeclensionGuide> {
             Padding(
               padding:
                   const EdgeInsets.only(bottom: FOOTER_ICON_BOTTOM_PADDING),
-              child: FooterButton(
+              child: NFooterButton(
                 disabled: isAtTop,
                 icon: Icons.arrow_upward,
                 text: AppLocalizations.of(context)!.previous,
                 onPressed: () => moveToPrev(),
-                context: context,
               ),
             ),
-            //HomeButton(context),
+            //HomeButtonWrapper(),
             Padding(
               padding:
                   const EdgeInsets.only(bottom: FOOTER_ICON_BOTTOM_PADDING),
-              child: FooterButton(
+              child: NFooterButton(
                 disabled: isAtBottom,
                 onPressed: () => moveToNext(),
                 icon: Icons.arrow_downward,
                 text: AppLocalizations.of(context)!.next,
-                context: context,
               ),
             ),
           ],

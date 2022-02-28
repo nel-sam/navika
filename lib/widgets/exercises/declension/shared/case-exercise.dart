@@ -1,15 +1,18 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/state/exercise-nav-notifier.dart';
-import 'package:navika/widgets/exercises/declension/shared/case-exec-footer-buttons.dart';
 import 'package:navika/widgets/exercises/declension/shared/case-question-content.dart';
+import 'package:navika/widgets/grammar/grammar-guide/declension-guide.dart';
 import 'package:navika/widgets/shared/ad-card.dart';
+import 'package:navika/widgets/shared/home-button-wrapper.dart';
 import 'package:navika/widgets/shared/info-banner.dart';
 import 'package:navika/widgets/shared/navigation-header-wrapper.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
+import 'package:nrs_flutter_lib/widgets/n-footer-button.dart';
 import 'package:provider/provider.dart';
 
 class CaseExercise extends StatelessWidget {
@@ -76,13 +79,40 @@ class CaseExercise extends StatelessWidget {
                 ),
               ),
             ),
-            persistentFooterButtons: CaseExecFooterButtons(
-              context: context,
-              caseType: caseType,
-              refreshFunction: () {
-                navNotifier.shuffleAndClear();
-              },
-            ),
+            persistentFooterButtons: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        bottom: FOOTER_ICON_BOTTOM_PADDING),
+                    child: NFooterButton(
+                      onPressed: () {
+                        navNotifier.shuffleAndClear();
+                      },
+                      icon: Icons.refresh_outlined,
+                      text: AppLocalizations.of(context)!.refresh,
+                    ),
+                  ),
+                  HomeButtonWrapper(),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        bottom: FOOTER_ICON_BOTTOM_PADDING),
+                    child: NFooterButton(
+                      onPressed: () {
+                        final dest = DeclensionGuide(startingCase: caseType);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => dest),
+                        );
+                      },
+                      icon: Icons.help_center_outlined,
+                      text: AppLocalizations.of(context)!.grammar,
+                    ),
+                  ),
+                ],
+              ),
+            ],
           );
         },
       ),

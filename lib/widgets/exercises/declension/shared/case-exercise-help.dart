@@ -10,9 +10,9 @@ import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/declension-table-cell.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/declension-table.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/explanation-icon-cell.dart';
-import 'package:navika/widgets/grammar/grammar-guide/child-widgets/navika-subheader.dart';
 import 'package:navika/widgets/shared/translation-link.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
+import 'package:nrs_flutter_lib/widgets/n-sub-header.dart';
 import 'package:nrs_flutter_lib/widgets/n-text-multi.dart';
 import 'package:nrs_flutter_lib/widgets/n-text-span.dart';
 
@@ -123,7 +123,7 @@ class CaseExerciseHelp extends StatelessWidget {
 
     return Column(
       children: [
-        NSubHeader(text: AppLocalizations.of(context)!.correctAnswer),
+        NSubHeader(AppLocalizations.of(context)!.correctAnswer),
         NTextMulti([
           if (combo.sentenceStarter != '')
             TextSpan(text: '${combo.sentenceStarter} '),
@@ -322,7 +322,7 @@ class CaseExerciseHelp extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        NSubHeader(text: pp.dictionary),
+        NSubHeader(pp.dictionary),
         getDeclensionListItem(context, N.getCaseLabel(Cases.Nom),
             pp.nominativ.forms.join(joinChar), caseType == Cases.Nom),
         getDeclensionListItem(context, N.getCaseLabel(Cases.Aku),

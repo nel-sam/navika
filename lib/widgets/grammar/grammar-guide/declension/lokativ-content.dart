@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
-import 'package:navika/widgets/grammar/grammar-guide/child-widgets/navika-subheader.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/pronoun-line.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/youtube-link.dart';
 import 'package:navika/widgets/grammar/grammar-guide/declension/declension-tables/dativ-lokativ-table.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
+import 'package:nrs_flutter_lib/widgets/n-sub-header.dart';
 import 'package:nrs_flutter_lib/widgets/n-text-multi.dart';
 
 Widget getDescription(BuildContext context) {
@@ -22,7 +22,7 @@ Widget getDescription(BuildContext context) {
 Widget getExampleSentences(BuildContext context) {
   return Column(
     children: [
-      NSubHeader(text: AppLocalizations.of(context)!.exampleSentences),
+      NSubHeader(AppLocalizations.of(context)!.exampleSentences),
       NTextMulti([
         TextSpan(text: 'Ova priča govori '),
         TextSpan(
@@ -62,9 +62,7 @@ Widget getPossessivePronounSection(BuildContext context) {
     mainAxisAlignment: MainAxisAlignment.start,
     children: [
       Row(
-        children: [
-          NSubHeader(text: AppLocalizations.of(context)!.personalPronouns)
-        ],
+        children: [NSubHeader(AppLocalizations.of(context)!.personalPronouns)],
       ),
       PronounLine(
           pronoun: PronounEnum.I,
