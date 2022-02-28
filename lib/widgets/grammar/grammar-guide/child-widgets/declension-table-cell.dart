@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
+import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 import 'package:nrs_flutter_lib/widgets/n-text-multi.dart';
 
 class DeclensionTableCell extends StatelessWidget {
@@ -38,7 +39,9 @@ class DeclensionTableCell extends StatelessWidget {
           child: Container(
             decoration: highlightItem
                 ? BoxDecoration(
-                    border: Border.all(width: borderWidth, color: ACCENT_COLOR),
+                    border: Border.all(
+                        width: borderWidth,
+                        color: Nrs.getPrimaryColor(context)),
                     borderRadius: BorderRadius.circular(borderRadius),
                   )
                 : null,
@@ -54,20 +57,5 @@ class DeclensionTableCell extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  getDecoration() {
-    if (highlightItem)
-      return BoxDecoration(
-        border: Border.all(color: ACCENT_COLOR),
-        borderRadius: BorderRadius.circular(5),
-      );
-    else if (isEqualItem)
-      return BoxDecoration(
-        border: Border.all(color: EQUAL_ITEMS_BORDER_COLOR),
-        borderRadius: BorderRadius.circular(5),
-      );
-    else
-      return null;
   }
 }

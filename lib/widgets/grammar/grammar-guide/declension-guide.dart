@@ -3,13 +3,13 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/utilities/navika-helpers.dart';
-import 'package:navika/widgets/grammar/grammar-guide/child-widgets/section-header.dart';
 import 'package:navika/widgets/grammar/grammar-guide/declension/akuzativ-content.dart';
 import 'package:navika/widgets/grammar/grammar-guide/declension/dativ-content.dart';
 import 'package:navika/widgets/grammar/grammar-guide/declension/genitiv-content.dart';
 import 'package:navika/widgets/grammar/grammar-guide/declension/instrumental-content.dart';
 import 'package:navika/widgets/grammar/grammar-guide/declension/lokativ-content.dart';
 import 'package:navika/widgets/grammar/grammar-guide/declension/nominativ-content.dart';
+import 'package:nrs_flutter_lib/constants.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 import 'package:nrs_flutter_lib/widgets/n-footer-button.dart';
 
@@ -24,6 +24,48 @@ const CasesInOrder = [
 ];
 
 const double CONTENT_HEIGHT = 1200.0;
+
+class ContentSection extends StatelessWidget {
+  final String text;
+  final Widget content;
+
+  const ContentSection({Key? key, required this.text, required this.content})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: CONTENT_HEIGHT,
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(bottom: 12),
+            child: Container(
+              height: 40,
+              color: Nrs.getPrimaryColor(context),
+              child: Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: Text(
+                      text,
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          content,
+        ],
+      ),
+    );
+  }
+}
 
 class DeclensionGuide extends StatefulWidget {
   final Cases startingCase;
@@ -60,29 +102,29 @@ class _DeclensionGuideState extends State<DeclensionGuide> {
             width: screenWidth > 840 ? screenWidth / 2 : screenWidth,
             child: Column(
               children: [
-                contentSection(
-                  SectionHeader(N.getCaseLabel(Cases.Nom)),
-                  NominativGrammarGuideContent(),
+                ContentSection(
+                  text: N.getCaseLabel(Cases.Nom),
+                  content: NominativGrammarGuideContent(),
                 ),
-                contentSection(
-                  SectionHeader('Akuzativ'),
-                  AkuzativGrammarGuideContent(),
+                ContentSection(
+                  text: N.getCaseLabel(Cases.Aku),
+                  content: AkuzativGrammarGuideContent(),
                 ),
-                contentSection(
-                  SectionHeader('Instrumental'),
-                  InstrumentalGrammarGuideContent(),
+                ContentSection(
+                  text: N.getCaseLabel(Cases.Ins),
+                  content: InstrumentalGrammarGuideContent(),
                 ),
-                contentSection(
-                  SectionHeader('Lokativ'),
-                  LokativGrammarGuideContent(),
+                ContentSection(
+                  text: N.getCaseLabel(Cases.Lok),
+                  content: LokativGrammarGuideContent(),
                 ),
-                contentSection(
-                  SectionHeader('Dativ'),
-                  DativGrammarGuideContent(),
+                ContentSection(
+                  text: N.getCaseLabel(Cases.Dat),
+                  content: DativGrammarGuideContent(),
                 ),
-                contentSection(
-                  SectionHeader('Genitiv'),
-                  GenitivGrammarGuideContent(),
+                ContentSection(
+                  text: N.getCaseLabel(Cases.Gen),
+                  content: GenitivGrammarGuideContent(),
                 ),
               ],
             ),
@@ -119,16 +161,6 @@ class _DeclensionGuideState extends State<DeclensionGuide> {
       ],
     );
   }
-
-  contentSection(Widget header, Widget content) => Container(
-        height: CONTENT_HEIGHT,
-        child: Column(
-          children: [
-            header,
-            content,
-          ],
-        ),
-      );
 
   bool getIsAtBottom() =>
       controller.position.pixels >= CONTENT_HEIGHT * (CasesInOrder.length - 1);

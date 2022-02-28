@@ -7,6 +7,7 @@ import 'package:navika/widgets/exercises/cyrillic/cyrillic-exercise-card.dart';
 import 'package:navika/widgets/shared/ad-card.dart';
 import 'package:navika/widgets/shared/home-button-wrapper.dart';
 import 'package:navika/widgets/shared/info-banner.dart';
+import 'package:nrs_flutter_lib/constants.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 import 'package:nrs_flutter_lib/widgets/n-footer-button.dart';
 import 'package:provider/provider.dart';

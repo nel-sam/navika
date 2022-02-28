@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:navika/constants.dart';
+import 'package:nrs_flutter_lib/constants.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
 class ExerciseButton extends StatelessWidget {
@@ -41,7 +41,9 @@ class ExerciseButton extends StatelessWidget {
                 sbcLabel == '' ? label : sbcLabel,
                 style: TextStyle(
                   fontSize: 22,
-                  color: Nrs.isDarkTheme(context) ? Colors.white : ACCENT_COLOR,
+                  color: Nrs.isDarkTheme(context)
+                      ? Colors.white
+                      : Nrs.getPrimaryColor(context),
                 ),
               ),
             ],
@@ -51,7 +53,7 @@ class ExerciseButton extends StatelessWidget {
             style: TextStyle(
               fontSize: FONT_SIZE,
               fontStyle: FontStyle.italic,
-              color: ACCENT_COLOR,
+              color: Nrs.getPrimaryColor(context),
             ),
           ),
         ],
@@ -62,7 +64,9 @@ class ExerciseButton extends StatelessWidget {
       return Icon(
         icon,
         size: 30,
-        color: Nrs.isDarkTheme(context) ? Colors.white : ACCENT_COLOR,
+        color: Nrs.isDarkTheme(context)
+            ? Colors.white
+            : Nrs.getPrimaryColor(context),
       );
     }
 

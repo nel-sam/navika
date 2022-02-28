@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:navika/constants.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:navika/constants.dart';
 import 'package:navika/widgets/main-menu/main-menu.dart';
 
 void main() {
@@ -15,6 +15,8 @@ void main() {
 class NavikaApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final primaryColor = Colors.blue;
+
     return MaterialApp(
       //showPerformanceOverlay: true,
       //debugShowCheckedModeBanner: false,
@@ -31,10 +33,10 @@ class NavikaApp extends StatelessWidget {
       ],
       theme: ThemeData(
         brightness: Brightness.light,
-        primarySwatch: Colors.blue,
+        primarySwatch: primaryColor,
       ),
       darkTheme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: primaryColor,
         primaryColor: Colors.black,
         brightness: Brightness.dark,
         backgroundColor: const Color(0xFF212121),

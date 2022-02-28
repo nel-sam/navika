@@ -7,6 +7,7 @@ import 'package:navika/widgets/main-menu/exercise-button.dart';
 import 'package:navika/widgets/main-menu/grammar-menu.dart';
 import 'package:navika/widgets/main-menu/verb-menu.dart';
 import 'package:navika/widgets/shared/ad-card.dart';
+import 'package:nrs_flutter_lib/constants.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
 class MainMenu extends StatelessWidget {

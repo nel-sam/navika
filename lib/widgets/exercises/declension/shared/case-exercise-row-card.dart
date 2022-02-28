@@ -122,7 +122,7 @@ class CaseExerciseRowCardHeader extends StatelessWidget {
                   ),
                 );
               },
-              color: ACCENT_COLOR,
+              color: Nrs.getPrimaryColor(context),
               icon: Icon(Icons.help)),
         ],
       ),

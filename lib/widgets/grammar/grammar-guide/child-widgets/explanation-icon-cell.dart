@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:navika/constants.dart';
+import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
 class ExplanationIconCell extends StatelessWidget {
   final IconData icon;
@@ -19,7 +19,7 @@ class ExplanationIconCell extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Icon(icon, color: ACCENT_COLOR),
+            Icon(icon, color: Nrs.getPrimaryColor(context)),
             Text(
               label,
               textAlign: TextAlign.center,

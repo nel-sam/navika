@@ -205,7 +205,8 @@ class DeclensionTable extends StatelessWidget {
                         width: 13,
                         height: 13,
                         decoration: BoxDecoration(
-                          border: Border.all(color: ACCENT_COLOR),
+                          border:
+                              Border.all(color: Nrs.getPrimaryColor(context)),
                           borderRadius: BorderRadius.circular(2),
                         ),
                       ),

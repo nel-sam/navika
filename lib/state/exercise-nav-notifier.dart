@@ -11,6 +11,7 @@ import 'package:navika/state/content-generators/lokativ-generators.dart';
 import 'package:navika/state/content-generators/nominativ-generators.dart';
 import 'package:navika/state/content-generators/verb-generators.dart';
 import 'package:navika/state/content-generators/vokativ-generators.dart';
+import 'package:nrs_flutter_lib/constants.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
 class ExerciseNavNotifier with ChangeNotifier {

@@ -2,47 +2,37 @@ import 'package:flutter/material.dart';
 
 const String APP_NAME = 'navika';
 const BATCH_COUNT = 20;
-const int DEBOUNCE_TIME = 600;
-
-const double FONT_SIZE = 16;
-const TABLE_CELL_WIDTH = 87.0;
-const double EXERCISE_FONT_STYLE = 15;
-const EdgeInsets EXERCISE_LIST_PADDING = const EdgeInsets.only(bottom: 10);
-const double FOOTER_ICON_BOTTOM_PADDING = 0;
-const double APPBAR_ELEVATION = 0;
-const ACCENT_COLOR = Colors.blue;
-const EQUAL_ITEMS_BORDER_COLOR = Colors.amber;
 const CARD_PADDING = 10.0;
+
 const DECLINED_LETTER_STYLE =
     TextStyle(fontStyle: FontStyle.italic, fontWeight: FontWeight.bold);
-const CELL_TEXT_PADDING = 5.0;
+const EQUAL_ITEMS_BORDER_COLOR = Colors.amber;
+const double EXERCISE_FONT_STYLE = 15;
+const EdgeInsets EXERCISE_LIST_PADDING = const EdgeInsets.only(bottom: 10);
 
-const SINGULAR_ICON = Icons.looks_one_outlined;
-const PLURAL_ICON = Icons.widgets_outlined;
-
-const MASCULINE_ICON = Icons.male;
+const FEMININE_COLOR = Colors.red;
 const FEMININE_ICON = Icons.female;
-const NEUTER_ICON = Icons.hide_source_outlined;
 
 const MASCULINE_COLOR = Colors.blue;
-const FEMININE_COLOR = Colors.red;
+const MASCULINE_ICON = Icons.male;
+
 const NEUTER_COLOR = Colors.green;
+const NEUTER_ICON = Icons.hide_source_outlined;
+const PLURAL_ICON = Icons.widgets_outlined;
 
-const APP_BAR_TEXTTHEME_DARK = TextTheme();
-const APP_BAR_TEXTTHEME_LIGHT = TextTheme(
-  headline6: TextStyle(color: Colors.black),
-);
-
-const RECOMMENDED_VIDEO_NOM = 'https://www.youtube.com/watch?v=Vj6nT2UTfH0';
 const RECOMMENDED_VIDEO_AKU = 'https://www.youtube.com/watch?v=MaDzMpCP34A';
+const RECOMMENDED_VIDEO_CYRILLIC = '';
+
 const RECOMMENDED_VIDEO_INST = 'https://www.youtube.com/watch?v=sOX2Z70g73Q';
 const RECOMMENDED_VIDEO_LOK = 'https://www.youtube.com/watch?v=w1g5IV6cbY8';
+const RECOMMENDED_VIDEO_NOM = 'https://www.youtube.com/watch?v=Vj6nT2UTfH0';
 const RECOMMENDED_VIDEO_PAST_SIMPLE =
     'https://www.youtube.com/watch?v=9m4sMQ_qnjs';
 const RECOMMENDED_VIDEO_PRESENT_SIMPLE =
     'https://www.youtube.com/watch?v=9m4sMQ_qnjs';
 const RECOMMENDED_VIDEO_VOK = '';
-const RECOMMENDED_VIDEO_CYRILLIC = '';
+const SINGULAR_ICON = Icons.looks_one_outlined;
+const TABLE_CELL_WIDTH = 87.0;
 
 class SbcLabels {
   static String cyrillic = 'Ћирилица';

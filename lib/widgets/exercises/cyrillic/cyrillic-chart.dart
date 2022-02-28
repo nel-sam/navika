@@ -83,7 +83,9 @@ class CyrillicChart extends StatelessWidget {
             width: 100,
             decoration: BoxDecoration(
               border: Border.all(
-                  color: needsHighlight ? WRONG_COLOR : ACCENT_COLOR,
+                  color: needsHighlight
+                      ? WRONG_COLOR
+                      : Nrs.getPrimaryColor(context),
                   width: needsHighlight ? 3 : 1),
               borderRadius: BorderRadius.circular(5),
             ),
