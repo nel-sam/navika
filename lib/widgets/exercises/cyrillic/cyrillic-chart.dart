@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/constants.dart';
-import 'package:navika/extensions.dart';
 import 'package:navika/lang_data/cyrillic-bank.dart';
+import 'package:nrs_flutter_lib/constants.dart';
+import 'package:nrs_flutter_lib/extensions.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 import 'package:nrs_flutter_lib/widgets/n-text-span.dart';
 

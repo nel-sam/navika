@@ -5,9 +5,10 @@ import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/exercises/declension/shared/case-exercise-help.dart';
-import 'package:navika/widgets/shared/icon-text-pair.dart';
 import 'package:navika/widgets/shared/shadow-box.dart';
+import 'package:nrs_flutter_lib/constants.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
+import 'package:nrs_flutter_lib/widgets/n-icon-text-pair.dart';
 
 class CaseExerciseRowCard extends StatelessWidget {
   final PANCombo combos;
@@ -95,18 +96,18 @@ class CaseExerciseRowCardHeader extends StatelessWidget {
                 ? Icon(CORRECT_ANSWER_ICON, color: CORRECT_COLOR)
                 : Icon(WRONG_ANSWER_ICON, color: WRONG_COLOR),
           ),
-          IconTextPair(
+          NIconTextPair(
             icon: isPlural ? PLURAL_ICON : SINGULAR_ICON,
             text: isPlural
                 ? AppLocalizations.of(context)!.plural
                 : AppLocalizations.of(context)!.singular,
           ),
-          IconTextPair(
+          NIconTextPair(
             icon: N.getGenderIcon(this.gender),
             text: N.getGenderString(context, this.gender),
           ),
           if (isAnimate)
-            IconTextPair(
+            NIconTextPair(
               icon: Icons.person,
               text: AppLocalizations.of(context)!.animate,
             ),

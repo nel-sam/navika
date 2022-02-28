@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
-import 'package:navika/models/enums.dart';
 import 'package:navika/state/cases/case-question-state.dart';
 import 'package:navika/widgets/exercises/declension/shared/case-exercise-row-card.dart';
-import 'package:navika/widgets/shared/free-form-entry.dart';
+import 'package:navika/widgets/shared/n-free-form-entry.dart';
+import 'package:nrs_flutter_lib/enums.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
 class CaseQuestionContent extends StatelessWidget {
@@ -21,6 +21,20 @@ class CaseQuestionContent extends StatelessWidget {
     final bool useNoun = stateItem.combos.noun != null;
     final bool usePersPron = stateItem.combos.personalPronoun != null;
     final textFildWidth = Nrs.getScreenWidth(reduction: 10);
+
+    // TODO: Incorporate this into widget
+    //  if (multipleCorrect)
+    //         Row(children: [
+    //           status == CorrectStatus.correct
+    //               ? NTextSpan(
+    //                   '${AppLocalizations.of(context)!.alsoCorrect}: ${widget.correctValues.join(',')}',
+    //                   textStyle: Nrs.getTextStyle(
+    //                       context: context, fontSize: FONT_SIZE - 3))
+    //               : NTextSpan(
+    //                   '${AppLocalizations.of(context)!.multipleCorrect}',
+    //                   textStyle: Nrs.getTextStyle(
+    //                       context: context, fontSize: FONT_SIZE - 3))
+    //         ]),
 
     return CaseExerciseRowCard(
       combos: stateItem.combos,
@@ -42,7 +56,7 @@ class CaseQuestionContent extends StatelessWidget {
             ),
           ),
         if (usePossPronouns)
-          FreeFormEntry(
+          NFreeFormEntry(
             hintValue: stateItem.combos.possPronoun!.dictionary,
             initialValue: stateItem.userPossPronResponse,
             correctValues: stateItem.combos.correctPossPronouns,
@@ -51,7 +65,7 @@ class CaseQuestionContent extends StatelessWidget {
             },
           ),
         if (useAdj)
-          FreeFormEntry(
+          NFreeFormEntry(
             hintValue: stateItem.combos.adjective!.dictionary,
             initialValue: stateItem.userAdjResponse,
             correctValues: stateItem.combos.correctAdjs,
@@ -60,7 +74,7 @@ class CaseQuestionContent extends StatelessWidget {
             },
           ),
         if (useNoun)
-          FreeFormEntry(
+          NFreeFormEntry(
             hintValue: stateItem.combos.noun!.dictionary,
             initialValue: stateItem.userNounResponse,
             correctValues: stateItem.combos.correctNouns,
@@ -69,7 +83,7 @@ class CaseQuestionContent extends StatelessWidget {
             },
           ),
         if (usePersPron)
-          FreeFormEntry(
+          NFreeFormEntry(
             hintValue: stateItem.combos.personalPronoun!.dictionary,
             initialValue: stateItem.userPersPronResponse,
             correctValues: stateItem.combos.correctPersPronouns,

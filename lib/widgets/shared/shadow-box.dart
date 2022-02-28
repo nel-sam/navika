@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:navika/constants.dart';
+import 'package:nrs_flutter_lib/constants.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
 class ShadowBox extends StatelessWidget {

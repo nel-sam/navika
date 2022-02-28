@@ -3,8 +3,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/verb.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/navika-subheader.dart';
-import 'package:navika/widgets/shared/icon-text-pair.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
+import 'package:nrs_flutter_lib/widgets/n-icon-text-pair.dart';
 import 'package:nrs_flutter_lib/widgets/n-text-span.dart';
 
 class VerbHelpGuide extends StatelessWidget {
@@ -35,7 +35,7 @@ class VerbHelpGuide extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  IconTextPair(
+                  NIconTextPair(
                     text: verb.getTranslation(context),
                     icon: Icons.translate,
                   ),
@@ -44,7 +44,7 @@ class VerbHelpGuide extends StatelessWidget {
                     style: TextStyle(fontStyle: FontStyle.italic),
                   ),
                   if (this.verb.isIrregular)
-                    IconTextPair(
+                    NIconTextPair(
                       icon: Icons.error_outline,
                       text: AppLocalizations.of(context)!.irregular,
                     ),
@@ -90,7 +90,7 @@ class VerbHelpGuide extends StatelessWidget {
           children: [
             Container(
               width: iconPairContWidth - 50,
-              child: IconTextPair(
+              child: NIconTextPair(
                 alignment: MainAxisAlignment.end,
                 icon: MASCULINE_ICON,
                 color: MASCULINE_COLOR,
@@ -120,7 +120,7 @@ class VerbHelpGuide extends StatelessWidget {
             children: [
               Container(
                 width: iconPairContWidth - 50,
-                child: IconTextPair(
+                child: NIconTextPair(
                   alignment: MainAxisAlignment.end,
                   icon: FEMININE_ICON,
                   color: FEMININE_COLOR,
@@ -151,7 +151,7 @@ class VerbHelpGuide extends StatelessWidget {
             children: [
               Container(
                 width: iconPairContWidth - 50,
-                child: IconTextPair(
+                child: NIconTextPair(
                   alignment: MainAxisAlignment.end,
                   icon: NEUTER_ICON,
                   color: NEUTER_COLOR,

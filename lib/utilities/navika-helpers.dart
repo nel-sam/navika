@@ -5,6 +5,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
+import 'package:nrs_flutter_lib/enums.dart';
 
 class N {
   static bool containsCaseQuestionState(List list, PANCombo item) {

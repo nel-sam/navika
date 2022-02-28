@@ -10,8 +10,6 @@ const double EXERCISE_FONT_STYLE = 15;
 const EdgeInsets EXERCISE_LIST_PADDING = const EdgeInsets.only(bottom: 10);
 const double FOOTER_ICON_BOTTOM_PADDING = 0;
 const double APPBAR_ELEVATION = 0;
-const CORRECT_COLOR = Colors.green;
-const WRONG_COLOR = Colors.deepOrange;
 const ACCENT_COLOR = Colors.blue;
 const EQUAL_ITEMS_BORDER_COLOR = Colors.amber;
 const CARD_PADDING = 10.0;
@@ -25,9 +23,6 @@ const PLURAL_ICON = Icons.widgets_outlined;
 const MASCULINE_ICON = Icons.male;
 const FEMININE_ICON = Icons.female;
 const NEUTER_ICON = Icons.hide_source_outlined;
-
-const CORRECT_ANSWER_ICON = Icons.check_circle_outline;
-const WRONG_ANSWER_ICON = Icons.close_outlined;
 
 const MASCULINE_COLOR = Colors.blue;
 const FEMININE_COLOR = Colors.red;

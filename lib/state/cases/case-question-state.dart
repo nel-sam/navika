@@ -1,5 +1,5 @@
 import 'package:navika/models/models.dart';
-import 'package:navika/extensions.dart';
+import 'package:nrs_flutter_lib/extensions.dart';
 
 class CaseQuestionState {
   PANCombo combos;

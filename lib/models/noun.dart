@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
-import 'package:navika/extensions.dart';
+import 'package:nrs_flutter_lib/extensions.dart';
 
 class Noun {
   final List<Tags> tags;

@@ -7,8 +7,8 @@ import 'package:navika/state/exercise-nav-notifier.dart';
 import 'package:navika/widgets/exercises/declension/shared/case-exec-footer-buttons.dart';
 import 'package:navika/widgets/exercises/declension/shared/case-question-content.dart';
 import 'package:navika/widgets/shared/ad-card.dart';
-import 'package:navika/widgets/shared/exercise-header.dart';
 import 'package:navika/widgets/shared/info-banner.dart';
+import 'package:navika/widgets/shared/navigation-header-wrapper.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 import 'package:provider/provider.dart';
 
@@ -50,12 +50,7 @@ class CaseExercise extends StatelessWidget {
                       youtubeLink: youtubeLink,
                     ),
                     const AdCard(),
-                    ExerciseHeader(
-                      setPrevious: navNotifier.setPrevious,
-                      setNext: navNotifier.setNext,
-                      clear: navNotifier.clearInput,
-                      getCounter: navNotifier.getCounter,
-                    ),
+                    NavigationHeaderWrapper(navNotifier: navNotifier),
                     GestureDetector(
                       onHorizontalDragUpdate: (details) {
                         if (_debounce.isActive) {

@@ -3,9 +3,9 @@ import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/verb.dart';
 import 'package:navika/utilities/navika-helpers.dart';
-import 'package:navika/widgets/shared/free-form-entry.dart';
-import 'package:navika/widgets/shared/icon-text-pair.dart';
+import 'package:navika/widgets/shared/n-free-form-entry.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
+import 'package:nrs_flutter_lib/widgets/n-icon-text-pair.dart';
 
 class VerbFreeForm extends StatelessWidget {
   final String startText;
@@ -47,14 +47,14 @@ class VerbFreeForm extends StatelessWidget {
                   style: TextStyle(fontSize: EXERCISE_FONT_STYLE),
                 ),
                 if (this.gender != Genders.Unspecific)
-                  IconTextPair(
+                  NIconTextPair(
                     icon: N.getGenderIcon(gender),
                     text:
                         '${N.getGenderString(context, gender).substring(0, 3)}.',
                   ),
               ],
             ),
-            FreeFormEntry(
+            NFreeFormEntry(
               isHalfWidth: true,
               hintValue: this.verb.infinitive,
               onChanged: (String newValue) =>

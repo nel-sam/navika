@@ -1,15 +1,13 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:navika/constants.dart';
-import 'package:navika/extensions.dart';
-import 'package:navika/models/enums.dart';
-import 'package:navika/widgets/shared/answer-status-icon.dart';
+import 'package:nrs_flutter_lib/constants.dart';
+import 'package:nrs_flutter_lib/enums.dart';
+import 'package:nrs_flutter_lib/extensions.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
-import 'package:nrs_flutter_lib/widgets/n-text-span.dart';
+import 'package:nrs_flutter_lib/widgets/n-answer-status-icon.dart';
 
-class FreeFormEntry extends StatefulWidget {
+class NFreeFormEntry extends StatefulWidget {
   final bool isHalfWidth;
   final String hintValue;
   final String initialValue;
@@ -17,7 +15,7 @@ class FreeFormEntry extends StatefulWidget {
   final Function(String) onChanged;
   final StateObject state = StateObject();
 
-  FreeFormEntry({
+  NFreeFormEntry({
     Key? key,
     required this.hintValue,
     required this.onChanged,
@@ -27,23 +25,22 @@ class FreeFormEntry extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<FreeFormEntry> createState() => _FreeFormEntryState();
+  State<NFreeFormEntry> createState() => _NFreeFormEntryState();
 }
 
 class StateObject {
   String userInput = '';
 }
 
-class _FreeFormEntryState extends State<FreeFormEntry> {
+class _NFreeFormEntryState extends State<NFreeFormEntry> {
   final _controller = TextEditingController();
   Timer _debounce = Timer(const Duration(milliseconds: 0), () {});
 
   @override
   Widget build(BuildContext context) {
     var status = getCorrectStatus(widget.state.userInput);
-    final border = getBorder(status);
+    final border = getBorder(context, status);
     final labelText = status == CorrectStatus.correct ? '' : widget.hintValue;
-    final multipleCorrect = widget.correctValues.length > 1;
 
     return Padding(
       padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
@@ -51,7 +48,7 @@ class _FreeFormEntryState extends State<FreeFormEntry> {
         children: [
           Row(
             children: [
-              Container(
+              SizedBox(
                 width: widget.isHalfWidth
                     ? Nrs.getScreenWidth(halfWidth: true, reduction: 90)
                     : Nrs.getScreenWidth(reduction: 100),
@@ -79,29 +76,17 @@ class _FreeFormEntryState extends State<FreeFormEntry> {
                   },
                 ),
               ),
-              AnswerStatusIcon(status: status),
+              NAnswerStatusIcon(status: status),
             ],
           ),
-          if (multipleCorrect)
-            Row(children: [
-              status == CorrectStatus.correct
-                  ? NTextSpan(
-                      '${AppLocalizations.of(context)!.alsoCorrect}: ${widget.correctValues.join(',')}',
-                      textStyle: Nrs.getTextStyle(
-                          context: context, fontSize: FONT_SIZE - 3))
-                  : NTextSpan(
-                      '${AppLocalizations.of(context)!.multipleCorrect}',
-                      textStyle: Nrs.getTextStyle(
-                          context: context, fontSize: FONT_SIZE - 3))
-            ]),
         ],
       ),
     );
   }
 
   @override
-  void didUpdateWidget(FreeFormEntry oldWidget) {
-    _controller.text = widget.initialValue.length > 0
+  void didUpdateWidget(NFreeFormEntry oldWidget) {
+    _controller.text = widget.initialValue.isNotEmpty
         ? widget.initialValue
         : widget.state.userInput;
     _controller.selection = TextSelection.fromPosition(
@@ -116,7 +101,7 @@ class _FreeFormEntryState extends State<FreeFormEntry> {
     super.dispose();
   }
 
-  OutlineInputBorder getBorder(CorrectStatus status) {
+  OutlineInputBorder getBorder(BuildContext context, CorrectStatus status) {
     var color = WRONG_COLOR;
 
     switch (status) {
@@ -130,7 +115,7 @@ class _FreeFormEntryState extends State<FreeFormEntry> {
         color = Colors.grey;
         break;
       case CorrectStatus.inprogressCorrect:
-        color = ACCENT_COLOR;
+        color = Nrs.getPrimaryColor(context);
         break;
     }
 
@@ -142,7 +127,7 @@ class _FreeFormEntryState extends State<FreeFormEntry> {
   }
 
   CorrectStatus getCorrectStatus(String userInput) {
-    if (userInput.length == 0) {
+    if (userInput.isEmpty) {
       return CorrectStatus.unstarted;
     }
 
@@ -169,7 +154,7 @@ class _FreeFormEntryState extends State<FreeFormEntry> {
       _debounce.cancel();
     }
 
-    _debounce = Timer(const Duration(milliseconds: DEBOUNCE_TIME), () {
+    _debounce = Timer(const Duration(milliseconds: 600), () {
       if (widget.state.userInput != widget.initialValue) {
         widget.onChanged(widget.state.userInput);
       }

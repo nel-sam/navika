@@ -4,8 +4,9 @@ import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/verb.dart';
 import 'package:navika/widgets/exercises/verbs/shared/verb-help-guide.dart';
-import 'package:navika/widgets/shared/icon-text-pair.dart';
+import 'package:nrs_flutter_lib/constants.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
+import 'package:nrs_flutter_lib/widgets/n-icon-text-pair.dart';
 import 'package:nrs_flutter_lib/widgets/n-text-span.dart';
 
 class VerbHeader extends StatelessWidget {
@@ -58,12 +59,12 @@ class VerbHeader extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              IconTextPair(
+              NIconTextPair(
                 text: translation,
                 icon: Icons.translate,
               ),
               if (this.verb.isIrregular)
-                IconTextPair(
+                NIconTextPair(
                   icon: Icons.error_outline,
                   text: AppLocalizations.of(context)!.irregular,
                 ),

@@ -1,6 +1,6 @@
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
-import 'package:navika/extensions.dart';
+import 'package:nrs_flutter_lib/extensions.dart';
 
 class Adjective {
   final String dictionary;
@@ -26,62 +26,6 @@ class Adjective {
     required this.vokativ,
     this.toAvoid = const [],
   });
-
-  List<String> getUniqueDeclensions({bool shuffle = false}) {
-    var result = [
-      this.dictionary,
-      ...this.nominativ.masculine.singular,
-      ...this.nominativ.feminine.singular,
-      ...this.nominativ.neuter.singular,
-      ...this.akuzativ.masculine.singular,
-      ...this.akuzativ.feminine.singular,
-      ...this.akuzativ.neuter.singular,
-      ...this.akuzativAnimate.masculine.singular,
-      ...this.akuzativAnimate.feminine.singular,
-      ...this.akuzativAnimate.neuter.singular,
-      ...this.instrumental.masculine.singular,
-      ...this.instrumental.feminine.singular,
-      ...this.instrumental.neuter.singular,
-      ...this.lokativ.masculine.singular,
-      ...this.lokativ.feminine.singular,
-      ...this.lokativ.neuter.singular,
-      ...this.dativ.masculine.singular,
-      ...this.dativ.feminine.singular,
-      ...this.dativ.neuter.singular,
-      ...this.genitiv.masculine.singular,
-      ...this.genitiv.feminine.singular,
-      ...this.genitiv.neuter.singular,
-      ...this.vokativ.masculine.singular,
-      ...this.vokativ.feminine.singular,
-      ...this.vokativ.neuter.singular,
-      ...this.nominativ.masculine.plural,
-      ...this.nominativ.feminine.plural,
-      ...this.nominativ.neuter.plural,
-      ...this.akuzativ.masculine.plural,
-      ...this.akuzativ.feminine.plural,
-      ...this.akuzativ.neuter.plural,
-      ...this.akuzativAnimate.masculine.plural,
-      ...this.akuzativAnimate.feminine.plural,
-      ...this.akuzativAnimate.neuter.plural,
-      ...this.instrumental.masculine.plural,
-      ...this.instrumental.feminine.plural,
-      ...this.instrumental.neuter.plural,
-      ...this.lokativ.masculine.plural,
-      ...this.lokativ.feminine.plural,
-      ...this.lokativ.neuter.plural,
-      ...this.dativ.masculine.plural,
-      ...this.dativ.feminine.plural,
-      ...this.dativ.neuter.plural,
-      ...this.genitiv.masculine.plural,
-      ...this.genitiv.feminine.plural,
-      ...this.genitiv.neuter.plural,
-      ...this.vokativ.masculine.plural,
-      ...this.vokativ.feminine.plural,
-      ...this.vokativ.neuter.plural,
-    ].toSet().toList().where((element) => element.length > 0).toList();
-
-    return shuffle ? result.shuffleStrings() : result;
-  }
 
   Declension getDeclensionObject(Cases caseType, bool isAnimate) {
     switch (caseType) {
@@ -165,23 +109,67 @@ class Adjective {
     }
   }
 
-  int longestForCase(Cases caseType) {
-    int longestFound = 0;
-
-    this.getDeclensionsForCaseType(caseType).forEach((d) {
-      if (d.length > longestFound) {
-        longestFound = d.length;
-      }
-    });
-
-    return longestFound;
-  }
-
   getDropDownInitial(Cases caseType) {
     final toAvoid = getDeclensionsForCaseType(caseType);
     final filtered = getUniqueDeclensions(shuffle: true);
     filtered.removeWhere((element) => toAvoid.contains(element));
     return filtered.last;
+  }
+
+  List<String> getUniqueDeclensions({bool shuffle = false}) {
+    var result = [
+      this.dictionary,
+      ...this.nominativ.masculine.singular,
+      ...this.nominativ.feminine.singular,
+      ...this.nominativ.neuter.singular,
+      ...this.akuzativ.masculine.singular,
+      ...this.akuzativ.feminine.singular,
+      ...this.akuzativ.neuter.singular,
+      ...this.akuzativAnimate.masculine.singular,
+      ...this.akuzativAnimate.feminine.singular,
+      ...this.akuzativAnimate.neuter.singular,
+      ...this.instrumental.masculine.singular,
+      ...this.instrumental.feminine.singular,
+      ...this.instrumental.neuter.singular,
+      ...this.lokativ.masculine.singular,
+      ...this.lokativ.feminine.singular,
+      ...this.lokativ.neuter.singular,
+      ...this.dativ.masculine.singular,
+      ...this.dativ.feminine.singular,
+      ...this.dativ.neuter.singular,
+      ...this.genitiv.masculine.singular,
+      ...this.genitiv.feminine.singular,
+      ...this.genitiv.neuter.singular,
+      ...this.vokativ.masculine.singular,
+      ...this.vokativ.feminine.singular,
+      ...this.vokativ.neuter.singular,
+      ...this.nominativ.masculine.plural,
+      ...this.nominativ.feminine.plural,
+      ...this.nominativ.neuter.plural,
+      ...this.akuzativ.masculine.plural,
+      ...this.akuzativ.feminine.plural,
+      ...this.akuzativ.neuter.plural,
+      ...this.akuzativAnimate.masculine.plural,
+      ...this.akuzativAnimate.feminine.plural,
+      ...this.akuzativAnimate.neuter.plural,
+      ...this.instrumental.masculine.plural,
+      ...this.instrumental.feminine.plural,
+      ...this.instrumental.neuter.plural,
+      ...this.lokativ.masculine.plural,
+      ...this.lokativ.feminine.plural,
+      ...this.lokativ.neuter.plural,
+      ...this.dativ.masculine.plural,
+      ...this.dativ.feminine.plural,
+      ...this.dativ.neuter.plural,
+      ...this.genitiv.masculine.plural,
+      ...this.genitiv.feminine.plural,
+      ...this.genitiv.neuter.plural,
+      ...this.vokativ.masculine.plural,
+      ...this.vokativ.feminine.plural,
+      ...this.vokativ.neuter.plural,
+    ].toSet().toList().where((element) => element.length > 0).toList();
+
+    return shuffle ? result.shuffleStrings() : result;
   }
 
   bool isCompatible(List<Tags> tags) {
@@ -194,5 +182,17 @@ class Adjective {
         lists.first.toSet(), (a, b) => a.intersection(b.toSet()));
 
     return commonElements.isEmpty;
+  }
+
+  int longestForCase(Cases caseType) {
+    int longestFound = 0;
+
+    this.getDeclensionsForCaseType(caseType).forEach((d) {
+      if (d.length > longestFound) {
+        longestFound = d.length;
+      }
+    });
+
+    return longestFound;
   }
 }

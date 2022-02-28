@@ -1,16 +1,3 @@
-enum VerbPerfectiveTypes {
-  Perfective,
-  Imperfective,
-  Unspecified,
-}
-
-enum Genders {
-  Masculine,
-  Feminine,
-  Neuter,
-  Unspecific,
-}
-
 enum Cases {
   All,
   Ins,
@@ -22,11 +9,24 @@ enum Cases {
   Dat,
 }
 
-enum GrammarTypes {
-  Noun,
-  PersonalPronoun,
-  PossesivePronoun,
-  Adjective,
+enum Genders {
+  Masculine,
+  Feminine,
+  Neuter,
+  Unspecific,
+}
+
+enum PronounEnum {
+  I,
+  You,
+  He,
+  She,
+  We,
+  You_Plural,
+  They_Ungendered,
+  They_Masc,
+  They_Fem,
+  Oneself,
 }
 
 enum Tags {
@@ -56,29 +56,8 @@ enum Tags {
   Pet,
 }
 
-enum TenseEnum {
-  Conditional,
-  Present,
-  Future,
-  Past,
-}
-
-enum PronounEnum {
-  I,
-  You,
-  He,
-  She,
-  We,
-  You_Plural,
-  They_Ungendered,
-  They_Masc,
-  They_Fem,
-  Oneself,
-}
-
-enum CorrectStatus {
-  correct,
-  wrong,
-  unstarted,
-  inprogressCorrect,
+enum VerbPerfectiveTypes {
+  Perfective,
+  Imperfective,
+  Unspecified,
 }

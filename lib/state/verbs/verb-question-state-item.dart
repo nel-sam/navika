@@ -1,6 +1,6 @@
 import 'dart:collection';
 import 'package:navika/models/verb.dart';
-import 'package:navika/extensions.dart';
+import 'package:nrs_flutter_lib/extensions.dart';
 
 class VerbQuestionUserEntryStateItem {
   late String jaMasc;
