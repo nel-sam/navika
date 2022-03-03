@@ -82,32 +82,27 @@ class CaseExercise extends StatelessWidget {
               ),
             ),
             persistentFooterButtons: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  NFooterMenu(buttons: [
-                    NFooterButton(
-                      onPressed: () {
-                        navNotifier.shuffleAndClear();
-                      },
-                      icon: Icons.refresh_outlined,
-                      text: AppLocalizations.of(context)!.refresh,
-                    ),
-                    HomeButtonWrapper(),
-                    NFooterButton(
-                      onPressed: () {
-                        final dest = DeclensionGuide(startingCase: caseType);
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => dest),
-                        );
-                      },
-                      icon: Icons.help_center_outlined,
-                      text: AppLocalizations.of(context)!.grammar,
-                    ),
-                  ])
-                ],
-              ),
+              NFooterMenu(buttons: [
+                NFooterButton(
+                  onPressed: () {
+                    navNotifier.shuffleAndClear();
+                  },
+                  icon: Icons.refresh_outlined,
+                  text: AppLocalizations.of(context)!.refresh,
+                ),
+                HomeButtonWrapper(),
+                NFooterButton(
+                  onPressed: () {
+                    final dest = DeclensionGuide(startingCase: caseType);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => dest),
+                    );
+                  },
+                  icon: Icons.help_center_outlined,
+                  text: AppLocalizations.of(context)!.grammar,
+                ),
+              ]),
             ],
           );
         },

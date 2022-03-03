@@ -10,6 +10,7 @@ import 'package:navika/widgets/grammar/grammar-guide/declension/declension-table
 import 'package:navika/widgets/grammar/grammar-guide/declension/declension-tables/nominativ-table.dart';
 import 'package:navika/widgets/shared/home-button-wrapper.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
+import 'package:nrs_flutter_lib/widgets/n-footer-menu.dart';
 import 'package:nrs_flutter_lib/widgets/n-text-span.dart';
 
 class Tables extends StatefulWidget {
@@ -81,12 +82,9 @@ class _TablesState extends State<Tables> {
         ),
       ),
       persistentFooterButtons: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            HomeButtonWrapper(),
-          ],
-        ),
+        NFooterMenu(buttons: [
+          HomeButtonWrapper(),
+        ])
       ],
     );
   }
