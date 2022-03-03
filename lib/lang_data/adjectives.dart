@@ -190,7 +190,7 @@ final List<Adjective> adjectiveWordBank = [
     ),
   ),
   Adjective(
-    dictionary: 'hladno',
+    dictionary: 'hladan',
     toAvoid: [Tags.Human, Tags.Animal],
     nominativ: new Declension(
       masculine:

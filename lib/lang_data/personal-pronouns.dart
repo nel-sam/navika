@@ -43,10 +43,6 @@ final List<PersonalPronoun> personalPronounWordBank = [
     instrumental: new DeclensionPronoun(forms: ['njime', 'njim']),
   ),
   PersonalPronoun(
-    // TODO: nju, ju, je : To avoid repeating the same syllabe.
-    // For example the atonic form in accusative
-    // ( for feminine gender, 3rd person singular ) is "je, ju".
-    // The correct version would be "Vidio ju je." and not "Vidio je je."
     dictionary: 'ona',
     type: PronounEnum.She,
     isPlural: false,
@@ -54,7 +50,7 @@ final List<PersonalPronoun> personalPronounWordBank = [
     nominativ: new DeclensionPronoun(forms: ['ona']),
     genitiv: new DeclensionPronoun(forms: ['nje', 'je']),
     dativ: new DeclensionPronoun(forms: ['njoj', 'joj']),
-    akuzativ: new DeclensionPronoun(forms: ['nju', 'ju', 'je']),
+    akuzativ: new DeclensionPronoun(forms: ['nju', 'ju']), // TODO: , 'je'
     lokativ: new DeclensionPronoun(forms: ['njoj']),
     vokativ: new DeclensionPronoun(forms: ['']),
     instrumental: new DeclensionPronoun(forms: ['njome', 'njom']),

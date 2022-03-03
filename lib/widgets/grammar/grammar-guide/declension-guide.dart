@@ -9,9 +9,9 @@ import 'package:navika/widgets/grammar/grammar-guide/declension/genitiv-content.
 import 'package:navika/widgets/grammar/grammar-guide/declension/instrumental-content.dart';
 import 'package:navika/widgets/grammar/grammar-guide/declension/lokativ-content.dart';
 import 'package:navika/widgets/grammar/grammar-guide/declension/nominativ-content.dart';
-import 'package:nrs_flutter_lib/constants.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 import 'package:nrs_flutter_lib/widgets/n-footer-button.dart';
+import 'package:nrs_flutter_lib/widgets/n-footer-menu.dart';
 
 const CasesInOrder = [
   Cases.Nom,
@@ -135,27 +135,22 @@ class _DeclensionGuideState extends State<DeclensionGuide> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Padding(
-              padding:
-                  const EdgeInsets.only(bottom: FOOTER_ICON_BOTTOM_PADDING),
-              child: NFooterButton(
-                disabled: isAtTop,
-                icon: Icons.arrow_upward,
-                text: AppLocalizations.of(context)!.previous,
-                onPressed: () => moveToPrev(),
-              ),
-            ),
-            //HomeButtonWrapper(),
-            Padding(
-              padding:
-                  const EdgeInsets.only(bottom: FOOTER_ICON_BOTTOM_PADDING),
-              child: NFooterButton(
-                disabled: isAtBottom,
-                onPressed: () => moveToNext(),
-                icon: Icons.arrow_downward,
-                text: AppLocalizations.of(context)!.next,
-              ),
-            ),
+            NFooterMenu(
+              buttons: [
+                NFooterButton(
+                  disabled: isAtTop,
+                  icon: Icons.arrow_upward,
+                  text: AppLocalizations.of(context)!.previous,
+                  onPressed: () => moveToPrev(),
+                ),
+                NFooterButton(
+                  disabled: isAtBottom,
+                  onPressed: () => moveToNext(),
+                  icon: Icons.arrow_downward,
+                  text: AppLocalizations.of(context)!.next,
+                ),
+              ],
+            )
           ],
         ),
       ],

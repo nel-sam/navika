@@ -14,6 +14,7 @@ import 'package:navika/widgets/shared/navigation-header-wrapper.dart';
 import 'package:nrs_flutter_lib/constants.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 import 'package:nrs_flutter_lib/widgets/n-footer-button.dart';
+import 'package:nrs_flutter_lib/widgets/n-footer-menu.dart';
 import 'package:provider/provider.dart';
 
 class CaseExercise extends StatelessWidget {
@@ -84,22 +85,16 @@ class CaseExercise extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(
-                        bottom: FOOTER_ICON_BOTTOM_PADDING),
-                    child: NFooterButton(
+                  NFooterMenu(buttons: [
+                    NFooterButton(
                       onPressed: () {
                         navNotifier.shuffleAndClear();
                       },
                       icon: Icons.refresh_outlined,
                       text: AppLocalizations.of(context)!.refresh,
                     ),
-                  ),
-                  HomeButtonWrapper(),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                        bottom: FOOTER_ICON_BOTTOM_PADDING),
-                    child: NFooterButton(
+                    HomeButtonWrapper(),
+                    NFooterButton(
                       onPressed: () {
                         final dest = DeclensionGuide(startingCase: caseType);
                         Navigator.push(
@@ -110,7 +105,7 @@ class CaseExercise extends StatelessWidget {
                       icon: Icons.help_center_outlined,
                       text: AppLocalizations.of(context)!.grammar,
                     ),
-                  ),
+                  ])
                 ],
               ),
             ],
