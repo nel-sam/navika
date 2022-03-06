@@ -11,8 +11,10 @@ import 'package:navika/widgets/exercises/declension/instrumental/instrumental.da
 import 'package:navika/widgets/exercises/declension/lokativ/lokativ.dart';
 import 'package:navika/widgets/exercises/declension/nominativ/nominativ.dart';
 import 'package:navika/widgets/exercises/declension/vokativ/vokativ.dart';
-import 'package:navika/widgets/main-menu/exercise-button.dart';
+import 'package:navika/widgets/shared/ad-card.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
+import 'package:nrs_flutter_lib/widgets/n-menu-button.dart';
+import 'package:nrs_flutter_lib/widgets/n-menu-header.dart';
 
 class DeclensionMenu extends StatelessWidget {
   final allCases = AllCases();
@@ -29,73 +31,62 @@ class DeclensionMenu extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: Nrs.NrsAppBar(
-        title: SbcLabels.cases,
-        transTitle: AppLocalizations.of(context)!.cases,
         context: context,
       ),
       body: Center(
         child: Column(
           children: [
+            const AdCard(),
+            NMenuHeader(
+              icon: Icons.change_circle,
+              transLabel: AppLocalizations.of(context)!.cases,
+              label: SbcLabels.cases,
+            ),
             Expanded(
-              child: GridView.count(crossAxisCount: 2, children: [
-                ExerciseButton(
-                  halfWidth: true,
-                  destination: allCases,
-                  icon: Icons.group,
-                  label: AppLocalizations.of(context)!.allCases,
-                  sbcLabel: 'Sve padeže',
-                  imagePath: 'assets/banners/montenegro_sm.jpg',
-                ),
-                ExerciseButton(
-                  halfWidth: true,
-                  destination: nom,
-                  icon: Icons.category_outlined,
-                  label: N.getCaseLabel(Cases.Nom),
-                  imagePath: 'assets/banners/seaside_sm.jpg',
-                ),
-                ExerciseButton(
-                    halfWidth: true,
+              child: SingleChildScrollView(
+                child: Column(children: [
+                  NMenuButton(
+                    destination: allCases,
+                    label: AppLocalizations.of(context)!.allCases,
+                    transLabel: 'Sve padeže',
+                  ),
+                  NMenuButton(
+                    destination: nom,
+                    transLabel: 'Nominativ',
+                    label: N.getCaseLabel(Cases.Nom),
+                  ),
+                  NMenuButton(
                     destination: aku,
-                    icon: Icons.remove_red_eye_outlined,
                     label: AppLocalizations.of(context)!.akuzativ,
-                    sbcLabel: 'Akuzativ',
-                    imagePath: 'assets/banners/pay_sm.jpg'),
-                ExerciseButton(
-                    halfWidth: true,
+                    transLabel: 'Akuzativ',
+                  ),
+                  NMenuButton(
                     destination: inst,
-                    icon: Icons.handyman_outlined,
                     label: AppLocalizations.of(context)!.instrumental,
-                    sbcLabel: 'Instrumental',
-                    imagePath: 'assets/banners/vespa_sm.jpg'),
-                ExerciseButton(
-                    halfWidth: true,
+                    transLabel: 'Instrumental',
+                  ),
+                  NMenuButton(
                     destination: lok,
-                    icon: Icons.location_on_outlined,
                     label: AppLocalizations.of(context)!.lokativ,
-                    sbcLabel: 'Lokativ',
-                    imagePath: 'assets/banners/ladies_sm.jpg'),
-                ExerciseButton(
-                    halfWidth: true,
+                    transLabel: 'Lokativ',
+                  ),
+                  NMenuButton(
                     destination: dat,
-                    icon: Icons.arrow_forward,
                     label: AppLocalizations.of(context)!.dativ,
-                    sbcLabel: 'Dativ',
-                    imagePath: 'assets/banners/giving_sm.jpg'),
-                ExerciseButton(
-                    halfWidth: true,
+                    transLabel: 'Dativ',
+                  ),
+                  NMenuButton(
                     destination: gen,
-                    icon: Icons.coffee,
                     label: AppLocalizations.of(context)!.genitiv,
-                    sbcLabel: 'Genitiv',
-                    imagePath: 'assets/banners/bosna_sm.jpg'),
-                ExerciseButton(
-                    halfWidth: true,
+                    transLabel: 'Genitiv',
+                  ),
+                  NMenuButton(
                     destination: vok,
-                    icon: Icons.call_rounded,
                     label: AppLocalizations.of(context)!.vokativ,
-                    sbcLabel: 'Vokativ',
-                    imagePath: 'assets/banners/woman_sm.jpg'),
-              ]),
+                    transLabel: 'Vokativ',
+                  ),
+                ]),
+              ),
             )
           ],
         ),

@@ -3,12 +3,12 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/widgets/exercises/cyrillic/cyrillic-exercise.dart';
 import 'package:navika/widgets/main-menu/declension-menu.dart';
-import 'package:navika/widgets/main-menu/exercise-button.dart';
 import 'package:navika/widgets/main-menu/grammar-menu.dart';
 import 'package:navika/widgets/main-menu/verb-menu.dart';
 import 'package:navika/widgets/shared/ad-card.dart';
 import 'package:nrs_flutter_lib/constants.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
+import 'package:nrs_flutter_lib/widgets/n-menu-button.dart';
 
 class MainMenu extends StatelessWidget {
   @override
@@ -20,7 +20,9 @@ class MainMenu extends StatelessWidget {
           decoration: BoxDecoration(
             image: DecorationImage(
               opacity: Nrs.isDarkTheme(context) ? 0.7 : 1,
-              image: AssetImage('assets/banners/sea.jpg'),
+              image: AssetImage(
+                'assets/banners/sea.jpg',
+              ),
               fit: BoxFit.cover,
             ),
           ),
@@ -42,42 +44,31 @@ class MainMenu extends StatelessWidget {
           ),
         ),
         Expanded(
-          child: GridView.count(
-            crossAxisCount: 2,
-            children: [
-              ExerciseButton(
-                halfWidth: true,
-                destination: GrammarMenu(),
-                icon: Icons.menu_book,
-                label: AppLocalizations.of(context)!.grammarGuides,
-                sbcLabel: SbcLabels.grammarGuide,
-                imagePath: 'assets/banners/books_sm.jpg',
-              ),
-              ExerciseButton(
-                halfWidth: true,
-                destination: DeclensionMenu(),
-                icon: Icons.change_circle,
-                label: AppLocalizations.of(context)!.caseExercises,
-                sbcLabel: SbcLabels.cases,
-                imagePath: 'assets/banners/seaside_sm.jpg',
-              ),
-              ExerciseButton(
-                halfWidth: true,
-                destination: VerbMenu(),
-                icon: Icons.nordic_walking,
-                label: AppLocalizations.of(context)!.verbExercises,
-                sbcLabel: SbcLabels.verbs,
-                imagePath: 'assets/banners/vespa_sm.jpg',
-              ),
-              ExerciseButton(
-                halfWidth: true,
-                destination: CyrillicExercise(),
-                icon: Icons.abc,
-                label: AppLocalizations.of(context)!.cyrillic,
-                sbcLabel: SbcLabels.cyrillic,
-                imagePath: 'assets/banners/writing_sm.jpg',
-              ),
-            ],
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                NMenuButton(
+                  destination: GrammarMenu(),
+                  label: AppLocalizations.of(context)!.grammarGuides,
+                  transLabel: SbcLabels.grammarGuide,
+                ),
+                NMenuButton(
+                  destination: DeclensionMenu(),
+                  label: AppLocalizations.of(context)!.caseExercises,
+                  transLabel: SbcLabels.cases,
+                ),
+                NMenuButton(
+                  destination: VerbMenu(),
+                  label: AppLocalizations.of(context)!.verbExercises,
+                  transLabel: SbcLabels.verbs,
+                ),
+                NMenuButton(
+                  destination: CyrillicExercise(),
+                  label: AppLocalizations.of(context)!.cyrillic,
+                  transLabel: SbcLabels.cyrillic,
+                ),
+              ],
+            ),
           ),
         ),
         const AdCard(),

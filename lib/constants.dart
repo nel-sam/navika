@@ -36,9 +36,9 @@ const TABLE_CELL_WIDTH = 87.0;
 
 class SbcLabels {
   static String cyrillic = 'Ћирилица';
-  static String cases = 'Padež';
+  static String cases = 'Padeži';
   static String verbs = 'Glagoli';
-  static String justTables = 'Samo tablice';
+  static String justTables = 'Tabele';
   static String grammarGuide = 'Vodič za gramatiku';
   static String wordOrder = 'Poredak riječi';
 }

@@ -1,41 +1,43 @@
 import 'package:flutter/material.dart';
-import 'package:navika/constants.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:navika/constants.dart';
 import 'package:navika/widgets/exercises/verbs/past-tense/past-tense.dart';
 import 'package:navika/widgets/exercises/verbs/present-tense/present-tense.dart';
-import 'package:navika/widgets/main-menu/exercise-button.dart';
+import 'package:navika/widgets/shared/ad-card.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
+import 'package:nrs_flutter_lib/widgets/n-menu-button.dart';
+import 'package:nrs_flutter_lib/widgets/n-menu-header.dart';
 
 class VerbMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var buttons = <Widget>[
-      ExerciseButton(
+      NMenuButton(
         destination: PresentTense(),
-        icon: Icons.checklist_outlined,
         label: AppLocalizations.of(context)!.presentTense,
-        sbcLabel: 'Sadašnje vrijeme',
-        imagePath: 'assets/banners/hills_lg.jpg',
+        transLabel: 'Sadašnje vrijeme',
       ),
-      ExerciseButton(
+      NMenuButton(
         destination: PastTense(),
-        icon: Icons.history,
         label: AppLocalizations.of(context)!.pastTense,
-        sbcLabel: 'Prošlo vrijeme',
-        imagePath: 'assets/banners/bosna_lg.jpg',
+        transLabel: 'Prošlo vrijeme',
       ),
     ];
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: Nrs.NrsAppBar(
-        title: SbcLabels.verbs,
-        transTitle: AppLocalizations.of(context)!.verbs,
         context: context,
       ),
       body: Center(
         child: Column(
           children: [
+            const AdCard(),
+            NMenuHeader(
+              icon: Icons.nordic_walking,
+              transLabel: AppLocalizations.of(context)!.verbs,
+              label: SbcLabels.verbs,
+            ),
             Expanded(
               child: SingleChildScrollView(
                 child: Column(
