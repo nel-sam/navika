@@ -9,8 +9,8 @@ List<CyrillicBankItem> cyrillicWordBank = [
       getTranslation: (BuildContext context) =>
           AppLocalizations.of(context)!.trans_pada_kisa),
   CyrillicBankItem(
-      latinString: 'Ovo je najbolji čevapi',
-      cyrillicString: 'Ово је најбољи чевапи',
+      latinString: 'Ovo su najbolji čevapi',
+      cyrillicString: 'Ово су најбољи чевапи',
       getTranslation: (BuildContext context) =>
           AppLocalizations.of(context)!.trans_najbolji_cevapi),
   CyrillicBankItem(

@@ -652,6 +652,30 @@ final List<Verb> verbWordBank = [
       onaPl: 'pomogla',
     ),
   ),
+  Verb(
+    infinitive: 'pozivati',
+    isIrregular: false,
+    isReflexive: false,
+    verbPerfectiveType: VerbPerfectiveTypes.Imperfective,
+    getTranslation: (BuildContext context) =>
+        AppLocalizations.of(context)!.trans_pozivati,
+    present: ConjugationSet(
+      ja: 'pozivam',
+      ti: 'pozivaš',
+      on: 'poziva',
+      mi: 'pozivamo',
+      vi: 'pozivate',
+      oni: 'pozivaju',
+    ),
+    pastPerfect: ParticipleSet(
+      singularMasc: 'pozivao',
+      singularFem: 'pozivala',
+      pluralMasc: 'pozivali',
+      pluralFem: 'pozivale',
+      ono: 'pozivalo',
+      onaPl: 'pozivala',
+    ),
+  ),
 ];
 
   // Verb(
