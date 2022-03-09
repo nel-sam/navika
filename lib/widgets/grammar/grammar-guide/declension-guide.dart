@@ -135,13 +135,13 @@ class _DeclensionGuideState extends State<DeclensionGuide> {
         NFooterMenu(
           buttons: [
             NFooterButton(
-              disabled: isAtTop,
+              active: !isAtTop,
               icon: Icons.arrow_upward,
               text: AppLocalizations.of(context)!.previous,
               onPressed: () => moveToPrev(),
             ),
             NFooterButton(
-              disabled: isAtBottom,
+              active: !isAtBottom,
               onPressed: () => moveToNext(),
               icon: Icons.arrow_downward,
               text: AppLocalizations.of(context)!.next,

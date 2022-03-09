@@ -4,6 +4,7 @@ import 'package:navika/constants.dart';
 import 'package:navika/widgets/grammar/grammar-guide/declension-guide.dart';
 import 'package:navika/widgets/grammar/grammar-guide/tables.dart';
 import 'package:navika/widgets/shared/ad-card.dart';
+import 'package:navika/widgets/shared/menu-footer.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 import 'package:nrs_flutter_lib/widgets/n-menu-button.dart';
 import 'package:nrs_flutter_lib/widgets/n-menu-header.dart';
@@ -13,7 +14,7 @@ class GrammarMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     final transLabel = AppLocalizations.of(context)!.grammarGuides;
     final label = SbcLabels.grammarGuide;
-    final icon = Icons.menu_book;
+    final icon = NavIcons.grammarGuides;
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -48,6 +49,7 @@ class GrammarMenu extends StatelessWidget {
           ],
         ),
       ),
+      persistentFooterButtons: [MenuFooter(activeIndex: 1)],
     );
   }
 }

@@ -92,6 +92,7 @@ class CaseExercise extends StatelessWidget {
                 ),
                 HomeButtonWrapper(),
                 NFooterButton(
+                  active: true,
                   onPressed: () {
                     final dest = DeclensionGuide(startingCase: caseType);
                     Navigator.push(

@@ -4,6 +4,7 @@ import 'package:navika/constants.dart';
 import 'package:navika/widgets/exercises/verbs/past-tense/past-tense.dart';
 import 'package:navika/widgets/exercises/verbs/present-tense/present-tense.dart';
 import 'package:navika/widgets/shared/ad-card.dart';
+import 'package:navika/widgets/shared/menu-footer.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 import 'package:nrs_flutter_lib/widgets/n-menu-button.dart';
 import 'package:nrs_flutter_lib/widgets/n-menu-header.dart';
@@ -34,7 +35,7 @@ class VerbMenu extends StatelessWidget {
           children: [
             const AdCard(),
             NMenuHeader(
-              icon: Icons.nordic_walking,
+              icon: NavIcons.verbs,
               transLabel: AppLocalizations.of(context)!.verbs,
               label: SbcLabels.verbs,
             ),
@@ -48,6 +49,7 @@ class VerbMenu extends StatelessWidget {
           ],
         ),
       ),
+      persistentFooterButtons: [MenuFooter(activeIndex: 3)],
     );
   }
 }

@@ -55,8 +55,9 @@ class CyrillicExercise extends StatelessWidget {
       ),
       persistentFooterButtons: [
         NFooterMenu(buttons: [
-          HomeButtonWrapper(),
+          HomeButtonWrapper(isActive: false),
           NFooterButton(
+            active: true,
             onPressed: () {
               final dest = CyrillicChart();
               Navigator.push(

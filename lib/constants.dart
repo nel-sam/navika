@@ -34,6 +34,13 @@ const RECOMMENDED_VIDEO_VOK = '';
 const SINGULAR_ICON = Icons.looks_one_outlined;
 const TABLE_CELL_WIDTH = 87.0;
 
+class NavIcons {
+  static IconData grammarGuides = Icons.menu_book;
+  static IconData verbs = Icons.nordic_walking;
+  static IconData cases = Icons.change_circle;
+  static IconData cyrillic = Icons.abc;
+}
+
 class SbcLabels {
   static String cyrillic = 'Ћирилица';
   static String cases = 'Padeži';
