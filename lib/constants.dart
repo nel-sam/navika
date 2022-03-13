@@ -38,7 +38,7 @@ class NavIcons {
   static IconData grammarGuides = Icons.menu_book;
   static IconData verbs = Icons.nordic_walking;
   static IconData cases = Icons.change_circle;
-  static IconData cyrillic = Icons.abc;
+  static String cyrillic = 'аБ';
 }
 
 class SbcLabels {

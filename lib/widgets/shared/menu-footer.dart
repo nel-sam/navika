@@ -5,7 +5,7 @@ import 'package:navika/widgets/exercises/cyrillic/cyrillic-exercise.dart';
 import 'package:navika/widgets/main-menu/declension-menu.dart';
 import 'package:navika/widgets/main-menu/grammar-menu.dart';
 import 'package:navika/widgets/main-menu/verb-menu.dart';
-import 'package:navika/widgets/shared/home-button-wrapper.dart';
+import 'package:nrs_flutter_lib/widgets/n-footer-button-text-icon.dart';
 import 'package:nrs_flutter_lib/widgets/n-footer-button.dart';
 import 'package:nrs_flutter_lib/widgets/n-footer-menu.dart';
 
@@ -21,7 +21,7 @@ class MenuFooter extends StatelessWidget {
   Widget build(BuildContext context) {
     return NFooterMenu(
       buttons: [
-        HomeButtonWrapper(isActive: activeIndex == 0),
+        //HomeButtonWrapper(isActive: activeIndex == 0),
         NFooterButton(
           active: activeIndex == 1,
           text: AppLocalizations.of(context)!.grammar,
@@ -61,10 +61,10 @@ class MenuFooter extends StatelessWidget {
             );
           },
         ),
-        NFooterButton(
+        NFooterButtonTextIcon(
           active: activeIndex == 4,
           text: AppLocalizations.of(context)!.cyrillic,
-          icon: NavIcons.cyrillic,
+          iconText: NavIcons.cyrillic,
           onPressed: () {
             Navigator.push(
               context,
