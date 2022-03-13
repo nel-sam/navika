@@ -87,7 +87,7 @@ class _InfoBannerState extends State<InfoBanner> {
                       ),
                     ),
                     if (state.hasYouTubeLink)
-                      YouTubeLink(context, this.widget.youtubeLink!)
+                      YouTubeLink(this.widget.youtubeLink!)
                   ],
                 ),
               ),

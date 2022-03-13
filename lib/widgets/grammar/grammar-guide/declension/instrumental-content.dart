@@ -15,7 +15,7 @@ Widget getDescription(BuildContext context) {
       NTextMulti([
         TextSpan(text: AppLocalizations.of(context)!.instrumentalDescription)
       ]),
-      YouTubeLink(context, RECOMMENDED_VIDEO_INST)
+      YouTubeLink(RECOMMENDED_VIDEO_INST)
     ],
   );
 }

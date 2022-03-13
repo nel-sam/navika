@@ -14,7 +14,7 @@ Widget getDescription(BuildContext context) {
     children: [
       NTextMulti(
           [TextSpan(text: AppLocalizations.of(context)!.lokativDescription)]),
-      YouTubeLink(context, RECOMMENDED_VIDEO_LOK)
+      YouTubeLink(RECOMMENDED_VIDEO_LOK)
     ],
   );
 }
