@@ -51,8 +51,8 @@ class ExerciseNavNotifier with ChangeNotifier {
     return _states[_activeIndex];
   }
 
-  String getCounter() {
-    return '${_activeIndex + 1}/$_maxIndex';
+  double getProgressPercentage() {
+    return (_activeIndex / _maxIndex) * 100;
   }
 
   setNext() {

@@ -17,7 +17,7 @@ class NavigationHeaderWrapper extends StatelessWidget {
         setPrevious: navNotifier.setPrevious,
         setNext: navNotifier.setNext,
         clear: navNotifier.clearInput,
-        getCounter: navNotifier.getCounter,
+        getProgressPercentage: navNotifier.getProgressPercentage,
         previousText: AppLocalizations.of(context)!.previous,
         nextText: AppLocalizations.of(context)!.next,
         clearText: AppLocalizations.of(context)!.clear,

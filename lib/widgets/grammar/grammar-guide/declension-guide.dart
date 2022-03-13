@@ -12,6 +12,7 @@ import 'package:navika/widgets/grammar/grammar-guide/declension/nominativ-conten
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 import 'package:nrs_flutter_lib/widgets/n-footer-button.dart';
 import 'package:nrs_flutter_lib/widgets/n-footer-menu.dart';
+import 'package:nrs_flutter_lib/widgets/n-progress-bar.dart';
 
 const CasesInOrder = [
   Cases.Nom,
@@ -83,6 +84,7 @@ class _DeclensionGuideState extends State<DeclensionGuide> {
   late ScrollController controller;
   late bool isAtTop = false;
   late bool isAtBottom = false;
+  late double progressPercentage = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -94,42 +96,47 @@ class _DeclensionGuideState extends State<DeclensionGuide> {
         transTitle: AppLocalizations.of(context)!.cases,
         context: context,
       ),
-      body: SingleChildScrollView(
-        controller: controller,
-        child: Center(
-          child: Container(
-            padding: EdgeInsets.all(20.0),
-            width: screenWidth > 840 ? screenWidth / 2 : screenWidth,
-            child: Column(
-              children: [
-                ContentSection(
-                  text: N.getCaseLabel(Cases.Nom),
-                  content: NominativGrammarGuideContent(),
+      body: Column(
+        children: [
+          NProgressBar(progressPercentage: this.progressPercentage),
+          SingleChildScrollView(
+            controller: controller,
+            child: Center(
+              child: Container(
+                padding: EdgeInsets.all(20.0),
+                width: screenWidth > 840 ? screenWidth / 2 : screenWidth,
+                child: Column(
+                  children: [
+                    ContentSection(
+                      text: N.getCaseLabel(Cases.Nom),
+                      content: NominativGrammarGuideContent(),
+                    ),
+                    ContentSection(
+                      text: N.getCaseLabel(Cases.Aku),
+                      content: AkuzativGrammarGuideContent(),
+                    ),
+                    ContentSection(
+                      text: N.getCaseLabel(Cases.Ins),
+                      content: InstrumentalGrammarGuideContent(),
+                    ),
+                    ContentSection(
+                      text: N.getCaseLabel(Cases.Lok),
+                      content: LokativGrammarGuideContent(),
+                    ),
+                    ContentSection(
+                      text: N.getCaseLabel(Cases.Dat),
+                      content: DativGrammarGuideContent(),
+                    ),
+                    ContentSection(
+                      text: N.getCaseLabel(Cases.Gen),
+                      content: GenitivGrammarGuideContent(),
+                    ),
+                  ],
                 ),
-                ContentSection(
-                  text: N.getCaseLabel(Cases.Aku),
-                  content: AkuzativGrammarGuideContent(),
-                ),
-                ContentSection(
-                  text: N.getCaseLabel(Cases.Ins),
-                  content: InstrumentalGrammarGuideContent(),
-                ),
-                ContentSection(
-                  text: N.getCaseLabel(Cases.Lok),
-                  content: LokativGrammarGuideContent(),
-                ),
-                ContentSection(
-                  text: N.getCaseLabel(Cases.Dat),
-                  content: DativGrammarGuideContent(),
-                ),
-                ContentSection(
-                  text: N.getCaseLabel(Cases.Gen),
-                  content: GenitivGrammarGuideContent(),
-                ),
-              ],
+              ),
             ),
           ),
-        ),
+        ],
       ),
       persistentFooterButtons: [
         NFooterMenu(
@@ -169,12 +176,18 @@ class _DeclensionGuideState extends State<DeclensionGuide> {
   }
 
   moveToNext() => setState(() {
-        if (isAtBottom) return;
+        if (isAtBottom) {
+          this.progressPercentage = 100;
+          return;
+        }
         scrollPrevOrNext(toNext: true);
       });
 
   moveToPrev() => setState(() {
-        if (isAtTop) return;
+        if (isAtTop) {
+          this.progressPercentage = 0;
+          return;
+        }
         scrollPrevOrNext(toNext: false);
       });
 
@@ -195,6 +208,8 @@ class _DeclensionGuideState extends State<DeclensionGuide> {
       final multFactor = toNext
           ? (currentPoint / CONTENT_HEIGHT).ceil()
           : (currentPoint / CONTENT_HEIGHT).floor();
+
+      this.progressPercentage = multFactor * (100 / CasesInOrder.length);
 
       double scrollPoint = multFactor * CONTENT_HEIGHT;
       scrollTo(scrollPoint, controller);
