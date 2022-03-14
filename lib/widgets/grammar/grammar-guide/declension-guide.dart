@@ -9,6 +9,7 @@ import 'package:navika/widgets/grammar/grammar-guide/declension/genitiv-content.
 import 'package:navika/widgets/grammar/grammar-guide/declension/instrumental-content.dart';
 import 'package:navika/widgets/grammar/grammar-guide/declension/lokativ-content.dart';
 import 'package:navika/widgets/grammar/grammar-guide/declension/nominativ-content.dart';
+import 'package:nrs_flutter_lib/constants.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 import 'package:nrs_flutter_lib/widgets/n-footer-button.dart';
 import 'package:nrs_flutter_lib/widgets/n-footer-menu.dart';
@@ -40,25 +41,14 @@ class ContentSection extends StatelessWidget {
       child: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.only(bottom: 12),
-            child: Container(
-              height: 40,
-              color: Nrs.getPrimaryColor(context),
-              child: Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 10),
-                    child: Text(
-                      text,
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+            padding: const EdgeInsets.only(bottom: FONT_SIZE),
+            child: Row(
+              children: [
+                Text(
+                  text,
+                  style: TextStyle(fontSize: FONT_SIZE * 2.5),
+                ),
+              ],
             ),
           ),
           content,
