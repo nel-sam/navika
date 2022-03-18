@@ -75,7 +75,8 @@ class _DeclensionGuideState extends State<DeclensionGuide> {
   late ScrollController controller;
   late bool isAtTop = true;
   late bool isAtBottom = false;
-  late double progressPercentage = getInitialProgressPercentage();
+  late int startingIndex = CasesInOrder.indexOf(widget.startingCase);
+  late double progressPercentage = (startingIndex / CasesInOrder.length) * 100;
 
   @override
   Widget build(BuildContext context) {
@@ -157,17 +158,8 @@ class _DeclensionGuideState extends State<DeclensionGuide> {
     );
   }
 
-  double getInitialProgressPercentage() => (1 / CasesInOrder.length) * 100;
-
-  bool getIsAtBottom() =>
-      controller.position.pixels >= CONTENT_HEIGHT * (CasesInOrder.length - 1);
-
-  bool getIsAtTop() => controller.position.pixels <= 10;
-
-  double getScrollPoint(Cases caseType) {
-    final index = CasesInOrder.indexOf(caseType);
-    return index * CONTENT_HEIGHT;
-  }
+  double getScrollPoint(Cases caseType) =>
+      CasesInOrder.indexOf(caseType) * CONTENT_HEIGHT;
 
   @override
   void initState() {
@@ -178,57 +170,52 @@ class _DeclensionGuideState extends State<DeclensionGuide> {
   }
 
   moveToNext() => setState(() {
-        if (isAtBottom) {
-          this.progressPercentage = 100;
-          return;
-        }
+        if (isAtBottom) return;
+
         scrollPrevOrNext(toNext: true);
       });
 
   moveToPrev() => setState(() {
-        if (isAtTop) {
-          this.progressPercentage = getInitialProgressPercentage();
-          return;
-        }
+        if (isAtTop) return;
+
         scrollPrevOrNext(toNext: false);
       });
 
   scrollListener() => setState(() {
-        isAtTop = getIsAtTop();
-        isAtBottom = getIsAtBottom();
+        if (controller.position.atEdge) {
+          bool atTop = controller.position.pixels == 0;
+          isAtTop = atTop;
+          isAtBottom = !atTop;
+        } else {
+          isAtTop = isAtBottom = false;
+        }
+
+        double percentage = controller.position.pixels /
+            ((CasesInOrder.length * CONTENT_HEIGHT));
+        percentage = percentage < 0 ? 0 : percentage;
+        this.progressPercentage = percentage * 100;
       });
 
   scrollPrevOrNext({required bool toNext}) {
     double currentPoint = controller.position.pixels;
     bool isAtHeader = (currentPoint % CONTENT_HEIGHT) == 0;
-    double scrollPoint = 0;
 
     if (isAtHeader && toNext) {
-      scrollPoint = currentPoint + CONTENT_HEIGHT;
+      double scrollPoint = currentPoint + CONTENT_HEIGHT;
       scrollTo(scrollPoint, controller);
     } else if (isAtHeader) {
-      scrollPoint = currentPoint - CONTENT_HEIGHT;
+      double scrollPoint = currentPoint - CONTENT_HEIGHT;
       scrollTo(scrollPoint, controller);
     } else {
       final multFactor = toNext
           ? (currentPoint / CONTENT_HEIGHT).ceil()
           : (currentPoint / CONTENT_HEIGHT).floor();
 
-      scrollPoint = multFactor * CONTENT_HEIGHT;
+      double scrollPoint = multFactor * CONTENT_HEIGHT;
       scrollTo(scrollPoint, controller);
     }
-
-    final currentIndx = getIndexOfScrollPoint(scrollPoint) + 1;
-    final percentage = (currentIndx / CasesInOrder.length) * 100;
-    this.progressPercentage = percentage;
   }
 
-  static int getIndexOfScrollPoint(double scrollPoint) {
-    return scrollPoint ~/ CONTENT_HEIGHT;
-  }
-
-  static scrollTo(double point, ScrollController controller) {
-    controller.animateTo(point,
-        curve: Curves.linearToEaseOut, duration: Duration(milliseconds: 1));
-  }
+  static scrollTo(double point, ScrollController controller) =>
+      controller.jumpTo(point);
 }
