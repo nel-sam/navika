@@ -17,15 +17,15 @@ import 'package:nrs_flutter_lib/widgets/n-progress-bar.dart';
 
 const CasesInOrder = [
   Cases.Nom,
+  Cases.Gen,
+  Cases.Dat,
   Cases.Aku,
+  Cases.Vok,
   Cases.Ins,
   Cases.Lok,
-  Cases.Dat,
-  Cases.Gen,
-  // Cases.Vokativ,
 ];
 
-const double CONTENT_HEIGHT = 1200.0;
+const double CONTENT_HEIGHT = 1300.0;
 
 class ContentSection extends StatelessWidget {
   final String text;
@@ -72,9 +72,9 @@ class DeclensionGuide extends StatefulWidget {
 
 class _DeclensionGuideState extends State<DeclensionGuide> {
   late ScrollController controller;
-  late bool isAtTop = false;
+  late bool isAtTop = true;
   late bool isAtBottom = false;
-  late double progressPercentage = 0;
+  late double progressPercentage = getInitialProgressPercentage();
 
   @override
   Widget build(BuildContext context) {
@@ -86,47 +86,53 @@ class _DeclensionGuideState extends State<DeclensionGuide> {
         transTitle: AppLocalizations.of(context)!.cases,
         context: context,
       ),
-      body: Column(
-        children: [
-          NProgressBar(progressPercentage: this.progressPercentage),
-          SingleChildScrollView(
-            controller: controller,
-            child: Center(
-              child: Container(
-                padding: EdgeInsets.all(20.0),
-                width: screenWidth > 840 ? screenWidth / 2 : screenWidth,
-                child: Column(
-                  children: [
-                    ContentSection(
-                      text: N.getCaseLabel(Cases.Nom),
-                      content: NominativGrammarGuideContent(),
-                    ),
-                    ContentSection(
-                      text: N.getCaseLabel(Cases.Aku),
-                      content: AkuzativGrammarGuideContent(),
-                    ),
-                    ContentSection(
-                      text: N.getCaseLabel(Cases.Ins),
-                      content: InstrumentalGrammarGuideContent(),
-                    ),
-                    ContentSection(
-                      text: N.getCaseLabel(Cases.Lok),
-                      content: LokativGrammarGuideContent(),
-                    ),
-                    ContentSection(
-                      text: N.getCaseLabel(Cases.Dat),
-                      content: DativGrammarGuideContent(),
-                    ),
-                    ContentSection(
-                      text: N.getCaseLabel(Cases.Gen),
-                      content: GenitivGrammarGuideContent(),
-                    ),
-                  ],
+      body: Center(
+        child: Column(
+          children: [
+            NProgressBar(progressPercentage: this.progressPercentage),
+            Expanded(
+              child: SingleChildScrollView(
+                controller: controller,
+                child: Container(
+                  padding: EdgeInsets.all(20.0),
+                  width: screenWidth > 840 ? screenWidth / 2 : screenWidth,
+                  child: Column(
+                    children: [
+                      ContentSection(
+                        text: N.getCaseLabel(Cases.Nom),
+                        content: NominativGrammarGuideContent(),
+                      ),
+                      ContentSection(
+                        text: N.getCaseLabel(Cases.Gen),
+                        content: GenitivGrammarGuideContent(),
+                      ),
+                      ContentSection(
+                        text: N.getCaseLabel(Cases.Dat),
+                        content: DativGrammarGuideContent(),
+                      ),
+                      ContentSection(
+                        text: N.getCaseLabel(Cases.Aku),
+                        content: AkuzativGrammarGuideContent(),
+                      ),
+                      ContentSection(
+                        text: N.getCaseLabel(Cases.Vok),
+                        content: Container(),
+                      ),
+                      ContentSection(
+                        text: N.getCaseLabel(Cases.Ins),
+                        content: InstrumentalGrammarGuideContent(),
+                      ),
+                      ContentSection(
+                        text: N.getCaseLabel(Cases.Lok),
+                        content: LokativGrammarGuideContent(),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
       persistentFooterButtons: [
         NFooterMenu(
@@ -149,18 +155,22 @@ class _DeclensionGuideState extends State<DeclensionGuide> {
     );
   }
 
+  double getInitialProgressPercentage() => (1 / CasesInOrder.length) * 100;
+
   bool getIsAtBottom() =>
       controller.position.pixels >= CONTENT_HEIGHT * (CasesInOrder.length - 1);
 
   bool getIsAtTop() => controller.position.pixels <= 10;
 
-  double getScrollPoint(Cases caseType) =>
-      CasesInOrder.indexOf(caseType) * CONTENT_HEIGHT;
+  double getScrollPoint(Cases caseType) {
+    final index = CasesInOrder.indexOf(caseType);
+    return index * CONTENT_HEIGHT;
+  }
 
   @override
   void initState() {
-    controller = ScrollController(
-        initialScrollOffset: getScrollPoint(widget.startingCase));
+    final startingPoint = getScrollPoint(widget.startingCase);
+    controller = ScrollController(initialScrollOffset: startingPoint);
     controller.addListener(scrollListener);
     super.initState();
   }
@@ -175,7 +185,7 @@ class _DeclensionGuideState extends State<DeclensionGuide> {
 
   moveToPrev() => setState(() {
         if (isAtTop) {
-          this.progressPercentage = 0;
+          this.progressPercentage = getInitialProgressPercentage();
           return;
         }
         scrollPrevOrNext(toNext: false);
@@ -189,25 +199,34 @@ class _DeclensionGuideState extends State<DeclensionGuide> {
   scrollPrevOrNext({required bool toNext}) {
     double currentPoint = controller.position.pixels;
     bool isAtHeader = (currentPoint % CONTENT_HEIGHT) == 0;
+    double scrollPoint = 0;
 
     if (isAtHeader && toNext) {
-      scrollTo(currentPoint + CONTENT_HEIGHT, controller);
+      scrollPoint = currentPoint + CONTENT_HEIGHT;
+      scrollTo(scrollPoint, controller);
     } else if (isAtHeader) {
-      scrollTo(currentPoint - CONTENT_HEIGHT, controller);
+      scrollPoint = currentPoint - CONTENT_HEIGHT;
+      scrollTo(scrollPoint, controller);
     } else {
       final multFactor = toNext
           ? (currentPoint / CONTENT_HEIGHT).ceil()
           : (currentPoint / CONTENT_HEIGHT).floor();
 
-      this.progressPercentage = multFactor * (100 / CasesInOrder.length);
-
-      double scrollPoint = multFactor * CONTENT_HEIGHT;
+      scrollPoint = multFactor * CONTENT_HEIGHT;
       scrollTo(scrollPoint, controller);
     }
+
+    final currentIndx = getIndexOfScrollPoint(scrollPoint) + 1;
+    final percentage = (currentIndx / CasesInOrder.length) * 100;
+    this.progressPercentage = percentage;
   }
 
-  static scrollTo(double point, controller) {
+  static int getIndexOfScrollPoint(double scrollPoint) {
+    return scrollPoint ~/ CONTENT_HEIGHT;
+  }
+
+  static scrollTo(double point, ScrollController controller) {
     controller.animateTo(point,
-        curve: Curves.linearToEaseOut, duration: Duration(milliseconds: 800));
+        curve: Curves.linearToEaseOut, duration: Duration(milliseconds: 1));
   }
 }
