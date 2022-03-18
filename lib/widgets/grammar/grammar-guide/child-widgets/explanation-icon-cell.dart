@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
+import 'package:nrs_flutter_lib/constants.dart';
 
 class ExplanationIconCell extends StatelessWidget {
-  final IconData icon;
+  final Widget icon;
   final String label;
 
   const ExplanationIconCell({
@@ -15,17 +15,16 @@ class ExplanationIconCell extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(top: 10, bottom: 10),
-      child: Container(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Icon(icon, color: Nrs.getPrimaryColor(context)),
-            Text(
-              label,
-              textAlign: TextAlign.center,
-            ),
-          ],
-        ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          icon,
+          Text(
+            label.toUpperCase(),
+            textAlign: TextAlign.center,
+            style: TextStyle(fontSize: FONT_SIZE - 4),
+          ),
+        ],
       ),
     );
   }

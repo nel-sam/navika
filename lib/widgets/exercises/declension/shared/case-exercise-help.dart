@@ -227,7 +227,7 @@ class CaseExerciseHelp extends StatelessWidget {
                     Container(
                       height: topRowHeight,
                       child: ExplanationIconCell(
-                        icon: SINGULAR_ICON,
+                        icon: Icon(SINGULAR_ICON, color: Colors.grey),
                         label: AppLocalizations.of(context)!.singular,
                       ),
                     ),
@@ -270,7 +270,7 @@ class CaseExerciseHelp extends StatelessWidget {
                     Container(
                       height: topRowHeight,
                       child: ExplanationIconCell(
-                        icon: PLURAL_ICON,
+                        icon: Icon(PLURAL_ICON, color: Colors.grey),
                         label: AppLocalizations.of(context)!.plural,
                       ),
                     ),

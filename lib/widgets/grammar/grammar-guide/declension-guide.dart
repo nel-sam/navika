@@ -9,6 +9,7 @@ import 'package:navika/widgets/grammar/grammar-guide/declension/genitiv-content.
 import 'package:navika/widgets/grammar/grammar-guide/declension/instrumental-content.dart';
 import 'package:navika/widgets/grammar/grammar-guide/declension/lokativ-content.dart';
 import 'package:navika/widgets/grammar/grammar-guide/declension/nominativ-content.dart';
+import 'package:navika/widgets/shared/ad-card.dart';
 import 'package:nrs_flutter_lib/constants.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 import 'package:nrs_flutter_lib/widgets/n-footer-button.dart';
@@ -89,6 +90,7 @@ class _DeclensionGuideState extends State<DeclensionGuide> {
       body: Center(
         child: Column(
           children: [
+            const AdCard(),
             NProgressBar(progressPercentage: this.progressPercentage),
             Expanded(
               child: SingleChildScrollView(
