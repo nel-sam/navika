@@ -8,6 +8,21 @@ import 'package:navika/widgets/grammar/grammar-guide/child-widgets/explanation-i
 import 'package:nrs_flutter_lib/constants.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
+class CountIcon extends StatelessWidget {
+  const CountIcon({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Icon(
+      Icons.circle,
+      size: FONT_SIZE - 4,
+      color: Colors.black.withOpacity(0.6),
+    );
+  }
+}
+
 class DeclensionTable extends StatelessWidget {
   final DeclensionTableCell masculineSingular;
   final DeclensionTableCell masculinePlural;
@@ -43,84 +58,68 @@ class DeclensionTable extends StatelessWidget {
       color: Nrs.getAppBarColor().withOpacity(0.5),
       child: Column(
         children: [
+          //ActualTable_OLD(, feminineSingular: feminineSingular, femininePlural: femininePlural, masculineSingular: masculineSingular, masculinePlural: masculinePlural, neuterSingular: neuterSingular, neuterPlural: neuterPlural),
           Padding(
-            padding: const EdgeInsets.only(top: 18, bottom: 18),
-            child: Container(
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.grey),
+            padding:
+                const EdgeInsets.only(top: FONT_SIZE * 2, bottom: FONT_SIZE),
+            child: Table(
+              border: TableBorder.all(
+                color: Colors.grey.withOpacity(0.8),
                 borderRadius: BorderRadius.circular(FONT_SIZE),
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Column(
-                    // Column 1
-                    children: [
-                      Container(height: 62),
-                      Container(
-                        child: ExplanationIconCell(
-                          icon: Icon(SINGULAR_ICON, color: Colors.grey),
-                          label: AppLocalizations.of(context)!.singular,
-                        ),
-                      ),
-                      Container(
-                        child: ExplanationIconCell(
-                          icon: Icon(PLURAL_ICON, color: Colors.grey),
-                          label: AppLocalizations.of(context)!.plural,
-                        ),
-                      ),
-                    ],
+              defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+              children: [
+                TableRow(children: [
+                  TableCell(
+                    child: Container(),
                   ),
-                  Column(
-                    // Column 2
-                    children: [
-                      Container(
-                        child: Center(
-                          child: ExplanationIconCell(
-                            icon: Icon(N.getGenderIcon(Genders.Feminine),
-                                color: FEMININE_COLOR),
-                            label: AppLocalizations.of(context)!.feminine,
-                          ),
-                        ),
-                      ),
-                      feminineSingular,
-                      femininePlural,
-                    ],
+                  ExplanationIconCell(
+                    icon: Icon(N.getGenderIcon(Genders.Feminine),
+                        color: FEMININE_COLOR),
+                    label: AppLocalizations.of(context)!.feminine,
                   ),
-                  Column(
-                    // Column 3
-                    children: [
-                      Container(
-                        child: Center(
-                          child: ExplanationIconCell(
-                            icon: Icon(N.getGenderIcon(Genders.Masculine),
-                                color: MASCULINE_COLOR),
-                            label: AppLocalizations.of(context)!.masculine,
-                          ),
-                        ),
-                      ),
-                      masculineSingular,
-                      masculinePlural
-                    ],
+                  ExplanationIconCell(
+                    icon: Icon(N.getGenderIcon(Genders.Masculine),
+                        color: MASCULINE_COLOR),
+                    label: AppLocalizations.of(context)!.masculine,
                   ),
-                  Column(
-                    // Column 4
-                    children: [
-                      Container(
-                        child: Center(
-                          child: ExplanationIconCell(
-                            icon: Icon(N.getGenderIcon(Genders.Neuter),
-                                color: NEUTER_COLOR),
-                            label: AppLocalizations.of(context)!.neuter,
-                          ),
-                        ),
-                      ),
-                      neuterSingular,
-                      neuterPlural
-                    ],
-                  )
-                ],
-              ),
+                  ExplanationIconCell(
+                    icon: Icon(N.getGenderIcon(Genders.Neuter),
+                        color: NEUTER_COLOR),
+                    label: AppLocalizations.of(context)!.neuter,
+                  ),
+                ]),
+                TableRow(children: [
+                  ExplanationIconCell(
+                    icon: CountIcon(),
+                    label: AppLocalizations.of(context)!.singular,
+                  ),
+                  TableCellWrapper(child: feminineSingular),
+                  TableCellWrapper(child: masculineSingular),
+                  TableCellWrapper(child: neuterSingular),
+                ]),
+                TableRow(children: [
+                  ExplanationIconCell(
+                    icon: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        CountIcon(),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            CountIcon(),
+                            CountIcon(),
+                          ],
+                        )
+                      ],
+                    ),
+                    label: AppLocalizations.of(context)!.plural,
+                  ),
+                  TableCellWrapper(child: femininePlural),
+                  TableCellWrapper(child: masculinePlural),
+                  TableCellWrapper(child: neuterPlural),
+                ])
+              ],
             ),
           ),
           if (notes != null)
@@ -248,5 +247,22 @@ class DeclensionTable extends StatelessWidget {
     }
 
     return result;
+  }
+}
+
+class TableCellWrapper extends StatelessWidget {
+  final Widget child;
+
+  const TableCellWrapper({
+    Key? key,
+    required this.child,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return TableCell(
+      child: Container(height: 70, child: child),
+      verticalAlignment: TableCellVerticalAlignment.middle,
+    );
   }
 }

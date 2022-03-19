@@ -10,14 +10,12 @@ class GenitivDeclensionTable extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final mascStyle = Nrs.getTextStyle(
-        context: context, isItalic: true, color: MASCULINE_COLOR);
+    final mascStyle =
+        Nrs.getTextStyle(context: context, color: MASCULINE_COLOR);
 
-    final femStyle = Nrs.getTextStyle(
-        context: context, isItalic: true, color: FEMININE_COLOR);
+    final femStyle = Nrs.getTextStyle(context: context, color: FEMININE_COLOR);
 
-    final neutStyle =
-        Nrs.getTextStyle(context: context, isItalic: true, color: NEUTER_COLOR);
+    final neutStyle = Nrs.getTextStyle(context: context, color: NEUTER_COLOR);
 
     return DeclensionTable(
       notes: [AppLocalizations.of(context)!.softLettersOgEg],
