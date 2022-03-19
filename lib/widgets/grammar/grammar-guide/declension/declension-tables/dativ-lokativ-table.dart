@@ -1,22 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/constants.dart';
+import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/declension-table-cell.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/declension-table.dart';
-import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
 class DativLokativDeclensionTable extends StatelessWidget {
   const DativLokativDeclensionTable({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final mascStyle =
-        Nrs.getTextStyle(context: context, color: MASCULINE_COLOR);
-
-    final femStyle = Nrs.getTextStyle(context: context, color: FEMININE_COLOR);
-
-    final neutStyle = Nrs.getTextStyle(context: context, color: NEUTER_COLOR);
-
     return DeclensionTable(
       notes: [
         AppLocalizations.of(context)!.assibilation,
@@ -27,55 +20,53 @@ class DativLokativDeclensionTable extends StatelessWidget {
       masculineSingular: DeclensionTableCell(
         isEqualItem: true,
         children: [
-          TextSpan(text: 'Lijep'),
-          TextSpan(text: 'om', style: mascStyle),
-          TextSpan(text: '**\n'),
-          TextSpan(text: 'jezik'),
-          TextSpan(text: 'u', style: mascStyle),
+          N.declensionExampleTextSpan('Brz'),
+          N.declensionExampleTextSpan('om\n', color: MASCULINE_COLOR),
+          N.declensionExampleTextSpan('ps'),
+          N.declensionExampleTextSpan('u', color: MASCULINE_COLOR),
         ],
       ),
       masculinePlural: DeclensionTableCell(
         children: [
-          TextSpan(text: 'Lijep'),
-          TextSpan(text: 'im\n', style: mascStyle),
-          TextSpan(text: 'jezic'),
-          TextSpan(text: 'ima', style: mascStyle),
-          TextSpan(text: '*'),
+          N.declensionExampleTextSpan('Brz'),
+          N.declensionExampleTextSpan('im\n', color: MASCULINE_COLOR),
+          N.declensionExampleTextSpan('ps'),
+          N.declensionExampleTextSpan('ima', color: MASCULINE_COLOR),
+          N.declensionExampleTextSpan('*'),
         ],
         highlightItem: true,
       ),
       feminineSingular: DeclensionTableCell(children: [
-        TextSpan(text: 'Moj'),
-        TextSpan(text: 'oj\n', style: femStyle),
-        TextSpan(text: 'kuć'),
-        TextSpan(text: 'i', style: femStyle),
-        TextSpan(text: '*'),
+        N.declensionExampleTextSpan('Moj'),
+        N.declensionExampleTextSpan('oj\n', color: FEMININE_COLOR),
+        N.declensionExampleTextSpan('kuć'),
+        N.declensionExampleTextSpan('i', color: FEMININE_COLOR),
+        N.declensionExampleTextSpan('*'),
       ]),
       femininePlural: DeclensionTableCell(
         children: [
-          TextSpan(text: 'Moj'),
-          TextSpan(text: 'im\n', style: femStyle),
-          TextSpan(text: 'kuć'),
-          TextSpan(text: 'ama', style: femStyle),
+          N.declensionExampleTextSpan('Moj'),
+          N.declensionExampleTextSpan('im\n', color: FEMININE_COLOR),
+          N.declensionExampleTextSpan('kuć'),
+          N.declensionExampleTextSpan('ama', color: FEMININE_COLOR),
         ],
         highlightItem: true,
       ),
       neuterSingular: DeclensionTableCell(
         isEqualItem: true,
         children: [
-          TextSpan(text: 'Vruć'),
-          TextSpan(text: 'em', style: neutStyle),
-          TextSpan(text: '**\n'),
-          TextSpan(text: 'mlijek'),
-          TextSpan(text: 'u', style: neutStyle),
+          N.declensionExampleTextSpan('Vruć'),
+          N.declensionExampleTextSpan('em\n', color: NEUTER_COLOR),
+          N.declensionExampleTextSpan('mor'),
+          N.declensionExampleTextSpan('u', color: NEUTER_COLOR),
         ],
       ),
       neuterPlural: DeclensionTableCell(
         children: [
-          TextSpan(text: 'Vruć'),
-          TextSpan(text: 'im\n', style: neutStyle),
-          TextSpan(text: 'mlijek'),
-          TextSpan(text: 'ima', style: neutStyle),
+          N.declensionExampleTextSpan('Crn'),
+          N.declensionExampleTextSpan('im\n', color: NEUTER_COLOR),
+          N.declensionExampleTextSpan('mor'),
+          N.declensionExampleTextSpan('ima', color: NEUTER_COLOR),
         ],
         highlightItem: true,
       ),

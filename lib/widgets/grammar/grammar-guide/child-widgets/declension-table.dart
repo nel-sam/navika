@@ -17,7 +17,7 @@ class CountIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return Icon(
       Icons.circle,
-      size: FONT_SIZE - 4,
+      size: FONT_SIZE - 6,
       color: Colors.black.withOpacity(0.6),
     );
   }
@@ -60,8 +60,8 @@ class DeclensionTable extends StatelessWidget {
         children: [
           //ActualTable_OLD(, feminineSingular: feminineSingular, femininePlural: femininePlural, masculineSingular: masculineSingular, masculinePlural: masculinePlural, neuterSingular: neuterSingular, neuterPlural: neuterPlural),
           Padding(
-            padding:
-                const EdgeInsets.only(top: FONT_SIZE * 2, bottom: FONT_SIZE),
+            padding: const EdgeInsets.only(
+                top: FONT_SIZE * 2, bottom: FONT_SIZE * 2),
             child: Table(
               border: TableBorder.all(
                 color: Colors.grey.withOpacity(0.8),
@@ -70,20 +70,25 @@ class DeclensionTable extends StatelessWidget {
               defaultVerticalAlignment: TableCellVerticalAlignment.middle,
               children: [
                 TableRow(children: [
-                  TableCell(
+                  // Headers
+                  TableCellWrapper(
+                    isHeader: true,
                     child: Container(),
                   ),
                   ExplanationIconCell(
+                    isHeader: true,
                     icon: Icon(N.getGenderIcon(Genders.Feminine),
                         color: FEMININE_COLOR),
                     label: AppLocalizations.of(context)!.feminine,
                   ),
                   ExplanationIconCell(
+                    isHeader: true,
                     icon: Icon(N.getGenderIcon(Genders.Masculine),
                         color: MASCULINE_COLOR),
                     label: AppLocalizations.of(context)!.masculine,
                   ),
                   ExplanationIconCell(
+                    isHeader: true,
                     icon: Icon(N.getGenderIcon(Genders.Neuter),
                         color: NEUTER_COLOR),
                     label: AppLocalizations.of(context)!.neuter,
@@ -132,6 +137,7 @@ class DeclensionTable extends StatelessWidget {
                       padding: const EdgeInsets.only(bottom: 8, right: 6),
                       child: Text(
                         getAsterix(notes!.indexOf(note) + 1),
+                        style: TextStyle(color: Colors.grey),
                       ),
                     ),
                     Flexible(
@@ -141,8 +147,8 @@ class DeclensionTable extends StatelessWidget {
                           style: TextStyle(
                               fontSize: 12,
                               color: Nrs.isDarkTheme(context)
-                                  ? Colors.white
-                                  : Colors.black),
+                                  ? Colors.grey
+                                  : Colors.black.withOpacity(0.7)),
                           children: [
                             TextSpan(text: note, style: DECLINED_LETTER_STYLE)
                           ],
@@ -252,16 +258,18 @@ class DeclensionTable extends StatelessWidget {
 
 class TableCellWrapper extends StatelessWidget {
   final Widget child;
+  final bool isHeader;
 
   const TableCellWrapper({
     Key? key,
     required this.child,
+    this.isHeader = false,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TableCell(
-      child: Container(height: 70, child: child),
+      child: Container(height: this.isHeader ? 60 : 75, child: child),
       verticalAlignment: TableCellVerticalAlignment.middle,
     );
   }

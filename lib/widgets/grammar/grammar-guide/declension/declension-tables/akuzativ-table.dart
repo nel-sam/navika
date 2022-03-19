@@ -1,22 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/constants.dart';
+import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/declension-table-cell.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/declension-table.dart';
-import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
 class AkuzativDeclensionTable extends StatelessWidget {
   const AkuzativDeclensionTable({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final mascStyle =
-        Nrs.getTextStyle(context: context, color: MASCULINE_COLOR);
-
-    final femStyle = Nrs.getTextStyle(context: context, color: FEMININE_COLOR);
-
-    final neutStyle = Nrs.getTextStyle(context: context, color: NEUTER_COLOR);
-
     return DeclensionTable(
       borderedItemNote: AppLocalizations.of(context)!.sameAsNom,
       showEqualItemNote: true,
@@ -25,53 +18,52 @@ class AkuzativDeclensionTable extends StatelessWidget {
         AppLocalizations.of(context)!.assibilation,
       ],
       masculineSingular: DeclensionTableCell(children: [
-        TextSpan(text: 'Star'),
-        TextSpan(text: 'og\n', style: mascStyle),
-        TextSpan(text: 'prijatelj'),
-        TextSpan(text: 'a', style: mascStyle),
-        TextSpan(text: '*\n'),
+        N.declensionExampleTextSpan('Star'),
+        N.declensionExampleTextSpan('og\n', color: MASCULINE_COLOR),
+        N.declensionExampleTextSpan('konj'),
+        N.declensionExampleTextSpan('a', color: MASCULINE_COLOR),
       ]),
       masculinePlural: DeclensionTableCell(
         isEqualItem: true,
         children: [
-          TextSpan(text: 'Star'),
-          TextSpan(text: 'e\n', style: mascStyle),
-          TextSpan(text: 'prijatel'),
-          TextSpan(text: 'e', style: mascStyle),
+          N.declensionExampleTextSpan('Star'),
+          N.declensionExampleTextSpan('e\n', color: MASCULINE_COLOR),
+          N.declensionExampleTextSpan('konj'),
+          N.declensionExampleTextSpan('e', color: MASCULINE_COLOR),
         ],
       ),
       feminineSingular: DeclensionTableCell(children: [
-        TextSpan(text: 'Moj'),
-        TextSpan(text: 'u\n', style: femStyle),
-        TextSpan(text: 'kuć'),
-        TextSpan(text: 'u', style: femStyle),
-        TextSpan(text: '**'),
+        N.declensionExampleTextSpan('Moj'),
+        N.declensionExampleTextSpan('u\n', color: FEMININE_COLOR),
+        N.declensionExampleTextSpan('kuć'),
+        N.declensionExampleTextSpan('u', color: FEMININE_COLOR),
+        N.declensionExampleTextSpan('**'),
       ]),
       femininePlural: DeclensionTableCell(
         isEqualItem: true,
         highlightItem: true,
         children: [
-          TextSpan(text: 'Moj'),
-          TextSpan(text: 'e\n', style: femStyle),
-          TextSpan(text: 'kuć'),
-          TextSpan(text: 'e', style: femStyle),
+          N.declensionExampleTextSpan('Moj'),
+          N.declensionExampleTextSpan('e\n', color: FEMININE_COLOR),
+          N.declensionExampleTextSpan('kuć'),
+          N.declensionExampleTextSpan('e', color: FEMININE_COLOR),
         ],
       ),
       neuterSingular: DeclensionTableCell(
         children: [
-          TextSpan(text: 'Topl'),
-          TextSpan(text: 'o\n', style: neutStyle),
-          TextSpan(text: 'mlijek'),
-          TextSpan(text: 'o', style: neutStyle),
+          N.declensionExampleTextSpan('Topl'),
+          N.declensionExampleTextSpan('o\n', color: NEUTER_COLOR),
+          N.declensionExampleTextSpan('piv'),
+          N.declensionExampleTextSpan('o', color: NEUTER_COLOR),
         ],
         highlightItem: true,
       ),
       neuterPlural: DeclensionTableCell(
         children: [
-          TextSpan(text: 'Topl'),
-          TextSpan(text: 'a\n', style: neutStyle),
-          TextSpan(text: 'mlijek'),
-          TextSpan(text: 'a', style: neutStyle),
+          N.declensionExampleTextSpan('Topl'),
+          N.declensionExampleTextSpan('a\n', color: NEUTER_COLOR),
+          N.declensionExampleTextSpan('piv'),
+          N.declensionExampleTextSpan('a', color: NEUTER_COLOR),
         ],
         highlightItem: true,
       ),

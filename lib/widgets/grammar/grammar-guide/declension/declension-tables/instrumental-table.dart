@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/constants.dart';
+import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/declension-table-cell.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/declension-table.dart';
-import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
 class InstrumentalDeclensionTable extends StatelessWidget {
   const InstrumentalDeclensionTable({Key? key}) : super(key: key);
@@ -11,15 +11,6 @@ class InstrumentalDeclensionTable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final secondEqualColor = Colors.red;
-
-    final mascStyle = Nrs.getTextStyle(
-        context: context, isItalic: true, color: MASCULINE_COLOR);
-
-    final femStyle = Nrs.getTextStyle(
-        context: context, isItalic: true, color: FEMININE_COLOR);
-
-    final neutStyle =
-        Nrs.getTextStyle(context: context, isItalic: true, color: NEUTER_COLOR);
 
     return DeclensionTable(
       showEqualItemNote: true,
@@ -29,56 +20,56 @@ class InstrumentalDeclensionTable extends StatelessWidget {
       masculineSingular: DeclensionTableCell(
         isEqualItem: true,
         children: [
-          TextSpan(text: 'Lijep'),
-          TextSpan(text: 'im\n', style: mascStyle),
-          TextSpan(text: 'jezik'),
-          TextSpan(text: 'om', style: mascStyle)
+          N.declensionExampleTextSpan('Brz'),
+          N.declensionExampleTextSpan('im\n', color: MASCULINE_COLOR),
+          N.declensionExampleTextSpan('ps'),
+          N.declensionExampleTextSpan('om', color: MASCULINE_COLOR)
         ],
       ),
       masculinePlural: DeclensionTableCell(
         isEqualItem: true,
         equalItemColor: secondEqualColor,
         children: [
-          TextSpan(text: 'Lijep'),
-          TextSpan(text: 'im\n', style: mascStyle),
-          TextSpan(text: 'jezic'),
-          TextSpan(text: 'ima', style: mascStyle),
+          N.declensionExampleTextSpan('Lijep'),
+          N.declensionExampleTextSpan('im\n', color: MASCULINE_COLOR),
+          N.declensionExampleTextSpan('jezic'),
+          N.declensionExampleTextSpan('ima', color: MASCULINE_COLOR),
         ],
         highlightItem: true,
       ),
       feminineSingular: DeclensionTableCell(children: [
-        TextSpan(text: 'Moj'),
-        TextSpan(text: 'om\n', style: femStyle),
-        TextSpan(text: 'kuć'),
-        TextSpan(text: 'om', style: femStyle),
-        TextSpan(text: '*'),
+        N.declensionExampleTextSpan('Moj'),
+        N.declensionExampleTextSpan('om\n', color: FEMININE_COLOR),
+        N.declensionExampleTextSpan('kuć'),
+        N.declensionExampleTextSpan('om', color: FEMININE_COLOR),
+        N.declensionExampleTextSpan('*'),
       ]),
       femininePlural: DeclensionTableCell(
         children: [
-          TextSpan(text: 'Moj'),
-          TextSpan(text: 'im\n', style: femStyle),
-          TextSpan(text: 'kuć'),
-          TextSpan(text: 'ama', style: femStyle),
+          N.declensionExampleTextSpan('Moj'),
+          N.declensionExampleTextSpan('im\n', color: FEMININE_COLOR),
+          N.declensionExampleTextSpan('kuć'),
+          N.declensionExampleTextSpan('ama', color: FEMININE_COLOR),
         ],
         highlightItem: true,
       ),
       neuterSingular: DeclensionTableCell(
         isEqualItem: true,
         children: [
-          TextSpan(text: 'Vruć'),
-          TextSpan(text: 'im\n', style: neutStyle),
-          TextSpan(text: 'mlijek'),
-          TextSpan(text: 'om', style: neutStyle),
+          N.declensionExampleTextSpan('Vruć'),
+          N.declensionExampleTextSpan('im\n', color: NEUTER_COLOR),
+          N.declensionExampleTextSpan('vin'),
+          N.declensionExampleTextSpan('om', color: NEUTER_COLOR),
         ],
       ),
       neuterPlural: DeclensionTableCell(
         isEqualItem: true,
         equalItemColor: secondEqualColor,
         children: [
-          TextSpan(text: 'Vruć'),
-          TextSpan(text: 'im \n', style: neutStyle),
-          TextSpan(text: 'mlijek'),
-          TextSpan(text: 'ima', style: neutStyle),
+          N.declensionExampleTextSpan('Vruć'),
+          N.declensionExampleTextSpan('im \n', color: NEUTER_COLOR),
+          N.declensionExampleTextSpan('vin'),
+          N.declensionExampleTextSpan('ima', color: NEUTER_COLOR),
         ],
         highlightItem: true,
       ),

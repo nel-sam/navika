@@ -5,6 +5,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
+import 'package:nrs_flutter_lib/constants.dart';
 import 'package:nrs_flutter_lib/enums.dart';
 
 class N {
@@ -26,6 +27,24 @@ class N {
     }
 
     return false;
+  }
+
+  static TextSpan declensionExampleTextSpan(
+    String text, {
+    Color color = Colors.transparent,
+  }) {
+    final fontSize = FONT_SIZE;
+
+    if (color != Colors.transparent) {
+      return TextSpan(
+          text: text,
+          style: TextStyle(
+            fontSize: fontSize,
+            color: color,
+          ));
+    }
+
+    return TextSpan(text: text, style: TextStyle(fontSize: fontSize));
   }
 
   static String getBitiConjugation(String pronoun) {
