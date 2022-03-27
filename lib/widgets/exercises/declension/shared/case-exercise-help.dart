@@ -63,7 +63,7 @@ class CaseExerciseHelp extends StatelessWidget {
                       combos.isPlural,
                     ),
                   if (combos.personalPronoun != null)
-                    getPersProneclensionList(
+                    getPersonalPronounDeclensionList(
                       context,
                       combos.personalPronoun!,
                       combos.caseType,
@@ -93,11 +93,11 @@ class CaseExerciseHelp extends StatelessWidget {
               combos.gender == Genders.Masculine && !combos.isPlural,
             ),
             feminineSingular: getTableCell(
-              declensions.feminine.singular,
+              declensions.feminine!.singular,
               combos.gender == Genders.Feminine && !combos.isPlural,
             ),
             neuterSingular: getTableCell(
-              declensions.neuter.singular,
+              declensions.neuter!.singular,
               combos.gender == Genders.Neuter && !combos.isPlural,
             ),
             masculinePlural: getTableCell(
@@ -105,11 +105,11 @@ class CaseExerciseHelp extends StatelessWidget {
               combos.gender == Genders.Masculine && combos.isPlural,
             ),
             femininePlural: getTableCell(
-              declensions.feminine.plural,
+              declensions.feminine!.plural,
               combos.gender == Genders.Feminine && combos.isPlural,
             ),
             neuterPlural: getTableCell(
-              declensions.neuter.plural,
+              declensions.neuter!.plural,
               combos.gender == Genders.Neuter && combos.isPlural,
             ),
           ),
@@ -316,7 +316,7 @@ class CaseExerciseHelp extends StatelessWidget {
     );
   }
 
-  getPersProneclensionList(
+  getPersonalPronounDeclensionList(
       BuildContext context, PersonalPronoun pp, Cases caseType) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -346,10 +346,10 @@ class CaseExerciseHelp extends StatelessWidget {
 
     if (combo.possPronoun != null)
       sentence += '${combo.correctPossPronouns[0]} ';
-    if (combo.adjective != null) sentence += '${combo.correctAdjs[0]} ';
+    if (combo.adjective != null) sentence += '${combo.correctAdjectives[0]} ';
     if (combo.noun != null) sentence += '${combo.correctNouns[0]} ';
     if (combo.personalPronoun != null)
-      sentence += '${combo.correctPersPronouns[0]} ';
+      sentence += '${combo.correctPersonalPronouns[0]} ';
     sentence += combo.sentenceEnder;
     return sentence;
   }

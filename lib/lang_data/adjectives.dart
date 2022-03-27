@@ -28,13 +28,6 @@ final List<Adjective> adjectiveWordBank = [
           new DeclensionByGender(singular: ['veliku'], plural: ['velike']),
       neuter: new DeclensionByGender(singular: ['veliko'], plural: ['velika']),
     ),
-    akuzativAnimate: new Declension(
-      masculine:
-          new DeclensionByGender(singular: ['velikog'], plural: ['velike']),
-      feminine:
-          new DeclensionByGender(singular: ['veliku'], plural: ['velike']),
-      neuter: new DeclensionByGender(singular: ['veliko'], plural: ['veliku']),
-    ),
     instrumental: new Declension(
       masculine:
           new DeclensionByGender(singular: ['velikim'], plural: ['velikim']),
@@ -65,7 +58,7 @@ final List<Adjective> adjectiveWordBank = [
       feminine:
           new DeclensionByGender(singular: ['velike'], plural: ['velikih']),
       neuter:
-          new DeclensionByGender(singular: ['velikeg'], plural: ['velikih']),
+          new DeclensionByGender(singular: ['velikog'], plural: ['velikih']),
     ),
     vokativ: new Declension(
       masculine: new DeclensionByGender(singular: [''], plural: ['']),
@@ -83,12 +76,6 @@ final List<Adjective> adjectiveWordBank = [
     ),
     akuzativ: new Declension(
       masculine: new DeclensionByGender(singular: ['novi'], plural: ['nove']),
-      feminine: new DeclensionByGender(singular: ['novu'], plural: ['nove']),
-      neuter: new DeclensionByGender(singular: ['novo'], plural: ['nova']),
-    ),
-    akuzativAnimate: new Declension(
-      masculine: new DeclensionByGender(
-          singular: ['novog', 'novoga'], plural: ['nove']),
       feminine: new DeclensionByGender(singular: ['novu'], plural: ['nove']),
       neuter: new DeclensionByGender(singular: ['novo'], plural: ['nova']),
     ),
@@ -139,12 +126,6 @@ final List<Adjective> adjectiveWordBank = [
     ),
     akuzativ: new Declension(
       masculine: new DeclensionByGender(singular: ['stari'], plural: ['stare']),
-      feminine: new DeclensionByGender(singular: ['staru'], plural: ['stare']),
-      neuter: new DeclensionByGender(singular: ['staro'], plural: ['stara']),
-    ),
-    akuzativAnimate: new Declension(
-      masculine: new DeclensionByGender(
-          singular: ['starog', 'staroga'], plural: ['stare']),
       feminine: new DeclensionByGender(singular: ['staru'], plural: ['stare']),
       neuter: new DeclensionByGender(singular: ['staro'], plural: ['stara']),
     ),
@@ -206,13 +187,6 @@ final List<Adjective> adjectiveWordBank = [
           new DeclensionByGender(singular: ['hladnu'], plural: ['hladne']),
       neuter: new DeclensionByGender(singular: ['hladno'], plural: ['hladna']),
     ),
-    akuzativAnimate: new Declension(
-      masculine:
-          new DeclensionByGender(singular: ['hladnog'], plural: ['hladne']),
-      feminine:
-          new DeclensionByGender(singular: ['hladnu'], plural: ['hladne']),
-      neuter: new DeclensionByGender(singular: ['hladno'], plural: ['hladnu']),
-    ),
     instrumental: new Declension(
       masculine:
           new DeclensionByGender(singular: ['hladnim'], plural: ['hladnim']),
@@ -264,12 +238,6 @@ final List<Adjective> adjectiveWordBank = [
       feminine: new DeclensionByGender(singular: ['vruću'], plural: ['vruće']),
       neuter: new DeclensionByGender(singular: ['vruće'], plural: ['vruće']),
     ),
-    akuzativAnimate: new Declension(
-      masculine:
-          new DeclensionByGender(singular: ['vrućeg'], plural: ['vruće']),
-      feminine: new DeclensionByGender(singular: ['vruću'], plural: ['vruće']),
-      neuter: new DeclensionByGender(singular: ['vrućo'], plural: ['vruću']),
-    ),
     instrumental: new Declension(
       masculine:
           new DeclensionByGender(singular: ['vrućim'], plural: ['vrućim']),
@@ -312,12 +280,6 @@ final List<Adjective> adjectiveWordBank = [
     ),
     akuzativ: new Declension(
       masculine: new DeclensionByGender(singular: ['drugi'], plural: ['druge']),
-      feminine: new DeclensionByGender(singular: ['drugu'], plural: ['druge']),
-      neuter: new DeclensionByGender(singular: ['drugo'], plural: ['druga']),
-    ),
-    akuzativAnimate: new Declension(
-      masculine:
-          new DeclensionByGender(singular: ['drugog'], plural: ['druge']),
       feminine: new DeclensionByGender(singular: ['drugu'], plural: ['druge']),
       neuter: new DeclensionByGender(singular: ['drugo'], plural: ['druga']),
     ),
@@ -376,11 +338,6 @@ final List<Adjective> adjectiveWordBank = [
       feminine: new DeclensionByGender(singular: ['skupu'], plural: ['skupe']),
       neuter: new DeclensionByGender(singular: ['skupo'], plural: ['skupa']),
     ),
-    akuzativAnimate: new Declension(
-      masculine: new DeclensionByGender(singular: ['skupa'], plural: ['skupe']),
-      feminine: new DeclensionByGender(singular: ['skupu'], plural: ['skupe']),
-      neuter: new DeclensionByGender(singular: ['skupo'], plural: ['skupa']),
-    ),
     instrumental: new Declension(
       masculine:
           new DeclensionByGender(singular: ['skupim'], plural: ['skupim']),
@@ -424,11 +381,6 @@ final List<Adjective> adjectiveWordBank = [
     ),
     akuzativ: new Declension(
       masculine: new DeclensionByGender(singular: ['tužni'], plural: ['tužne']),
-      feminine: new DeclensionByGender(singular: ['tužnu'], plural: ['tužne']),
-      neuter: new DeclensionByGender(singular: ['tužno'], plural: ['tužna']),
-    ),
-    akuzativAnimate: new Declension(
-      masculine: new DeclensionByGender(singular: ['tužna'], plural: ['tužne']),
       feminine: new DeclensionByGender(singular: ['tužnu'], plural: ['tužne']),
       neuter: new DeclensionByGender(singular: ['tužno'], plural: ['tužna']),
     ),
@@ -478,13 +430,6 @@ final List<Adjective> adjectiveWordBank = [
     akuzativ: new Declension(
       masculine:
           new DeclensionByGender(singular: ['sretni'], plural: ['sretne']),
-      feminine:
-          new DeclensionByGender(singular: ['sretnu'], plural: ['sretne']),
-      neuter: new DeclensionByGender(singular: ['sretno'], plural: ['sretna']),
-    ),
-    akuzativAnimate: new Declension(
-      masculine:
-          new DeclensionByGender(singular: ['sretna'], plural: ['sretne']),
       feminine:
           new DeclensionByGender(singular: ['sretnu'], plural: ['sretne']),
       neuter: new DeclensionByGender(singular: ['sretno'], plural: ['sretna']),

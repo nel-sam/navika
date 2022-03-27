@@ -6,23 +6,26 @@ import 'enums.dart';
 
 class Declension {
   final DeclensionByGender masculine;
-  final DeclensionByGender feminine;
-  final DeclensionByGender neuter;
+  late DeclensionByGender? feminine;
+  late DeclensionByGender? neuter;
 
   Declension({
     required this.masculine,
-    required this.feminine,
-    required this.neuter,
-  });
+    this.feminine,
+    this.neuter,
+  }) {
+    if (this.feminine == null) this.feminine = this.masculine;
+    if (this.neuter == null) this.neuter = this.masculine;
+  }
 
   List<String> getAll() {
     return [
-      ...this.feminine.singular,
-      ...this.feminine.plural,
+      ...this.feminine!.singular,
+      ...this.feminine!.plural,
       ...this.masculine.singular,
       ...this.masculine.plural,
-      ...this.neuter.singular,
-      ...this.neuter.plural
+      ...this.neuter!.singular,
+      ...this.neuter!.plural
     ];
   }
 }
@@ -44,12 +47,12 @@ class DeclensionByCount {
 }
 
 class DeclensionByGender {
-  final List<String> singular;
-  final List<String> plural;
+  List<String> singular;
+  List<String> plural;
 
   DeclensionByGender({
-    required this.singular,
-    required this.plural,
+    this.singular = const [],
+    this.plural = const [],
   });
 }
 
@@ -74,12 +77,12 @@ class PANCombo {
   late String initialPossPronDropDownValue;
 
   Adjective? adjective;
-  late List<String> correctAdjs;
+  late List<String> correctAdjectives;
   late String initialAdjDropDownValue;
 
   PersonalPronoun? personalPronoun;
-  late List<String> correctPersPronouns;
-  late String initialPersPronDropDownValue;
+  late List<String> correctPersonalPronouns;
+  late String initialPersonalPronDropDownValue;
 
   bool usePersonalPronounShortForm;
   Cases caseType;
@@ -104,7 +107,7 @@ class PANCombo {
     this.initialNounDropDownValue =
         this.noun == null ? '' : this.noun!.getDropDownInitial(caseType);
 
-    this.correctAdjs = this.adjective == null
+    this.correctAdjectives = this.adjective == null
         ? []
         : this
             .adjective!
@@ -124,10 +127,10 @@ class PANCombo {
         ? ''
         : this.possPronoun!.getDropDownInitial(caseType);
 
-    this.correctPersPronouns = this.personalPronoun == null
+    this.correctPersonalPronouns = this.personalPronoun == null
         ? []
         : this.personalPronoun!.getDeclensions(caseType);
-    this.initialPersPronDropDownValue = this.personalPronoun == null
+    this.initialPersonalPronDropDownValue = this.personalPronoun == null
         ? ''
         : this.personalPronoun!.getDropDownInitial(caseType);
   }
@@ -174,7 +177,7 @@ class WordBank {
     );
 
     final svoj = result.possessivePronouns
-        .firstWhere((e) => e.nominativ.masculine.singular.first == toFilter);
+        .firstWhere((e) => e.nominativ!.masculine.singular.first == toFilter);
     result.possessivePronouns.remove(svoj);
 
     return result;

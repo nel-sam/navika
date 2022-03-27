@@ -41,7 +41,7 @@ class AkuzativGenerators {
     } else if (isShortForm) {
       start = 'Molim';
     } else {
-      start = actualValue != 'ti' ? 'Videš' : 'Videm';
+      start = actualValue != 'ti' ? 'Vidiš' : 'Vidim';
     }
 
     return StaticSentenceParts(start: start, end: end);
@@ -51,7 +51,7 @@ class AkuzativGenerators {
       Noun noun, bool isPlural, Adjective? pronoun, Adjective? adjective) {
     String start = '';
     String end = '';
-    final pron = pronoun != null ? pronoun.nominativ.masculine.singular : '';
+    final pron = pronoun != null ? pronoun.nominativ!.masculine.singular : '';
 
     if (noun.tags.contains(Tags.Season)) {
       start = Nrs.coinFlip() ? 'Volim' : 'Ne volim';

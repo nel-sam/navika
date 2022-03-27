@@ -20,10 +20,10 @@ class CaseQuestionState {
   void setIsCorrect() {
     final pos =
         _isCorrectSingle(this.combos.correctPossPronouns, userPossPronResponse);
-    final adj = _isCorrectSingle(this.combos.correctAdjs, userAdjResponse);
+    final adj = _isCorrectSingle(this.combos.correctAdjectives, userAdjResponse);
     final noun = _isCorrectSingle(this.combos.correctNouns, userNounResponse);
     final persPron =
-        _isCorrectSingle(this.combos.correctPersPronouns, userPersPronResponse);
+        _isCorrectSingle(this.combos.correctPersonalPronouns, userPersPronResponse);
 
     isCorrect = pos && adj && noun && persPron;
   }

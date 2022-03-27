@@ -19,8 +19,8 @@ class CaseQuestionContent extends StatelessWidget {
     final bool useAdj = stateItem.combos.adjective != null &&
         stateItem.combos.adjective!.dictionary != '';
     final bool useNoun = stateItem.combos.noun != null;
-    final bool usePersPron = stateItem.combos.personalPronoun != null;
-    final textFildWidth = Nrs.getScreenWidth(reduction: 10);
+    final bool usePersonalPronoun = stateItem.combos.personalPronoun != null;
+    final textFieldWidth = Nrs.getScreenWidth(reduction: 10);
 
     // TODO: Incorporate this into widget
     //  if (multipleCorrect)
@@ -49,7 +49,7 @@ class CaseQuestionContent extends StatelessWidget {
       children: [
         if (stateItem.combos.sentenceStarter != '')
           Container(
-            width: textFildWidth,
+            width: textFieldWidth,
             child: Text(
               stateItem.combos.sentenceStarter,
               style: TextStyle(fontSize: EXERCISE_FONT_STYLE),
@@ -68,7 +68,7 @@ class CaseQuestionContent extends StatelessWidget {
           NFreeFormEntry(
             hintValue: stateItem.combos.adjective!.dictionary,
             initialValue: stateItem.userAdjResponse,
-            correctValues: stateItem.combos.correctAdjs,
+            correctValues: stateItem.combos.correctAdjectives,
             onChanged: (String newVal) {
               handleOnChange(GrammarTypes.Adjective, newVal);
             },
@@ -82,18 +82,18 @@ class CaseQuestionContent extends StatelessWidget {
               handleOnChange(GrammarTypes.Noun, newVal);
             },
           ),
-        if (usePersPron)
+        if (usePersonalPronoun)
           NFreeFormEntry(
             hintValue: stateItem.combos.personalPronoun!.dictionary,
             initialValue: stateItem.userPersPronResponse,
-            correctValues: stateItem.combos.correctPersPronouns,
+            correctValues: stateItem.combos.correctPersonalPronouns,
             onChanged: (String newVal) {
               handleOnChange(GrammarTypes.PersonalPronoun, newVal);
             },
           ),
         if (stateItem.combos.sentenceEnder != '')
           Container(
-            width: textFildWidth,
+            width: textFieldWidth,
             child: Text(
               stateItem.combos.sentenceEnder,
               style: TextStyle(fontSize: EXERCISE_FONT_STYLE),

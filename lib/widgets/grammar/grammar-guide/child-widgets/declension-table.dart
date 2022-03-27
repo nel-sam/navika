@@ -136,7 +136,7 @@ class DeclensionTable extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(bottom: 8, right: 6),
                       child: Text(
-                        getAsterix(notes!.indexOf(note) + 1),
+                        getAsterisk(notes!.indexOf(note) + 1),
                         style: TextStyle(color: Colors.grey),
                       ),
                     ),
@@ -245,7 +245,7 @@ class DeclensionTable extends StatelessWidget {
     );
   }
 
-  String getAsterix(int count) {
+  String getAsterisk(int count) {
     var result = '';
 
     for (int i = 0; i < count; i++) {

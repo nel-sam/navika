@@ -1,16 +1,18 @@
 {
   "cSpell.words": [
-    "Akuzativ",
-    "Navika",
     "akuzativ",
+    "Akuzativ",
     "cupertino",
     "dativ",
     "lokativ",
-    "nominativ"
+    "Navika",
+    "nominativ",
+    "sšzž"
   ],
   "editor.tabSize": 2,
   "editor.bracketPairColorization.enabled": true,
-  "editor.guides.bracketPairs":"active",
+  "editor.guides.bracketPairs": "active",
   "eslint.alwaysShowStatus": true,
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "cSpell.language": "en,hr"
 }
