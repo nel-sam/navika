@@ -44,14 +44,6 @@ final List<Adjective> adjectiveWordBank = [
       neuter:
           new DeclensionByGender(singular: ['velikom'], plural: ['velikim']),
     ),
-    dativ: new Declension(
-      masculine:
-          new DeclensionByGender(singular: ['velikom'], plural: ['velikim']),
-      feminine:
-          new DeclensionByGender(singular: ['velikom'], plural: ['velikim']),
-      neuter:
-          new DeclensionByGender(singular: ['velikom'], plural: ['velikim']),
-    ),
     genitiv: new Declension(
       masculine:
           new DeclensionByGender(singular: ['velikog'], plural: ['velikih']),
@@ -95,14 +87,6 @@ final List<Adjective> adjectiveWordBank = [
       neuter: new DeclensionByGender(
           singular: ['novome', 'novomu', 'novom'], plural: ['novima', 'novim']),
     ),
-    dativ: new Declension(
-      masculine: new DeclensionByGender(
-          singular: ['novome', 'novomu', 'novom'], plural: ['novima', 'novim']),
-      feminine:
-          new DeclensionByGender(singular: ['novoj'], plural: ['novijoj']),
-      neuter: new DeclensionByGender(
-          singular: ['novome', 'novomu', 'novom'], plural: ['novima', 'novim']),
-    ),
     genitiv: new Declension(
       masculine: new DeclensionByGender(
           singular: ['novoga', 'novog'], plural: ['novih']),
@@ -138,16 +122,6 @@ final List<Adjective> adjectiveWordBank = [
           singular: ['starim'], plural: ['starima', 'starim']),
     ),
     lokativ: new Declension(
-      masculine: new DeclensionByGender(
-          singular: ['starome', 'staromu', 'starom'],
-          plural: ['starima', 'starim']),
-      feminine:
-          new DeclensionByGender(singular: ['staroj'], plural: ['starijoj']),
-      neuter: new DeclensionByGender(
-          singular: ['starome', 'staromu', 'starom'],
-          plural: ['starima', 'starim']),
-    ),
-    dativ: new Declension(
       masculine: new DeclensionByGender(
           singular: ['starome', 'staromu', 'starom'],
           plural: ['starima', 'starim']),
@@ -203,14 +177,6 @@ final List<Adjective> adjectiveWordBank = [
       neuter:
           new DeclensionByGender(singular: ['hladnom'], plural: ['hladnim']),
     ),
-    dativ: new Declension(
-      masculine:
-          new DeclensionByGender(singular: ['hladnom'], plural: ['hladnim']),
-      feminine:
-          new DeclensionByGender(singular: ['hladnoj'], plural: ['hladnim']),
-      neuter:
-          new DeclensionByGender(singular: ['hladnom'], plural: ['hladnim']),
-    ),
     genitiv: new Declension(
       masculine:
           new DeclensionByGender(singular: ['hladnog'], plural: ['hladnih']),
@@ -218,11 +184,6 @@ final List<Adjective> adjectiveWordBank = [
           new DeclensionByGender(singular: ['hladne'], plural: ['hladnih']),
       neuter:
           new DeclensionByGender(singular: ['hladnog'], plural: ['hladnih']),
-    ),
-    vokativ: new Declension(
-      masculine: new DeclensionByGender(singular: [''], plural: ['']),
-      feminine: new DeclensionByGender(singular: [''], plural: ['']),
-      neuter: new DeclensionByGender(singular: [''], plural: ['']),
     ),
   ),
   Adjective(
@@ -252,23 +213,11 @@ final List<Adjective> adjectiveWordBank = [
           new DeclensionByGender(singular: ['vrućoj'], plural: ['vrućim']),
       neuter: new DeclensionByGender(singular: ['vrućem'], plural: ['vrućim']),
     ),
-    dativ: new Declension(
-      masculine:
-          new DeclensionByGender(singular: ['vrućem'], plural: ['vrućim']),
-      feminine:
-          new DeclensionByGender(singular: ['vrućoj'], plural: ['vrućim']),
-      neuter: new DeclensionByGender(singular: ['vrućem'], plural: ['vrućim']),
-    ),
     genitiv: new Declension(
       masculine:
           new DeclensionByGender(singular: ['vruća'], plural: ['vrućih']),
       feminine: new DeclensionByGender(singular: ['vruće'], plural: ['vrućih']),
       neuter: new DeclensionByGender(singular: ['vruća'], plural: ['vrućih']),
-    ),
-    vokativ: new Declension(
-      masculine: new DeclensionByGender(singular: [''], plural: ['']),
-      feminine: new DeclensionByGender(singular: [''], plural: ['']),
-      neuter: new DeclensionByGender(singular: [''], plural: ['']),
     ),
   ),
   Adjective(
@@ -297,23 +246,11 @@ final List<Adjective> adjectiveWordBank = [
           new DeclensionByGender(singular: ['drugoj'], plural: ['drugim']),
       neuter: new DeclensionByGender(singular: ['drugom'], plural: ['drugim']),
     ),
-    dativ: new Declension(
-      masculine:
-          new DeclensionByGender(singular: ['drugom'], plural: ['drugim']),
-      feminine:
-          new DeclensionByGender(singular: ['drugoj'], plural: ['drugim']),
-      neuter: new DeclensionByGender(singular: ['drugom'], plural: ['drugim']),
-    ),
     genitiv: new Declension(
       masculine:
           new DeclensionByGender(singular: ['drugog'], plural: ['drugih']),
       feminine: new DeclensionByGender(singular: ['druge'], plural: ['drugih']),
       neuter: new DeclensionByGender(singular: ['drugog'], plural: ['drugih']),
-    ),
-    vokativ: new Declension(
-      masculine: new DeclensionByGender(singular: [''], plural: ['']),
-      feminine: new DeclensionByGender(singular: [''], plural: ['']),
-      neuter: new DeclensionByGender(singular: [''], plural: ['']),
     ),
   ),
   Adjective(
@@ -352,23 +289,11 @@ final List<Adjective> adjectiveWordBank = [
           new DeclensionByGender(singular: ['skupoj'], plural: ['skupim']),
       neuter: new DeclensionByGender(singular: ['skupom'], plural: ['skupim']),
     ),
-    dativ: new Declension(
-      masculine:
-          new DeclensionByGender(singular: ['skupom'], plural: ['skupim']),
-      feminine:
-          new DeclensionByGender(singular: ['skupoj'], plural: ['skupim']),
-      neuter: new DeclensionByGender(singular: ['skupom'], plural: ['skupim']),
-    ),
     genitiv: new Declension(
       masculine:
           new DeclensionByGender(singular: ['skupog'], plural: ['skupih']),
       feminine: new DeclensionByGender(singular: ['skupe'], plural: ['skupih']),
       neuter: new DeclensionByGender(singular: ['skupog'], plural: ['skupih']),
-    ),
-    vokativ: new Declension(
-      masculine: new DeclensionByGender(singular: [''], plural: ['']),
-      feminine: new DeclensionByGender(singular: [''], plural: ['']),
-      neuter: new DeclensionByGender(singular: [''], plural: ['']),
     ),
   ),
   Adjective(
@@ -398,23 +323,11 @@ final List<Adjective> adjectiveWordBank = [
           new DeclensionByGender(singular: ['tužnoj'], plural: ['tužnim']),
       neuter: new DeclensionByGender(singular: ['tužnom'], plural: ['tužnim']),
     ),
-    dativ: new Declension(
-      masculine:
-          new DeclensionByGender(singular: ['tužnom'], plural: ['tužnim']),
-      feminine:
-          new DeclensionByGender(singular: ['tužnoj'], plural: ['tužnim']),
-      neuter: new DeclensionByGender(singular: ['tužnom'], plural: ['tužnim']),
-    ),
     genitiv: new Declension(
       masculine:
           new DeclensionByGender(singular: ['tužnog'], plural: ['tužnih']),
       feminine: new DeclensionByGender(singular: ['tužne'], plural: ['tužnih']),
       neuter: new DeclensionByGender(singular: ['tužnog'], plural: ['tužnih']),
-    ),
-    vokativ: new Declension(
-      masculine: new DeclensionByGender(singular: [''], plural: ['']),
-      feminine: new DeclensionByGender(singular: [''], plural: ['']),
-      neuter: new DeclensionByGender(singular: [''], plural: ['']),
     ),
   ),
   Adjective(
@@ -450,14 +363,6 @@ final List<Adjective> adjectiveWordBank = [
       neuter:
           new DeclensionByGender(singular: ['sretnom'], plural: ['sretnim']),
     ),
-    dativ: new Declension(
-      masculine:
-          new DeclensionByGender(singular: ['sretnom'], plural: ['sretnim']),
-      feminine:
-          new DeclensionByGender(singular: ['sretnoj'], plural: ['sretnim']),
-      neuter:
-          new DeclensionByGender(singular: ['sretnom'], plural: ['sretnim']),
-    ),
     genitiv: new Declension(
       masculine:
           new DeclensionByGender(singular: ['sretnog'], plural: ['sretnih']),
@@ -465,11 +370,6 @@ final List<Adjective> adjectiveWordBank = [
           new DeclensionByGender(singular: ['sretne'], plural: ['sretnih']),
       neuter:
           new DeclensionByGender(singular: ['sretnog'], plural: ['sretnih']),
-    ),
-    vokativ: new Declension(
-      masculine: new DeclensionByGender(singular: [''], plural: ['']),
-      feminine: new DeclensionByGender(singular: [''], plural: ['']),
-      neuter: new DeclensionByGender(singular: [''], plural: ['']),
     ),
   ),
 ];
