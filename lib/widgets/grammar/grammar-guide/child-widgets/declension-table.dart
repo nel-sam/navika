@@ -15,10 +15,12 @@ class CountIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkTheme = Nrs.isDarkTheme(context);
+
     return Icon(
       Icons.circle,
       size: FONT_SIZE - 6,
-      color: Colors.black.withOpacity(0.6),
+      color: isDarkTheme ? Colors.white :  Colors.black.withOpacity(0.6),
     );
   }
 }

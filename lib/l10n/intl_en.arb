@@ -114,5 +114,7 @@
   "expand_for_more": "Expand for more info",
   "multipleCorrect": "There are more than one correct answers",
   "alsoCorrect": "Also correct",
-  "exercise": "Exercise"
+  "exercise": "Exercise",
+  "settings": "Settings",
+  "autoNextQuestion": "Automatically go to next question after I've answered correctly"
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/declension-table.dart';
 import 'package:nrs_flutter_lib/constants.dart';
+import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
 class ExplanationIconCell extends StatelessWidget {
   final Widget icon;
@@ -16,6 +17,8 @@ class ExplanationIconCell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkTheme = Nrs.isDarkTheme(context);
+
     return TableCellWrapper(
       isHeader: this.isHeader,
       child: Column(
@@ -30,7 +33,9 @@ class ExplanationIconCell extends StatelessWidget {
             label.toUpperCase(),
             textAlign: TextAlign.center,
             style: TextStyle(
-                fontSize: FONT_SIZE - 3, color: Colors.black.withOpacity(0.5)),
+                fontSize: FONT_SIZE - 3,
+                color:
+                    isDarkTheme ? Colors.white : Colors.black.withOpacity(0.5)),
           ),
         ],
       ),

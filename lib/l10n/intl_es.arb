@@ -9,7 +9,7 @@
   "trans_ici": "Ir",
   "trans_izaci": "Salir/Ir",
   "trans_piti": "Beber",
-  "trans_piti": "Preguntar",
+  "trans_pitati": "Preguntar",
   "trans_pisati": "Escribir",
   "trans_uciti": "Aprender/Estudiar",
   "trans_jesti": "Comer",
@@ -114,5 +114,7 @@
   "expand_for_more": "Expandir para más info",
   "multipleCorrect": "Hay más de una repuesta correcta",
   "alsoCorrect": "Tambíen se acepta",
-  "exercise": "Ejercicio"
+  "exercise": "Ejercicio",
+  "settings": "Ajutes",
+  "autoNextQuestion": "Automaticamente ir a la próxima pregunta después de que la haya contestado correctamente"
 }
