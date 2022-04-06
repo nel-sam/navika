@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:navika/widgets/shared/settings-page.dart';
+import 'package:navika/widgets/settings/settings-page.dart';
 import 'package:nrs_flutter_lib/widgets/n-footer-button.dart';
 
 class SettingsButton extends StatelessWidget {

@@ -5,14 +5,12 @@ import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 import 'package:nrs_flutter_lib/widgets/n-text-span.dart';
 
 class InfoBanner extends StatefulWidget {
-  final String imagePath;
   final String label;
   final String description;
   final String? youtubeLink;
 
   const InfoBanner({
     Key? key,
-    required this.imagePath,
     required this.label,
     required this.description,
     this.youtubeLink,
@@ -68,12 +66,6 @@ class _InfoBannerState extends State<InfoBanner> {
             isExpanded: state.isExpanded,
             body: Container(
               height: 420,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage(widget.imagePath),
-                  fit: BoxFit.cover,
-                ),
-              ),
               child: Padding(
                 padding: const EdgeInsets.all(10),
                 child: Column(

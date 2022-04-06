@@ -35,10 +35,10 @@ class ExerciseNavNotifier with ChangeNotifier {
 
   void clearInput() {
     _states[_activeIndex].clear();
-    deboucedNotifyListeners();
+    debouncedNotifyListeners();
   }
 
-  deboucedNotifyListeners() {
+  debouncedNotifyListeners() {
     if (_debounce.isActive) {
       _debounce.cancel();
     }
@@ -66,7 +66,7 @@ class ExerciseNavNotifier with ChangeNotifier {
       this._states.add(this.createExercise(_states));
     }
 
-    deboucedNotifyListeners();
+    debouncedNotifyListeners();
   }
 
   setPrevious() {
@@ -76,7 +76,7 @@ class ExerciseNavNotifier with ChangeNotifier {
       _activeIndex--;
     }
 
-    deboucedNotifyListeners();
+    debouncedNotifyListeners();
   }
 
   List shuffleAndClear({bool notify: true}) {
@@ -85,7 +85,7 @@ class ExerciseNavNotifier with ChangeNotifier {
       element.clear();
     });
 
-    if (notify) deboucedNotifyListeners();
+    if (notify) debouncedNotifyListeners();
     return _states;
   }
 

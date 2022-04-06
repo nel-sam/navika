@@ -15,7 +15,7 @@ class YouTubeLink extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const double raduis = 100;
+    const double radius = 100;
     const IconData playIcon = Icons.smart_display_rounded;
 
     return Padding(
@@ -28,7 +28,7 @@ class YouTubeLink extends StatelessWidget {
           shadowColor: BORDER_COLOR.withOpacity(0.25),
           side: BorderSide(color: BORDER_COLOR.withOpacity(0.15), width: 2),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(raduis),
+            borderRadius: BorderRadius.circular(radius),
           ),
         ),
         onPressed: () async {

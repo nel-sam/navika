@@ -64,7 +64,6 @@ class VerbExercise extends StatelessWidget {
                   child: Column(
                     children: [
                       InfoBanner(
-                        imagePath: imagePath,
                         label: title,
                         description: description,
                         youtubeLink: youtubeLink,

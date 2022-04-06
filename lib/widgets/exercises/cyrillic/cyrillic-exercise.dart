@@ -35,7 +35,6 @@ class CyrillicExercise extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     InfoBanner(
-                      imagePath: 'assets/banners/writing.jpg',
                       label: title,
                       description: AppLocalizations.of(context)!.cyrillicDesc,
                       //youtubeLink: RECOMMENDED_VIDEO_CYRILLIC,

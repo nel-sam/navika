@@ -49,7 +49,6 @@ class CaseExercise extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     InfoBanner(
-                      imagePath: imagePath,
                       label: title,
                       description: description,
                       youtubeLink: youtubeLink,

@@ -117,5 +117,6 @@
   "exercise": "Ejercicio",
   "settings": "Ajutes",
   "autoNextQuestion": "Auto siguiente pregunta",
-  "autoNextQuestionDesc": "Automaticamente ir a la siguenta pregunta después de que la haya contestado correctamente"
+  "autoNextQuestionDesc": "Automaticamente ir a la siguenta pregunta después de que la haya contestado correctamente",
+  "account": "Cuenta"
 }
