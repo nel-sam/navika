@@ -6,7 +6,6 @@ import 'package:navika/widgets/exercises/verbs/shared/verb-help-guide.dart';
 import 'package:nrs_flutter_lib/constants.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 import 'package:nrs_flutter_lib/widgets/n-icon-text-pair.dart';
-import 'package:nrs_flutter_lib/widgets/n-text-span.dart';
 
 class VerbHeader extends StatelessWidget {
   final Verb verb;
@@ -32,22 +31,32 @@ class VerbHeader extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  isAllCorrect
-                      ? Icon(CORRECT_ANSWER_ICON, color: CORRECT_COLOR)
-                      : Icon(WRONG_ANSWER_ICON, color: WRONG_COLOR),
                   Padding(
                     padding: const EdgeInsets.only(left: 18.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        NTextSpan(verb.infinitive.toUpperCase(),
-                            textStyle: Nrs.getTextStyle(
-                                context: context, isBold: true, fontSize: 16)),
-                        NTextSpan(
-                          perfectiveness,
-                          textStyle: Nrs.getTextStyle(
-                              context: context, isItalic: true, fontSize: 16),
+                        Text(
+                          perfectiveness.toUpperCase(),
+                          style: Nrs.getTextStyle(
+                              context: context,
+                              isItalic: true,
+                              fontSize: FONT_SIZE - 4),
                         ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 6),
+                          child: Text(
+                            verb.infinitive.toUpperCase(),
+                            style: Nrs.getTextStyle(
+                                context: context,
+                                isBold: true,
+                                fontSize: 16 * 1.3,
+                                color:
+                                    isAllCorrect ? CORRECT_COLOR : Colors.grey),
+                          ),
+                        ),
+                        if (isAllCorrect)
+                          Icon(CORRECT_ANSWER_ICON, color: CORRECT_COLOR)
                       ],
                     ),
                   ),
