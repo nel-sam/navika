@@ -5,8 +5,10 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
+import 'package:navika/widgets/shared/settings-button.dart';
 import 'package:nrs_flutter_lib/constants.dart';
 import 'package:nrs_flutter_lib/enums.dart';
+import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
 class N {
   static bool containsCaseQuestionState(List list, PANCombo item) {
@@ -148,5 +150,16 @@ class N {
       if (e.length > longestFound) longestFound = e.length;
     });
     return longestFound;
+  }
+
+  static navAppBar(
+      {required BuildContext context,
+      String title = '',
+      String transTitle = ''}) {
+    return Nrs.NrsAppBar(
+        context: context,
+        title: title,
+        transTitle: transTitle,
+        actions: [SettingsButton()]);
   }
 }

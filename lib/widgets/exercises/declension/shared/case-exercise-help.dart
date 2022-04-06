@@ -30,8 +30,8 @@ class CaseExerciseHelp extends StatelessWidget {
     double screenWidth = Nrs.getScreenWidth();
 
     return Scaffold(
-      appBar: Nrs.NrsAppBar(
-          title: N.getCaseLabel(combos.caseType), context: context),
+      appBar:
+          N.navAppBar(title: N.getCaseLabel(combos.caseType), context: context),
       body: Center(
         child: Container(
           width: screenWidth > 840 ? screenWidth / 2 : screenWidth,

@@ -83,7 +83,7 @@ class _DeclensionGuideState extends State<DeclensionGuide> {
     double screenWidth = Nrs.getScreenWidth();
 
     return Scaffold(
-      appBar: Nrs.NrsAppBar(
+      appBar: N.navAppBar(
         title: SbcLabels.cases,
         transTitle: AppLocalizations.of(context)!.cases,
         context: context,

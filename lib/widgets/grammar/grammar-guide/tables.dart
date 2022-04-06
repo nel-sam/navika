@@ -44,7 +44,7 @@ class _TablesState extends State<Tables> {
     }
 
     return Scaffold(
-      appBar: Nrs.NrsAppBar(
+      appBar: N.navAppBar(
         title: SbcLabels.justTables,
         transTitle: AppLocalizations.of(context)!.justCaseTables,
         context: context,

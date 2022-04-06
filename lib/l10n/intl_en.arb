@@ -116,5 +116,6 @@
   "alsoCorrect": "Also correct",
   "exercise": "Exercise",
   "settings": "Settings",
-  "autoNextQuestion": "Automatically go to next question after I've answered correctly"
+  "autoNextQuestion": "Auto next question",
+  "autoNextQuestionDesc": "Automatically go to next question after I've answered correctly"
 }

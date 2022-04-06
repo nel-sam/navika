@@ -29,6 +29,8 @@ enum PronounEnum {
   Oneself,
 }
 
+enum SettingsKeys { autoNextQuestion }
+
 enum Tags {
   NaturalFeature,
   FlatSurface,

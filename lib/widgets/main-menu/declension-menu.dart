@@ -13,8 +13,6 @@ import 'package:navika/widgets/exercises/declension/nominativ/nominativ.dart';
 import 'package:navika/widgets/exercises/declension/vokativ/vokativ.dart';
 import 'package:navika/widgets/shared/ad-card.dart';
 import 'package:navika/widgets/shared/menu-footer.dart';
-import 'package:navika/widgets/shared/settings-button.dart';
-import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 import 'package:nrs_flutter_lib/widgets/n-menu-button.dart';
 import 'package:nrs_flutter_lib/widgets/n-menu-header.dart';
 
@@ -32,7 +30,7 @@ class DeclensionMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: Nrs.NrsAppBar(context: context, actions: [SettingsButton()]),
+      appBar: N.navAppBar(context: context),
       body: Center(
         child: SingleChildScrollView(
           child: Column(

@@ -51,3 +51,4 @@ class SbcLabels {
   static String grammarGuide = 'Vodič za gramatiku';
   static String wordOrder = 'Poredak riječi';
 }
+

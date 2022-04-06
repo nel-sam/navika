@@ -5,6 +5,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/state/exercise-nav-notifier.dart';
+import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/exercises/declension/shared/case-question-content.dart';
 import 'package:navika/widgets/grammar/grammar-guide/declension-guide.dart';
 import 'package:navika/widgets/shared/ad-card.dart';
@@ -12,7 +13,6 @@ import 'package:navika/widgets/shared/home-button-wrapper.dart';
 import 'package:navika/widgets/shared/info-banner.dart';
 import 'package:navika/widgets/shared/navigation-header-wrapper.dart';
 import 'package:nrs_flutter_lib/constants.dart';
-import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 import 'package:nrs_flutter_lib/widgets/n-footer-button.dart';
 import 'package:nrs_flutter_lib/widgets/n-footer-menu.dart';
 import 'package:provider/provider.dart';
@@ -42,7 +42,7 @@ class CaseExercise extends StatelessWidget {
       child: Consumer<ExerciseNavNotifier>(
         builder: (context, navNotifier, child) {
           return Scaffold(
-            appBar: Nrs.NrsAppBar(title: SbcLabels.cases, context: context),
+            appBar: N.navAppBar(title: SbcLabels.cases, context: context),
             body: Center(
               child: SingleChildScrollView(
                 child: Column(

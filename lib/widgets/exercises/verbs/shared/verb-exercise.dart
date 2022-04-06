@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/verb.dart';
 import 'package:navika/state/exercise-nav-notifier.dart';
+import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/exercises/verbs/past-tense/past-tense-question-content.dart';
 import 'package:navika/widgets/exercises/verbs/present-tense/present-tense-question-content.dart';
 import 'package:navika/widgets/shared/ad-card.dart';
 import 'package:navika/widgets/shared/info-banner.dart';
 import 'package:navika/widgets/shared/navigation-header-wrapper.dart';
 import 'package:nrs_flutter_lib/constants.dart';
-import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 import 'package:provider/provider.dart';
 
 class VerbExercise extends StatelessWidget {
@@ -34,7 +34,7 @@ class VerbExercise extends StatelessWidget {
     Timer _debounce = Timer(const Duration(milliseconds: 0), () {});
 
     return Scaffold(
-      appBar: Nrs.NrsAppBar(title: SbcLabels.verbs, context: context),
+      appBar: N.navAppBar(title: SbcLabels.verbs, context: context),
       body: ChangeNotifierProvider<ExerciseNavNotifier>(
         create: (context) => ExerciseNavNotifier(isVerb: true),
         child: Consumer<ExerciseNavNotifier>(
