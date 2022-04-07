@@ -29,7 +29,10 @@ enum PronounEnum {
   Oneself,
 }
 
-enum SettingsKeys { autoNextQuestion }
+enum SettingsKeys {
+  autoNextQuestion,
+  isPremium,
+}
 
 enum Tags {
   NaturalFeature,

@@ -12,6 +12,10 @@ class SettingsNotifier with ChangeNotifier {
         (preferences.getBool(SettingsKeys.autoNextQuestion.toString()) ??
             getDefaultValue(SettingsKeys.autoNextQuestion));
 
+    settings.isPremium =
+        (preferences.getBool(SettingsKeys.isPremium.toString()) ??
+            getDefaultValue(SettingsKeys.isPremium));
+
     return settings;
   }
 
@@ -24,6 +28,8 @@ class SettingsNotifier with ChangeNotifier {
     switch (key) {
       case SettingsKeys.autoNextQuestion:
         return true;
+      case SettingsKeys.isPremium:
+        return false;
     }
   }
 

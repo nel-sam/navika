@@ -118,5 +118,7 @@
   "settings": "Settings",
   "autoNextQuestion": "Auto next question",
   "autoNextQuestionDesc": "Automatically go to next question after I've answered correctly",
-  "account": "Account"
+  "account": "Account",
+  "isPremium": "Premium Subscription",
+  "isPremiumDesc": ""
 }
