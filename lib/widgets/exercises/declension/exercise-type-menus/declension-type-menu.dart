@@ -6,6 +6,7 @@ import 'package:navika/models/settings.dart';
 import 'package:navika/state/settings/settings-notifier.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/exercises/declension/shared/case-exercise.dart';
+import 'package:navika/widgets/settings/account-page.dart';
 import 'package:navika/widgets/shared/ad-card.dart';
 import 'package:navika/widgets/shared/menu-footer.dart';
 import 'package:navika/widgets/shared/nav-spinner.dart';
@@ -54,16 +55,16 @@ class DeclensionTypeMenu extends StatelessWidget {
                   Settings settings = snapshot.data as Settings;
 
                   return Center(
-                    child: Column(
-                      children: [
-                        const AdCard(),
-                        NMenuHeader(
-                          icon: icon,
-                          transLabel: transLabel,
-                          label: SbcLabels(settings.dialectType).exerciseType,
-                        ),
-                        Expanded(
-                          child: Column(
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          const AdCard(),
+                          NMenuHeader(
+                            icon: icon,
+                            transLabel: transLabel,
+                            label: SbcLabels(settings.dialectType).exerciseType,
+                          ),
+                          Column(
                             children: [
                               NMenuButton(
                                 destination: CaseExercise(
@@ -88,10 +89,35 @@ class DeclensionTypeMenu extends StatelessWidget {
                                 transLabel:
                                     SbcLabels(settings.dialectType).adjectives,
                               ),
+                              settings.isPremium
+                                  ? NMenuButton(
+                                      destination: CaseExercise(
+                                        caseType: caseType,
+                                        description: description,
+                                        imagePath: imagePath,
+                                        title: title,
+                                        exerciseType: ExerciseTypes
+                                            .case_nouns_and_adjectives,
+                                      ),
+                                      label: AppLocalizations.of(context)!
+                                          .nouns_and_adjectives,
+                                      transLabel:
+                                          SbcLabels(settings.dialectType)
+                                              .nounsAndAdjectives,
+                                    )
+                                  : NMenuButton(
+                                      isPremiumLocked: true,
+                                      destination: AccountPage(),
+                                      label: AppLocalizations.of(context)!
+                                          .nouns_and_adjectives,
+                                      transLabel:
+                                          SbcLabels(settings.dialectType)
+                                              .nounsAndAdjectives,
+                                    ),
                             ],
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   );
                 } else {

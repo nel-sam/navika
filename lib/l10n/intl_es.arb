@@ -125,5 +125,6 @@
   "useSerbianDesc": "En Serbia se usan palabras como 'lepo' en lugar de 'lijepo' como en Croacia/Bosnia",
   "serbian": "SerbiO",
   "nonSerbian": "croata/bosnio/montenegrino",
-  "resetSettings": "Borrar configuración"
+  "resetSettings": "Borrar configuración",
+  "nouns_and_adjectives": "Sustantivos y adjectivos"
 }

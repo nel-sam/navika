@@ -11,7 +11,8 @@ import 'package:navika/utilities/navika-helpers.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
 class InstrumentalGenerators {
-  static CaseQuestionState createExercise(List toAvoid) {
+  static CaseQuestionState createExercise(
+      List toAvoid, ExerciseTypes exerciseType) {
     final WordBank bank = wordBank.excludeNounsByTags([
       Tags.Location,
       Tags.Health,

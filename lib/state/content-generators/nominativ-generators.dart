@@ -10,9 +10,10 @@ import 'package:navika/utilities/navika-helpers.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
 class NominativGenerators {
-  static CaseQuestionState createExercise(List toAvoid) {
+  static CaseQuestionState createExercise(
+      List toAvoid, ExerciseTypes exerciseType) {
     PANCombo? c;
-
+// TODO: generate exercises based on ExerciseType
     while (c == null || N.containsCaseQuestionState(toAvoid, c)) {
       c = PanGenerator.getPANCombos(
         caseType: Cases.Nom,

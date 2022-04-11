@@ -55,6 +55,7 @@ class SbcLabels {
   final DialectType dialect;
 
   SbcLabels(this.dialect);
+
   String get adjectives {
     if (dialect == DialectType.Ekavian) return 'Pridevi';
 
@@ -64,5 +65,9 @@ class SbcLabels {
   String get exerciseType {
     if (dialect == DialectType.Ekavian) return 'Vrsta vežbe';
     return 'Vrsta vježbe';
+  }
+
+  String get nounsAndAdjectives {
+    return "$nouns i $adjectives";
   }
 }

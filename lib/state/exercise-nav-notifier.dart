@@ -17,11 +17,15 @@ import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 class ExerciseNavNotifier with ChangeNotifier {
   Timer _debounce = Timer(const Duration(milliseconds: 0), () {});
   List _states = [];
+  ExerciseTypes _exerciseType = ExerciseTypes.unspecified;
   int _activeIndex = 0;
   int _maxIndex = 0;
-  late Function(List) createExercise;
+  late Function(List, ExerciseTypes) createExercise;
 
-  ExerciseNavNotifier({Cases? caseType, ExerciseTypes exerciseType = ExerciseTypes.unspecified, bool isVerb = false}) {
+  ExerciseNavNotifier(
+      {Cases? caseType,
+      ExerciseTypes exerciseType = ExerciseTypes.unspecified,
+      bool isVerb = false}) {
     if (isVerb) {
       this._maxIndex = VerbGenerators.getMaxIndex();
       createExercise = VerbGenerators.createExercise;
@@ -30,7 +34,8 @@ class ExerciseNavNotifier with ChangeNotifier {
       _setCaseGenerator(caseType!);
     }
 
-    _states.add(createExercise(_states));
+    _states.add(createExercise(_states, exerciseType));
+    this._exerciseType = exerciseType;
   }
 
   void clearInput() {
@@ -63,7 +68,7 @@ class ExerciseNavNotifier with ChangeNotifier {
     }
 
     if (_activeIndex > _states.length - 1) {
-      this._states.add(this.createExercise(_states));
+      this._states.add(this.createExercise(_states, _exerciseType));
     }
 
     debouncedNotifyListeners();
@@ -89,26 +94,26 @@ class ExerciseNavNotifier with ChangeNotifier {
     return _states;
   }
 
-  _getRandomCaseExec(List a) {
+  _getRandomCaseExec(List a, ExerciseTypes exerciseType) {
     final random = Nrs.getRandomNumber(max: Cases.values.length);
     final caseType = Cases.values[random];
 
     switch (caseType) {
       case Cases.Nom:
-        return NominativGenerators.createExercise(a);
+        return NominativGenerators.createExercise(a, exerciseType);
       case Cases.Aku:
-        return AkuzativGenerators.createExercise(a);
+        return AkuzativGenerators.createExercise(a, exerciseType);
       case Cases.Ins:
-        return InstrumentalGenerators.createExercise(a);
+        return InstrumentalGenerators.createExercise(a, exerciseType);
       case Cases.Dat:
-        return DativGenerators.createExercise(a);
+        return DativGenerators.createExercise(a, exerciseType);
       case Cases.Lok:
-        return LokativGenerators.createExercise(a);
+        return LokativGenerators.createExercise(a, exerciseType);
       case Cases.All:
       case Cases.Gen:
-        return GenitivGenerators.createExercise(a);
+        return GenitivGenerators.createExercise(a, exerciseType);
       case Cases.Vok:
-        return VokativGenerators.createExercise(a);
+        return VokativGenerators.createExercise(a, exerciseType);
     }
   }
 

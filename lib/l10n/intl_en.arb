@@ -125,5 +125,6 @@
   "useSerbianDesc": "Serbian uses 'Ekavian', such as lepo instead of the Croatian/Bosnian word lijepo.",
   "serbian": "Serbian",
   "nonSerbian": "Croatian/Bosnian/Montenegrin",
-  "resetSettings": "Reset settings"
+  "resetSettings": "Reset settings",
+  "nouns_and_adjectives": "Nouns and adjectives"
 }
