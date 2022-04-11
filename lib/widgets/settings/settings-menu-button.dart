@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:navika/constants.dart';
 import 'package:nrs_flutter_lib/constants.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 import 'package:nrs_flutter_lib/widgets/n-action-arrow.dart';
 
 class SettingsMenuButton extends StatelessWidget {
+  final String title;
+  final IconData icon;
   final Widget Function(BuildContext) redirectMethod;
 
   SettingsMenuButton({
     Key? key,
     required this.redirectMethod,
+    required this.title,
+    required this.icon,
   }) : super(key: key);
 
   @override
@@ -30,9 +32,9 @@ class SettingsMenuButton extends StatelessWidget {
               children: [
                 Padding(
                   padding: const EdgeInsets.only(right: FONT_SIZE / 2),
-                  child: Icon(Icons.account_circle),
+                  child: Icon(icon),
                 ),
-                Text(AppLocalizations.of(context)!.account)
+                Text(title)
               ],
             ),
             NActionArrow()

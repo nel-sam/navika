@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:navika/models/enums.dart';
 
 const String APP_NAME = 'navika';
 const BATCH_COUNT = 20;
-const BORDER_COLOR = Color(0xFFC0C0C0);
 
 const CARD_PADDING = 10.0;
 const DECLINED_LETTER_STYLE =
     TextStyle(fontStyle: FontStyle.italic, fontWeight: FontWeight.bold);
 const EQUAL_ITEMS_BORDER_COLOR = Colors.amber;
-const double EXERCISE_FONT_STYLE = 15;
 
+const double EXERCISE_FONT_STYLE = 15;
 const EdgeInsets EXERCISE_LIST_PADDING = const EdgeInsets.only(bottom: 10);
 
 const FEMININE_COLOR = Color(0xFFD6308A);
@@ -40,6 +40,7 @@ class NavIcons {
   static IconData grammarGuides = Icons.menu_book;
   static IconData verbs = Icons.nordic_walking;
   static IconData cases = Icons.change_circle;
+  static IconData premium = Icons.workspace_premium_outlined;
   static String cyrillic = 'аБ';
 }
 
@@ -50,5 +51,18 @@ class SbcLabels {
   static String justTables = 'Tabele';
   static String grammarGuide = 'Vodič za gramatiku';
   static String wordOrder = 'Poredak riječi';
-}
+  static String nouns = 'Imenice';
+  final DialectType dialect;
 
+  SbcLabels(this.dialect);
+  String get adjectives {
+    if (dialect == DialectType.Ekavian) return 'Pridevi';
+
+    return 'Pridjevi';
+  }
+
+  String get exerciseType {
+    if (dialect == DialectType.Ekavian) return 'Vrsta vežbe';
+    return 'Vrsta vježbe';
+  }
+}

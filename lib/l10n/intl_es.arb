@@ -120,5 +120,10 @@
   "autoNextQuestionDesc": "Automaticamente ir a la siguenta pregunta después de que la haya contestado correctamente",
   "account": "Cuenta",
   "isPremium": "Suscripción Premium",
-  "isPremiumDesc": ""
+  "isPremiumDesc": "",
+  "useSerbian": "Usar pronunciación de Serbia",
+  "useSerbianDesc": "En Serbia se usan palabras como 'lepo' en lugar de 'lijepo' como en Croacia/Bosnia",
+  "serbian": "SerbiO",
+  "nonSerbian": "croata/bosnio/montenegrino",
+  "resetSettings": "Borrar configuración"
 }

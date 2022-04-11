@@ -20,6 +20,7 @@ import 'package:provider/provider.dart';
 class CaseExercise extends StatelessWidget {
   final String title;
   final Cases caseType;
+  final ExerciseTypes exerciseType;
   final String description;
   final String imagePath;
   final String? youtubeLink;
@@ -30,6 +31,7 @@ class CaseExercise extends StatelessWidget {
     required this.caseType,
     required this.description,
     required this.imagePath,
+    this.exerciseType = ExerciseTypes.unspecified,
     this.youtubeLink,
   }) : super(key: key);
 
@@ -38,7 +40,7 @@ class CaseExercise extends StatelessWidget {
     Timer _debounce = Timer(const Duration(milliseconds: 0), () {});
 
     return ChangeNotifierProvider<ExerciseNavNotifier>(
-      create: (context) => ExerciseNavNotifier(caseType: caseType),
+      create: (context) => ExerciseNavNotifier(caseType: caseType, exerciseType: exerciseType),
       child: Consumer<ExerciseNavNotifier>(
         builder: (context, navNotifier, child) {
           return Scaffold(

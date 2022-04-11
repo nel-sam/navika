@@ -45,7 +45,7 @@ class DeclensionMenu extends StatelessWidget {
                 NMenuButton(
                   destination: allCases,
                   label: AppLocalizations.of(context)!.allCases,
-                  transLabel: 'Sve padeže',
+                  transLabel: N.getCaseLabel(Cases.All),
                 ),
                 NMenuButton(
                   destination: nom,
@@ -55,32 +55,32 @@ class DeclensionMenu extends StatelessWidget {
                 NMenuButton(
                   destination: gen,
                   label: AppLocalizations.of(context)!.genitiv,
-                  transLabel: 'Genitiv',
+                  transLabel: N.getCaseLabel(Cases.Gen),
                 ),
                 NMenuButton(
                   destination: dat,
                   label: AppLocalizations.of(context)!.dativ,
-                  transLabel: 'Dativ',
+                  transLabel: N.getCaseLabel(Cases.Dat),
                 ),
                 NMenuButton(
                   destination: aku,
                   label: AppLocalizations.of(context)!.akuzativ,
-                  transLabel: 'Akuzativ',
+                  transLabel: N.getCaseLabel(Cases.Aku),
                 ),
                 NMenuButton(
                   destination: vok,
                   label: AppLocalizations.of(context)!.vokativ,
-                  transLabel: 'Vokativ',
+                  transLabel: N.getCaseLabel(Cases.Vok),
                 ),
                 NMenuButton(
                   destination: inst,
                   label: AppLocalizations.of(context)!.instrumental,
-                  transLabel: 'Instrumental',
+                  transLabel: N.getCaseLabel(Cases.Ins),
                 ),
                 NMenuButton(
                   destination: lok,
                   label: AppLocalizations.of(context)!.lokativ,
-                  transLabel: 'Lokativ',
+                  transLabel: N.getCaseLabel(Cases.Lok),
                 ),
               ])
             ],

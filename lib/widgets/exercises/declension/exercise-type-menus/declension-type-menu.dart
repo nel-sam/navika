@@ -1,0 +1,108 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:navika/constants.dart';
+import 'package:navika/models/enums.dart';
+import 'package:navika/models/settings.dart';
+import 'package:navika/state/settings/settings-notifier.dart';
+import 'package:navika/utilities/navika-helpers.dart';
+import 'package:navika/widgets/exercises/declension/shared/case-exercise.dart';
+import 'package:navika/widgets/shared/ad-card.dart';
+import 'package:navika/widgets/shared/menu-footer.dart';
+import 'package:navika/widgets/shared/nav-spinner.dart';
+import 'package:nrs_flutter_lib/widgets/n-menu-button.dart';
+import 'package:nrs_flutter_lib/widgets/n-menu-header.dart';
+import 'package:provider/provider.dart';
+
+class DeclensionTypeMenu extends StatelessWidget {
+  final String title;
+  final Cases caseType;
+  final ExerciseTypes exerciseType;
+  final String description;
+  final String imagePath;
+  final String? youtubeLink;
+
+  DeclensionTypeMenu({
+    Key? key,
+    required this.title,
+    required this.caseType,
+    required this.description,
+    required this.imagePath,
+    this.exerciseType = ExerciseTypes.unspecified,
+    this.youtubeLink,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final transLabel = AppLocalizations.of(context)!.selectExercises;
+    final icon = NavIcons.cases;
+    final title = N.getCaseLabel(caseType);
+
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      appBar: N.navAppBar(
+        context: context,
+        title: title,
+      ),
+      body: ChangeNotifierProvider<SettingsNotifier>(
+        create: (context) => SettingsNotifier(),
+        child: Center(child: Consumer<SettingsNotifier>(
+          builder: (context, model, child) {
+            return FutureBuilder(
+              future: model.getAllSettings(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.done) {
+                  Settings settings = snapshot.data as Settings;
+
+                  return Center(
+                    child: Column(
+                      children: [
+                        const AdCard(),
+                        NMenuHeader(
+                          icon: icon,
+                          transLabel: transLabel,
+                          label: SbcLabels(settings.dialectType).exerciseType,
+                        ),
+                        Expanded(
+                          child: Column(
+                            children: [
+                              NMenuButton(
+                                destination: CaseExercise(
+                                  caseType: caseType,
+                                  description: description,
+                                  imagePath: imagePath,
+                                  title: title,
+                                  exerciseType: ExerciseTypes.case_nouns,
+                                ),
+                                label: AppLocalizations.of(context)!.nouns,
+                                transLabel: SbcLabels.nouns,
+                              ),
+                              NMenuButton(
+                                destination: CaseExercise(
+                                  caseType: caseType,
+                                  description: description,
+                                  imagePath: imagePath,
+                                  title: title,
+                                  exerciseType: ExerciseTypes.case_adjectives,
+                                ),
+                                label: AppLocalizations.of(context)!.adjectives,
+                                transLabel:
+                                    SbcLabels(settings.dialectType).adjectives,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                } else {
+                  return NavSpinner();
+                }
+              },
+            );
+          },
+        )),
+      ),
+      persistentFooterButtons: [MenuFooter(activeIndex: 2)],
+    );
+  }
+}

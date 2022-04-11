@@ -9,6 +9,23 @@ enum Cases {
   Dat,
 }
 
+enum DialectType {
+  Ekavian,
+  Ijekavian,
+}
+
+enum ExerciseTypes {
+  unspecified,
+  verb_Present,
+  verb_Present_Irregular,
+  verb_Simple_Past,
+  verb_Simple_Past_Irregular,
+  verb_reflexive,
+  case_nouns,
+  case_adjectives,
+  case_nouns_and_adjectives,
+}
+
 enum Genders {
   Masculine,
   Feminine,
@@ -30,8 +47,10 @@ enum PronounEnum {
 }
 
 enum SettingsKeys {
+  isFirstTime,
   autoNextQuestion,
   isPremium,
+  dialectType,
 }
 
 enum Tags {

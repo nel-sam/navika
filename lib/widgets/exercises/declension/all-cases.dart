@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:navika/models/enums.dart';
-import 'package:navika/widgets/exercises/declension/shared/case-exercise.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:navika/models/enums.dart';
+import 'package:navika/widgets/exercises/declension/exercise-type-menus/declension-type-menu.dart';
 
 class AllCases extends StatelessWidget {
   const AllCases({Key? key}) : super(key: key);
@@ -10,7 +10,7 @@ class AllCases extends StatelessWidget {
   Widget build(BuildContext context) {
     final title = AppLocalizations.of(context)!.allCases;
 
-    return CaseExercise(
+    return DeclensionTypeMenu(
       title: title,
       caseType: Cases.All,
       imagePath: 'assets/banners/montenegro.jpg',

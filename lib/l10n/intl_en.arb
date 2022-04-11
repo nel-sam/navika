@@ -120,5 +120,10 @@
   "autoNextQuestionDesc": "Automatically go to next question after I've answered correctly",
   "account": "Account",
   "isPremium": "Premium Subscription",
-  "isPremiumDesc": ""
+  "isPremiumDesc": "",
+  "useSerbian": "Use Serbian pronunciation",
+  "useSerbianDesc": "Serbian uses 'Ekavian', such as lepo instead of the Croatian/Bosnian word lijepo.",
+  "serbian": "Serbian",
+  "nonSerbian": "Croatian/Bosnian/Montenegrin",
+  "resetSettings": "Reset settings"
 }

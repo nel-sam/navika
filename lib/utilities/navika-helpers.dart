@@ -72,8 +72,9 @@ class N {
 
   static String getCaseLabel(Cases caseType) {
     switch (caseType) {
-      case Cases.Nom:
       case Cases.All:
+        return 'Sve padeže';
+      case Cases.Nom:
         return 'Nominativ';
       case Cases.Ins:
         return 'Instrumental';
@@ -155,11 +156,12 @@ class N {
   static navAppBar(
       {required BuildContext context,
       String title = '',
-      String transTitle = ''}) {
+      String transTitle = '',
+      bool showSettingsButton = true}) {
     return Nrs.NrsAppBar(
         context: context,
         title: title,
         transTitle: transTitle,
-        actions: [SettingsButton()]);
+        actions: [if (showSettingsButton) SettingsButton()]);
   }
 }

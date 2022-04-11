@@ -8,38 +8,62 @@ class SettingsNotifier with ChangeNotifier {
     Settings settings = Settings();
     final preferences = await getPreferencesInstance();
 
+    settings.isFirstTime =
+        (preferences.getBool(SettingsKeys.isFirstTime.toString()) ??
+            settings.isFirstTime);
+
     settings.autoNextQuestion =
         (preferences.getBool(SettingsKeys.autoNextQuestion.toString()) ??
-            getDefaultValue(SettingsKeys.autoNextQuestion));
+            settings.autoNextQuestion);
 
     settings.isPremium =
         (preferences.getBool(SettingsKeys.isPremium.toString()) ??
-            getDefaultValue(SettingsKeys.isPremium));
+            settings.isPremium);
+
+    settings.dialectType = dialectTypeStrToEnum(preferences, settings);
 
     return settings;
-  }
-
-  Future<bool> getBoolSetting(SettingsKeys key) async {
-    final preferences = await getPreferencesInstance();
-    return (preferences.getBool(key.toString()) ?? getDefaultValue(key));
-  }
-
-  getDefaultValue(SettingsKeys key) {
-    switch (key) {
-      case SettingsKeys.autoNextQuestion:
-        return true;
-      case SettingsKeys.isPremium:
-        return false;
-    }
   }
 
   Future<SharedPreferences> getPreferencesInstance() async {
     return await SharedPreferences.getInstance();
   }
 
+  Future resetSettings() async {
+    final defaultSettings = Settings();
+    final pref = (await getPreferencesInstance());
+    pref.setBool(SettingsKeys.autoNextQuestion.toString(),
+        defaultSettings.autoNextQuestion);
+    pref.setBool(
+        SettingsKeys.isFirstTime.toString(), defaultSettings.isFirstTime);
+    pref.setBool(SettingsKeys.isPremium.toString(), defaultSettings.isPremium);
+    pref.setString(
+        SettingsKeys.dialectType.toString(), defaultSettings.dialectType.name);
+
+    notifyListeners();
+  }
+
   Future setBoolSetting(SettingsKeys key, bool newVal) async {
     final pref = (await getPreferencesInstance());
     pref.setBool(key.toString(), newVal);
     notifyListeners();
+  }
+
+  Future setDialectType(DialectType newVal) async {
+    final pref = (await getPreferencesInstance());
+    final strVal = newVal.name;
+    pref.setString(SettingsKeys.dialectType.toString(), strVal);
+    notifyListeners();
+  }
+
+  static DialectType dialectTypeStrToEnum(
+      SharedPreferences preferences, Settings settings) {
+    final key = SettingsKeys.dialectType.toString();
+    final fromDisk = preferences.getString(key);
+
+    final matching = DialectType.values
+        .firstWhere((DialectType e) => e.name.toString() == fromDisk);
+
+    return matching;
   }
 }

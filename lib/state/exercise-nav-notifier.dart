@@ -21,7 +21,7 @@ class ExerciseNavNotifier with ChangeNotifier {
   int _maxIndex = 0;
   late Function(List) createExercise;
 
-  ExerciseNavNotifier({Cases? caseType, bool isVerb = false}) {
+  ExerciseNavNotifier({Cases? caseType, ExerciseTypes exerciseType = ExerciseTypes.unspecified, bool isVerb = false}) {
     if (isVerb) {
       this._maxIndex = VerbGenerators.getMaxIndex();
       createExercise = VerbGenerators.createExercise;

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:navika/main.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/settings.dart';
 import 'package:navika/navika-theme.dart';
@@ -7,6 +8,7 @@ import 'package:navika/state/settings/settings-notifier.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/settings/account-page.dart';
 import 'package:navika/widgets/settings/settings-menu-button.dart';
+import 'package:navika/widgets/shared/nav-spinner.dart';
 import 'package:nrs_flutter_lib/constants.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 import 'package:provider/provider.dart';
@@ -21,6 +23,7 @@ class SettingsPage extends StatelessWidget {
       appBar: N.navAppBar(
         title: AppLocalizations.of(context)!.settings,
         context: context,
+        showSettingsButton: false,
       ),
       body: ChangeNotifierProvider<SettingsNotifier>(
         create: (context) => SettingsNotifier(),
@@ -36,23 +39,33 @@ class SettingsPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       SettingsSwitch(
-                        title: AppLocalizations.of(context)!.autoNextQuestion,
+                        title: AppLocalizations.of(context)!.useSerbian,
                         description:
-                            AppLocalizations.of(context)!.autoNextQuestionDesc,
-                        value: settings.autoNextQuestion,
-                        onChanged: (newVal) => {
-                          model.setBoolSetting(
-                              SettingsKeys.autoNextQuestion, newVal)
+                            AppLocalizations.of(context)!.useSerbianDesc,
+                        value: settings.dialectType == DialectType.Ekavian,
+                        onChanged: (bool isSelected) {
+                          if (isSelected)
+                            model.setDialectType(DialectType.Ekavian);
+                          else
+                            model.setDialectType(DialectType.Ijekavian);
                         },
                       ),
                       Padding(padding: const EdgeInsets.only(top: FONT_SIZE)),
                       SettingsMenuButton(
+                          title: AppLocalizations.of(context)!.resetSettings,
+                          icon: Icons.refresh_outlined,
+                          redirectMethod: (context) {
+                            model.resetSettings();
+                            return NHomePage();
+                          }),
+                      SettingsMenuButton(
+                          title: AppLocalizations.of(context)!.account,
+                          icon: Icons.account_circle,
                           redirectMethod: (context) => AccountPage()),
                     ],
                   );
                 } else {
-                  return Container();
-                  //NavSpinner();
+                  return NavSpinner();
                 }
               },
             );

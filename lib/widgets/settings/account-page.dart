@@ -17,6 +17,7 @@ class AccountPage extends StatelessWidget {
       appBar: N.navAppBar(
         title: AppLocalizations.of(context)!.account,
         context: context,
+        showSettingsButton: false,
       ),
       body: ChangeNotifierProvider<SettingsNotifier>(
         create: (context) => SettingsNotifier(),
