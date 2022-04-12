@@ -20,9 +20,14 @@ class SettingsNotifier with ChangeNotifier {
         (preferences.getBool(SettingsKeys.isPremium.toString()) ??
             settings.isPremium);
 
-    settings.dialectType = dialectTypeStrToEnum(preferences, settings);
+    settings.dialectType = dialectTypeStrToEnum(preferences);
 
     return settings;
+  }
+
+  Future<DialectType> getDialect() async {
+    final preferences = await getPreferencesInstance();
+    return dialectTypeStrToEnum(preferences);
   }
 
   Future<SharedPreferences> getPreferencesInstance() async {
@@ -56,8 +61,7 @@ class SettingsNotifier with ChangeNotifier {
     notifyListeners();
   }
 
-  static DialectType dialectTypeStrToEnum(
-      SharedPreferences preferences, Settings settings) {
+  static DialectType dialectTypeStrToEnum(SharedPreferences preferences) {
     final key = SettingsKeys.dialectType.toString();
     final fromDisk = preferences.getString(key);
 

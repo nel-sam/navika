@@ -53,7 +53,7 @@ class NominativGrammarGuideContent extends StatelessWidget {
             ]),
             NTextMulti([
               TextSpan(
-                  text: 'Bijelo ',
+                  text: 'Bijelo ', // TODO: Support dialect
                   style: Nrs.getTextStyle(context: context, isBold: true)),
               TextSpan(text: 'kao '),
               TextSpan(

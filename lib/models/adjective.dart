@@ -14,6 +14,8 @@ class Adjective {
   late Declension? vokativ;
   late List<Tags> toAvoid;
 
+  // TODO: support dialect
+
   Adjective({
     required this.dictionary,
     this.nominativ,

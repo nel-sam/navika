@@ -11,6 +11,8 @@ class Verb {
   ParticipleSet pastPerfect;
   Function(BuildContext context) getTranslation;
 
+  // TODO: Support dialect
+
   Verb({
     required this.infinitive,
     required this.isReflexive,

@@ -46,11 +46,11 @@ class NavIcons {
 
 class SbcLabels {
   static String cyrillic = 'Ћирилица';
+
   static String cases = 'Padeži';
   static String verbs = 'Glagoli';
   static String justTables = 'Tabele';
   static String grammarGuide = 'Vodič za gramatiku';
-  static String wordOrder = 'Poredak riječi';
   static String nouns = 'Imenice';
   final DialectType dialect;
 
@@ -69,5 +69,11 @@ class SbcLabels {
 
   String get nounsAndAdjectives {
     return "$nouns i $adjectives";
+  }
+
+  String get wordOrder {
+    if (dialect == DialectType.Ekavian) return 'Red reči';
+
+    return 'Poredak riječi';
   }
 }

@@ -63,7 +63,7 @@ class GenitivGenerators {
         end = 'je naibolji';
       }
     } else if (noun.tags.contains(Tags.Emotion)) {
-      start = 'Prije';
+      start = 'Prije'; // TODO: Support dialect
       end = 'treba se smiriti';
     } else if (noun.tags.contains(Tags.Country)) {
       start = pronounStr != 'moj' ? 'Ja sam iz' : 'On je iz';
@@ -84,7 +84,7 @@ class GenitivGenerators {
       end = 'je prljav';
     } else if (noun.tags.contains(Tags.BodyPart) && !isPlural) {
       start = 'Boja';
-      end = 'je lijepa';
+      end = 'je tamna';
     } else if (noun.tags.contains(Tags.Human) && Nrs.coinFlip()) {
       start = 'Ja sam kod';
     } else if (noun.tags.contains(Tags.Human) ||

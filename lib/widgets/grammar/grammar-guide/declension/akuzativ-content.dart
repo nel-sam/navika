@@ -35,7 +35,7 @@ class AkuzativGrammarGuideContent extends StatelessWidget {
             NTextMulti([
               TextSpan(text: 'Popijmo '),
               TextSpan(
-                  text: 'toplo mlijeko ',
+                  text: 'toplo mlijeko ', // TODO: Support dialect
                   style: Nrs.getTextStyle(context: context, isBold: true)),
             ]),
           ],
