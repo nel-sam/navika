@@ -61,10 +61,12 @@ class ContentSection extends StatelessWidget {
 
 class DeclensionGuide extends StatefulWidget {
   final Cases startingCase;
+  final DialectType dialect;
 
   const DeclensionGuide({
     Key? key,
     this.startingCase = Cases.Nom,
+    required this.dialect,
   }) : super(key: key);
 
   @override
@@ -88,54 +90,54 @@ class _DeclensionGuideState extends State<DeclensionGuide> {
         transTitle: AppLocalizations.of(context)!.cases,
         context: context,
       ),
-      body: Center(
-        child: Column(
-          children: [
-            const AdCard(),
-            NProgressBar(progressPercentage: this.progressPercentage),
-            Expanded(
-              child: SingleChildScrollView(
-                controller: controller,
-                child: Container(
-                  padding: EdgeInsets.all(20.0),
-                  width: screenWidth > 840 ? screenWidth / 2 : screenWidth,
-                  child: Column(
-                    children: [
-                      ContentSection(
-                        text: N.getCaseLabel(Cases.Nom),
-                        content: NominativGrammarGuideContent(),
+      body: Column(
+        children: [
+          const AdCard(),
+          NProgressBar(progressPercentage: this.progressPercentage),
+          Expanded(
+            child: SingleChildScrollView(
+              controller: controller,
+              child: Container(
+                padding: EdgeInsets.all(20.0),
+                width: screenWidth > 840 ? screenWidth / 2 : screenWidth,
+                child: Column(
+                  children: [
+                    ContentSection(
+                      text: N.getCaseLabel(Cases.Nom),
+                      content: NominativGrammarGuideContent(
+                        dialect: widget.dialect,
                       ),
-                      ContentSection(
-                        text: N.getCaseLabel(Cases.Gen),
-                        content: GenitivGrammarGuideContent(),
-                      ),
-                      ContentSection(
-                        text: N.getCaseLabel(Cases.Dat),
-                        content: DativGrammarGuideContent(),
-                      ),
-                      ContentSection(
-                        text: N.getCaseLabel(Cases.Aku),
-                        content: AkuzativGrammarGuideContent(),
-                      ),
-                      ContentSection(
-                        text: N.getCaseLabel(Cases.Vok),
-                        content: Container(),
-                      ),
-                      ContentSection(
-                        text: N.getCaseLabel(Cases.Ins),
-                        content: InstrumentalGrammarGuideContent(),
-                      ),
-                      ContentSection(
-                        text: N.getCaseLabel(Cases.Lok),
-                        content: LokativGrammarGuideContent(),
-                      ),
-                    ],
-                  ),
+                    ),
+                    ContentSection(
+                      text: N.getCaseLabel(Cases.Gen),
+                      content: GenitivGrammarGuideContent(),
+                    ),
+                    ContentSection(
+                      text: N.getCaseLabel(Cases.Dat),
+                      content: DativGrammarGuideContent(),
+                    ),
+                    ContentSection(
+                      text: N.getCaseLabel(Cases.Aku),
+                      content: AkuzativGrammarGuideContent(),
+                    ),
+                    ContentSection(
+                      text: N.getCaseLabel(Cases.Vok),
+                      content: Container(),
+                    ),
+                    ContentSection(
+                      text: N.getCaseLabel(Cases.Ins),
+                      content: InstrumentalGrammarGuideContent(),
+                    ),
+                    ContentSection(
+                      text: N.getCaseLabel(Cases.Lok),
+                      content: LokativGrammarGuideContent(),
+                    ),
+                  ],
                 ),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
       persistentFooterButtons: [
         NFooterMenu(

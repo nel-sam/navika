@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/constants.dart';
+import 'package:navika/models/settings.dart';
+import 'package:navika/state/settings/settings-consumer-wrapper.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/grammar/grammar-guide/declension-guide.dart';
-import 'package:navika/widgets/grammar/grammar-guide/tables.dart';
 import 'package:navika/widgets/shared/ad-card.dart';
 import 'package:navika/widgets/shared/menu-footer.dart';
 import 'package:nrs_flutter_lib/widgets/n-menu-button.dart';
@@ -21,8 +22,8 @@ class GrammarMenu extends StatelessWidget {
       appBar: N.navAppBar(
         context: context,
       ),
-      body: Center(
-        child: Column(
+      body: SettingsConsumerWrapper(
+        getChildWidget: (Settings settings) => Column(
           children: [
             const AdCard(),
             NMenuHeader(
@@ -34,15 +35,15 @@ class GrammarMenu extends StatelessWidget {
               child: Column(
                 children: [
                   NMenuButton(
-                    destination: DeclensionGuide(),
+                    destination: DeclensionGuide(dialect: settings.dialectType),
                     label: AppLocalizations.of(context)!.cases,
                     transLabel: SbcLabels.cases,
                   ),
-                  NMenuButton(
-                    destination: Tables(),
-                    label: AppLocalizations.of(context)!.justCaseTables,
-                    transLabel: SbcLabels.justTables,
-                  ),
+                  // NMenuButton(
+                  //   destination: Tables(),
+                  //   label: AppLocalizations.of(context)!.justCaseTables,
+                  //   transLabel: SbcLabels.justTables,
+                  // ),
                 ],
               ),
             ),

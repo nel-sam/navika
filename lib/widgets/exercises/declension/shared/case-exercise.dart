@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
+import 'package:navika/models/settings.dart';
 import 'package:navika/state/exercise-nav-notifier.dart';
+import 'package:navika/state/settings/settings-consumer-wrapper.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/exercises/declension/shared/case-question-content.dart';
 import 'package:navika/widgets/grammar/grammar-guide/declension-guide.dart';
@@ -40,7 +42,8 @@ class CaseExercise extends StatelessWidget {
     Timer _debounce = Timer(const Duration(milliseconds: 0), () {});
 
     return ChangeNotifierProvider<ExerciseNavNotifier>(
-      create: (context) => ExerciseNavNotifier(caseType: caseType, exerciseType: exerciseType),
+      create: (context) =>
+          ExerciseNavNotifier(caseType: caseType, exerciseType: exerciseType),
       child: Consumer<ExerciseNavNotifier>(
         builder: (context, navNotifier, child) {
           return Scaffold(
@@ -92,17 +95,22 @@ class CaseExercise extends StatelessWidget {
                   text: AppLocalizations.of(context)!.refresh,
                 ),
                 HomeButtonWrapper(),
-                NFooterButton(
-                  active: true,
-                  onPressed: () {
-                    final dest = DeclensionGuide(startingCase: caseType);
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => dest),
-                    );
-                  },
-                  icon: Icons.help_center_outlined,
-                  text: AppLocalizations.of(context)!.grammar,
+                SettingsConsumerWrapper(
+                  getChildWidget: (Settings settings) => NFooterButton(
+                    active: true,
+                    onPressed: () {
+                      final dest = DeclensionGuide(
+                        startingCase: caseType,
+                        dialect: settings.dialectType,
+                      );
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => dest),
+                      );
+                    },
+                    icon: Icons.help_center_outlined,
+                    text: AppLocalizations.of(context)!.grammar,
+                  ),
                 ),
               ]),
             ],

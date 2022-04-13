@@ -3,16 +3,14 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/settings.dart';
-import 'package:navika/state/settings/settings-notifier.dart';
+import 'package:navika/state/settings/settings-consumer-wrapper.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/exercises/declension/shared/case-exercise.dart';
 import 'package:navika/widgets/settings/account-page.dart';
 import 'package:navika/widgets/shared/ad-card.dart';
 import 'package:navika/widgets/shared/menu-footer.dart';
-import 'package:navika/widgets/shared/nav-spinner.dart';
 import 'package:nrs_flutter_lib/widgets/n-menu-button.dart';
 import 'package:nrs_flutter_lib/widgets/n-menu-header.dart';
-import 'package:provider/provider.dart';
 
 class DeclensionTypeMenu extends StatelessWidget {
   final String title;
@@ -44,89 +42,70 @@ class DeclensionTypeMenu extends StatelessWidget {
         context: context,
         title: title,
       ),
-      body: ChangeNotifierProvider<SettingsNotifier>(
-        create: (context) => SettingsNotifier(),
-        child: Center(child: Consumer<SettingsNotifier>(
-          builder: (context, model, child) {
-            return FutureBuilder(
-              future: model.getAllSettings(),
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.done) {
-                  Settings settings = snapshot.data as Settings;
-
-                  return Center(
-                    child: SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          const AdCard(),
-                          NMenuHeader(
-                            icon: icon,
-                            transLabel: transLabel,
-                            label: SbcLabels(settings.dialectType).exerciseType,
-                          ),
-                          Column(
-                            children: [
-                              NMenuButton(
-                                destination: CaseExercise(
-                                  caseType: caseType,
-                                  description: description,
-                                  imagePath: imagePath,
-                                  title: title,
-                                  exerciseType: ExerciseTypes.case_nouns,
-                                ),
-                                label: AppLocalizations.of(context)!.nouns,
-                                transLabel: SbcLabels.nouns,
-                              ),
-                              NMenuButton(
-                                destination: CaseExercise(
-                                  caseType: caseType,
-                                  description: description,
-                                  imagePath: imagePath,
-                                  title: title,
-                                  exerciseType: ExerciseTypes.case_adjectives,
-                                ),
-                                label: AppLocalizations.of(context)!.adjectives,
-                                transLabel:
-                                    SbcLabels(settings.dialectType).adjectives,
-                              ),
-                              settings.isPremium
-                                  ? NMenuButton(
-                                      destination: CaseExercise(
-                                        caseType: caseType,
-                                        description: description,
-                                        imagePath: imagePath,
-                                        title: title,
-                                        exerciseType: ExerciseTypes
-                                            .case_nouns_and_adjectives,
-                                      ),
-                                      label: AppLocalizations.of(context)!
-                                          .nouns_and_adjectives,
-                                      transLabel:
-                                          SbcLabels(settings.dialectType)
-                                              .nounsAndAdjectives,
-                                    )
-                                  : NMenuButton(
-                                      isPremiumLocked: true,
-                                      destination: AccountPage(),
-                                      label: AppLocalizations.of(context)!
-                                          .nouns_and_adjectives,
-                                      transLabel:
-                                          SbcLabels(settings.dialectType)
-                                              .nounsAndAdjectives,
-                                    ),
-                            ],
-                          ),
-                        ],
+      body: SettingsConsumerWrapper(
+        getChildWidget: (Settings settings) => Center(
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                const AdCard(),
+                NMenuHeader(
+                  icon: icon,
+                  transLabel: transLabel,
+                  label: SbcLabels(settings.dialectType).exerciseType,
+                ),
+                Column(
+                  children: [
+                    NMenuButton(
+                      destination: CaseExercise(
+                        caseType: caseType,
+                        description: description,
+                        imagePath: imagePath,
+                        title: title,
+                        exerciseType: ExerciseTypes.case_nouns,
                       ),
+                      label: AppLocalizations.of(context)!.nouns,
+                      transLabel: SbcLabels.nouns,
                     ),
-                  );
-                } else {
-                  return NavSpinner();
-                }
-              },
-            );
-          },
-        )),
+                    NMenuButton(
+                      destination: CaseExercise(
+                        caseType: caseType,
+                        description: description,
+                        imagePath: imagePath,
+                        title: title,
+                        exerciseType: ExerciseTypes.case_adjectives,
+                      ),
+                      label: AppLocalizations.of(context)!.adjectives,
+                      transLabel: SbcLabels(settings.dialectType).adjectives,
+                    ),
+                    settings.isPremium
+                        ? NMenuButton(
+                            destination: CaseExercise(
+                              caseType: caseType,
+                              description: description,
+                              imagePath: imagePath,
+                              title: title,
+                              exerciseType:
+                                  ExerciseTypes.case_nouns_and_adjectives,
+                            ),
+                            label: AppLocalizations.of(context)!
+                                .nouns_and_adjectives,
+                            transLabel: SbcLabels(settings.dialectType)
+                                .nounsAndAdjectives,
+                          )
+                        : NMenuButton(
+                            isPremiumLocked: true,
+                            destination: AccountPage(),
+                            label: AppLocalizations.of(context)!
+                                .nouns_and_adjectives,
+                            transLabel: SbcLabels(settings.dialectType)
+                                .nounsAndAdjectives,
+                          ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
       persistentFooterButtons: [MenuFooter(activeIndex: 2)],
     );

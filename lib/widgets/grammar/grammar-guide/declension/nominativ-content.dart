@@ -12,7 +12,12 @@ import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 import 'package:nrs_flutter_lib/widgets/n-text-multi.dart';
 
 class NominativGrammarGuideContent extends StatelessWidget {
-  const NominativGrammarGuideContent({Key? key}) : super(key: key);
+  final DialectType dialect;
+
+  const NominativGrammarGuideContent({
+    Key? key,
+    required this.dialect,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -73,7 +78,7 @@ class NominativGrammarGuideContent extends StatelessWidget {
             ),
           ],
         ),
-        NominativDeclensionTable(),
+        NominativDeclensionTable(dialect: dialect),
         PossessivePronounSection(
           contents: [
             PronounLine(
