@@ -1,5 +1,5 @@
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/models/noun.dart';
@@ -10,7 +10,21 @@ import 'package:navika/models/noun.dart';
   ),
 */
 
-final List<Noun> nounWordBank = [
+final List<Noun> nounBankGeneral = [
+  Noun(
+    dictionary: 'avion',
+    tags: [Tags.Vehicle],
+    gender: Genders.Masculine,
+    isAnimate: false,
+    nominativ: new DeclensionByCount(singular: ['avion'], plural: ['avioni']),
+    genitiv: new DeclensionByCount(singular: ['aviona'], plural: ['aviona']),
+    dativ: new DeclensionByCount(singular: ['avionu'], plural: ['avionima']),
+    akuzativ: new DeclensionByCount(singular: ['avion'], plural: ['avione']),
+    lokativ: new DeclensionByCount(singular: ['avionu'], plural: ['avionima']),
+    vokativ: new DeclensionByCount(singular: ['avione'], plural: ['avioni']),
+    instrumental:
+        new DeclensionByCount(singular: ['avionom'], plural: ['avionima']),
+  ),
   Noun(
     dictionary: 'ananas',
     tags: [Tags.Food, Tags.Portable],
@@ -79,20 +93,6 @@ final List<Noun> nounWordBank = [
     vokativ: new DeclensionByCount(singular: ['lice'], plural: ['lica']),
     instrumental:
         new DeclensionByCount(singular: ['licem'], plural: ['licima']),
-  ),
-  Noun(
-    dictionary: 'avion',
-    tags: [Tags.Vehicle],
-    gender: Genders.Masculine,
-    isAnimate: false,
-    nominativ: new DeclensionByCount(singular: ['avion'], plural: ['avioni']),
-    genitiv: new DeclensionByCount(singular: ['aviona'], plural: ['aviona']),
-    dativ: new DeclensionByCount(singular: ['avionu'], plural: ['avionima']),
-    akuzativ: new DeclensionByCount(singular: ['avion'], plural: ['avione']),
-    lokativ: new DeclensionByCount(singular: ['avionu'], plural: ['avionima']),
-    vokativ: new DeclensionByCount(singular: ['avione'], plural: ['avioni']),
-    instrumental:
-        new DeclensionByCount(singular: ['avionom'], plural: ['avionima']),
   ),
   Noun(
     dictionary: 'stol',
@@ -201,26 +201,6 @@ final List<Noun> nounWordBank = [
         new DeclensionByCount(singular: ['sinom'], plural: ['sinovima']),
   ),
   Noun(
-    dictionary: 'djevojka',
-    tags: [Tags.Human],
-    gender: Genders.Feminine,
-    isAnimate: true,
-    nominativ:
-        new DeclensionByCount(singular: ['djevojka'], plural: ['djevojke']),
-    genitiv:
-        new DeclensionByCount(singular: ['djevojke'], plural: ['djevojaka']),
-    dativ:
-        new DeclensionByCount(singular: ['djevojci'], plural: ['djevojkama']),
-    akuzativ:
-        new DeclensionByCount(singular: ['djevojku'], plural: ['djevojke']),
-    lokativ:
-        new DeclensionByCount(singular: ['djevojci'], plural: ['djevojkama']),
-    vokativ:
-        new DeclensionByCount(singular: ['djevojko'], plural: ['djevojke']),
-    instrumental:
-        new DeclensionByCount(singular: ['djevojkom'], plural: ['djevojkama']),
-  ),
-  Noun(
     dictionary: 'ljubav',
     tags: [Tags.Emotion],
     gender: Genders.Feminine,
@@ -287,20 +267,6 @@ final List<Noun> nounWordBank = [
         new DeclensionByCount(singular: ['proljeće'], plural: ['proljeća']),
     instrumental:
         new DeclensionByCount(singular: ['proljećem'], plural: ['proljećima']),
-  ),
-  Noun(
-    dictionary: 'ljeto',
-    tags: [Tags.Season, Tags.Weather],
-    gender: Genders.Neuter,
-    isAnimate: false,
-    nominativ: new DeclensionByCount(singular: ['ljeto'], plural: ['ljeta']),
-    genitiv: new DeclensionByCount(singular: ['ljeta'], plural: ['ljeta']),
-    dativ: new DeclensionByCount(singular: ['ljetu'], plural: ['ljetima']),
-    akuzativ: new DeclensionByCount(singular: ['ljeto'], plural: ['ljeta']),
-    lokativ: new DeclensionByCount(singular: ['ljetu'], plural: ['ljetima']),
-    vokativ: new DeclensionByCount(singular: ['ljeto'], plural: ['ljeta']),
-    instrumental:
-        new DeclensionByCount(singular: ['ljetom'], plural: ['ljetima']),
   ),
   Noun(
     dictionary: 'jesen',

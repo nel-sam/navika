@@ -20,7 +20,7 @@ class PanGenerator {
 
   static PANCombo getPANCombos(
       {required Cases caseType,
-      required WordBank bank,
+      required SentenceBank bank,
       required StaticSentenceParts Function(Noun, bool, Adjective?, Adjective?)
           getStaticSentenceParts,
       required StaticSentenceParts Function(PersonalPronoun, bool)

@@ -143,20 +143,20 @@ class StaticSentenceParts {
   StaticSentenceParts({this.start = '', this.end = ''});
 }
 
-class WordBank {
-  final List<Noun> nouns;
+class SentenceBank {
+  final  nouns;
   final List<Adjective> adjectives;
   final List<Adjective> possessivePronouns;
   final List<PersonalPronoun> personalPronouns;
 
-  WordBank(
+  SentenceBank(
       {required this.nouns,
       required this.adjectives,
       required this.possessivePronouns,
       required this.personalPronouns});
 
-  WordBank excludeNounsByTags(List<Tags> tagsToFilter) {
-    var result = WordBank(
+  SentenceBank excludeNounsByTags(List<Tags> tagsToFilter) {
+    var result = SentenceBank(
       nouns: [
         ...this.nouns.where((n) => !listsShareElements(tagsToFilter, n.tags))
       ],
@@ -168,8 +168,8 @@ class WordBank {
     return result;
   }
 
-  WordBank excludePronoun(String toFilter) {
-    var result = WordBank(
+  SentenceBank excludePronoun(String toFilter) {
+    var result = SentenceBank(
       nouns: [...this.nouns],
       adjectives: [...this.adjectives],
       possessivePronouns: [...this.possessivePronouns],
@@ -183,8 +183,8 @@ class WordBank {
     return result;
   }
 
-  WordBank filterNounsGender(Genders gender) {
-    var result = WordBank(
+  SentenceBank filterNounsGender(Genders gender) {
+    var result = SentenceBank(
       nouns: [...this.nouns.where((n) => n.gender == gender)],
       adjectives: [...this.adjectives],
       possessivePronouns: [...this.possessivePronouns],
@@ -194,8 +194,8 @@ class WordBank {
     return result;
   }
 
-  WordBank includeOnlyNounsByTags(List<Tags> tagsToFilter) {
-    var result = WordBank(
+  SentenceBank includeOnlyNounsByTags(List<Tags> tagsToFilter) {
+    var result = SentenceBank(
       nouns: [
         ...this.nouns.where((n) => listsShareElements(tagsToFilter, n.tags))
       ],

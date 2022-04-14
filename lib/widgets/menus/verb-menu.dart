@@ -4,6 +4,7 @@ import 'package:navika/constants.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/exercises/verbs/past-tense/past-tense.dart';
 import 'package:navika/widgets/exercises/verbs/present-tense/present-tense.dart';
+import 'package:navika/widgets/sbc_labels.dart';
 import 'package:navika/widgets/shared/ad-card.dart';
 import 'package:navika/widgets/shared/menu-footer.dart';
 import 'package:nrs_flutter_lib/widgets/n-menu-button.dart';

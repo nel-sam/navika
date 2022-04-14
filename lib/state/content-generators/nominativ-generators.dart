@@ -1,4 +1,4 @@
-import 'package:navika/lang_data/word-bank.dart';
+import 'package:navika/lang_data/sentence_bank_generator.dart';
 import 'package:navika/models/adjective.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
@@ -11,13 +11,18 @@ import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
 class NominativGenerators {
   static CaseQuestionState createExercise(
-      List toAvoid, ExerciseTypes exerciseType) {
+    List toAvoid,
+    ExerciseTypes exerciseType,
+    DialectType dialect,
+  ) {
     PANCombo? c;
 // TODO: generate exercises based on ExerciseType
     while (c == null || N.containsCaseQuestionState(toAvoid, c)) {
       c = PanGenerator.getPANCombos(
         caseType: Cases.Nom,
-        bank: wordBank.excludePronoun('svoj'),
+        bank: SentenceBankGenerator(dialect: dialect)
+            .sentences
+            .excludePronoun('svoj'),
         getPersonalPronounSentenceStaticParts:
             getPersonalPronounSentenceStaticParts,
         getStaticSentenceParts: getStaticSentenceParts,

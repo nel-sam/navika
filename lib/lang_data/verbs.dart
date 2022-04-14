@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/verb.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-final List<Verb> verbWordBank = [
+final List<Verb> verbWordBankGeneral = [
   Verb(
     infinitive: 'biti',
     isIrregular: true,
@@ -26,30 +26,6 @@ final List<Verb> verbWordBank = [
       pluralFem: 'bile',
       ono: 'bilo',
       onaPl: 'bila',
-    ),
-  ),
-  Verb(
-    infinitive: 'vidjeti',
-    verbPerfectiveType: VerbPerfectiveTypes.Unspecified,
-    isIrregular: true,
-    isReflexive: true,
-    getTranslation: (BuildContext context) =>
-        AppLocalizations.of(context)!.trans_vidjeti,
-    present: ConjugationSet(
-      ja: 'vidim',
-      ti: 'vidiš',
-      on: 'vidi',
-      mi: 'vidimo',
-      vi: 'vidite',
-      oni: 'vide',
-    ),
-    pastPerfect: ParticipleSet(
-      singularMasc: 'vidio',
-      singularFem: 'vidjela',
-      pluralMasc: 'vidjeli',
-      pluralFem: 'vidjele',
-      ono: 'vidjelo',
-      onaPl: 'vidjela',
     ),
   ),
   Verb(
@@ -170,30 +146,6 @@ final List<Verb> verbWordBank = [
       pluralFem: 'putovale',
       ono: 'putovalo',
       onaPl: 'putovala',
-    ),
-  ),
-  Verb(
-    infinitive: 'razumjeti',
-    isIrregular: false,
-    isReflexive: false,
-    verbPerfectiveType: VerbPerfectiveTypes.Imperfective,
-    getTranslation: (BuildContext context) =>
-        AppLocalizations.of(context)!.trans_razumjeti,
-    present: ConjugationSet(
-      ja: 'razumijem',
-      ti: 'razumiješ',
-      on: 'razumije',
-      mi: 'razumijemo',
-      vi: 'razumijete',
-      oni: 'razumiju',
-    ),
-    pastPerfect: ParticipleSet(
-      singularMasc: 'razumio',
-      singularFem: 'razumila',
-      pluralMasc: 'razumili',
-      pluralFem: 'razumile',
-      ono: 'razumilo',
-      onaPl: 'razumila',
     ),
   ),
   Verb(

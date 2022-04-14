@@ -1,4 +1,4 @@
-import 'package:navika/lang_data/word-bank.dart';
+import 'package:navika/lang_data/sentence_bank_generator.dart';
 import 'package:navika/models/adjective.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
@@ -11,13 +11,16 @@ import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
 class LokativGenerators {
   static CaseQuestionState createExercise(
-      List toAvoid, ExerciseTypes exerciseType) {
+    List toAvoid,
+    ExerciseTypes exerciseType,
+    DialectType dialect,
+  ) {
     PANCombo? c;
 
     while (c == null || N.containsCaseQuestionState(toAvoid, c)) {
       c = PanGenerator.getPANCombos(
         caseType: Cases.Lok,
-        bank: wordBank,
+        bank: SentenceBankGenerator(dialect: dialect).sentences,
         getPersonalPronounSentenceStaticParts:
             getPersonalPronounSentenceStaticParts,
         getStaticSentenceParts: getStaticSentenceParts,

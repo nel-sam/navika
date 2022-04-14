@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:navika/models/enums.dart';
 
 const String APP_NAME = 'navika';
 const BATCH_COUNT = 20;
@@ -42,38 +41,4 @@ class NavIcons {
   static IconData cases = Icons.change_circle;
   static IconData premium = Icons.workspace_premium_outlined;
   static String cyrillic = 'аБ';
-}
-
-class SbcLabels {
-  static String cyrillic = 'Ћирилица';
-
-  static String cases = 'Padeži';
-  static String verbs = 'Glagoli';
-  static String justTables = 'Tabele';
-  static String grammarGuide = 'Vodič za gramatiku';
-  static String nouns = 'Imenice';
-  final DialectType dialect;
-
-  SbcLabels(this.dialect);
-
-  String get adjectives {
-    if (dialect == DialectType.Ekavian) return 'Pridevi';
-
-    return 'Pridjevi';
-  }
-
-  String get exerciseType {
-    if (dialect == DialectType.Ekavian) return 'Vrsta vežbe';
-    return 'Vrsta vježbe';
-  }
-
-  String get nounsAndAdjectives {
-    return "$nouns i $adjectives";
-  }
-
-  String get wordOrder {
-    if (dialect == DialectType.Ekavian) return 'Red reči';
-
-    return 'Poredak riječi';
-  }
 }

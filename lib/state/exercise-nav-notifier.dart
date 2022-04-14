@@ -20,21 +20,27 @@ class ExerciseNavNotifier with ChangeNotifier {
   ExerciseTypes _exerciseType = ExerciseTypes.unspecified;
   int _activeIndex = 0;
   int _maxIndex = 0;
-  late Function(List, ExerciseTypes) createExercise;
+  late DialectType _dialect;
+  late Function(List, ExerciseTypes, DialectType) createExercise;
 
-  ExerciseNavNotifier(
-      {Cases? caseType,
-      ExerciseTypes exerciseType = ExerciseTypes.unspecified,
-      bool isVerb = false}) {
+  ExerciseNavNotifier({
+    required DialectType dialect,
+    Cases? caseType,
+    ExerciseTypes exerciseType = ExerciseTypes.unspecified,
+    bool isVerb = false,
+  }) {
+    _dialect = dialect;
+
     if (isVerb) {
-      this._maxIndex = VerbGenerators.getMaxIndex();
-      createExercise = VerbGenerators.createExercise;
+      final verbGenerator = VerbGenerators(dialect: dialect);
+      this._maxIndex = verbGenerator.getMaxIndex();
+      createExercise = verbGenerator.createExercise;
     } else {
       _maxIndex = BATCH_COUNT;
       _setCaseGenerator(caseType!);
     }
 
-    _states.add(createExercise(_states, exerciseType));
+    _states.add(createExercise(_states, exerciseType, dialect));
     this._exerciseType = exerciseType;
   }
 
@@ -68,7 +74,7 @@ class ExerciseNavNotifier with ChangeNotifier {
     }
 
     if (_activeIndex > _states.length - 1) {
-      this._states.add(this.createExercise(_states, _exerciseType));
+      this._states.add(this.createExercise(_states, _exerciseType, _dialect));
     }
 
     debouncedNotifyListeners();
@@ -94,26 +100,30 @@ class ExerciseNavNotifier with ChangeNotifier {
     return _states;
   }
 
-  _getRandomCaseExec(List a, ExerciseTypes exerciseType) {
+  _getRandomCaseExec(
+    List a,
+    ExerciseTypes exerciseType,
+    DialectType dialect,
+  ) {
     final random = Nrs.getRandomNumber(max: Cases.values.length);
     final caseType = Cases.values[random];
 
     switch (caseType) {
       case Cases.Nom:
-        return NominativGenerators.createExercise(a, exerciseType);
+        return NominativGenerators.createExercise(a, exerciseType, dialect);
       case Cases.Aku:
-        return AkuzativGenerators.createExercise(a, exerciseType);
+        return AkuzativGenerators.createExercise(a, exerciseType, dialect);
       case Cases.Ins:
-        return InstrumentalGenerators.createExercise(a, exerciseType);
+        return InstrumentalGenerators.createExercise(a, exerciseType, dialect);
       case Cases.Dat:
-        return DativGenerators.createExercise(a, exerciseType);
+        return DativGenerators.createExercise(a, exerciseType, dialect);
       case Cases.Lok:
-        return LokativGenerators.createExercise(a, exerciseType);
+        return LokativGenerators.createExercise(a, exerciseType, dialect);
       case Cases.All:
       case Cases.Gen:
-        return GenitivGenerators.createExercise(a, exerciseType);
+        return GenitivGenerators.createExercise(a, exerciseType, dialect);
       case Cases.Vok:
-        return VokativGenerators.createExercise(a, exerciseType);
+        return VokativGenerators.createExercise(a, exerciseType, dialect);
     }
   }
 

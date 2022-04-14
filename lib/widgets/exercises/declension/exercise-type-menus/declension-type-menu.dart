@@ -6,6 +6,7 @@ import 'package:navika/models/settings.dart';
 import 'package:navika/state/settings/settings-consumer-wrapper.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/exercises/declension/shared/case-exercise.dart';
+import 'package:navika/widgets/sbc_labels.dart';
 import 'package:navika/widgets/settings/account-page.dart';
 import 'package:navika/widgets/shared/ad-card.dart';
 import 'package:navika/widgets/shared/menu-footer.dart';

@@ -11,6 +11,7 @@ import 'package:navika/widgets/exercises/declension/instrumental/instrumental.da
 import 'package:navika/widgets/exercises/declension/lokativ/lokativ.dart';
 import 'package:navika/widgets/exercises/declension/nominativ/nominativ.dart';
 import 'package:navika/widgets/exercises/declension/vokativ/vokativ.dart';
+import 'package:navika/widgets/sbc_labels.dart';
 import 'package:navika/widgets/shared/ad-card.dart';
 import 'package:navika/widgets/shared/menu-footer.dart';
 import 'package:nrs_flutter_lib/widgets/n-menu-button.dart';

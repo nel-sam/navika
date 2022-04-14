@@ -5,6 +5,7 @@ import 'package:navika/widgets/exercises/cyrillic/cyrillic-exercise.dart';
 import 'package:navika/widgets/menus/declension-menu.dart';
 import 'package:navika/widgets/menus/grammar-menu.dart';
 import 'package:navika/widgets/menus/verb-menu.dart';
+import 'package:navika/widgets/sbc_labels.dart';
 import 'package:navika/widgets/shared/ad-card.dart';
 import 'package:nrs_flutter_lib/constants.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';

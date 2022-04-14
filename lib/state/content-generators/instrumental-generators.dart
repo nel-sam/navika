@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:navika/lang_data/word-bank.dart';
+import 'package:navika/lang_data/sentence_bank_generator.dart';
 import 'package:navika/models/adjective.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
@@ -12,8 +12,9 @@ import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
 class InstrumentalGenerators {
   static CaseQuestionState createExercise(
-      List toAvoid, ExerciseTypes exerciseType) {
-    final WordBank bank = wordBank.excludeNounsByTags([
+      List toAvoid, ExerciseTypes exerciseType, DialectType dialect) {
+    final SentenceBank bank =
+        SentenceBankGenerator(dialect: dialect).sentences.excludeNounsByTags([
       Tags.Location,
       Tags.Health,
     ]);

@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/main.dart';
+import 'package:navika/widgets/sbc_labels.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
 void main() {
