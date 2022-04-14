@@ -21,6 +21,8 @@ class NominativGrammarGuideContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isSerbian = dialect == DialectType.Ekavian;
+
     return Column(
       children: [
         Column(
@@ -58,7 +60,7 @@ class NominativGrammarGuideContent extends StatelessWidget {
             ]),
             NTextMulti([
               TextSpan(
-                  text: 'Bijelo ', // TODO: Support dialect
+                  text: isSerbian ? 'Belo je ' : 'Bijelo je ',
                   style: Nrs.getTextStyle(context: context, isBold: true)),
               TextSpan(text: 'kao '),
               TextSpan(

@@ -20,6 +20,7 @@ class GenitivGenerators {
     while (c == null || N.containsCaseQuestionState(toAvoid, c)) {
       c = PanGenerator.getPANCombos(
         caseType: Cases.Gen,
+        dialect: dialect,
         bank: SentenceBankGenerator(dialect: dialect).sentences,
         getPersonalPronounSentenceStaticParts:
             getPersonalPronounSentenceStaticParts,
@@ -31,7 +32,10 @@ class GenitivGenerators {
   }
 
   static StaticSentenceParts getPersonalPronounSentenceStaticParts(
-      PersonalPronoun personalPronoun, bool isShortForm) {
+    PersonalPronoun personalPronoun,
+    bool isShortForm,
+    DialectType dialect,
+  ) {
     String start = '';
     String end = '';
     final actualValue = personalPronoun.nominativ.forms.first;
@@ -53,20 +57,26 @@ class GenitivGenerators {
   }
 
   static StaticSentenceParts getStaticSentenceParts(
-      Noun noun, bool isPlural, Adjective? pronoun, Adjective? adjective) {
+    Noun noun,
+    bool isPlural,
+    Adjective? pronoun,
+    Adjective? adjective,
+    DialectType dialect,
+  ) {
     String start = '';
     String end = '';
     String pronounStr = pronoun == null ? '' : pronoun.dictionary;
+    final isSerbian = dialect == DialectType.Ekavian;
 
     if (noun.tags.contains(Tags.Health)) {
       if (pronounStr == 'ja')
         start = 'Ne mogu raditi zbog';
       else {
         start = 'Život bez';
-        end = 'je naibolji';
+        end = 'je najbolji';
       }
     } else if (noun.tags.contains(Tags.Emotion)) {
-      start = 'Prije'; // TODO: Support dialect
+      start = isSerbian ? 'Pre' : 'Prije';
       end = 'treba se smiriti';
     } else if (noun.tags.contains(Tags.Country)) {
       start = pronounStr != 'moj' ? 'Ja sam iz' : 'On je iz';

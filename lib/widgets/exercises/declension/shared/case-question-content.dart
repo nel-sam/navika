@@ -61,7 +61,7 @@ class CaseQuestionContent extends StatelessWidget {
             initialValue: stateItem.userPossPronResponse,
             correctValues: stateItem.combos.correctPossPronouns,
             onChanged: (String newVal) {
-              handleOnChange(GrammarTypes.PossesivePronoun, newVal);
+              handleOnChange(GrammarTypes.possessivePronoun, newVal);
             },
           ),
         if (useAdj)
@@ -70,7 +70,7 @@ class CaseQuestionContent extends StatelessWidget {
             initialValue: stateItem.userAdjResponse,
             correctValues: stateItem.combos.correctAdjectives,
             onChanged: (String newVal) {
-              handleOnChange(GrammarTypes.Adjective, newVal);
+              handleOnChange(GrammarTypes.adjective, newVal);
             },
           ),
         if (useNoun)
@@ -79,16 +79,16 @@ class CaseQuestionContent extends StatelessWidget {
             initialValue: stateItem.userNounResponse,
             correctValues: stateItem.combos.correctNouns,
             onChanged: (String newVal) {
-              handleOnChange(GrammarTypes.Noun, newVal);
+              handleOnChange(GrammarTypes.noun, newVal);
             },
           ),
         if (usePersonalPronoun)
           NFreeFormEntry(
             hintValue: stateItem.combos.personalPronoun!.dictionary,
-            initialValue: stateItem.userPersPronResponse,
+            initialValue: stateItem.userPersonalPronounResponse,
             correctValues: stateItem.combos.correctPersonalPronouns,
             onChanged: (String newVal) {
-              handleOnChange(GrammarTypes.PersonalPronoun, newVal);
+              handleOnChange(GrammarTypes.personalPronoun, newVal);
             },
           ),
         if (stateItem.combos.sentenceEnder != '')
@@ -106,16 +106,16 @@ class CaseQuestionContent extends StatelessWidget {
 
   handleOnChange(GrammarTypes grammarType, String newValue) {
     switch (grammarType) {
-      case GrammarTypes.Noun:
+      case GrammarTypes.noun:
         stateItem.updateNoun(newValue);
         break;
-      case GrammarTypes.PersonalPronoun:
-        stateItem.updatePersPronoun(newValue);
+      case GrammarTypes.personalPronoun:
+        stateItem.updatePersonalPronoun(newValue);
         break;
-      case GrammarTypes.PossesivePronoun:
+      case GrammarTypes.possessivePronoun:
         stateItem.updatePossPronoun(newValue);
         break;
-      case GrammarTypes.Adjective:
+      case GrammarTypes.adjective:
         stateItem.updateAdj(newValue);
         break;
     }

@@ -20,6 +20,7 @@ class AkuzativGenerators {
     while (c == null || N.containsCaseQuestionState(toAvoid, c)) {
       c = PanGenerator.getPANCombos(
         caseType: Cases.Aku,
+        dialect: dialect,
         bank: SentenceBankGenerator(dialect: dialect).sentences,
         getPersonalPronounSentenceStaticParts:
             getPersonalPronounSentenceStaticParts,
@@ -33,6 +34,7 @@ class AkuzativGenerators {
   static StaticSentenceParts getPersonalPronounSentenceStaticParts(
     PersonalPronoun personalPronoun,
     bool isShortForm,
+    DialectType dialect,
   ) {
     final actualValue = personalPronoun.nominativ.forms.first;
     String start = '';
@@ -51,8 +53,8 @@ class AkuzativGenerators {
     return StaticSentenceParts(start: start, end: end);
   }
 
-  static StaticSentenceParts getStaticSentenceParts(
-      Noun noun, bool isPlural, Adjective? pronoun, Adjective? adjective) {
+  static StaticSentenceParts getStaticSentenceParts(Noun noun, bool isPlural,
+      Adjective? pronoun, Adjective? adjective, DialectType dialect) {
     String start = '';
     String end = '';
     final pron = pronoun != null ? pronoun.nominativ!.masculine.singular : '';

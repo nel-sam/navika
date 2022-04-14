@@ -10,10 +10,17 @@ import 'package:nrs_flutter_lib/widgets/n-text-multi.dart';
 import 'package:nrs_flutter_lib/widgets/n-text-span.dart';
 
 class AkuzativGrammarGuideContent extends StatelessWidget {
-  const AkuzativGrammarGuideContent({Key? key}) : super(key: key);
+  final DialectType dialect;
+
+  const AkuzativGrammarGuideContent({
+    Key? key,
+    required this.dialect,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    bool isSerbian = dialect == DialectType.Ekavian;
+
     return Column(
       children: [
         NTextSpan(AppLocalizations.of(context)!.akuzativDescription),
@@ -35,7 +42,7 @@ class AkuzativGrammarGuideContent extends StatelessWidget {
             NTextMulti([
               TextSpan(text: 'Popijmo '),
               TextSpan(
-                  text: 'toplo mlijeko ', // TODO: Support dialect
+                  text: isSerbian ? 'toplo mleko ' : 'toplo mlijeko ',
                   style: Nrs.getTextStyle(context: context, isBold: true)),
             ]),
           ],

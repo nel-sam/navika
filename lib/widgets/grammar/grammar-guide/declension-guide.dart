@@ -118,7 +118,8 @@ class _DeclensionGuideState extends State<DeclensionGuide> {
                     ),
                     ContentSection(
                       text: N.getCaseLabel(Cases.Aku),
-                      content: AkuzativGrammarGuideContent(),
+                      content:
+                          AkuzativGrammarGuideContent(dialect: widget.dialect),
                     ),
                     ContentSection(
                       text: N.getCaseLabel(Cases.Vok),

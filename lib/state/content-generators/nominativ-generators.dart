@@ -20,6 +20,7 @@ class NominativGenerators {
     while (c == null || N.containsCaseQuestionState(toAvoid, c)) {
       c = PanGenerator.getPANCombos(
         caseType: Cases.Nom,
+        dialect: dialect,
         bank: SentenceBankGenerator(dialect: dialect)
             .sentences
             .excludePronoun('svoj'),
@@ -33,7 +34,10 @@ class NominativGenerators {
   }
 
   static StaticSentenceParts getPersonalPronounSentenceStaticParts(
-      PersonalPronoun personalPronoun, bool isShortForm) {
+    PersonalPronoun personalPronoun,
+    bool isShortForm,
+    DialectType dialect,
+  ) {
     String start = '';
     String end = '';
     final verb = N.getBitiConjugation(personalPronoun.nominativ.forms.first);
@@ -51,7 +55,12 @@ class NominativGenerators {
   }
 
   static StaticSentenceParts getStaticSentenceParts(
-      Noun noun, bool isPlural, Adjective? pronoun, Adjective? adjective) {
+    Noun noun,
+    bool isPlural,
+    Adjective? pronoun,
+    Adjective? adjective,
+    DialectType dialect,
+  ) {
     String start = '';
     String end = '';
 

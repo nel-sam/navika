@@ -6,14 +6,14 @@ class CaseQuestionState {
   late String userNounResponse;
   late String userPossPronResponse;
   late String userAdjResponse;
-  late String userPersPronResponse;
+  late String userPersonalPronounResponse;
   late bool isCorrect;
 
   CaseQuestionState({required this.combos}) {
     userNounResponse = '';
     userPossPronResponse = '';
     userAdjResponse = '';
-    userPersPronResponse = '';
+    userPersonalPronounResponse = '';
     isCorrect = false;
   }
 
@@ -23,7 +23,7 @@ class CaseQuestionState {
     final adj = _isCorrectSingle(this.combos.correctAdjectives, userAdjResponse);
     final noun = _isCorrectSingle(this.combos.correctNouns, userNounResponse);
     final persPron =
-        _isCorrectSingle(this.combos.correctPersonalPronouns, userPersPronResponse);
+        _isCorrectSingle(this.combos.correctPersonalPronouns, userPersonalPronounResponse);
 
     isCorrect = pos && adj && noun && persPron;
   }
@@ -41,7 +41,7 @@ class CaseQuestionState {
     userNounResponse = '';
     userPossPronResponse = '';
     userAdjResponse = '';
-    userPersPronResponse = '';
+    userPersonalPronounResponse = '';
     setIsCorrect();
   }
 
@@ -60,8 +60,8 @@ class CaseQuestionState {
     setIsCorrect();
   }
 
-  updatePersPronoun(String newValue) {
-    userPersPronResponse = newValue;
+  updatePersonalPronoun(String newValue) {
+    userPersonalPronounResponse = newValue;
     setIsCorrect();
   }
 }

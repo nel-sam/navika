@@ -25,6 +25,7 @@ class InstrumentalGenerators {
       c = PanGenerator.getPANCombos(
         caseType: Cases.Ins,
         bank: bank,
+        dialect: dialect,
         getPersonalPronounSentenceStaticParts:
             getPersonalPronounSentenceStaticParts,
         getStaticSentenceParts: getStaticSentenceParts,
@@ -35,7 +36,10 @@ class InstrumentalGenerators {
   }
 
   static StaticSentenceParts getPersonalPronounSentenceStaticParts(
-      PersonalPronoun personalPronoun, bool isShortForm) {
+    PersonalPronoun personalPronoun,
+    bool isShortForm,
+    DialectType dialect,
+  ) {
     final actualValue = personalPronoun.nominativ.forms.first;
     String start = '';
     String end = '';
@@ -73,6 +77,7 @@ class InstrumentalGenerators {
     bool isPlural,
     Adjective? pronoun,
     Adjective? adjective,
+    DialectType dialect,
   ) {
     String start = '';
     String end = '';

@@ -21,13 +21,16 @@ class PanGenerator {
   static PANCombo getPANCombos(
       {required Cases caseType,
       required SentenceBank bank,
-      required StaticSentenceParts Function(Noun, bool, Adjective?, Adjective?)
+      required DialectType dialect,
+      required StaticSentenceParts Function(
+              Noun, bool, Adjective?, Adjective?, DialectType)
           getStaticSentenceParts,
-      required StaticSentenceParts Function(PersonalPronoun, bool)
+      required StaticSentenceParts Function(PersonalPronoun, bool, DialectType)
           getPersonalPronounSentenceStaticParts}) {
     if (caseType == Cases.Vok) {
       final noun = bank.nouns[Nrs.getRandomNumber(max: bank.nouns.length)];
-      final staticParts = getStaticSentenceParts(noun, false, null, null);
+      final staticParts =
+          getStaticSentenceParts(noun, false, null, null, dialect);
 
       return PANCombo(
           caseType: caseType,
@@ -50,7 +53,7 @@ class PanGenerator {
       final adj = getAdjectiveItem(bank.adjectives, noun);
 
       final staticParts =
-          getStaticSentenceParts(noun, isPlural, possPronoun, adj);
+          getStaticSentenceParts(noun, isPlural, possPronoun, adj, dialect);
 
       return PANCombo(
           caseType: caseType,
@@ -64,7 +67,8 @@ class PanGenerator {
     } else if (exType == 1) {
       final noun = bank.nouns[Nrs.getRandomNumber(max: bank.nouns.length)];
       final isPlural = noun.nominativ.plural.first != '' && Nrs.coinFlip();
-      final staticParts = getStaticSentenceParts(noun, isPlural, null, null);
+      final staticParts =
+          getStaticSentenceParts(noun, isPlural, null, null, dialect);
 
       return PANCombo(
           caseType: caseType,
@@ -80,7 +84,7 @@ class PanGenerator {
           Nrs.getRandomNumber(max: bank.personalPronouns.length)];
       final isPlural = persPronoun.isPlural;
       final staticParts =
-          getPersonalPronounSentenceStaticParts(persPronoun, isPlural);
+          getPersonalPronounSentenceStaticParts(persPronoun, isPlural, dialect);
 
       return PANCombo(
         caseType: caseType,

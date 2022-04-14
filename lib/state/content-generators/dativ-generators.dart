@@ -20,6 +20,7 @@ class DativGenerators {
     while (c == null || N.containsCaseQuestionState(toAvoid, c)) {
       c = PanGenerator.getPANCombos(
         caseType: Cases.Dat,
+        dialect: dialect,
         bank: SentenceBankGenerator(dialect: dialect).sentences,
         getPersonalPronounSentenceStaticParts:
             getPersonalPronounSentenceStaticParts,
@@ -33,6 +34,7 @@ class DativGenerators {
   static StaticSentenceParts getPersonalPronounSentenceStaticParts(
     PersonalPronoun personalPronoun,
     bool isShortForm,
+    DialectType dialect,
   ) {
     String start = '';
     String end = '';
@@ -54,7 +56,12 @@ class DativGenerators {
   }
 
   static StaticSentenceParts getStaticSentenceParts(
-      Noun noun, bool isPlural, Adjective? pronoun, Adjective? adjective) {
+    Noun noun,
+    bool isPlural,
+    Adjective? pronoun,
+    Adjective? adjective,
+    DialectType dialect,
+  ) {
     String start = '';
     String end = '';
 

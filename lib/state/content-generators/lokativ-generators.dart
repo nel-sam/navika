@@ -20,6 +20,7 @@ class LokativGenerators {
     while (c == null || N.containsCaseQuestionState(toAvoid, c)) {
       c = PanGenerator.getPANCombos(
         caseType: Cases.Lok,
+        dialect: dialect,
         bank: SentenceBankGenerator(dialect: dialect).sentences,
         getPersonalPronounSentenceStaticParts:
             getPersonalPronounSentenceStaticParts,
@@ -31,7 +32,10 @@ class LokativGenerators {
   }
 
   static StaticSentenceParts getPersonalPronounSentenceStaticParts(
-      PersonalPronoun personalPronoun, bool isShortForm) {
+    PersonalPronoun personalPronoun,
+    bool isShortForm,
+    DialectType dialect,
+  ) {
     final actualValue = personalPronoun.nominativ.forms.first;
     String start = '';
     String end = '';
@@ -50,6 +54,7 @@ class LokativGenerators {
     bool isPlural,
     Adjective? pronoun,
     Adjective? adjective,
+    DialectType dialect,
   ) {
     final pronounVal = pronoun == null ? '' : pronoun.dictionary;
     String start = '';

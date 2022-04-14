@@ -20,6 +20,7 @@ class VokativGenerators {
     while (c == null || N.containsCaseQuestionState(toAvoid, c)) {
       c = PanGenerator.getPANCombos(
         caseType: Cases.Vok,
+        dialect: dialect,
         bank: SentenceBankGenerator(dialect: dialect)
             .sentences
             .includeOnlyNounsByTags([Tags.Human]),
@@ -32,13 +33,21 @@ class VokativGenerators {
   }
 
   static StaticSentenceParts getPersonalPronounSentenceStaticParts(
-      PersonalPronoun personalPronoun, bool isShortForm) {
+    PersonalPronoun personalPronoun,
+    bool isShortForm,
+    DialectType dialect,
+  ) {
     var start = Nrs.coinFlip() ? 'Zdravo, ' : 'Hej, ';
     return StaticSentenceParts(start: start, end: '');
   }
 
   static StaticSentenceParts getStaticSentenceParts(
-      Noun noun, bool isPlural, Adjective? pronoun, Adjective? adjective) {
+    Noun noun,
+    bool isPlural,
+    Adjective? pronoun,
+    Adjective? adjective,
+    DialectType dialect,
+  ) {
     var start = Nrs.coinFlip() ? 'Zdravo, ' : 'Hej, ';
     return StaticSentenceParts(start: start, end: '');
   }
