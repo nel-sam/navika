@@ -1,5 +1,7 @@
 import 'package:navika/lang_data/adjectives.dart';
+import 'package:navika/lang_data/ekavian/adjectives_ekavian.dart';
 import 'package:navika/lang_data/ekavian/nouns_ekavian.dart';
+import 'package:navika/lang_data/ijekavian/adjectives_ijekavian.dart';
 import 'package:navika/lang_data/ijekavian/nouns_ijekavian.dart';
 import 'package:navika/lang_data/nouns.dart';
 import 'package:navika/lang_data/personal-pronouns.dart';
@@ -13,14 +15,14 @@ class SentenceBankGenerator {
   SentenceBankGenerator({required DialectType dialect}) {
     if (dialect == DialectType.Ekavian) {
       _sentenceBank = SentenceBank(
-        adjectives: adjectiveWordBank,
+        adjectives: [...adjectiveBankGeneral, ...adjectivesEkavian],
         nouns: [...nounBankGeneral, ...nounsEkavian],
         possessivePronouns: possessivePronounWordBank,
         personalPronouns: personalPronounWordBank,
       );
     } else {
       _sentenceBank = SentenceBank(
-        adjectives: adjectiveWordBank,
+        adjectives: [...adjectiveBankGeneral, ...adjectivesIjekavian],
         nouns: [...nounBankGeneral, ...nounsIjekavian],
         possessivePronouns: possessivePronounWordBank,
         personalPronouns: personalPronounWordBank,

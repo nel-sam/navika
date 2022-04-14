@@ -2,15 +2,7 @@ import 'package:navika/models/adjective.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 
-/*
-    new Declension(
-      masculine: new DeclensionByGender(singular: [''], plural: ['']),
-      feminine: new DeclensionByGender(singular: [''], plural: ['']),
-      neuter: new DeclensionByGender(singular: [''], plural: ['']),
-    )
-*/
-
-final List<Adjective> adjectiveWordBank = [
+final List<Adjective> adjectiveBankGeneral = [
   Adjective(
     dictionary: 'velik',
     toAvoid: [Tags.Season],
