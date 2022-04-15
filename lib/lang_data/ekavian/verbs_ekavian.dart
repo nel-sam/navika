@@ -4,31 +4,30 @@ import 'package:navika/models/enums.dart';
 import 'package:navika/models/verb.dart';
 
 final List<Verb> verbsEkavian = [
-  // TODO: vidjeti na srpksi?
-  // Verb(
-  //   infinitive: 'vidjeti',
-  //   verbPerfectiveType: VerbPerfectiveTypes.Unspecified,
-  //   isIrregular: true,
-  //   isReflexive: true,
-  //   getTranslation: (BuildContext context) =>
-  //       AppLocalizations.of(context)!.trans_vidjeti,
-  //   present: ConjugationSet(
-  //     ja: 'vidim',
-  //     ti: 'vidiš',
-  //     on: 'vidi',
-  //     mi: 'vidimo',
-  //     vi: 'vidite',
-  //     oni: 'vide',
-  //   ),
-  //   pastPerfect: ParticipleSet(
-  //     singularMasc: 'vidio',
-  //     singularFem: 'vidjela',
-  //     pluralMasc: 'vidjeli',
-  //     pluralFem: 'vidjele',
-  //     ono: 'vidjelo',
-  //     onaPl: 'vidjela',
-  //   ),
-  // ),
+  Verb(
+    infinitive: 'videti',
+    verbPerfectiveType: VerbPerfectiveTypes.Unspecified,
+    isIrregular: true,
+    isReflexive: true,
+    getTranslation: (BuildContext context) =>
+        AppLocalizations.of(context)!.trans_vidjeti,
+    present: ConjugationSet(
+      ja: 'vidim',
+      ti: 'vidiš',
+      on: 'vidi',
+      mi: 'vidimo',
+      vi: 'vidite',
+      oni: 'vide',
+    ),
+    pastPerfect: ParticipleSet(
+      singularMasc: 'vidio',
+      singularFem: 'videla',
+      pluralMasc: 'videli',
+      pluralFem: 'videle',
+      ono: 'videlo',
+      onaPl: 'videla',
+    ),
+  ),
   Verb(
     infinitive: 'razumeti',
     isIrregular: false,

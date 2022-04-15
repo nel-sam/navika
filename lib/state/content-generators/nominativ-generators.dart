@@ -45,10 +45,10 @@ class NominativGenerators {
     if (Nrs.coinFlip()) {
       end = verb;
     } else {
-      var ocupation = personalPronoun.gender == Genders.Feminine
+      var occupation = personalPronoun.gender == Genders.Feminine
           ? (personalPronoun.isPlural ? 'učiteljice' : 'učiteljica')
           : (personalPronoun.isPlural ? 'učitelji' : 'učitelj');
-      end = '$verb $ocupation';
+      end = '$verb $occupation';
     }
 
     return StaticSentenceParts(start: start, end: end);
