@@ -14,7 +14,7 @@ class InstrumentalGenerators {
   static CaseQuestionState createExercise(
       List toAvoid, ExerciseTypes exerciseType, DialectType dialect) {
     final SentenceBank bank =
-        SentenceBankGenerator(dialect: dialect).sentences.excludeNounsByTags([
+        SentenceBankGenerator(dialect: dialect).sentencesBankData.excludeNounsByTags([
       Tags.Location,
       Tags.Health,
     ]);

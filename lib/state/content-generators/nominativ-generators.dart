@@ -16,13 +16,15 @@ class NominativGenerators {
     DialectType dialect,
   ) {
     PANCombo? c;
-// TODO: generate exercises based on ExerciseType
+
+    // TODO: Make sentences and all data static
+    // TODO: generate exercises based on ExerciseType
     while (c == null || N.containsCaseQuestionState(toAvoid, c)) {
       c = PanGenerator.getPANCombos(
         caseType: Cases.Nom,
         dialect: dialect,
         bank: SentenceBankGenerator(dialect: dialect)
-            .sentences
+            .sentencesBankData
             .excludePronoun('svoj'),
         getPersonalPronounSentenceStaticParts:
             getPersonalPronounSentenceStaticParts,

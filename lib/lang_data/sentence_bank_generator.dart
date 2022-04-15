@@ -30,7 +30,7 @@ class SentenceBankGenerator {
     }
   }
 
-  SentenceBank get sentences {
+  SentenceBank get sentencesBankData {
     return _sentenceBank;
   }
 }

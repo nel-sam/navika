@@ -21,7 +21,7 @@ class AkuzativGenerators {
       c = PanGenerator.getPANCombos(
         caseType: Cases.Aku,
         dialect: dialect,
-        bank: SentenceBankGenerator(dialect: dialect).sentences,
+        bank: SentenceBankGenerator(dialect: dialect).sentencesBankData,
         getPersonalPronounSentenceStaticParts:
             getPersonalPronounSentenceStaticParts,
         getStaticSentenceParts: getStaticSentenceParts,

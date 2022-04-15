@@ -21,7 +21,7 @@ class LokativGenerators {
       c = PanGenerator.getPANCombos(
         caseType: Cases.Lok,
         dialect: dialect,
-        bank: SentenceBankGenerator(dialect: dialect).sentences,
+        bank: SentenceBankGenerator(dialect: dialect).sentencesBankData,
         getPersonalPronounSentenceStaticParts:
             getPersonalPronounSentenceStaticParts,
         getStaticSentenceParts: getStaticSentenceParts,

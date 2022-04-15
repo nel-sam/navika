@@ -21,7 +21,7 @@ class GenitivGenerators {
       c = PanGenerator.getPANCombos(
         caseType: Cases.Gen,
         dialect: dialect,
-        bank: SentenceBankGenerator(dialect: dialect).sentences,
+        bank: SentenceBankGenerator(dialect: dialect).sentencesBankData,
         getPersonalPronounSentenceStaticParts:
             getPersonalPronounSentenceStaticParts,
         getStaticSentenceParts: getStaticSentenceParts,

@@ -22,7 +22,7 @@ class VokativGenerators {
         caseType: Cases.Vok,
         dialect: dialect,
         bank: SentenceBankGenerator(dialect: dialect)
-            .sentences
+            .sentencesBankData
             .includeOnlyNounsByTags([Tags.Human]),
         getPersonalPronounSentenceStaticParts:
             getPersonalPronounSentenceStaticParts,

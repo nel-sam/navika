@@ -21,7 +21,7 @@ class DativGenerators {
       c = PanGenerator.getPANCombos(
         caseType: Cases.Dat,
         dialect: dialect,
-        bank: SentenceBankGenerator(dialect: dialect).sentences,
+        bank: SentenceBankGenerator(dialect: dialect).sentencesBankData,
         getPersonalPronounSentenceStaticParts:
             getPersonalPronounSentenceStaticParts,
         getStaticSentenceParts: getStaticSentenceParts,
