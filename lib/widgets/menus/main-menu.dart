@@ -9,7 +9,7 @@ import 'package:navika/widgets/sbc_labels.dart';
 import 'package:navika/widgets/shared/ad-card.dart';
 import 'package:nrs_flutter_lib/constants.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
-import 'package:nrs_flutter_lib/widgets/n-menu-button.dart';
+import 'package:nrs_flutter_lib/widgets/n_menu_button.dart';
 
 class MainMenu extends StatelessWidget {
   @override

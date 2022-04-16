@@ -6,7 +6,7 @@ import 'package:navika/widgets/sbc_labels.dart';
 import 'package:nrs_flutter_lib/constants.dart';
 import 'package:nrs_flutter_lib/extensions.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
-import 'package:nrs_flutter_lib/widgets/n-text-span.dart';
+import 'package:nrs_flutter_lib/widgets/n_text_span.dart';
 
 class CyrillicChart extends StatelessWidget {
   final String latinString;

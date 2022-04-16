@@ -7,8 +7,8 @@ import 'package:navika/widgets/exercises/verbs/present-tense/present-tense.dart'
 import 'package:navika/widgets/sbc_labels.dart';
 import 'package:navika/widgets/shared/ad-card.dart';
 import 'package:navika/widgets/shared/menu-footer.dart';
-import 'package:nrs_flutter_lib/widgets/n-menu-button.dart';
-import 'package:nrs_flutter_lib/widgets/n-menu-header.dart';
+import 'package:nrs_flutter_lib/widgets/n_menu_button.dart';
+import 'package:nrs_flutter_lib/widgets/n_menu_header.dart';
 
 class VerbMenu extends StatelessWidget {
   @override

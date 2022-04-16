@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:nrs_flutter_lib/widgets/n-sub-header.dart';
+import 'package:nrs_flutter_lib/widgets/n_sub_header.dart';
 
 class PossessivePronounSection extends StatelessWidget {
   final List<Widget> contents;

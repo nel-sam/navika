@@ -20,7 +20,7 @@ class CountIcon extends StatelessWidget {
     return Icon(
       Icons.circle,
       size: FONT_SIZE - 6,
-      color: isDarkTheme ? Colors.white :  Colors.black.withOpacity(0.6),
+      color: isDarkTheme ? Colors.white : Colors.black.withOpacity(0.6),
     );
   }
 }

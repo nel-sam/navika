@@ -8,7 +8,7 @@ import 'package:navika/widgets/exercises/declension/shared/case-exercise-help.da
 import 'package:navika/widgets/shared/shadow-box.dart';
 import 'package:nrs_flutter_lib/constants.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
-import 'package:nrs_flutter_lib/widgets/n-icon-text-pair.dart';
+import 'package:nrs_flutter_lib/widgets/n_icon_text_pair.dart';
 
 class CaseExerciseRowCard extends StatelessWidget {
   final PANCombo combos;

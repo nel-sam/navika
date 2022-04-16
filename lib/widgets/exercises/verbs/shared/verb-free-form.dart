@@ -5,7 +5,7 @@ import 'package:navika/models/verb.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/shared/n-free-form-entry.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
-import 'package:nrs_flutter_lib/widgets/n-icon-text-pair.dart';
+import 'package:nrs_flutter_lib/widgets/n_icon_text_pair.dart';
 
 class VerbFreeForm extends StatelessWidget {
   final String startText;

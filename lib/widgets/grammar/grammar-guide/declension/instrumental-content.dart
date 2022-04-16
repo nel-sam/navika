@@ -6,10 +6,10 @@ import 'package:navika/widgets/grammar/grammar-guide/child-widgets/example-sente
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/possessive-pronoun-section.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/pronoun-line.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/youtube-link.dart';
-import 'package:navika/widgets/grammar/grammar-guide/declension/declension-tables/instrumental-table.dart';
+import 'package:navika/widgets/grammar/grammar-guide/declension/declension_tables/instrumental-table.dart';
 import 'package:nrs_flutter_lib/constants.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
-import 'package:nrs_flutter_lib/widgets/n-text-multi.dart';
+import 'package:nrs_flutter_lib/widgets/n_text_multi.dart';
 
 class InstrumentalGrammarGuideContent extends StatelessWidget {
   const InstrumentalGrammarGuideContent({Key? key}) : super(key: key);

@@ -8,8 +8,8 @@ import 'package:navika/widgets/sbc_labels.dart';
 import 'package:navika/widgets/shared/ad-card.dart';
 import 'package:navika/widgets/shared/home-button-wrapper.dart';
 import 'package:navika/widgets/shared/info-banner.dart';
-import 'package:nrs_flutter_lib/widgets/n-footer-button.dart';
-import 'package:nrs_flutter_lib/widgets/n-footer-menu.dart';
+import 'package:nrs_flutter_lib/widgets/n_footer_button.dart';
+import 'package:nrs_flutter_lib/widgets/n_footer_menu.dart';
 import 'package:provider/provider.dart';
 
 class CyrillicExercise extends StatelessWidget {

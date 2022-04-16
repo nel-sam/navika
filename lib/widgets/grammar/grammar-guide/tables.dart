@@ -3,15 +3,15 @@
 // import 'package:navika/constants.dart';
 // import 'package:navika/models/enums.dart';
 // import 'package:navika/utilities/navika-helpers.dart';
-// import 'package:navika/widgets/grammar/grammar-guide/declension/declension-tables/akuzativ-table.dart';
-// import 'package:navika/widgets/grammar/grammar-guide/declension/declension-tables/dativ-lokativ-table.dart';
-// import 'package:navika/widgets/grammar/grammar-guide/declension/declension-tables/genitiv-table.dart';
-// import 'package:navika/widgets/grammar/grammar-guide/declension/declension-tables/instrumental-table.dart';
-// import 'package:navika/widgets/grammar/grammar-guide/declension/declension-tables/nominativ-table.dart';
+// import 'package:navika/widgets/grammar/grammar-guide/declension/declension_tables/akuzativ_table.dart';
+// import 'package:navika/widgets/grammar/grammar-guide/declension/declension_tables/dativ-lokativ_table.dart';
+// import 'package:navika/widgets/grammar/grammar-guide/declension/declension_tables/genitiv_table.dart';
+// import 'package:navika/widgets/grammar/grammar-guide/declension/declension_tables/instrumental_table.dart';
+// import 'package:navika/widgets/grammar/grammar-guide/declension/declension_tables/nominativ_table.dart';
 // import 'package:navika/widgets/shared/home-button-wrapper.dart';
 // import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
-// import 'package:nrs_flutter_lib/widgets/n-footer-menu.dart';
-// import 'package:nrs_flutter_lib/widgets/n-text-span.dart';
+// import 'package:nrs_flutter_lib/widgets/n_footer_menu.dart';
+// import 'package:nrs_flutter_lib/widgets/n_text_span.dart';
 
 // class Tables extends StatefulWidget {
 //   const Tables({

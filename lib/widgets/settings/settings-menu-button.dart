@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nrs_flutter_lib/constants.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
-import 'package:nrs_flutter_lib/widgets/n-action-arrow.dart';
+import 'package:nrs_flutter_lib/widgets/n_action_arrow.dart';
 
 class SettingsMenuButton extends StatelessWidget {
   final String title;

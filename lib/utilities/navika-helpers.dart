@@ -134,7 +134,7 @@ class N {
       case PronounEnum.They_Fem:
         return AppLocalizations.of(context)!.pronouns_They_Fem;
       case PronounEnum.Oneself:
-        return AppLocalizations.of(context)!.pronouns_oneself;
+        return N.t(context).pronouns_oneself;
     }
   }
 
@@ -163,5 +163,9 @@ class N {
         title: title,
         transTitle: transTitle,
         actions: [if (showSettingsButton) SettingsButton()]);
+  }
+
+  static AppLocalizations t(BuildContext context) {
+    return AppLocalizations.of(context)!;
   }
 }

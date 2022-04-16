@@ -4,10 +4,10 @@ import 'package:navika/models/enums.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/example-sentences.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/possessive-pronoun-section.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/pronoun-line.dart';
-import 'package:navika/widgets/grammar/grammar-guide/declension/declension-tables/dativ-lokativ-table.dart';
+import 'package:navika/widgets/grammar/grammar-guide/declension/declension_tables/dativ-lokativ-table.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
-import 'package:nrs_flutter_lib/widgets/n-text-multi.dart';
-import 'package:nrs_flutter_lib/widgets/n-text-span.dart';
+import 'package:nrs_flutter_lib/widgets/n_text_multi.dart';
+import 'package:nrs_flutter_lib/widgets/n_text_span.dart';
 
 class DativGrammarGuideContent extends StatelessWidget {
   const DativGrammarGuideContent({Key? key}) : super(key: key);

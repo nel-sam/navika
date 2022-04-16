@@ -6,7 +6,7 @@ import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/navika-theme.dart';
 import 'package:navika/widgets/menus/main-menu.dart';
-import 'package:navika/widgets/settings/first-time-page.dart';
+import 'package:navika/widgets/settings/dialect-setting-page.dart';
 import 'package:navika/widgets/shared/nav-spinner.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -68,7 +68,7 @@ class NHomePage extends StatelessWidget {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             if ((snapshot.data as bool)) {
-              return FirstTimePage();
+              return DialectSettingPage();
             } else {
               return Scaffold(
                 resizeToAvoidBottomInset: false,

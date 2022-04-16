@@ -12,9 +12,9 @@ import 'package:navika/widgets/grammar/grammar-guide/child-widgets/declension-ta
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/explanation-icon-cell.dart';
 import 'package:navika/widgets/shared/translation-link.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
-import 'package:nrs_flutter_lib/widgets/n-sub-header.dart';
-import 'package:nrs_flutter_lib/widgets/n-text-multi.dart';
-import 'package:nrs_flutter_lib/widgets/n-text-span.dart';
+import 'package:nrs_flutter_lib/widgets/n_sub_header.dart';
+import 'package:nrs_flutter_lib/widgets/n_text_multi.dart';
+import 'package:nrs_flutter_lib/widgets/n_text_span.dart';
 
 class CaseExerciseHelp extends StatelessWidget {
   final PANCombo combos;
@@ -354,7 +354,8 @@ class CaseExerciseHelp extends StatelessWidget {
     return sentence;
   }
 
-  DeclensionTableCell getTableCell(List<String> declensions, bool highlight) {
+  DeclensionTableCell getTableCell(
+      List<String> declensions, bool highlight) {
     return DeclensionTableCell(
       children: declensions.map((e) => TextSpan(text: '$e\n')).toList(),
       highlightItem: highlight,

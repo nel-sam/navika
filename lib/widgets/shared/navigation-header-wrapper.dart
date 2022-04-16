@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/state/exercise-nav-notifier.dart';
-import 'package:nrs_flutter_lib/widgets/n-navigation-header.dart';
+import 'package:nrs_flutter_lib/widgets/n_navigation_header.dart';
 
 class NavigationHeaderWrapper extends StatelessWidget {
   final ExerciseNavNotifier navNotifier;

@@ -126,5 +126,8 @@
   "serbian": "Serbian",
   "nonSerbian": "Croatian/Bosnian/Montenegrin",
   "resetSettings": "Reset settings",
-  "nouns_and_adjectives": "Nouns and adjectives"
+  "nouns_and_adjectives": "Nouns and adjectives",
+  "skip": "I'm not sure",
+  "dialectTitle": "Navika supports multiple Serbo-Croatian varieties",
+  "dialectDesc": "Do you know if you want to practice the Serbian variety, or the varieties of Croatia, Bosnia, and Montenegro? It's OK if you don't know. You can set this later in the settings page"
 }

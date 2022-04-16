@@ -115,7 +115,7 @@
   "multipleCorrect": "Hay más de una repuesta correcta",
   "alsoCorrect": "Tambíen se acepta",
   "exercise": "Ejercicio",
-  "settings": "Ajutes",
+  "settings": "Ajustes",
   "autoNextQuestion": "Auto siguiente pregunta",
   "autoNextQuestionDesc": "Automaticamente ir a la siguenta pregunta después de que la haya contestado correctamente",
   "account": "Cuenta",
@@ -126,5 +126,8 @@
   "serbian": "SerbiO",
   "nonSerbian": "croata/bosnio/montenegrino",
   "resetSettings": "Borrar configuración",
-  "nouns_and_adjectives": "Sustantivos y adjectivos"
+  "nouns_and_adjectives": "Sustantivos y adjectivos",
+  "skip": "No estoy seguro",
+  "dialectTitle": "Con Navika puedes practicar various variedades de serbocroata",
+  "dialectDesc": "Sabes si quieres practicar la variedad de Serbia, o una variedad de Croacia, Bosnia, o Montenegro? Está bien si no sabes aún. Lo puedes cambiar después en la página de ajustes"
 }

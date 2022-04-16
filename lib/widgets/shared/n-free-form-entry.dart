@@ -5,7 +5,7 @@ import 'package:nrs_flutter_lib/constants.dart';
 import 'package:nrs_flutter_lib/enums.dart';
 import 'package:nrs_flutter_lib/extensions.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
-import 'package:nrs_flutter_lib/widgets/n-answer-status-icon.dart';
+import 'package:nrs_flutter_lib/widgets/n_answer_status_icon.dart';
 
 class NFreeFormEntry extends StatefulWidget {
   final bool isHalfWidth;

@@ -1,11 +1,11 @@
-import 'package:navika/lang_data/adjectives.dart';
-import 'package:navika/lang_data/ekavian/adjectives_ekavian.dart';
-import 'package:navika/lang_data/ekavian/nouns_ekavian.dart';
-import 'package:navika/lang_data/ijekavian/adjectives_ijekavian.dart';
-import 'package:navika/lang_data/ijekavian/nouns_ijekavian.dart';
-import 'package:navika/lang_data/nouns.dart';
-import 'package:navika/lang_data/personal-pronouns.dart';
-import 'package:navika/lang_data/possessive-pronouns.dart';
+import 'package:navika/lang_data/words/adjectives.dart';
+import 'package:navika/lang_data/words/ekavian/adjectives_ekavian.dart';
+import 'package:navika/lang_data/words/ekavian/nouns_ekavian.dart';
+import 'package:navika/lang_data/words/ijekavian/adjectives_ijekavian.dart';
+import 'package:navika/lang_data/words/ijekavian/nouns_ijekavian.dart';
+import 'package:navika/lang_data/words/nouns.dart';
+import 'package:navika/lang_data/words/personal-pronouns.dart';
+import 'package:navika/lang_data/words/possessive-pronouns.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 

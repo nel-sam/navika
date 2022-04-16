@@ -7,9 +7,9 @@ import 'package:navika/widgets/exercises/cyrillic/cyrillic-exercise.dart';
 import 'package:navika/widgets/grammar/grammar-guide/declension-guide.dart';
 import 'package:navika/widgets/menus/declension-menu.dart';
 import 'package:navika/widgets/menus/verb-menu.dart';
-import 'package:nrs_flutter_lib/widgets/n-footer-button-text-icon.dart';
-import 'package:nrs_flutter_lib/widgets/n-footer-button.dart';
-import 'package:nrs_flutter_lib/widgets/n-footer-menu.dart';
+import 'package:nrs_flutter_lib/widgets/n_footer_button.dart';
+import 'package:nrs_flutter_lib/widgets/n_footer_button_text_icon.dart';
+import 'package:nrs_flutter_lib/widgets/n_footer_menu.dart';
 
 class MenuFooter extends StatelessWidget {
   final int activeIndex;

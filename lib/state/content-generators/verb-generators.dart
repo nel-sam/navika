@@ -1,6 +1,6 @@
-import 'package:navika/lang_data/ekavian/verbs_ekavian.dart';
-import 'package:navika/lang_data/ijekavian/verbs_ijekavian.dart';
 import 'package:navika/lang_data/verbs.dart';
+import 'package:navika/lang_data/words/ekavian/verbs_ekavian.dart';
+import 'package:navika/lang_data/words/ijekavian/verbs_ijekavian.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/verb.dart';
 import 'package:navika/state/verbs/verb-question-state-item.dart';
