@@ -5,7 +5,6 @@ import 'package:navika/models/models.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/exercises/declension/shared/case-exercise-help.dart';
 import 'package:navika/widgets/shared/shadow-box.dart';
-import 'package:nrs_flutter_lib/constants.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 import 'package:nrs_flutter_lib/widgets/n_icon_text_pair.dart';
 
@@ -89,12 +88,6 @@ class CaseExerciseRowCardHeader extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Padding(
-            padding: const EdgeInsets.only(right: 5),
-            child: this.isAllCorrect
-                ? Icon(CORRECT_ANSWER_ICON, color: CORRECT_COLOR)
-                : Icon(WRONG_ANSWER_ICON, color: WRONG_COLOR),
-          ),
           NIconTextPair(
             icon: isPlural ? PLURAL_ICON : SINGULAR_ICON,
             text: isPlural ? N.t(context).plural : N.t(context).singular,

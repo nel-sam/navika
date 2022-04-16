@@ -86,12 +86,6 @@ class CyrillicExerciseCard extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Padding(
-          padding: const EdgeInsets.only(right: 5),
-          child: getIsAllCorrect(this.state.userInput)
-              ? Icon(CORRECT_ANSWER_ICON, color: CORRECT_COLOR)
-              : Icon(WRONG_ANSWER_ICON, color: WRONG_COLOR),
-        ),
         OutlinedButton(
           child: Icon(Icons.info),
           onPressed: () {
