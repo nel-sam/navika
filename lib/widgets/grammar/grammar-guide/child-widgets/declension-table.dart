@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/utilities/navika-helpers.dart';
@@ -81,25 +80,25 @@ class DeclensionTable extends StatelessWidget {
                     isHeader: true,
                     icon: Icon(N.getGenderIcon(Genders.Feminine),
                         color: FEMININE_COLOR),
-                    label: AppLocalizations.of(context)!.feminine,
+                    label: N.t(context).feminine,
                   ),
                   ExplanationIconCell(
                     isHeader: true,
                     icon: Icon(N.getGenderIcon(Genders.Masculine),
                         color: MASCULINE_COLOR),
-                    label: AppLocalizations.of(context)!.masculine,
+                    label: N.t(context).masculine,
                   ),
                   ExplanationIconCell(
                     isHeader: true,
                     icon: Icon(N.getGenderIcon(Genders.Neuter),
                         color: NEUTER_COLOR),
-                    label: AppLocalizations.of(context)!.neuter,
+                    label: N.t(context).neuter,
                   ),
                 ]),
                 TableRow(children: [
                   ExplanationIconCell(
                     icon: CountIcon(),
-                    label: AppLocalizations.of(context)!.singular,
+                    label: N.t(context).singular,
                   ),
                   TableCellWrapper(child: feminineSingular),
                   TableCellWrapper(child: masculineSingular),
@@ -120,7 +119,7 @@ class DeclensionTable extends StatelessWidget {
                         )
                       ],
                     ),
-                    label: AppLocalizations.of(context)!.plural,
+                    label: N.t(context).plural,
                   ),
                   TableCellWrapper(child: femininePlural),
                   TableCellWrapper(child: masculinePlural),
@@ -198,7 +197,7 @@ class DeclensionTable extends StatelessWidget {
                             : Colors.black),
                     children: [
                       TextSpan(
-                        text: AppLocalizations.of(context)!.equalDeclensions,
+                        text: N.t(context).equalDeclensions,
                         style: DECLINED_LETTER_STYLE,
                       )
                     ],

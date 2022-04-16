@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/state/exercise-nav-notifier.dart';
+import 'package:navika/utilities/navika-helpers.dart';
 import 'package:nrs_flutter_lib/widgets/n_navigation_header.dart';
 
 class NavigationHeaderWrapper extends StatelessWidget {
@@ -18,9 +18,9 @@ class NavigationHeaderWrapper extends StatelessWidget {
         setNext: navNotifier.setNext,
         clear: navNotifier.clearInput,
         getProgressPercentage: navNotifier.getProgressPercentage,
-        previousText: AppLocalizations.of(context)!.previous,
-        nextText: AppLocalizations.of(context)!.next,
-        clearText: AppLocalizations.of(context)!.clear,
-        exerciseText: AppLocalizations.of(context)!.exercise);
+        previousText: N.t(context).previous,
+        nextText: N.t(context).next,
+        clearText: N.t(context).clear,
+        exerciseText: N.t(context).exercise);
   }
 }

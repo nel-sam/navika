@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/settings.dart';
@@ -33,7 +32,7 @@ class DeclensionTypeMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final transLabel = AppLocalizations.of(context)!.selectExercises;
+    final transLabel = N.t(context).selectExercises;
     final icon = NavIcons.cases;
     final title = N.getCaseLabel(caseType);
 
@@ -64,7 +63,7 @@ class DeclensionTypeMenu extends StatelessWidget {
                         title: title,
                         exerciseType: ExerciseTypes.case_nouns,
                       ),
-                      label: AppLocalizations.of(context)!.nouns,
+                      label: N.t(context).nouns,
                       transLabel: SbcLabels.nouns,
                     ),
                     NMenuButton(
@@ -75,7 +74,7 @@ class DeclensionTypeMenu extends StatelessWidget {
                         title: title,
                         exerciseType: ExerciseTypes.case_adjectives,
                       ),
-                      label: AppLocalizations.of(context)!.adjectives,
+                      label: N.t(context).adjectives,
                       transLabel: SbcLabels(settings.dialectType).adjectives,
                     ),
                     settings.isPremium
@@ -88,16 +87,14 @@ class DeclensionTypeMenu extends StatelessWidget {
                               exerciseType:
                                   ExerciseTypes.case_nouns_and_adjectives,
                             ),
-                            label: AppLocalizations.of(context)!
-                                .nouns_and_adjectives,
+                            label: N.t(context).nouns_and_adjectives,
                             transLabel: SbcLabels(settings.dialectType)
                                 .nounsAndAdjectives,
                           )
                         : NMenuButton(
                             isPremiumLocked: true,
                             destination: AccountPage(),
-                            label: AppLocalizations.of(context)!
-                                .nouns_and_adjectives,
+                            label: N.t(context).nouns_and_adjectives,
                             transLabel: SbcLabels(settings.dialectType)
                                 .nounsAndAdjectives,
                           ),

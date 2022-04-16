@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/settings.dart';
 import 'package:navika/state/settings/settings-consumer-wrapper.dart';
+import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/exercises/cyrillic/cyrillic-exercise.dart';
 import 'package:navika/widgets/grammar/grammar-guide/declension-guide.dart';
 import 'package:navika/widgets/menus/declension-menu.dart';
@@ -27,7 +27,7 @@ class MenuFooter extends StatelessWidget {
           //HomeButtonWrapper(isActive: activeIndex == 0),
           NFooterButton(
             active: activeIndex == 1,
-            text: AppLocalizations.of(context)!.grammar,
+            text: N.t(context).grammar,
             icon: NavIcons.grammarGuides,
             onPressed: () {
               Navigator.push(
@@ -42,7 +42,7 @@ class MenuFooter extends StatelessWidget {
           ),
           NFooterButton(
             active: activeIndex == 2,
-            text: AppLocalizations.of(context)!.cases,
+            text: N.t(context).cases,
             icon: NavIcons.cases,
             onPressed: () {
               Navigator.push(
@@ -55,7 +55,7 @@ class MenuFooter extends StatelessWidget {
           ),
           NFooterButton(
             active: activeIndex == 3,
-            text: AppLocalizations.of(context)!.verbs,
+            text: N.t(context).verbs,
             icon: NavIcons.verbs,
             onPressed: () {
               Navigator.push(
@@ -68,7 +68,7 @@ class MenuFooter extends StatelessWidget {
           ),
           NFooterButtonTextIcon(
             active: activeIndex == 4,
-            text: AppLocalizations.of(context)!.cyrillic,
+            text: N.t(context).cyrillic,
             iconText: NavIcons.cyrillic,
             onPressed: () {
               Navigator.push(

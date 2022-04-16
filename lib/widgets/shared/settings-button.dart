@@ -10,8 +10,7 @@ class SettingsButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return NFooterButton(
-        // import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-        //text: AppLocalizations.of(context)!.settings,
+        //text: N.t(context).settings,
         onPressed: () {
           Navigator.push(
             context,

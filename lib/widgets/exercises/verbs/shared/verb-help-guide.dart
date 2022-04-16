@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/verb.dart';
+import 'package:navika/utilities/navika-helpers.dart';
 import 'package:nrs_flutter_lib/constants.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 import 'package:nrs_flutter_lib/widgets/n_icon_text_pair.dart';
@@ -47,7 +47,7 @@ class VerbHelpGuide extends StatelessWidget {
                   if (this.verb.isIrregular)
                     NIconTextPair(
                       icon: Icons.error_outline,
-                      text: AppLocalizations.of(context)!.irregular,
+                      text: N.t(context).irregular,
                     ),
                 ],
               ),
@@ -64,7 +64,7 @@ class VerbHelpGuide extends StatelessWidget {
   Widget getFutureTenseChart(BuildContext context) {
     return Column(
       children: [
-        NSubHeader(AppLocalizations.of(context)!.futureTense),
+        NSubHeader(N.t(context).futureTense),
         Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
@@ -85,7 +85,7 @@ class VerbHelpGuide extends StatelessWidget {
 
     return Column(
       children: [
-        NSubHeader(AppLocalizations.of(context)!.pastTense),
+        NSubHeader(N.t(context).pastTense),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
@@ -95,7 +95,7 @@ class VerbHelpGuide extends StatelessWidget {
                 alignment: MainAxisAlignment.end,
                 icon: MASCULINE_ICON,
                 color: MASCULINE_COLOR,
-                text: AppLocalizations.of(context)!.masculine,
+                text: N.t(context).masculine,
               ),
             ),
             Container(
@@ -125,7 +125,7 @@ class VerbHelpGuide extends StatelessWidget {
                   alignment: MainAxisAlignment.end,
                   icon: FEMININE_ICON,
                   color: FEMININE_COLOR,
-                  text: AppLocalizations.of(context)!.feminine,
+                  text: N.t(context).feminine,
                 ),
               ),
               Container(
@@ -156,7 +156,7 @@ class VerbHelpGuide extends StatelessWidget {
                   alignment: MainAxisAlignment.end,
                   icon: NEUTER_ICON,
                   color: NEUTER_COLOR,
-                  text: AppLocalizations.of(context)!.neuter,
+                  text: N.t(context).neuter,
                 ),
               ),
               Container(
@@ -179,7 +179,7 @@ class VerbHelpGuide extends StatelessWidget {
   Widget getPresentTenseChart(BuildContext context) {
     return Column(
       children: [
-        NSubHeader(AppLocalizations.of(context)!.presentTense),
+        NSubHeader(N.t(context).presentTense),
         Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:navika/utilities/navika-helpers.dart';
 import 'package:nrs_flutter_lib/widgets/n_sub_header.dart';
 
 class ExampleSentences extends StatelessWidget {
@@ -16,10 +16,7 @@ class ExampleSentences extends StatelessWidget {
       children: [
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            NSubHeader(AppLocalizations.of(context)!.exampleSentences),
-            ...sentences
-          ],
+          children: [NSubHeader(N.t(context).exampleSentences), ...sentences],
         ),
       ],
     );

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
+import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/example-sentences.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/possessive-pronoun-section.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/pronoun-line.dart';
@@ -22,10 +22,8 @@ class InstrumentalGrammarGuideContent extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.only(bottom: FONT_SIZE),
-              child: NTextMulti([
-                TextSpan(
-                    text: AppLocalizations.of(context)!.instrumentalDescription)
-              ]),
+              child: NTextMulti(
+                  [TextSpan(text: N.t(context).instrumentalDescription)]),
             ),
             YouTubeLink(RECOMMENDED_VIDEO_INST)
           ],

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/main.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/state/settings/settings-notifier.dart';
@@ -20,7 +19,7 @@ class DialectSettingPage extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: N.navAppBar(
-        title: AppLocalizations.of(context)!.appTitle,
+        title: N.t(context).appTitle,
         context: context,
       ),
       body: ChangeNotifierProvider<SettingsNotifier>(
@@ -37,20 +36,20 @@ class DialectSettingPage extends StatelessWidget {
                       padding: const EdgeInsets.all(FONT_SIZE),
                       child: Column(children: [
                         Text(
-                          AppLocalizations.of(context)!.dialectTitle,
+                          N.t(context).dialectTitle,
                           style: TextStyle(fontSize: FONT_SIZE * 2.5),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(
                               top: FONT_SIZE, bottom: FONT_SIZE),
-                          child: Text(AppLocalizations.of(context)!.dialectDesc,
+                          child: Text(N.t(context).dialectDesc,
                               style: TextStyle(
                                   fontSize: FONT_SIZE,
                                   color: Colors.grey,
                                   fontWeight: FontWeight.bold)),
                         ),
                         NRoundButton(
-                            title: AppLocalizations.of(context)!.serbian,
+                            title: N.t(context).serbian,
                             onPressed: () {
                               model.setDialectType(DialectType.Ekavian);
                               model.setBoolSetting(
@@ -62,7 +61,7 @@ class DialectSettingPage extends StatelessWidget {
                               );
                             }),
                         NRoundButton(
-                            title: AppLocalizations.of(context)!.nonSerbian,
+                            title: N.t(context).nonSerbian,
                             onPressed: () {
                               model.setDialectType(DialectType.Ijekavian);
                               model.setBoolSetting(
@@ -74,7 +73,7 @@ class DialectSettingPage extends StatelessWidget {
                               );
                             }),
                         NTextLink(
-                            title: AppLocalizations.of(context)!.skip,
+                            title: N.t(context).skip,
                             onPressed: () {
                               model.setDialectType(DialectType.Ijekavian);
                               model.setBoolSetting(

@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/state/exercise-nav-notifier.dart';
 import 'package:navika/state/settings/settings-consumer-wrapper.dart';
@@ -94,7 +93,7 @@ class CaseExercise extends StatelessWidget {
                       navNotifier.shuffleAndClear();
                     },
                     icon: Icons.refresh_outlined,
-                    text: AppLocalizations.of(context)!.refresh,
+                    text: N.t(context).refresh,
                   ),
                   HomeButtonWrapper(),
                   NFooterButton(
@@ -110,7 +109,7 @@ class CaseExercise extends StatelessWidget {
                       );
                     },
                     icon: Icons.help_center_outlined,
-                    text: AppLocalizations.of(context)!.grammar,
+                    text: N.t(context).grammar,
                   ),
                 ]),
               ],

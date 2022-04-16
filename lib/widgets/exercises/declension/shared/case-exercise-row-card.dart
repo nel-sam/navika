@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
@@ -98,9 +97,7 @@ class CaseExerciseRowCardHeader extends StatelessWidget {
           ),
           NIconTextPair(
             icon: isPlural ? PLURAL_ICON : SINGULAR_ICON,
-            text: isPlural
-                ? AppLocalizations.of(context)!.plural
-                : AppLocalizations.of(context)!.singular,
+            text: isPlural ? N.t(context).plural : N.t(context).singular,
           ),
           NIconTextPair(
             icon: N.getGenderIcon(this.gender),
@@ -109,7 +106,7 @@ class CaseExerciseRowCardHeader extends StatelessWidget {
           if (isAnimate)
             NIconTextPair(
               icon: Icons.person,
-              text: AppLocalizations.of(context)!.animate,
+              text: N.t(context).animate,
             ),
           IconButton(
               onPressed: () {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/verb.dart';
+import 'package:navika/utilities/navika-helpers.dart';
 
 final List<Verb> verbsIjekavian = [
   Verb(
@@ -9,8 +9,7 @@ final List<Verb> verbsIjekavian = [
     verbPerfectiveType: VerbPerfectiveTypes.Unspecified,
     isIrregular: true,
     isReflexive: true,
-    getTranslation: (BuildContext context) =>
-        AppLocalizations.of(context)!.trans_vidjeti,
+    getTranslation: (BuildContext context) => N.t(context).trans_vidjeti,
     present: ConjugationSet(
       ja: 'vidim',
       ti: 'vidiš',
@@ -33,8 +32,7 @@ final List<Verb> verbsIjekavian = [
     isIrregular: false,
     isReflexive: false,
     verbPerfectiveType: VerbPerfectiveTypes.Imperfective,
-    getTranslation: (BuildContext context) =>
-        AppLocalizations.of(context)!.trans_razumjeti,
+    getTranslation: (BuildContext context) => N.t(context).trans_razumjeti,
     present: ConjugationSet(
       ja: 'razumijem',
       ti: 'razumiješ',

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:navika/models/enums.dart';
+import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/exercises/declension/shared/case-exercise.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Dativ extends StatelessWidget {
   @override
@@ -12,7 +12,7 @@ class Dativ extends StatelessWidget {
       title: title,
       caseType: Cases.Dat,
       imagePath: 'assets/banners/giving.jpg',
-      description: AppLocalizations.of(context)!.dativDescription,
+      description: N.t(context).dativDescription,
     );
   }
 }

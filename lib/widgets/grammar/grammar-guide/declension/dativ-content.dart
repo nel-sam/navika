@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/models/enums.dart';
+import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/example-sentences.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/possessive-pronoun-section.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/pronoun-line.dart';
@@ -16,7 +16,7 @@ class DativGrammarGuideContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        NTextSpan(AppLocalizations.of(context)!.dativDescription),
+        NTextSpan(N.t(context).dativDescription),
         ExampleSentences(
           sentences: [
             NTextMulti([

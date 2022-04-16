@@ -1,7 +1,7 @@
-import 'package:navika/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:navika/constants.dart';
 import 'package:navika/models/verb.dart';
+import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/exercises/verbs/shared/verb-exercise.dart';
 
 class PresentTense extends StatelessWidget {
@@ -9,13 +9,13 @@ class PresentTense extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final title = AppLocalizations.of(context)!.presentTense;
+    final title = N.t(context).presentTense;
 
     return VerbExercise(
       title: title,
       tense: VerbTenses.Present,
       imagePath: 'assets/banners/hills.jpg',
-      description: AppLocalizations.of(context)!.presentTenseDesc,
+      description: N.t(context).presentTenseDesc,
       youtubeLink: RECOMMENDED_VIDEO_PRESENT_SIMPLE,
     );
   }

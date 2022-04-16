@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/settings.dart';
 import 'package:navika/state/settings/settings-consumer-wrapper.dart';
@@ -14,7 +13,7 @@ import 'package:nrs_flutter_lib/widgets/n_menu_header.dart';
 class GrammarMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final transLabel = AppLocalizations.of(context)!.grammarGuides;
+    final transLabel = N.t(context).grammarGuides;
     final label = SbcLabels.grammarGuide;
     final icon = NavIcons.grammarGuides;
 
@@ -37,12 +36,12 @@ class GrammarMenu extends StatelessWidget {
                 children: [
                   NMenuButton(
                     destination: DeclensionGuide(dialect: settings.dialectType),
-                    label: AppLocalizations.of(context)!.cases,
+                    label: N.t(context).cases,
                     transLabel: SbcLabels.cases,
                   ),
                   // NMenuButton(
                   //   destination: Tables(),
-                  //   label: AppLocalizations.of(context)!.justCaseTables,
+                  //   label: N.t(context).justCaseTables,
                   //   transLabel: SbcLabels.justTables,
                   // ),
                 ],

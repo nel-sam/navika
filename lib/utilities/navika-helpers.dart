@@ -104,35 +104,35 @@ class N {
   static String getGenderString(BuildContext context, Genders gender) {
     switch (gender) {
       case Genders.Masculine:
-        return AppLocalizations.of(context)!.masculine;
+        return N.t(context).masculine;
       case Genders.Feminine:
-        return AppLocalizations.of(context)!.feminine;
+        return N.t(context).feminine;
       case Genders.Neuter:
       case Genders.Unspecific:
-        return AppLocalizations.of(context)!.neuter;
+        return N.t(context).neuter;
     }
   }
 
   static String getPronounLabel(PronounEnum pronoun, context) {
     switch (pronoun) {
       case PronounEnum.I:
-        return AppLocalizations.of(context)!.pronouns_I;
+        return N.t(context).pronouns_I;
       case PronounEnum.You:
-        return AppLocalizations.of(context)!.pronouns_You;
+        return N.t(context).pronouns_You;
       case PronounEnum.He:
-        return AppLocalizations.of(context)!.pronouns_He;
+        return N.t(context).pronouns_He;
       case PronounEnum.She:
-        return AppLocalizations.of(context)!.pronouns_She;
+        return N.t(context).pronouns_She;
       case PronounEnum.We:
-        return AppLocalizations.of(context)!.pronouns_We;
+        return N.t(context).pronouns_We;
       case PronounEnum.You_Plural:
-        return AppLocalizations.of(context)!.pronouns_You_Pl;
+        return N.t(context).pronouns_You_Pl;
       case PronounEnum.They_Ungendered:
-        return AppLocalizations.of(context)!.pronouns_They;
+        return N.t(context).pronouns_They;
       case PronounEnum.They_Masc:
-        return AppLocalizations.of(context)!.pronouns_They_Mas;
+        return N.t(context).pronouns_They_Mas;
       case PronounEnum.They_Fem:
-        return AppLocalizations.of(context)!.pronouns_They_Fem;
+        return N.t(context).pronouns_They_Fem;
       case PronounEnum.Oneself:
         return N.t(context).pronouns_oneself;
     }

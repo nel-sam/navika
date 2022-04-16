@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/verb.dart';
+import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/exercises/verbs/shared/verb-help-guide.dart';
 import 'package:nrs_flutter_lib/constants.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
@@ -74,7 +74,7 @@ class VerbHeader extends StatelessWidget {
               if (this.verb.isIrregular)
                 NIconTextPair(
                   icon: Icons.error_outline,
-                  text: AppLocalizations.of(context)!.irregular,
+                  text: N.t(context).irregular,
                 ),
             ],
           ),
@@ -108,9 +108,9 @@ class VerbHeader extends StatelessWidget {
       BuildContext context, VerbPerfectiveTypes verbPerfectiveType) {
     switch (verbPerfectiveType) {
       case VerbPerfectiveTypes.Perfective:
-        return AppLocalizations.of(context)!.perfective;
+        return N.t(context).perfective;
       case VerbPerfectiveTypes.Imperfective:
-        return AppLocalizations.of(context)!.imperfective;
+        return N.t(context).imperfective;
       case VerbPerfectiveTypes.Unspecified:
         return '';
     }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/settings.dart';
 import 'package:navika/state/settings/settings-notifier.dart';
@@ -15,7 +14,7 @@ class AccountPage extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: N.navAppBar(
-        title: AppLocalizations.of(context)!.account,
+        title: N.t(context).account,
         context: context,
         showSettingsButton: false,
       ),
@@ -33,9 +32,8 @@ class AccountPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       SettingsSwitch(
-                        title: AppLocalizations.of(context)!.isPremium,
-                        description:
-                            AppLocalizations.of(context)!.isPremiumDesc,
+                        title: N.t(context).isPremium,
+                        description: N.t(context).isPremiumDesc,
                         value: settings.isPremium,
                         onChanged: (newVal) => {
                           model.setBoolSetting(SettingsKeys.isPremium, newVal)

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/state/cyrillic/cyrillic-notifier.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/exercises/cyrillic/cyrillic-chart.dart';
@@ -17,7 +16,7 @@ class CyrillicExercise extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var title = AppLocalizations.of(context)!.cyrillic;
+    var title = N.t(context).cyrillic;
 
     return Scaffold(
       appBar: N.navAppBar(
@@ -36,7 +35,7 @@ class CyrillicExercise extends StatelessWidget {
                   children: [
                     InfoBanner(
                       label: title,
-                      description: AppLocalizations.of(context)!.cyrillicDesc,
+                      description: N.t(context).cyrillicDesc,
                       //youtubeLink: RECOMMENDED_VIDEO_CYRILLIC,
                     ),
                     const AdCard(),
@@ -65,7 +64,7 @@ class CyrillicExercise extends StatelessWidget {
               );
             },
             icon: Icons.help_center_outlined,
-            text: AppLocalizations.of(context)!.cyrillic,
+            text: N.t(context).cyrillic,
           )
         ])
       ],

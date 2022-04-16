@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/declension-table-cell.dart';
@@ -11,11 +10,11 @@ class AkuzativDeclensionTable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DeclensionTable(
-      borderedItemNote: AppLocalizations.of(context)!.sameAsNom,
+      borderedItemNote: N.t(context).sameAsNom,
       showEqualItemNote: true,
       notes: [
-        AppLocalizations.of(context)!.animateAkuzativ,
-        AppLocalizations.of(context)!.assibilation,
+        N.t(context).animateAkuzativ,
+        N.t(context).assibilation,
       ],
       masculineSingular: DeclensionTableCell(children: [
         N.declensionExampleTextSpan('Star'),

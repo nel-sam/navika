@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/models/noun.dart';
+import 'package:navika/utilities/navika-helpers.dart';
 
 /*
   Noun(dictionary: '',tags: [],gender: GenderEnum.Masculine,isAnimate: ,
@@ -138,8 +138,7 @@ final List<Noun> nounBankGeneral = [
   ),
   Noun(
     dictionary: 'brat/braća',
-    getExtraInfo: (BuildContext context) =>
-        AppLocalizations.of(context)!.extrainfo_brat,
+    getExtraInfo: (BuildContext context) => N.t(context).extrainfo_brat,
     tags: [Tags.Human, Tags.Adult],
     gender: Genders.Masculine,
     isAnimate: true,

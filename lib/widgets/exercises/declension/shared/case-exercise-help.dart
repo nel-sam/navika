@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/adjective.dart';
 import 'package:navika/models/enums.dart';
@@ -123,7 +122,7 @@ class CaseExerciseHelp extends StatelessWidget {
 
     return Column(
       children: [
-        NSubHeader(AppLocalizations.of(context)!.correctAnswer),
+        NSubHeader(N.t(context).correctAnswer),
         NTextMulti([
           if (combo.sentenceStarter != '')
             TextSpan(text: '${combo.sentenceStarter} '),
@@ -228,7 +227,7 @@ class CaseExerciseHelp extends StatelessWidget {
                       height: topRowHeight,
                       child: ExplanationIconCell(
                         icon: Icon(SINGULAR_ICON, color: Colors.grey),
-                        label: AppLocalizations.of(context)!.singular,
+                        label: N.t(context).singular,
                       ),
                     ),
                     Container(
@@ -271,7 +270,7 @@ class CaseExerciseHelp extends StatelessWidget {
                       height: topRowHeight,
                       child: ExplanationIconCell(
                         icon: Icon(PLURAL_ICON, color: Colors.grey),
-                        label: AppLocalizations.of(context)!.plural,
+                        label: N.t(context).plural,
                       ),
                     ),
                     Container(
@@ -354,8 +353,7 @@ class CaseExerciseHelp extends StatelessWidget {
     return sentence;
   }
 
-  DeclensionTableCell getTableCell(
-      List<String> declensions, bool highlight) {
+  DeclensionTableCell getTableCell(List<String> declensions, bool highlight) {
     return DeclensionTableCell(
       children: declensions.map((e) => TextSpan(text: '$e\n')).toList(),
       highlightItem: highlight,

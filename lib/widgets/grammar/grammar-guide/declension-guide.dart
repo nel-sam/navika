@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/grammar/grammar-guide/declension/akuzativ-content.dart';
@@ -87,7 +86,7 @@ class _DeclensionGuideState extends State<DeclensionGuide> {
     return Scaffold(
       appBar: N.navAppBar(
         title: SbcLabels.cases,
-        transTitle: AppLocalizations.of(context)!.cases,
+        transTitle: N.t(context).cases,
         context: context,
       ),
       body: Column(
@@ -146,14 +145,14 @@ class _DeclensionGuideState extends State<DeclensionGuide> {
             NFooterButton(
               active: !isAtTop,
               icon: Icons.arrow_upward,
-              text: AppLocalizations.of(context)!.previous,
+              text: N.t(context).previous,
               onPressed: () => moveToPrev(),
             ),
             NFooterButton(
               active: !isAtBottom,
               onPressed: () => moveToNext(),
               icon: Icons.arrow_downward,
-              text: AppLocalizations.of(context)!.next,
+              text: N.t(context).next,
             ),
           ],
         ),

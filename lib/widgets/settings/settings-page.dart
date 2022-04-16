@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/main.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/settings.dart';
@@ -21,7 +20,7 @@ class SettingsPage extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: N.navAppBar(
-        title: AppLocalizations.of(context)!.settings,
+        title: N.t(context).settings,
         context: context,
         showSettingsButton: false,
       ),
@@ -39,9 +38,8 @@ class SettingsPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       SettingsSwitch(
-                        title: AppLocalizations.of(context)!.useSerbian,
-                        description:
-                            AppLocalizations.of(context)!.useSerbianDesc,
+                        title: N.t(context).useSerbian,
+                        description: N.t(context).useSerbianDesc,
                         value: settings.dialectType == DialectType.Ekavian,
                         onChanged: (bool isSelected) {
                           if (isSelected)
@@ -52,14 +50,14 @@ class SettingsPage extends StatelessWidget {
                       ),
                       Padding(padding: const EdgeInsets.only(top: FONT_SIZE)),
                       SettingsMenuButton(
-                          title: AppLocalizations.of(context)!.resetSettings,
+                          title: N.t(context).resetSettings,
                           icon: Icons.refresh_outlined,
                           redirectMethod: (context) {
                             model.resetSettings();
                             return NHomePage();
                           }),
                       SettingsMenuButton(
-                          title: AppLocalizations.of(context)!.account,
+                          title: N.t(context).account,
                           icon: Icons.account_circle,
                           redirectMethod: (context) => AccountPage()),
                     ],

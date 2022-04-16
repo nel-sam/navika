@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/constants.dart';
+import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/exercises/cyrillic/cyrillic-exercise.dart';
 import 'package:navika/widgets/menus/declension-menu.dart';
 import 'package:navika/widgets/menus/grammar-menu.dart';
@@ -50,22 +50,22 @@ class MainMenu extends StatelessWidget {
               children: [
                 NMenuButton(
                   destination: GrammarMenu(),
-                  label: AppLocalizations.of(context)!.grammarGuides,
+                  label: N.t(context).grammarGuides,
                   transLabel: SbcLabels.grammarGuide,
                 ),
                 NMenuButton(
                   destination: DeclensionMenu(),
-                  label: AppLocalizations.of(context)!.caseExercises,
+                  label: N.t(context).caseExercises,
                   transLabel: SbcLabels.cases,
                 ),
                 NMenuButton(
                   destination: VerbMenu(),
-                  label: AppLocalizations.of(context)!.verbExercises,
+                  label: N.t(context).verbExercises,
                   transLabel: SbcLabels.verbs,
                 ),
                 NMenuButton(
                   destination: CyrillicExercise(),
-                  label: AppLocalizations.of(context)!.cyrillic,
+                  label: N.t(context).cyrillic,
                   transLabel: SbcLabels.cyrillic,
                 ),
               ],

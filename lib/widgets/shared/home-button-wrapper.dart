@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:navika/utilities/navika-helpers.dart';
 import 'package:nrs_flutter_lib/widgets/n_home_button.dart';
 
 class HomeButtonWrapper extends StatelessWidget {
@@ -12,7 +12,7 @@ class HomeButtonWrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final text = AppLocalizations.of(context)!.home;
+    final text = N.t(context).home;
     return NHomeButton(
       homeLabel: text,
       isActive: isActive,

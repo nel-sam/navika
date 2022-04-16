@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/exercises/verbs/past-tense/past-tense.dart';
@@ -16,12 +15,12 @@ class VerbMenu extends StatelessWidget {
     var buttons = <Widget>[
       NMenuButton(
         destination: PresentTense(),
-        label: AppLocalizations.of(context)!.presentTense,
+        label: N.t(context).presentTense,
         transLabel: 'Sadašnje vrijeme',
       ),
       NMenuButton(
         destination: PastTense(),
-        label: AppLocalizations.of(context)!.pastTense,
+        label: N.t(context).pastTense,
         transLabel: 'Prošlo vrijeme',
       ),
     ];
@@ -37,7 +36,7 @@ class VerbMenu extends StatelessWidget {
             const AdCard(),
             NMenuHeader(
               icon: NavIcons.verbs,
-              transLabel: AppLocalizations.of(context)!.verbs,
+              transLabel: N.t(context).verbs,
               label: SbcLabels.verbs,
             ),
             Expanded(

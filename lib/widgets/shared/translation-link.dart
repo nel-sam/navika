@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:navika/utilities/navika-helpers.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TranslationLink extends StatelessWidget {
   final String sentence;
@@ -32,7 +32,7 @@ class TranslationLink extends StatelessWidget {
               padding: const EdgeInsets.only(right: 8.0),
               child: Icon(Icons.translate),
             ),
-            Text(AppLocalizations.of(context)!.translate),
+            Text(N.t(context).translate),
           ],
         ),
       ),

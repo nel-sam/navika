@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/utilities/navika-helpers.dart';
@@ -40,12 +39,12 @@ class DeclensionMenu extends StatelessWidget {
               Column(children: [
                 NMenuHeader(
                   icon: NavIcons.cases,
-                  transLabel: AppLocalizations.of(context)!.cases,
+                  transLabel: N.t(context).cases,
                   label: SbcLabels.cases,
                 ),
                 NMenuButton(
                   destination: allCases,
-                  label: AppLocalizations.of(context)!.allCases,
+                  label: N.t(context).allCases,
                   transLabel: N.getCaseLabel(Cases.All),
                 ),
                 NMenuButton(
@@ -55,32 +54,32 @@ class DeclensionMenu extends StatelessWidget {
                 ),
                 NMenuButton(
                   destination: gen,
-                  label: AppLocalizations.of(context)!.genitiv,
+                  label: N.t(context).genitiv,
                   transLabel: N.getCaseLabel(Cases.Gen),
                 ),
                 NMenuButton(
                   destination: dat,
-                  label: AppLocalizations.of(context)!.dativ,
+                  label: N.t(context).dativ,
                   transLabel: N.getCaseLabel(Cases.Dat),
                 ),
                 NMenuButton(
                   destination: aku,
-                  label: AppLocalizations.of(context)!.akuzativ,
+                  label: N.t(context).akuzativ,
                   transLabel: N.getCaseLabel(Cases.Aku),
                 ),
                 NMenuButton(
                   destination: vok,
-                  label: AppLocalizations.of(context)!.vokativ,
+                  label: N.t(context).vokativ,
                   transLabel: N.getCaseLabel(Cases.Vok),
                 ),
                 NMenuButton(
                   destination: inst,
-                  label: AppLocalizations.of(context)!.instrumental,
+                  label: N.t(context).instrumental,
                   transLabel: N.getCaseLabel(Cases.Ins),
                 ),
                 NMenuButton(
                   destination: lok,
-                  label: AppLocalizations.of(context)!.lokativ,
+                  label: N.t(context).lokativ,
                   transLabel: N.getCaseLabel(Cases.Lok),
                 ),
               ])

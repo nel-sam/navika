@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/lang_data/cyrillic-bank.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/sbc_labels.dart';
@@ -23,7 +22,7 @@ class CyrillicChart extends StatelessWidget {
     return Scaffold(
         appBar: N.navAppBar(
           title: SbcLabels.cyrillic,
-          transTitle: AppLocalizations.of(context)!.cyrillic,
+          transTitle: N.t(context).cyrillic,
           context: context,
         ),
         body: Padding(

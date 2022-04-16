@@ -27,11 +27,11 @@ class CaseQuestionContent extends StatelessWidget {
     //         Row(children: [
     //           status == CorrectStatus.correct
     //               ? NTextSpan(
-    //                   '${AppLocalizations.of(context)!.alsoCorrect}: ${widget.correctValues.join(',')}',
+    //                   '${N.t(context).alsoCorrect}: ${widget.correctValues.join(',')}',
     //                   textStyle: Nrs.getTextStyle(
     //                       context: context, fontSize: FONT_SIZE - 3))
     //               : NTextSpan(
-    //                   '${AppLocalizations.of(context)!.multipleCorrect}',
+    //                   '${N.t(context).multipleCorrect}',
     //                   textStyle: Nrs.getTextStyle(
     //                       context: context, fontSize: FONT_SIZE - 3))
     //         ]),

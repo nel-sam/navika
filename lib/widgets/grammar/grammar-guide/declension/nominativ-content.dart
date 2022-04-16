@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/example-sentences.dart';
@@ -10,6 +9,7 @@ import 'package:navika/widgets/grammar/grammar-guide/declension/declension_table
 import 'package:nrs_flutter_lib/constants.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 import 'package:nrs_flutter_lib/widgets/n_text_multi.dart';
+import 'package:navika/utilities/navika-helpers.dart';
 
 class NominativGrammarGuideContent extends StatelessWidget {
   final DialectType dialect;
@@ -29,10 +29,8 @@ class NominativGrammarGuideContent extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.only(bottom: FONT_SIZE),
-              child: NTextMulti([
-                TextSpan(
-                    text: AppLocalizations.of(context)!.nominativDescription)
-              ]),
+              child: NTextMulti(
+                  [TextSpan(text: N.t(context).nominativDescription)]),
             ),
             YouTubeLink(RECOMMENDED_VIDEO_NOM)
           ],

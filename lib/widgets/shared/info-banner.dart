@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/youtube-link.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 import 'package:nrs_flutter_lib/widgets/n_text_span.dart';
@@ -55,7 +55,7 @@ class _InfoBannerState extends State<InfoBanner> {
                       ),
                     ),
                     NTextSpan(
-                      AppLocalizations.of(context)!.expand_for_more,
+                      N.t(context).expand_for_more,
                       textStyle:
                           Nrs.getTextStyle(context: context, fontSize: 12),
                     )

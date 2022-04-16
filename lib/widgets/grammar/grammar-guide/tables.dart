@@ -1,5 +1,4 @@
 // import 'package:flutter/material.dart';
-// import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 // import 'package:navika/constants.dart';
 // import 'package:navika/models/enums.dart';
 // import 'package:navika/utilities/navika-helpers.dart';
@@ -46,7 +45,7 @@
 //     return Scaffold(
 //       appBar: N.navAppBar(
 //         title: SbcLabels.justTables,
-//         transTitle: AppLocalizations.of(context)!.justCaseTables,
+//         transTitle: N.t(context).justCaseTables,
 //         context: context,
 //       ),
 //       body: SingleChildScrollView(
