@@ -1,35 +1,71 @@
 import 'package:flutter/material.dart';
-import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/utilities/navika-helpers.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:navika/widgets/grammar/grammar-guide/child-widgets/section-header.dart';
 import 'package:navika/widgets/grammar/grammar-guide/declension/akuzativ-content.dart';
 import 'package:navika/widgets/grammar/grammar-guide/declension/dativ-content.dart';
 import 'package:navika/widgets/grammar/grammar-guide/declension/genitiv-content.dart';
 import 'package:navika/widgets/grammar/grammar-guide/declension/instrumental-content.dart';
 import 'package:navika/widgets/grammar/grammar-guide/declension/lokativ-content.dart';
 import 'package:navika/widgets/grammar/grammar-guide/declension/nominativ-content.dart';
-import 'package:navika/widgets/shared/footer-button.dart';
-
-const double CONTENT_HEIGHT = 1200.0;
+import 'package:navika/widgets/sbc_labels.dart';
+import 'package:navika/widgets/shared/ad-card.dart';
+import 'package:nrs_flutter_lib/constants.dart';
+import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
+import 'package:nrs_flutter_lib/widgets/n_footer_button.dart';
+import 'package:nrs_flutter_lib/widgets/n_footer_menu.dart';
+import 'package:nrs_flutter_lib/widgets/n_progress_bar.dart';
 
 const CasesInOrder = [
   Cases.Nom,
+  Cases.Gen,
+  Cases.Dat,
   Cases.Aku,
+  Cases.Vok,
   Cases.Ins,
   Cases.Lok,
-  Cases.Dat,
-  Cases.Gen,
-  // Cases.Vokativ,
 ];
+
+const double CONTENT_HEIGHT = 1300.0;
+
+class ContentSection extends StatelessWidget {
+  final String text;
+  final Widget content;
+
+  const ContentSection({Key? key, required this.text, required this.content})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: CONTENT_HEIGHT,
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(bottom: FONT_SIZE),
+            child: Row(
+              children: [
+                Text(
+                  text,
+                  style: TextStyle(fontSize: FONT_SIZE * 2.5),
+                ),
+              ],
+            ),
+          ),
+          content,
+        ],
+      ),
+    );
+  }
+}
 
 class DeclensionGuide extends StatefulWidget {
   final Cases startingCase;
+  final DialectType dialect;
 
   const DeclensionGuide({
     Key? key,
     this.startingCase = Cases.Nom,
+    required this.dialect,
   }) : super(key: key);
 
   @override
@@ -38,38 +74,128 @@ class DeclensionGuide extends StatefulWidget {
 
 class _DeclensionGuideState extends State<DeclensionGuide> {
   late ScrollController controller;
-  late bool isAtTop = false;
+  late bool isAtTop = true;
   late bool isAtBottom = false;
+  late int startingIndex = CasesInOrder.indexOf(widget.startingCase);
+  late double progressPercentage = (startingIndex / CasesInOrder.length) * 100;
 
   @override
-  void initState() {
-    controller = ScrollController(
-        initialScrollOffset: getScrollPoint(widget.startingCase));
-    controller.addListener(scrollListener);
-    super.initState();
+  Widget build(BuildContext context) {
+    double screenWidth = Nrs.getScreenWidth();
+
+    return Scaffold(
+      appBar: N.navAppBar(
+        title: SbcLabels.cases,
+        transTitle: N.t(context).cases,
+        context: context,
+      ),
+      body: Column(
+        children: [
+          const AdCard(),
+          NProgressBar(progressPercentage: this.progressPercentage),
+          Expanded(
+            child: SingleChildScrollView(
+              controller: controller,
+              child: Container(
+                padding: EdgeInsets.all(20.0),
+                width: screenWidth > 840 ? screenWidth / 2 : screenWidth,
+                child: Column(
+                  children: [
+                    ContentSection(
+                      text: N.getCaseLabel(Cases.Nom),
+                      content: NominativGrammarGuideContent(
+                        dialect: widget.dialect,
+                      ),
+                    ),
+                    ContentSection(
+                      text: N.getCaseLabel(Cases.Gen),
+                      content: GenitivGrammarGuideContent(),
+                    ),
+                    ContentSection(
+                      text: N.getCaseLabel(Cases.Dat),
+                      content: DativGrammarGuideContent(),
+                    ),
+                    ContentSection(
+                      text: N.getCaseLabel(Cases.Aku),
+                      content:
+                          AkuzativGrammarGuideContent(dialect: widget.dialect),
+                    ),
+                    ContentSection(
+                      text: N.getCaseLabel(Cases.Vok),
+                      content: Container(),
+                    ),
+                    ContentSection(
+                      text: N.getCaseLabel(Cases.Ins),
+                      content: InstrumentalGrammarGuideContent(),
+                    ),
+                    ContentSection(
+                      text: N.getCaseLabel(Cases.Lok),
+                      content: LokativGrammarGuideContent(),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+      persistentFooterButtons: [
+        NFooterMenu(
+          buttons: [
+            NFooterButton(
+              active: !isAtTop,
+              icon: Icons.arrow_upward,
+              text: N.t(context).previous,
+              onPressed: () => moveToPrev(),
+            ),
+            NFooterButton(
+              active: !isAtBottom,
+              onPressed: () => moveToNext(),
+              icon: Icons.arrow_downward,
+              text: N.t(context).next,
+            ),
+          ],
+        ),
+      ],
+    );
   }
-
-  scrollListener() => setState(() {
-        isAtTop = getIsAtTop();
-        isAtBottom = getIsAtBottom();
-      });
-
-  bool getIsAtTop() => controller.position.pixels <= 10;
-
-  bool getIsAtBottom() =>
-      controller.position.pixels >= CONTENT_HEIGHT * (CasesInOrder.length - 1);
 
   double getScrollPoint(Cases caseType) =>
       CasesInOrder.indexOf(caseType) * CONTENT_HEIGHT;
 
-  moveToPrev() => setState(() {
-        if (isAtTop) return;
-        scrollPrevOrNext(toNext: false);
-      });
+  @override
+  void initState() {
+    final startingPoint = getScrollPoint(widget.startingCase);
+    controller = ScrollController(initialScrollOffset: startingPoint);
+    controller.addListener(scrollListener);
+    super.initState();
+  }
 
   moveToNext() => setState(() {
         if (isAtBottom) return;
+
         scrollPrevOrNext(toNext: true);
+      });
+
+  moveToPrev() => setState(() {
+        if (isAtTop) return;
+
+        scrollPrevOrNext(toNext: false);
+      });
+
+  scrollListener() => setState(() {
+        if (controller.position.atEdge) {
+          bool atTop = controller.position.pixels == 0;
+          isAtTop = atTop;
+          isAtBottom = !atTop;
+        } else {
+          isAtTop = isAtBottom = false;
+        }
+
+        double percentage = controller.position.pixels /
+            ((CasesInOrder.length * CONTENT_HEIGHT));
+        percentage = percentage < 0 ? 0 : percentage;
+        this.progressPercentage = percentage * 100;
       });
 
   scrollPrevOrNext({required bool toNext}) {
@@ -77,106 +203,21 @@ class _DeclensionGuideState extends State<DeclensionGuide> {
     bool isAtHeader = (currentPoint % CONTENT_HEIGHT) == 0;
 
     if (isAtHeader && toNext) {
-      N.scrollTo(currentPoint + CONTENT_HEIGHT, controller);
+      double scrollPoint = currentPoint + CONTENT_HEIGHT;
+      scrollTo(scrollPoint, controller);
     } else if (isAtHeader) {
-      N.scrollTo(currentPoint - CONTENT_HEIGHT, controller);
+      double scrollPoint = currentPoint - CONTENT_HEIGHT;
+      scrollTo(scrollPoint, controller);
     } else {
       final multFactor = toNext
           ? (currentPoint / CONTENT_HEIGHT).ceil()
           : (currentPoint / CONTENT_HEIGHT).floor();
 
       double scrollPoint = multFactor * CONTENT_HEIGHT;
-      N.scrollTo(scrollPoint, controller);
+      scrollTo(scrollPoint, controller);
     }
   }
 
-  contentSection(Widget header, Widget content) => Container(
-        height: CONTENT_HEIGHT,
-        child: Column(
-          children: [
-            header,
-            content,
-          ],
-        ),
-      );
-
-  @override
-  Widget build(BuildContext context) {
-    double screenWidth = N.getScreenWidth();
-
-    return Scaffold(
-      appBar: N.NavikaAppBar(
-        title: SbcLabels.cases,
-        transTitle: AppLocalizations.of(context)!.cases,
-        context: context,
-      ),
-      body: SingleChildScrollView(
-        controller: controller,
-        child: Center(
-          child: Container(
-            padding: EdgeInsets.all(20.0),
-            width: screenWidth > 840 ? screenWidth / 2 : screenWidth,
-            child: Column(
-              children: [
-                contentSection(
-                  SectionHeader(N.getCaseLabel(Cases.Nom)),
-                  NominativGrammarGuideContent(),
-                ),
-                contentSection(
-                  SectionHeader('Akuzativ'),
-                  AkuzativGrammarGuideContent(),
-                ),
-                contentSection(
-                  SectionHeader('Instrumental'),
-                  InstrumentalGrammarGuideContent(),
-                ),
-                contentSection(
-                  SectionHeader('Lokativ'),
-                  LokativGrammarGuideContent(),
-                ),
-                contentSection(
-                  SectionHeader('Dativ'),
-                  DativGrammarGuideContent(),
-                ),
-                contentSection(
-                  SectionHeader('Genitiv'),
-                  GenitivGrammarGuideContent(),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-      persistentFooterButtons: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Padding(
-              padding:
-                  const EdgeInsets.only(bottom: FOOTER_ICON_BOTTOM_PADDING),
-              child: FooterButton(
-                disabled: isAtTop,
-                icon: Icons.arrow_upward,
-                text: AppLocalizations.of(context)!.previous,
-                onPressed: () => moveToPrev(),
-                context: context,
-              ),
-            ),
-            //HomeButton(context),
-            Padding(
-              padding:
-                  const EdgeInsets.only(bottom: FOOTER_ICON_BOTTOM_PADDING),
-              child: FooterButton(
-                disabled: isAtBottom,
-                onPressed: () => moveToNext(),
-                icon: Icons.arrow_downward,
-                text: AppLocalizations.of(context)!.next,
-                context: context,
-              ),
-            ),
-          ],
-        ),
-      ],
-    );
-  }
+  static scrollTo(double point, ScrollController controller) =>
+      controller.jumpTo(point);
 }

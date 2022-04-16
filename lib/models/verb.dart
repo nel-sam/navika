@@ -1,6 +1,59 @@
 import 'package:flutter/material.dart';
 import 'package:navika/models/enums.dart';
 
+enum ConjPronounTypes {
+  jaMasc,
+  JaFem,
+  tiMasc,
+  tiFem,
+  on,
+  ona,
+  ono,
+  miMasc,
+  miFem,
+  viMasc,
+  viFem,
+  oni,
+  one,
+  onaPl,
+}
+
+class ConjugationSet {
+  String ja;
+  String ti;
+  String on;
+  String mi;
+  String vi;
+  String oni;
+
+  ConjugationSet({
+    this.ja = '',
+    this.ti = '',
+    this.on = '',
+    this.mi = '',
+    this.vi = '',
+    this.oni = '',
+  });
+}
+
+class ParticipleSet {
+  String singularMasc;
+  String singularFem;
+  String ono;
+  String pluralMasc;
+  String pluralFem;
+  String onaPl;
+
+  ParticipleSet({
+    required this.singularMasc,
+    required this.singularFem,
+    required this.ono,
+    required this.pluralMasc,
+    required this.pluralFem,
+    required this.onaPl,
+  });
+}
+
 class Verb {
   String infinitive;
   String root;
@@ -21,6 +74,27 @@ class Verb {
     required this.pastPerfect,
     this.root = '',
   });
+
+  String getConjugation(VerbTenses tense, ConjPronounTypes key) {
+    switch (tense) {
+      case VerbTenses.PastPerfect:
+        return getParticleConj(pastPerfect, key);
+      case VerbTenses.Present:
+        return getPresentCaseConj(key);
+      case VerbTenses.PlusPerfect:
+        return '';
+      case VerbTenses.Future:
+        return '';
+      case VerbTenses.Aorist:
+        return '';
+      case VerbTenses.Imperfect:
+        return '';
+      case VerbTenses.Conditional:
+        return '';
+      case VerbTenses.Imperative:
+        return '';
+    }
+  }
 
   String getParticleConj(ParticipleSet partSet, ConjPronounTypes key) {
     switch (key) {
@@ -79,63 +153,6 @@ class Verb {
         return this.present.oni.toString();
     }
   }
-
-  String getConjugation(VerbTenses tense, ConjPronounTypes key) {
-    switch (tense) {
-      case VerbTenses.PastPerfect:
-        return getParticleConj(pastPerfect, key);
-      case VerbTenses.Present:
-        return getPresentCaseConj(key);
-      case VerbTenses.PlusPerfect:
-        return '';
-      case VerbTenses.Future:
-        return '';
-      case VerbTenses.Aorist:
-        return '';
-      case VerbTenses.Imperfect:
-        return '';
-      case VerbTenses.Conditional:
-        return '';
-      case VerbTenses.Imperative:
-        return '';
-    }
-  }
-}
-
-class ConjugationSet {
-  String ja;
-  String ti;
-  String on;
-  String mi;
-  String vi;
-  String oni;
-
-  ConjugationSet({
-    this.ja = '',
-    this.ti = '',
-    this.on = '',
-    this.mi = '',
-    this.vi = '',
-    this.oni = '',
-  });
-}
-
-class ParticipleSet {
-  String singularMasc;
-  String singularFem;
-  String ono;
-  String pluralMasc;
-  String pluralFem;
-  String onaPl;
-
-  ParticipleSet({
-    required this.singularMasc,
-    required this.singularFem,
-    required this.ono,
-    required this.pluralMasc,
-    required this.pluralFem,
-    required this.onaPl,
-  });
 }
 
 enum VerbTenses {
@@ -147,21 +164,4 @@ enum VerbTenses {
   Imperfect,
   Conditional,
   Imperative,
-}
-
-enum ConjPronounTypes {
-  jaMasc,
-  JaFem,
-  tiMasc,
-  tiFem,
-  on,
-  ona,
-  ono,
-  miMasc,
-  miFem,
-  viMasc,
-  viFem,
-  oni,
-  one,
-  onaPl,
 }

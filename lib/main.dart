@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:navika/constants.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:navika/widgets/main-menu/main-menu.dart';
+import 'package:navika/constants.dart';
+import 'package:navika/models/enums.dart';
+import 'package:navika/navika-theme.dart';
+import 'package:navika/widgets/menus/main-menu.dart';
+import 'package:navika/widgets/settings/dialect-setting-page.dart';
+import 'package:navika/widgets/shared/nav-spinner.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -12,9 +17,18 @@ void main() {
   runApp(new NavikaApp());
 }
 
+Future<bool> getIsFirstTimeSetting() async {
+  final preferences = (await SharedPreferences.getInstance());
+  final isFirstTime =
+      (preferences.getBool(SettingsKeys.isFirstTime.toString()) ?? true);
+  return isFirstTime;
+}
+
 class NavikaApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final primaryColor = navPalette;
+
     return MaterialApp(
       //showPerformanceOverlay: true,
       //debugShowCheckedModeBanner: false,
@@ -31,10 +45,10 @@ class NavikaApp extends StatelessWidget {
       ],
       theme: ThemeData(
         brightness: Brightness.light,
-        primarySwatch: Colors.blue,
+        primarySwatch: primaryColor,
       ),
       darkTheme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: primaryColor,
         primaryColor: Colors.black,
         brightness: Brightness.dark,
         backgroundColor: const Color(0xFF212121),
@@ -49,11 +63,23 @@ class NavikaApp extends StatelessWidget {
 class NHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: Center(
-        child: MainMenu(),
-      ),
-    );
+    return FutureBuilder(
+        future: getIsFirstTimeSetting(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            if ((snapshot.data as bool)) {
+              return DialectSettingPage();
+            } else {
+              return Scaffold(
+                resizeToAvoidBottomInset: false,
+                body: Center(
+                  child: MainMenu(),
+                ),
+              );
+            }
+          } else {
+            return NavSpinner();
+          }
+        });
   }
 }

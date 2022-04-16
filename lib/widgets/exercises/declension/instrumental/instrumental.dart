@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
+import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/exercises/declension/shared/case-exercise.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Instrumental extends StatelessWidget {
   @override
@@ -13,7 +13,7 @@ class Instrumental extends StatelessWidget {
       title: title,
       caseType: Cases.Ins,
       imagePath: 'assets/banners/vespa.jpg',
-      description: AppLocalizations.of(context)!.instrumentalDescription,
+      description: N.t(context).instrumentalDescription,
       youtubeLink: RECOMMENDED_VIDEO_INST,
     );
   }

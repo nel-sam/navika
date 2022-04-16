@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/widgets/exercises/declension/shared/case-exercise.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:navika/utilities/navika-helpers.dart';
 
 class Genitiv extends StatelessWidget {
   @override
@@ -12,7 +12,7 @@ class Genitiv extends StatelessWidget {
       title: title,
       caseType: Cases.Gen,
       imagePath: 'assets/banners/bosna.jpg',
-      description: AppLocalizations.of(context)!.genitiveDescription,
+      description: N.t(context).genitiveDescription,
     );
   }
 }

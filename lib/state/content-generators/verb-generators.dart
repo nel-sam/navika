@@ -1,26 +1,48 @@
 import 'package:navika/lang_data/verbs.dart';
+import 'package:navika/lang_data/words/ekavian/verbs_ekavian.dart';
+import 'package:navika/lang_data/words/ijekavian/verbs_ijekavian.dart';
+import 'package:navika/models/enums.dart';
+import 'package:navika/models/verb.dart';
 import 'package:navika/state/verbs/verb-question-state-item.dart';
 
 class VerbGenerators {
-  static int getMaxIndex() {
-    return verbWordBank.length;
+  final DialectType dialect;
+  late List<Verb> _verbBank;
+
+  VerbGenerators({required this.dialect}) {
+    if (this.dialect == DialectType.Ekavian) {
+      _verbBank = [
+        ...verbWordBankGeneral,
+        ...verbsEkavian,
+      ];
+    } else {
+      _verbBank = [
+        ..._verbBank,
+        ...verbsIjekavian,
+      ];
+    }
   }
 
-  static createExercise(List avoidList) {
-    verbWordBank.shuffle();
+  createExercise(
+      List avoidList, ExerciseTypes exerciseType, DialectType dialect) {
+    _verbBank.shuffle();
 
     var verb =
-        avoidList.length == 0 ? verbWordBank[0] : _getFirstNewVerb(avoidList);
+        avoidList.length == 0 ? _verbBank[0] : _getFirstNewVerb(avoidList);
 
     return VerbQuestionStateItem(verb: verb);
   }
 
-  static _getFirstNewVerb(List avoidList) {
-    var avoidListInfs = avoidList.map((e) => e.verb.infinitive);
+  int getMaxIndex() {
+    return _verbBank.length;
+  }
 
-    for (int i = 0; i < verbWordBank.length; i++) {
-      if (!avoidListInfs.contains(verbWordBank[i].infinitive)) {
-        return verbWordBank[i];
+  _getFirstNewVerb(List avoidList) {
+    var toAvoid = avoidList.map((e) => e.verb.infinitive);
+
+    for (int i = 0; i < _verbBank.length; i++) {
+      if (!toAvoid.contains(_verbBank[i].infinitive)) {
+        return _verbBank[i];
       }
     }
   }

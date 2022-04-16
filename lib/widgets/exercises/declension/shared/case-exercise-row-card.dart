@@ -3,10 +3,10 @@ import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/utilities/navika-helpers.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/widgets/exercises/declension/shared/case-exercise-help.dart';
-import 'package:navika/widgets/shared/icon-text-pair.dart';
 import 'package:navika/widgets/shared/shadow-box.dart';
+import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
+import 'package:nrs_flutter_lib/widgets/n_icon_text_pair.dart';
 
 class CaseExerciseRowCard extends StatelessWidget {
   final PANCombo combos;
@@ -30,7 +30,7 @@ class CaseExerciseRowCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = N.getScreenWidth();
+    final screenWidth = Nrs.getScreenWidth();
     final extraInfo = this.getExtraInfo!(context);
 
     return Container(
@@ -66,6 +66,12 @@ class CaseExerciseRowCard extends StatelessWidget {
 }
 
 class CaseExerciseRowCardHeader extends StatelessWidget {
+  final PANCombo combos;
+
+  final bool isAllCorrect;
+  final bool isPlural;
+  final Genders gender;
+  final bool isAnimate;
   const CaseExerciseRowCardHeader({
     Key? key,
     required this.isAllCorrect,
@@ -75,12 +81,6 @@ class CaseExerciseRowCardHeader extends StatelessWidget {
     required this.combos,
   }) : super(key: key);
 
-  final PANCombo combos;
-  final bool isAllCorrect;
-  final bool isPlural;
-  final Genders gender;
-  final bool isAnimate;
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -88,26 +88,18 @@ class CaseExerciseRowCardHeader extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Padding(
-            padding: const EdgeInsets.only(right: 5),
-            child: this.isAllCorrect
-                ? Icon(CORRECT_ANSWER_ICON, color: CORRECT_COLOR)
-                : Icon(WRONG_ANSWER_ICON, color: WRONG_COLOR),
-          ),
-          IconTextPair(
+          NIconTextPair(
             icon: isPlural ? PLURAL_ICON : SINGULAR_ICON,
-            text: isPlural
-                ? AppLocalizations.of(context)!.plural
-                : AppLocalizations.of(context)!.singular,
+            text: isPlural ? N.t(context).plural : N.t(context).singular,
           ),
-          IconTextPair(
+          NIconTextPair(
             icon: N.getGenderIcon(this.gender),
             text: N.getGenderString(context, this.gender),
           ),
           if (isAnimate)
-            IconTextPair(
+            NIconTextPair(
               icon: Icons.person,
-              text: AppLocalizations.of(context)!.animate,
+              text: N.t(context).animate,
             ),
           IconButton(
               onPressed: () {
@@ -120,7 +112,7 @@ class CaseExerciseRowCardHeader extends StatelessWidget {
                   ),
                 );
               },
-              color: ACCENT_COLOR,
+              color: Nrs.getPrimaryColor(context),
               icon: Icon(Icons.help)),
         ],
       ),
@@ -129,14 +121,14 @@ class CaseExerciseRowCardHeader extends StatelessWidget {
 }
 
 class ExtraInfo extends StatelessWidget {
+  final double screenWidth;
+
+  final String extraInfo;
   const ExtraInfo({
     Key? key,
     required this.screenWidth,
     required this.extraInfo,
   }) : super(key: key);
-
-  final double screenWidth;
-  final String extraInfo;
 
   @override
   Widget build(BuildContext context) {

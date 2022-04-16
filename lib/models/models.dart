@@ -1,83 +1,33 @@
 import 'package:navika/models/adjective.dart';
 import 'package:navika/models/noun.dart';
 import 'package:navika/models/personal-pronoun.dart';
+
 import 'enums.dart';
 
-class WordBank {
-  final List<Noun> nouns;
-  final List<Adjective> adjectives;
-  final List<Adjective> possessivePronouns;
-  final List<PersonalPronoun> personalPronouns;
+class Declension {
+  final DeclensionByGender masculine;
+  late DeclensionByGender? feminine;
+  late DeclensionByGender? neuter;
 
-  WordBank(
-      {required this.nouns,
-      required this.adjectives,
-      required this.possessivePronouns,
-      required this.personalPronouns});
-
-  WordBank excludePronoun(String toFilter) {
-    var result = WordBank(
-      nouns: [...this.nouns],
-      adjectives: [...this.adjectives],
-      possessivePronouns: [...this.possessivePronouns],
-      personalPronouns: [...this.personalPronouns],
-    );
-
-    final svoj = result.possessivePronouns
-        .firstWhere((e) => e.nominativ.masculine.singular.first == toFilter);
-    result.possessivePronouns.remove(svoj);
-
-    return result;
+  Declension({
+    required this.masculine,
+    this.feminine,
+    this.neuter,
+  }) {
+    if (this.feminine == null) this.feminine = this.masculine;
+    if (this.neuter == null) this.neuter = this.masculine;
   }
 
-  WordBank includeOnlyNounsByTags(List<Tags> tagsToFilter) {
-    var result = WordBank(
-      nouns: [
-        ...this.nouns.where((n) => listsShareElements(tagsToFilter, n.tags))
-      ],
-      adjectives: [],
-      possessivePronouns: [],
-      personalPronouns: [],
-    );
-
-    return result;
+  List<String> getAll() {
+    return [
+      ...this.feminine!.singular,
+      ...this.feminine!.plural,
+      ...this.masculine.singular,
+      ...this.masculine.plural,
+      ...this.neuter!.singular,
+      ...this.neuter!.plural
+    ];
   }
-
-  WordBank excludeNounsByTags(List<Tags> tagsToFilter) {
-    var result = WordBank(
-      nouns: [
-        ...this.nouns.where((n) => !listsShareElements(tagsToFilter, n.tags))
-      ],
-      adjectives: [...this.adjectives],
-      possessivePronouns: [...this.possessivePronouns],
-      personalPronouns: [...this.personalPronouns],
-    );
-
-    return result;
-  }
-
-  bool listsShareElements(List<Tags> list1, List<Tags> list2) {
-    var contains = false;
-
-    for (int i = 0; i < list1.length; i++) {
-      final Tags toFilter = list1[i];
-
-      if (list2.contains(toFilter)) {
-        contains = true;
-        break;
-      }
-    }
-
-    return contains;
-  }
-}
-
-class DeclensionPronoun {
-  final List<String> forms;
-
-  DeclensionPronoun({
-    required this.forms,
-  });
 }
 
 class DeclensionByCount {
@@ -96,36 +46,21 @@ class DeclensionByCount {
   }
 }
 
-class Declension {
-  final DeclensionByGender masculine;
-  final DeclensionByGender feminine;
-  final DeclensionByGender neuter;
-
-  Declension({
-    required this.masculine,
-    required this.feminine,
-    required this.neuter,
-  });
-
-  List<String> getAll() {
-    return [
-      ...this.feminine.singular,
-      ...this.feminine.plural,
-      ...this.masculine.singular,
-      ...this.masculine.plural,
-      ...this.neuter.singular,
-      ...this.neuter.plural
-    ];
-  }
-}
-
 class DeclensionByGender {
-  final List<String> singular;
-  final List<String> plural;
+  List<String> singular;
+  List<String> plural;
 
   DeclensionByGender({
-    required this.singular,
-    required this.plural,
+    this.singular = const [],
+    this.plural = const [],
+  });
+}
+
+class DeclensionPronoun {
+  final List<String> forms;
+
+  DeclensionPronoun({
+    required this.forms,
   });
 }
 
@@ -142,12 +77,12 @@ class PANCombo {
   late String initialPossPronDropDownValue;
 
   Adjective? adjective;
-  late List<String> correctAdjs;
+  late List<String> correctAdjectives;
   late String initialAdjDropDownValue;
 
   PersonalPronoun? personalPronoun;
-  late List<String> correctPersPronouns;
-  late String initialPersPronDropDownValue;
+  late List<String> correctPersonalPronouns;
+  late String initialPersonalPronDropDownValue;
 
   bool usePersonalPronounShortForm;
   Cases caseType;
@@ -172,7 +107,7 @@ class PANCombo {
     this.initialNounDropDownValue =
         this.noun == null ? '' : this.noun!.getDropDownInitial(caseType);
 
-    this.correctAdjs = this.adjective == null
+    this.correctAdjectives = this.adjective == null
         ? []
         : this
             .adjective!
@@ -192,10 +127,10 @@ class PANCombo {
         ? ''
         : this.possPronoun!.getDropDownInitial(caseType);
 
-    this.correctPersPronouns = this.personalPronoun == null
+    this.correctPersonalPronouns = this.personalPronoun == null
         ? []
         : this.personalPronoun!.getDeclensions(caseType);
-    this.initialPersPronDropDownValue = this.personalPronoun == null
+    this.initialPersonalPronDropDownValue = this.personalPronoun == null
         ? ''
         : this.personalPronoun!.getDropDownInitial(caseType);
   }
@@ -206,4 +141,84 @@ class StaticSentenceParts {
   final String end;
 
   StaticSentenceParts({this.start = '', this.end = ''});
+}
+
+class SentenceBank {
+  final  nouns;
+  final List<Adjective> adjectives;
+  final List<Adjective> possessivePronouns;
+  final List<PersonalPronoun> personalPronouns;
+
+  SentenceBank(
+      {required this.nouns,
+      required this.adjectives,
+      required this.possessivePronouns,
+      required this.personalPronouns});
+
+  SentenceBank excludeNounsByTags(List<Tags> tagsToFilter) {
+    var result = SentenceBank(
+      nouns: [
+        ...this.nouns.where((n) => !listsShareElements(tagsToFilter, n.tags))
+      ],
+      adjectives: [...this.adjectives],
+      possessivePronouns: [...this.possessivePronouns],
+      personalPronouns: [...this.personalPronouns],
+    );
+
+    return result;
+  }
+
+  SentenceBank excludePronoun(String toFilter) {
+    var result = SentenceBank(
+      nouns: [...this.nouns],
+      adjectives: [...this.adjectives],
+      possessivePronouns: [...this.possessivePronouns],
+      personalPronouns: [...this.personalPronouns],
+    );
+
+    final svoj = result.possessivePronouns
+        .firstWhere((e) => e.nominativ!.masculine.singular.first == toFilter);
+    result.possessivePronouns.remove(svoj);
+
+    return result;
+  }
+
+  SentenceBank filterNounsGender(Genders gender) {
+    var result = SentenceBank(
+      nouns: [...this.nouns.where((n) => n.gender == gender)],
+      adjectives: [...this.adjectives],
+      possessivePronouns: [...this.possessivePronouns],
+      personalPronouns: [...this.personalPronouns],
+    );
+
+    return result;
+  }
+
+  SentenceBank includeOnlyNounsByTags(List<Tags> tagsToFilter) {
+    var result = SentenceBank(
+      nouns: [
+        ...this.nouns.where((n) => listsShareElements(tagsToFilter, n.tags))
+      ],
+      adjectives: [],
+      possessivePronouns: [],
+      personalPronouns: [],
+    );
+
+    return result;
+  }
+
+  bool listsShareElements(List<Tags> list1, List<Tags> list2) {
+    var contains = false;
+
+    for (int i = 0; i < list1.length; i++) {
+      final Tags toFilter = list1[i];
+
+      if (list2.contains(toFilter)) {
+        contains = true;
+        break;
+      }
+    }
+
+    return contains;
+  }
 }

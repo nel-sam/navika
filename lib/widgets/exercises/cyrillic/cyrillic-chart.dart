@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:navika/constants.dart';
 import 'package:navika/lang_data/cyrillic-bank.dart';
 import 'package:navika/utilities/navika-helpers.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:navika/extensions.dart';
-import 'package:navika/widgets/shared/navika-text.dart';
+import 'package:navika/widgets/sbc_labels.dart';
+import 'package:nrs_flutter_lib/constants.dart';
+import 'package:nrs_flutter_lib/extensions.dart';
+import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
+import 'package:nrs_flutter_lib/widgets/n_text_span.dart';
 
 class CyrillicChart extends StatelessWidget {
   final String latinString;
@@ -16,12 +17,12 @@ class CyrillicChart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> children = createCharacterWidgets();
+    List<Widget> children = createCharacterWidgets(context);
 
     return Scaffold(
-        appBar: N.NavikaAppBar(
-          title: SbcLabels.cyrlilic,
-          transTitle: AppLocalizations.of(context)!.cyrillic,
+        appBar: N.navAppBar(
+          title: SbcLabels.cyrillic,
+          transTitle: N.t(context).cyrillic,
           context: context,
         ),
         body: Padding(
@@ -31,9 +32,14 @@ class CyrillicChart extends StatelessWidget {
               if (this.cyrillicString.isNotEmpty || this.latinString.isNotEmpty)
                 Column(
                   children: [
-                    if (this.latinString.isNotEmpty) NText(this.latinString),
+                    if (this.latinString.isNotEmpty)
+                      NTextSpan(this.latinString),
                     if (this.cyrillicString.isNotEmpty)
-                      NText(this.cyrillicString, isBold: true),
+                      NTextSpan(
+                        this.cyrillicString,
+                        textStyle:
+                            Nrs.getTextStyle(context: context, isBold: true),
+                      ),
                   ],
                 ),
               Expanded(
@@ -50,7 +56,7 @@ class CyrillicChart extends StatelessWidget {
     return this.cyrillicString.containsCaseInsensitive(char);
   }
 
-  List<Widget> createCharacterWidgets() {
+  List<Widget> createCharacterWidgets(BuildContext context) {
     List<Widget> children = [];
 
     for (int i = 0; i < latinCyrillicMap.length; i++) {
@@ -65,16 +71,21 @@ class CyrillicChart extends StatelessWidget {
             padding: EdgeInsets.all(8),
             child: Column(
               children: [
-                NText('${key.toUpperCase()} $key'),
-                NText('${value.toUpperCase()} $value',
-                    isBold: true, fontSize: 20),
+                NTextSpan('${key.toUpperCase()} $key'),
+                NTextSpan(
+                  '${value.toUpperCase()} $value',
+                  textStyle: Nrs.getTextStyle(
+                      context: context, isBold: true, fontSize: 20),
+                ),
               ],
             ),
             height: 100,
             width: 100,
             decoration: BoxDecoration(
               border: Border.all(
-                  color: needsHighlight ? WRONG_COLOR : ACCENT_COLOR,
+                  color: needsHighlight
+                      ? WRONG_COLOR
+                      : Nrs.getPrimaryColor(context),
                   width: needsHighlight ? 3 : 1),
               borderRadius: BorderRadius.circular(5),
             ),

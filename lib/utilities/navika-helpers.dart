@@ -1,180 +1,52 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:navika/widgets/shared/settings-button.dart';
+import 'package:nrs_flutter_lib/constants.dart';
+import 'package:nrs_flutter_lib/enums.dart';
+import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
 class N {
-  static scrollTo(double point, controller) {
-    controller.animateTo(point,
-        curve: Curves.linearToEaseOut, duration: SCROLL_DURATION);
+  static bool containsCaseQuestionState(List list, PANCombo item) {
+    if (list.isEmpty) return false;
+
+    for (int i = 0; i < list.length; i++) {
+      var testItem = list[i].combos;
+
+      if (testItem.noun?.dictionary.toString() == item.noun?.dictionary &&
+          testItem.personalPronoun?.nominativ.forms[0].toString() ==
+              item.personalPronoun?.nominativ.forms[0] &&
+          testItem.possPronoun?.dictionary.toString() ==
+              item.possPronoun?.dictionary &&
+          testItem.adjective?.dictionary.toString() ==
+              item.adjective?.dictionary) {
+        return true;
+      }
+    }
+
+    return false;
   }
 
-  static getRandomTense() {
-    final tenses = TenseEnum.values;
-    var index = (new Random()).nextInt(tenses.length - 1);
-    return tenses[index];
-  }
-
-  // ignore: non_constant_identifier_names
-  static AppBar NavikaAppBar({
-    required String title,
-    String transTitle = '',
-    required BuildContext context,
+  static TextSpan declensionExampleTextSpan(
+    String text, {
+    Color color = Colors.transparent,
   }) {
-    return AppBar(
-      elevation: APPBAR_ELEVATION,
-      backgroundColor: N.getAppBarColor(),
-      iconTheme: N.getAppBarIconTheme(context),
-      title: transTitle == ''
-          ? Text('$title', style: HEADER_TEXT_STYLE)
-          : Text('$title - $transTitle', style: HEADER_TEXT_STYLE),
-    );
-  }
+    final fontSize = FONT_SIZE;
 
-  static IconData getGenderIcon(Genders gender) {
-    if (gender == Genders.Feminine) {
-      return FEMININE_ICON;
-    } else if (gender == Genders.Masculine) {
-      return MASCULINE_ICON;
-    } else {
-      return NEUTER_ICON;
-    }
-  }
-
-  static String getGenderString(BuildContext context, Genders gender) {
-    switch (gender) {
-      case Genders.Masculine:
-        return AppLocalizations.of(context)!.masculine;
-      case Genders.Feminine:
-        return AppLocalizations.of(context)!.feminine;
-      case Genders.Neuter:
-      case Genders.Unspecific:
-        return AppLocalizations.of(context)!.neuter;
-    }
-  }
-
-  static int getRandomNumber({int min = 0, int max = 99999}) {
-    var random = new Random();
-    return random.nextInt(max - min) + min;
-  }
-
-  static bool coinFlip() {
-    var result = (new Random()).nextInt(4) % 2 == 0;
-    return result;
-  }
-
-  static bool isDarkTheme(BuildContext context) {
-    return MediaQuery.of(context).platformBrightness == Brightness.dark;
-  }
-
-  static TextTheme getAppBarTextTheme(BuildContext context) {
-    return isDarkTheme(context)
-        ? APP_BAR_TEXTTHEME_DARK
-        : APP_BAR_TEXTTHEME_LIGHT;
-  }
-
-  static IconThemeData getAppBarIconTheme(BuildContext context) {
-    return isDarkTheme(context)
-        ? APP_BAR_ICONTHEME_DARK
-        : APP_BAR_ICONTHEME_LIGHT;
-  }
-
-  static Color getAppBarColor() {
-    var brightness = MediaQueryData.fromWindow(WidgetsBinding.instance.window)
-        .platformBrightness;
-    bool darkModeOn = brightness == Brightness.dark;
-    return darkModeOn
-        ? Color.fromARGB(255, 48, 48, 48)
-        : Color.fromARGB(255, 250, 250, 250);
-  }
-
-  // ignore: non_constant_identifier_names
-  static TextSpan NTextSpan(String text,
-      {bool isBold = false,
-      bool isItalic = false,
-      double fontSize = 13,
-      Color color = Colors.transparent}) {
-    var textStyle;
-
-    if (isBold && isItalic && color != Colors.transparent) {
-      textStyle = TextStyle(
-        color: color,
-        fontSize: fontSize,
-        fontWeight: FontWeight.bold,
-        fontStyle: FontStyle.italic,
-      );
-    } else if (isItalic && color != Colors.transparent) {
-      textStyle = TextStyle(
-        color: color,
-        fontSize: fontSize,
-        fontStyle: FontStyle.italic,
-      );
-    } else if (isBold) {
-      textStyle = TextStyle(
-        color: ACCENT_COLOR,
-        fontSize: fontSize,
-        fontWeight: FontWeight.bold,
-      );
+    if (color != Colors.transparent) {
+      return TextSpan(
+          text: text,
+          style: TextStyle(
+            fontSize: fontSize,
+            color: color,
+          ));
     }
 
-    return TextSpan(text: text, style: textStyle);
-  }
-
-  static String getPronounLabel(PronounEnum pronoun, context) {
-    switch (pronoun) {
-      case PronounEnum.I:
-        return AppLocalizations.of(context)!.pronouns_I;
-      case PronounEnum.You:
-        return AppLocalizations.of(context)!.pronouns_You;
-      case PronounEnum.He:
-        return AppLocalizations.of(context)!.pronouns_He;
-      case PronounEnum.She:
-        return AppLocalizations.of(context)!.pronouns_She;
-      case PronounEnum.We:
-        return AppLocalizations.of(context)!.pronouns_We;
-      case PronounEnum.You_Plural:
-        return AppLocalizations.of(context)!.pronouns_You_Pl;
-      case PronounEnum.They_Ungendered:
-        return AppLocalizations.of(context)!.pronouns_They;
-      case PronounEnum.They_Masc:
-        return AppLocalizations.of(context)!.pronouns_They_Mas;
-      case PronounEnum.They_Fem:
-        return AppLocalizations.of(context)!.pronouns_They_Fem;
-      case PronounEnum.Oneself:
-        return AppLocalizations.of(context)!.pronouns_oneself;
-    }
-  }
-
-  static int longestFromList(List<String> values) {
-    int longestFound = 0;
-
-    values.forEach((e) {
-      if (e.length > longestFound) longestFound = e.length;
-    });
-    return longestFound;
-  }
-
-  static String getCaseLabel(Cases caseType) {
-    switch (caseType) {
-      case Cases.Nom:
-      case Cases.All:
-        return 'Nominativ';
-      case Cases.Ins:
-        return 'Instrumental';
-      case Cases.Aku:
-        return 'Akuzativ';
-      case Cases.Vok:
-        return 'Vokativ';
-      case Cases.Lok:
-        return 'Lokativ';
-      case Cases.Gen:
-        return 'Genitiv';
-      case Cases.Dat:
-        return 'Dativ';
-    }
+    return TextSpan(text: text, style: TextStyle(fontSize: fontSize));
   }
 
   static String getBitiConjugation(String pronoun) {
@@ -198,50 +70,102 @@ class N {
     }
   }
 
-  static double getScreenWidth({bool halfWidth = false, int reduction = 0}) {
-    final width =
-        MediaQueryData.fromWindow(WidgetsBinding.instance.window).size.width;
-    return (halfWidth ? width / 2 : width) - reduction;
-  }
-
-  static double getScreenHeight() {
-    return MediaQueryData.fromWindow(WidgetsBinding.instance.window)
-        .size
-        .height;
-  }
-
-  static fontStyleNormal({double fontSize = FONT_SIZE}) {
-    return TextStyle(
-      fontSize: fontSize,
-      fontStyle: FontStyle.normal,
-    );
-  }
-
-  static TextStyle fontStyleBold({double fontSize = FONT_SIZE}) {
-    return TextStyle(
-      color: ACCENT_COLOR,
-      fontSize: fontSize,
-      fontWeight: FontWeight.bold,
-    );
-  }
-
-  static bool containsCaseQuestionState(List list, PANCombo item) {
-    if (list.isEmpty) return false;
-
-    for (int i = 0; i < list.length; i++) {
-      var testItem = list[i].combos;
-
-      if (testItem.noun?.dictionary.toString() == item.noun?.dictionary &&
-          testItem.personalPronoun?.nominativ.forms[0].toString() ==
-              item.personalPronoun?.nominativ.forms[0] &&
-          testItem.possPronoun?.dictionary.toString() ==
-              item.possPronoun?.dictionary &&
-          testItem.adjective?.dictionary.toString() ==
-              item.adjective?.dictionary) {
-        return true;
-      }
+  static String getCaseLabel(Cases caseType) {
+    switch (caseType) {
+      case Cases.All:
+        return 'Sve padeže';
+      case Cases.Nom:
+        return 'Nominativ';
+      case Cases.Ins:
+        return 'Instrumental';
+      case Cases.Aku:
+        return 'Akuzativ';
+      case Cases.Vok:
+        return 'Vokativ';
+      case Cases.Lok:
+        return 'Lokativ';
+      case Cases.Gen:
+        return 'Genitiv';
+      case Cases.Dat:
+        return 'Dativ';
     }
+  }
 
-    return false;
+  static IconData getGenderIcon(Genders gender) {
+    if (gender == Genders.Feminine) {
+      return FEMININE_ICON;
+    } else if (gender == Genders.Masculine) {
+      return MASCULINE_ICON;
+    } else {
+      return NEUTER_ICON;
+    }
+  }
+
+  static String getGenderString(BuildContext context, Genders gender) {
+    switch (gender) {
+      case Genders.Masculine:
+        return N.t(context).masculine;
+      case Genders.Feminine:
+        return N.t(context).feminine;
+      case Genders.Neuter:
+      case Genders.Unspecific:
+        return N.t(context).neuter;
+    }
+  }
+
+  static String getPronounLabel(PronounEnum pronoun, context) {
+    switch (pronoun) {
+      case PronounEnum.I:
+        return N.t(context).pronouns_I;
+      case PronounEnum.You:
+        return N.t(context).pronouns_You;
+      case PronounEnum.He:
+        return N.t(context).pronouns_He;
+      case PronounEnum.She:
+        return N.t(context).pronouns_She;
+      case PronounEnum.We:
+        return N.t(context).pronouns_We;
+      case PronounEnum.You_Plural:
+        return N.t(context).pronouns_You_Pl;
+      case PronounEnum.They_Ungendered:
+        return N.t(context).pronouns_They;
+      case PronounEnum.They_Masc:
+        return N.t(context).pronouns_They_Mas;
+      case PronounEnum.They_Fem:
+        return N.t(context).pronouns_They_Fem;
+      case PronounEnum.Oneself:
+        return N.t(context).pronouns_oneself;
+    }
+  }
+
+  static getRandomTense() {
+    final tenses = TenseEnum.values;
+    var index = (new Random()).nextInt(tenses.length - 1);
+    return tenses[index];
+  }
+
+  static int longestFromList(List<String> values) {
+    int longestFound = 0;
+
+    values.forEach((e) {
+      if (e.length > longestFound) longestFound = e.length;
+    });
+    return longestFound;
+  }
+
+  static navAppBar(
+      {required BuildContext context,
+      String title = '',
+      String transTitle = '',
+      bool showSettingsButton = true}) {
+    return Nrs.NrsAppBar(
+        context: context,
+        title: title,
+        transTitle: transTitle,
+        actions: [if (showSettingsButton) SettingsButton()]);
+  }
+
+  static AppLocalizations t(BuildContext context) {
+    return AppLocalizations.of(context)!;
   }
 }

@@ -1,6 +1,6 @@
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
-import 'package:navika/extensions.dart';
+import 'package:nrs_flutter_lib/extensions.dart';
 
 class PersonalPronoun {
   final PronounEnum type;

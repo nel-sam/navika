@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/exercises/declension/shared/case-exercise.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Vokativ extends StatelessWidget {
   @override
@@ -13,7 +12,7 @@ class Vokativ extends StatelessWidget {
       title: title,
       caseType: Cases.Vok,
       imagePath: 'assets/banners/woman.jpg',
-      description: AppLocalizations.of(context)!.vokativDescription,
+      description: N.t(context).vokativDescription,
       //youtubeLink: RECOMMENDED_VIDEO_VOK,
     );
   }

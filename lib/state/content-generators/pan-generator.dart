@@ -3,19 +3,34 @@ import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/models/noun.dart';
 import 'package:navika/models/personal-pronoun.dart';
-import 'package:navika/utilities/navika-helpers.dart';
+import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
 class PanGenerator {
+  static Adjective? getAdjectiveItem(List<Adjective> source, Noun noun) {
+    if (source.length == 0) return null;
+
+    final item = source[Nrs.getRandomNumber(max: source.length)];
+
+    if (item.isCompatible(noun.tags)) {
+      return item;
+    }
+
+    return null;
+  }
+
   static PANCombo getPANCombos(
       {required Cases caseType,
-      required WordBank bank,
-      required StaticSentenceParts Function(Noun, bool, Adjective?, Adjective?)
+      required SentenceBank bank,
+      required DialectType dialect,
+      required StaticSentenceParts Function(
+              Noun, bool, Adjective?, Adjective?, DialectType)
           getStaticSentenceParts,
-      required StaticSentenceParts Function(PersonalPronoun, bool)
+      required StaticSentenceParts Function(PersonalPronoun, bool, DialectType)
           getPersonalPronounSentenceStaticParts}) {
     if (caseType == Cases.Vok) {
-      final noun = bank.nouns[N.getRandomNumber(max: bank.nouns.length)];
-      final staticParts = getStaticSentenceParts(noun, false, null, null);
+      final noun = bank.nouns[Nrs.getRandomNumber(max: bank.nouns.length)];
+      final staticParts =
+          getStaticSentenceParts(noun, false, null, null, dialect);
 
       return PANCombo(
           caseType: caseType,
@@ -29,16 +44,16 @@ class PanGenerator {
     }
 
     final maxRandom = bank.personalPronouns.length == 0 ? 2 : 3;
-    var exType = N.getRandomNumber(max: maxRandom);
+    var exType = Nrs.getRandomNumber(max: maxRandom);
 
     if (exType == 0) {
-      final noun = bank.nouns[N.getRandomNumber(max: bank.nouns.length)];
-      final isPlural = noun.nominativ.plural.first != '' && N.coinFlip();
+      final noun = bank.nouns[Nrs.getRandomNumber(max: bank.nouns.length)];
+      final isPlural = noun.nominativ.plural.first != '' && Nrs.coinFlip();
       final possPronoun = getAdjectiveItem(bank.possessivePronouns, noun);
       final adj = getAdjectiveItem(bank.adjectives, noun);
 
       final staticParts =
-          getStaticSentenceParts(noun, isPlural, possPronoun, adj);
+          getStaticSentenceParts(noun, isPlural, possPronoun, adj, dialect);
 
       return PANCombo(
           caseType: caseType,
@@ -50,9 +65,10 @@ class PanGenerator {
           isPlural: isPlural,
           noun: noun);
     } else if (exType == 1) {
-      final noun = bank.nouns[N.getRandomNumber(max: bank.nouns.length)];
-      final isPlural = noun.nominativ.plural.first != '' && N.coinFlip();
-      final staticParts = getStaticSentenceParts(noun, isPlural, null, null);
+      final noun = bank.nouns[Nrs.getRandomNumber(max: bank.nouns.length)];
+      final isPlural = noun.nominativ.plural.first != '' && Nrs.coinFlip();
+      final staticParts =
+          getStaticSentenceParts(noun, isPlural, null, null, dialect);
 
       return PANCombo(
           caseType: caseType,
@@ -65,10 +81,10 @@ class PanGenerator {
           noun: noun);
     } else {
       final persPronoun = bank.personalPronouns[
-          N.getRandomNumber(max: bank.personalPronouns.length)];
+          Nrs.getRandomNumber(max: bank.personalPronouns.length)];
       final isPlural = persPronoun.isPlural;
       final staticParts =
-          getPersonalPronounSentenceStaticParts(persPronoun, isPlural);
+          getPersonalPronounSentenceStaticParts(persPronoun, isPlural, dialect);
 
       return PANCombo(
         caseType: caseType,
@@ -77,20 +93,8 @@ class PanGenerator {
         gender: persPronoun.gender,
         isPlural: isPlural,
         personalPronoun: persPronoun,
-        usePersonalPronounShortForm: N.coinFlip(),
+        usePersonalPronounShortForm: Nrs.coinFlip(),
       );
     }
-  }
-
-  static Adjective? getAdjectiveItem(List<Adjective> source, Noun noun) {
-    if (source.length == 0) return null;
-
-    final item = source[N.getRandomNumber(max: source.length)];
-
-    if (item.isCompatible(noun.tags)) {
-      return item;
-    }
-
-    return null;
   }
 }

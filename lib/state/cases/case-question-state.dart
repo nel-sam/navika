@@ -1,31 +1,48 @@
 import 'package:navika/models/models.dart';
-import 'package:navika/extensions.dart';
+import 'package:nrs_flutter_lib/extensions.dart';
 
 class CaseQuestionState {
   PANCombo combos;
   late String userNounResponse;
   late String userPossPronResponse;
   late String userAdjResponse;
-  late String userPersPronResponse;
+  late String userPersonalPronounResponse;
   late bool isCorrect;
 
   CaseQuestionState({required this.combos}) {
     userNounResponse = '';
     userPossPronResponse = '';
     userAdjResponse = '';
-    userPersPronResponse = '';
+    userPersonalPronounResponse = '';
     isCorrect = false;
   }
 
-  void setIsCorrect() {
-    final pos =
-        _isCorrectSingle(this.combos.correctPossPronouns, userPossPronResponse);
-    final adj = _isCorrectSingle(this.combos.correctAdjs, userAdjResponse);
-    final noun = _isCorrectSingle(this.combos.correctNouns, userNounResponse);
-    final persPron =
-        _isCorrectSingle(this.combos.correctPersPronouns, userPersPronResponse);
+  void clear() {
+    userNounResponse = '';
+    userPossPronResponse = '';
+    userAdjResponse = '';
+    userPersonalPronounResponse = '';
+    _setIsCorrect();
+  }
 
-    isCorrect = pos && adj && noun && persPron;
+  updateAdj(String newValue) {
+    userAdjResponse = newValue;
+    _setIsCorrect();
+  }
+
+  updateNoun(String newValue) {
+    userNounResponse = newValue;
+    _setIsCorrect();
+  }
+
+  updatePersonalPronoun(String newValue) {
+    userPersonalPronounResponse = newValue;
+    _setIsCorrect();
+  }
+
+  updatePossPronoun(String newValue) {
+    userPossPronResponse = newValue;
+    _setIsCorrect();
   }
 
   bool _isCorrectSingle(List<String> acceptedAnswers, String? actualAnswer) {
@@ -37,31 +54,15 @@ class CaseQuestionState {
     return acceptedAnswers.containsCaseInsensitive(actualAnswer ?? "");
   }
 
-  void clear() {
-    userNounResponse = '';
-    userPossPronResponse = '';
-    userAdjResponse = '';
-    userPersPronResponse = '';
-    setIsCorrect();
-  }
+  void _setIsCorrect() {
+    final pos =
+        _isCorrectSingle(this.combos.correctPossPronouns, userPossPronResponse);
+    final adj =
+        _isCorrectSingle(this.combos.correctAdjectives, userAdjResponse);
+    final noun = _isCorrectSingle(this.combos.correctNouns, userNounResponse);
+    final persPron = _isCorrectSingle(
+        this.combos.correctPersonalPronouns, userPersonalPronounResponse);
 
-  updateNoun(String newValue) {
-    userNounResponse = newValue;
-    setIsCorrect();
-  }
-
-  updatePossPronoun(String newValue) {
-    userPossPronResponse = newValue;
-    setIsCorrect();
-  }
-
-  updateAdj(String newValue) {
-    userAdjResponse = newValue;
-    setIsCorrect();
-  }
-
-  updatePersPronoun(String newValue) {
-    userPersPronResponse = newValue;
-    setIsCorrect();
+    isCorrect = pos && adj && noun && persPron;
   }
 }

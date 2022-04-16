@@ -1,4 +1,4 @@
-import 'package:navika/lang_data/word-bank.dart';
+import 'package:navika/lang_data/sentence_bank_generator.dart';
 import 'package:navika/models/adjective.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
@@ -7,10 +7,61 @@ import 'package:navika/models/personal-pronoun.dart';
 import 'package:navika/state/cases/case-question-state.dart';
 import 'package:navika/state/content-generators/pan-generator.dart';
 import 'package:navika/utilities/navika-helpers.dart';
+import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
 class DativGenerators {
+  static CaseQuestionState createExercise(
+    List toAvoid,
+    ExerciseTypes exerciseType,
+    DialectType dialect,
+  ) {
+    PANCombo? c;
+
+    while (c == null || N.containsCaseQuestionState(toAvoid, c)) {
+      c = PanGenerator.getPANCombos(
+        caseType: Cases.Dat,
+        dialect: dialect,
+        bank: SentenceBankGenerator(dialect: dialect).sentencesBankData,
+        getPersonalPronounSentenceStaticParts:
+            getPersonalPronounSentenceStaticParts,
+        getStaticSentenceParts: getStaticSentenceParts,
+      );
+    }
+
+    return CaseQuestionState(combos: c);
+  }
+
+  static StaticSentenceParts getPersonalPronounSentenceStaticParts(
+    PersonalPronoun personalPronoun,
+    bool isShortForm,
+    DialectType dialect,
+  ) {
+    String start = '';
+    String end = '';
+
+    if (Nrs.coinFlip()) {
+      start = 'Danas';
+      end = 'je rođendan';
+    } else if (Nrs.coinFlip()) {
+      start = 'Pas je došlo do';
+    } else if (Nrs.coinFlip()) {
+      start = 'Pas';
+      end = 'je donio igračku';
+    } else {
+      start = 'On';
+      end = 'nešto pokazao';
+    }
+
+    return StaticSentenceParts(start: start, end: end);
+  }
+
   static StaticSentenceParts getStaticSentenceParts(
-      Noun noun, bool isPlural, Adjective? pronoun, Adjective? adjective) {
+    Noun noun,
+    bool isPlural,
+    Adjective? pronoun,
+    Adjective? adjective,
+    DialectType dialect,
+  ) {
     String start = '';
     String end = '';
 
@@ -23,44 +74,5 @@ class DativGenerators {
     }
 
     return StaticSentenceParts(start: start, end: end);
-  }
-
-  static StaticSentenceParts getPersonalPronounSentenceStaticParts(
-    PersonalPronoun personalPronoun,
-    bool isShortForm,
-  ) {
-    String start = '';
-    String end = '';
-
-    if (N.coinFlip()) {
-      start = 'Danas';
-      end = 'je rođendan';
-    } else if (N.coinFlip()) {
-      start = 'Pas je došlo do';
-    } else if (N.coinFlip()) {
-      start = 'Pas';
-      end = 'je donio igračku';
-    } else {
-      start = 'On';
-      end = 'nešto pokazao';
-    }
-
-    return StaticSentenceParts(start: start, end: end);
-  }
-
-  static CaseQuestionState createExercise(List toAvoid) {
-    PANCombo? c;
-
-    while (c == null || N.containsCaseQuestionState(toAvoid, c)) {
-      c = PanGenerator.getPANCombos(
-        caseType: Cases.Dat,
-        bank: wordBank,
-        getPersonalPronounSentenceStaticParts:
-            getPersonalPronounSentenceStaticParts,
-        getStaticSentenceParts: getStaticSentenceParts,
-      );
-    }
-
-    return CaseQuestionState(combos: c);
   }
 }

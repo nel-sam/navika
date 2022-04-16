@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:navika/constants.dart';
-import 'package:navika/utilities/navika-helpers.dart';
+import 'package:nrs_flutter_lib/constants.dart';
+import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
 class ShadowBox extends StatelessWidget {
   final Widget child;
@@ -11,7 +11,7 @@ class ShadowBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bgColor = N.isDarkTheme(context)
+    final bgColor = Nrs.isDarkTheme(context)
         ? Theme.of(context).backgroundColor
         : Colors.white;
 

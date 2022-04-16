@@ -1,15 +1,17 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:navika/constants.dart';
 import 'package:navika/models/verb.dart';
 import 'package:navika/state/exercise-nav-notifier.dart';
+import 'package:navika/state/settings/settings-consumer-wrapper.dart';
 import 'package:navika/utilities/navika-helpers.dart';
-import 'package:navika/widgets/exercises/verbs/present-tense/present-tense-question-content.dart';
 import 'package:navika/widgets/exercises/verbs/past-tense/past-tense-question-content.dart';
+import 'package:navika/widgets/exercises/verbs/present-tense/present-tense-question-content.dart';
+import 'package:navika/widgets/sbc_labels.dart';
 import 'package:navika/widgets/shared/ad-card.dart';
-import 'package:navika/widgets/shared/exercise-header.dart';
 import 'package:navika/widgets/shared/info-banner.dart';
+import 'package:navika/widgets/shared/navigation-header-wrapper.dart';
+import 'package:nrs_flutter_lib/constants.dart';
 import 'package:provider/provider.dart';
 
 class VerbExercise extends StatelessWidget {
@@ -33,79 +35,75 @@ class VerbExercise extends StatelessWidget {
     Timer _debounce = Timer(const Duration(milliseconds: 0), () {});
 
     return Scaffold(
-      appBar: AppBar(
-        leading: Builder(builder: (BuildContext context) => BackButton()),
-        elevation: APPBAR_ELEVATION,
-        backgroundColor: N.getAppBarColor(),
-        iconTheme: N.getAppBarIconTheme(context),
-        title: Text(SbcLabels.verbs, style: HEADER_TEXT_STYLE),
-      ),
-      body: ChangeNotifierProvider<ExerciseNavNotifier>(
-        create: (context) => ExerciseNavNotifier(isVerb: true),
-        child: Consumer<ExerciseNavNotifier>(
-          builder: (context, navNotifier, child) {
-            final stateITem = navNotifier.getActive();
+      appBar: N.navAppBar(title: SbcLabels.verbs, context: context),
+      body: SettingsConsumerWrapper(
+        getChildWidget: (settings) =>
+            ChangeNotifierProvider<ExerciseNavNotifier>(
+          create: (context) =>
+              ExerciseNavNotifier(isVerb: true, dialect: settings.dialectType),
+          child: Consumer<ExerciseNavNotifier>(
+            builder: (context, navNotifier, child) {
+              final stateITem = navNotifier.getActive();
 
-            return GestureDetector(
-              onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-              onHorizontalDragUpdate: (details) {
-                if (_debounce.isActive) {
-                  _debounce.cancel();
-                }
-
-                _debounce =
-                    Timer(const Duration(milliseconds: DEBOUNCE_TIME), () {
-                  if (details.delta.dx > 0) {
-                    navNotifier.setPrevious();
+              return GestureDetector(
+                onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+                onHorizontalDragUpdate: (details) {
+                  if (_debounce.isActive) {
+                    _debounce.cancel();
                   }
 
-                  if (details.delta.dx < 0) {
-                    navNotifier.setNext();
-                  }
-                });
-              },
-              child: Center(
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      InfoBanner(
-                        imagePath: imagePath,
-                        label: title,
-                        description: description,
-                        youtubeLink: youtubeLink,
-                      ),
-                      const AdCard(),
-                      ExerciseHeader(
-                        setPrevious: navNotifier.setPrevious,
-                        setNext: navNotifier.setNext,
-                        clear: navNotifier.clearInput,
-                        getCounter: navNotifier.getCounter,
-                      ),
-                      Container(
-                        child: this.tense == VerbTenses.PastPerfect
-                            ? PastTenseQuestionContent(
-                                verb: stateITem.verb,
-                                state: stateITem.userEntryState,
-                                isAllCorrect: stateITem.isCorrect,
-                                onChanged: (String pronoun, String newValue) =>
-                                    stateITem.updateState(pronoun.toString(),
-                                        newValue, this.tense),
-                              )
-                            : PresentTenseQuestionContent(
-                                verb: stateITem.verb,
-                                isAllCorrect: stateITem.isCorrect,
-                                state: stateITem.userEntryState,
-                                onChanged: (String pronoun, String newValue) =>
-                                    stateITem.updateState(
-                                        pronoun, newValue, this.tense),
-                              ),
-                      ),
-                    ],
+                  _debounce =
+                      Timer(const Duration(milliseconds: DEBOUNCE_TIME), () {
+                    if (details.delta.dx > 0) {
+                      navNotifier.setPrevious();
+                    }
+
+                    if (details.delta.dx < 0) {
+                      navNotifier.setNext();
+                    }
+                  });
+                },
+                child: Center(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        InfoBanner(
+                          label: title,
+                          description: description,
+                          youtubeLink: youtubeLink,
+                        ),
+                        const AdCard(),
+                        NavigationHeaderWrapper(navNotifier: navNotifier),
+                        Container(
+                          child: this.tense == VerbTenses.PastPerfect
+                              ? PastTenseQuestionContent(
+                                  verb: stateITem.verb,
+                                  state: stateITem.userEntryState,
+                                  isAllCorrect: stateITem.isCorrect,
+                                  onChanged:
+                                      (String pronoun, String newValue) =>
+                                          stateITem.updateState(
+                                              pronoun.toString(),
+                                              newValue,
+                                              this.tense),
+                                )
+                              : PresentTenseQuestionContent(
+                                  verb: stateITem.verb,
+                                  isAllCorrect: stateITem.isCorrect,
+                                  state: stateITem.userEntryState,
+                                  onChanged:
+                                      (String pronoun, String newValue) =>
+                                          stateITem.updateState(
+                                              pronoun, newValue, this.tense),
+                                ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            );
-          },
+              );
+            },
+          ),
         ),
       ),
     );

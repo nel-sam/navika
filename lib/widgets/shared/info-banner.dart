@@ -1,23 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:navika/constants.dart';
+import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/youtube-link.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:navika/widgets/shared/navika-text.dart';
-
-class StateObj {
-  bool isExpanded = false;
-  bool hasYouTubeLink = false;
-}
+import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
+import 'package:nrs_flutter_lib/widgets/n_text_span.dart';
 
 class InfoBanner extends StatefulWidget {
-  final String imagePath;
   final String label;
   final String description;
   final String? youtubeLink;
 
   const InfoBanner({
     Key? key,
-    required this.imagePath,
     required this.label,
     required this.description,
     this.youtubeLink,
@@ -27,16 +20,13 @@ class InfoBanner extends StatefulWidget {
   State<InfoBanner> createState() => _InfoBannerState();
 }
 
+class StateObj {
+  bool isExpanded = false;
+  bool hasYouTubeLink = false;
+}
+
 class _InfoBannerState extends State<InfoBanner> {
   final state = StateObj();
-
-  @override
-  void initState() {
-    state.isExpanded = false;
-    state.hasYouTubeLink =
-        this.widget.youtubeLink != null && this.widget.youtubeLink!.length > 0;
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -60,13 +50,14 @@ class _InfoBannerState extends State<InfoBanner> {
                     Text(
                       widget.label,
                       style: TextStyle(
-                        color: ACCENT_COLOR,
+                        color: Nrs.getPrimaryColor(context),
                         fontSize: 18,
                       ),
                     ),
-                    NText(
-                      AppLocalizations.of(context)!.expand_for_more,
-                      fontSize: 12,
+                    NTextSpan(
+                      N.t(context).expand_for_more,
+                      textStyle:
+                          Nrs.getTextStyle(context: context, fontSize: 12),
                     )
                   ],
                 ),
@@ -75,12 +66,6 @@ class _InfoBannerState extends State<InfoBanner> {
             isExpanded: state.isExpanded,
             body: Container(
               height: 420,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage(widget.imagePath),
-                  fit: BoxFit.cover,
-                ),
-              ),
               child: Padding(
                 padding: const EdgeInsets.all(10),
                 child: Column(
@@ -94,12 +79,20 @@ class _InfoBannerState extends State<InfoBanner> {
                       ),
                     ),
                     if (state.hasYouTubeLink)
-                      YouTubeLink(context, this.widget.youtubeLink!)
+                      YouTubeLink(this.widget.youtubeLink!)
                   ],
                 ),
               ),
             ))
       ],
     );
+  }
+
+  @override
+  void initState() {
+    state.isExpanded = false;
+    state.hasYouTubeLink =
+        this.widget.youtubeLink != null && this.widget.youtubeLink!.length > 0;
+    super.initState();
   }
 }

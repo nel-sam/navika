@@ -1,27 +1,54 @@
 import 'package:flutter/material.dart';
+import 'package:navika/utilities/navika-helpers.dart';
+import 'package:nrs_flutter_lib/constants.dart';
+import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-// ignore: non_constant_identifier_names
-Widget YouTubeLink(BuildContext context, String url) {
-  return Padding(
-    padding: const EdgeInsets.only(top: 10),
-    child: OutlinedButton(
-      onPressed: () async {
-        await canLaunch(url)
-            ? await launch(url)
-            : throw 'Could not launch $url';
-      },
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(right: 8.0),
-            child: Icon(Icons.ondemand_video),
+class YouTubeLink extends StatelessWidget {
+  final String url;
+
+  const YouTubeLink(
+    this.url, {
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    const double radius = 100;
+    const IconData playIcon = Icons.smart_display_rounded;
+
+    return Padding(
+      padding: const EdgeInsets.all(10),
+      child: ElevatedButton(
+        style: OutlinedButton.styleFrom(
+          elevation: 6,
+          primary: Nrs.getPrimaryColor(context),
+          backgroundColor: Nrs.getAppBarColor(),
+          shadowColor: BORDER_COLOR.withOpacity(0.25),
+          side: BorderSide(color: BORDER_COLOR.withOpacity(0.15), width: 2),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(radius),
           ),
-          Text(AppLocalizations.of(context)!.recommendedVideo),
-        ],
+        ),
+        onPressed: () async {
+          await canLaunch(url)
+              ? await launch(url)
+              : throw 'Could not launch $url';
+        },
+        child: Padding(
+          padding: const EdgeInsets.all(FONT_SIZE - 4),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(right: FONT_SIZE / 2),
+                child: Icon(playIcon),
+              ),
+              Text(N.t(context).recommendedVideo.toUpperCase()),
+            ],
+          ),
+        ),
       ),
-    ),
-  );
+    );
+  }
 }

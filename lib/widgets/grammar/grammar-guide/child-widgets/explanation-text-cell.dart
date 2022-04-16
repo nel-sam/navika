@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:navika/utilities/navika-helpers.dart';
+import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
 class ExplanationTextCell extends StatelessWidget {
   final List<TextSpan> children;
@@ -16,7 +16,7 @@ class ExplanationTextCell extends StatelessWidget {
         text: TextSpan(
           style: TextStyle(
               fontSize: 16,
-              color: N.isDarkTheme(context) ? Colors.white : Colors.black),
+              color: Nrs.isDarkTheme(context) ? Colors.white : Colors.black),
           children: children,
         ),
       ),

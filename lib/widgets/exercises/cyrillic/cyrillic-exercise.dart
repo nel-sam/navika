@@ -1,24 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:navika/constants.dart';
 import 'package:navika/state/cyrillic/cyrillic-notifier.dart';
 import 'package:navika/utilities/navika-helpers.dart';
-import 'package:navika/widgets/exercises/cyrillic/cyrillic-exec-footer-buttons.dart';
+import 'package:navika/widgets/exercises/cyrillic/cyrillic-chart.dart';
 import 'package:navika/widgets/exercises/cyrillic/cyrillic-exercise-card.dart';
+import 'package:navika/widgets/sbc_labels.dart';
 import 'package:navika/widgets/shared/ad-card.dart';
+import 'package:navika/widgets/shared/home-button-wrapper.dart';
 import 'package:navika/widgets/shared/info-banner.dart';
+import 'package:nrs_flutter_lib/widgets/n_footer_button.dart';
+import 'package:nrs_flutter_lib/widgets/n_footer_menu.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CyrillicExercise extends StatelessWidget {
   const CyrillicExercise({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    var title = AppLocalizations.of(context)!.cyrillic;
+    var title = N.t(context).cyrillic;
 
     return Scaffold(
-      appBar: N.NavikaAppBar(
-        title: SbcLabels.cyrlilic,
+      appBar: N.navAppBar(
+        title: SbcLabels.cyrillic,
         context: context,
       ),
       body: GestureDetector(
@@ -32,9 +34,8 @@ class CyrillicExercise extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     InfoBanner(
-                      imagePath: 'assets/banners/writing.jpg',
                       label: title,
-                      description: AppLocalizations.of(context)!.cyrillicDesc,
+                      description: N.t(context).cyrillicDesc,
                       //youtubeLink: RECOMMENDED_VIDEO_CYRILLIC,
                     ),
                     const AdCard(),
@@ -50,8 +51,23 @@ class CyrillicExercise extends StatelessWidget {
           ),
         ),
       ),
-      persistentFooterButtons:
-          CyrillicExecFooterButtons(context: context, refreshFunction: () {}),
+      persistentFooterButtons: [
+        NFooterMenu(buttons: [
+          HomeButtonWrapper(isActive: false),
+          NFooterButton(
+            active: true,
+            onPressed: () {
+              final dest = CyrillicChart();
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => dest),
+              );
+            },
+            icon: Icons.help_center_outlined,
+            text: N.t(context).cyrillic,
+          )
+        ])
+      ],
     );
   }
 }

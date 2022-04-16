@@ -1,11 +1,31 @@
 {
   "cSpell.words": [
-    "Akuzativ",
-    "Navika",
     "akuzativ",
+    "Akuzativ",
+    "ARGB",
+    "Azat",
     "cupertino",
     "dativ",
+    "dvema",
+    "Ekavian",
+    "Ijekavian",
+    "lepo",
     "lokativ",
-    "nominativ"
-  ]
+    "Navika",
+    "nominativ",
+    "Pridevi",
+    "reči",
+    "Serbo",
+    "sšzž",
+    "unfocus",
+    "Ungendered",
+    "vežbe",
+    "Ћирилица"
+  ],
+  "editor.tabSize": 2,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": "active",
+  "eslint.alwaysShowStatus": true,
+  "editor.formatOnSave": true,
+  "cSpell.language": "en,hr"
 }

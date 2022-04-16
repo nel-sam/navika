@@ -4,7 +4,25 @@ import 'package:navika/models/enums.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/declension-table-cell.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/explanation-icon-cell.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:nrs_flutter_lib/constants.dart';
+import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
+
+class CountIcon extends StatelessWidget {
+  const CountIcon({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final isDarkTheme = Nrs.isDarkTheme(context);
+
+    return Icon(
+      Icons.circle,
+      size: FONT_SIZE - 6,
+      color: isDarkTheme ? Colors.white : Colors.black.withOpacity(0.6),
+    );
+  }
+}
 
 class DeclensionTable extends StatelessWidget {
   final DeclensionTableCell masculineSingular;
@@ -35,7 +53,200 @@ class DeclensionTable extends StatelessWidget {
     this.additionalEqualItemColor = EQUAL_ITEMS_BORDER_COLOR,
   }) : super(key: key);
 
-  String getAsterix(int count) {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Nrs.getAppBarColor().withOpacity(0.5),
+      child: Column(
+        children: [
+          //ActualTable_OLD(, feminineSingular: feminineSingular, femininePlural: femininePlural, masculineSingular: masculineSingular, masculinePlural: masculinePlural, neuterSingular: neuterSingular, neuterPlural: neuterPlural),
+          Padding(
+            padding: const EdgeInsets.only(
+                top: FONT_SIZE * 2, bottom: FONT_SIZE * 2),
+            child: Table(
+              border: TableBorder.all(
+                color: Colors.grey.withOpacity(0.8),
+                borderRadius: BorderRadius.circular(FONT_SIZE),
+              ),
+              defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+              children: [
+                TableRow(children: [
+                  // Headers
+                  TableCellWrapper(
+                    isHeader: true,
+                    child: Container(),
+                  ),
+                  ExplanationIconCell(
+                    isHeader: true,
+                    icon: Icon(N.getGenderIcon(Genders.Feminine),
+                        color: FEMININE_COLOR),
+                    label: N.t(context).feminine,
+                  ),
+                  ExplanationIconCell(
+                    isHeader: true,
+                    icon: Icon(N.getGenderIcon(Genders.Masculine),
+                        color: MASCULINE_COLOR),
+                    label: N.t(context).masculine,
+                  ),
+                  ExplanationIconCell(
+                    isHeader: true,
+                    icon: Icon(N.getGenderIcon(Genders.Neuter),
+                        color: NEUTER_COLOR),
+                    label: N.t(context).neuter,
+                  ),
+                ]),
+                TableRow(children: [
+                  ExplanationIconCell(
+                    icon: CountIcon(),
+                    label: N.t(context).singular,
+                  ),
+                  TableCellWrapper(child: feminineSingular),
+                  TableCellWrapper(child: masculineSingular),
+                  TableCellWrapper(child: neuterSingular),
+                ]),
+                TableRow(children: [
+                  ExplanationIconCell(
+                    icon: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        CountIcon(),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            CountIcon(),
+                            CountIcon(),
+                          ],
+                        )
+                      ],
+                    ),
+                    label: N.t(context).plural,
+                  ),
+                  TableCellWrapper(child: femininePlural),
+                  TableCellWrapper(child: masculinePlural),
+                  TableCellWrapper(child: neuterPlural),
+                ])
+              ],
+            ),
+          ),
+          if (notes != null)
+            ...notes!.map(
+              (note) => Padding(
+                padding: const EdgeInsets.only(bottom: 12),
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 8, right: 6),
+                      child: Text(
+                        getAsterisk(notes!.indexOf(note) + 1),
+                        style: TextStyle(color: Colors.grey),
+                      ),
+                    ),
+                    Flexible(
+                      child: RichText(
+                        maxLines: 10,
+                        text: TextSpan(
+                          style: TextStyle(
+                              fontSize: 12,
+                              color: Nrs.isDarkTheme(context)
+                                  ? Colors.grey
+                                  : Colors.black.withOpacity(0.7)),
+                          children: [
+                            TextSpan(text: note, style: DECLINED_LETTER_STYLE)
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          if (showEqualItemNote)
+            Row(
+              children: [
+                Padding(
+                  // Little square
+                  padding: const EdgeInsets.only(right: 5),
+                  child: Container(
+                    width: 13,
+                    height: 13,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: EQUAL_ITEMS_BORDER_COLOR),
+                      borderRadius: BorderRadius.circular(2),
+                    ),
+                  ),
+                ),
+                if (additionalEqualItemColor != EQUAL_ITEMS_BORDER_COLOR)
+                  Padding(
+                    // Little square 1
+                    padding: const EdgeInsets.only(right: 5),
+                    child: Container(
+                      width: 13,
+                      height: 13,
+                      decoration: BoxDecoration(
+                        border: Border.all(color: additionalEqualItemColor),
+                        borderRadius: BorderRadius.circular(2),
+                      ),
+                    ),
+                  ),
+                RichText(
+                  text: TextSpan(
+                    style: TextStyle(
+                        fontSize: 12,
+                        color: Nrs.isDarkTheme(context)
+                            ? Colors.white
+                            : Colors.black),
+                    children: [
+                      TextSpan(
+                        text: N.t(context).equalDeclensions,
+                        style: DECLINED_LETTER_STYLE,
+                      )
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          borderedItemNote != ''
+              ? Padding(
+                  padding: const EdgeInsets.only(top: 8),
+                  child: Row(
+                    children: [
+                      Padding(
+                        // Little square 1
+                        padding: const EdgeInsets.only(right: 5),
+                        child: Container(
+                          width: 13,
+                          height: 13,
+                          decoration: BoxDecoration(
+                            border:
+                                Border.all(color: Nrs.getPrimaryColor(context)),
+                            borderRadius: BorderRadius.circular(2),
+                          ),
+                        ),
+                      ),
+                      RichText(
+                        text: TextSpan(
+                          style: TextStyle(
+                              fontSize: 12,
+                              color: Nrs.isDarkTheme(context)
+                                  ? Colors.white
+                                  : Colors.black),
+                          children: [
+                            TextSpan(
+                                text: borderedItemNote,
+                                style: DECLINED_LETTER_STYLE)
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              : Container(),
+        ],
+      ),
+    );
+  }
+
+  String getAsterisk(int count) {
     var result = '';
 
     for (int i = 0; i < count; i++) {
@@ -44,199 +255,23 @@ class DeclensionTable extends StatelessWidget {
 
     return result;
   }
+}
+
+class TableCellWrapper extends StatelessWidget {
+  final Widget child;
+  final bool isHeader;
+
+  const TableCellWrapper({
+    Key? key,
+    required this.child,
+    this.isHeader = false,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(top: 18, bottom: 18),
-          child: Container(
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey),
-              borderRadius: BorderRadius.circular(5),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Column(
-                  // Column 1
-                  children: [
-                    Container(height: 62),
-                    Container(
-                      child: ExplanationIconCell(
-                        icon: SINGULAR_ICON,
-                        label: AppLocalizations.of(context)!.singular,
-                      ),
-                    ),
-                    Container(
-                      child: ExplanationIconCell(
-                        icon: PLURAL_ICON,
-                        label: AppLocalizations.of(context)!.plural,
-                      ),
-                    ),
-                  ],
-                ),
-                Column(
-                  // Column 2
-                  children: [
-                    Container(
-                      child: Center(
-                        child: ExplanationIconCell(
-                          icon: N.getGenderIcon(Genders.Feminine),
-                          label: AppLocalizations.of(context)!.feminine,
-                        ),
-                      ),
-                    ),
-                    feminineSingular,
-                    femininePlural,
-                  ],
-                ),
-                Column(
-                  // Column 3
-                  children: [
-                    Container(
-                      child: Center(
-                        child: ExplanationIconCell(
-                          icon: N.getGenderIcon(Genders.Masculine),
-                          label: AppLocalizations.of(context)!.masculine,
-                        ),
-                      ),
-                    ),
-                    masculineSingular,
-                    masculinePlural
-                  ],
-                ),
-                Column(
-                  // Column 4
-                  children: [
-                    Container(
-                      child: Center(
-                        child: ExplanationIconCell(
-                          icon: N.getGenderIcon(Genders.Neuter),
-                          label: AppLocalizations.of(context)!.neuter,
-                        ),
-                      ),
-                    ),
-                    neuterSingular,
-                    neuterPlural
-                  ],
-                )
-              ],
-            ),
-          ),
-        ),
-        if (notes != null)
-          ...notes!.map(
-            (note) => Padding(
-              padding: const EdgeInsets.only(bottom: 12),
-              child: Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 8, right: 6),
-                    child: Text(
-                      getAsterix(notes!.indexOf(note) + 1),
-                    ),
-                  ),
-                  Flexible(
-                    child: RichText(
-                      maxLines: 10,
-                      text: TextSpan(
-                        style: TextStyle(
-                            fontSize: 12,
-                            color: N.isDarkTheme(context)
-                                ? Colors.white
-                                : Colors.black),
-                        children: [
-                          TextSpan(text: note, style: DECLINED_LETTER_STYLE)
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        if (showEqualItemNote)
-          Row(
-            children: [
-              Padding(
-                // Little square
-                padding: const EdgeInsets.only(right: 5),
-                child: Container(
-                  width: 13,
-                  height: 13,
-                  decoration: BoxDecoration(
-                    border: Border.all(color: EQUAL_ITEMS_BORDER_COLOR),
-                    borderRadius: BorderRadius.circular(2),
-                  ),
-                ),
-              ),
-              if (additionalEqualItemColor != EQUAL_ITEMS_BORDER_COLOR)
-                Padding(
-                  // Little square 1
-                  padding: const EdgeInsets.only(right: 5),
-                  child: Container(
-                    width: 13,
-                    height: 13,
-                    decoration: BoxDecoration(
-                      border: Border.all(color: additionalEqualItemColor),
-                      borderRadius: BorderRadius.circular(2),
-                    ),
-                  ),
-                ),
-              RichText(
-                text: TextSpan(
-                  style: TextStyle(
-                      fontSize: 12,
-                      color:
-                          N.isDarkTheme(context) ? Colors.white : Colors.black),
-                  children: [
-                    TextSpan(
-                      text: AppLocalizations.of(context)!.equalDeclensions,
-                      style: DECLINED_LETTER_STYLE,
-                    )
-                  ],
-                ),
-              ),
-            ],
-          ),
-        borderedItemNote != ''
-            ? Padding(
-                padding: const EdgeInsets.only(top: 8),
-                child: Row(
-                  children: [
-                    Padding(
-                      // Little square 1
-                      padding: const EdgeInsets.only(right: 5),
-                      child: Container(
-                        width: 13,
-                        height: 13,
-                        decoration: BoxDecoration(
-                          border: Border.all(color: ACCENT_COLOR),
-                          borderRadius: BorderRadius.circular(2),
-                        ),
-                      ),
-                    ),
-                    RichText(
-                      text: TextSpan(
-                        style: TextStyle(
-                            fontSize: 12,
-                            color: N.isDarkTheme(context)
-                                ? Colors.white
-                                : Colors.black),
-                        children: [
-                          TextSpan(
-                              text: borderedItemNote,
-                              style: DECLINED_LETTER_STYLE)
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              )
-            : Container(),
-      ],
+    return TableCell(
+      child: Container(height: this.isHeader ? 60 : 75, child: child),
+      verticalAlignment: TableCellVerticalAlignment.middle,
     );
   }
 }

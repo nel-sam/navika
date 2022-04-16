@@ -1,31 +1,43 @@
 import 'package:flutter/material.dart';
-import 'package:navika/constants.dart';
+import 'package:navika/widgets/grammar/grammar-guide/child-widgets/declension-table.dart';
+import 'package:nrs_flutter_lib/constants.dart';
+import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
 class ExplanationIconCell extends StatelessWidget {
-  final IconData icon;
+  final Widget icon;
   final String label;
+  final bool isHeader;
 
   const ExplanationIconCell({
     Key? key,
     required this.icon,
     required this.label,
+    this.isHeader = false,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(top: 10, bottom: 10),
-      child: Container(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Icon(icon, color: ACCENT_COLOR),
-            Text(
-              label,
-              textAlign: TextAlign.center,
-            ),
-          ],
-        ),
+    final isDarkTheme = Nrs.isDarkTheme(context);
+
+    return TableCellWrapper(
+      isHeader: this.isHeader,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          icon,
+          SizedBox(
+            height: 5,
+          ),
+          Text(
+            label.toUpperCase(),
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                fontSize: FONT_SIZE - 3,
+                color:
+                    isDarkTheme ? Colors.white : Colors.black.withOpacity(0.5)),
+          ),
+        ],
       ),
     );
   }

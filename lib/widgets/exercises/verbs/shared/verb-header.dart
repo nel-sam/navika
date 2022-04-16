@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/verb.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/exercises/verbs/shared/verb-help-guide.dart';
-import 'package:navika/widgets/shared/icon-text-pair.dart';
-import 'package:navika/widgets/shared/navika-text-multi.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:nrs_flutter_lib/constants.dart';
+import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
+import 'package:nrs_flutter_lib/widgets/n_icon_text_pair.dart';
 
 class VerbHeader extends StatelessWidget {
   final Verb verb;
@@ -17,18 +16,6 @@ class VerbHeader extends StatelessWidget {
     required this.verb,
     required this.isAllCorrect,
   }) : super(key: key);
-
-  String getPerfectiveness(
-      BuildContext context, VerbPerfectiveTypes verbPerfectiveType) {
-    switch (verbPerfectiveType) {
-      case VerbPerfectiveTypes.Perfective:
-        return AppLocalizations.of(context)!.perfective;
-      case VerbPerfectiveTypes.Imperfective:
-        return AppLocalizations.of(context)!.imperfective;
-      case VerbPerfectiveTypes.Unspecified:
-        return '';
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,22 +31,32 @@ class VerbHeader extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  isAllCorrect
-                      ? Icon(CORRECT_ANSWER_ICON, color: CORRECT_COLOR)
-                      : Icon(WRONG_ANSWER_ICON, color: WRONG_COLOR),
                   Padding(
                     padding: const EdgeInsets.only(left: 18.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        NTextMulti([
-                          N.NTextSpan(verb.infinitive.toUpperCase(),
-                              isBold: true, fontSize: 16)
-                        ]),
                         Text(
-                          perfectiveness,
-                          style: TextStyle(fontStyle: FontStyle.italic),
+                          perfectiveness.toUpperCase(),
+                          style: Nrs.getTextStyle(
+                              context: context,
+                              isItalic: true,
+                              fontSize: FONT_SIZE - 4),
                         ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 6),
+                          child: Text(
+                            verb.infinitive.toUpperCase(),
+                            style: Nrs.getTextStyle(
+                                context: context,
+                                isBold: true,
+                                fontSize: 16 * 1.3,
+                                color:
+                                    isAllCorrect ? CORRECT_COLOR : Colors.grey),
+                          ),
+                        ),
+                        if (isAllCorrect)
+                          Icon(CORRECT_ANSWER_ICON, color: CORRECT_COLOR)
                       ],
                     ),
                   ),
@@ -70,14 +67,14 @@ class VerbHeader extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              IconTextPair(
+              NIconTextPair(
                 text: translation,
                 icon: Icons.translate,
               ),
               if (this.verb.isIrregular)
-                IconTextPair(
+                NIconTextPair(
                   icon: Icons.error_outline,
-                  text: AppLocalizations.of(context)!.irregular,
+                  text: N.t(context).irregular,
                 ),
             ],
           ),
@@ -85,7 +82,7 @@ class VerbHeader extends StatelessWidget {
             children: [
               IconButton(
                 icon: Icon(Icons.info),
-                color: ACCENT_COLOR,
+                color: Nrs.getPrimaryColor(context),
                 onPressed: () {
                   final dest = VerbHelpGuide(
                     verb: verb,
@@ -105,5 +102,17 @@ class VerbHeader extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  String getPerfectiveness(
+      BuildContext context, VerbPerfectiveTypes verbPerfectiveType) {
+    switch (verbPerfectiveType) {
+      case VerbPerfectiveTypes.Perfective:
+        return N.t(context).perfective;
+      case VerbPerfectiveTypes.Imperfective:
+        return N.t(context).imperfective;
+      case VerbPerfectiveTypes.Unspecified:
+        return '';
+    }
   }
 }
