@@ -8,7 +8,7 @@ const DECLINED_LETTER_STYLE =
     TextStyle(fontStyle: FontStyle.italic, fontWeight: FontWeight.bold);
 const EQUAL_ITEMS_BORDER_COLOR = Colors.amber;
 
-const double EXERCISE_FONT_STYLE = 15;
+const double EXERCISE_FONT_STYLE = 20;
 const EdgeInsets EXERCISE_LIST_PADDING = const EdgeInsets.only(bottom: 10);
 
 const FEMININE_COLOR = Color(0xFFD6308A);

@@ -53,10 +53,7 @@ class CaseExerciseRowCard extends StatelessWidget {
               padding: const EdgeInsets.all(10),
               child: Wrap(
                   crossAxisAlignment: WrapCrossAlignment.center,
-                  children: children
-                      .map((c) =>
-                          Padding(padding: const EdgeInsets.all(3), child: c))
-                      .toList()),
+                  children: children.map((c) => c).toList()),
             ),
           ],
         ),

@@ -1,12 +1,14 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:navika/constants.dart';
 import 'package:nrs_flutter_lib/constants.dart';
 import 'package:nrs_flutter_lib/enums.dart';
 import 'package:nrs_flutter_lib/extensions.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 import 'package:nrs_flutter_lib/widgets/n_answer_status_icon.dart';
 
+// TODO: Move to shared lib
 class NFreeFormEntry extends StatefulWidget {
   final bool isHalfWidth;
   final String hintValue;
@@ -41,45 +43,39 @@ class _NFreeFormEntryState extends State<NFreeFormEntry> {
     var status = getCorrectStatus(widget.state.userInput);
     final border = getBorder(context, status);
     final labelText = status == CorrectStatus.correct ? '' : widget.hintValue;
+    final minWidth =
+        (widget.correctValues[0].length * FONT_SIZE) + (FONT_SIZE * 4);
 
     return Padding(
-      padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-      child: Column(
-        children: [
-          Row(
-            children: [
-              SizedBox(
-                width: widget.isHalfWidth
-                    ? Nrs.getScreenWidth(halfWidth: true, reduction: 90)
-                    : Nrs.getScreenWidth(reduction: 100),
-                child: TextField(
-                  key: widget.key,
-                  controller: _controller,
-                  keyboardType: TextInputType.text,
-                  decoration: InputDecoration(
-                    isDense: true,
-                    contentPadding: const EdgeInsets.fromLTRB(4, 18, 0, 1),
-                    labelText: labelText,
-                    enabledBorder: border,
-                    focusedBorder: border,
-                  ),
-                  onChanged: (String? newVal) {
-                    if (newVal == ' ') newVal = '';
+      padding: const EdgeInsets.all(FONT_SIZE / 2),
+      child: ConstrainedBox(
+        constraints: BoxConstraints(minWidth: minWidth),
+        child: IntrinsicWidth(
+          child: TextField(
+            key: widget.key,
+            controller: _controller,
+            style: TextStyle(fontSize: EXERCISE_FONT_STYLE),
+            keyboardType: TextInputType.text,
+            decoration: InputDecoration(
+              isDense: true,
+              labelText: labelText,
+              enabledBorder: border,
+              focusedBorder: border,
+              suffixIcon: NAnswerStatusIcon(status: status),
+            ),
+            onChanged: (String? newVal) {
+              if (newVal == ' ') newVal = '';
 
-                    if (newVal != null && newVal != '') {
-                      setState(() {
-                        widget.state.userInput = newVal!;
-                        status = getCorrectStatus(widget.state.userInput);
-                        updateState();
-                      });
-                    }
-                  },
-                ),
-              ),
-              NAnswerStatusIcon(status: status),
-            ],
+              if (newVal != null && newVal != '') {
+                setState(() {
+                  widget.state.userInput = newVal!;
+                  status = getCorrectStatus(widget.state.userInput);
+                  updateState();
+                });
+              }
+            },
           ),
-        ],
+        ),
       ),
     );
   }

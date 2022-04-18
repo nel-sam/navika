@@ -4,7 +4,6 @@ import 'package:navika/state/cases/case-question-state.dart';
 import 'package:navika/widgets/exercises/declension/shared/case-exercise-row-card.dart';
 import 'package:navika/widgets/shared/n-free-form-entry.dart';
 import 'package:nrs_flutter_lib/enums.dart';
-import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
 class CaseQuestionContent extends StatelessWidget {
   final CaseQuestionState stateItem;
@@ -20,7 +19,6 @@ class CaseQuestionContent extends StatelessWidget {
         stateItem.combos.adjective!.dictionary != '';
     final bool useNoun = stateItem.combos.noun != null;
     final bool usePersonalPronoun = stateItem.combos.personalPronoun != null;
-    final textFieldWidth = Nrs.getScreenWidth(reduction: 10);
 
     // TODO: Incorporate this into widget
     //  if (multipleCorrect)
@@ -48,12 +46,9 @@ class CaseQuestionContent extends StatelessWidget {
           : stateItem.combos.noun!.getExtraInfo,
       children: [
         if (stateItem.combos.sentenceStarter != '')
-          Container(
-            width: textFieldWidth,
-            child: Text(
-              stateItem.combos.sentenceStarter,
-              style: TextStyle(fontSize: EXERCISE_FONT_STYLE),
-            ),
+          Text(
+            stateItem.combos.sentenceStarter,
+            style: TextStyle(fontSize: EXERCISE_FONT_STYLE),
           ),
         if (usePossPronouns)
           NFreeFormEntry(
@@ -92,12 +87,9 @@ class CaseQuestionContent extends StatelessWidget {
             },
           ),
         if (stateItem.combos.sentenceEnder != '')
-          Container(
-            width: textFieldWidth,
-            child: Text(
-              stateItem.combos.sentenceEnder,
-              style: TextStyle(fontSize: EXERCISE_FONT_STYLE),
-            ),
+          Text(
+            stateItem.combos.sentenceEnder,
+            style: TextStyle(fontSize: EXERCISE_FONT_STYLE),
           ),
       ],
       gender: stateItem.combos.gender,
