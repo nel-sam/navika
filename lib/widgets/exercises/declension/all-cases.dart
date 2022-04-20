@@ -8,13 +8,13 @@ class AllCases extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final title = N.t(context).allCases;
+    final title = N.t('allCases');
 
     return DeclensionTypeMenu(
       title: title,
       caseType: Cases.All,
       imagePath: 'assets/banners/montenegro.jpg',
-      description: N.t(context).allCasesDesc,
+      description: N.t('allCasesDesc'),
     );
   }
 }

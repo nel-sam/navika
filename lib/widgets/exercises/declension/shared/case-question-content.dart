@@ -19,25 +19,11 @@ class CaseQuestionContent extends StatelessWidget {
         ? stateItem.combos.getTrans!(context)
         : '';
 
-    final bool usePossPronouns = stateItem.combos.possPronoun != null;
-    final bool useAdj = stateItem.combos.adjective != null &&
-        stateItem.combos.adjective!.dictionary != '';
-    final bool useNoun = stateItem.combos.noun != null;
-    final bool usePersonalPronoun = stateItem.combos.personalPronoun != null;
-
-    // TODO: Incorporate this into widget
-    //  if (multipleCorrect)
-    //         Row(children: [
-    //           status == CorrectStatus.correct
-    //               ? NTextSpan(
-    //                   '${N.t(context).alsoCorrect}: ${widget.correctValues.join(',')}',
-    //                   textStyle: Nrs.getTextStyle(
-    //                       context: context, fontSize: FONT_SIZE - 3))
-    //               : NTextSpan(
-    //                   '${N.t(context).multipleCorrect}',
-    //                   textStyle: Nrs.getTextStyle(
-    //                       context: context, fontSize: FONT_SIZE - 3))
-    //         ]),
+    // final bool usePossPronouns = stateItem.combos.possPronoun != null;
+    // final bool useAdj = stateItem.combos.adjective != null &&
+    //     stateItem.combos.adjective!.dictionary != '';
+    // final bool useNoun = stateItem.combos.noun != null;
+    // final bool usePersonalPronoun = stateItem.combos.personalPronoun != null;
 
     return CaseExerciseRowCard(
       combos: stateItem.combos,

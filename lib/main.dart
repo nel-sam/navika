@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:localization/localization.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/navika-theme.dart';
@@ -33,7 +34,7 @@ class NavikaApp extends StatelessWidget {
       //debugShowCheckedModeBanner: false,
       title: APP_NAME,
       localizationsDelegates: [
-        AppLocalizations.delegate,
+        LocalJsonLocalization.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,

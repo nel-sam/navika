@@ -12,7 +12,7 @@ class Dativ extends StatelessWidget {
       title: title,
       caseType: Cases.Dat,
       imagePath: 'assets/banners/giving.jpg',
-      description: N.t(context).dativDescription,
+      description: N.t('dativDescription'),
     );
   }
 }

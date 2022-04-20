@@ -12,7 +12,7 @@ class Vokativ extends StatelessWidget {
       title: title,
       caseType: Cases.Vok,
       imagePath: 'assets/banners/woman.jpg',
-      description: N.t(context).vokativDescription,
+      description: N.t('vokativDescription'),
       //youtubeLink: RECOMMENDED_VIDEO_VOK,
     );
   }

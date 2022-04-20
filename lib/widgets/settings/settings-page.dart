@@ -19,7 +19,7 @@ class SettingsPage extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: N.navAppBar(
-        title: N.t(context).settings,
+        title: N.t('settings'),
         context: context,
         showSettingsButton: false,
       ),
@@ -37,8 +37,8 @@ class SettingsPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       SettingsSwitch(
-                        title: N.t(context).useSerbian,
-                        description: N.t(context).useSerbianDesc,
+                        title: N.t('useSerbian'),
+                        description: N.t('useSerbianDesc'),
                         value: settings.dialectType == DialectType.Ekavian,
                         onChanged: (bool isSelected) {
                           if (isSelected)
@@ -49,7 +49,7 @@ class SettingsPage extends StatelessWidget {
                       ),
                       Padding(padding: const EdgeInsets.only(top: FONT_SIZE)),
                       SettingsMenuButton(
-                          title: N.t(context).resetSettings,
+                          title: N.t('resetSettings'),
                           icon: Icons.refresh_outlined,
                           redirectMethod: (context) {
                             model.resetSettings();
@@ -57,7 +57,7 @@ class SettingsPage extends StatelessWidget {
                           }),
                       // TODO: Uncomment once accounts are available
                       // SettingsMenuButton(
-                      //     title: N.t(context).account,
+                      //     title: N.t('account'),
                       //     icon: Icons.account_circle,
                       //     redirectMethod: (context) => AccountPage()),
                     ],

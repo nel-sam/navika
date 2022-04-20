@@ -74,7 +74,7 @@ class VerbHeader extends StatelessWidget {
               if (this.verb.isIrregular)
                 NIconTextPair(
                   icon: Icons.error_outline,
-                  text: N.t(context).irregular,
+                  text: N.t('irregular'),
                 ),
             ],
           ),
@@ -108,9 +108,9 @@ class VerbHeader extends StatelessWidget {
       BuildContext context, VerbPerfectiveTypes verbPerfectiveType) {
     switch (verbPerfectiveType) {
       case VerbPerfectiveTypes.Perfective:
-        return N.t(context).perfective;
+        return N.t('perfective');
       case VerbPerfectiveTypes.Imperfective:
-        return N.t(context).imperfective;
+        return N.t('imperfective');
       case VerbPerfectiveTypes.Unspecified:
         return '';
     }

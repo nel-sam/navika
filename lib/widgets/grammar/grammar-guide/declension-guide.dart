@@ -86,7 +86,7 @@ class _DeclensionGuideState extends State<DeclensionGuide> {
     return Scaffold(
       appBar: N.navAppBar(
         title: SbcLabels.cases,
-        transTitle: N.t(context).cases,
+        transTitle: N.t('cases'),
         context: context,
       ),
       body: Column(
@@ -145,14 +145,14 @@ class _DeclensionGuideState extends State<DeclensionGuide> {
             NFooterButton(
               active: !isAtTop,
               icon: Icons.arrow_upward,
-              text: N.t(context).previous,
+              text: N.t('previous'),
               onPressed: () => moveToPrev(),
             ),
             NFooterButton(
               active: !isAtBottom,
               onPressed: () => moveToNext(),
               icon: Icons.arrow_downward,
-              text: N.t(context).next,
+              text: N.t('next'),
             ),
           ],
         ),

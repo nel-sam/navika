@@ -13,7 +13,7 @@ import 'package:nrs_flutter_lib/widgets/n_menu_header.dart';
 class GrammarMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final transLabel = N.t(context).grammarGuides;
+    final transLabel = N.t('grammarGuides');
     final label = SbcLabels.grammarGuide;
     final icon = NavIcons.grammarGuides;
 
@@ -36,12 +36,12 @@ class GrammarMenu extends StatelessWidget {
                 children: [
                   NMenuButton(
                     destination: DeclensionGuide(dialect: settings.dialectType),
-                    label: N.t(context).cases,
+                    label: N.t('cases'),
                     transLabel: SbcLabels.cases,
                   ),
                   // NMenuButton(
                   //   destination: Tables(),
-                  //   label: N.t(context).justCaseTables,
+                  //   label: N.t('justCaseTables'),
                   //   transLabel: SbcLabels.justTables,
                   // ),
                 ],

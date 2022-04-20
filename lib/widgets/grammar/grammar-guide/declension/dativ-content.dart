@@ -16,7 +16,7 @@ class DativGrammarGuideContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        NTextSpan(N.t(context).dativDescription),
+        NTextSpan(N.t('dativDescription')),
         ExampleSentences(
           sentences: [
             NTextMulti([

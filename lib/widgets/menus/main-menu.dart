@@ -50,22 +50,22 @@ class MainMenu extends StatelessWidget {
               children: [
                 NMenuButton(
                   destination: GrammarMenu(),
-                  label: N.t(context).grammarGuides,
+                  label: N.t('grammarGuides'),
                   transLabel: SbcLabels.grammarGuide,
                 ),
                 NMenuButton(
                   destination: DeclensionMenu(),
-                  label: N.t(context).caseExercises,
+                  label: N.t('caseExercises'),
                   transLabel: SbcLabels.cases,
                 ),
                 NMenuButton(
                   destination: VerbMenu(),
-                  label: N.t(context).verbExercises,
+                  label: N.t('verbExercises'),
                   transLabel: SbcLabels.verbs,
                 ),
                 NMenuButton(
                   destination: CyrillicExercise(),
-                  label: N.t(context).cyrillic,
+                  label: N.t('cyrillic'),
                   transLabel: SbcLabels.cyrillic,
                 ),
               ],

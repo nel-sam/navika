@@ -22,8 +22,7 @@ class LokativGrammarGuideContent extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.only(bottom: FONT_SIZE),
-              child:
-                  NTextMulti([TextSpan(text: N.t(context).lokativDescription)]),
+              child: NTextMulti([TextSpan(text: N.t('lokativDescription'))]),
             ),
             YouTubeLink(RECOMMENDED_VIDEO_LOK)
           ],

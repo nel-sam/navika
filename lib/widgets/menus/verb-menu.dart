@@ -25,7 +25,7 @@ class VerbMenu extends StatelessWidget {
               const AdCard(),
               NMenuHeader(
                 icon: NavIcons.verbs,
-                transLabel: N.t(context).verbs,
+                transLabel: N.t('verbs'),
                 label: SbcLabels.verbs,
               ),
               Expanded(
@@ -36,14 +36,14 @@ class VerbMenu extends StatelessWidget {
                         destination: PresentTense(
                           dialect: settings.dialectType,
                         ),
-                        label: N.t(context).presentTense,
+                        label: N.t('presentTense'),
                         transLabel: 'Sadašnje vrijeme',
                       ),
                       NMenuButton(
                         destination: PastTense(
                           dialect: settings.dialectType,
                         ),
-                        label: N.t(context).pastTense,
+                        label: N.t('pastTense'),
                         transLabel: 'Prošlo vrijeme',
                       ),
                     ],

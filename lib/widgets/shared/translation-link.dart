@@ -32,7 +32,7 @@ class TranslationLink extends StatelessWidget {
               padding: const EdgeInsets.only(right: 8.0),
               child: Icon(Icons.translate),
             ),
-            Text(N.t(context).translate),
+            Text(N.t('translate')),
           ],
         ),
       ),

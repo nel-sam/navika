@@ -14,8 +14,8 @@ class InstrumentalDeclensionTable extends StatelessWidget {
     return DeclensionTable(
       showEqualItemNote: true,
       additionalEqualItemColor: secondEqualColor,
-      notes: [N.t(context).instrumentalFemSing],
-      borderedItemNote: N.t(context).sameAsLok,
+      notes: [N.t('instrumentalFemSing')],
+      borderedItemNote: N.t('sameAsLok'),
       masculineSingular: DeclensionTableCell(
         isEqualItem: true,
         children: [

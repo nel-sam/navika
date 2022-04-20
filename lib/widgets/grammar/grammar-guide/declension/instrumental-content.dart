@@ -23,7 +23,7 @@ class InstrumentalGrammarGuideContent extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(bottom: FONT_SIZE),
               child: NTextMulti(
-                  [TextSpan(text: N.t(context).instrumentalDescription)]),
+                  [TextSpan(text: N.t('instrumentalDescription'))]),
             ),
             YouTubeLink(RECOMMENDED_VIDEO_INST)
           ],

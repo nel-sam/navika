@@ -32,7 +32,7 @@ class DeclensionTypeMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final transLabel = N.t(context).selectExercises;
+    final transLabel = N.t('selectExercises');
     final icon = NavIcons.cases;
     final title = N.getCaseLabel(caseType);
 
@@ -64,7 +64,7 @@ class DeclensionTypeMenu extends StatelessWidget {
                         title: title,
                         exerciseType: ExerciseTypes.case_nouns,
                       ),
-                      label: N.t(context).nouns,
+                      label: N.t('nouns'),
                       transLabel: SbcLabels.nouns,
                     ),
                     NMenuButton(
@@ -75,7 +75,7 @@ class DeclensionTypeMenu extends StatelessWidget {
                         title: title,
                         exerciseType: ExerciseTypes.case_adjectives,
                       ),
-                      label: N.t(context).adjectives,
+                      label: N.t('adjectives'),
                       transLabel: SbcLabels(settings.dialectType).adjectives,
                     ),
                     settings.isPremium
@@ -88,14 +88,14 @@ class DeclensionTypeMenu extends StatelessWidget {
                               exerciseType:
                                   ExerciseTypes.case_nouns_and_adjectives,
                             ),
-                            label: N.t(context).nouns_and_adjectives,
+                            label: N.t('nouns_and_adjectives'),
                             transLabel: SbcLabels(settings.dialectType)
                                 .nounsAndAdjectives,
                           )
                         : NMenuButton(
                             isPremiumLocked: true,
                             destination: AccountPage(),
-                            label: N.t(context).nouns_and_adjectives,
+                            label: N.t('nouns_and_adjectives'),
                             transLabel: SbcLabels(settings.dialectType)
                                 .nounsAndAdjectives,
                           ),

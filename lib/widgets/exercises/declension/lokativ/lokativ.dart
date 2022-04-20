@@ -12,7 +12,7 @@ class Lokativ extends StatelessWidget {
       title: title,
       caseType: Cases.Lok,
       imagePath: 'assets/banners/ladies.jpg',
-      description: N.t(context).lokativDescription,
+      description: N.t('lokativDescription'),
     );
   }
 }

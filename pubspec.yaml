@@ -8,7 +8,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  # To generate, run: flutter gen-l10n
+
   flutter_localizations:
     sdk: flutter
   localization: ^2.1.0
@@ -37,6 +37,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/banners/
+    - lib/i18n/
 
 flutter_intl:
   enabled: true

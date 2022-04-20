@@ -19,7 +19,7 @@ class DialectSettingPage extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: N.navAppBar(
-        title: N.t(context).appTitle,
+        title: N.t('appTitle'),
         context: context,
         showSettingsButton: false,
       ),
@@ -37,20 +37,20 @@ class DialectSettingPage extends StatelessWidget {
                       padding: const EdgeInsets.all(FONT_SIZE),
                       child: Column(children: [
                         Text(
-                          N.t(context).dialectTitle,
+                          N.t('dialectTitle'),
                           style: TextStyle(fontSize: FONT_SIZE * 2.5),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(
                               top: FONT_SIZE, bottom: FONT_SIZE),
-                          child: Text(N.t(context).dialectDesc,
+                          child: Text(N.t('dialectDesc'),
                               style: TextStyle(
                                   fontSize: FONT_SIZE,
                                   color: Colors.grey,
                                   fontWeight: FontWeight.bold)),
                         ),
                         NRoundButton(
-                            title: N.t(context).serbian,
+                            title: N.t('serbian'),
                             onPressed: () {
                               model.setDialectType(DialectType.Ekavian);
                               model.setBoolSetting(
@@ -62,7 +62,7 @@ class DialectSettingPage extends StatelessWidget {
                               );
                             }),
                         NRoundButton(
-                            title: N.t(context).nonSerbian,
+                            title: N.t('nonSerbian'),
                             onPressed: () {
                               model.setDialectType(DialectType.Ijekavian);
                               model.setBoolSetting(
@@ -74,7 +74,7 @@ class DialectSettingPage extends StatelessWidget {
                               );
                             }),
                         NTextLink(
-                            title: N.t(context).skip,
+                            title: N.t('skip'),
                             onPressed: () {
                               model.setDialectType(DialectType.Ijekavian);
                               model.setBoolSetting(

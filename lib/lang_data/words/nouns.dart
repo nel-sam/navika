@@ -26,7 +26,7 @@ class NounBankGeneral {
     instrumental:
         new DeclensionByCount(singular: ['ananasom'], plural: ['ananasima']),
   );
-  static final Noun Francuska = Noun(
+  static final Noun francuska = Noun(
     dictionary: 'Francuska',
     tags: [Tags.Location, Tags.Country],
     gender: Genders.Feminine,
@@ -39,7 +39,7 @@ class NounBankGeneral {
     vokativ: new DeclensionByCount(singular: ['Francuska'], plural: ['']),
     instrumental: new DeclensionByCount(singular: ['Francuskom'], plural: ['']),
   );
-  static final Noun Bosna = Noun(
+  static final Noun bosna = Noun(
     dictionary: 'Bosna',
     tags: [Tags.Location, Tags.Country],
     gender: Genders.Feminine,
@@ -52,7 +52,7 @@ class NounBankGeneral {
     vokativ: new DeclensionByCount(singular: ['Bosno'], plural: ['']),
     instrumental: new DeclensionByCount(singular: ['Bosnom'], plural: ['']),
   );
-  static final Noun Srbija = Noun(
+  static final Noun srbija = Noun(
     dictionary: 'Srbija',
     tags: [Tags.Location, Tags.Country],
     gender: Genders.Feminine,
@@ -124,7 +124,7 @@ class NounBankGeneral {
   );
   static final Noun bratBraca = Noun(
     dictionary: 'brat/braća',
-    getExtraInfo: (BuildContext context) => N.t(context).extrainfo_brat,
+    getExtraInfo: (BuildContext context) => N.t('extrainfo_brat'),
     tags: [Tags.Human, Tags.Adult],
     gender: Genders.Masculine,
     isAnimate: true,

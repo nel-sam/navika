@@ -91,7 +91,7 @@ class CaseSentencePart {
 class PANCombo {
   // String sentenceStarter;
   // String sentenceEnder;
-  String Function(BuildContext)? getTrans; // TODO: Display on UI
+  String Function(BuildContext)? getTrans;
 
   Noun? noun;
   late List<String> correctNouns;

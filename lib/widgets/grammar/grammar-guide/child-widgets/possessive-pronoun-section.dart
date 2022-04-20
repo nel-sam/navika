@@ -15,9 +15,7 @@ class PossessivePronounSection extends StatelessWidget {
     return Container(
       child: Column(
         children: [
-          Row(
-            children: [NSubHeader(N.t(context).personalPronouns)],
-          ),
+          Row(children: [NSubHeader(N.t('personalPronouns'))]),
           ...contents
         ],
       ),

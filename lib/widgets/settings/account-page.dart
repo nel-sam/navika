@@ -14,7 +14,7 @@ class AccountPage extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: N.navAppBar(
-        title: N.t(context).account,
+        title: N.t('account'),
         context: context,
         showSettingsButton: false,
       ),
@@ -32,8 +32,8 @@ class AccountPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       SettingsSwitch(
-                        title: N.t(context).isPremium,
-                        description: N.t(context).isPremiumDesc,
+                        title: N.t('isPremium'),
+                        description: N.t('isPremiumDesc'),
                         value: settings.isPremium,
                         onChanged: (newVal) => {
                           model.setBoolSetting(SettingsKeys.isPremium, newVal)

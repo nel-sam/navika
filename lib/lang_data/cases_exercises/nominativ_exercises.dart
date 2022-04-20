@@ -22,8 +22,7 @@ class NominativExercises {
             //noun: isSerbian ? NounsEkavian.avion : NounsIjekavian.zrakoplov,
             gender: Genders.Masculine,
             isPlural: false,
-            getTrans: (context) =>
-                N.t(context).ex_toJeStariAvionKojiImaDvaKrila,
+            getTrans: (context) => N.t('ex_toJeStariAvionKojiImaDvaKrila'),
             sentenceParts: [
               CaseSentencePart(
                 isCorrectable: true,

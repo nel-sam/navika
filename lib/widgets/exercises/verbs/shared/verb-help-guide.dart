@@ -47,7 +47,7 @@ class VerbHelpGuide extends StatelessWidget {
                   if (this.verb.isIrregular)
                     NIconTextPair(
                       icon: Icons.error_outline,
-                      text: N.t(context).irregular,
+                      text: N.t('irregular'),
                     ),
                 ],
               ),
@@ -64,7 +64,7 @@ class VerbHelpGuide extends StatelessWidget {
   Widget getFutureTenseChart(BuildContext context) {
     return Column(
       children: [
-        NSubHeader(N.t(context).futureTense),
+        NSubHeader(N.t('futureTense')),
         Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
@@ -85,7 +85,7 @@ class VerbHelpGuide extends StatelessWidget {
 
     return Column(
       children: [
-        NSubHeader(N.t(context).pastTense),
+        NSubHeader(N.t('pastTense')),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
@@ -95,7 +95,7 @@ class VerbHelpGuide extends StatelessWidget {
                 alignment: MainAxisAlignment.end,
                 icon: MASCULINE_ICON,
                 color: MASCULINE_COLOR,
-                text: N.t(context).masculine,
+                text: N.t('masculine'),
               ),
             ),
             Container(
@@ -125,7 +125,7 @@ class VerbHelpGuide extends StatelessWidget {
                   alignment: MainAxisAlignment.end,
                   icon: FEMININE_ICON,
                   color: FEMININE_COLOR,
-                  text: N.t(context).feminine,
+                  text: N.t('feminine'),
                 ),
               ),
               Container(
@@ -156,7 +156,7 @@ class VerbHelpGuide extends StatelessWidget {
                   alignment: MainAxisAlignment.end,
                   icon: NEUTER_ICON,
                   color: NEUTER_COLOR,
-                  text: N.t(context).neuter,
+                  text: N.t('neuter'),
                 ),
               ),
               Container(
@@ -179,7 +179,7 @@ class VerbHelpGuide extends StatelessWidget {
   Widget getPresentTenseChart(BuildContext context) {
     return Column(
       children: [
-        NSubHeader(N.t(context).presentTense),
+        NSubHeader(N.t('presentTense')),
         Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [

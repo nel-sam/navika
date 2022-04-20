@@ -55,7 +55,7 @@ class _InfoBannerState extends State<InfoBanner> {
                       ),
                     ),
                     NTextSpan(
-                      N.t(context).expand_for_more,
+                      N.t('expand_for_more'),
                       textStyle:
                           Nrs.getTextStyle(context: context, fontSize: 12),
                     )

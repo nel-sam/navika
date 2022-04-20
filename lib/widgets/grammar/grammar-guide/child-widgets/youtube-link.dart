@@ -44,7 +44,7 @@ class YouTubeLink extends StatelessWidget {
                 padding: const EdgeInsets.only(right: FONT_SIZE / 2),
                 child: Icon(playIcon),
               ),
-              Text(N.t(context).recommendedVideo.toUpperCase()),
+              Text(N.t('recommendedVideo').toUpperCase()),
             ],
           ),
         ),

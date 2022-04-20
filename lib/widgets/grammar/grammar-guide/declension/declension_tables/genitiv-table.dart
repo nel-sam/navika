@@ -10,9 +10,9 @@ class GenitivDeclensionTable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DeclensionTable(
-      notes: [N.t(context).softLettersOgEg],
+      notes: [N.t('softLettersOgEg')],
       showEqualItemNote: true,
-      borderedItemNote: N.t(context).sameAsAkuz,
+      borderedItemNote: N.t('sameAsAkuz'),
       masculineSingular: DeclensionTableCell(
         isEqualItem: true,
         children: [

@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:localization/localization.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
@@ -104,37 +104,37 @@ class N {
   static String getGenderString(BuildContext context, Genders gender) {
     switch (gender) {
       case Genders.Masculine:
-        return N.t(context).masculine;
+        return N.t('masculine');
       case Genders.Feminine:
-        return N.t(context).feminine;
+        return N.t('feminine');
       case Genders.Neuter:
       case Genders.Unspecific:
-        return N.t(context).neuter;
+        return N.t('neuter');
     }
   }
 
   static String getPronounLabel(PronounEnum pronoun, context) {
     switch (pronoun) {
       case PronounEnum.I:
-        return N.t(context).pronouns_I;
+        return N.t('pronouns_I');
       case PronounEnum.You:
-        return N.t(context).pronouns_You;
+        return N.t('pronouns_You');
       case PronounEnum.He:
-        return N.t(context).pronouns_He;
+        return N.t('pronouns_He');
       case PronounEnum.She:
-        return N.t(context).pronouns_She;
+        return N.t('pronouns_She');
       case PronounEnum.We:
-        return N.t(context).pronouns_We;
+        return N.t('pronouns_We');
       case PronounEnum.You_Plural:
-        return N.t(context).pronouns_You_Pl;
+        return N.t('pronouns_You_Pl');
       case PronounEnum.They_Ungendered:
-        return N.t(context).pronouns_They;
+        return N.t('pronouns_They');
       case PronounEnum.They_Masc:
-        return N.t(context).pronouns_They_Mas;
+        return N.t('pronouns_They_Mas');
       case PronounEnum.They_Fem:
-        return N.t(context).pronouns_They_Fem;
+        return N.t('pronouns_They_Fem');
       case PronounEnum.Oneself:
-        return N.t(context).pronouns_oneself;
+        return N.t('pronouns_oneself');
     }
   }
 
@@ -165,7 +165,7 @@ class N {
         actions: [if (showSettingsButton) SettingsButton()]);
   }
 
-  static AppLocalizations t(BuildContext context) {
-    return AppLocalizations.of(context)!;
+  static String t(String key, {List<String> inserts = const []}) {
+    return key.i18n(inserts);
   }
 }

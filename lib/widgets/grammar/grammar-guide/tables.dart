@@ -45,7 +45,7 @@
 //     return Scaffold(
 //       appBar: N.navAppBar(
 //         title: SbcLabels.justTables,
-//         transTitle: N.t(context).justCaseTables,
+//         transTitle: N.t('justCaseTables'),
 //         context: context,
 //       ),
 //       body: SingleChildScrollView(

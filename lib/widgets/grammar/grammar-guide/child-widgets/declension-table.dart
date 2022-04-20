@@ -80,25 +80,25 @@ class DeclensionTable extends StatelessWidget {
                     isHeader: true,
                     icon: Icon(N.getGenderIcon(Genders.Feminine),
                         color: FEMININE_COLOR),
-                    label: N.t(context).feminine,
+                    label: N.t('feminine'),
                   ),
                   ExplanationIconCell(
                     isHeader: true,
                     icon: Icon(N.getGenderIcon(Genders.Masculine),
                         color: MASCULINE_COLOR),
-                    label: N.t(context).masculine,
+                    label: N.t('masculine'),
                   ),
                   ExplanationIconCell(
                     isHeader: true,
                     icon: Icon(N.getGenderIcon(Genders.Neuter),
                         color: NEUTER_COLOR),
-                    label: N.t(context).neuter,
+                    label: N.t('neuter'),
                   ),
                 ]),
                 TableRow(children: [
                   ExplanationIconCell(
                     icon: CountIcon(),
-                    label: N.t(context).singular,
+                    label: N.t('singular'),
                   ),
                   TableCellWrapper(child: feminineSingular),
                   TableCellWrapper(child: masculineSingular),
@@ -119,7 +119,7 @@ class DeclensionTable extends StatelessWidget {
                         )
                       ],
                     ),
-                    label: N.t(context).plural,
+                    label: N.t('plural'),
                   ),
                   TableCellWrapper(child: femininePlural),
                   TableCellWrapper(child: masculinePlural),
@@ -197,7 +197,7 @@ class DeclensionTable extends StatelessWidget {
                             : Colors.black),
                     children: [
                       TextSpan(
-                        text: N.t(context).equalDeclensions,
+                        text: N.t('equalDeclensions'),
                         style: DECLINED_LETTER_STYLE,
                       )
                     ],

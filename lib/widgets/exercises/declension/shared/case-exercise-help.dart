@@ -121,7 +121,7 @@ class CaseExerciseHelp extends StatelessWidget {
 
     return Column(
       children: [
-        NSubHeader(N.t(context).correctAnswer),
+        NSubHeader(N.t('correctAnswer')),
         // TODO: DO this
         NTextMulti([
           // if (combo.sentenceStarter != '')
@@ -227,7 +227,7 @@ class CaseExerciseHelp extends StatelessWidget {
                       height: topRowHeight,
                       child: ExplanationIconCell(
                         icon: Icon(SINGULAR_ICON, color: Colors.grey),
-                        label: N.t(context).singular,
+                        label: N.t('singular'),
                       ),
                     ),
                     Container(
@@ -270,7 +270,7 @@ class CaseExerciseHelp extends StatelessWidget {
                       height: topRowHeight,
                       child: ExplanationIconCell(
                         icon: Icon(PLURAL_ICON, color: Colors.grey),
-                        label: N.t(context).plural,
+                        label: N.t('plural'),
                       ),
                     ),
                     Container(

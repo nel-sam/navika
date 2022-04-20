@@ -10,10 +10,11 @@ class Nominativ extends StatelessWidget {
     final title = N.getCaseLabel(Cases.Nom);
 
     return CaseExercise(
-        title: title,
-        caseType: Cases.Nom,
-        imagePath: 'assets/banners/seaside_city.jpg',
-        youtubeLink: RECOMMENDED_VIDEO_NOM,
-        description: N.t(context).nominativDescription);
+      title: title,
+      caseType: Cases.Nom,
+      imagePath: 'assets/banners/seaside_city.jpg',
+      youtubeLink: RECOMMENDED_VIDEO_NOM,
+      description: N.t('nominativDescription'),
+    );
   }
 }

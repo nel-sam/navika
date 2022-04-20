@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:navika/models/enums.dart';
+import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/example-sentences.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/possessive-pronoun-section.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/pronoun-line.dart';
@@ -8,7 +9,6 @@ import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 import 'package:nrs_flutter_lib/widgets/n_sub_header.dart';
 import 'package:nrs_flutter_lib/widgets/n_text_multi.dart';
 import 'package:nrs_flutter_lib/widgets/n_text_span.dart';
-import 'package:navika/utilities/navika-helpers.dart';
 
 class GenitivGrammarGuideContent extends StatelessWidget {
   const GenitivGrammarGuideContent({Key? key}) : super(key: key);
@@ -17,10 +17,10 @@ class GenitivGrammarGuideContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        NTextSpan(N.t(context).genitiveDescription),
+        NTextSpan(N.t('genitiveDescription')),
         ExampleSentences(
           sentences: [
-            NSubHeader(N.t(context).exampleSentences),
+            NSubHeader(N.t('exampleSentences')),
             NTextMulti([
               TextSpan(text: 'Kraj '),
               TextSpan(

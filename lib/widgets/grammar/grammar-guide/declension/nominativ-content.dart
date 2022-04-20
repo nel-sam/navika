@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
+import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/example-sentences.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/possessive-pronoun-section.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/pronoun-line.dart';
@@ -9,7 +10,6 @@ import 'package:navika/widgets/grammar/grammar-guide/declension/declension_table
 import 'package:nrs_flutter_lib/constants.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 import 'package:nrs_flutter_lib/widgets/n_text_multi.dart';
-import 'package:navika/utilities/navika-helpers.dart';
 
 class NominativGrammarGuideContent extends StatelessWidget {
   final DialectType dialect;
@@ -29,8 +29,7 @@ class NominativGrammarGuideContent extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.only(bottom: FONT_SIZE),
-              child: NTextMulti(
-                  [TextSpan(text: N.t(context).nominativDescription)]),
+              child: NTextMulti([TextSpan(text: N.t('nominativDescription'))]),
             ),
             YouTubeLink(RECOMMENDED_VIDEO_NOM)
           ],

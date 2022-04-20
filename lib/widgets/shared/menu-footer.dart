@@ -27,7 +27,7 @@ class MenuFooter extends StatelessWidget {
           //HomeButtonWrapper(isActive: activeIndex == 0),
           NFooterButton(
             active: activeIndex == 1,
-            text: N.t(context).grammar,
+            text: N.t('grammar'),
             icon: NavIcons.grammarGuides,
             onPressed: () {
               Navigator.push(
@@ -42,7 +42,7 @@ class MenuFooter extends StatelessWidget {
           ),
           NFooterButton(
             active: activeIndex == 2,
-            text: N.t(context).cases,
+            text: N.t('cases'),
             icon: NavIcons.cases,
             onPressed: () {
               Navigator.push(
@@ -55,7 +55,7 @@ class MenuFooter extends StatelessWidget {
           ),
           NFooterButton(
             active: activeIndex == 3,
-            text: N.t(context).verbs,
+            text: N.t('verbs'),
             icon: NavIcons.verbs,
             onPressed: () {
               Navigator.push(
@@ -68,7 +68,7 @@ class MenuFooter extends StatelessWidget {
           ),
           NFooterButtonTextIcon(
             active: activeIndex == 4,
-            text: N.t(context).cyrillic,
+            text: N.t('cyrillic'),
             iconText: NavIcons.cyrillic,
             onPressed: () {
               Navigator.push(

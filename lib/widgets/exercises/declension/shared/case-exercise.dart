@@ -93,7 +93,7 @@ class CaseExercise extends StatelessWidget {
                       navNotifier.shuffleAndClear();
                     },
                     icon: Icons.refresh_outlined,
-                    text: N.t(context).refresh,
+                    text: N.t('refresh'),
                   ),
                   HomeButtonWrapper(),
                   NFooterButton(
@@ -109,7 +109,7 @@ class CaseExercise extends StatelessWidget {
                       );
                     },
                     icon: Icons.help_center_outlined,
-                    text: N.t(context).grammar,
+                    text: N.t('grammar'),
                   ),
                 ]),
               ],

@@ -11,11 +11,11 @@ class DativLokativDeclensionTable extends StatelessWidget {
   Widget build(BuildContext context) {
     return DeclensionTable(
       notes: [
-        N.t(context).assibilation,
-        N.t(context).softLettersOmEm,
+        N.t('assibilation'),
+        N.t('softLettersOmEm'),
       ],
       showEqualItemNote: true,
-      borderedItemNote: N.t(context).sameAsInst,
+      borderedItemNote: N.t('sameAsInst'),
       masculineSingular: DeclensionTableCell(
         isEqualItem: true,
         children: [

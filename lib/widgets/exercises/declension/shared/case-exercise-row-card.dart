@@ -87,7 +87,7 @@ class CaseExerciseRowCardHeader extends StatelessWidget {
         children: [
           NIconTextPair(
             icon: isPlural ? PLURAL_ICON : SINGULAR_ICON,
-            text: isPlural ? N.t(context).plural : N.t(context).singular,
+            text: isPlural ? N.t('plural') : N.t('singular'),
           ),
           NIconTextPair(
             icon: N.getGenderIcon(this.gender),
@@ -96,7 +96,7 @@ class CaseExerciseRowCardHeader extends StatelessWidget {
           if (isAnimate)
             NIconTextPair(
               icon: Icons.person,
-              text: N.t(context).animate,
+              text: N.t('animate'),
             ),
           IconButton(
               onPressed: () {

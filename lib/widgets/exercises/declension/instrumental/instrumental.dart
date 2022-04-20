@@ -13,7 +13,7 @@ class Instrumental extends StatelessWidget {
       title: title,
       caseType: Cases.Ins,
       imagePath: 'assets/banners/vespa.jpg',
-      description: N.t(context).instrumentalDescription,
+      description: N.t('instrumentalDescription'),
       youtubeLink: RECOMMENDED_VIDEO_INST,
     );
   }

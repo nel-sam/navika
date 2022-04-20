@@ -15,14 +15,14 @@ class PastTense extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final title = N.t(context).pastTense;
+    final title = N.t('pastTense');
 
     return VerbExercise(
       title: title,
       dialect: dialect,
       tense: VerbTenses.PastPerfect,
       imagePath: 'assets/banners/bosna.jpg',
-      description: N.t(context).pastTenseDesc,
+      description: N.t('pastTenseDesc'),
       youtubeLink: RECOMMENDED_VIDEO_PAST_SIMPLE,
     );
   }
