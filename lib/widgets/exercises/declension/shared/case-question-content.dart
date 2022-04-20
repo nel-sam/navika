@@ -57,7 +57,6 @@ class _CaseQuestionContentState extends State<CaseQuestionContent> {
             );
           }
 
-          //widget.stateItem.updateUserInput(e.grammarType.name, '', false);
           final currentVal = widget.stateItem.getUserInput(e.grammarType.name);
 
           return NFreeFormEntry(

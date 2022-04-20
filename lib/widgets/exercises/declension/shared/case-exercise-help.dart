@@ -44,19 +44,19 @@ class CaseExerciseHelp extends StatelessWidget {
                       context,
                       combos.possPronoun!,
                       combos.caseType,
-                      combos.noun!.isAnimate,
+                      combos.noun.isAnimate,
                     ),
                   if (combos.adjective != null)
                     getAdjDeclensionTable(
                       context,
                       combos.adjective!,
                       combos.caseType,
-                      combos.noun!.isAnimate,
+                      combos.noun.isAnimate,
                     ),
                   if (combos.noun != null)
                     getNounList(
                       context,
-                      combos.noun!,
+                      combos.noun,
                       combos.caseType,
                       combos.isPlural,
                     ),
@@ -122,38 +122,15 @@ class CaseExerciseHelp extends StatelessWidget {
     return Column(
       children: [
         NSubHeader(N.t('correctAnswer')),
-        // TODO: DO this
-        NTextMulti([
-          // if (combo.sentenceStarter != '')
-          //   TextSpan(text: '${combo.sentenceStarter} '),
-          // if (combo.possPronoun != null)
-          //   TextSpan(
-          //     text:
-          //         '${combo.possPronoun!.getDeclensions(combos.gender, combos.isPlural, combos.caseType, combos.noun!.isAnimate).join(joinChar)} ',
-          //     style: Nrs.getTextStyle(context: context, isBold: true),
-          //   ),
-          // if (combo.adjective != null)
-          //   TextSpan(
-          //     text:
-          //         '${combo.adjective!.getDeclensions(combos.gender, combos.isPlural, combos.caseType, combos.noun!.isAnimate).join(joinChar)} ',
-          //     style: Nrs.getTextStyle(context: context, isBold: true),
-          //   ),
-          // if (combo.noun != null)
-          //   TextSpan(
-          //     text:
-          //         '${combo.noun!.getDeclensions(combos.isPlural, combos.caseType).join(joinChar)}',
-          //     style: Nrs.getTextStyle(context: context, isBold: true),
-          //   ),
-          // if (combo.personalPronoun != null)
-          //   TextSpan(
-          //     text:
-          //         '${combo.personalPronoun!.getDeclensions(combos.caseType).join(joinChar)}',
-          //     style: Nrs.getTextStyle(context: context, isBold: true),
-          //   ),
-          // if (combo.sentenceEnder != '')
-          //   TextSpan(text: ' ${combo.sentenceEnder}'),
-        ]),
-        //TranslationLink(sentence: sentence),
+        NTextMulti(combo.sentenceParts.map<TextSpan>((CaseSentencePart e) {
+          if (!e.isCorrectable) return TextSpan(text: '${e.displayValue} ');
+
+          return TextSpan(
+            text: '${e.correctValues.join(joinChar)}',
+            style: Nrs.getTextStyle(context: context, isBold: true),
+          );
+        }).toList()),
+        NSubHeader(combo.getTrans!())
       ],
     );
   }

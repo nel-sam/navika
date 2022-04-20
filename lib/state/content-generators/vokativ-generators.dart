@@ -1,12 +1,9 @@
-import 'package:navika/lang_data/sentence_bank_generator.dart';
 import 'package:navika/models/adjective.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/models/noun.dart';
 import 'package:navika/models/personal-pronoun.dart';
 import 'package:navika/state/cases/case-question-state.dart';
-import 'package:navika/state/content-generators/pan-generator.dart';
-import 'package:navika/utilities/navika-helpers.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
 class VokativGenerators {
@@ -17,19 +14,19 @@ class VokativGenerators {
   ) {
     PANCombo? c;
 
-    while (c == null || N.containsCaseQuestionState(toAvoid, c)) {
-      c = PanGenerator.getPANCombos(
-        caseType: Cases.Vok,
-        dialect: dialect,
-        bank: SentenceBankGenerator(dialect: dialect)
-            .sentencesBankData
-            .includeOnlyNounsByTags([Tags.Human]),
-        getPersonalPronounSentenceStaticParts:
-            getPersonalPronounSentenceStaticParts,
-        getStaticSentenceParts: getStaticSentenceParts,
-      );
-    }
-    return CaseQuestionState(combos: c);
+    // while (c == null || N.containsCaseQuestionState(toAvoid, c)) {
+    //   c = PanGenerator.getPANCombos(
+    //     caseType: Cases.Vok,
+    //     dialect: dialect,
+    //     bank: SentenceBankGenerator(dialect: dialect)
+    //         .sentencesBankData
+    //         .includeOnlyNounsByTags([Tags.Human]),
+    //     getPersonalPronounSentenceStaticParts:
+    //         getPersonalPronounSentenceStaticParts,
+    //     getStaticSentenceParts: getStaticSentenceParts,
+    //   );
+    // }
+    return CaseQuestionState(combos: c!);
   }
 
   static StaticSentenceParts getPersonalPronounSentenceStaticParts(

@@ -28,7 +28,7 @@
   "trans_otici_na_rucak": "Es possible ir a almorzar mañana?",
   "trans_ne_koristi_mnogo": "El cirílico no se usa much en Croacia",
 
-  "ex_toJeStariAvionKojiImaDvaKrila": "Eso avión viejo tiene dos hélices",
+  "ex_taj_stari_avion_ima_dva_krila": "Ese avión viejo tiene dos hélices",
 
   "extrainfo_brat": "Braća se usa para hablar de various hermanos. Braća se refiere a hombres pero tiene declinaciones como si fuera sustantivo femenino en singular.",
 
@@ -108,10 +108,10 @@
   "correctAnswer": "Repuesta correcta",
   "translate": "Traducir",
   "pastTense": "Pasado Simple",
-  "pastTenseDesc" : "El pasado simple indica algo que ya ha ocurrido. Se forma combinando el verbo conjugado 'biti' y la forma verbal de participio de acuerdo al género y la cantidad. Por ejemplo, 'Ja sam bio'. Para más información, puedes ver el video recomendado.",
+  "pastTenseDesc": "El pasado simple indica algo que ya ha ocurrido. Se forma combinando el verbo conjugado 'biti' y la forma verbal de participio de acuerdo al género y la cantidad. Por ejemplo, 'Ja sam bio'. Para más información, puedes ver el video recomendado.",
   "presentTense": "El Presente",
   "presentTenseDesc": "Los verbos se pueden clasificar por verbos perfectivos y verbos imperfectivos. Verbos perfectivos indican algo completo (Yo hice = uradio sam). Verbos imperfectivos indican un proceso (Yo estaba trabajando/haciendo = radio sam)",
-  "futureTense" : "El Futuro",
+  "futureTense": "El Futuro",
   "clear": "Clear",
   "expand_for_more": "Expandir para más info",
   "multipleCorrect": "Hay más de una repuesta correcta",

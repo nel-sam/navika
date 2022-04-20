@@ -31,7 +31,6 @@ class DialectSettingPage extends StatelessWidget {
               future: model.getAllSettings(),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.done) {
-                  // TODO: Add text to lang files
                   return Center(
                     child: Padding(
                       padding: const EdgeInsets.all(FONT_SIZE),

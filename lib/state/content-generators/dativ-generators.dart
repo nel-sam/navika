@@ -17,18 +17,18 @@ class DativGenerators {
   ) {
     PANCombo? c;
 
-    while (c == null || N.containsCaseQuestionState(toAvoid, c)) {
-      c = PanGenerator.getPANCombos(
-        caseType: Cases.Dat,
-        dialect: dialect,
-        bank: SentenceBankGenerator(dialect: dialect).sentencesBankData,
-        getPersonalPronounSentenceStaticParts:
-            getPersonalPronounSentenceStaticParts,
-        getStaticSentenceParts: getStaticSentenceParts,
-      );
-    }
+    // while (c == null || N.containsCaseQuestionState(toAvoid, c)) {
+    //   c = PanGenerator.getPANCombos(
+    //     caseType: Cases.Dat,
+    //     dialect: dialect,
+    //     bank: SentenceBankGenerator(dialect: dialect).sentencesBankData,
+    //     getPersonalPronounSentenceStaticParts:
+    //         getPersonalPronounSentenceStaticParts,
+    //     getStaticSentenceParts: getStaticSentenceParts,
+    //   );
+    // }
 
-    return CaseQuestionState(combos: c);
+    return CaseQuestionState(combos: c!);
   }
 
   static StaticSentenceParts getPersonalPronounSentenceStaticParts(

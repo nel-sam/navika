@@ -6,6 +6,28 @@ import 'package:nrs_flutter_lib/enums.dart';
 
 import 'enums.dart';
 
+class CaseSentencePart {
+  final bool isCorrectable;
+  String displayValue;
+  GrammarTypes grammarType;
+  List<String> correctValues;
+
+  CaseSentencePart({
+    required this.displayValue,
+    this.grammarType = GrammarTypes.noun,
+    this.correctValues = const [],
+    this.isCorrectable = false,
+  });
+
+  //   hintValue: stateItem.combos.adjective!.dictionary,
+  //   initialValue: stateItem.userAdjResponse,
+  //   correctValues: stateItem.combos.correctAdjectives,
+  //   onChanged: (String newVal) {
+  //     handleOnChange(GrammarTypes.adjective, newVal);
+  //   },
+  // ),
+}
+
 class Declension {
   final DeclensionByGender masculine;
   late DeclensionByGender? feminine;
@@ -66,102 +88,22 @@ class DeclensionPronoun {
   });
 }
 
-class CaseSentencePart {
-  final bool isCorrectable;
-  String displayValue;
-  GrammarTypes grammarType;
-  List<String> correctValues;
-
-  CaseSentencePart({
-    required this.displayValue,
-    this.grammarType = GrammarTypes.noun,
-    this.correctValues = const [],
-    this.isCorrectable = false,
-  });
-
-  //   hintValue: stateItem.combos.adjective!.dictionary,
-  //   initialValue: stateItem.userAdjResponse,
-  //   correctValues: stateItem.combos.correctAdjectives,
-  //   onChanged: (String newVal) {
-  //     handleOnChange(GrammarTypes.adjective, newVal);
-  //   },
-  // ),
-}
-
 class PANCombo {
-  // String sentenceStarter;
-  // String sentenceEnder;
-  String Function(BuildContext)? getTrans;
-
-  Noun? noun;
-  late List<String> correctNouns;
-  late String initialNounDropDownValue;
-
-  Adjective? possPronoun;
-  late List<String> correctPossPronouns;
-  late String initialPossPronDropDownValue;
-
-  Adjective? adjective;
-  late List<String> correctAdjectives;
-  late String initialAdjDropDownValue;
-
-  PersonalPronoun? personalPronoun;
-  late List<String> correctPersonalPronouns;
-  late String initialPersonalPronDropDownValue;
-
+  String Function()? getTrans;
   final List<CaseSentencePart> sentenceParts;
-  bool usePersonalPronounShortForm;
-  Cases caseType;
-  Genders gender;
-  bool isPlural;
+  final Cases caseType;
+  final Genders gender;
+  final bool isPlural;
+  final Noun noun;
 
   PANCombo({
-    // required this.sentenceStarter,
-    // this.sentenceEnder = '',
-    this.noun,
-    this.possPronoun,
-    this.adjective,
-    this.personalPronoun,
+    required this.noun,
     this.getTrans,
     required this.caseType,
     required this.gender,
     required this.isPlural,
     required this.sentenceParts,
-    this.usePersonalPronounShortForm = false,
-  }) {
-    this.correctNouns =
-        this.noun == null ? [] : this.noun!.getDeclensions(isPlural, caseType);
-
-    this.initialNounDropDownValue =
-        this.noun == null ? '' : this.noun!.getDropDownInitial(caseType);
-
-    this.correctAdjectives = this.adjective == null
-        ? []
-        : this
-            .adjective!
-            .getDeclensions(gender, isPlural, caseType, noun!.isAnimate);
-
-    this.initialAdjDropDownValue = this.adjective == null
-        ? ''
-        : this.adjective!.getDropDownInitial(caseType);
-
-    this.correctPossPronouns = this.possPronoun == null
-        ? []
-        : this
-            .possPronoun!
-            .getDeclensions(gender, isPlural, caseType, noun!.isAnimate);
-
-    this.initialPossPronDropDownValue = this.possPronoun == null
-        ? ''
-        : this.possPronoun!.getDropDownInitial(caseType);
-
-    this.correctPersonalPronouns = this.personalPronoun == null
-        ? []
-        : this.personalPronoun!.getDeclensions(caseType);
-    this.initialPersonalPronDropDownValue = this.personalPronoun == null
-        ? ''
-        : this.personalPronoun!.getDropDownInitial(caseType);
-  }
+  });
 }
 
 class SentenceBank {

@@ -4,33 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:localization/localization.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
-import 'package:navika/models/models.dart';
 import 'package:navika/widgets/shared/settings-button.dart';
 import 'package:nrs_flutter_lib/constants.dart';
 import 'package:nrs_flutter_lib/enums.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
 class N {
-  static bool containsCaseQuestionState(List list, PANCombo item) {
-    if (list.isEmpty) return false;
-
-    for (int i = 0; i < list.length; i++) {
-      var testItem = list[i].combos;
-
-      if (testItem.noun?.dictionary.toString() == item.noun?.dictionary &&
-          testItem.personalPronoun?.nominativ.forms[0].toString() ==
-              item.personalPronoun?.nominativ.forms[0] &&
-          testItem.possPronoun?.dictionary.toString() ==
-              item.possPronoun?.dictionary &&
-          testItem.adjective?.dictionary.toString() ==
-              item.adjective?.dictionary) {
-        return true;
-      }
-    }
-
-    return false;
-  }
-
   static TextSpan declensionExampleTextSpan(
     String text, {
     Color color = Colors.transparent,

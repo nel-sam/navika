@@ -15,14 +15,14 @@ class NominativExercises {
     this.isSerbian = dialect == DialectType.Ekavian;
   }
 
+// TODO: Figure out how/when to use personal pronoun short/long forms
   List<PANCombo> get level1 => [
         PANCombo(
             caseType: caseType,
-            //adjective: AdjectiveBankGeneral.star,
-            //noun: isSerbian ? NounsEkavian.avion : NounsIjekavian.zrakoplov,
             gender: Genders.Masculine,
             isPlural: false,
-            getTrans: (context) => N.t('ex_toJeStariAvionKojiImaDvaKrila'),
+            getTrans: () => N.t('ex_taj_stari_avion_ima_dva_krila'),
+            noun: isSerbian ? NounsEkavian.avion : NounsIjekavian.zrakoplov,
             sentenceParts: [
               CaseSentencePart(
                 isCorrectable: true,
