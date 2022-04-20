@@ -2,8 +2,23 @@ import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/models/noun.dart';
 
-final List<Noun> nounsEkavian = [
-  Noun(
+class NounsEkavian {
+  static final Noun avion = Noun(
+    dictionary: 'avion',
+    tags: [Tags.Vehicle],
+    gender: Genders.Masculine,
+    isAnimate: false,
+    nominativ: new DeclensionByCount(singular: ['avion'], plural: ['avioni']),
+    genitiv: new DeclensionByCount(singular: ['aviona'], plural: ['aviona']),
+    dativ: new DeclensionByCount(singular: ['avionu'], plural: ['avionima']),
+    akuzativ: new DeclensionByCount(singular: ['avion'], plural: ['avione']),
+    lokativ: new DeclensionByCount(singular: ['avionu'], plural: ['avionima']),
+    vokativ: new DeclensionByCount(singular: ['avione'], plural: ['avioni']),
+    instrumental:
+        new DeclensionByCount(singular: ['avionom'], plural: ['avionima']),
+  );
+
+  static final Noun devojka = Noun(
     dictionary: 'devojka',
     tags: [Tags.Human],
     gender: Genders.Feminine,
@@ -18,8 +33,8 @@ final List<Noun> nounsEkavian = [
     vokativ: new DeclensionByCount(singular: ['devojko'], plural: ['devojke']),
     instrumental:
         new DeclensionByCount(singular: ['devojkom'], plural: ['devojkama']),
-  ),
-  Noun(
+  );
+  static final Noun leto = Noun(
     dictionary: 'leto',
     tags: [Tags.Season, Tags.Weather],
     gender: Genders.Neuter,
@@ -32,5 +47,5 @@ final List<Noun> nounsEkavian = [
     vokativ: new DeclensionByCount(singular: ['leto'], plural: ['leta']),
     instrumental:
         new DeclensionByCount(singular: ['letom'], plural: ['letima']),
-  ),
-];
+  );
+}

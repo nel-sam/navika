@@ -1,6 +1,8 @@
+import 'package:flutter/material.dart';
 import 'package:navika/models/adjective.dart';
 import 'package:navika/models/noun.dart';
 import 'package:navika/models/personal-pronoun.dart';
+import 'package:nrs_flutter_lib/enums.dart';
 
 import 'enums.dart';
 
@@ -64,9 +66,32 @@ class DeclensionPronoun {
   });
 }
 
+class CaseSentencePart {
+  final bool isCorrectable;
+  String displayValue;
+  GrammarTypes grammarType;
+  List<String> correctValues;
+
+  CaseSentencePart({
+    required this.displayValue,
+    this.grammarType = GrammarTypes.noun,
+    this.correctValues = const [],
+    this.isCorrectable = false,
+  });
+
+  //   hintValue: stateItem.combos.adjective!.dictionary,
+  //   initialValue: stateItem.userAdjResponse,
+  //   correctValues: stateItem.combos.correctAdjectives,
+  //   onChanged: (String newVal) {
+  //     handleOnChange(GrammarTypes.adjective, newVal);
+  //   },
+  // ),
+}
+
 class PANCombo {
-  String sentenceStarter;
-  String sentenceEnder;
+  // String sentenceStarter;
+  // String sentenceEnder;
+  String Function(BuildContext)? getTrans; // TODO: Display on UI
 
   Noun? noun;
   late List<String> correctNouns;
@@ -84,21 +109,24 @@ class PANCombo {
   late List<String> correctPersonalPronouns;
   late String initialPersonalPronDropDownValue;
 
+  final List<CaseSentencePart> sentenceParts;
   bool usePersonalPronounShortForm;
   Cases caseType;
   Genders gender;
   bool isPlural;
 
   PANCombo({
-    required this.sentenceStarter,
-    this.sentenceEnder = '',
+    // required this.sentenceStarter,
+    // this.sentenceEnder = '',
     this.noun,
     this.possPronoun,
     this.adjective,
     this.personalPronoun,
+    this.getTrans,
     required this.caseType,
     required this.gender,
     required this.isPlural,
+    required this.sentenceParts,
     this.usePersonalPronounShortForm = false,
   }) {
     this.correctNouns =
@@ -136,15 +164,8 @@ class PANCombo {
   }
 }
 
-class StaticSentenceParts {
-  final String start;
-  final String end;
-
-  StaticSentenceParts({this.start = '', this.end = ''});
-}
-
 class SentenceBank {
-  final  nouns;
+  final nouns;
   final List<Adjective> adjectives;
   final List<Adjective> possessivePronouns;
   final List<PersonalPronoun> personalPronouns;
@@ -221,4 +242,11 @@ class SentenceBank {
 
     return contains;
   }
+}
+
+class StaticSentenceParts {
+  final String start;
+  final String end;
+
+  StaticSentenceParts({this.start = '', this.end = ''});
 }

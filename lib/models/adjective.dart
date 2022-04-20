@@ -4,7 +4,7 @@ import 'package:nrs_flutter_lib/extensions.dart';
 
 class Adjective {
   final String dictionary;
-  late Declension? nominativ;
+   Declension? nominativ;
   late Declension? akuzativ;
   late Declension akuzativAnimate;
   late Declension? instrumental;

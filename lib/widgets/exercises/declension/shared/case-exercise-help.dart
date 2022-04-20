@@ -9,7 +9,6 @@ import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/declension-table-cell.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/declension-table.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/explanation-icon-cell.dart';
-import 'package:navika/widgets/shared/translation-link.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 import 'package:nrs_flutter_lib/widgets/n_sub_header.dart';
 import 'package:nrs_flutter_lib/widgets/n_text_multi.dart';
@@ -118,42 +117,43 @@ class CaseExerciseHelp extends StatelessWidget {
   }
 
   getCorrectSentence(BuildContext context, PANCombo combo) {
-    String sentence = getSentenceAsString(combo);
+    //String sentence = getSentenceAsString(combo);
 
     return Column(
       children: [
         NSubHeader(N.t(context).correctAnswer),
+        // TODO: DO this
         NTextMulti([
-          if (combo.sentenceStarter != '')
-            TextSpan(text: '${combo.sentenceStarter} '),
-          if (combo.possPronoun != null)
-            TextSpan(
-              text:
-                  '${combo.possPronoun!.getDeclensions(combos.gender, combos.isPlural, combos.caseType, combos.noun!.isAnimate).join(joinChar)} ',
-              style: Nrs.getTextStyle(context: context, isBold: true),
-            ),
-          if (combo.adjective != null)
-            TextSpan(
-              text:
-                  '${combo.adjective!.getDeclensions(combos.gender, combos.isPlural, combos.caseType, combos.noun!.isAnimate).join(joinChar)} ',
-              style: Nrs.getTextStyle(context: context, isBold: true),
-            ),
-          if (combo.noun != null)
-            TextSpan(
-              text:
-                  '${combo.noun!.getDeclensions(combos.isPlural, combos.caseType).join(joinChar)}',
-              style: Nrs.getTextStyle(context: context, isBold: true),
-            ),
-          if (combo.personalPronoun != null)
-            TextSpan(
-              text:
-                  '${combo.personalPronoun!.getDeclensions(combos.caseType).join(joinChar)}',
-              style: Nrs.getTextStyle(context: context, isBold: true),
-            ),
-          if (combo.sentenceEnder != '')
-            TextSpan(text: ' ${combo.sentenceEnder}'),
+          // if (combo.sentenceStarter != '')
+          //   TextSpan(text: '${combo.sentenceStarter} '),
+          // if (combo.possPronoun != null)
+          //   TextSpan(
+          //     text:
+          //         '${combo.possPronoun!.getDeclensions(combos.gender, combos.isPlural, combos.caseType, combos.noun!.isAnimate).join(joinChar)} ',
+          //     style: Nrs.getTextStyle(context: context, isBold: true),
+          //   ),
+          // if (combo.adjective != null)
+          //   TextSpan(
+          //     text:
+          //         '${combo.adjective!.getDeclensions(combos.gender, combos.isPlural, combos.caseType, combos.noun!.isAnimate).join(joinChar)} ',
+          //     style: Nrs.getTextStyle(context: context, isBold: true),
+          //   ),
+          // if (combo.noun != null)
+          //   TextSpan(
+          //     text:
+          //         '${combo.noun!.getDeclensions(combos.isPlural, combos.caseType).join(joinChar)}',
+          //     style: Nrs.getTextStyle(context: context, isBold: true),
+          //   ),
+          // if (combo.personalPronoun != null)
+          //   TextSpan(
+          //     text:
+          //         '${combo.personalPronoun!.getDeclensions(combos.caseType).join(joinChar)}',
+          //     style: Nrs.getTextStyle(context: context, isBold: true),
+          //   ),
+          // if (combo.sentenceEnder != '')
+          //   TextSpan(text: ' ${combo.sentenceEnder}'),
         ]),
-        TranslationLink(sentence: sentence),
+        //TranslationLink(sentence: sentence),
       ],
     );
   }
@@ -340,18 +340,18 @@ class CaseExerciseHelp extends StatelessWidget {
     );
   }
 
-  String getSentenceAsString(PANCombo combo) {
-    String sentence = '${combo.sentenceStarter} ';
+  // String getSentenceAsString(PANCombo combo) {
+  //   String sentence = '${combo.sentenceStarter} ';
 
-    if (combo.possPronoun != null)
-      sentence += '${combo.correctPossPronouns[0]} ';
-    if (combo.adjective != null) sentence += '${combo.correctAdjectives[0]} ';
-    if (combo.noun != null) sentence += '${combo.correctNouns[0]} ';
-    if (combo.personalPronoun != null)
-      sentence += '${combo.correctPersonalPronouns[0]} ';
-    sentence += combo.sentenceEnder;
-    return sentence;
-  }
+  //   if (combo.possPronoun != null)
+  //     sentence += '${combo.correctPossPronouns[0]} ';
+  //   if (combo.adjective != null) sentence += '${combo.correctAdjectives[0]} ';
+  //   if (combo.noun != null) sentence += '${combo.correctNouns[0]} ';
+  //   if (combo.personalPronoun != null)
+  //     sentence += '${combo.correctPersonalPronouns[0]} ';
+  //   sentence += combo.sentenceEnder;
+  //   return sentence;
+  // }
 
   DeclensionTableCell getTableCell(List<String> declensions, bool highlight) {
     return DeclensionTableCell(

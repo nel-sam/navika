@@ -10,22 +10,8 @@ import 'package:navika/utilities/navika-helpers.dart';
   ),
 */
 
-final List<Noun> nounBankGeneral = [
-  Noun(
-    dictionary: 'avion',
-    tags: [Tags.Vehicle],
-    gender: Genders.Masculine,
-    isAnimate: false,
-    nominativ: new DeclensionByCount(singular: ['avion'], plural: ['avioni']),
-    genitiv: new DeclensionByCount(singular: ['aviona'], plural: ['aviona']),
-    dativ: new DeclensionByCount(singular: ['avionu'], plural: ['avionima']),
-    akuzativ: new DeclensionByCount(singular: ['avion'], plural: ['avione']),
-    lokativ: new DeclensionByCount(singular: ['avionu'], plural: ['avionima']),
-    vokativ: new DeclensionByCount(singular: ['avione'], plural: ['avioni']),
-    instrumental:
-        new DeclensionByCount(singular: ['avionom'], plural: ['avionima']),
-  ),
-  Noun(
+class NounBankGeneral {
+  static final Noun ananas = Noun(
     dictionary: 'ananas',
     tags: [Tags.Food, Tags.Portable],
     gender: Genders.Masculine,
@@ -39,8 +25,8 @@ final List<Noun> nounBankGeneral = [
     vokativ: new DeclensionByCount(singular: ['ananase'], plural: ['ananasi']),
     instrumental:
         new DeclensionByCount(singular: ['ananasom'], plural: ['ananasima']),
-  ),
-  Noun(
+  );
+  static final Noun Francuska = Noun(
     dictionary: 'Francuska',
     tags: [Tags.Location, Tags.Country],
     gender: Genders.Feminine,
@@ -52,8 +38,8 @@ final List<Noun> nounBankGeneral = [
     lokativ: new DeclensionByCount(singular: ['Francuskoj'], plural: ['']),
     vokativ: new DeclensionByCount(singular: ['Francuska'], plural: ['']),
     instrumental: new DeclensionByCount(singular: ['Francuskom'], plural: ['']),
-  ),
-  Noun(
+  );
+  static final Noun Bosna = Noun(
     dictionary: 'Bosna',
     tags: [Tags.Location, Tags.Country],
     gender: Genders.Feminine,
@@ -65,8 +51,8 @@ final List<Noun> nounBankGeneral = [
     lokativ: new DeclensionByCount(singular: ['Bosni'], plural: ['']),
     vokativ: new DeclensionByCount(singular: ['Bosno'], plural: ['']),
     instrumental: new DeclensionByCount(singular: ['Bosnom'], plural: ['']),
-  ),
-  Noun(
+  );
+  static final Noun Srbija = Noun(
     dictionary: 'Srbija',
     tags: [Tags.Location, Tags.Country],
     gender: Genders.Feminine,
@@ -79,8 +65,8 @@ final List<Noun> nounBankGeneral = [
     vokativ:
         new DeclensionByCount(singular: ['Srbijo', 'Srbija'], plural: ['']),
     instrumental: new DeclensionByCount(singular: ['Srbijom'], plural: ['']),
-  ),
-  Noun(
+  );
+  static final Noun lice = Noun(
     dictionary: 'lice',
     tags: [Tags.BodyPart],
     gender: Genders.Neuter,
@@ -93,8 +79,8 @@ final List<Noun> nounBankGeneral = [
     vokativ: new DeclensionByCount(singular: ['lice'], plural: ['lica']),
     instrumental:
         new DeclensionByCount(singular: ['licem'], plural: ['licima']),
-  ),
-  Noun(
+  );
+  static final Noun stol = Noun(
     dictionary: 'stol',
     tags: [Tags.FlatSurface, Tags.Furniture, Tags.Portable],
     gender: Genders.Masculine,
@@ -107,8 +93,8 @@ final List<Noun> nounBankGeneral = [
     dativ: new DeclensionByCount(singular: ['stolu'], plural: ['stolovima']),
     genitiv: new DeclensionByCount(singular: ['stola'], plural: ['stolova']),
     vokativ: new DeclensionByCount(singular: ['stole'], plural: ['stolovi']),
-  ),
-  Noun(
+  );
+  static final Noun zena = Noun(
     dictionary: 'žena',
     tags: [Tags.Human, Tags.Adult],
     gender: Genders.Feminine,
@@ -121,8 +107,8 @@ final List<Noun> nounBankGeneral = [
     dativ: new DeclensionByCount(singular: ['ženi'], plural: ['ženama']),
     genitiv: new DeclensionByCount(singular: ['žene'], plural: ['žena']),
     vokativ: new DeclensionByCount(singular: ['ženo'], plural: ['žene']),
-  ),
-  Noun(
+  );
+  static final Noun sestra = Noun(
     dictionary: 'sestra',
     tags: [Tags.Human, Tags.Adult],
     gender: Genders.Feminine,
@@ -135,8 +121,8 @@ final List<Noun> nounBankGeneral = [
     dativ: new DeclensionByCount(singular: ['sestri'], plural: ['sestrama']),
     genitiv: new DeclensionByCount(singular: ['sestre'], plural: ['sestara']),
     vokativ: new DeclensionByCount(singular: ['sestro'], plural: ['sestre']),
-  ),
-  Noun(
+  );
+  static final Noun bratBraca = Noun(
     dictionary: 'brat/braća',
     getExtraInfo: (BuildContext context) => N.t(context).extrainfo_brat,
     tags: [Tags.Human, Tags.Adult],
@@ -150,8 +136,8 @@ final List<Noun> nounBankGeneral = [
     dativ: new DeclensionByCount(singular: ['bratu'], plural: ['braći']),
     genitiv: new DeclensionByCount(singular: ['brata'], plural: ['braće']),
     vokativ: new DeclensionByCount(singular: ['brate'], plural: ['braćo']),
-  ),
-  Noun(
+  );
+  static final Noun muskarac = Noun(
     dictionary: 'muškarac',
     tags: [Tags.Human, Tags.Adult],
     gender: Genders.Masculine,
@@ -170,8 +156,8 @@ final List<Noun> nounBankGeneral = [
         new DeclensionByCount(singular: ['muškarca'], plural: ['muškaraca']),
     vokativ:
         new DeclensionByCount(singular: ['muškarče'], plural: ['muškarci']),
-  ),
-  Noun(
+  );
+  static final Noun otac = Noun(
     dictionary: 'otac',
     tags: [Tags.Human, Tags.Adult],
     gender: Genders.Masculine,
@@ -184,8 +170,8 @@ final List<Noun> nounBankGeneral = [
     dativ: new DeclensionByCount(singular: ['ocu'], plural: ['očevima']),
     genitiv: new DeclensionByCount(singular: ['oca'], plural: ['očeva']),
     vokativ: new DeclensionByCount(singular: ['oče'], plural: ['očevi']),
-  ),
-  Noun(
+  );
+  static final Noun sin = Noun(
     dictionary: 'sin',
     tags: [Tags.Human],
     gender: Genders.Masculine,
@@ -198,8 +184,8 @@ final List<Noun> nounBankGeneral = [
     vokativ: new DeclensionByCount(singular: ['sine'], plural: ['sinovi']),
     instrumental:
         new DeclensionByCount(singular: ['sinom'], plural: ['sinovima']),
-  ),
-  Noun(
+  );
+  static final Noun ljubav = Noun(
     dictionary: 'ljubav',
     tags: [Tags.Emotion],
     gender: Genders.Feminine,
@@ -213,8 +199,8 @@ final List<Noun> nounBankGeneral = [
     dativ: new DeclensionByCount(singular: ['ljubavi'], plural: ['ljubavima']),
     genitiv: new DeclensionByCount(singular: ['ljubavi'], plural: ['ljubavi']),
     vokativ: new DeclensionByCount(singular: ['ljubavi'], plural: ['ljubavi']),
-  ),
-  Noun(
+  );
+  static final Noun telefon = Noun(
     dictionary: 'telefon',
     tags: [Tags.Portable, Tags.Thing],
     gender: Genders.Masculine,
@@ -232,8 +218,8 @@ final List<Noun> nounBankGeneral = [
     genitiv:
         new DeclensionByCount(singular: ['telefona'], plural: ['telefona']),
     vokativ: new DeclensionByCount(singular: [''], plural: ['']),
-  ),
-  Noun(
+  );
+  static final Noun knjiga = Noun(
     dictionary: 'knjiga',
     tags: [Tags.Portable, Tags.Thing],
     gender: Genders.Feminine,
@@ -246,8 +232,8 @@ final List<Noun> nounBankGeneral = [
     vokativ: new DeclensionByCount(singular: ['knjigo'], plural: ['knjige']),
     instrumental:
         new DeclensionByCount(singular: ['knjigom'], plural: ['knjigama']),
-  ),
-  Noun(
+  );
+  static final Noun proljece = Noun(
     dictionary: 'proljeće',
     tags: [Tags.Season, Tags.Weather],
     gender: Genders.Neuter,
@@ -266,8 +252,8 @@ final List<Noun> nounBankGeneral = [
         new DeclensionByCount(singular: ['proljeće'], plural: ['proljeća']),
     instrumental:
         new DeclensionByCount(singular: ['proljećem'], plural: ['proljećima']),
-  ),
-  Noun(
+  );
+  static final Noun jesen = Noun(
     dictionary: 'jesen',
     tags: [Tags.Season, Tags.Weather],
     gender: Genders.Feminine,
@@ -280,8 +266,8 @@ final List<Noun> nounBankGeneral = [
     vokativ: new DeclensionByCount(singular: ['jeseni'], plural: ['jesenima']),
     instrumental:
         new DeclensionByCount(singular: ['jeseni'], plural: ['jesenima']),
-  ),
-  Noun(
+  );
+  static final Noun zima = Noun(
     dictionary: 'zima',
     tags: [Tags.Season, Tags.Weather],
     gender: Genders.Feminine,
@@ -294,8 +280,8 @@ final List<Noun> nounBankGeneral = [
     vokativ: new DeclensionByCount(singular: ['zimo'], plural: ['zime']),
     instrumental:
         new DeclensionByCount(singular: ['zimom'], plural: ['zimama']),
-  ),
-  Noun(
+  );
+  static final Noun bolnica = Noun(
     dictionary: 'bolnica',
     tags: [Tags.Location, Tags.WorkPlace],
     gender: Genders.Feminine,
@@ -310,8 +296,8 @@ final List<Noun> nounBankGeneral = [
     vokativ: new DeclensionByCount(singular: ['bolnico'], plural: ['bolnice']),
     instrumental:
         new DeclensionByCount(singular: ['bolnicom'], plural: ['bolnicama']),
-  ),
-  Noun(
+  );
+  static final Noun krevet = Noun(
     dictionary: 'krevet',
     tags: [Tags.FlatSurface, Tags.Furniture, Tags.Thing],
     gender: Genders.Masculine,
@@ -325,8 +311,8 @@ final List<Noun> nounBankGeneral = [
     vokativ: new DeclensionByCount(singular: ['krevete'], plural: ['kreveti']),
     instrumental:
         new DeclensionByCount(singular: ['krevetom'], plural: ['krevetima']),
-  ),
-  Noun(
+  );
+  static final Noun pas = Noun(
     dictionary: 'pas',
     tags: [Tags.Animal, Tags.Pet, Tags.Portable],
     gender: Genders.Masculine,
@@ -338,8 +324,8 @@ final List<Noun> nounBankGeneral = [
     lokativ: new DeclensionByCount(singular: ['psu'], plural: ['psima']),
     vokativ: new DeclensionByCount(singular: ['psu'], plural: ['psi']),
     instrumental: new DeclensionByCount(singular: ['psom'], plural: ['psima']),
-  ),
-  Noun(
+  );
+  static final Noun gitara = Noun(
     dictionary: 'gitara',
     tags: [Tags.Instrument, Tags.Thing, Tags.Portable],
     gender: Genders.Feminine,
@@ -352,8 +338,8 @@ final List<Noun> nounBankGeneral = [
     vokativ: new DeclensionByCount(singular: ['gitaro'], plural: ['gitare']),
     instrumental:
         new DeclensionByCount(singular: ['gitarom'], plural: ['gitarama']),
-  ),
-  Noun(
+  );
+  static final Noun pivo = Noun(
     dictionary: 'pivo',
     tags: [Tags.Drink, Tags.Alcohol, Tags.Thing, Tags.Portable],
     gender: Genders.Neuter,
@@ -366,8 +352,8 @@ final List<Noun> nounBankGeneral = [
     vokativ: new DeclensionByCount(singular: ['pivo'], plural: ['piva']),
     instrumental:
         new DeclensionByCount(singular: ['pivom'], plural: ['pivima']),
-  ),
-  Noun(
+  );
+  static final Noun bolest = Noun(
     dictionary: 'bolest',
     tags: [Tags.Health],
     gender: Genders.Feminine,
@@ -381,8 +367,8 @@ final List<Noun> nounBankGeneral = [
     vokativ: new DeclensionByCount(singular: ['bolesti'], plural: ['bolesti']),
     instrumental:
         new DeclensionByCount(singular: ['bolesti'], plural: ['bolestima']),
-  ),
-  Noun(
+  );
+  static final Noun bicikl = Noun(
     dictionary: 'bicikl',
     tags: [Tags.Vehicle, Tags.Portable, Tags.Thing],
     gender: Genders.Masculine,
@@ -396,8 +382,8 @@ final List<Noun> nounBankGeneral = [
     vokativ: new DeclensionByCount(singular: ['bicikle'], plural: ['bicikli']),
     instrumental:
         new DeclensionByCount(singular: ['biciklom'], plural: ['biciklima']),
-  ),
-  Noun(
+  );
+  static final Noun obitelj = Noun(
     dictionary: 'obitelj',
     tags: [Tags.Human, Tags.Group],
     gender: Genders.Feminine,
@@ -416,7 +402,5 @@ final List<Noun> nounBankGeneral = [
         new DeclensionByCount(singular: ['obitelji'], plural: ['obitelji']),
     instrumental: new DeclensionByCount(
         singular: ['obitelji', 'obitelju'], plural: ['obitelju']),
-  ),
-];
-// .where((e) => e.dictionary.contains('brat'))
-// .toList();
+  );
+}

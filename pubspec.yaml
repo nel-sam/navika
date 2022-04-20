@@ -11,7 +11,8 @@ dependencies:
   # To generate, run: flutter gen-l10n
   flutter_localizations:
     sdk: flutter
-  intl: ^0.17.0
+  localization: ^2.1.0
+  #intl: ^0.17.0
 
   cupertino_icons: ^1.0.2
   google_mobile_ads: ^1.0.1

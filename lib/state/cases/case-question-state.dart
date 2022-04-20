@@ -1,13 +1,17 @@
+import 'dart:collection';
+
 import 'package:navika/models/models.dart';
-import 'package:nrs_flutter_lib/extensions.dart';
 
 class CaseQuestionState {
   PANCombo combos;
+  late bool isCorrect;
+  HashMap _userResponseCorrectStatus = new HashMap<String, bool>();
+
+  // TODO: Remove below
   late String userNounResponse;
   late String userPossPronResponse;
   late String userAdjResponse;
   late String userPersonalPronounResponse;
-  late bool isCorrect;
 
   CaseQuestionState({required this.combos}) {
     userNounResponse = '';
@@ -25,6 +29,7 @@ class CaseQuestionState {
     _setIsCorrect();
   }
 
+  // TODO: Deprecated
   updateAdj(String newValue) {
     userAdjResponse = newValue;
     _setIsCorrect();
@@ -45,24 +50,14 @@ class CaseQuestionState {
     _setIsCorrect();
   }
 
-  bool _isCorrectSingle(List<String> acceptedAnswers, String? actualAnswer) {
-    if (acceptedAnswers.length == 0 ||
-        (acceptedAnswers.length == 0 && actualAnswer == '')) {
-      return true;
-    }
-
-    return acceptedAnswers.containsCaseInsensitive(actualAnswer ?? "");
+  // TODO: Only use this going forward
+  updateUserInput(String key, bool isCorrect) {
+    _userResponseCorrectStatus[key] = isCorrect;
+    _setIsCorrect();
   }
 
   void _setIsCorrect() {
-    final pos =
-        _isCorrectSingle(this.combos.correctPossPronouns, userPossPronResponse);
-    final adj =
-        _isCorrectSingle(this.combos.correctAdjectives, userAdjResponse);
-    final noun = _isCorrectSingle(this.combos.correctNouns, userNounResponse);
-    final persPron = _isCorrectSingle(
-        this.combos.correctPersonalPronouns, userPersonalPronounResponse);
-
-    isCorrect = pos && adj && noun && persPron;
+    isCorrect = _userResponseCorrectStatus.length > 0 &&
+        !_userResponseCorrectStatus.values.contains(false);
   }
 }

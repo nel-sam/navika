@@ -2,8 +2,29 @@ import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/models/noun.dart';
 
-final List<Noun> nounsIjekavian = [
-  Noun(
+class NounsIjekavian {
+  static final Noun zrakoplov = Noun(
+    dictionary: 'zrakoplov',
+    tags: [Tags.Vehicle],
+    gender: Genders.Masculine,
+    isAnimate: false,
+    nominativ:
+        new DeclensionByCount(singular: ['zrakoplov'], plural: ['zrakoplovi']),
+    genitiv:
+        new DeclensionByCount(singular: ['zrakoplova'], plural: ['zrakoplova']),
+    dativ: new DeclensionByCount(
+        singular: ['zrakoplovu'], plural: ['zrakoplovima']),
+    akuzativ:
+        new DeclensionByCount(singular: ['zrakoplov'], plural: ['zrakoplove']),
+    lokativ: new DeclensionByCount(
+        singular: ['zrakoplovu'], plural: ['zrakoplovima']),
+    vokativ:
+        new DeclensionByCount(singular: ['zrakoplove'], plural: ['zrakoplovi']),
+    instrumental: new DeclensionByCount(
+        singular: ['zrakoplovom'], plural: ['zrakoplovima']),
+  );
+
+  static final Noun djevojka = Noun(
     dictionary: 'djevojka',
     tags: [Tags.Human],
     gender: Genders.Feminine,
@@ -22,8 +43,8 @@ final List<Noun> nounsIjekavian = [
         new DeclensionByCount(singular: ['djevojko'], plural: ['djevojke']),
     instrumental:
         new DeclensionByCount(singular: ['djevojkom'], plural: ['djevojkama']),
-  ),
-  Noun(
+  );
+  static final Noun ljeto = Noun(
     dictionary: 'ljeto',
     tags: [Tags.Season, Tags.Weather],
     gender: Genders.Neuter,
@@ -36,5 +57,5 @@ final List<Noun> nounsIjekavian = [
     vokativ: new DeclensionByCount(singular: ['ljeto'], plural: ['ljeta']),
     instrumental:
         new DeclensionByCount(singular: ['ljetom'], plural: ['ljetima']),
-  ),
-];
+  );
+}

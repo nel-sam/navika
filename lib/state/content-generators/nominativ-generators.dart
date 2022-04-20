@@ -1,11 +1,10 @@
-import 'package:navika/lang_data/sentence_bank_generator.dart';
+import 'package:navika/lang_data/cases_exercises/nominativ_exercises.dart';
 import 'package:navika/models/adjective.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/models/noun.dart';
 import 'package:navika/models/personal-pronoun.dart';
 import 'package:navika/state/cases/case-question-state.dart';
-import 'package:navika/state/content-generators/pan-generator.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
@@ -15,24 +14,11 @@ class NominativGenerators {
     ExerciseTypes exerciseType,
     DialectType dialect,
   ) {
-    PANCombo? c;
-
     // TODO: Make sentences and all data static
     // TODO: generate exercises based on ExerciseType
-    while (c == null || N.containsCaseQuestionState(toAvoid, c)) {
-      c = PanGenerator.getPANCombos(
-        caseType: Cases.Nom,
-        dialect: dialect,
-        bank: SentenceBankGenerator(dialect: dialect)
-            .sentencesBankData
-            .excludePronoun('svoj'),
-        getPersonalPronounSentenceStaticParts:
-            getPersonalPronounSentenceStaticParts,
-        getStaticSentenceParts: getStaticSentenceParts,
-      );
-    }
+    final PANCombo combo = NominativExercises(dialect).level1.first;
 
-    return CaseQuestionState(combos: c);
+    return CaseQuestionState(combos: combo);
   }
 
   static StaticSentenceParts getPersonalPronounSentenceStaticParts(

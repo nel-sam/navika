@@ -2,8 +2,8 @@ import 'package:navika/models/adjective.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 
-final List<Adjective> adjectiveBankGeneral = [
-  Adjective(
+class AdjectiveBankGeneral {
+  static final Adjective velik = Adjective(
     dictionary: 'velik',
     toAvoid: [Tags.Season],
     nominativ: new Declension(
@@ -49,8 +49,8 @@ final List<Adjective> adjectiveBankGeneral = [
       feminine: new DeclensionByGender(singular: [''], plural: ['']),
       neuter: new DeclensionByGender(singular: [''], plural: ['']),
     ),
-  ),
-  Adjective(
+  );
+  static final Adjective nov = Adjective(
     dictionary: 'nov',
     toAvoid: [Tags.Season],
     nominativ: new Declension(
@@ -91,8 +91,8 @@ final List<Adjective> adjectiveBankGeneral = [
       feminine: new DeclensionByGender(singular: ['nova'], plural: ['nove']),
       neuter: new DeclensionByGender(singular: ['novo'], plural: ['nova']),
     ),
-  ),
-  Adjective(
+  );
+  static final Adjective star = Adjective(
     dictionary: 'star',
     toAvoid: [Tags.Season],
     nominativ: new Declension(
@@ -135,8 +135,8 @@ final List<Adjective> adjectiveBankGeneral = [
       feminine: new DeclensionByGender(singular: ['stara'], plural: ['stare']),
       neuter: new DeclensionByGender(singular: ['staro'], plural: ['stara']),
     ),
-  ),
-  Adjective(
+  );
+  static final Adjective hladan = Adjective(
     dictionary: 'hladan',
     toAvoid: [Tags.Human, Tags.Animal],
     nominativ: new Declension(
@@ -177,8 +177,8 @@ final List<Adjective> adjectiveBankGeneral = [
       neuter:
           new DeclensionByGender(singular: ['hladnog'], plural: ['hladnih']),
     ),
-  ),
-  Adjective(
+  );
+  static final Adjective vruc = Adjective(
     dictionary: 'vruć',
     toAvoid: [Tags.Human, Tags.Animal],
     nominativ: new Declension(
@@ -211,8 +211,8 @@ final List<Adjective> adjectiveBankGeneral = [
       feminine: new DeclensionByGender(singular: ['vruće'], plural: ['vrućih']),
       neuter: new DeclensionByGender(singular: ['vruća'], plural: ['vrućih']),
     ),
-  ),
-  Adjective(
+  );
+  static final Adjective drug = Adjective(
     dictionary: 'drug',
     nominativ: new Declension(
       masculine: new DeclensionByGender(singular: ['drugi'], plural: ['drugi']),
@@ -244,8 +244,8 @@ final List<Adjective> adjectiveBankGeneral = [
       feminine: new DeclensionByGender(singular: ['druge'], plural: ['drugih']),
       neuter: new DeclensionByGender(singular: ['drugog'], plural: ['drugih']),
     ),
-  ),
-  Adjective(
+  );
+  static final Adjective skup = Adjective(
     dictionary: 'skup',
     toAvoid: [
       Tags.Human,
@@ -287,8 +287,8 @@ final List<Adjective> adjectiveBankGeneral = [
       feminine: new DeclensionByGender(singular: ['skupe'], plural: ['skupih']),
       neuter: new DeclensionByGender(singular: ['skupog'], plural: ['skupih']),
     ),
-  ),
-  Adjective(
+  );
+  static final Adjective tuzan = Adjective(
     dictionary: 'tužan',
     toAvoid: [Tags.Thing, Tags.Emotion],
     nominativ: new Declension(
@@ -321,8 +321,8 @@ final List<Adjective> adjectiveBankGeneral = [
       feminine: new DeclensionByGender(singular: ['tužne'], plural: ['tužnih']),
       neuter: new DeclensionByGender(singular: ['tužnog'], plural: ['tužnih']),
     ),
-  ),
-  Adjective(
+  );
+  static final Adjective sretan = Adjective(
     dictionary: 'sretan',
     toAvoid: [Tags.Thing, Tags.Emotion],
     nominativ: new Declension(
@@ -363,5 +363,5 @@ final List<Adjective> adjectiveBankGeneral = [
       neuter:
           new DeclensionByGender(singular: ['sretnog'], plural: ['sretnih']),
     ),
-  ),
-];
+  );
+}

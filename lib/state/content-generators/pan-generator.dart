@@ -34,13 +34,13 @@ class PanGenerator {
 
       return PANCombo(
           caseType: caseType,
-          sentenceStarter: staticParts.start,
-          sentenceEnder: staticParts.end,
+          // sentenceStarter: staticParts.start,
+          // sentenceEnder: staticParts.end,
           possPronoun: null,
           adjective: null,
           gender: noun.gender,
           isPlural: false,
-          noun: noun);
+          noun: noun, sentenceParts: []);
     }
 
     final maxRandom = bank.personalPronouns.length == 0 ? 2 : 3;
@@ -57,13 +57,13 @@ class PanGenerator {
 
       return PANCombo(
           caseType: caseType,
-          sentenceStarter: staticParts.start,
-          sentenceEnder: staticParts.end,
+          // sentenceStarter: staticParts.start,
+          // sentenceEnder: staticParts.end,
           possPronoun: possPronoun,
           adjective: adj,
           gender: noun.gender,
           isPlural: isPlural,
-          noun: noun);
+          noun: noun, sentenceParts: []);
     } else if (exType == 1) {
       final noun = bank.nouns[Nrs.getRandomNumber(max: bank.nouns.length)];
       final isPlural = noun.nominativ.plural.first != '' && Nrs.coinFlip();
@@ -72,13 +72,13 @@ class PanGenerator {
 
       return PANCombo(
           caseType: caseType,
-          sentenceStarter: staticParts.start,
-          sentenceEnder: staticParts.end,
+          // sentenceStarter: staticParts.start,
+          // sentenceEnder: staticParts.end,
           possPronoun: null,
           adjective: null,
           gender: noun.gender,
           isPlural: isPlural,
-          noun: noun);
+          noun: noun, sentenceParts: []);
     } else {
       final persPronoun = bank.personalPronouns[
           Nrs.getRandomNumber(max: bank.personalPronouns.length)];
@@ -88,12 +88,12 @@ class PanGenerator {
 
       return PANCombo(
         caseType: caseType,
-        sentenceStarter: staticParts.start,
-        sentenceEnder: staticParts.end,
+        // sentenceStarter: staticParts.start,
+        // sentenceEnder: staticParts.end,
         gender: persPronoun.gender,
         isPlural: isPlural,
         personalPronoun: persPronoun,
-        usePersonalPronounShortForm: Nrs.coinFlip(),
+        usePersonalPronounShortForm: Nrs.coinFlip(), sentenceParts: [],
       );
     }
   }

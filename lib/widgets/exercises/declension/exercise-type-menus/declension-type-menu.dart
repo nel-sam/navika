@@ -55,6 +55,7 @@ class DeclensionTypeMenu extends StatelessWidget {
                 ),
                 Column(
                   children: [
+                    // TODO: Make these level 1 & level 2 instead?
                     NMenuButton(
                       destination: CaseExercise(
                         caseType: caseType,
