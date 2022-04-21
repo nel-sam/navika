@@ -7,6 +7,7 @@ import 'package:navika/widgets/grammar/grammar-guide/declension/genitiv-content.
 import 'package:navika/widgets/grammar/grammar-guide/declension/instrumental-content.dart';
 import 'package:navika/widgets/grammar/grammar-guide/declension/lokativ-content.dart';
 import 'package:navika/widgets/grammar/grammar-guide/declension/nominativ-content.dart';
+import 'package:navika/widgets/grammar/grammar-guide/declension/vokativ-content.dart';
 import 'package:navika/widgets/sbc_labels.dart';
 import 'package:navika/widgets/shared/ad-card.dart';
 import 'package:nrs_flutter_lib/constants.dart';
@@ -122,7 +123,8 @@ class _DeclensionGuideState extends State<DeclensionGuide> {
                     ),
                     ContentSection(
                       text: N.getCaseLabel(Cases.Vok),
-                      content: Container(), // TODO: Create this
+                      content:
+                          VokativGrammarGuideContent(dialect: widget.dialect),
                     ),
                     ContentSection(
                       text: N.getCaseLabel(Cases.Ins),

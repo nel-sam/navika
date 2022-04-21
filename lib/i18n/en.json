@@ -74,7 +74,7 @@
   "neuter": "Neuter",
   "next": "Next",
   "nominativDescription": "Nominativ is used when naming things and it indicates the subject of the sentence. When comparing two words, both are in the nominativ case.",
-  "vokativDescription": "Vokativ is used to call someone or something. Most declensions are the same as Nominativ but some decline to end in 'e' or 'u'",
+  "vokativDescription": "Vokativ is used to call someone or something. Most declensions are the same as Nominativ but some decline to end in 'e','u', or 'o'. Feminine names used to decline but not longer change from their Nominative form. All adjectives are the same as nominative except for masculine singular, which get an 'i' added.",
   "nouns": "Nouns",
   "verbs": "Verbs",
   "verbExercises": "Verb Drills",
