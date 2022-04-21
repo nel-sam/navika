@@ -6,7 +6,6 @@ import 'package:navika/widgets/grammar/grammar-guide/child-widgets/possessive-pr
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/pronoun-line.dart';
 import 'package:navika/widgets/grammar/grammar-guide/declension/declension_tables/genitiv-table.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
-import 'package:nrs_flutter_lib/widgets/n_sub_header.dart';
 import 'package:nrs_flutter_lib/widgets/n_text_multi.dart';
 import 'package:nrs_flutter_lib/widgets/n_text_span.dart';
 
@@ -20,7 +19,6 @@ class GenitivGrammarGuideContent extends StatelessWidget {
         NTextSpan(N.t('genitiveDescription')),
         ExampleSentences(
           sentences: [
-            NSubHeader(N.t('exampleSentences')),
             NTextMulti([
               TextSpan(text: 'Kraj '),
               TextSpan(

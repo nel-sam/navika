@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:navika/models/adjective.dart';
 import 'package:navika/models/noun.dart';
 import 'package:navika/models/personal-pronoun.dart';
@@ -11,21 +10,15 @@ class CaseSentencePart {
   String displayValue;
   GrammarTypes grammarType;
   List<String> correctValues;
+  dynamic actualObject;
 
   CaseSentencePart({
     required this.displayValue,
     this.grammarType = GrammarTypes.noun,
     this.correctValues = const [],
     this.isCorrectable = false,
+    this.actualObject,
   });
-
-  //   hintValue: stateItem.combos.adjective!.dictionary,
-  //   initialValue: stateItem.userAdjResponse,
-  //   correctValues: stateItem.combos.correctAdjectives,
-  //   onChanged: (String newVal) {
-  //     handleOnChange(GrammarTypes.adjective, newVal);
-  //   },
-  // ),
 }
 
 class Declension {

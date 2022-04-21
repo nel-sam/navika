@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:navika/constants.dart';
 import 'package:navika/models/adjective.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
@@ -8,7 +7,9 @@ import 'package:navika/models/personal-pronoun.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/declension-table-cell.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/declension-table.dart';
-import 'package:navika/widgets/grammar/grammar-guide/child-widgets/explanation-icon-cell.dart';
+import 'package:navika/widgets/shared/count_table_cells.dart';
+import 'package:nrs_flutter_lib/constants.dart';
+import 'package:nrs_flutter_lib/enums.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 import 'package:nrs_flutter_lib/widgets/n_sub_header.dart';
 import 'package:nrs_flutter_lib/widgets/n_text_multi.dart';
@@ -39,33 +40,41 @@ class CaseExerciseHelp extends StatelessWidget {
               child: Column(
                 children: [
                   getCorrectSentence(context, combos),
-                  if (combos.possPronoun != null)
-                    getAdjDeclensionTable(
-                      context,
-                      combos.possPronoun!,
-                      combos.caseType,
-                      combos.noun.isAnimate,
-                    ),
-                  if (combos.adjective != null)
-                    getAdjDeclensionTable(
-                      context,
-                      combos.adjective!,
-                      combos.caseType,
-                      combos.noun.isAnimate,
-                    ),
-                  if (combos.noun != null)
-                    getNounList(
-                      context,
-                      combos.noun,
-                      combos.caseType,
-                      combos.isPlural,
-                    ),
-                  if (combos.personalPronoun != null)
-                    getPersonalPronounDeclensionList(
-                      context,
-                      combos.personalPronoun!,
-                      combos.caseType,
-                    ),
+                  ...combos.sentenceParts.map(
+                    (CaseSentencePart e) {
+                      if (!e.isCorrectable) return Container();
+
+                      if (e.grammarType == GrammarTypes.adjective ||
+                          e.grammarType == GrammarTypes.possessivePronoun ||
+                          e.grammarType == GrammarTypes.demonstrativePronoun) {
+                        return getAdjDeclensionTable(
+                          context,
+                          e.actualObject,
+                          combos.caseType,
+                          combos.noun.isAnimate,
+                        );
+                      }
+
+                      if (e.grammarType == GrammarTypes.noun) {
+                        return getNounList(
+                          context,
+                          e.actualObject,
+                          combos.caseType,
+                          combos.isPlural,
+                        );
+                      }
+
+                      if (e.grammarType == GrammarTypes.personalPronoun) {
+                        return getPersonalPronounDeclensionList(
+                          context,
+                          e.actualObject,
+                          combos.caseType,
+                        );
+                      }
+
+                      return Container();
+                    },
+                  ),
                 ],
               ),
             ),
@@ -117,20 +126,22 @@ class CaseExerciseHelp extends StatelessWidget {
   }
 
   getCorrectSentence(BuildContext context, PANCombo combo) {
-    //String sentence = getSentenceAsString(combo);
-
     return Column(
       children: [
         NSubHeader(N.t('correctAnswer')),
         NTextMulti(combo.sentenceParts.map<TextSpan>((CaseSentencePart e) {
-          if (!e.isCorrectable) return TextSpan(text: '${e.displayValue} ');
+          if (!e.isCorrectable)
+            return TextSpan(
+                text: '${e.displayValue} ',
+                style: TextStyle(fontSize: FONT_SIZE * 1.1));
 
           return TextSpan(
-            text: '${e.correctValues.join(joinChar)}',
-            style: Nrs.getTextStyle(context: context, isBold: true),
+            text: '${e.correctValues.join(joinChar)} ',
+            style: Nrs.getTextStyle(
+                context: context, isBold: true, fontSize: FONT_SIZE * 1.1),
           );
         }).toList()),
-        NSubHeader(combo.getTrans!())
+        NTextSpan(combo.getTrans!())
       ],
     );
   }
@@ -202,10 +213,7 @@ class CaseExerciseHelp extends StatelessWidget {
                   children: [
                     Container(
                       height: topRowHeight,
-                      child: ExplanationIconCell(
-                        icon: Icon(SINGULAR_ICON, color: Colors.grey),
-                        label: N.t('singular'),
-                      ),
+                      child: SingularTableCell(),
                     ),
                     Container(
                         child: NTextSpan(noun.nominativ.singular.join(joinChar),
@@ -245,10 +253,7 @@ class CaseExerciseHelp extends StatelessWidget {
                   children: [
                     Container(
                       height: topRowHeight,
-                      child: ExplanationIconCell(
-                        icon: Icon(PLURAL_ICON, color: Colors.grey),
-                        label: N.t('plural'),
-                      ),
+                      child: PluralTableCell(),
                     ),
                     Container(
                         child: NTextSpan(noun.nominativ.plural.join(joinChar),

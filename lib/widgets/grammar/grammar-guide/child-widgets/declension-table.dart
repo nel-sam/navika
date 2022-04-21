@@ -4,25 +4,9 @@ import 'package:navika/models/enums.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/declension-table-cell.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/explanation-icon-cell.dart';
+import 'package:navika/widgets/shared/count_table_cells.dart';
 import 'package:nrs_flutter_lib/constants.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
-
-class CountIcon extends StatelessWidget {
-  const CountIcon({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final isDarkTheme = Nrs.isDarkTheme(context);
-
-    return Icon(
-      Icons.circle,
-      size: FONT_SIZE - 6,
-      color: isDarkTheme ? Colors.white : Colors.black.withOpacity(0.6),
-    );
-  }
-}
 
 class DeclensionTable extends StatelessWidget {
   final DeclensionTableCell masculineSingular;
@@ -96,31 +80,13 @@ class DeclensionTable extends StatelessWidget {
                   ),
                 ]),
                 TableRow(children: [
-                  ExplanationIconCell(
-                    icon: CountIcon(),
-                    label: N.t('singular'),
-                  ),
+                  SingularTableCell(),
                   TableCellWrapper(child: feminineSingular),
                   TableCellWrapper(child: masculineSingular),
                   TableCellWrapper(child: neuterSingular),
                 ]),
                 TableRow(children: [
-                  ExplanationIconCell(
-                    icon: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        CountIcon(),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            CountIcon(),
-                            CountIcon(),
-                          ],
-                        )
-                      ],
-                    ),
-                    label: N.t('plural'),
-                  ),
+                  PluralTableCell(),
                   TableCellWrapper(child: femininePlural),
                   TableCellWrapper(child: masculinePlural),
                   TableCellWrapper(child: neuterPlural),

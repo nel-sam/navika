@@ -122,7 +122,7 @@ class _DeclensionGuideState extends State<DeclensionGuide> {
                     ),
                     ContentSection(
                       text: N.getCaseLabel(Cases.Vok),
-                      content: Container(),
+                      content: Container(), // TODO: Create this
                     ),
                     ContentSection(
                       text: N.getCaseLabel(Cases.Ins),

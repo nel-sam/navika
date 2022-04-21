@@ -26,6 +26,7 @@ class NominativExercises {
             sentenceParts: [
               CaseSentencePart(
                 isCorrectable: true,
+                actualObject: DemonstrativePronouns.taj,
                 displayValue: DemonstrativePronouns.taj.dictionary,
                 correctValues:
                     DemonstrativePronouns.taj.nominativ!.masculine.singular,
@@ -33,6 +34,7 @@ class NominativExercises {
               ),
               CaseSentencePart(
                 isCorrectable: true,
+                actualObject: AdjectiveBankGeneral.star,
                 displayValue: '',
                 correctValues: AdjectiveBankGeneral.star
                     .getDeclensions(Genders.Masculine, false, Cases.Nom, false),
@@ -40,6 +42,8 @@ class NominativExercises {
               ),
               CaseSentencePart(
                 isCorrectable: true,
+                actualObject:
+                    isSerbian ? NounsEkavian.avion : NounsIjekavian.zrakoplov,
                 displayValue: '',
                 correctValues: isSerbian
                     ? NounsEkavian.avion.getDeclensions(false, Cases.Nom)

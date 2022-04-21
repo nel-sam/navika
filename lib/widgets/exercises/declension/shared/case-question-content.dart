@@ -22,7 +22,7 @@ class _CaseQuestionContentState extends State<CaseQuestionContent> {
   Widget build(BuildContext context) {
     bool isAllCorrect = widget.stateItem.isCorrect;
     final trans = widget.stateItem.combos.getTrans != null
-        ? widget.stateItem.combos.getTrans!(context)
+        ? widget.stateItem.combos.getTrans!()
         : '';
 
     handleOnChange(
@@ -43,10 +43,10 @@ class _CaseQuestionContentState extends State<CaseQuestionContent> {
       isPlural: widget.stateItem.combos.isPlural,
       isAnimate: widget.stateItem.combos.noun == null
           ? false
-          : widget.stateItem.combos.noun!.isAnimate,
+          : widget.stateItem.combos.noun.isAnimate,
       getExtraInfo: widget.stateItem.combos.noun == null
           ? (BuildContext context) => ''
-          : widget.stateItem.combos.noun!.getExtraInfo,
+          : widget.stateItem.combos.noun.getExtraInfo,
       children: [
         if (trans.length > 0) NSubHeader(trans),
         ...widget.stateItem.combos.sentenceParts.map((e) {
