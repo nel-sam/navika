@@ -11,7 +11,6 @@ class Lokativ extends StatelessWidget {
     return CaseExercise(
       title: title,
       caseType: Cases.Lok,
-      imagePath: 'assets/banners/ladies.jpg',
       description: N.t('lokativDescription'),
     );
   }

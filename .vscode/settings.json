@@ -8,8 +8,10 @@
     "cyrillic",
     "dativ",
     "dvema",
+    "ekavian",
     "Ekavian",
     "extrainfo",
+    "ijekavian",
     "Ijekavian",
     "izaci",
     "latin",
@@ -27,6 +29,7 @@
     "Ungendered",
     "vežbe",
     "youtube",
+    "Zamenice",
     "Ћирилица"
   ],
   "editor.tabSize": 2,

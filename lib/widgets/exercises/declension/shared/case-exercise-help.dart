@@ -51,7 +51,7 @@ class CaseExerciseHelp extends StatelessWidget {
                           context,
                           e.actualObject,
                           combos.caseType,
-                          combos.noun.isAnimate,
+                          combos.isAnimate,
                         );
                       }
 

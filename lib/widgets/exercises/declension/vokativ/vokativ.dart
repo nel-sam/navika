@@ -11,7 +11,6 @@ class Vokativ extends StatelessWidget {
     return CaseExercise(
       title: title,
       caseType: Cases.Vok,
-      imagePath: 'assets/banners/woman.jpg',
       description: N.t('vokativDescription'),
       //youtubeLink: RECOMMENDED_VIDEO_VOK,
     );

@@ -13,7 +13,6 @@ class AllCases extends StatelessWidget {
     return DeclensionTypeMenu(
       title: title,
       caseType: Cases.All,
-      imagePath: 'assets/banners/montenegro.jpg',
       description: N.t('allCasesDesc'),
     );
   }

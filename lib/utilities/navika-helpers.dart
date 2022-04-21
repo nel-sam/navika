@@ -4,12 +4,31 @@ import 'package:flutter/material.dart';
 import 'package:localization/localization.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
+import 'package:navika/models/models.dart';
 import 'package:navika/widgets/shared/settings-button.dart';
 import 'package:nrs_flutter_lib/constants.dart';
 import 'package:nrs_flutter_lib/enums.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
 class N {
+  static void convertToExerciseTypes(
+      ExerciseTypes exerciseType, PANCombo combo) {
+    if (exerciseType == ExerciseTypes.case_nouns) {
+      _filterByExerciseType(combo, [GrammarTypes.noun]);
+    } else if (exerciseType == ExerciseTypes.case_adjectives) {
+      _filterByExerciseType(combo, [GrammarTypes.adjective]);
+    } else if (exerciseType == ExerciseTypes.case_nouns_and_adjectives) {
+      _filterByExerciseType(combo, [
+        GrammarTypes.noun,
+        GrammarTypes.adjective,
+        GrammarTypes.possessivePronoun,
+        GrammarTypes.demonstrativePronoun
+      ]);
+    } else if (exerciseType == ExerciseTypes.case_personal_pronouns) {
+      _filterByExerciseType(combo, [GrammarTypes.personalPronoun]);
+    }
+  }
+
   static TextSpan declensionExampleTextSpan(
     String text, {
     Color color = Colors.transparent,
@@ -146,5 +165,17 @@ class N {
 
   static String t(String key, {List<String> inserts = const []}) {
     return key.i18n(inserts);
+  }
+
+  static void _filterByExerciseType(
+      PANCombo combo, List<GrammarTypes> allowedTypes) {
+    for (int i = 0; i < combo.sentenceParts.length; i++) {
+      final element = combo.sentenceParts[i];
+      if (element.isCorrectable &&
+          !allowedTypes.contains(element.grammarType)) {
+        combo.sentenceParts[i] =
+            CaseSentencePart(displayValue: '${element.correctValues[0]} ');
+      }
+    }
   }
 }

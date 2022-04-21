@@ -2,6 +2,7 @@ import 'package:navika/lang_data/words/adjectives.dart';
 import 'package:navika/lang_data/words/demonstrative-pronouns.dart';
 import 'package:navika/lang_data/words/ekavian/nouns_ekavian.dart';
 import 'package:navika/lang_data/words/ijekavian/nouns_ijekavian.dart';
+import 'package:navika/lang_data/words/personal-pronouns.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/utilities/navika-helpers.dart';
@@ -21,8 +22,8 @@ class NominativExercises {
             caseType: caseType,
             gender: Genders.Masculine,
             isPlural: false,
+            isAnimate: false,
             getTrans: () => N.t('ex_taj_stari_avion_ima_dva_krila'),
-            noun: isSerbian ? NounsEkavian.avion : NounsIjekavian.zrakoplov,
             sentenceParts: [
               CaseSentencePart(
                 isCorrectable: true,
@@ -56,5 +57,23 @@ class NominativExercises {
 
   List<PANCombo> get level2 => [];
 
-  List<PANCombo> get premium => [];
+  List<PANCombo> get personalPronouns => [
+        PANCombo(
+          caseType: caseType,
+          gender: Genders.Feminine,
+          isPlural: false,
+          isAnimate: true,
+          sentenceParts: [
+            CaseSentencePart(displayValue: 'Reci'),
+            CaseSentencePart(
+              displayValue: PersonalPronounWordBank.ja.dictionary,
+              isCorrectable: true,
+              actualObject: PersonalPronounWordBank.ja,
+              grammarType: GrammarTypes.personalPronoun,
+              correctValues: PersonalPronounWordBank.ja.nominativ.forms,
+            ),
+            CaseSentencePart(displayValue: 'sve o tome'),
+          ],
+        ),
+      ];
 }

@@ -5,6 +5,7 @@ import 'package:navika/models/settings.dart';
 import 'package:navika/navika-theme.dart';
 import 'package:navika/state/settings/settings-notifier.dart';
 import 'package:navika/utilities/navika-helpers.dart';
+import 'package:navika/widgets/settings/account-page.dart';
 import 'package:navika/widgets/settings/settings-menu-button.dart';
 import 'package:navika/widgets/shared/nav-spinner.dart';
 import 'package:nrs_flutter_lib/constants.dart';
@@ -55,11 +56,10 @@ class SettingsPage extends StatelessWidget {
                             model.resetSettings();
                             return NHomePage();
                           }),
-                      // TODO: Uncomment once accounts are available
-                      // SettingsMenuButton(
-                      //     title: N.t('account'),
-                      //     icon: Icons.account_circle,
-                      //     redirectMethod: (context) => AccountPage()),
+                      SettingsMenuButton(
+                          title: N.t('account'),
+                          icon: Icons.account_circle,
+                          redirectMethod: (context) => AccountPage()),
                     ],
                   );
                 } else {

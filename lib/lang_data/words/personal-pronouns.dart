@@ -2,8 +2,8 @@ import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/models/personal-pronoun.dart';
 
-final List<PersonalPronoun> personalPronounWordBank = [
-  PersonalPronoun(
+class PersonalPronounWordBank {
+  static final ja = PersonalPronoun(
     dictionary: 'ja',
     type: PronounEnum.I,
     isPlural: false,
@@ -15,8 +15,8 @@ final List<PersonalPronoun> personalPronounWordBank = [
     lokativ: new DeclensionPronoun(forms: ['meni']),
     vokativ: new DeclensionPronoun(forms: ['']),
     instrumental: new DeclensionPronoun(forms: ['mnom']),
-  ),
-  PersonalPronoun(
+  );
+  static final ti = PersonalPronoun(
     dictionary: 'ti',
     type: PronounEnum.You,
     isPlural: false,
@@ -28,8 +28,8 @@ final List<PersonalPronoun> personalPronounWordBank = [
     lokativ: new DeclensionPronoun(forms: ['tebi']),
     vokativ: new DeclensionPronoun(forms: ['']),
     instrumental: new DeclensionPronoun(forms: ['tobom']),
-  ),
-  PersonalPronoun(
+  );
+  static final on = PersonalPronoun(
     dictionary: 'on',
     type: PronounEnum.He,
     isPlural: false,
@@ -41,8 +41,8 @@ final List<PersonalPronoun> personalPronounWordBank = [
     lokativ: new DeclensionPronoun(forms: ['njemu', 'njem']),
     vokativ: new DeclensionPronoun(forms: ['']),
     instrumental: new DeclensionPronoun(forms: ['njime', 'njim']),
-  ),
-  PersonalPronoun(
+  );
+  static final ona = PersonalPronoun(
     dictionary: 'ona',
     type: PronounEnum.She,
     isPlural: false,
@@ -54,8 +54,8 @@ final List<PersonalPronoun> personalPronounWordBank = [
     lokativ: new DeclensionPronoun(forms: ['njoj']),
     vokativ: new DeclensionPronoun(forms: ['']),
     instrumental: new DeclensionPronoun(forms: ['njome', 'njom']),
-  ),
-  PersonalPronoun(
+  );
+  static final mi = PersonalPronoun(
     dictionary: 'mi',
     type: PronounEnum.We,
     isPlural: true,
@@ -67,8 +67,9 @@ final List<PersonalPronoun> personalPronounWordBank = [
     lokativ: new DeclensionPronoun(forms: ['nama']),
     vokativ: new DeclensionPronoun(forms: ['']),
     instrumental: new DeclensionPronoun(forms: ['nama']),
-  ),
-  PersonalPronoun(
+  );
+
+  static final vi = PersonalPronoun(
     dictionary: 'vi',
     type: PronounEnum.You_Plural,
     isPlural: true,
@@ -80,8 +81,9 @@ final List<PersonalPronoun> personalPronounWordBank = [
     lokativ: new DeclensionPronoun(forms: ['vama']),
     vokativ: new DeclensionPronoun(forms: ['']),
     instrumental: new DeclensionPronoun(forms: ['vama']),
-  ),
-  PersonalPronoun(
+  );
+
+  static final oni = PersonalPronoun(
     dictionary: 'oni',
     type: PronounEnum.They_Ungendered,
     isPlural: true,
@@ -93,5 +95,5 @@ final List<PersonalPronoun> personalPronounWordBank = [
     lokativ: new DeclensionPronoun(forms: ['njima']),
     vokativ: new DeclensionPronoun(forms: ['']),
     instrumental: new DeclensionPronoun(forms: ['njima', 'im']),
-  ),
-];
+  );
+}

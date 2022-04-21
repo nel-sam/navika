@@ -11,7 +11,6 @@ class Genitiv extends StatelessWidget {
     return CaseExercise(
       title: title,
       caseType: Cases.Gen,
-      imagePath: 'assets/banners/bosna.jpg',
       description: N.t('genitiveDescription'),
     );
   }

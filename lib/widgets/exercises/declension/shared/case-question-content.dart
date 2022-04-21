@@ -41,14 +41,10 @@ class _CaseQuestionContentState extends State<CaseQuestionContent> {
       combos: widget.stateItem.combos,
       isAllCorrect: isAllCorrect,
       isPlural: widget.stateItem.combos.isPlural,
-      isAnimate: widget.stateItem.combos.noun == null
-          ? false
-          : widget.stateItem.combos.noun.isAnimate,
-      getExtraInfo: widget.stateItem.combos.noun == null
-          ? (BuildContext context) => ''
-          : widget.stateItem.combos.noun.getExtraInfo,
+      isAnimate: widget.stateItem.combos.isAnimate,
+      extraInfo: widget.stateItem.combos.extraInfo,
+      translation: trans,
       children: [
-        if (trans.length > 0) NSubHeader(trans),
         ...widget.stateItem.combos.sentenceParts.map((e) {
           if (!e.isCorrectable) {
             return Text(

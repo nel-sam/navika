@@ -27,6 +27,12 @@ class SbcLabels {
     return "$nouns i $adjectives";
   }
 
+  String get personalPronouns {
+    if (dialect == DialectType.Ekavian) return 'Lične Zamenice';
+
+    return 'Osobne Zamjenice';
+  }
+
   String get wordOrder {
     if (dialect == DialectType.Ekavian) return 'Red reči';
 

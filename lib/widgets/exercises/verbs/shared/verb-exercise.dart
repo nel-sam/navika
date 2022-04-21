@@ -21,6 +21,7 @@ class VerbExercise extends StatelessWidget {
   final String imagePath;
   final String? youtubeLink;
   final DialectType dialect;
+  final ExerciseTypes exerciseType;
 
   const VerbExercise({
     Key? key,
@@ -29,6 +30,7 @@ class VerbExercise extends StatelessWidget {
     required this.description,
     required this.imagePath,
     required this.dialect,
+    required this.exerciseType,
     this.youtubeLink,
   }) : super(key: key);
 
@@ -39,8 +41,8 @@ class VerbExercise extends StatelessWidget {
     return Scaffold(
       appBar: N.navAppBar(title: SbcLabels.verbs, context: context),
       body: ChangeNotifierProvider<ExerciseNavNotifier>(
-        create: (context) =>
-            ExerciseNavNotifier(isVerb: true, dialect: dialect),
+        create: (context) => ExerciseNavNotifier(
+            isVerb: true, dialect: dialect, exerciseType: exerciseType),
         child: Consumer<ExerciseNavNotifier>(
           builder: (context, navNotifier, child) {
             final stateITem = navNotifier.getActive();

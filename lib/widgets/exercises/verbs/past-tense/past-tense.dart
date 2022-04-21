@@ -19,6 +19,7 @@ class PastTense extends StatelessWidget {
 
     return VerbExercise(
       title: title,
+      exerciseType: ExerciseTypes.verb_Simple_Past,
       dialect: dialect,
       tense: VerbTenses.PastPerfect,
       imagePath: 'assets/banners/bosna.jpg',

@@ -1,5 +1,4 @@
 import 'package:navika/models/adjective.dart';
-import 'package:navika/models/noun.dart';
 import 'package:navika/models/personal-pronoun.dart';
 import 'package:nrs_flutter_lib/enums.dart';
 
@@ -83,19 +82,21 @@ class DeclensionPronoun {
 
 class PANCombo {
   String Function()? getTrans;
+  String extraInfo;
   final List<CaseSentencePart> sentenceParts;
   final Cases caseType;
   final Genders gender;
   final bool isPlural;
-  final Noun noun;
+  final bool isAnimate;
 
   PANCombo({
-    required this.noun,
     this.getTrans,
+    this.extraInfo = '',
     required this.caseType,
     required this.gender,
     required this.isPlural,
     required this.sentenceParts,
+    required this.isAnimate,
   });
 }
 

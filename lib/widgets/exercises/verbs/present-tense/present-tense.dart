@@ -19,6 +19,7 @@ class PresentTense extends StatelessWidget {
 
     return VerbExercise(
       title: title,
+      exerciseType: ExerciseTypes.verb_Present,
       tense: VerbTenses.Present,
       dialect: dialect,
       imagePath: 'assets/banners/hills.jpg',

@@ -22,7 +22,6 @@ class CaseExercise extends StatelessWidget {
   final Cases caseType;
   final ExerciseTypes exerciseType;
   final String description;
-  final String imagePath;
   final String? youtubeLink;
 
   CaseExercise({
@@ -30,7 +29,6 @@ class CaseExercise extends StatelessWidget {
     required this.title,
     required this.caseType,
     required this.description,
-    required this.imagePath,
     this.exerciseType = ExerciseTypes.unspecified,
     this.youtubeLink,
   }) : super(key: key);
@@ -88,13 +86,6 @@ class CaseExercise extends StatelessWidget {
               ),
               persistentFooterButtons: [
                 NFooterMenu(buttons: [
-                  NFooterButton(
-                    onPressed: () {
-                      navNotifier.shuffleAndClear();
-                    },
-                    icon: Icons.refresh_outlined,
-                    text: N.t('refresh'),
-                  ),
                   HomeButtonWrapper(),
                   NFooterButton(
                     active: true,

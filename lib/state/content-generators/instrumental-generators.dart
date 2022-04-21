@@ -13,11 +13,11 @@ import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 class InstrumentalGenerators {
   static CaseQuestionState createExercise(
       List toAvoid, ExerciseTypes exerciseType, DialectType dialect) {
-    final SentenceBank bank =
-        SentenceBankGenerator(dialect: dialect).sentencesBankData.excludeNounsByTags([
-      Tags.Location,
-      Tags.Health,
-    ]);
+    // final SentenceBank bank =
+    //     SentenceBankGenerator(dialect: dialect).sentencesBankData.excludeNounsByTags([
+    //   Tags.Location,
+    //   Tags.Health,
+    // ]);
 
     PANCombo? c;
 

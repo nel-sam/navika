@@ -11,7 +11,6 @@ class Dativ extends StatelessWidget {
     return CaseExercise(
       title: title,
       caseType: Cases.Dat,
-      imagePath: 'assets/banners/giving.jpg',
       description: N.t('dativDescription'),
     );
   }

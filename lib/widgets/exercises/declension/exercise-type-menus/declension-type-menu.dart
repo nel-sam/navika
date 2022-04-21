@@ -17,7 +17,6 @@ class DeclensionTypeMenu extends StatelessWidget {
   final Cases caseType;
   final ExerciseTypes exerciseType;
   final String description;
-  final String imagePath;
   final String? youtubeLink;
 
   DeclensionTypeMenu({
@@ -25,7 +24,6 @@ class DeclensionTypeMenu extends StatelessWidget {
     required this.title,
     required this.caseType,
     required this.description,
-    required this.imagePath,
     this.exerciseType = ExerciseTypes.unspecified,
     this.youtubeLink,
   }) : super(key: key);
@@ -60,7 +58,6 @@ class DeclensionTypeMenu extends StatelessWidget {
                       destination: CaseExercise(
                         caseType: caseType,
                         description: description,
-                        imagePath: imagePath,
                         title: title,
                         exerciseType: ExerciseTypes.case_nouns,
                       ),
@@ -71,7 +68,6 @@ class DeclensionTypeMenu extends StatelessWidget {
                       destination: CaseExercise(
                         caseType: caseType,
                         description: description,
-                        imagePath: imagePath,
                         title: title,
                         exerciseType: ExerciseTypes.case_adjectives,
                       ),
@@ -83,7 +79,25 @@ class DeclensionTypeMenu extends StatelessWidget {
                             destination: CaseExercise(
                               caseType: caseType,
                               description: description,
-                              imagePath: imagePath,
+                              title: title,
+                              exerciseType: ExerciseTypes.case_personal_pronouns,
+                            ),
+                            label: N.t('personalPronouns'),
+                            transLabel: SbcLabels(settings.dialectType)
+                                .personalPronouns,
+                          )
+                        : NMenuButton(
+                            isPremiumLocked: true,
+                            destination: AccountPage(),
+                            label: N.t('personalPronouns'),
+                            transLabel: SbcLabels(settings.dialectType)
+                                .personalPronouns,
+                          ),
+                    settings.isPremium
+                        ? NMenuButton(
+                            destination: CaseExercise(
+                              caseType: caseType,
+                              description: description,
                               title: title,
                               exerciseType:
                                   ExerciseTypes.case_nouns_and_adjectives,
