@@ -34,6 +34,7 @@ class VerbMenu extends StatelessWidget {
                     children: [
                       NMenuButton(
                         destination: PresentTense(
+                          isPremium: settings.isPremium,
                           dialect: settings.dialectType,
                         ),
                         label: N.t('presentTense'),
@@ -41,6 +42,7 @@ class VerbMenu extends StatelessWidget {
                       ),
                       NMenuButton(
                         destination: PastTense(
+                          isPremium: settings.isPremium,
                           dialect: settings.dialectType,
                         ),
                         label: N.t('pastTense'),

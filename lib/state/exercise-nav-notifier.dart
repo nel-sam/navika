@@ -16,8 +16,10 @@ class ExerciseNavNotifier with ChangeNotifier {
   int _activeIndex = 0;
   int _maxIndex = 0;
   late DialectType _dialect;
+  final bool isPremium;
 
   ExerciseNavNotifier({
+    required this.isPremium,
     required DialectType dialect,
     required ExerciseTypes exerciseType,
     Cases? caseType,
@@ -104,7 +106,8 @@ class ExerciseNavNotifier with ChangeNotifier {
       switch (caseType) {
         case Cases.Nom:
           if (nom.isEmpty)
-            nom = NominativGenerators.createExercise(_exerciseType, _dialect);
+            nom = NominativGenerators.createExercise(
+                _exerciseType, _dialect, isPremium);
           final randomNom = Nrs.getRandomNumber(max: nom.length);
           _states.add(nom[randomNom]);
           break;
@@ -126,7 +129,8 @@ class ExerciseNavNotifier with ChangeNotifier {
         _states = _getRandomCaseExec();
         break;
       case Cases.Nom:
-        _states = NominativGenerators.createExercise(_exerciseType, _dialect);
+        _states = NominativGenerators.createExercise(
+            _exerciseType, _dialect, isPremium);
         break;
       // TODO: Implement the rest
       // case Cases.Aku:
@@ -149,6 +153,10 @@ class ExerciseNavNotifier with ChangeNotifier {
       //   break;
       default:
         break;
+    }
+
+    if (_states.length - 1 < _maxIndex) {
+      _maxIndex = _states.length;
     }
   }
 }

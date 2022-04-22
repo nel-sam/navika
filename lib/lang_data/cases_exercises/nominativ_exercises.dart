@@ -2,6 +2,7 @@ import 'package:navika/lang_data/words/adjectives.dart';
 import 'package:navika/lang_data/words/demonstrative-pronouns.dart';
 import 'package:navika/lang_data/words/ekavian/nouns_ekavian.dart';
 import 'package:navika/lang_data/words/ijekavian/nouns_ijekavian.dart';
+import 'package:navika/lang_data/words/nouns.dart';
 import 'package:navika/lang_data/words/personal-pronouns.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
@@ -27,7 +28,7 @@ class NominativExercises {
               CaseSentencePart(
                 isCorrectable: true,
                 actualObject: DemonstrativePronouns.taj,
-                displayValue: DemonstrativePronouns.taj.dictionary,
+                displayValue: '',
                 correctValues:
                     DemonstrativePronouns.taj.nominativ!.masculine.singular,
                 grammarType: GrammarTypes.demonstrativePronoun,
@@ -52,6 +53,23 @@ class NominativExercises {
               ),
               CaseSentencePart(displayValue: 'ima dva krila'),
             ]),
+        PANCombo(
+            caseType: caseType,
+            gender: Genders.Feminine,
+            isPlural: false,
+            isAnimate: false,
+            getTrans: () => N.t('ex_francuska_ima_oko_61_milijun_stanovnika'),
+            sentenceParts: [
+              CaseSentencePart(
+                isCorrectable: true,
+                actualObject: NounBankGeneral.francuska,
+                displayValue: '',
+                correctValues:
+                    NounBankGeneral.francuska.getDeclensions(false, Cases.Nom),
+                grammarType: GrammarTypes.noun,
+              ),
+              CaseSentencePart(displayValue: 'ima oko 61 milijun stanovnika'),
+            ]),
       ];
 
   List<PANCombo> get level2 => [];
@@ -75,4 +93,6 @@ class NominativExercises {
           ],
         ),
       ];
+
+  List<PANCombo> get premium => [];
 }

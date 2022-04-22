@@ -40,6 +40,7 @@ class CaseExercise extends StatelessWidget {
     return SettingsConsumerWrapper(
       getChildWidget: (settings) => ChangeNotifierProvider<ExerciseNavNotifier>(
         create: (context) => ExerciseNavNotifier(
+            isPremium: settings.isPremium,
             caseType: caseType,
             exerciseType: exerciseType,
             dialect: settings.dialectType),

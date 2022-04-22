@@ -8,11 +8,24 @@ class NominativGenerators {
   static List<CaseQuestionState> createExercise(
     ExerciseTypes exerciseType,
     DialectType dialect,
+    bool isPremium,
   ) {
-    final PANCombo combo = NominativExercises(dialect).level1.first;
+    List<PANCombo> combos = [];
 
-    N.convertToExerciseTypes(exerciseType, combo);
+    if (exerciseType == ExerciseTypes.case_personal_pronouns) {
+      combos.addAll(NominativExercises(dialect).personalPronouns);
+    } else if (isPremium) {
+      combos.addAll(NominativExercises(dialect).premium);
+    }
 
-    return [CaseQuestionState(combos: combo)];
+    if (exerciseType != ExerciseTypes.case_personal_pronouns) {
+      combos.addAll(NominativExercises(dialect).level1);
+    }
+
+    for (int i = 0; i < combos.length; i++) {
+      N.convertToExerciseTypes(exerciseType, combos[i]);
+    }
+
+    return combos.map((e) => CaseQuestionState(combos: e)).toList();
   }
 }
