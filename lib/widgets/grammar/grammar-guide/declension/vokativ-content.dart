@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/example-sentences.dart';
+import 'package:navika/widgets/grammar/grammar-guide/child-widgets/pronoun-line.dart';
 import 'package:navika/widgets/grammar/grammar-guide/declension/declension_tables/vokativ-table.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
+import 'package:nrs_flutter_lib/widgets/n_sub_header.dart';
 import 'package:nrs_flutter_lib/widgets/n_text_multi.dart';
 import 'package:nrs_flutter_lib/widgets/n_text_span.dart';
 
@@ -63,7 +65,22 @@ class VokativGrammarGuideContent extends StatelessWidget {
             ]),
           ],
         ),
-        VokativDeclensionTable()
+        VokativDeclensionTable(),
+        Column(
+          children: [
+            Row(children: [NSubHeader(N.t('personalPronouns'))]),
+            NTextSpan(N.t('vocativYouDesc')),
+            PronounLine(
+                pronoun: PronounEnum.You,
+                text: NTextMulti([
+                  TextSpan(text: 'Hej, '),
+                  TextSpan(
+                      text: 'ti',
+                      style: Nrs.getTextStyle(context: context, isBold: true)),
+                  TextSpan(text: '!'),
+                ])),
+          ],
+        ),
       ],
     );
   }

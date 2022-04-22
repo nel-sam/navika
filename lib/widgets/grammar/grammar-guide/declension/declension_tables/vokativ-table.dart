@@ -13,25 +13,34 @@ class VokativDeclensionTable extends StatelessWidget {
       borderedItemNote: N.t('sameAsNom'),
       notes: [N.t('mascSingVok')],
       masculineSingular: DeclensionTableCell(children: [
-        N.declensionExampleTextSpan('Velik'),
+        N.declensionExampleTextSpan('Pošten'),
         N.declensionExampleTextSpan('i\n', color: MASCULINE_COLOR),
         N.declensionExampleTextSpan('čovječ'),
         N.declensionExampleTextSpan('e*', color: MASCULINE_COLOR),
       ]),
       masculinePlural: DeclensionTableCell(
-        children: [],
+        highlightItem: true,
+        children: [N.declensionExampleTextSpan('Glasni\ndečki!')],
       ),
       feminineSingular: DeclensionTableCell(
-        children: [],
+        children: [
+          N.declensionExampleTextSpan('Draga\n'),
+          N.declensionExampleTextSpan('Žen'),
+          N.declensionExampleTextSpan('o', color: FEMININE_COLOR),
+          N.declensionExampleTextSpan('!'),
+        ],
       ),
       femininePlural: DeclensionTableCell(
-        children: [],
+        highlightItem: true,
+        children: [N.declensionExampleTextSpan('Drage\nžene!')],
       ),
       neuterSingular: DeclensionTableCell(
-        children: [],
+        highlightItem: true,
+        children: [N.declensionExampleTextSpan('Plavo\nmore!')],
       ),
       neuterPlural: DeclensionTableCell(
-        children: [],
+        highlightItem: true,
+        children: [N.declensionExampleTextSpan('Plava\nmora!')],
       ),
     );
   }
