@@ -133,5 +133,7 @@
   "dialectTitle": "Con Navika puedes practicar various variedades de serbocroata",
   "dialectDesc": "Sabes si quieres practicar la variedad de Serbia, o una variedad de Croacia, Bosnia, o Montenegro? Está bien si no sabes aún. Lo puedes cambiar después en la página de ajustes",
   "mascSingVok": "Adjetivos masculinos en singular siempre terminan en 'i' en vocativo, aún en los que no lo tienen en nominativo",
-  "vocativYouDesc": "El único pronombre personal que se usa en vocativo es 'tú'."
+  "vocativYouDesc": "El único pronombre personal que se usa en vocativo es 'tú'.",
+  "longShortFormDesc": "Normalmente deberías usar la forma corta de los pronombres. La forma larga se usa para darle énfasis, y la posición del pronombre dentro de la frase cambia cuando se usa la forma larga.",
+  "saMnomDesc": "Para facilitar la pronunciación, hay que usar 'sa' cuando se usa 'mnom'. La forma corta 's' se puede usar para todos los demás."
 }

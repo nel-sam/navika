@@ -22,8 +22,8 @@ class InstrumentalGrammarGuideContent extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.only(bottom: FONT_SIZE),
-              child: NTextMulti(
-                  [TextSpan(text: N.t('instrumentalDescription'))]),
+              child:
+                  NTextMulti([TextSpan(text: N.t('instrumentalDescription'))]),
             ),
             YouTubeLink(RECOMMENDED_VIDEO_INST)
           ],
@@ -70,6 +70,7 @@ class InstrumentalGrammarGuideContent extends StatelessWidget {
         ),
         InstrumentalDeclensionTable(),
         PossessivePronounSection(
+          note: N.t('saMnomDesc'),
           contents: [
             PronounLine(
                 pronoun: PronounEnum.I,

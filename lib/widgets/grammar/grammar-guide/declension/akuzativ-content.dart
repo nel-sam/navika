@@ -49,6 +49,7 @@ class AkuzativGrammarGuideContent extends StatelessWidget {
         ),
         AkuzativDeclensionTable(),
         PossessivePronounSection(
+          note: N.t('longShortFormDesc'),
           contents: [
             PronounLine(
                 pronoun: PronounEnum.I,

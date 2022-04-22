@@ -26,7 +26,7 @@ const CasesInOrder = [
   Cases.Lok,
 ];
 
-const double CONTENT_HEIGHT = 1300.0;
+const double CONTENT_HEIGHT = 1340.0;
 
 class ContentSection extends StatelessWidget {
   final String text;

@@ -65,6 +65,7 @@ class GenitivGrammarGuideContent extends StatelessWidget {
         ),
         GenitivDeclensionTable(),
         PossessivePronounSection(
+          note: N.t('longShortFormDesc'),
           contents: [
             PronounLine(
                 pronoun: PronounEnum.I,

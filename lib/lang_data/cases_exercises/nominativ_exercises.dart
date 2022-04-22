@@ -16,7 +16,6 @@ class NominativExercises {
     this.isSerbian = dialect == DialectType.Ekavian;
   }
 
-// TODO: Figure out how/when to use personal pronoun short/long forms
   List<PANCombo> get level1 => [
         PANCombo(
             caseType: caseType,

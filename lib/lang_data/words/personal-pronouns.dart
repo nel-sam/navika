@@ -50,7 +50,7 @@ class PersonalPronounWordBank {
     nominativ: new DeclensionPronoun(forms: ['ona']),
     genitiv: new DeclensionPronoun(forms: ['nje', 'je']),
     dativ: new DeclensionPronoun(forms: ['njoj', 'joj']),
-    akuzativ: new DeclensionPronoun(forms: ['nju', 'ju']), // TODO: , 'je'
+    akuzativ: new DeclensionPronoun(forms: ['nju', 'ju', 'je']), // TODO: , 'je'
     lokativ: new DeclensionPronoun(forms: ['njoj']),
     vokativ: new DeclensionPronoun(forms: ['']),
     instrumental: new DeclensionPronoun(forms: ['njome', 'njom']),

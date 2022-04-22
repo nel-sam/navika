@@ -133,5 +133,7 @@
   "dialectTitle": "Navika supports multiple Serbo-Croatian varieties",
   "dialectDesc": "Do you know if you want to practice the Serbian variety, or the varieties of Croatia, Bosnia, and Montenegro? It's OK if you don't know. You can set this later in the settings page",
   "mascSingVok": "Masculine singular adjectives always get an 'i', even when the adjective doesn't have a 'i' in Nominative",
-  "vocativYouDesc": "The only personal pronoun used in vocative is 'you' as in 'hey, you!'."
+  "vocativYouDesc": "The only personal pronoun used in vocative is 'you' as in 'hey, you!'.",
+  "longShortFormDesc": "Normally you should use the short form of the pronouns. The long form is only used to emphasize, and the pronoun's position in the sentence changes if the long form is used.",
+  "saMnomDesc": "'Sa'is required when using 'mnom' to make pronunciation easier. The short 's' can be user for all other pronouns."
 }
