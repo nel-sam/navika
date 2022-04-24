@@ -10,8 +10,9 @@ enum Cases {
 }
 
 enum DialectType {
-  Ekavian,
-  Ijekavian,
+  Croatia,
+  Bosnia,
+  Serbia,
 }
 
 enum ExerciseTypes {

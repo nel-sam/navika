@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:nrs_flutter_lib/extensions.dart';
@@ -13,11 +12,11 @@ class Noun {
   final DeclensionByCount akuzativ;
   final DeclensionByCount instrumental;
   final DeclensionByCount lokativ;
-  final DeclensionByCount dativ;
+  late DeclensionByCount? dativ;
   final DeclensionByCount genitiv;
   final DeclensionByCount vokativ;
 
-  String Function(BuildContext context)? getExtraInfo;
+  String? extraInfo;
 
   Noun({
     required this.tags,
@@ -28,13 +27,13 @@ class Noun {
     required this.akuzativ,
     required this.instrumental,
     required this.lokativ,
-    required this.dativ,
     required this.genitiv,
     required this.vokativ,
-    this.getExtraInfo,
+    this.dativ,
+    this.extraInfo = "",
   }) {
-    if (this.getExtraInfo == null) {
-      this.getExtraInfo = (BuildContext context) => '';
+    if (this.dativ == null) {
+      this.dativ = this.lokativ;
     }
   }
 
@@ -43,7 +42,7 @@ class Noun {
       case Cases.Aku:
         return this.akuzativ;
       case Cases.Dat:
-        return this.dativ;
+        return this.dativ!;
       case Cases.Gen:
         return this.genitiv;
       case Cases.Ins:
@@ -66,7 +65,7 @@ class Noun {
         declension = this.akuzativ;
         break;
       case Cases.Dat:
-        declension = this.dativ;
+        declension = this.dativ!;
         break;
       case Cases.Gen:
         declension = this.genitiv;
@@ -89,28 +88,6 @@ class Noun {
     return isPlural ? declension.plural : declension.singular;
   }
 
-  List<String> getUniqueDeclensions({bool shuffle = false}) {
-    var result = [
-      this.dictionary,
-      ...this.nominativ.singular,
-      ...this.akuzativ.singular,
-      ...this.instrumental.singular,
-      ...this.lokativ.singular,
-      ...this.dativ.singular,
-      ...this.genitiv.singular,
-      ...this.vokativ.singular,
-      ...this.nominativ.plural,
-      ...this.akuzativ.plural,
-      ...this.instrumental.plural,
-      ...this.lokativ.plural,
-      ...this.dativ.plural,
-      ...this.genitiv.plural,
-      ...this.vokativ.plural,
-    ].toSet().toList().where((element) => element.length > 0).toList();
-
-    return shuffle ? result.shuffleStrings() : result;
-  }
-
   List<String> getDeclensionsForCaseType(Cases caseType) {
     switch (caseType) {
       case Cases.Ins:
@@ -127,8 +104,37 @@ class Noun {
       case Cases.Gen:
         return this.genitiv.getAll();
       case Cases.Dat:
-        return this.dativ.getAll();
+        return this.dativ!.getAll();
     }
+  }
+
+  getDropDownInitial(Cases caseType) {
+    final toAvoid = getDeclensionsForCaseType(caseType);
+    final filtered = getUniqueDeclensions(shuffle: true);
+    filtered.removeWhere((element) => toAvoid.contains(element));
+    return filtered.last;
+  }
+
+  List<String> getUniqueDeclensions({bool shuffle = false}) {
+    var result = [
+      this.dictionary,
+      ...this.nominativ.singular,
+      ...this.akuzativ.singular,
+      ...this.instrumental.singular,
+      ...this.lokativ.singular,
+      ...this.dativ!.singular,
+      ...this.genitiv.singular,
+      ...this.vokativ.singular,
+      ...this.nominativ.plural,
+      ...this.akuzativ.plural,
+      ...this.instrumental.plural,
+      ...this.lokativ.plural,
+      ...this.dativ!.plural,
+      ...this.genitiv.plural,
+      ...this.vokativ.plural,
+    ].toSet().toList().where((element) => element.length > 0).toList();
+
+    return shuffle ? result.shuffleStrings() : result;
   }
 
   longestForCase(Cases caseType) {
@@ -141,12 +147,5 @@ class Noun {
     });
 
     return longestFound;
-  }
-
-  getDropDownInitial(Cases caseType) {
-    final toAvoid = getDeclensionsForCaseType(caseType);
-    final filtered = getUniqueDeclensions(shuffle: true);
-    filtered.removeWhere((element) => toAvoid.contains(element));
-    return filtered.last;
   }
 }

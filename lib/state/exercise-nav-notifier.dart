@@ -4,8 +4,14 @@ import 'package:flutter/foundation.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/state/cases/case-question-state.dart';
+import 'package:navika/state/content-generators/akuzativ-generators.dart';
+import 'package:navika/state/content-generators/dativ-generators.dart';
+import 'package:navika/state/content-generators/genitiv-generators.dart';
+import 'package:navika/state/content-generators/instrumental-generators.dart';
+import 'package:navika/state/content-generators/lokativ-generators.dart';
 import 'package:navika/state/content-generators/nominativ-generators.dart';
 import 'package:navika/state/content-generators/verb-generators.dart';
+import 'package:navika/state/content-generators/vokativ-generators.dart';
 import 'package:nrs_flutter_lib/constants.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
@@ -31,14 +37,27 @@ class ExerciseNavNotifier with ChangeNotifier {
     if (isVerb) {
       final verbGenerator = VerbGenerators(dialect: dialect);
       this._maxIndex = verbGenerator.getMaxIndex();
-      //createExercise = verbGenerator.createExercise;
     } else {
-      _maxIndex = BATCH_COUNT;
+      _maxIndex = MAX_BATCH_COUNT;
       _setStates(caseType!);
     }
 
-    //_states.add(createExercise(_states, exerciseType, dialect));
     this._exerciseType = exerciseType;
+  }
+
+  void addSingleExercise(
+      List<CaseQuestionState> outList, Function createExerciseFunc) {
+    if (outList.isEmpty)
+      outList = createExerciseFunc(_exerciseType, _dialect, isPremium);
+
+    int randomNumber = Nrs.getRandomNumber(max: outList.length);
+    int maxRetries = 10;
+
+    while (outList.contains(outList[randomNumber]) && maxRetries-- > 0) {
+      randomNumber = Nrs.getRandomNumber(max: outList.length);
+    }
+
+    _states.add(outList[randomNumber]);
   }
 
   void clearInput() {
@@ -70,10 +89,6 @@ class ExerciseNavNotifier with ChangeNotifier {
       _activeIndex++;
     }
 
-    // if (_activeIndex > _states.length - 1) {
-    //   this._states.add(this.createExercise(_states, _exerciseType, _dialect));
-    // }
-
     debouncedNotifyListeners();
   }
 
@@ -88,36 +103,39 @@ class ExerciseNavNotifier with ChangeNotifier {
   }
 
   _getRandomCaseExec() {
-    while (_states.length < BATCH_COUNT) {
+    while (_states.length < MAX_BATCH_COUNT) {
       final random = Nrs.getRandomNumber(max: Cases.values.length);
       final caseType = Cases.values[random];
-      CaseQuestionState newExercise;
-
-      List<CaseQuestionState> nom = [];
-      // TODO: Make these like nominativ
-      // final aku = AkuzativGenerators.createExercise(_exerciseType, _dialect);
-      // final dat = DativGenerators.createExercise(_exerciseType, _dialect);
-      // final ins =
-      //     InstrumentalGenerators.createExercise(_exerciseType, _dialect);
-      // final gen = GenitivGenerators.createExercise(_exerciseType, _dialect);
-      // final lok = LokativGenerators.createExercise(_exerciseType, _dialect);
-      // final vok = VokativGenerators.createExercise(_exerciseType, _dialect);
+      List<CaseQuestionState> nom = [],
+          aku = [],
+          dat = [],
+          ins = [],
+          gen = [],
+          lok = [],
+          vok = [];
 
       switch (caseType) {
         case Cases.Nom:
-          if (nom.isEmpty)
-            nom = NominativGenerators.createExercise(
-                _exerciseType, _dialect, isPremium);
-          final randomNom = Nrs.getRandomNumber(max: nom.length);
-          _states.add(nom[randomNom]);
+          addSingleExercise(nom, NominativGenerators.createExercise);
           break;
         case Cases.Aku:
+          addSingleExercise(aku, AkuzativGenerators.createExercise);
+          break;
         case Cases.Ins:
+          addSingleExercise(ins, InstrumentalGenerators.createExercise);
+          break;
         case Cases.Dat:
+          addSingleExercise(dat, DativGenerators.createExercise);
+          break;
         case Cases.Lok:
+          addSingleExercise(lok, LokativGenerators.createExercise);
+          break;
         case Cases.All:
         case Cases.Gen:
+          addSingleExercise(gen, GenitivGenerators.createExercise);
+          break;
         case Cases.Vok:
+          addSingleExercise(vok, VokativGenerators.createExercise);
           break;
       }
     }
@@ -132,25 +150,30 @@ class ExerciseNavNotifier with ChangeNotifier {
         _states = NominativGenerators.createExercise(
             _exerciseType, _dialect, isPremium);
         break;
-      // TODO: Implement the rest
-      // case Cases.Aku:
-      //   createExercise = AkuzativGenerators.createExercise;
-      //   break;
-      // case Cases.Ins:
-      //   createExercise = InstrumentalGenerators.createExercise;
-      //   break;
-      // case Cases.Dat:
-      //   createExercise = DativGenerators.createExercise;
-      //   break;
-      // case Cases.Lok:
-      //   createExercise = LokativGenerators.createExercise;
-      //   break;
-      // case Cases.Gen:
-      //   createExercise = GenitivGenerators.createExercise;
-      //   break;
-      // case Cases.Vok:
-      //   createExercise = VokativGenerators.createExercise;
-      //   break;
+      case Cases.Aku:
+        _states = AkuzativGenerators.createExercise(
+            _exerciseType, _dialect, isPremium);
+        break;
+      case Cases.Ins:
+        _states = InstrumentalGenerators.createExercise(
+            _exerciseType, _dialect, isPremium);
+        break;
+      case Cases.Dat:
+        _states =
+            DativGenerators.createExercise(_exerciseType, _dialect, isPremium);
+        break;
+      case Cases.Lok:
+        _states = LokativGenerators.createExercise(
+            _exerciseType, _dialect, isPremium);
+        break;
+      case Cases.Gen:
+        _states = GenitivGenerators.createExercise(
+            _exerciseType, _dialect, isPremium);
+        break;
+      case Cases.Vok:
+        _states = VokativGenerators.createExercise(
+            _exerciseType, _dialect, isPremium);
+        break;
       default:
         break;
     }

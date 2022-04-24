@@ -237,7 +237,7 @@ class CaseExerciseHelp extends StatelessWidget {
                                 context: context,
                                 isBold: caseType == Cases.Lok && !isPlural))),
                     Container(
-                        child: NTextSpan(noun.dativ.singular.join(joinChar),
+                        child: NTextSpan(noun.dativ!.singular.join(joinChar),
                             textStyle: Nrs.getTextStyle(
                                 context: context,
                                 isBold: caseType == Cases.Dat && !isPlural))),
@@ -277,7 +277,7 @@ class CaseExerciseHelp extends StatelessWidget {
                                 context: context,
                                 isBold: caseType == Cases.Lok && isPlural))),
                     Container(
-                        child: NTextSpan(noun.dativ.plural.join(joinChar),
+                        child: NTextSpan(noun.dativ!.plural.join(joinChar),
                             textStyle: Nrs.getTextStyle(
                                 context: context,
                                 isBold: caseType == Cases.Dat && isPlural))),

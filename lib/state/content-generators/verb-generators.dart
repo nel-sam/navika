@@ -10,7 +10,7 @@ class VerbGenerators {
   late List<Verb> _verbBank;
 
   VerbGenerators({required this.dialect}) {
-    if (this.dialect == DialectType.Ekavian) {
+    if (this.dialect == DialectType.Serbia) {
       _verbBank = [
         ...verbWordBankGeneral,
         ...verbsEkavian,

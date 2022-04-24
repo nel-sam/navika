@@ -37,7 +37,7 @@ class DialectSettingPage extends StatelessWidget {
                       child: Column(children: [
                         Text(
                           N.t('dialectTitle'),
-                          style: TextStyle(fontSize: FONT_SIZE * 2.5),
+                          style: TextStyle(fontSize: FONT_SIZE * 2),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(
@@ -49,9 +49,9 @@ class DialectSettingPage extends StatelessWidget {
                                   fontWeight: FontWeight.bold)),
                         ),
                         NRoundButton(
-                            title: N.t('serbian'),
+                            title: N.t('serbia'),
                             onPressed: () {
-                              model.setDialectType(DialectType.Ekavian);
+                              model.setDialectType(DialectType.Serbia);
                               model.setBoolSetting(
                                   SettingsKeys.isFirstTime, false);
                               Navigator.push(
@@ -61,9 +61,21 @@ class DialectSettingPage extends StatelessWidget {
                               );
                             }),
                         NRoundButton(
-                            title: N.t('nonSerbian'),
+                            title: N.t('croatia'),
                             onPressed: () {
-                              model.setDialectType(DialectType.Ijekavian);
+                              model.setDialectType(DialectType.Croatia);
+                              model.setBoolSetting(
+                                  SettingsKeys.isFirstTime, false);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => NHomePage()),
+                              );
+                            }),
+                        NRoundButton(
+                            title: N.t('bosnia'),
+                            onPressed: () {
+                              model.setDialectType(DialectType.Bosnia);
                               model.setBoolSetting(
                                   SettingsKeys.isFirstTime, false);
                               Navigator.push(
@@ -75,7 +87,7 @@ class DialectSettingPage extends StatelessWidget {
                         NTextLink(
                             title: N.t('skip'),
                             onPressed: () {
-                              model.setDialectType(DialectType.Ijekavian);
+                              model.setDialectType(DialectType.Bosnia);
                               model.setBoolSetting(
                                   SettingsKeys.isFirstTime, false);
                               Navigator.push(

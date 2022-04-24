@@ -19,7 +19,7 @@ class AkuzativGrammarGuideContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isSerbian = dialect == DialectType.Ekavian;
+    bool isSerbian = dialect == DialectType.Serbia;
 
     return Column(
       children: [

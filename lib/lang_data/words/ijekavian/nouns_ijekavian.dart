@@ -3,6 +3,20 @@ import 'package:navika/models/models.dart';
 import 'package:navika/models/noun.dart';
 
 class NounsIjekavian {
+  static final Noun stol = Noun(
+    dictionary: 'stol',
+    tags: [Tags.FlatSurface, Tags.Furniture, Tags.Portable],
+    gender: Genders.Masculine,
+    isAnimate: false,
+    nominativ: new DeclensionByCount(singular: ['stol'], plural: ['stolovi']),
+    akuzativ: new DeclensionByCount(singular: ['stol'], plural: ['stolove']),
+    instrumental:
+        new DeclensionByCount(singular: ['stolom'], plural: ['stolovima']),
+    lokativ: new DeclensionByCount(singular: ['stolu'], plural: ['stolovima']),
+    dativ: new DeclensionByCount(singular: ['stolu'], plural: ['stolovima']),
+    genitiv: new DeclensionByCount(singular: ['stola'], plural: ['stolova']),
+    vokativ: new DeclensionByCount(singular: ['stole'], plural: ['stolovi']),
+  );
   static final Noun zrakoplov = Noun(
     dictionary: 'zrakoplov',
     tags: [Tags.Vehicle],
@@ -23,7 +37,6 @@ class NounsIjekavian {
     instrumental: new DeclensionByCount(
         singular: ['zrakoplovom'], plural: ['zrakoplovima']),
   );
-
   static final Noun djevojka = Noun(
     dictionary: 'djevojka',
     tags: [Tags.Human],
@@ -57,5 +70,25 @@ class NounsIjekavian {
     vokativ: new DeclensionByCount(singular: ['ljeto'], plural: ['ljeta']),
     instrumental:
         new DeclensionByCount(singular: ['ljetom'], plural: ['ljetima']),
+  );
+  static final Noun obitelj = Noun(
+    dictionary: 'obitelj',
+    tags: [Tags.Human, Tags.Group],
+    gender: Genders.Feminine,
+    isAnimate: false,
+    nominativ:
+        new DeclensionByCount(singular: ['obitelj'], plural: ['obitelji']),
+    genitiv:
+        new DeclensionByCount(singular: ['obitelji'], plural: ['obitelji']),
+    dativ:
+        new DeclensionByCount(singular: ['obitelji'], plural: ['obiteljima']),
+    akuzativ:
+        new DeclensionByCount(singular: ['obitelj'], plural: ['obitelji']),
+    lokativ:
+        new DeclensionByCount(singular: ['obitelji'], plural: ['obiteljima']),
+    vokativ:
+        new DeclensionByCount(singular: ['obitelji'], plural: ['obitelji']),
+    instrumental: new DeclensionByCount(
+        singular: ['obitelji', 'obitelju'], plural: ['obitelju']),
   );
 }

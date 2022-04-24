@@ -16,7 +16,8 @@ class N {
     if (exerciseType == ExerciseTypes.case_nouns) {
       _filterByExerciseType(combo, [GrammarTypes.noun]);
     } else if (exerciseType == ExerciseTypes.case_adjectives) {
-      _filterByExerciseType(combo, [GrammarTypes.adjective]);
+      _filterByExerciseType(
+          combo, [GrammarTypes.adjective, GrammarTypes.possessivePronoun]);
     } else if (exerciseType == ExerciseTypes.case_nouns_and_adjectives) {
       _filterByExerciseType(combo, [
         GrammarTypes.noun,
@@ -45,6 +46,18 @@ class N {
     }
 
     return TextSpan(text: text, style: TextStyle(fontSize: fontSize));
+  }
+
+  static DialectType dialectTypeStrToEnum(String strVal) {
+    // Legacy support
+    if (strVal.toLowerCase() == 'ekavian') {
+      return DialectType.Serbia;
+    } else if (strVal.toLowerCase() == 'ijekavian') return DialectType.Croatia;
+
+    final matching = DialectType.values
+        .firstWhere((DialectType e) => e.name.toString() == strVal);
+
+    return matching;
   }
 
   static String getBitiConjugation(String pronoun) {

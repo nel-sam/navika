@@ -1,16 +1,12 @@
-import 'package:navika/models/adjective.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
-import 'package:navika/models/noun.dart';
-import 'package:navika/models/personal-pronoun.dart';
 import 'package:navika/state/cases/case-question-state.dart';
-import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
 class VokativGenerators {
-  static CaseQuestionState createExercise(
-    List toAvoid,
+  static List<CaseQuestionState> createExercise(
     ExerciseTypes exerciseType,
     DialectType dialect,
+    bool isPremium,
   ) {
     PANCombo? c;
 
@@ -26,26 +22,6 @@ class VokativGenerators {
     //     getStaticSentenceParts: getStaticSentenceParts,
     //   );
     // }
-    return CaseQuestionState(combos: c!);
-  }
-
-  static StaticSentenceParts getPersonalPronounSentenceStaticParts(
-    PersonalPronoun personalPronoun,
-    bool isShortForm,
-    DialectType dialect,
-  ) {
-    var start = Nrs.coinFlip() ? 'Zdravo, ' : 'Hej, ';
-    return StaticSentenceParts(start: start, end: '');
-  }
-
-  static StaticSentenceParts getStaticSentenceParts(
-    Noun noun,
-    bool isPlural,
-    Adjective? pronoun,
-    Adjective? adjective,
-    DialectType dialect,
-  ) {
-    var start = Nrs.coinFlip() ? 'Zdravo, ' : 'Hej, ';
-    return StaticSentenceParts(start: start, end: '');
+    return [CaseQuestionState(combos: c!)];
   }
 }

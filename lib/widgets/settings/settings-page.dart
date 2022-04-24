@@ -37,16 +37,43 @@ class SettingsPage extends StatelessWidget {
                   return Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      SettingsSwitch(
-                        title: N.t('useSerbian'),
-                        description: N.t('useSerbianDesc'),
-                        value: settings.dialectType == DialectType.Ekavian,
-                        onChanged: (bool isSelected) {
-                          if (isSelected)
-                            model.setDialectType(DialectType.Ekavian);
-                          else
-                            model.setDialectType(DialectType.Ijekavian);
-                        },
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    left: FONT_SIZE, right: FONT_SIZE / 2),
+                                child: Icon(Icons.language),
+                              ),
+                              Text(N.t('countryDialect')),
+                            ],
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(right: FONT_SIZE),
+                            child: DropdownButton<String>(
+                              value: settings.dialectType.name.split('.').last,
+                              style: const TextStyle(color: navPalette),
+                              underline: Container(
+                                height: 2,
+                                color: navPalette,
+                              ),
+                              onChanged: (String? newValue) {
+                                model.setDialectType(
+                                    N.dialectTypeStrToEnum(newValue!));
+                              },
+                              items: DialectType.values
+                                  .map<DropdownMenuItem<String>>(
+                                      (DialectType value) {
+                                return DropdownMenuItem<String>(
+                                  value: value.name.split('.').last,
+                                  child: Text(N.t(value.name)),
+                                );
+                              }).toList(),
+                            ),
+                          ),
+                        ],
                       ),
                       Padding(padding: const EdgeInsets.only(top: FONT_SIZE)),
                       SettingsMenuButton(

@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/models/noun.dart';
@@ -80,20 +79,6 @@ class NounBankGeneral {
     instrumental:
         new DeclensionByCount(singular: ['licem'], plural: ['licima']),
   );
-  static final Noun stol = Noun(
-    dictionary: 'stol',
-    tags: [Tags.FlatSurface, Tags.Furniture, Tags.Portable],
-    gender: Genders.Masculine,
-    isAnimate: false,
-    nominativ: new DeclensionByCount(singular: ['stol'], plural: ['stolovi']),
-    akuzativ: new DeclensionByCount(singular: ['stol'], plural: ['stolove']),
-    instrumental:
-        new DeclensionByCount(singular: ['stolom'], plural: ['stolovima']),
-    lokativ: new DeclensionByCount(singular: ['stolu'], plural: ['stolovima']),
-    dativ: new DeclensionByCount(singular: ['stolu'], plural: ['stolovima']),
-    genitiv: new DeclensionByCount(singular: ['stola'], plural: ['stolova']),
-    vokativ: new DeclensionByCount(singular: ['stole'], plural: ['stolovi']),
-  );
   static final Noun zena = Noun(
     dictionary: 'žena',
     tags: [Tags.Human, Tags.Adult],
@@ -122,9 +107,22 @@ class NounBankGeneral {
     genitiv: new DeclensionByCount(singular: ['sestre'], plural: ['sestara']),
     vokativ: new DeclensionByCount(singular: ['sestro'], plural: ['sestre']),
   );
+  static final Noun majka = Noun(
+    dictionary: 'majka',
+    tags: [Tags.Human, Tags.Adult],
+    gender: Genders.Feminine,
+    isAnimate: true,
+    nominativ: new DeclensionByCount(singular: ['majka'], plural: ['majke']),
+    akuzativ: new DeclensionByCount(singular: ['majku'], plural: ['majke']),
+    instrumental:
+        new DeclensionByCount(singular: ['majkom'], plural: ['majkama']),
+    lokativ: new DeclensionByCount(singular: ['majci'], plural: ['majkama']),
+    genitiv: new DeclensionByCount(singular: ['majke'], plural: ['majka']),
+    vokativ: new DeclensionByCount(singular: ['majko'], plural: ['majke']),
+  );
   static final Noun bratBraca = Noun(
     dictionary: 'brat/braća',
-    getExtraInfo: (BuildContext context) => N.t('extrainfo_brat'),
+    extraInfo: N.t('extrainfo_brat'),
     tags: [Tags.Human, Tags.Adult],
     gender: Genders.Masculine,
     isAnimate: true,
@@ -382,25 +380,5 @@ class NounBankGeneral {
     vokativ: new DeclensionByCount(singular: ['bicikle'], plural: ['bicikli']),
     instrumental:
         new DeclensionByCount(singular: ['biciklom'], plural: ['biciklima']),
-  );
-  static final Noun obitelj = Noun(
-    dictionary: 'obitelj',
-    tags: [Tags.Human, Tags.Group],
-    gender: Genders.Feminine,
-    isAnimate: false,
-    nominativ:
-        new DeclensionByCount(singular: ['obitelj'], plural: ['obitelji']),
-    genitiv:
-        new DeclensionByCount(singular: ['obitelji'], plural: ['obitelji']),
-    dativ:
-        new DeclensionByCount(singular: ['obitelji'], plural: ['obiteljima']),
-    akuzativ:
-        new DeclensionByCount(singular: ['obitelj'], plural: ['obitelji']),
-    lokativ:
-        new DeclensionByCount(singular: ['obitelji'], plural: ['obiteljima']),
-    vokativ:
-        new DeclensionByCount(singular: ['obitelji'], plural: ['obitelji']),
-    instrumental: new DeclensionByCount(
-        singular: ['obitelji', 'obitelju'], plural: ['obitelju']),
   );
 }

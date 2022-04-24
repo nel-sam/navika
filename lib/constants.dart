@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 const String APP_NAME = 'navika';
-const BATCH_COUNT = 20;
+const MAX_BATCH_COUNT = 20;
 
 const CARD_PADDING = 10.0;
 const DECLINED_LETTER_STYLE =

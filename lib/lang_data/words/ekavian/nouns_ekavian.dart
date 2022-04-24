@@ -3,6 +3,21 @@ import 'package:navika/models/models.dart';
 import 'package:navika/models/noun.dart';
 
 class NounsEkavian {
+  static final Noun stol = Noun(
+    dictionary: 'sto',
+    tags: [Tags.FlatSurface, Tags.Furniture, Tags.Portable],
+    gender: Genders.Masculine,
+    isAnimate: false,
+    nominativ: new DeclensionByCount(singular: ['sto'], plural: ['stolovi']),
+    akuzativ: new DeclensionByCount(singular: ['sto'], plural: ['stolove']),
+    instrumental:
+        new DeclensionByCount(singular: ['stolom'], plural: ['stolovima']),
+    lokativ: new DeclensionByCount(singular: ['stolu'], plural: ['stolovima']),
+    dativ: new DeclensionByCount(singular: ['stolu'], plural: ['stolovima']),
+    genitiv: new DeclensionByCount(singular: ['stola'], plural: ['stolova']),
+    vokativ: new DeclensionByCount(singular: ['stole'], plural: ['stolovi']),
+  );
+
   static final Noun avion = Noun(
     dictionary: 'avion',
     tags: [Tags.Vehicle],
@@ -48,4 +63,5 @@ class NounsEkavian {
     instrumental:
         new DeclensionByCount(singular: ['letom'], plural: ['letima']),
   );
+  // TODO: Add porodica/familija
 }

@@ -1,19 +1,12 @@
-import 'package:navika/lang_data/sentence_bank_generator.dart';
-import 'package:navika/models/adjective.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
-import 'package:navika/models/noun.dart';
-import 'package:navika/models/personal-pronoun.dart';
 import 'package:navika/state/cases/case-question-state.dart';
-import 'package:navika/state/content-generators/pan-generator.dart';
-import 'package:navika/utilities/navika-helpers.dart';
-import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
 class DativGenerators {
-  static CaseQuestionState createExercise(
-    List toAvoid,
+  static List<CaseQuestionState> createExercise(
     ExerciseTypes exerciseType,
     DialectType dialect,
+    bool isPremium,
   ) {
     PANCombo? c;
 
@@ -28,51 +21,6 @@ class DativGenerators {
     //   );
     // }
 
-    return CaseQuestionState(combos: c!);
-  }
-
-  static StaticSentenceParts getPersonalPronounSentenceStaticParts(
-    PersonalPronoun personalPronoun,
-    bool isShortForm,
-    DialectType dialect,
-  ) {
-    String start = '';
-    String end = '';
-
-    if (Nrs.coinFlip()) {
-      start = 'Danas';
-      end = 'je rođendan';
-    } else if (Nrs.coinFlip()) {
-      start = 'Pas je došlo do';
-    } else if (Nrs.coinFlip()) {
-      start = 'Pas';
-      end = 'je donio igračku';
-    } else {
-      start = 'On';
-      end = 'nešto pokazao';
-    }
-
-    return StaticSentenceParts(start: start, end: end);
-  }
-
-  static StaticSentenceParts getStaticSentenceParts(
-    Noun noun,
-    bool isPlural,
-    Adjective? pronoun,
-    Adjective? adjective,
-    DialectType dialect,
-  ) {
-    String start = '';
-    String end = '';
-
-    if (noun.isAnimate) {
-      start = 'Daj to ';
-    } else if (isPlural) {
-      start = 'Slični su ';
-    } else {
-      start = 'Slično je ';
-    }
-
-    return StaticSentenceParts(start: start, end: end);
+    return [CaseQuestionState(combos: c!)];
   }
 }

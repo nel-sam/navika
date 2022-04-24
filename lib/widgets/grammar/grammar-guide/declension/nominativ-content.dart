@@ -21,7 +21,7 @@ class NominativGrammarGuideContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isSerbian = dialect == DialectType.Ekavian;
+    final isSerbian = dialect == DialectType.Serbia;
 
     return Column(
       children: [
