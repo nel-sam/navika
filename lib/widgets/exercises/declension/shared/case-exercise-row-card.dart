@@ -5,9 +5,11 @@ import 'package:navika/models/models.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/exercises/declension/shared/case-exercise-help.dart';
 import 'package:navika/widgets/shared/shadow-box.dart';
+import 'package:nrs_flutter_lib/constants.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 import 'package:nrs_flutter_lib/widgets/n_icon_text_pair.dart';
 import 'package:nrs_flutter_lib/widgets/n_sub_header.dart';
+import 'package:nrs_flutter_lib/widgets/n_text_multi.dart';
 
 class CaseExerciseRowCard extends StatelessWidget {
   final PANCombo combos;
@@ -54,9 +56,24 @@ class CaseExerciseRowCard extends StatelessWidget {
               if (translation.length > 0) NSubHeader(translation),
               if (extraInfo.length > 0)
                 ExtraInfo(screenWidth: screenWidth, extraInfo: extraInfo),
-              Wrap(
-                  crossAxisAlignment: WrapCrossAlignment.center,
-                  children: children.map((c) => c).toList()),
+              this.isAllCorrect
+                  ? NTextMulti(
+                      N.getCorrectSentence(context, this.combos.sentenceParts))
+                  : Wrap(
+                      crossAxisAlignment: WrapCrossAlignment.center,
+                      children: children.map((c) => c).toList()),
+              if (this.isAllCorrect)
+                Container(
+                  child: Center(
+                      child: Padding(
+                    padding: const EdgeInsets.all(28),
+                    child: Icon(
+                      Icons.check_circle_outline,
+                      color: CORRECT_COLOR,
+                      size: 48,
+                    ),
+                  )),
+                )
             ],
           ),
         ),

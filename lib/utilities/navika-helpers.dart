@@ -1,3 +1,4 @@
+import 'dart:core';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -11,6 +12,21 @@ import 'package:nrs_flutter_lib/enums.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
 class N {
+  static List<TextSpan> getCorrectSentence(BuildContext context, List<CaseSentencePart> sentenceParts) {
+    return sentenceParts.map<TextSpan>((CaseSentencePart e) {
+      if (!e.isCorrectable)
+        return TextSpan(
+            text: '${e.displayValue} ',
+            style: TextStyle(fontSize: FONT_SIZE * 1.1));
+
+      return TextSpan(
+        text: '${e.correctValues.join('/')} ',
+        style: Nrs.getTextStyle(
+            context: context, isBold: true, fontSize: FONT_SIZE * 1.1),
+      );
+    }).toList();
+  }
+
   static void convertToExerciseTypes(
       ExerciseTypes exerciseType, PANCombo combo) {
     if (exerciseType == ExerciseTypes.case_nouns) {

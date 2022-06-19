@@ -17,13 +17,13 @@ class NounBankGeneral {
     isAnimate: false,
     nominativ: new DeclensionByCount(singular: ['torta'], plural: ['torte']),
     genitiv: new DeclensionByCount(singular: ['torte'], plural: ['torta']),
-    dativ: new DeclensionByCount(singular: [''], plural: ['']),
-    akuzativ: new DeclensionByCount(singular: [''], plural: ['']),
+    dativ: new DeclensionByCount(singular: ['torti'], plural: ['tortama']),
+    akuzativ: new DeclensionByCount(singular: ['tortu'], plural: ['torte']),
     lokativ:
-        new DeclensionByCount(singular: [''], plural: ['']),
-    vokativ: new DeclensionByCount(singular: [''], plural: ['']),
+        new DeclensionByCount(singular: ['torti'], plural: ['tortama']),
+    vokativ: new DeclensionByCount(singular: ['torto'], plural: ['tortama']),
     instrumental:
-        new DeclensionByCount(singular: [''], plural: ['']),
+        new DeclensionByCount(singular: ['tortom'], plural: ['tortama']),
   );
   static final Noun ananas = Noun(
     dictionary: 'ananas',

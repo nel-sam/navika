@@ -65,7 +65,7 @@ class _InfoBannerState extends State<InfoBanner> {
             },
             isExpanded: state.isExpanded,
             body: Container(
-              height: 420,
+              height: 250,
               child: Padding(
                 padding: const EdgeInsets.all(10),
                 child: Column(

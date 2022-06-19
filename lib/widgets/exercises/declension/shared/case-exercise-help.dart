@@ -8,7 +8,6 @@ import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/declension-table-cell.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/declension-table.dart';
 import 'package:navika/widgets/shared/count_table_cells.dart';
-import 'package:nrs_flutter_lib/constants.dart';
 import 'package:nrs_flutter_lib/enums.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 import 'package:nrs_flutter_lib/widgets/n_sub_header.dart';
@@ -129,18 +128,7 @@ class CaseExerciseHelp extends StatelessWidget {
     return Column(
       children: [
         NSubHeader(N.t('correctAnswer')),
-        NTextMulti(combo.sentenceParts.map<TextSpan>((CaseSentencePart e) {
-          if (!e.isCorrectable)
-            return TextSpan(
-                text: '${e.displayValue} ',
-                style: TextStyle(fontSize: FONT_SIZE * 1.1));
-
-          return TextSpan(
-            text: '${e.correctValues.join(joinChar)} ',
-            style: Nrs.getTextStyle(
-                context: context, isBold: true, fontSize: FONT_SIZE * 1.1),
-          );
-        }).toList()),
+        NTextMulti(N.getCorrectSentence(context, combo.sentenceParts)),
         if (combo.translation.length > 0) NTextSpan(combo.translation)
       ],
     );
