@@ -10,6 +10,21 @@ import 'package:navika/utilities/navika-helpers.dart';
 */
 
 class NounBankGeneral {
+   static final Noun torta = Noun(
+    dictionary: 'torta',
+    tags: [Tags.Food, Tags.Portable],
+    gender: Genders.Feminine,
+    isAnimate: false,
+    nominativ: new DeclensionByCount(singular: ['torta'], plural: ['torte']),
+    genitiv: new DeclensionByCount(singular: ['torte'], plural: ['torta']),
+    dativ: new DeclensionByCount(singular: [''], plural: ['']),
+    akuzativ: new DeclensionByCount(singular: [''], plural: ['']),
+    lokativ:
+        new DeclensionByCount(singular: [''], plural: ['']),
+    vokativ: new DeclensionByCount(singular: [''], plural: ['']),
+    instrumental:
+        new DeclensionByCount(singular: [''], plural: ['']),
+  );
   static final Noun ananas = Noun(
     dictionary: 'ananas',
     tags: [Tags.Food, Tags.Portable],

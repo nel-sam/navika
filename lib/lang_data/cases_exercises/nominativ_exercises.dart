@@ -24,7 +24,7 @@ class NominativExercises {
             gender: Genders.Masculine,
             isPlural: false,
             isAnimate: false,
-            getTrans: () => N.t('ex_taj_stari_avion_ima_dva_krila'),
+            translation: N.t('ex_taj_stari_avion_ima_dva_krila'),
             sentenceParts: [
               CaseSentencePart(
                 isCorrectable: true,
@@ -59,7 +59,7 @@ class NominativExercises {
             gender: Genders.Feminine,
             isPlural: false,
             isAnimate: false,
-            getTrans: () => N.t('ex_francuska_ima_oko_61_milijun_stanovnika'),
+            translation: N.t('ex_francuska_ima_oko_61_milijun_stanovnika'),
             sentenceParts: [
               CaseSentencePart(
                 isCorrectable: true,
@@ -76,7 +76,7 @@ class NominativExercises {
             gender: Genders.Feminine,
             isPlural: false,
             isAnimate: false,
-            getTrans: () => N.t('ex_Bosna_i_Srbija_imaju_planine'),
+            translation: N.t('ex_Bosna_i_Srbija_imaju_planine'),
             sentenceParts: [
               CaseSentencePart(
                 isCorrectable: true,
@@ -102,7 +102,7 @@ class NominativExercises {
             gender: Genders.Neuter,
             isPlural: false,
             isAnimate: false,
-            getTrans: () => N.t('ex_Lice_je_prednji_dio_glave'),
+            translation: N.t('ex_Lice_je_prednji_dio_glave'),
             sentenceParts: [
               CaseSentencePart(
                 isCorrectable: true,
@@ -119,7 +119,7 @@ class NominativExercises {
             gender: Genders.Feminine,
             isPlural: false,
             isAnimate: true,
-            getTrans: () => N.t('ex_Njezina_majka_je_žena_koja_voli_putovati'),
+            translation: N.t('ex_Njezina_majka_je_žena_koja_voli_putovati'),
             sentenceParts: [
               CaseSentencePart(
                 isCorrectable: true,
@@ -153,7 +153,7 @@ class NominativExercises {
             gender: Genders.Feminine,
             isPlural: false,
             isAnimate: true,
-            getTrans: () => N.t('ex_Moja_sestra_boji_se_biti_sama'),
+            translation: N.t('ex_Moja_sestra_boji_se_biti_sama'),
             sentenceParts: [
               CaseSentencePart(
                 isCorrectable: true,

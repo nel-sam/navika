@@ -81,7 +81,7 @@ class DeclensionPronoun {
 }
 
 class PANCombo {
-  String Function()? getTrans;
+  String translation;
   String extraInfo;
   final List<CaseSentencePart> sentenceParts;
   final Cases caseType;
@@ -90,7 +90,7 @@ class PANCombo {
   final bool isAnimate;
 
   PANCombo({
-    this.getTrans,
+    this.translation = '',
     this.extraInfo = '',
     required this.caseType,
     required this.gender,

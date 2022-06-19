@@ -20,9 +20,7 @@ class _CaseQuestionContentState extends State<CaseQuestionContent> {
   @override
   Widget build(BuildContext context) {
     bool isAllCorrect = widget.stateItem.isCorrect;
-    final trans = widget.stateItem.combos.getTrans != null
-        ? widget.stateItem.combos.getTrans!()
-        : '';
+    final trans = widget.stateItem.combos.translation;
 
     handleOnChange(String newValue, List<String> correctValues) {
       final isCorrect = correctValues.containsCaseInsensitive(newValue);

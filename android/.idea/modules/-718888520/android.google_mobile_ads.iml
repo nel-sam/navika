@@ -34,6 +34,12 @@
       <sourceFolder url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/google_mobile_ads-0.13.0/android/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/google_mobile_ads-0.13.0/android/src/test/java" isTestSource="true" />
       <excludeFolder url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/google_mobile_ads-0.13.0/android/.gradle" />
+      <excludeFolder url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/google_mobile_ads-0.13.0/.pub" />
+      <excludeFolder url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/google_mobile_ads-0.13.0/build" />
+      <excludeFolder url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/google_mobile_ads-0.13.0/.dart_tool" />
+      <excludeFolder url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/google_mobile_ads-0.13.0/example/.dart_tool" />
+      <excludeFolder url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/google_mobile_ads-0.13.0/example/.pub" />
+      <excludeFolder url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/google_mobile_ads-0.13.0/example/build" />
     </content>
     <content url="file://$MODULE_DIR$/../../../../build/google_mobile_ads/generated/aidl_source_output_dir/debug/out" />
     <content url="file://$MODULE_DIR$/../../../../build/google_mobile_ads/generated/aidl_source_output_dir/debugAndroidTest/out" />

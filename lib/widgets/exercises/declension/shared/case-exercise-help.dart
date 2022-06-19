@@ -141,7 +141,7 @@ class CaseExerciseHelp extends StatelessWidget {
                 context: context, isBold: true, fontSize: FONT_SIZE * 1.1),
           );
         }).toList()),
-        NTextSpan(combo.getTrans!())
+        if (combo.translation.length > 0) NTextSpan(combo.translation)
       ],
     );
   }

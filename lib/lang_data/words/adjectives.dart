@@ -364,4 +364,56 @@ class AdjectiveBankGeneral {
           new DeclensionByGender(singular: ['sretnog'], plural: ['sretnih']),
     ),
   );
+  static final Adjective sladak = Adjective(
+    dictionary: 'sladak',
+    toAvoid: [
+      Tags.BodyPart,
+      Tags.Country,
+      Tags.Emotion,
+      Tags.Furniture,
+      Tags.FlatSurface,
+      Tags.Activity,
+      Tags.Adult
+    ],
+    nominativ: Declension(
+        masculine:
+            new DeclensionByGender(singular: ['slatki'], plural: ['slatki']),
+        feminine:
+            new DeclensionByGender(singular: ['slatka'], plural: ['slatke']),
+        neuter:
+            new DeclensionByGender(singular: ['slatko'], plural: ['slatka'])),
+    akuzativ: Declension(
+        masculine:
+            new DeclensionByGender(singular: ['slatki'], plural: ['slatke']),
+        feminine:
+            new DeclensionByGender(singular: ['slatku'], plural: ['slatke']),
+        neuter:
+            new DeclensionByGender(singular: ['slatko'], plural: ['slatka'])),
+    instrumental: Declension(
+      masculine: new DeclensionByGender(
+          singular: ['slatkim'], plural: ['slatkim', 'slatkima']),
+      feminine: new DeclensionByGender(
+          singular: ['slatkom'], plural: ['slatkim', 'slatkima']),
+      neuter: new DeclensionByGender(
+          singular: ['slatkim'], plural: ['slatkim', 'slatkima']),
+    ),
+    lokativ: Declension(
+      masculine: new DeclensionByGender(
+          singular: ['slatkom', 'slatkome', 'slatkomu'],
+          plural: ['slatkim', 'slatkima']),
+      feminine: new DeclensionByGender(
+          singular: ['slatkoj'], plural: ['slatkim', 'slatkima']),
+      neuter: new DeclensionByGender(
+          singular: ['slatkom', 'slatkome', 'slatkomu'],
+          plural: ['slatkim', 'slatkima']),
+    ),
+    genitiv: Declension(
+      masculine: new DeclensionByGender(
+          singular: ['slatkog', 'slatkoga'], plural: ['slatkih']),
+      feminine:
+          new DeclensionByGender(singular: ['slatke'], plural: ['slatkih']),
+      neuter: new DeclensionByGender(
+          singular: ['slatkog', 'slatkoga'], plural: ['slatkih']),
+    ),
+  );
 }

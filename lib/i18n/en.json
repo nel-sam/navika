@@ -34,6 +34,7 @@
   "ex_Lice_je_prednji_dio_glave": "The face is the front of the head",
   "ex_Njezina_majka_je_žena_koja_voli_putovati": "Her mother is a woman who loves to travel",
   "ex_Moja_sestra_boji_se_biti_sama": "My sister is afraid of being alone",
+  "ex_Mogu_li_dobiti_malo_te_slatke_torte": "May I have some of that sweet cake?",
 
   "extrainfo_brat": "Braća is used when referring to multiple brothers. Braća refers to males, but declines like a singular feminine noun.",
 
@@ -138,7 +139,7 @@
   "nouns_and_adjectives": "Nouns and adjectives",
   "skip": "I'm not sure",
   "dialectTitle": "Navika supports multiple Serbo-Croatian spellings and pronunciations",
-  "dialectDesc": "In Serbia they say 'lepo' (beautiful) and 'avion' (airplane). In Croatia they say 'lijepo' and 'zrakoplov'. In Bosnia it's 'lijepo. Do you know which pronunciation you'd like to practice? It's OK if you don't know. You can set this later in the settings page.",
+  "dialectDesc": "In Serbia they say 'lepo' (beautiful) and 'avion' (airplane). In Croatia they say 'lijepo' and 'zrakoplov'. In Bosnia it's 'lijepo'. Do you know which pronunciation you'd like to practice? It's OK if you don't know. You can set this later in the settings page.",
   "mascSingVok": "Masculine singular adjectives always get an 'i', even when the adjective doesn't have a 'i' in Nominative",
   "vocativYouDesc": "The only personal pronoun used in vocative is 'you' as in 'hey, you!'.",
   "longShortFormDesc": "Normally you should use the short form of the pronouns. The long form is only used to emphasize, and the pronoun's position in the sentence changes if the long form is used.",

@@ -1,6 +1,9 @@
+import 'package:navika/lang_data/cases_exercises/genitiv_exercises.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/state/cases/case-question-state.dart';
+import 'package:navika/utilities/navika-helpers.dart';
+import 'package:nrs_flutter_lib/enums.dart';
 
 class GenitivGenerators {
   static List<CaseQuestionState> createExercise(
@@ -8,19 +11,29 @@ class GenitivGenerators {
     DialectType dialect,
     bool isPremium,
   ) {
-    PANCombo? c;
+    List<PANCombo> combos = [];
 
-    // while (c == null || N.containsCaseQuestionState(toAvoid, c)) {
-    //   c = PanGenerator.getPANCombos(
-    //     caseType: Cases.Gen,
-    //     dialect: dialect,
-    //     bank: SentenceBankGenerator(dialect: dialect).sentencesBankData,
-    //     getPersonalPronounSentenceStaticParts:
-    //         getPersonalPronounSentenceStaticParts,
-    //     getStaticSentenceParts: getStaticSentenceParts,
-    //   );
-    // }
+ if (exerciseType == ExerciseTypes.case_personal_pronouns) {
+      combos.addAll(GenitivExercises(dialect).personalPronouns);
+    } else if (isPremium) {
+      combos.addAll(GenitivExercises(dialect).premium);
+    }
 
-    return [CaseQuestionState(combos: c!)];
+    if (exerciseType != ExerciseTypes.case_personal_pronouns) {
+      combos.addAll(GenitivExercises(dialect).level1);
+    }
+
+    if (exerciseType == ExerciseTypes.case_adjectives ||
+        exerciseType == ExerciseTypes.case_nouns_and_adjectives) {
+      combos.removeWhere((element) => !element.sentenceParts.any((sp) =>
+          sp.grammarType == GrammarTypes.adjective ||
+          sp.grammarType == GrammarTypes.possessivePronoun));
+    }
+
+    for (int i = 0; i < combos.length; i++) {
+      N.convertToExerciseTypes(exerciseType, combos[i]);
+    }
+
+    return combos.map((e) => CaseQuestionState(combos: e)).toList();
   }
 }

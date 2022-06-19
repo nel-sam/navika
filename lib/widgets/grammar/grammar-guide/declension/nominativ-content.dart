@@ -61,13 +61,13 @@ class NominativGrammarGuideContent extends StatelessWidget {
                   style: Nrs.getTextStyle(context: context, isBold: true)),
               TextSpan(text: 'kao '),
               TextSpan(
-                  text: 'mlijeko',
+                  text: isSerbian ? 'mleko' : 'mlijeko',
                   style: Nrs.getTextStyle(context: context, isBold: true)),
             ]),
             NTextMulti(
               [
                 TextSpan(
-                    text: 'Mlijeko ',
+                    text: isSerbian ? 'Mleko' : 'Mlijeko ',
                     style: Nrs.getTextStyle(context: context, isBold: true)),
                 TextSpan(text: 'je ukusnije nego '),
                 TextSpan(
