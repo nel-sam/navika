@@ -44,10 +44,18 @@ class GenitivExercises {
               correctValues: NounBankGeneral.torta.genitiv.singular,
               grammarType: GrammarTypes.noun,
             ),
+            CaseSentencePart(displayValue: "?"),
           ],
           isAnimate: false,
           translation: N.t('ex_Mogu_li_dobiti_malo_te_slatke_torte'),
-        )
+        ),
+        PANCombo(
+            caseType: caseType,
+            gender: NounBankGeneral.krevet.gender,
+            isPlural: isPlural,
+            sentenceParts: sentenceParts,
+            isAnimate: isAnimate,
+            translation: N.t('ex_Koja_je_vrsta_kreveta_prava_za_vas'))
       ];
 
   List<PANCombo> get level2 => [];
