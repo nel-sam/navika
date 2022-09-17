@@ -45,7 +45,7 @@ class _CaseQuestionContentState extends State<CaseQuestionContent> {
           if (!e.isCorrectable) {
             return Text(
               e.displayValue,
-              style: TextStyle(fontSize: EXERCISE_FONT_STYLE),
+              style: TextStyle(fontSize: EXERCISE_FONT_SIZE),
             );
           }
 

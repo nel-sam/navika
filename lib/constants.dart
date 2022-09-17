@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 
 const String APP_NAME = 'navika';
-const MAX_BATCH_COUNT = 20;
-
 const CARD_PADDING = 10.0;
+
 const DECLINED_LETTER_STYLE =
     TextStyle(fontStyle: FontStyle.italic, fontWeight: FontWeight.bold);
 const EQUAL_ITEMS_BORDER_COLOR = Colors.amber;
+const double EXERCISE_FONT_SIZE = 20;
 
-const double EXERCISE_FONT_STYLE = 20;
 const EdgeInsets EXERCISE_LIST_PADDING = const EdgeInsets.only(bottom: 10);
-
 const FEMININE_COLOR = Color(0xFFD6308A);
-const FEMININE_ICON = Icons.female;
 
+const FEMININE_ICON = Icons.female;
 const MASCULINE_COLOR = Color(0xFF6C5CE7);
+
 const MASCULINE_ICON = Icons.male;
+const MAX_BATCH_COUNT = 20;
 
 const NEUTER_COLOR = Color(0xFF46a10d);
 const NEUTER_ICON = Icons.hide_source_outlined;

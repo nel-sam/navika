@@ -59,7 +59,6 @@ class CaseExercise extends StatelessWidget {
                         youtubeLink: youtubeLink,
                       ),
                       const AdCard(),
-                      NavigationHeaderWrapper(navNotifier: navNotifier),
                       GestureDetector(
                         onHorizontalDragUpdate: (details) {
                           if (_debounce.isActive) {
@@ -81,6 +80,7 @@ class CaseExercise extends StatelessWidget {
                           stateItem: navNotifier.getActive(),
                         ),
                       ),
+                      NavigationHeaderWrapper(navNotifier: navNotifier),
                     ],
                   ),
                 ),

@@ -8,7 +8,6 @@ import 'package:navika/widgets/shared/shadow-box.dart';
 import 'package:nrs_flutter_lib/constants.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 import 'package:nrs_flutter_lib/widgets/n_icon_text_pair.dart';
-import 'package:nrs_flutter_lib/widgets/n_sub_header.dart';
 import 'package:nrs_flutter_lib/widgets/n_text_multi.dart';
 
 class CaseExerciseRowCard extends StatelessWidget {
@@ -53,12 +52,25 @@ class CaseExerciseRowCard extends StatelessWidget {
                   isPlural: isPlural,
                   gender: gender,
                   isAnimate: isAnimate),
-              if (translation.length > 0) NSubHeader(translation),
+              if (translation.length > 0)
+                Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      translation,
+                      style: TextStyle(
+                          fontStyle: FontStyle.italic, fontSize: FONT_SIZE),
+                    ),
+                  ),
+                ),
               if (extraInfo.length > 0)
                 ExtraInfo(screenWidth: screenWidth, extraInfo: extraInfo),
+              Padding(padding: const EdgeInsets.all(14)),
               this.isAllCorrect
-                  ? NTextMulti(
-                      N.getCorrectSentence(context, this.combos.sentenceParts))
+                  ? Center(
+                      child: NTextMulti(N.getCorrectSentence(
+                          context, this.combos.sentenceParts)),
+                    )
                   : Wrap(
                       crossAxisAlignment: WrapCrossAlignment.center,
                       children: children.map((c) => c).toList()),

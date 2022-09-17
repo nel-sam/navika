@@ -52,9 +52,22 @@ class GenitivExercises {
         PANCombo(
             caseType: caseType,
             gender: NounBankGeneral.krevet.gender,
-            isPlural: isPlural,
-            sentenceParts: sentenceParts,
-            isAnimate: isAnimate,
+            isPlural: false,
+            sentenceParts: [
+              CaseSentencePart(
+                  displayValue:
+                      'Koja je vrsta'), // TODO: Koja/vrsta as correctable?
+              CaseSentencePart(
+                isCorrectable: true,
+                actualObject: NounBankGeneral.krevet,
+                displayValue: '',
+                correctValues: NounBankGeneral.krevet.genitiv.singular,
+                grammarType: GrammarTypes.noun,
+              ),
+              CaseSentencePart(
+                  displayValue: 'prava za vas?'), // TODO: Prava as correctable?
+            ],
+            isAnimate: false,
             translation: N.t('ex_Koja_je_vrsta_kreveta_prava_za_vas'))
       ];
 

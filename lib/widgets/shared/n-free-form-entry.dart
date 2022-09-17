@@ -54,12 +54,12 @@ class _NFreeFormEntryState extends State<NFreeFormEntry> {
           child: TextField(
             key: widget.key,
             controller: _controller,
-            style: TextStyle(fontSize: EXERCISE_FONT_STYLE),
+            style: TextStyle(fontSize: EXERCISE_FONT_SIZE),
             keyboardType: TextInputType.text,
             decoration: InputDecoration(
               isDense: true,
               labelText: labelText,
-              enabledBorder: border,
+              // enabledBorder: border,
               focusedBorder: border,
               suffixIcon: NAnswerStatusIcon(status: status),
             ),
