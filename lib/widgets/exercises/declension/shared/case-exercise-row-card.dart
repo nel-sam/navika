@@ -69,8 +69,7 @@ class CaseExerciseRowCard extends StatelessWidget {
               this.isAllCorrect
                   ? Center(
                       child: NTextMulti(N.getCorrectSentence(
-                          context, this.combos.sentenceParts)),
-                    )
+                          context, this.combos.sentenceParts)))
                   : Wrap(
                       crossAxisAlignment: WrapCrossAlignment.center,
                       children: children.map((c) => c).toList()),
