@@ -36,6 +36,13 @@
   "ex_Moja_sestra_boji_se_biti_sama": "My sister is afraid of being alone",
   "ex_Mogu_li_dobiti_malo_te_slatke_torte": "May I have some of that sweet cake?",
   "ex_Koja_je_vrsta_kreveta_prava_za_vas": "What type of bed is right for you?",
+  "ex_Ja_volim_knjige": "I like books",
+  "ex_Ti_si_ljubazni": "You are kind",
+  "ex_Ali_on_je_pravi gospodin": "But he is a real gentleman",
+  "ex_Ona_je_jela": "She has eaten",
+  "ex_Mi_smo_braca": "We are brothers",
+  "ex_Vi_ste_prijatelji_moji": "You (all) are my friends",
+  "Oni_idu_u_skolu": "They are going to school",
 
   "extrainfo_brat": "Braća is used when referring to multiple brothers. Braća refers to males, but declines like a singular feminine noun.",
 
@@ -111,7 +118,6 @@
   "singular": "Singular",
   "softLettersOgEg": "Masculine and Neuter singular adjectives ending in č, ć, đ, dž, š, ž, lj, & nj get 'eg' instead of 'og'.",
   "softLettersOmEm": "Masculine and Neuter singular adjectives ending in č, ć, đ, dž, š, ž, lj, & nj get 'em' instead of 'om'.",
-  "unselectAll": "Unselect All",
   "correctAnswer": "Correct Answer",
   "translate": "Translate",
   "pastTense": "Simple Past",
@@ -137,12 +143,16 @@
   "bosnia": "Bosnia",
   "countryDialect": "Variety to practice",
   "resetSettings": "Reset settings",
-  "nouns_and_adjectives": "Nouns and adjectives",
   "skip": "I'm not sure",
   "dialectTitle": "Navika supports multiple Serbo-Croatian spellings and pronunciations",
   "dialectDesc": "In Serbia they say 'lepo' (beautiful) and 'avion' (airplane). In Croatia they say 'lijepo' and 'zrakoplov'. In Bosnia it's 'lijepo'. Do you know which pronunciation you'd like to practice? It's OK if you don't know. You can set this later in the settings page.",
   "mascSingVok": "Masculine singular adjectives always get an 'i', even when the adjective doesn't have a 'i' in Nominative",
   "vocativYouDesc": "The only personal pronoun used in vocative is 'you' as in 'hey, you!'.",
   "longShortFormDesc": "Normally you should use the short form of the pronouns. The long form is only used to emphasize, and the pronoun's position in the sentence changes if the long form is used.",
-  "saMnomDesc": "'Sa'is required when using 'mnom' to make pronunciation easier. The short 's' can be user for all other pronouns."
+  "saMnomDesc": "'Sa'is required when using 'mnom' to make pronunciation easier. The short 's' can be user for all other pronouns.",
+  "nouns_and_adjectives": "Nouns and adjectives",
+  "level_1": "Level 1",
+  "level_2": "Level 2",
+  "level_3": "Level 3",
+  "level_4": "Level 4"
 }

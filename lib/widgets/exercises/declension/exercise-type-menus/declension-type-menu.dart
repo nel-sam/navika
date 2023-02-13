@@ -53,7 +53,17 @@ class DeclensionTypeMenu extends StatelessWidget {
                 ),
                 Column(
                   children: [
-                    // TODO: Make these level 1 & level 2 instead?
+                    NMenuButton(
+                      destination: CaseExercise(
+                        caseType: caseType,
+                        description: description,
+                        title: title,
+                        exerciseType: ExerciseTypes.case_personal_pronouns,
+                      ),
+                      label: '${N.t('level_1')}: ${N.t('personalPronouns')}',
+                      transLabel:
+                          SbcLabels(settings.dialectType).personalPronouns,
+                    ),
                     NMenuButton(
                       destination: CaseExercise(
                         caseType: caseType,
@@ -61,7 +71,7 @@ class DeclensionTypeMenu extends StatelessWidget {
                         title: title,
                         exerciseType: ExerciseTypes.case_nouns,
                       ),
-                      label: N.t('nouns'),
+                      label: '${N.t('level_2')}: ${N.t('nouns')}',
                       transLabel: SbcLabels.nouns,
                     ),
                     NMenuButton(
@@ -71,28 +81,9 @@ class DeclensionTypeMenu extends StatelessWidget {
                         title: title,
                         exerciseType: ExerciseTypes.case_adjectives,
                       ),
-                      label: N.t('adjectives'),
+                      label: '${N.t('level_3')}: ${N.t('adjectives')}',
                       transLabel: SbcLabels(settings.dialectType).adjectives,
                     ),
-                    settings.isPremium
-                        ? NMenuButton(
-                            destination: CaseExercise(
-                              caseType: caseType,
-                              description: description,
-                              title: title,
-                              exerciseType: ExerciseTypes.case_personal_pronouns,
-                            ),
-                            label: N.t('personalPronouns'),
-                            transLabel: SbcLabels(settings.dialectType)
-                                .personalPronouns,
-                          )
-                        : NMenuButton(
-                            isPremiumLocked: true,
-                            destination: AccountPage(),
-                            label: N.t('personalPronouns'),
-                            transLabel: SbcLabels(settings.dialectType)
-                                .personalPronouns,
-                          ),
                     settings.isPremium
                         ? NMenuButton(
                             destination: CaseExercise(
@@ -102,14 +93,16 @@ class DeclensionTypeMenu extends StatelessWidget {
                               exerciseType:
                                   ExerciseTypes.case_nouns_and_adjectives,
                             ),
-                            label: N.t('nouns_and_adjectives'),
+                            label:
+                                '${N.t('level_4')}: ${N.t('nouns_and_adjectives')}',
                             transLabel: SbcLabels(settings.dialectType)
                                 .nounsAndAdjectives,
                           )
                         : NMenuButton(
                             isPremiumLocked: true,
                             destination: AccountPage(),
-                            label: N.t('nouns_and_adjectives'),
+                            label:
+                                '${N.t('level_4')}: ${N.t('nouns_and_adjectives')}',
                             transLabel: SbcLabels(settings.dialectType)
                                 .nounsAndAdjectives,
                           ),

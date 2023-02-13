@@ -34,7 +34,26 @@ class AkuzativExercises {
             translation: N.t('ex_Koja_je_vrsta_kreveta_prava_za_vas'))
       ];
 
-  List<PANCombo> get personalPronouns => [];
+  List<PANCombo> get personalPronouns => [
+        PANCombo(
+          caseType: caseType,
+          gender: Genders.Feminine,
+          isPlural: false,
+          isAnimate: true,
+          translation: N.t('ex_'),
+          sentenceParts: [
+            CaseSentencePart(displayValue: 'Reći'),
+            CaseSentencePart(
+              displayValue: PersonalPronounWordBank.ja.dictionary,
+              isCorrectable: true,
+              actualObject: PersonalPronounWordBank.ja,
+              grammarType: GrammarTypes.personalPronoun,
+              correctValues: PersonalPronounWordBank.ja.akuzativ.forms,
+            ),
+            CaseSentencePart(displayValue: 'sve o tome'),
+          ],
+        ),
+      ];
 
   List<PANCombo> get premium => [];
 }
