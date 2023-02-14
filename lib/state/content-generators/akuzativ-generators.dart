@@ -1,3 +1,4 @@
+import 'package:navika/extensions.dart';
 import 'package:navika/lang_data/cases_exercises/akuzativ_exercises.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
@@ -13,7 +14,7 @@ class AkuzativGenerators {
   ) {
     List<PANCombo> combos = [];
 
- if (exerciseType == ExerciseTypes.case_personal_pronouns) {
+    if (exerciseType == ExerciseTypes.case_personal_pronouns) {
       combos.addAll(AkuzativExercises(dialect).personalPronouns);
     } else if (isPremium) {
       combos.addAll(AkuzativExercises(dialect).premium);
@@ -34,6 +35,9 @@ class AkuzativGenerators {
       N.convertToExerciseTypes(exerciseType, combos[i]);
     }
 
-    return combos.map((e) => CaseQuestionState(combos: e)).toList();
+    return combos
+        .shufflePAN()
+        .map((e) => CaseQuestionState(combos: e))
+        .toList();
   }
 }

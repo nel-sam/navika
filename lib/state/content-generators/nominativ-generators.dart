@@ -1,3 +1,4 @@
+import 'package:navika/extensions.dart';
 import 'package:navika/lang_data/cases_exercises/nominativ_exercises.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
@@ -34,6 +35,6 @@ class NominativGenerators {
       N.convertToExerciseTypes(exerciseType, combos[i]);
     }
 
-    return combos.map((e) => CaseQuestionState(combos: e)).toList();
+    return combos.shufflePAN().map((e) => CaseQuestionState(combos: e)).toList();
   }
 }
