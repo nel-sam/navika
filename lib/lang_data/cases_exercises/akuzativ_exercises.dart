@@ -15,23 +15,162 @@ class AkuzativExercises {
 
   List<PANCombo> get level1 => [
         PANCombo(
-            caseType: caseType,
-            gender: NounBankGeneral.krevet.gender,
-            isPlural: false,
-            sentenceParts: [
-              CaseSentencePart(
-                  displayValue:
-                      'Koja je vrsta krevet prava za'), // TODO: Koja/vrsta as correctable?
-              CaseSentencePart(
-                  isCorrectable: true,
-                  actualObject: PersonalPronounWordBank.vi,
-                  displayValue: '',
-                  correctValues: PersonalPronounWordBank.vi.akuzativ.forms,
-                  grammarType: GrammarTypes.personalPronoun),
-              CaseSentencePart(displayValue: '?')
-            ],
-            isAnimate: false,
-            translation: N.t('ex_Koja_je_vrsta_kreveta_prava_za_vas'))
+          caseType: caseType,
+          gender: NounBankGeneral.krevet.gender,
+          isPlural: false,
+          isAnimate: false,
+          translation: N.t('ex_Jeste_li_kupili_novi'),
+          sentenceParts: [
+            CaseSentencePart(displayValue: 'Jeste li kupili novi'),
+            CaseSentencePart(
+              displayValue: NounBankGeneral.krevet.dictionary,
+              isCorrectable: true,
+              actualObject: NounBankGeneral.krevet,
+              grammarType: GrammarTypes.noun,
+              correctValues: NounBankGeneral.krevet.akuzativ.singular,
+            ),
+            CaseSentencePart(displayValue: '?'),
+          ],
+        ),
+        PANCombo(
+          caseType: caseType,
+          gender: NounBankGeneral.ananas.gender,
+          isPlural: false,
+          isAnimate: false,
+          translation: N.t('ex_Jedeš_li_ananas'),
+          sentenceParts: [
+            CaseSentencePart(displayValue: 'Jedeš li ananas'),
+            CaseSentencePart(
+              displayValue: NounBankGeneral.ananas.dictionary,
+              isCorrectable: true,
+              actualObject: NounBankGeneral.ananas,
+              grammarType: GrammarTypes.noun,
+              correctValues: NounBankGeneral.ananas.akuzativ.singular,
+            ),
+            CaseSentencePart(displayValue: '?'),
+          ],
+        ),
+        PANCombo(
+          caseType: caseType,
+          gender: NounBankGeneral.bicikl.gender,
+          isPlural: false,
+          isAnimate: false,
+          translation: N.t('ex_Slikao_sam_svoj_bicikl'),
+          sentenceParts: [
+            CaseSentencePart(displayValue: 'Slikao sam svoj'),
+            CaseSentencePart(
+              displayValue: NounBankGeneral.bicikl.dictionary,
+              isCorrectable: true,
+              actualObject: NounBankGeneral.bicikl,
+              grammarType: GrammarTypes.noun,
+              correctValues: NounBankGeneral.bicikl.akuzativ.singular,
+            ),
+          ],
+        ),
+        PANCombo(
+          caseType: caseType,
+          gender: NounBankGeneral.bolest.gender,
+          isPlural: true,
+          isAnimate: false,
+          translation: N.t('ex_Mrzim_bolesti'),
+          sentenceParts: [
+            CaseSentencePart(displayValue: 'Mrzim'),
+            CaseSentencePart(
+              displayValue: NounBankGeneral.bolest.dictionary,
+              isCorrectable: true,
+              actualObject: NounBankGeneral.bolest,
+              grammarType: GrammarTypes.noun,
+              correctValues: NounBankGeneral.bolest.akuzativ.plural,
+            ),
+          ],
+        ),
+        PANCombo(
+          caseType: caseType,
+          gender: NounBankGeneral.bolest.gender,
+          isPlural: false,
+          isAnimate: false,
+          translation: N.t('ex_Dobio_sam_bolest'),
+          sentenceParts: [
+            CaseSentencePart(displayValue: 'Dobio sam'),
+            CaseSentencePart(
+              displayValue: NounBankGeneral.bolest.dictionary,
+              isCorrectable: true,
+              actualObject: NounBankGeneral.bolest,
+              grammarType: GrammarTypes.noun,
+              correctValues: NounBankGeneral.bolest.akuzativ.singular,
+            ),
+          ],
+        ),
+        PANCombo(
+          caseType: caseType,
+          gender: NounBankGeneral.bolnica.gender,
+          isPlural: false,
+          isAnimate: false,
+          translation: N.t('ex_Grad_je_izgradio_bolnicu'),
+          sentenceParts: [
+            CaseSentencePart(displayValue: 'Grad je izgradio'),
+            CaseSentencePart(
+              displayValue: NounBankGeneral.bolnica.dictionary,
+              isCorrectable: true,
+              actualObject: NounBankGeneral.bolnica,
+              grammarType: GrammarTypes.noun,
+              correctValues: NounBankGeneral.bolnica.akuzativ.singular,
+            ),
+          ],
+        ),
+        PANCombo(
+          caseType: caseType,
+          gender: NounBankGeneral.bosna.gender,
+          isPlural: false,
+          isAnimate: false,
+          extraInfo: 'extrainfo_akuzativ_with_za',
+          translation: N.t('ex_Sviđa_mi_se_pjesme_za_bosnu'),
+          sentenceParts: [
+            CaseSentencePart(displayValue: 'Sviđa mi se pjesme za'),
+            CaseSentencePart(
+              displayValue: NounBankGeneral.bosna.dictionary,
+              isCorrectable: true,
+              actualObject: NounBankGeneral.bosna,
+              grammarType: GrammarTypes.noun,
+              correctValues: NounBankGeneral.bosna.akuzativ.singular,
+            ),
+          ],
+        ),
+        PANCombo(
+          caseType: caseType,
+          gender: NounBankGeneral.pivo.gender,
+          isPlural: false,
+          isAnimate: false,
+          translation: N.t('ex_Moram_pronaci_pivo'),
+          sentenceParts: [
+            CaseSentencePart(displayValue: 'Moram pronaći'),
+            CaseSentencePart(
+              displayValue: NounBankGeneral.pivo.dictionary,
+              isCorrectable: true,
+              actualObject: NounBankGeneral.pivo,
+              grammarType: GrammarTypes.noun,
+              correctValues: NounBankGeneral.pivo.akuzativ.singular,
+            ),
+          ],
+        ),
+        PANCombo(
+          caseType: caseType,
+          gender: NounBankGeneral.pas.gender,
+          isPlural: false,
+          isAnimate: false,
+          translation: N.t('ex_Udomila_sam_psa_sa_ceste'),
+          sentenceParts: [
+            CaseSentencePart(displayValue: 'Udomila sam'),
+            CaseSentencePart(
+              displayValue: NounBankGeneral.pas.dictionary,
+              isCorrectable: true,
+              actualObject: NounBankGeneral.pas,
+              grammarType: GrammarTypes.noun,
+              correctValues: NounBankGeneral.pas.akuzativ.singular,
+            ),
+            CaseSentencePart(displayValue: 'sa ceste'),
+          ],
+        ),
       ];
 
   List<PANCombo> get personalPronouns => [
@@ -166,7 +305,7 @@ class AkuzativExercises {
           caseType: caseType,
           gender: Genders.Masculine,
           isPlural: true,
-          isAnimate: false,
+          isAnimate: true,
           translation: N.t('ex_Zelim_ih_kupiti'),
           sentenceParts: [
             CaseSentencePart(displayValue: 'Želim'),
@@ -180,6 +319,25 @@ class AkuzativExercises {
             CaseSentencePart(displayValue: 'kupiti'),
           ],
         ),
+        PANCombo(
+            caseType: caseType,
+            gender: Genders.Unspecific,
+            isPlural: true,
+            isAnimate: true,
+            extraInfo: 'extrainfo_akuzativ_with_za',
+            sentenceParts: [
+              CaseSentencePart(
+                  displayValue:
+                      'Koja je vrsta kreveta prava za'), // TODO: Koja/vrsta as correctable?
+              CaseSentencePart(
+                  isCorrectable: true,
+                  actualObject: PersonalPronounWordBank.vi,
+                  displayValue: '',
+                  correctValues: PersonalPronounWordBank.vi.akuzativ.forms,
+                  grammarType: GrammarTypes.personalPronoun),
+              CaseSentencePart(displayValue: '?')
+            ],
+            translation: N.t('ex_Koja_je_vrsta_kreveta_prava_za_vas'))
       ];
 
   List<PANCombo> get premium => [];
