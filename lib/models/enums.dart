@@ -79,7 +79,7 @@ enum Tags {
   Human,
   Group,
   Food,
-  Pet, Time,
+  Pet, Time, Building,
 }
 
 enum VerbPerfectiveTypes {

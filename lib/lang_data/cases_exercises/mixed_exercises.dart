@@ -67,5 +67,28 @@ class GenitivExercises {
             ],
             isAnimate: false,
             translation: N.t('ex_Prije_16_godina_udomio_sam_pse_sa_ceste')),
+        PANCombo(
+            caseType: caseType,
+            gender: Genders.Unspecific,
+            isPlural: true,
+            sentenceParts: [
+              CaseSentencePart(
+                isCorrectable: true,
+                actualObject: NounBankGeneral.otac,
+                displayValue: NounBankGeneral.otac.dictionary,
+                correctValues: NounBankGeneral.otac.nominativ.singular,
+                grammarType: GrammarTypes.noun,
+              ),
+              CaseSentencePart(displayValue: 'je polako otišao od'),
+              CaseSentencePart(
+                isCorrectable: true,
+                actualObject: NounBankGeneral.kuca,
+                displayValue: NounBankGeneral.kuca.dictionary,
+                correctValues: NounBankGeneral.kuca.genitiv.singular,
+                grammarType: GrammarTypes.noun,
+              ),
+            ],
+            isAnimate: false,
+            translation: N.t('ex_Otac_je_polako_otisao_od_kuce')),
       ];
 }

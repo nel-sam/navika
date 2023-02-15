@@ -295,7 +295,7 @@ class NounBankGeneral {
   );
   static final Noun bolnica = Noun(
     dictionary: 'bolnica',
-    tags: [Tags.Location, Tags.WorkPlace],
+    tags: [Tags.Location, Tags.WorkPlace, Tags.Building],
     gender: Genders.Feminine,
     isAnimate: false,
     nominativ:
@@ -408,5 +408,19 @@ class NounBankGeneral {
     vokativ: new DeclensionByCount(singular: ['godino'], plural: ['godine']),
     instrumental:
         new DeclensionByCount(singular: ['godinom'], plural: ['godinama']),
+  );
+  static final Noun kuca = Noun(
+    dictionary: 'kuća',
+    tags: [Tags.Thing, Tags.Location, Tags.Building],
+    gender: Genders.Feminine,
+    isAnimate: false,
+    nominativ: new DeclensionByCount(singular: ['kuća'], plural: ['kuće']),
+    genitiv: new DeclensionByCount(singular: ['kuće'], plural: ['kuća']),
+    dativ: new DeclensionByCount(singular: ['kući'], plural: ['kućama']),
+    akuzativ: new DeclensionByCount(singular: ['kuću'], plural: ['kuće']),
+    lokativ: new DeclensionByCount(singular: ['kući'], plural: ['kućama']),
+    vokativ: new DeclensionByCount(singular: ['kućo'], plural: ['kuće']),
+    instrumental:
+        new DeclensionByCount(singular: ['kućom'], plural: ['kućama']),
   );
 }
