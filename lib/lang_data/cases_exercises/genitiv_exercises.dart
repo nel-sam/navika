@@ -126,6 +126,59 @@ class GenitivExercises {
             CaseSentencePart(displayValue: 'sam nosio masku'),
           ],
         ),
+        PANCombo(
+          caseType: caseType,
+          gender: Genders.Feminine,
+          isPlural: false,
+          isAnimate: true,
+          translation: N.t('ex_Kako_cu_zivjeti_bez_nje'),
+          sentenceParts: [
+            CaseSentencePart(displayValue: 'Kako ću živjeti bez'),
+            CaseSentencePart(
+              isCorrectable: true,
+              actualObject: PersonalPronounWordBank.ona,
+              displayValue: PersonalPronounWordBank.ona.dictionary,
+              correctValues: PersonalPronounWordBank.ona.genitiv.forms,
+              grammarType: GrammarTypes.personalPronoun,
+            ),
+            CaseSentencePart(displayValue: '?'),
+          ],
+        ),
+        PANCombo(
+          caseType: caseType,
+          gender: Genders.Unspecific,
+          isPlural: true,
+          isAnimate: true,
+          translation: N.t('ex_Svatko_od_nas_ima_nesto_dobro'),
+          sentenceParts: [
+            CaseSentencePart(displayValue: 'Svatko od'),
+            CaseSentencePart(
+              isCorrectable: true,
+              actualObject: PersonalPronounWordBank.mi,
+              displayValue: PersonalPronounWordBank.mi.dictionary,
+              correctValues: PersonalPronounWordBank.mi.genitiv.forms,
+              grammarType: GrammarTypes.personalPronoun,
+            ),
+            CaseSentencePart(displayValue: 'ima nešto dobro'),
+          ],
+        ),
+        PANCombo(
+          caseType: caseType,
+          gender: Genders.Unspecific,
+          isPlural: true,
+          isAnimate: true,
+          translation: N.t('ex_To_moze_biti_na_putu_do_vas'),
+          sentenceParts: [
+            CaseSentencePart(displayValue: 'To može biti na putu do'),
+            CaseSentencePart(
+              isCorrectable: true,
+              actualObject: PersonalPronounWordBank.vi,
+              displayValue: PersonalPronounWordBank.vi.dictionary,
+              correctValues: PersonalPronounWordBank.vi.genitiv.forms,
+              grammarType: GrammarTypes.personalPronoun,
+            ),
+          ],
+        ),
         // TODO: Finish this
       ];
 
