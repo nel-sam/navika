@@ -21,7 +21,7 @@ class NominativGenerators {
     }
 
     if (exerciseType != ExerciseTypes.case_personal_pronouns) {
-      combos.addAll(NominativExercises(dialect).level1);
+      combos.addAll(NominativExercises(dialect).general);
     }
 
     if (exerciseType == ExerciseTypes.case_adjectives ||
@@ -35,6 +35,9 @@ class NominativGenerators {
       N.convertToExerciseTypes(exerciseType, combos[i]);
     }
 
-    return combos.shufflePAN().map((e) => CaseQuestionState(combos: e)).toList();
+    return combos
+        .shufflePAN()
+        .map((e) => CaseQuestionState(combos: e))
+        .toList();
   }
 }

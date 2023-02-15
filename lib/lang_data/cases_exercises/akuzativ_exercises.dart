@@ -13,7 +13,7 @@ class AkuzativExercises {
     this.isCroatian = dialect == DialectType.Croatia;
   }
 
-  List<PANCombo> get level1 => [
+  List<PANCombo> get general => [
         PANCombo(
           caseType: caseType,
           gender: NounBankGeneral.krevet.gender,

@@ -13,7 +13,7 @@ class GenitivExercises {
     this.isCroatian = dialect == DialectType.Croatia;
   }
 
-  List<PANCombo> get level1 => [
+  List<PANCombo> get general => [
         PANCombo(
             caseType: caseType,
             gender: Genders.Unspecific,
@@ -31,7 +31,6 @@ class GenitivExercises {
               ),
               CaseSentencePart(
                   displayValue: 'prava za'), // TODO: Prava as correctable?
-
               CaseSentencePart(
                   isCorrectable: true,
                   actualObject: PersonalPronounWordBank.vi,

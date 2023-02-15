@@ -9,7 +9,7 @@ class PersonalPronounWordBank {
     isPlural: false,
     gender: Genders.Unspecific,
     nominativ: new DeclensionPronoun(forms: ['ja']),
-    genitiv: new DeclensionPronoun(forms: ['mene', 'me']),
+    genitiv: new DeclensionPronoun(forms: ['mene']), // 'me' ?
     dativ: new DeclensionPronoun(forms: ['meni', 'mi']),
     akuzativ: new DeclensionPronoun(forms: ['mene', 'me']),
     lokativ: new DeclensionPronoun(forms: ['meni']),
@@ -22,7 +22,7 @@ class PersonalPronounWordBank {
     isPlural: false,
     gender: Genders.Unspecific,
     nominativ: new DeclensionPronoun(forms: ['ti']),
-    genitiv: new DeclensionPronoun(forms: ['tebe', 'te']),
+    genitiv: new DeclensionPronoun(forms: ['tebe']), // 'te' ?
     dativ: new DeclensionPronoun(forms: ['tebi', 'ti']),
     akuzativ: new DeclensionPronoun(forms: ['tebe', 'te']),
     lokativ: new DeclensionPronoun(forms: ['tebi']),

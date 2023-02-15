@@ -1,6 +1,7 @@
 import 'package:navika/lang_data/words/adjectives.dart';
 import 'package:navika/lang_data/words/demonstrative-pronouns.dart';
 import 'package:navika/lang_data/words/nouns.dart';
+import 'package:navika/lang_data/words/personal-pronouns.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/utilities/navika-helpers.dart';
@@ -14,7 +15,27 @@ class GenitivExercises {
     this.isCroatian = dialect == DialectType.Croatia;
   }
 
-  List<PANCombo> get level1 => [
+  List<PANCombo> get general => [
+        PANCombo(
+            caseType: caseType,
+            gender: NounBankGeneral.krevet.gender,
+            isPlural: false,
+            sentenceParts: [
+              CaseSentencePart(
+                  displayValue:
+                      'Koja je vrsta'), // TODO: Koja/vrsta as correctable?
+              CaseSentencePart(
+                isCorrectable: true,
+                actualObject: NounBankGeneral.krevet,
+                displayValue: '',
+                correctValues: NounBankGeneral.krevet.genitiv.singular,
+                grammarType: GrammarTypes.noun,
+              ),
+              CaseSentencePart(
+                  displayValue: 'prava za vas?'), // TODO: Prava as correctable?
+            ],
+            isAnimate: false,
+            translation: N.t('ex_Koja_je_vrsta_kreveta_prava_za_vas')),
         PANCombo(
           caseType: caseType,
           gender: Genders.Feminine,
@@ -49,31 +70,64 @@ class GenitivExercises {
           isAnimate: false,
           translation: N.t('ex_Mogu_li_dobiti_malo_te_slatke_torte'),
         ),
-        PANCombo(
-            caseType: caseType,
-            gender: NounBankGeneral.krevet.gender,
-            isPlural: false,
-            sentenceParts: [
-              CaseSentencePart(
-                  displayValue:
-                      'Koja je vrsta'), // TODO: Koja/vrsta as correctable?
-              CaseSentencePart(
-                isCorrectable: true,
-                actualObject: NounBankGeneral.krevet,
-                displayValue: '',
-                correctValues: NounBankGeneral.krevet.genitiv.singular,
-                grammarType: GrammarTypes.noun,
-              ),
-              CaseSentencePart(
-                  displayValue: 'prava za vas?'), // TODO: Prava as correctable?
-            ],
-            isAnimate: false,
-            translation: N.t('ex_Koja_je_vrsta_kreveta_prava_za_vas'))
       ];
 
-  List<PANCombo> get level2 => [];
-
-  List<PANCombo> get personalPronouns => [];
+  List<PANCombo> get personalPronouns => [
+        PANCombo(
+          caseType: caseType,
+          gender: Genders.Unspecific,
+          isPlural: false,
+          isAnimate: true,
+          translation: N.t('ex_Stani_iza_mene'),
+          sentenceParts: [
+            CaseSentencePart(displayValue: 'Stani iza'),
+            CaseSentencePart(
+              isCorrectable: true,
+              actualObject: PersonalPronounWordBank.ja,
+              displayValue: PersonalPronounWordBank.ja.dictionary,
+              correctValues: PersonalPronounWordBank.ja.genitiv.forms,
+              grammarType: GrammarTypes.personalPronoun,
+            ),
+            CaseSentencePart(displayValue: '!'),
+          ],
+        ),
+        PANCombo(
+          caseType: caseType,
+          gender: Genders.Unspecific,
+          isPlural: false,
+          isAnimate: true,
+          translation: N.t('ex_S_tobom_ili_bez_tebe'),
+          sentenceParts: [
+            CaseSentencePart(displayValue: 'S tobom ili bez'),
+            CaseSentencePart(
+              isCorrectable: true,
+              actualObject: PersonalPronounWordBank.ti,
+              displayValue: PersonalPronounWordBank.ti.dictionary,
+              correctValues: PersonalPronounWordBank.ti.genitiv.forms,
+              grammarType: GrammarTypes.personalPronoun,
+            ),
+          ],
+        ),
+        PANCombo(
+          caseType: caseType,
+          gender: Genders.Unspecific,
+          isPlural: false,
+          isAnimate: true,
+          translation: N.t('ex_Zbog_njega_sam_nosio_masku'),
+          sentenceParts: [
+            CaseSentencePart(displayValue: 'Zbog'),
+            CaseSentencePart(
+              isCorrectable: true,
+              actualObject: PersonalPronounWordBank.on,
+              displayValue: PersonalPronounWordBank.on.dictionary,
+              correctValues: PersonalPronounWordBank.on.genitiv.forms,
+              grammarType: GrammarTypes.personalPronoun,
+            ),
+            CaseSentencePart(displayValue: 'sam nosio masku'),
+          ],
+        ),
+        // TODO: Finish this
+      ];
 
   List<PANCombo> get premium => [];
 }

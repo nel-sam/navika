@@ -21,7 +21,7 @@ class AkuzativGenerators {
     }
 
     if (exerciseType != ExerciseTypes.case_personal_pronouns) {
-      combos.addAll(AkuzativExercises(dialect).level1);
+      combos.addAll(AkuzativExercises(dialect).general);
     }
 
     if (exerciseType == ExerciseTypes.case_adjectives ||

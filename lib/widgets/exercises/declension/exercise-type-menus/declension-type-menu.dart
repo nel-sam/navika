@@ -58,21 +58,21 @@ class DeclensionTypeMenu extends StatelessWidget {
                         caseType: caseType,
                         description: description,
                         title: title,
-                        exerciseType: ExerciseTypes.case_personal_pronouns,
+                        exerciseType: ExerciseTypes.case_nouns,
                       ),
-                      label: '${N.t('level_1')}: ${N.t('personalPronouns')}',
-                      transLabel:
-                          SbcLabels(settings.dialectType).personalPronouns,
+                      label: '${N.t('level_1')}: ${N.t('nouns')}',
+                      transLabel: SbcLabels.nouns,
                     ),
                     NMenuButton(
                       destination: CaseExercise(
                         caseType: caseType,
                         description: description,
                         title: title,
-                        exerciseType: ExerciseTypes.case_nouns,
+                        exerciseType: ExerciseTypes.case_personal_pronouns,
                       ),
-                      label: '${N.t('level_2')}: ${N.t('nouns')}',
-                      transLabel: SbcLabels.nouns,
+                      label: '${N.t('level_2')}: ${N.t('personalPronouns')}',
+                      transLabel:
+                          SbcLabels(settings.dialectType).personalPronouns,
                     ),
                     NMenuButton(
                       destination: CaseExercise(

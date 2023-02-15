@@ -18,7 +18,7 @@ class NominativExercises {
     this.isCroatian = dialect == DialectType.Croatia;
   }
 
-  List<PANCombo> get level1 => [
+  List<PANCombo> get general => [
         PANCombo(
             caseType: caseType,
             gender: Genders.Masculine,
@@ -174,8 +174,6 @@ class NominativExercises {
               CaseSentencePart(displayValue: 'boji se biti sama'),
             ]),
       ];
-
-  List<PANCombo> get level2 => [];
 
   List<PANCombo> get personalPronouns => [
         PANCombo(
