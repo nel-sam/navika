@@ -1,3 +1,4 @@
+import 'package:navika/lang_data/words/adjectives.dart';
 import 'package:navika/lang_data/words/nouns.dart';
 import 'package:navika/lang_data/words/personal-pronouns.dart';
 import 'package:navika/models/enums.dart';
@@ -14,6 +15,32 @@ class GenitivExercises {
   }
 
   List<PANCombo> get general => [
+    PANCombo(
+          caseType: caseType,
+          gender: NounBankGeneral.pas.gender,
+          isPlural: false,
+          isAnimate: true,
+          extraInfo:  N.t('extrainfo_akusativ_for_male_animate'),
+          translation: N.t('ex_Udomila_sam_starog_psa_sa_ceste'),
+          sentenceParts: [
+            CaseSentencePart(displayValue: 'Udomila sam'),
+            CaseSentencePart(
+              displayValue: AdjectiveBankGeneral.star.dictionary,
+              isCorrectable: true,
+              actualObject: AdjectiveBankGeneral.star,
+              grammarType: GrammarTypes.adjective,
+              correctValues: AdjectiveBankGeneral.star.genitiv!.masculine.singular,
+            ),
+            CaseSentencePart(
+              displayValue: NounBankGeneral.pas.dictionary,
+              isCorrectable: true,
+              actualObject: NounBankGeneral.pas,
+              grammarType: GrammarTypes.noun,
+              correctValues: NounBankGeneral.pas.genitiv.singular,
+            ),
+            CaseSentencePart(displayValue: 'sa ceste'),
+          ],
+        ),
         PANCombo(
             caseType: caseType,
             gender: Genders.Unspecific,

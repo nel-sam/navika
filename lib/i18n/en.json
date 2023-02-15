@@ -58,7 +58,7 @@
   "ex_Grad_je_izgradio_bolnicu": "The city constructed a hospital",
   "ex_Sviđa_mi_se_pjesme_za_bosnu": "I like songs about Bosnia",
   "ex_Moram_pronaci_pivo": "I need to find beer",
-  "ex_Udomila_sam_psa_sa_ceste": "I adopted a dog from the road",
+  "ex_Udomila_sam_starog_psa_sa_ceste": "I adopted a old dog from the road",
   "ex_Prije_16_godina_udomila_sam_pse_sa_ceste": "16 years ago I adopted dogs from the street",
   "ex_Otac_je_polako_otisao_od_kuce": "My father left slowly from home",
   "ex_S_tobom_ili_bez_tebe": "With or without you",
@@ -67,11 +67,13 @@
   "ex_Kako_cu_zivjeti_bez_nje": "How will I live without her?",
   "ex_Svatko_od_nas_ima_nesto_dobro": "Each of us has something good",
   "ex_To_moze_biti_na_putu_do_vas": "It may be on its way to you (all)",
+  "ex_Kod_njih_je_sve_obrnuto": "With them, everything is backwards",
 
   "extrainfo_brat": "Braća is used when referring to multiple brothers. Braća refers to males, but declines like a singular feminine noun",
   "extrainfo_all_ona_aku_ok": "In this situation you can use any accusative form of 'Ona' because 'je' (from the verb 'biti') does not follow",
   "extrainfo_ona_aku_je_not_ok": "The accusative form 'je' for 'Ona' cannot be used if the next word is the third person 'je' of the verb 'biti'",
   "extrainfo_akuzativ_with_za": "Accusative is always used after 'za'",
+  "extrainfo_akusativ_for_male_animate": "The accusative for male animate/alive nouns (people and animals) is the same as the genitive. For inanimate objects the accusative is the same as the nominative",
 
   "nominativ": "Nominative",
   "akuzativ": "Accusative",

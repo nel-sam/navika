@@ -153,24 +153,7 @@ class AkuzativExercises {
             ),
           ],
         ),
-        PANCombo(
-          caseType: caseType,
-          gender: NounBankGeneral.pas.gender,
-          isPlural: false,
-          isAnimate: false,
-          translation: N.t('ex_Udomila_sam_psa_sa_ceste'),
-          sentenceParts: [
-            CaseSentencePart(displayValue: 'Udomila sam'),
-            CaseSentencePart(
-              displayValue: NounBankGeneral.pas.dictionary,
-              isCorrectable: true,
-              actualObject: NounBankGeneral.pas,
-              grammarType: GrammarTypes.noun,
-              correctValues: NounBankGeneral.pas.akuzativ.singular,
-            ),
-            CaseSentencePart(displayValue: 'sa ceste'),
-          ],
-        ),
+        // TODO: Add exercises with adjectives
       ];
 
   List<PANCombo> get personalPronouns => [

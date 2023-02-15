@@ -16,6 +16,7 @@ class GenitivExercises {
   }
 
   List<PANCombo> get general => [
+    
         PANCombo(
             caseType: caseType,
             gender: NounBankGeneral.krevet.gender,
@@ -179,7 +180,24 @@ class GenitivExercises {
             ),
           ],
         ),
-        // TODO: Finish this
+        PANCombo(
+          caseType: caseType,
+          gender: Genders.Unspecific,
+          isPlural: true,
+          isAnimate: true,
+          translation: N.t('ex_Kod_njih_je_sve_obrnuto'),
+          sentenceParts: [
+            CaseSentencePart(displayValue: 'Kod'),
+            CaseSentencePart(
+              isCorrectable: true,
+              actualObject: PersonalPronounWordBank.oni,
+              displayValue: PersonalPronounWordBank.oni.dictionary,
+              correctValues: PersonalPronounWordBank.oni.genitiv.forms,
+              grammarType: GrammarTypes.personalPronoun,
+            ),
+            CaseSentencePart(displayValue: 'je sve obrnuto'),
+          ],
+        ),
       ];
 
   List<PANCombo> get premium => [];
