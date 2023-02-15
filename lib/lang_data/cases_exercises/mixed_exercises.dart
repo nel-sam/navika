@@ -16,7 +16,7 @@ class GenitivExercises {
   List<PANCombo> get level1 => [
         PANCombo(
             caseType: caseType,
-            gender: NounBankGeneral.krevet.gender,
+            gender: Genders.Unspecific,
             isPlural: false,
             sentenceParts: [
               CaseSentencePart(
@@ -42,5 +42,30 @@ class GenitivExercises {
             ],
             isAnimate: false,
             translation: N.t('ex_Koja_je_vrsta_kreveta_prava_za_vas')),
+        PANCombo(
+            caseType: caseType,
+            gender: Genders.Unspecific,
+            isPlural: true,
+            sentenceParts: [
+              CaseSentencePart(displayValue: 'Prije 16'),
+              CaseSentencePart(
+                isCorrectable: true,
+                actualObject: NounBankGeneral.godina,
+                displayValue: NounBankGeneral.godina.dictionary,
+                correctValues: NounBankGeneral.godina.genitiv.plural,
+                grammarType: GrammarTypes.noun,
+              ),
+              CaseSentencePart(displayValue: 'udomio sam'),
+              CaseSentencePart(
+                isCorrectable: true,
+                actualObject: NounBankGeneral.pas,
+                displayValue: NounBankGeneral.pas.dictionary,
+                correctValues: NounBankGeneral.pas.akuzativ.plural,
+                grammarType: GrammarTypes.noun,
+              ),
+              CaseSentencePart(displayValue: 'sa ceste'),
+            ],
+            isAnimate: false,
+            translation: N.t('ex_Prije_16_godina_udomio_sam_pse_sa_ceste')),
       ];
 }

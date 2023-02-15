@@ -10,7 +10,7 @@ import 'package:navika/utilities/navika-helpers.dart';
 */
 
 class NounBankGeneral {
-   static final Noun torta = Noun(
+  static final Noun torta = Noun(
     dictionary: 'torta',
     tags: [Tags.Food, Tags.Portable],
     gender: Genders.Feminine,
@@ -19,8 +19,7 @@ class NounBankGeneral {
     genitiv: new DeclensionByCount(singular: ['torte'], plural: ['torta']),
     dativ: new DeclensionByCount(singular: ['torti'], plural: ['tortama']),
     akuzativ: new DeclensionByCount(singular: ['tortu'], plural: ['torte']),
-    lokativ:
-        new DeclensionByCount(singular: ['torti'], plural: ['tortama']),
+    lokativ: new DeclensionByCount(singular: ['torti'], plural: ['tortama']),
     vokativ: new DeclensionByCount(singular: ['torto'], plural: ['tortama']),
     instrumental:
         new DeclensionByCount(singular: ['tortom'], plural: ['tortama']),
@@ -268,7 +267,7 @@ class NounBankGeneral {
   );
   static final Noun jesen = Noun(
     dictionary: 'jesen',
-    tags: [Tags.Season, Tags.Weather],
+    tags: [Tags.Season, Tags.Weather, Tags.Time],
     gender: Genders.Feminine,
     isAnimate: false,
     nominativ: new DeclensionByCount(singular: ['jesen'], plural: ['jeseni']),
@@ -395,5 +394,19 @@ class NounBankGeneral {
     vokativ: new DeclensionByCount(singular: ['bicikle'], plural: ['bicikli']),
     instrumental:
         new DeclensionByCount(singular: ['biciklom'], plural: ['biciklima']),
+  );
+  static final Noun godina = Noun(
+    dictionary: 'godina',
+    tags: [Tags.Time],
+    gender: Genders.Feminine,
+    isAnimate: false,
+    nominativ: new DeclensionByCount(singular: ['godina'], plural: ['godine']),
+    genitiv: new DeclensionByCount(singular: ['godine'], plural: ['godina']),
+    dativ: new DeclensionByCount(singular: ['godini'], plural: ['godinama']),
+    akuzativ: new DeclensionByCount(singular: ['godinu'], plural: ['godine']),
+    lokativ: new DeclensionByCount(singular: ['godini'], plural: ['godinama']),
+    vokativ: new DeclensionByCount(singular: ['godino'], plural: ['godine']),
+    instrumental:
+        new DeclensionByCount(singular: ['godinom'], plural: ['godinama']),
   );
 }
