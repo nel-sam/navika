@@ -40,5 +40,6 @@
   "editor.guides.bracketPairs": "active",
   "eslint.alwaysShowStatus": true,
   "editor.formatOnSave": true,
-  "cSpell.language": "en,hr,es-ES"
+  "cSpell.language": "en,hr,es-ES",
+  "prettier.printWidth": 85
 }

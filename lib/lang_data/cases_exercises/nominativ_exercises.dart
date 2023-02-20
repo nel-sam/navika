@@ -19,6 +19,40 @@ class NominativExercises {
   }
 
   List<PANCombo> get general => [
+            PANCombo(
+            caseType: caseType,
+            gender: Genders.Feminine,
+            isPlural: false,
+            isAnimate: false,
+            translation: N.t('ex_Koja_je_najbolja_sezona'),
+            sentenceParts: [
+              CaseSentencePart(
+                isCorrectable: true,
+                actualObject: DemonstrativePronouns.koji,
+                displayValue: '',
+                correctValues: DemonstrativePronouns.koji.nominativ!.feminine!.singular,
+                grammarType: GrammarTypes.demonstrativePronoun,
+              ),
+              CaseSentencePart(displayValue: 'je najbolja sezona?'),
+            ]),
+        PANCombo(
+            caseType: caseType,
+            gender: Genders.Unspecific,
+            isPlural: false,
+            isAnimate: false,
+            translation: N.t('ex_Sto_je_to'),
+            sentenceParts: [
+              CaseSentencePart(
+                isCorrectable: true,
+                actualObject: isCroatian ? NounsIjekavian.sto : NounsEkavian.sta,
+                displayValue: '',
+                correctValues: isCroatian ?
+                    NounsIjekavian.sto.getDeclensions(false, Cases.Nom) :
+                    NounsEkavian.sta.getDeclensions(false, Cases.Nom),
+                grammarType: GrammarTypes.noun,
+              ),
+              CaseSentencePart(displayValue: 'je to?'),
+            ]),
         PANCombo(
             caseType: caseType,
             gender: Genders.Masculine,

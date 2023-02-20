@@ -423,4 +423,19 @@ class NounBankGeneral {
     instrumental:
         new DeclensionByCount(singular: ['kućom'], plural: ['kućama']),
   );
+
+  static final Noun macka = Noun(
+    dictionary: 'mačka',
+    tags: [Tags.Pet, Tags.Animal],
+    gender: Genders.Feminine,
+    isAnimate: true,
+    nominativ: new DeclensionByCount(singular: ['mačka'], plural: ['mačke']),
+    akuzativ: new DeclensionByCount(singular: ['mačku'], plural: ['mačke']),
+    instrumental:
+        new DeclensionByCount(singular: ['mačkom'], plural: ['mačkama']),
+    lokativ: new DeclensionByCount(singular: ['majci'], plural: ['mačkama']),
+    genitiv:
+        new DeclensionByCount(singular: ['mačke'], plural: ['mačaka', 'mački']),
+    vokativ: new DeclensionByCount(singular: ['mačko'], plural: ['mačke']),
+  );
 }

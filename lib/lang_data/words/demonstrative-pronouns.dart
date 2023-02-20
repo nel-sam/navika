@@ -2,7 +2,49 @@ import 'package:navika/models/adjective.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 
+// No short forms for genitive and locative
+
 class DemonstrativePronouns {
+  static final Adjective koji = Adjective(
+    dictionary: 'koji',
+    toAvoid: [Tags.Season, Tags.Country],
+    nominativ: new Declension(
+      masculine: new DeclensionByGender(singular: ['koji'], plural: ['koji']),
+      feminine: new DeclensionByGender(singular: ['koja'], plural: ['koje']),
+      neuter: new DeclensionByGender(singular: ['koje'], plural: ['koja']),
+    ),
+    akuzativ: new Declension(
+      masculine: new DeclensionByGender(singular: ['koji'], plural: ['koje']),
+      feminine: new DeclensionByGender(singular: ['koju'], plural: ['koje']),
+      neuter: new DeclensionByGender(singular: ['koje'], plural: ['koja']),
+    ),
+    instrumental: new Declension(
+      masculine: new DeclensionByGender(singular: ['kojim'], plural: ['kojima']),
+      feminine: new DeclensionByGender(singular: ['kojom'], plural: ['kojima']),
+      neuter: new DeclensionByGender(singular: ['kojim'], plural: ['kojima']),
+    ),
+    lokativ: new Declension( // TODO: Short or long forms?
+      masculine: new DeclensionByGender(singular: ['kojemu'], plural: ['kojima']),
+      feminine: new DeclensionByGender(singular: ['kojoj'], plural: ['kojima']),
+      neuter: new DeclensionByGender(singular: ['kojemu'], plural: ['kojima']),
+    ),
+    dativ: new Declension(
+      masculine: new DeclensionByGender(singular: ['kojem'], plural: ['tim']),
+      feminine: new DeclensionByGender(singular: ['kojoj'], plural: ['kojim']),
+      neuter: new DeclensionByGender(singular: ['kojem'], plural: ['kojim']),
+    ),
+    genitiv: new Declension( // TODO: Short or long forms?
+      masculine: new DeclensionByGender(singular: ['kojega'], plural: ['kojih']),
+      feminine: new DeclensionByGender(singular: ['koje'], plural: ['kojih']),
+      neuter: new DeclensionByGender(singular: ['kojega'], plural: ['kojih']),
+    ),
+    vokativ: new Declension(
+      masculine: new DeclensionByGender(singular: [''], plural: ['']),
+      feminine: new DeclensionByGender(singular: [''], plural: ['']),
+      neuter: new DeclensionByGender(singular: [''], plural: ['']),
+    ),
+  );
+
   static final Adjective taj = Adjective(
     dictionary: 'taj',
     toAvoid: [Tags.Season, Tags.Country],

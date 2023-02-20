@@ -3,6 +3,21 @@ import 'package:navika/models/models.dart';
 import 'package:navika/models/noun.dart';
 
 class NounsIjekavian {
+  // Što is not a noun but the Noun class best represents it
+  static final Noun sto = Noun(
+    dictionary: 'što',
+    tags: [Tags.FlatSurface, Tags.Furniture, Tags.Portable],
+    gender: Genders.Masculine,
+    isAnimate: false,
+    nominativ: new DeclensionByCount(singular: ['što'], plural: ['što']),
+    akuzativ: new DeclensionByCount(singular: ['što'], plural: ['što']),
+    instrumental: new DeclensionByCount(singular: ['čime'], plural: ['čime']),
+    lokativ: new DeclensionByCount(singular: ['čemu'], plural: ['čemu']),
+    dativ: new DeclensionByCount(singular: ['čemu'], plural: ['čemu']),
+    genitiv: new DeclensionByCount(singular: ['čega'], plural: ['čega']),
+    vokativ: new DeclensionByCount(singular: [''], plural: ['']),
+  );
+
   static final Noun stol = Noun(
     dictionary: 'stol',
     tags: [Tags.FlatSurface, Tags.Furniture, Tags.Portable],

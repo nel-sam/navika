@@ -1,3 +1,6 @@
+import 'package:navika/lang_data/words/demonstrative-pronouns.dart';
+import 'package:navika/lang_data/words/ekavian/adjectives_ekavian.dart';
+import 'package:navika/lang_data/words/ijekavian/adjectives_ijekavian.dart';
 import 'package:navika/lang_data/words/nouns.dart';
 import 'package:navika/lang_data/words/personal-pronouns.dart';
 import 'package:navika/models/enums.dart';
@@ -153,7 +156,64 @@ class AkuzativExercises {
             ),
           ],
         ),
-        // TODO: Add exercises with adjectives
+        PANCombo(
+          caseType: caseType,
+          gender: NounBankGeneral.torta.gender,
+          isPlural: false,
+          isAnimate: false,
+          translation: N.t('ex_Ne_znas_koju_tortu_odabrati'),
+          sentenceParts: [
+            CaseSentencePart(displayValue: 'Ne znaš'),
+            CaseSentencePart(
+              displayValue: DemonstrativePronouns.koji.dictionary,
+              isCorrectable: true,
+              actualObject: DemonstrativePronouns.koji,
+              grammarType: GrammarTypes.demonstrativePronoun,
+              correctValues:
+                  DemonstrativePronouns.koji.akuzativ!.feminine!.singular,
+            ),
+            CaseSentencePart(
+              displayValue: NounBankGeneral.torta.dictionary,
+              isCorrectable: true,
+              actualObject: NounBankGeneral.torta,
+              grammarType: GrammarTypes.noun,
+              correctValues: NounBankGeneral.torta.akuzativ.singular,
+            ),
+            CaseSentencePart(displayValue: 'tortu odabrati?'),
+          ],
+        ),
+        PANCombo(
+          caseType: caseType,
+          gender: NounBankGeneral.macka.gender,
+          isPlural: false,
+          isAnimate: true,
+          translation: N.t('ex_Zelim_kupiti_bijelu_macku'),
+          sentenceParts: [
+            CaseSentencePart(
+                displayValue: isCroatian ? 'Želim kupiti' : 'Želim da kupim'),
+            CaseSentencePart(
+              displayValue: isCroatian
+                  ? AdjectivesIjekavian.bijel.dictionary
+                  : AdjectivesEkavian.bel.dictionary,
+              isCorrectable: true,
+              actualObject: isCroatian
+                  ? AdjectivesIjekavian.bijel
+                  : AdjectivesEkavian.bel,
+              grammarType: GrammarTypes.adjective,
+              correctValues: isCroatian
+                  ? AdjectivesIjekavian.bijel.akuzativ!.feminine!.singular
+                  : AdjectivesEkavian.bel.akuzativ!.feminine!.singular,
+            ),
+            CaseSentencePart(
+              displayValue: NounBankGeneral.macka.dictionary,
+              isCorrectable: true,
+              actualObject: NounBankGeneral.macka,
+              grammarType: GrammarTypes.noun,
+              correctValues: NounBankGeneral.macka.akuzativ.singular,
+            ),
+          ],
+        ),
+        // TODO: Add more exercises with adjectives (some with only adj correctable)
       ];
 
   List<PANCombo> get personalPronouns => [

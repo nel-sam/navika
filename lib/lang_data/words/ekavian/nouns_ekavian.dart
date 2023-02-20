@@ -3,13 +3,28 @@ import 'package:navika/models/models.dart';
 import 'package:navika/models/noun.dart';
 
 class NounsEkavian {
-  static final Noun stol = Noun(
-    dictionary: 'sto',
+  // Šta is not a noun but the Noun class best represents it
+  static final Noun sta = Noun(
+    dictionary: 'šta',
     tags: [Tags.FlatSurface, Tags.Furniture, Tags.Portable],
     gender: Genders.Masculine,
     isAnimate: false,
-    nominativ: new DeclensionByCount(singular: ['sto'], plural: ['stolovi']),
-    akuzativ: new DeclensionByCount(singular: ['sto'], plural: ['stolove']),
+    nominativ: new DeclensionByCount(singular: ['šta'], plural: ['šta']),
+    akuzativ: new DeclensionByCount(singular: ['šta'], plural: ['šta']),
+    instrumental: new DeclensionByCount(singular: ['čime'], plural: ['čime']),
+    lokativ: new DeclensionByCount(singular: ['čemu'], plural: ['čemu']),
+    dativ: new DeclensionByCount(singular: ['čemu'], plural: ['čemu']),
+    genitiv: new DeclensionByCount(singular: ['čega'], plural: ['čega']),
+    vokativ: new DeclensionByCount(singular: [''], plural: ['']),
+  );
+
+  static final Noun stol = Noun(
+    dictionary: 'stol',
+    tags: [Tags.FlatSurface, Tags.Furniture, Tags.Portable],
+    gender: Genders.Masculine,
+    isAnimate: false,
+    nominativ: new DeclensionByCount(singular: ['stol'], plural: ['stolovi']),
+    akuzativ: new DeclensionByCount(singular: ['stol'], plural: ['stolove']),
     instrumental:
         new DeclensionByCount(singular: ['stolom'], plural: ['stolovima']),
     lokativ: new DeclensionByCount(singular: ['stolu'], plural: ['stolovima']),
