@@ -16,6 +16,70 @@ class GenitivExercises {
   }
 
   List<PANCombo> get general => [
+    PANCombo(
+            caseType: caseType,
+            gender: NounBankGeneral.knjiga.gender,
+            isPlural: true,
+            sentenceParts: [
+              CaseSentencePart(displayValue: 'Ovo mi je jedna od'),
+              CaseSentencePart(
+              isCorrectable: true,
+              actualObject: AdjectiveBankGeneral.najbolji,
+              displayValue: AdjectiveBankGeneral.najbolji.dictionary,
+              correctValues:
+                  AdjectiveBankGeneral.najbolji.genitiv!.feminine!.plural,
+              grammarType: GrammarTypes.adjective,
+            ),
+              CaseSentencePart(
+                isCorrectable: true,
+                actualObject: NounBankGeneral.knjiga,
+                displayValue: NounBankGeneral.knjiga.dictionary,
+                correctValues: NounBankGeneral.knjiga.genitiv.plural,
+                grammarType: GrammarTypes.noun,
+              ),
+            ],
+            isAnimate: false,
+            translation: N.t('ex_Ovo_mi_je_jedna_od_najboljih_knjiga')),
+        PANCombo(
+            caseType: caseType,
+            gender: NounBankGeneral.telefon.gender,
+            isPlural: true,
+            sentenceParts: [
+              CaseSentencePart(displayValue: 'Kupit ću 3'),
+              CaseSentencePart(
+              isCorrectable: true,
+              actualObject: AdjectiveBankGeneral.bolji,
+              displayValue: AdjectiveBankGeneral.bolji.dictionary,
+              correctValues:
+                  AdjectiveBankGeneral.bolji.genitiv!.masculine.plural,
+              grammarType: GrammarTypes.adjective,
+            ),
+              CaseSentencePart(
+                isCorrectable: true,
+                actualObject: NounBankGeneral.telefon,
+                displayValue: NounBankGeneral.telefon.dictionary,
+                correctValues: NounBankGeneral.telefon.genitiv.plural,
+                grammarType: GrammarTypes.noun,
+              ),
+            ],
+            isAnimate: false,
+            translation: N.t('ex_Kupit_cu_3_bolja_telefona')),
+        PANCombo(
+            caseType: caseType,
+            gender: NounBankGeneral.otac.gender,
+            isPlural: false,
+            sentenceParts: [
+              CaseSentencePart(displayValue: 'Ja sam iza'),
+              CaseSentencePart(
+                isCorrectable: true,
+                actualObject: NounBankGeneral.otac,
+                displayValue: NounBankGeneral.otac.dictionary,
+                correctValues: NounBankGeneral.otac.genitiv.singular,
+                grammarType: GrammarTypes.noun,
+              ),
+            ],
+            isAnimate: true,
+            translation: N.t('ex_Ja_sam_iza_otac')),
         PANCombo(
             caseType: caseType,
             gender: NounBankGeneral.krevet.gender,
@@ -25,7 +89,7 @@ class GenitivExercises {
               CaseSentencePart(
                 isCorrectable: true,
                 actualObject: NounBankGeneral.krevet,
-                displayValue: '',
+                displayValue: NounBankGeneral.krevet.dictionary,
                 correctValues: NounBankGeneral.krevet.genitiv.singular,
                 grammarType: GrammarTypes.noun,
               ),
@@ -50,7 +114,7 @@ class GenitivExercises {
             CaseSentencePart(
               isCorrectable: true,
               actualObject: AdjectiveBankGeneral.sladak,
-              displayValue: '',
+              displayValue: AdjectiveBankGeneral.sladak.dictionary,
               correctValues:
                   AdjectiveBankGeneral.sladak.genitiv!.feminine!.singular,
               grammarType: GrammarTypes.adjective,
@@ -58,7 +122,7 @@ class GenitivExercises {
             CaseSentencePart(
               isCorrectable: true,
               actualObject: NounBankGeneral.torta,
-              displayValue: '',
+              displayValue: NounBankGeneral.torta.dictionary,
               correctValues: NounBankGeneral.torta.genitiv.singular,
               grammarType: GrammarTypes.noun,
             ),

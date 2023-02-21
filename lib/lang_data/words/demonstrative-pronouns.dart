@@ -92,6 +92,7 @@ class DemonstrativePronouns {
       neuter: new DeclensionByGender(singular: [''], plural: ['']),
     ),
   );
+  
   static final Adjective onaj = Adjective(
     dictionary: 'onaj',
     toAvoid: [Tags.Season, Tags.Country],

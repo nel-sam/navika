@@ -136,6 +136,7 @@ class AdjectiveBankGeneral {
       neuter: new DeclensionByGender(singular: ['staro'], plural: ['stara']),
     ),
   );
+
   static final Adjective hladan = Adjective(
     dictionary: 'hladan',
     toAvoid: [Tags.Human, Tags.Animal],
@@ -322,6 +323,7 @@ class AdjectiveBankGeneral {
       neuter: new DeclensionByGender(singular: ['tužnog'], plural: ['tužnih']),
     ),
   );
+
   static final Adjective sretan = Adjective(
     dictionary: 'sretan',
     toAvoid: [Tags.Thing, Tags.Emotion],
@@ -364,6 +366,7 @@ class AdjectiveBankGeneral {
           new DeclensionByGender(singular: ['sretnog'], plural: ['sretnih']),
     ),
   );
+
   static final Adjective sladak = Adjective(
     dictionary: 'sladak',
     toAvoid: [
@@ -414,6 +417,84 @@ class AdjectiveBankGeneral {
           new DeclensionByGender(singular: ['slatke'], plural: ['slatkih']),
       neuter: new DeclensionByGender(
           singular: ['slatkog', 'slatkoga'], plural: ['slatkih']),
+    ),
+  );
+
+  static final Adjective bolji = Adjective(
+    dictionary: 'bolji',
+    nominativ: new Declension(
+      masculine: new DeclensionByGender(singular: ['bolji'], plural: ['bolji']),
+      feminine: new DeclensionByGender(singular: ['bolja'], plural: ['bolje']),
+      neuter: new DeclensionByGender(singular: ['boljo'], plural: ['bolja']),
+    ),
+    akuzativ: new Declension(
+      masculine: new DeclensionByGender(singular: ['bolji'], plural: ['bolje']),
+      feminine: new DeclensionByGender(singular: ['bolju'], plural: ['bolje']),
+      neuter: new DeclensionByGender(singular: ['boljo'], plural: ['bolja']),
+    ),
+    instrumental: new Declension(
+      masculine:
+          new DeclensionByGender(singular: ['boljim'], plural: ['boljim']),
+      feminine:
+          new DeclensionByGender(singular: ['boljom'], plural: ['boljim']),
+      neuter: new DeclensionByGender(singular: ['boljim'], plural: ['boljim']),
+    ),
+    lokativ: new Declension(
+      masculine:
+          new DeclensionByGender(singular: ['boljom'], plural: ['boljim']),
+      feminine:
+          new DeclensionByGender(singular: ['boljoj'], plural: ['boljim']),
+      neuter: new DeclensionByGender(singular: ['boljom'], plural: ['boljim']),
+    ),
+    genitiv: new Declension(
+      masculine:
+          new DeclensionByGender(singular: ['boljeg'], plural: ['boljih']),
+      feminine: new DeclensionByGender(singular: ['bolje'], plural: ['boljih']),
+      neuter: new DeclensionByGender(singular: ['boljeg'], plural: ['boljih']),
+    ),
+    vokativ: new Declension(
+      masculine: new DeclensionByGender(singular: [''], plural: ['']),
+      feminine: new DeclensionByGender(singular: [''], plural: ['']),
+      neuter: new DeclensionByGender(singular: [''], plural: ['']),
+    ),
+  );
+
+  static final Adjective najbolji = Adjective(
+    dictionary: 'najbolji',
+    nominativ: new Declension(
+      masculine: new DeclensionByGender(singular: ['najbolji'], plural: ['najbolji']),
+      feminine: new DeclensionByGender(singular: ['najbolja'], plural: ['najbolje']),
+      neuter: new DeclensionByGender(singular: ['najboljo'], plural: ['najbolja']),
+    ),
+    akuzativ: new Declension(
+      masculine: new DeclensionByGender(singular: ['najbolji'], plural: ['najbolje']),
+      feminine: new DeclensionByGender(singular: ['najbolju'], plural: ['najbolje']),
+      neuter: new DeclensionByGender(singular: ['najboljo'], plural: ['najbolja']),
+    ),
+    instrumental: new Declension(
+      masculine:
+          new DeclensionByGender(singular: ['najboljim'], plural: ['najboljim']),
+      feminine:
+          new DeclensionByGender(singular: ['najboljom'], plural: ['najboljim']),
+      neuter: new DeclensionByGender(singular: ['najboljim'], plural: ['najboljim']),
+    ),
+    lokativ: new Declension(
+      masculine:
+          new DeclensionByGender(singular: ['najboljom'], plural: ['najboljim']),
+      feminine:
+          new DeclensionByGender(singular: ['najboljoj'], plural: ['najboljim']),
+      neuter: new DeclensionByGender(singular: ['najboljom'], plural: ['najboljim']),
+    ),
+    genitiv: new Declension(
+      masculine:
+          new DeclensionByGender(singular: ['najboljeg'], plural: ['najboljih']),
+      feminine: new DeclensionByGender(singular: ['najbolje'], plural: ['najboljih']),
+      neuter: new DeclensionByGender(singular: ['najboljeg'], plural: ['najboljih']),
+    ),
+    vokativ: new Declension(
+      masculine: new DeclensionByGender(singular: [''], plural: ['']),
+      feminine: new DeclensionByGender(singular: [''], plural: ['']),
+      neuter: new DeclensionByGender(singular: [''], plural: ['']),
     ),
   );
 }
