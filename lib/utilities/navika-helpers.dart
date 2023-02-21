@@ -12,21 +12,6 @@ import 'package:nrs_flutter_lib/enums.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
 class N {
-  static List<TextSpan> getCorrectSentence(BuildContext context, List<CaseSentencePart> sentenceParts) {
-    return sentenceParts.map<TextSpan>((CaseSentencePart e) {
-      if (!e.isCorrectable)
-        return TextSpan(
-            text: '${e.displayValue} ',
-            style: TextStyle(fontSize: FONT_SIZE * 1.1));
-
-      return TextSpan(
-        text: '${e.correctValues.join('/')} ',
-        style: Nrs.getTextStyle(
-            context: context, isBold: true, fontSize: FONT_SIZE * 1.1),
-      );
-    }).toList();
-  }
-
   static void convertToExerciseTypes(
       ExerciseTypes exerciseType, PANCombo combo) {
     if (exerciseType == ExerciseTypes.case_nouns) {
@@ -118,6 +103,22 @@ class N {
     }
   }
 
+  static List<TextSpan> getCorrectSentence(
+      BuildContext context, List<CaseSentencePart> sentenceParts) {
+    return sentenceParts.map<TextSpan>((CaseSentencePart e) {
+      if (!e.isCorrectable)
+        return TextSpan(
+            text: '${e.displayValue} ',
+            style: TextStyle(fontSize: FONT_SIZE * 1.1));
+
+      return TextSpan(
+        text: '${e.correctValues.join('/')} ',
+        style: Nrs.getTextStyle(
+            context: context, isBold: true, fontSize: FONT_SIZE * 1.1),
+      );
+    }).toList();
+  }
+
   static IconData getGenderIcon(Genders gender) {
     if (gender == Genders.Feminine) {
       return FEMININE_ICON;
@@ -203,7 +204,7 @@ class N {
       if (element.isCorrectable &&
           !allowedTypes.contains(element.grammarType)) {
         combo.sentenceParts[i] =
-            CaseSentencePart(displayValue: '${element.correctValues[0]} ');
+            CaseSentencePart(displayValue: ' ${element.correctValues[0]}');
       }
     }
   }

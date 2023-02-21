@@ -41,5 +41,5 @@
   "eslint.alwaysShowStatus": true,
   "editor.formatOnSave": true,
   "cSpell.language": "en,hr,es-ES",
-  "prettier.printWidth": 85
+  "prettier.printWidth": 90
 }

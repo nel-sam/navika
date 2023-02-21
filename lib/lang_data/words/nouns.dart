@@ -24,6 +24,7 @@ class NounBankGeneral {
     instrumental:
         new DeclensionByCount(singular: ['tortom'], plural: ['tortama']),
   );
+
   static final Noun ananas = Noun(
     dictionary: 'ananas',
     tags: [Tags.Food, Tags.Portable],
@@ -395,6 +396,7 @@ class NounBankGeneral {
     instrumental:
         new DeclensionByCount(singular: ['biciklom'], plural: ['biciklima']),
   );
+
   static final Noun godina = Noun(
     dictionary: 'godina',
     tags: [Tags.Time],
@@ -409,6 +411,7 @@ class NounBankGeneral {
     instrumental:
         new DeclensionByCount(singular: ['godinom'], plural: ['godinama']),
   );
+
   static final Noun kuca = Noun(
     dictionary: 'kuća',
     tags: [Tags.Thing, Tags.Location, Tags.Building],
@@ -437,5 +440,20 @@ class NounBankGeneral {
     genitiv:
         new DeclensionByCount(singular: ['mačke'], plural: ['mačaka', 'mački']),
     vokativ: new DeclensionByCount(singular: ['mačko'], plural: ['mačke']),
+  );
+
+  static final Noun cesta = Noun(
+    dictionary: 'cesta',
+    tags: [Tags.FlatSurface, Tags.Location],
+    gender: Genders.Feminine,
+    isAnimate: false,
+    nominativ: new DeclensionByCount(singular: ['cesta'], plural: ['ceste']),
+    genitiv: new DeclensionByCount(singular: ['ceste'], plural: ['cesta']),
+    dativ: new DeclensionByCount(singular: ['cesti'], plural: ['cestama']),
+    akuzativ: new DeclensionByCount(singular: ['cestu'], plural: ['ceste']),
+    lokativ: new DeclensionByCount(singular: ['cesti'], plural: ['cestama']),
+    vokativ: new DeclensionByCount(singular: ['cesto'], plural: ['ceste']),
+    instrumental:
+        new DeclensionByCount(singular: ['cestom'], plural: ['cestama']),
   );
 }

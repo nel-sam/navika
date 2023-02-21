@@ -18,6 +18,21 @@ class NounsEkavian {
     vokativ: new DeclensionByCount(singular: [''], plural: ['']),
   );
 
+  static final Noun covek = Noun(
+    dictionary: 'čovek',
+    tags: [Tags.Human],
+    gender: Genders.Masculine,
+    isAnimate: true,
+    nominativ: new DeclensionByCount(singular: ['čoveka'], plural: ['']),
+    genitiv: new DeclensionByCount(singular: ['čoveka'], plural: ['']),
+    dativ: new DeclensionByCount(singular: ['čoveki'], plural: ['']),
+    akuzativ: new DeclensionByCount(singular: ['čoveku'], plural: ['']),
+    lokativ: new DeclensionByCount(singular: ['čoveki'], plural: ['']),
+    vokativ: new DeclensionByCount(singular: ['čoveko'], plural: ['']),
+    instrumental:
+        new DeclensionByCount(singular: ['čovekom'], plural: ['čovekama']),
+  );
+
   static final Noun stol = Noun(
     dictionary: 'stol',
     tags: [Tags.FlatSurface, Tags.Furniture, Tags.Portable],

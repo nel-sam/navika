@@ -1,4 +1,5 @@
 import 'package:navika/lang_data/words/adjectives.dart';
+import 'package:navika/lang_data/words/demonstrative-pronouns.dart';
 import 'package:navika/lang_data/words/nouns.dart';
 import 'package:navika/lang_data/words/personal-pronouns.dart';
 import 'package:navika/models/enums.dart';
@@ -15,12 +16,12 @@ class GenitivExercises {
   }
 
   List<PANCombo> get general => [
-    PANCombo(
+        PANCombo(
           caseType: caseType,
           gender: NounBankGeneral.pas.gender,
           isPlural: false,
           isAnimate: true,
-          extraInfo:  N.t('extrainfo_akusativ_for_male_animate'),
+          extraInfo: N.t('extrainfo_akusativ_for_male_animate'),
           translation: N.t('ex_Udomila_sam_starog_psa_sa_ceste'),
           sentenceParts: [
             CaseSentencePart(displayValue: 'Udomila sam'),
@@ -29,7 +30,8 @@ class GenitivExercises {
               isCorrectable: true,
               actualObject: AdjectiveBankGeneral.star,
               grammarType: GrammarTypes.adjective,
-              correctValues: AdjectiveBankGeneral.star.genitiv!.masculine.singular,
+              correctValues:
+                  AdjectiveBankGeneral.star.genitiv!.masculine.singular,
             ),
             CaseSentencePart(
               displayValue: NounBankGeneral.pas.dictionary,
@@ -47,8 +49,14 @@ class GenitivExercises {
             isPlural: false,
             sentenceParts: [
               CaseSentencePart(
-                  displayValue:
-                      'Koja je vrsta'), // TODO: Koja/vrsta as correctable?
+                displayValue: DemonstrativePronouns.koji.dictionary,
+                isCorrectable: true,
+                actualObject: DemonstrativePronouns.koji,
+                grammarType: GrammarTypes.demonstrativePronoun,
+                correctValues:
+                    DemonstrativePronouns.koji.nominativ!.feminine!.singular,
+              ),
+              CaseSentencePart(displayValue: 'je vrsta'),
               CaseSentencePart(
                 isCorrectable: true,
                 actualObject: NounBankGeneral.krevet,
@@ -57,7 +65,7 @@ class GenitivExercises {
                 grammarType: GrammarTypes.noun,
               ),
               CaseSentencePart(
-                  displayValue: 'prava za'), // TODO: Prava as correctable?
+                  displayValue: 'prava za'),
               CaseSentencePart(
                   isCorrectable: true,
                   actualObject: PersonalPronounWordBank.vi,
@@ -89,7 +97,14 @@ class GenitivExercises {
                 correctValues: NounBankGeneral.pas.akuzativ.plural,
                 grammarType: GrammarTypes.noun,
               ),
-              CaseSentencePart(displayValue: 'sa ceste'),
+              CaseSentencePart(displayValue: 'sa'),
+              CaseSentencePart(
+                isCorrectable: true,
+                actualObject: NounBankGeneral.cesta,
+                displayValue: NounBankGeneral.cesta.dictionary,
+                correctValues: NounBankGeneral.cesta.akuzativ.singular,
+                grammarType: GrammarTypes.noun,
+              ),
             ],
             isAnimate: false,
             translation: N.t('ex_Prije_16_godina_udomio_sam_pse_sa_ceste')),

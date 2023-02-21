@@ -18,6 +18,21 @@ class NounsIjekavian {
     vokativ: new DeclensionByCount(singular: [''], plural: ['']),
   );
 
+  static final Noun covjek = Noun(
+    dictionary: 'čovjek',
+    tags: [Tags.Human],
+    gender: Genders.Masculine,
+    isAnimate: true,
+    nominativ: new DeclensionByCount(singular: ['čovjeka'], plural: ['']),
+    genitiv: new DeclensionByCount(singular: ['čovjeka'], plural: ['']),
+    dativ: new DeclensionByCount(singular: ['čovjeki'], plural: ['']),
+    akuzativ: new DeclensionByCount(singular: ['čovjeku'], plural: ['']),
+    lokativ: new DeclensionByCount(singular: ['čovjeki'], plural: ['']),
+    vokativ: new DeclensionByCount(singular: ['čovjeko'], plural: ['']),
+    instrumental:
+        new DeclensionByCount(singular: ['čovjekom'], plural: ['čovjekama']),
+  );
+
   static final Noun stol = Noun(
     dictionary: 'stol',
     tags: [Tags.FlatSurface, Tags.Furniture, Tags.Portable],

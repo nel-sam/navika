@@ -1,8 +1,12 @@
+import 'package:navika/lang_data/words/adjectives.dart';
 import 'package:navika/lang_data/words/demonstrative-pronouns.dart';
 import 'package:navika/lang_data/words/ekavian/adjectives_ekavian.dart';
+import 'package:navika/lang_data/words/ekavian/nouns_ekavian.dart';
 import 'package:navika/lang_data/words/ijekavian/adjectives_ijekavian.dart';
+import 'package:navika/lang_data/words/ijekavian/nouns_ijekavian.dart';
 import 'package:navika/lang_data/words/nouns.dart';
 import 'package:navika/lang_data/words/personal-pronouns.dart';
+import 'package:navika/lang_data/words/possessive-pronouns.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/utilities/navika-helpers.dart';
@@ -19,12 +23,45 @@ class AkuzativExercises {
   List<PANCombo> get general => [
         PANCombo(
           caseType: caseType,
+          gender: NounBankGeneral.bicikl.gender,
+          isPlural: false,
+          isAnimate: false,
+          translation: N.t('ex_Slikao_sam_svoj_bicikl'),
+          sentenceParts: [
+            CaseSentencePart(displayValue: 'Slikao sam'),
+            CaseSentencePart(
+              displayValue: PossessivePronounBank.svoj.dictionary,
+              isCorrectable: true,
+              actualObject: PossessivePronounBank.svoj,
+              grammarType: GrammarTypes.possessivePronoun,
+              correctValues:
+                  PossessivePronounBank.svoj.akuzativ!.masculine.singular,
+            ),
+            CaseSentencePart(
+              displayValue: NounBankGeneral.bicikl.dictionary,
+              isCorrectable: true,
+              actualObject: NounBankGeneral.bicikl,
+              grammarType: GrammarTypes.noun,
+              correctValues: NounBankGeneral.bicikl.akuzativ.singular,
+            ),
+          ],
+        ),
+        PANCombo(
+          caseType: caseType,
           gender: NounBankGeneral.krevet.gender,
           isPlural: false,
           isAnimate: false,
-          translation: N.t('ex_Jeste_li_kupili_novi'),
+          translation: N.t('ex_Jeste_li_kupili_novi_krevet'),
           sentenceParts: [
-            CaseSentencePart(displayValue: 'Jeste li kupili novi'),
+            CaseSentencePart(displayValue: 'Jeste li kupili'),
+            CaseSentencePart(
+              displayValue: AdjectiveBankGeneral.nov.dictionary,
+              isCorrectable: true,
+              actualObject: AdjectiveBankGeneral.nov,
+              grammarType: GrammarTypes.adjective,
+              correctValues:
+                  AdjectiveBankGeneral.nov.akuzativ!.masculine.singular,
+            ),
             CaseSentencePart(
               displayValue: NounBankGeneral.krevet.dictionary,
               isCorrectable: true,
@@ -51,23 +88,6 @@ class AkuzativExercises {
               correctValues: NounBankGeneral.ananas.akuzativ.singular,
             ),
             CaseSentencePart(displayValue: '?'),
-          ],
-        ),
-        PANCombo(
-          caseType: caseType,
-          gender: NounBankGeneral.bicikl.gender,
-          isPlural: false,
-          isAnimate: false,
-          translation: N.t('ex_Slikao_sam_svoj_bicikl'),
-          sentenceParts: [
-            CaseSentencePart(displayValue: 'Slikao sam svoj'),
-            CaseSentencePart(
-              displayValue: NounBankGeneral.bicikl.dictionary,
-              isCorrectable: true,
-              actualObject: NounBankGeneral.bicikl,
-              grammarType: GrammarTypes.noun,
-              correctValues: NounBankGeneral.bicikl.akuzativ.singular,
-            ),
           ],
         ),
         PANCombo(
@@ -126,7 +146,7 @@ class AkuzativExercises {
           gender: NounBankGeneral.bosna.gender,
           isPlural: false,
           isAnimate: false,
-          extraInfo: 'extrainfo_akuzativ_with_za',
+          extraInfo: N.t('extrainfo_akuzativ_with_za'),
           translation: N.t('ex_Sviđa_mi_se_pjesme_za_bosnu'),
           sentenceParts: [
             CaseSentencePart(displayValue: 'Sviđa mi se pjesme za'),
@@ -213,7 +233,38 @@ class AkuzativExercises {
             ),
           ],
         ),
-        // TODO: Add more exercises with adjectives (some with only adj correctable)
+        PANCombo(
+          caseType: caseType,
+          gender: NounsIjekavian.covjek.gender,
+          isPlural: false,
+          isAnimate: true,
+          translation: N.t('ex_Primijetio_sam_visokog_covjeka'),
+          extraInfo: N.t('extrainfo_akusativ_for_male_animate'),
+          sentenceParts: [
+            CaseSentencePart(displayValue: 'Primijetio sam'),
+            CaseSentencePart(
+              displayValue: AdjectiveBankGeneral.velik.dictionary,
+              isCorrectable: true,
+              actualObject: AdjectiveBankGeneral.velik,
+              grammarType: GrammarTypes.adjective,
+              correctValues:
+                  AdjectiveBankGeneral.velik.genitiv!.masculine.singular,
+            ),
+            CaseSentencePart(
+              displayValue: isCroatian
+                  ? NounsIjekavian.covjek.dictionary
+                  : NounsEkavian.covek.dictionary,
+              isCorrectable: true,
+              actualObject:
+                  isCroatian ? NounsIjekavian.covjek : NounsEkavian.covek,
+              grammarType: GrammarTypes.noun,
+              correctValues: isCroatian
+                  ? NounsIjekavian.covjek.akuzativ.singular
+                  : NounsEkavian.covek.akuzativ.singular,
+            ),
+          ],
+        ),
+        // TODO: Aku male animate
       ];
 
   List<PANCombo> get personalPronouns => [
@@ -367,11 +418,9 @@ class AkuzativExercises {
             gender: Genders.Unspecific,
             isPlural: true,
             isAnimate: true,
-            extraInfo: 'extrainfo_akuzativ_with_za',
+            extraInfo: N.t('extrainfo_akuzativ_with_za'),
             sentenceParts: [
-              CaseSentencePart(
-                  displayValue:
-                      'Koja je vrsta kreveta prava za'), // TODO: Koja/vrsta as correctable?
+              CaseSentencePart(displayValue: 'Koja je vrsta kreveta prava za'),
               CaseSentencePart(
                   isCorrectable: true,
                   actualObject: PersonalPronounWordBank.vi,

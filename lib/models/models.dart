@@ -67,8 +67,8 @@ class DeclensionByGender {
   List<String> plural;
 
   DeclensionByGender({
-    this.singular = const [],
-    this.plural = const [],
+    required this.singular,
+    required this.plural,
   });
 }
 

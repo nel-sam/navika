@@ -4,9 +4,8 @@ import 'package:nrs_flutter_lib/extensions.dart';
 
 class Adjective {
   final String dictionary;
-   Declension? nominativ;
+  Declension? nominativ;
   late Declension? akuzativ;
-  late Declension akuzativAnimate;
   late Declension? instrumental;
   late Declension? lokativ;
   late Declension? dativ;
@@ -27,7 +26,8 @@ class Adjective {
   }) {
     if (this.nominativ == null) {
       this.nominativ = Declension(
-        masculine: DeclensionByGender(singular: [this.dictionary]),
+        masculine:
+            DeclensionByGender(singular: [this.dictionary], plural: ['']),
       );
     }
 
@@ -37,15 +37,12 @@ class Adjective {
     if (this.dativ == null) this.dativ = this.lokativ;
     if (this.vokativ == null) this.vokativ = this.nominativ;
     if (this.genitiv == null) this.genitiv = this.nominativ;
-
-    this.akuzativAnimate = this.akuzativ!;
-    this.akuzativAnimate.masculine.singular = this.genitiv!.masculine.singular;
   }
 
   Declension getDeclensionObject(Cases caseType, bool isAnimate) {
     switch (caseType) {
       case Cases.Aku:
-        return isAnimate ? this.akuzativAnimate : this.akuzativ!;
+        return this.akuzativ!;
       case Cases.Dat:
         return this.dativ!;
       case Cases.Gen:
@@ -68,7 +65,7 @@ class Adjective {
 
     switch (caseType) {
       case Cases.Aku:
-        declension = isAnimate ? this.akuzativAnimate : this.akuzativ!;
+        declension = this.akuzativ!;
         break;
       case Cases.Dat:
         declension = this.dativ!;
@@ -112,7 +109,7 @@ class Adjective {
       case Cases.All:
         return this.nominativ!.getAll();
       case Cases.Aku:
-        return [...this.akuzativ!.getAll(), ...this.akuzativAnimate.getAll()];
+        return [...this.akuzativ!.getAll()];
       case Cases.Vok:
         return this.vokativ!.getAll();
       case Cases.Lok:
@@ -140,9 +137,6 @@ class Adjective {
       ...this.akuzativ!.masculine.singular,
       ...this.akuzativ!.feminine!.singular,
       ...this.akuzativ!.neuter!.singular,
-      ...this.akuzativAnimate.masculine.singular,
-      ...this.akuzativAnimate.feminine!.singular,
-      ...this.akuzativAnimate.neuter!.singular,
       ...this.instrumental!.masculine.singular,
       ...this.instrumental!.feminine!.singular,
       ...this.instrumental!.neuter!.singular,
@@ -164,9 +158,6 @@ class Adjective {
       ...this.akuzativ!.masculine.plural,
       ...this.akuzativ!.feminine!.plural,
       ...this.akuzativ!.neuter!.plural,
-      ...this.akuzativAnimate.masculine.plural,
-      ...this.akuzativAnimate.feminine!.plural,
-      ...this.akuzativAnimate.neuter!.plural,
       ...this.instrumental!.masculine.plural,
       ...this.instrumental!.feminine!.plural,
       ...this.instrumental!.neuter!.plural,
