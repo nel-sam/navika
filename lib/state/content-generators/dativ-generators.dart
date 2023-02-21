@@ -8,19 +8,38 @@ class DativGenerators {
     DialectType dialect,
     bool isPremium,
   ) {
-    PANCombo? c;
+    static List<CaseQuestionState> createExercise(
+    ExerciseTypes exerciseType,
+    DialectType dialect,
+    bool isPremium,
+  ) {
+    List<PANCombo> combos = [];
 
-    // while (c == null || N.containsCaseQuestionState(toAvoid, c)) {
-    //   c = PanGenerator.getPANCombos(
-    //     caseType: Cases.Dat,
-    //     dialect: dialect,
-    //     bank: SentenceBankGenerator(dialect: dialect).sentencesBankData,
-    //     getPersonalPronounSentenceStaticParts:
-    //         getPersonalPronounSentenceStaticParts,
-    //     getStaticSentenceParts: getStaticSentenceParts,
-    //   );
-    // }
+    if (exerciseType == ExerciseTypes.case_personal_pronouns) {
+      combos.addAll(DativExercises(dialect).personalPronouns);
+    } else if (isPremium) {
+      combos.addAll(GenitivExercises(dialect).premium);
+    }
 
-    return [CaseQuestionState(combos: c!)];
+    if (exerciseType != ExerciseTypes.case_personal_pronouns) {
+      combos.addAll(GenitivExercises(dialect).general);
+    }
+
+    if (exerciseType == ExerciseTypes.case_adjectives ||
+        exerciseType == ExerciseTypes.case_nouns_and_adjectives) {
+      combos.removeWhere((element) => !element.sentenceParts.any((sp) =>
+          sp.grammarType == GrammarTypes.adjective ||
+          sp.grammarType == GrammarTypes.possessivePronoun));
+    }
+
+    for (int i = 0; i < combos.length; i++) {
+      N.convertToExerciseTypes(exerciseType, combos[i]);
+    }
+
+    return combos
+        .shufflePAN()
+        .map((e) => CaseQuestionState(combos: e))
+        .toList();
+  }
   }
 }

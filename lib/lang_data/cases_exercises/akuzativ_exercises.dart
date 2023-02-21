@@ -21,6 +21,25 @@ class AkuzativExercises {
   }
 
   List<PANCombo> get general => [
+    // TODO: Exerc for using "u". Ex: Idem u Bosnu
+    PANCombo(
+          caseType: caseType,
+          gender: NounBankGeneral.bosna.gender,
+          isPlural: false,
+          isAnimate: false,
+          translation: N.t('ex_Idemo_u_Bosnu'),
+          extraInfo: N.t('extrainfo_aku_for_movement'),
+          sentenceParts: [
+            CaseSentencePart(displayValue: 'Idemo u'),
+            CaseSentencePart(
+              displayValue: NounBankGeneral.bosna.dictionary,
+              isCorrectable: true,
+              actualObject: NounBankGeneral.bosna,
+              grammarType: GrammarTypes.noun,
+              correctValues: NounBankGeneral.bosna.akuzativ.singular,
+            ),
+          ],
+        ),
         PANCombo(
           caseType: caseType,
           gender: NounBankGeneral.bicikl.gender,

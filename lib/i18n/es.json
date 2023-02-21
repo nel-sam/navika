@@ -76,12 +76,16 @@
   "ex_Ja_sam_iza_otac": "Estoy detrás de mi padre",
   "ex_Kupit_cu_3_telefona": "Voy a comprar 3 teléfonos mejores",
   "ex_Ovo_mi_je_jedna_od_najboljih_knjiga": "Este es uno de los mejores libros",
+  "ex_Idemo_u_Bosnu": "Vamos a Bosnia",
+  "ex_Nema_na_cemu": "De nada",
+  "ex_Poslao_sam_pismo_majci": "Le envié una carta a mi madre",
 
   "extrainfo_brat": "Braća se usa para hablar de various hermanos. Braća se refiere a hombres pero tiene declinaciones como si fuera sustantivo femenino en singular",
   "extrainfo_all_ona_aku_ok": "En esta situación se puede usar cualquier forma acusativo de 'Ona' porque 'je' (del verbo 'biti') no sigue",
   "extrainfo_ona_aku_je_not_ok": "El forma acusativo 'je' de 'Ona' no se puede usar si la siguiente palabra es 'je' del verbo 'biti'",
   "extrainfo_akuzativ_with_za": "Siempre se usa el acusativo después de 'za'",
   "extrainfo_akusativ_for_male_animate": "El acusativo de los sustantivos masculinos animados/vivos (personas y animales) es el mismo que el genitivo. Para objetos inanimados el acusativo es lo mismo que el nominativo",
+  "extrainfo_aku_for_movement": "Se usa el acusativo con la preposición 'u' cuando se trata de movimiento hacia un destino",
 
   "nominativ": "Nominativo",
   "akuzativ": "Acusativo",

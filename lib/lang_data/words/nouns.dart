@@ -3,12 +3,6 @@ import 'package:navika/models/models.dart';
 import 'package:navika/models/noun.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 
-/*
-  Noun(dictionary: '',tags: [],gender: GenderEnum.Masculine,isAnimate: ,
-
-  ),
-*/
-
 class NounBankGeneral {
   static final Noun torta = Noun(
     dictionary: 'torta',
@@ -40,6 +34,7 @@ class NounBankGeneral {
     instrumental:
         new DeclensionByCount(singular: ['ananasom'], plural: ['ananasima']),
   );
+
   static final Noun francuska = Noun(
     dictionary: 'Francuska',
     tags: [Tags.Location, Tags.Country],
@@ -53,6 +48,7 @@ class NounBankGeneral {
     vokativ: new DeclensionByCount(singular: ['Francuska'], plural: ['']),
     instrumental: new DeclensionByCount(singular: ['Francuskom'], plural: ['']),
   );
+
   static final Noun bosna = Noun(
     dictionary: 'Bosna',
     tags: [Tags.Location, Tags.Country],
@@ -66,6 +62,7 @@ class NounBankGeneral {
     vokativ: new DeclensionByCount(singular: ['Bosno'], plural: ['']),
     instrumental: new DeclensionByCount(singular: ['Bosnom'], plural: ['']),
   );
+
   static final Noun srbija = Noun(
     dictionary: 'Srbija',
     tags: [Tags.Location, Tags.Country],
@@ -80,6 +77,7 @@ class NounBankGeneral {
         new DeclensionByCount(singular: ['Srbijo', 'Srbija'], plural: ['']),
     instrumental: new DeclensionByCount(singular: ['Srbijom'], plural: ['']),
   );
+
   static final Noun lice = Noun(
     dictionary: 'lice',
     tags: [Tags.BodyPart],
@@ -94,6 +92,7 @@ class NounBankGeneral {
     instrumental:
         new DeclensionByCount(singular: ['licem'], plural: ['licima']),
   );
+
   static final Noun zena = Noun(
     dictionary: 'žena',
     tags: [Tags.Human, Tags.Adult],
@@ -108,6 +107,7 @@ class NounBankGeneral {
     genitiv: new DeclensionByCount(singular: ['žene'], plural: ['žena']),
     vokativ: new DeclensionByCount(singular: ['ženo'], plural: ['žene']),
   );
+
   static final Noun sestra = Noun(
     dictionary: 'sestra',
     tags: [Tags.Human, Tags.Adult],
@@ -122,6 +122,7 @@ class NounBankGeneral {
     genitiv: new DeclensionByCount(singular: ['sestre'], plural: ['sestara']),
     vokativ: new DeclensionByCount(singular: ['sestro'], plural: ['sestre']),
   );
+
   static final Noun majka = Noun(
     dictionary: 'majka',
     tags: [Tags.Human, Tags.Adult],
@@ -135,6 +136,7 @@ class NounBankGeneral {
     genitiv: new DeclensionByCount(singular: ['majke'], plural: ['majka']),
     vokativ: new DeclensionByCount(singular: ['majko'], plural: ['majke']),
   );
+
   static final Noun bratBraca = Noun(
     dictionary: 'brat/braća',
     extraInfo: N.t('extrainfo_brat'),
@@ -150,6 +152,7 @@ class NounBankGeneral {
     genitiv: new DeclensionByCount(singular: ['brata'], plural: ['braće']),
     vokativ: new DeclensionByCount(singular: ['brate'], plural: ['braćo']),
   );
+
   static final Noun muskarac = Noun(
     dictionary: 'muškarac',
     tags: [Tags.Human, Tags.Adult],
@@ -170,6 +173,7 @@ class NounBankGeneral {
     vokativ:
         new DeclensionByCount(singular: ['muškarče'], plural: ['muškarci']),
   );
+
   static final Noun otac = Noun(
     dictionary: 'otac',
     tags: [Tags.Human, Tags.Adult],
@@ -184,6 +188,7 @@ class NounBankGeneral {
     genitiv: new DeclensionByCount(singular: ['oca'], plural: ['očeva']),
     vokativ: new DeclensionByCount(singular: ['oče'], plural: ['očevi']),
   );
+
   static final Noun sin = Noun(
     dictionary: 'sin',
     tags: [Tags.Human],
@@ -198,6 +203,7 @@ class NounBankGeneral {
     instrumental:
         new DeclensionByCount(singular: ['sinom'], plural: ['sinovima']),
   );
+
   static final Noun ljubav = Noun(
     dictionary: 'ljubav',
     tags: [Tags.Emotion],
@@ -213,6 +219,7 @@ class NounBankGeneral {
     genitiv: new DeclensionByCount(singular: ['ljubavi'], plural: ['ljubavi']),
     vokativ: new DeclensionByCount(singular: ['ljubavi'], plural: ['ljubavi']),
   );
+
   static final Noun telefon = Noun(
     dictionary: 'telefon',
     tags: [Tags.Portable, Tags.Thing],
@@ -232,6 +239,7 @@ class NounBankGeneral {
         new DeclensionByCount(singular: ['telefona'], plural: ['telefona']),
     vokativ: new DeclensionByCount(singular: [''], plural: ['']),
   );
+
   static final Noun knjiga = Noun(
     dictionary: 'knjiga',
     tags: [Tags.Portable, Tags.Thing],
@@ -246,6 +254,7 @@ class NounBankGeneral {
     instrumental:
         new DeclensionByCount(singular: ['knjigom'], plural: ['knjigama']),
   );
+
   static final Noun proljece = Noun(
     dictionary: 'proljeće',
     tags: [Tags.Season, Tags.Weather],
@@ -266,6 +275,7 @@ class NounBankGeneral {
     instrumental:
         new DeclensionByCount(singular: ['proljećem'], plural: ['proljećima']),
   );
+
   static final Noun jesen = Noun(
     dictionary: 'jesen',
     tags: [Tags.Season, Tags.Weather, Tags.Time],
@@ -280,6 +290,7 @@ class NounBankGeneral {
     instrumental:
         new DeclensionByCount(singular: ['jeseni'], plural: ['jesenima']),
   );
+
   static final Noun zima = Noun(
     dictionary: 'zima',
     tags: [Tags.Season, Tags.Weather],
@@ -294,6 +305,7 @@ class NounBankGeneral {
     instrumental:
         new DeclensionByCount(singular: ['zimom'], plural: ['zimama']),
   );
+
   static final Noun bolnica = Noun(
     dictionary: 'bolnica',
     tags: [Tags.Location, Tags.WorkPlace, Tags.Building],
@@ -310,6 +322,7 @@ class NounBankGeneral {
     instrumental:
         new DeclensionByCount(singular: ['bolnicom'], plural: ['bolnicama']),
   );
+
   static final Noun krevet = Noun(
     dictionary: 'krevet',
     tags: [Tags.FlatSurface, Tags.Furniture, Tags.Thing],
@@ -325,6 +338,7 @@ class NounBankGeneral {
     instrumental:
         new DeclensionByCount(singular: ['krevetom'], plural: ['krevetima']),
   );
+
   static final Noun pas = Noun(
     dictionary: 'pas',
     tags: [Tags.Animal, Tags.Pet, Tags.Portable],
@@ -338,6 +352,7 @@ class NounBankGeneral {
     vokativ: new DeclensionByCount(singular: ['psu'], plural: ['psi']),
     instrumental: new DeclensionByCount(singular: ['psom'], plural: ['psima']),
   );
+
   static final Noun gitara = Noun(
     dictionary: 'gitara',
     tags: [Tags.Instrument, Tags.Thing, Tags.Portable],
@@ -352,6 +367,7 @@ class NounBankGeneral {
     instrumental:
         new DeclensionByCount(singular: ['gitarom'], plural: ['gitarama']),
   );
+
   static final Noun pivo = Noun(
     dictionary: 'pivo',
     tags: [Tags.Drink, Tags.Alcohol, Tags.Thing, Tags.Portable],
@@ -366,6 +382,7 @@ class NounBankGeneral {
     instrumental:
         new DeclensionByCount(singular: ['pivom'], plural: ['pivima']),
   );
+
   static final Noun bolest = Noun(
     dictionary: 'bolest',
     tags: [Tags.Health],
@@ -381,6 +398,7 @@ class NounBankGeneral {
     instrumental:
         new DeclensionByCount(singular: ['bolesti'], plural: ['bolestima']),
   );
+
   static final Noun bicikl = Noun(
     dictionary: 'bicikl',
     tags: [Tags.Vehicle, Tags.Portable, Tags.Thing],
