@@ -2,6 +2,7 @@ import 'package:navika/lang_data/words/adjectives.dart';
 import 'package:navika/lang_data/words/demonstrative-pronouns.dart';
 import 'package:navika/lang_data/words/nouns.dart';
 import 'package:navika/lang_data/words/personal-pronouns.dart';
+import 'package:navika/lang_data/words/possessive-pronouns.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/utilities/navika-helpers.dart';
@@ -16,6 +17,38 @@ class GenitivExercises {
   }
 
   List<PANCombo> get general => [
+        PANCombo(
+            caseType: caseType,
+            gender: Genders.Unspecific,
+            isPlural: false,
+            sentenceParts: [
+              CaseSentencePart(displayValue: 'Poslao sam pismo'),
+              CaseSentencePart(
+                isCorrectable: true,
+                actualObject: AdjectiveBankGeneral.dugi,
+                displayValue: AdjectiveBankGeneral.dugi.dictionary,
+                correctValues:
+                    AdjectiveBankGeneral.dugi.akuzativ!.neuter!.singular,
+                grammarType: GrammarTypes.adjective,
+              ),
+              CaseSentencePart(
+                isCorrectable: true,
+                actualObject: PossessivePronounBank.svoj,
+                displayValue: PossessivePronounBank.svoj.dictionary,
+                correctValues:
+                    PossessivePronounBank.svoj.dativ!.feminine!.singular,
+                grammarType: GrammarTypes.possessivePronoun,
+              ),
+              CaseSentencePart(
+                isCorrectable: true,
+                actualObject: NounBankGeneral.majka,
+                displayValue: NounBankGeneral.majka.dictionary,
+                correctValues: NounBankGeneral.majka.dativ!.singular,
+                grammarType: GrammarTypes.noun,
+              ),
+            ],
+            isAnimate: false,
+            translation: N.t('ex_Poslao_sam_dugo_pismo_svojoj_majci')),
         PANCombo(
           caseType: caseType,
           gender: NounBankGeneral.pas.gender,
@@ -64,8 +97,7 @@ class GenitivExercises {
                 correctValues: NounBankGeneral.krevet.genitiv.singular,
                 grammarType: GrammarTypes.noun,
               ),
-              CaseSentencePart(
-                  displayValue: 'prava za'),
+              CaseSentencePart(displayValue: 'prava za'),
               CaseSentencePart(
                   isCorrectable: true,
                   actualObject: PersonalPronounWordBank.vi,
