@@ -1,6 +1,8 @@
+import 'package:navika/lang_data/words/adjectives.dart';
 import 'package:navika/lang_data/words/ekavian/nouns_ekavian.dart';
 import 'package:navika/lang_data/words/ijekavian/nouns_ijekavian.dart';
 import 'package:navika/lang_data/words/nouns.dart';
+import 'package:navika/lang_data/words/personal-pronouns.dart';
 import 'package:navika/lang_data/words/possessive-pronouns.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
@@ -18,9 +20,101 @@ class DativExercises {
   List<PANCombo> get general => [
         // TODO: Koji and adjective exerc
         PANCombo(
+          caseType: caseType,
+          gender: isCroatian
+              ? NounsIjekavian.ljeto.gender
+              : NounsEkavian.leto.gender,
+          isPlural: false,
+          isAnimate: false,
+          translation: N.t('ex_Radujem_se_vrućem_ljetu'),
+          sentenceParts: [
+            CaseSentencePart(displayValue: 'Radujem se'),
+            CaseSentencePart(
+              isCorrectable: true,
+              actualObject: AdjectiveBankGeneral.vruc.dativ!.masculine,
+              displayValue: AdjectiveBankGeneral.vruc.dictionary,
+              correctValues:
+                  AdjectiveBankGeneral.vruc.dativ!.masculine.singular,
+              grammarType: GrammarTypes.adjective,
+            ),
+            CaseSentencePart(
+              isCorrectable: true,
+              actualObject:
+                  isCroatian ? NounsIjekavian.ljeto : NounsEkavian.leto,
+              displayValue: isCroatian
+                  ? NounsIjekavian.ljeto.dictionary
+                  : NounsEkavian.leto.dictionary,
+              correctValues: isCroatian
+                  ? NounsIjekavian.ljeto.dativ!.singular
+                  : NounsEkavian.leto.dativ!.singular,
+              grammarType: GrammarTypes.adjective,
+            ),
+          ],
+        ),
+        PANCombo(
+          caseType: caseType,
+          gender: NounBankGeneral.bolnica.gender,
+          isPlural: false,
+          isAnimate: false,
+          translation: N.t('ex_Nasuprot_velikoj_bolnici_se_nalazi_pekara'),
+          sentenceParts: [
+            CaseSentencePart(displayValue: 'Nasuprot'),
+            CaseSentencePart(
+              isCorrectable: true,
+              actualObject: AdjectiveBankGeneral.velik.dativ!.feminine,
+              displayValue: AdjectiveBankGeneral.velik.dictionary,
+              correctValues:
+                  AdjectiveBankGeneral.velik.dativ!.feminine!.singular,
+              grammarType: GrammarTypes.adjective,
+            ),
+            CaseSentencePart(
+              isCorrectable: true,
+              actualObject: NounBankGeneral.bolnica.dativ!.singular,
+              displayValue: NounBankGeneral.bolnica.dictionary,
+              correctValues: NounBankGeneral.bolnica.dativ!.singular,
+              grammarType: GrammarTypes.noun,
+            ),
+            CaseSentencePart(displayValue: 'se nalazi pekara'),
+          ],
+        ),
+        PANCombo(
+          caseType: caseType,
+          gender: NounBankGeneral.zivot.gender,
+          isPlural: false,
+          isAnimate: false,
+          translation: N.t('ex_Sto_je_u_zivotu_vazno'),
+          sentenceParts: [
+            CaseSentencePart(displayValue: 'Što je u'),
+            CaseSentencePart(
+              isCorrectable: true,
+              actualObject: NounBankGeneral.zivot.dativ!.singular,
+              displayValue: NounBankGeneral.zivot.dictionary,
+              correctValues: NounBankGeneral.zivot.dativ!.singular,
+              grammarType: GrammarTypes.noun,
+            ),
+            CaseSentencePart(displayValue: 'važno'),
+          ],
+        ),
+        PANCombo(
+            caseType: caseType,
+            gender: NounBankGeneral.jesen.gender,
+            isPlural: false,
+            sentenceParts: [
+              CaseSentencePart(displayValue: 'Veselim se'),
+              CaseSentencePart(
+                isCorrectable: true,
+                actualObject: NounBankGeneral.jesen.dativ!.singular,
+                displayValue: NounBankGeneral.jesen.dictionary,
+                correctValues: NounBankGeneral.jesen.dativ!.singular,
+                grammarType: GrammarTypes.noun,
+              ),
+            ],
+            isAnimate: false,
+            translation: N.t('ex_Veselim_se_jeseni')),
+        PANCombo(
             caseType: caseType,
             gender: Genders.Unspecific,
-            isPlural: true,
+            isPlural: false,
             sentenceParts: [
               CaseSentencePart(displayValue: 'Nema na'),
               CaseSentencePart(
@@ -64,7 +158,76 @@ class DativExercises {
             translation: N.t('ex_Poslao_sam_dugo_pismo_svojoj_majci')),
       ];
 
-  List<PANCombo> get personalPronouns => [];
+  List<PANCombo> get personalPronouns => [
+        PANCombo(
+            caseType: caseType,
+            gender: Genders.Unspecific,
+            isPlural: false,
+            sentenceParts: [
+              CaseSentencePart(displayValue: 'Nedostaje'),
+              CaseSentencePart(
+                isCorrectable: true,
+                actualObject: PersonalPronounWordBank.ja,
+                displayValue: PersonalPronounWordBank.ja.dictionary,
+                correctValues: ['mi'],
+                grammarType: GrammarTypes.personalPronoun,
+              ),
+              CaseSentencePart(displayValue: 'moj prvi pas'),
+            ],
+            isAnimate: false,
+            translation: N.t('ex_Nedostaje_mi_moj_prvi_pas')),
+        PANCombo(
+            caseType: caseType,
+            gender: Genders.Unspecific,
+            isPlural: false,
+            sentenceParts: [
+              CaseSentencePart(displayValue: 'Je li'),
+              CaseSentencePart(
+                isCorrectable: true,
+                actualObject: PersonalPronounWordBank.ti,
+                displayValue: PersonalPronounWordBank.ti.dictionary,
+                correctValues: PersonalPronounWordBank.ti.dativ.forms,
+                grammarType: GrammarTypes.personalPronoun,
+              ),
+              CaseSentencePart(displayValue: 'važno?'),
+            ],
+            isAnimate: false,
+            translation: N.t('ex_Je_li_ti_vazno')),
+        PANCombo(
+            caseType: caseType,
+            gender: Genders.Masculine,
+            isPlural: false,
+            sentenceParts: [
+              CaseSentencePart(displayValue: 'Molim te, daj'),
+              CaseSentencePart(
+                isCorrectable: true,
+                actualObject: PersonalPronounWordBank.on,
+                displayValue: PersonalPronounWordBank.on.dictionary,
+                correctValues: ['mu'],
+                grammarType: GrammarTypes.personalPronoun,
+              ),
+              CaseSentencePart(displayValue: 'malo vrućeg čaja'),
+            ],
+            isAnimate: false,
+            translation: N.t('ex_Molim_te_daj_mu_malo_vruceg_caja')),
+        PANCombo(
+            caseType: caseType,
+            gender: Genders.Feminine,
+            isPlural: false,
+            sentenceParts: [
+              CaseSentencePart(displayValue: 'Daj'),
+              CaseSentencePart(
+                isCorrectable: true,
+                actualObject: PersonalPronounWordBank.ona,
+                displayValue: PersonalPronounWordBank.ona.dictionary,
+                correctValues: ['joj'],
+                grammarType: GrammarTypes.personalPronoun,
+              ),
+              CaseSentencePart(displayValue: 'moj broj telefona'),
+            ],
+            isAnimate: false,
+            translation: N.t('ex_Daj_joj_moj_broj_telefona')),
+      ];
 
   List<PANCombo> get premium => [];
 }

@@ -21,7 +21,6 @@ class AkuzativExercises {
   }
 
   List<PANCombo> get general => [
-    // TODO: Exerc for using "u". Ex: Idem u Bosnu
     PANCombo(
           caseType: caseType,
           gender: NounBankGeneral.bosna.gender,

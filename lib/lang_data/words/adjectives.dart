@@ -3,6 +3,41 @@ import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 
 class AdjectiveBankGeneral {
+  static final Adjective prvi = Adjective(
+    dictionary: 'prvi',
+    toAvoid: [Tags.Season],
+    nominativ: new Declension(
+      masculine: new DeclensionByGender(singular: ['prvi'], plural: ['prvi']),
+      feminine: new DeclensionByGender(singular: ['prva'], plural: ['prve']),
+      neuter: new DeclensionByGender(singular: ['prvo'], plural: ['prva']),
+    ),
+    akuzativ: new Declension(
+      masculine: new DeclensionByGender(singular: ['prvi'], plural: ['prve']),
+      feminine: new DeclensionByGender(singular: ['prvu'], plural: ['prve']),
+      neuter: new DeclensionByGender(singular: ['prvo'], plural: ['prva']),
+    ),
+    instrumental: new Declension(
+      masculine: new DeclensionByGender(singular: ['prvim'], plural: ['prvim']),
+      feminine: new DeclensionByGender(singular: ['prvom'], plural: ['prvim']),
+      neuter: new DeclensionByGender(singular: ['prvim'], plural: ['prvim']),
+    ),
+    lokativ: new Declension(
+      masculine: new DeclensionByGender(singular: ['prvom'], plural: ['prvim']),
+      feminine: new DeclensionByGender(singular: ['prvoj'], plural: ['prvim']),
+      neuter: new DeclensionByGender(singular: ['prvom'], plural: ['prvim']),
+    ),
+    genitiv: new Declension(
+      masculine: new DeclensionByGender(singular: ['prvog'], plural: ['prvih']),
+      feminine: new DeclensionByGender(singular: ['prve'], plural: ['prvih']),
+      neuter: new DeclensionByGender(singular: ['prvog'], plural: ['prvih']),
+    ),
+    vokativ: new Declension(
+      masculine: new DeclensionByGender(singular: [''], plural: ['']),
+      feminine: new DeclensionByGender(singular: [''], plural: ['']),
+      neuter: new DeclensionByGender(singular: [''], plural: ['']),
+    ),
+  );
+
   static final Adjective dugi = Adjective(
     dictionary: 'dug',
     toAvoid: [Tags.Season],
@@ -85,6 +120,7 @@ class AdjectiveBankGeneral {
       neuter: new DeclensionByGender(singular: [''], plural: ['']),
     ),
   );
+
   static final Adjective nov = Adjective(
     dictionary: 'nov',
     toAvoid: [Tags.Season],
@@ -127,6 +163,7 @@ class AdjectiveBankGeneral {
       neuter: new DeclensionByGender(singular: ['novo'], plural: ['nova']),
     ),
   );
+
   static final Adjective star = Adjective(
     dictionary: 'star',
     toAvoid: [Tags.Season],
@@ -214,6 +251,7 @@ class AdjectiveBankGeneral {
           new DeclensionByGender(singular: ['hladnog'], plural: ['hladnih']),
     ),
   );
+
   static final Adjective vruc = Adjective(
     dictionary: 'vruć',
     toAvoid: [Tags.Human, Tags.Animal],
@@ -248,6 +286,7 @@ class AdjectiveBankGeneral {
       neuter: new DeclensionByGender(singular: ['vruća'], plural: ['vrućih']),
     ),
   );
+
   static final Adjective drug = Adjective(
     dictionary: 'drug',
     nominativ: new Declension(
@@ -281,6 +320,7 @@ class AdjectiveBankGeneral {
       neuter: new DeclensionByGender(singular: ['drugog'], plural: ['drugih']),
     ),
   );
+
   static final Adjective skup = Adjective(
     dictionary: 'skup',
     toAvoid: [
@@ -324,6 +364,7 @@ class AdjectiveBankGeneral {
       neuter: new DeclensionByGender(singular: ['skupog'], plural: ['skupih']),
     ),
   );
+
   static final Adjective tuzan = Adjective(
     dictionary: 'tužan',
     toAvoid: [Tags.Thing, Tags.Emotion],

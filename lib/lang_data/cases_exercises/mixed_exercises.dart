@@ -17,6 +17,102 @@ class GenitivExercises {
   }
 
   List<PANCombo> get general => [
+    PANCombo(
+            caseType: caseType,
+            gender: Genders.Masculine,
+            isPlural: false,
+            sentenceParts: [
+              CaseSentencePart(displayValue: 'Molim te, daj'),
+              CaseSentencePart(
+                isCorrectable: true,
+                actualObject: PersonalPronounWordBank.on,
+                displayValue: PersonalPronounWordBank.on.dictionary,
+                correctValues: ['mu'],
+                grammarType: GrammarTypes.personalPronoun,
+              ),
+              CaseSentencePart(displayValue: 'malo'),
+              CaseSentencePart(
+                isCorrectable: true,
+                actualObject: AdjectiveBankGeneral.vruc,
+                displayValue: AdjectiveBankGeneral.vruc.dictionary,
+                correctValues: AdjectiveBankGeneral.vruc.genitiv!.masculine.singular,
+                grammarType: GrammarTypes.personalPronoun,
+              ),
+              CaseSentencePart(
+              isCorrectable: true,
+              actualObject: NounBankGeneral.caj.genitiv.singular,
+              displayValue: NounBankGeneral.caj.dictionary,
+              correctValues: NounBankGeneral.caj.dativ!.singular,
+              grammarType: GrammarTypes.noun,
+            ),
+            ],
+            isAnimate: false,
+            translation: N.t('ex_Molim_te_daj_mu_malo_vruceg_caja')),
+        PANCombo(
+          caseType: caseType,
+          gender: NounBankGeneral.bolnica.gender,
+          isPlural: false,
+          isAnimate: false,
+          translation: N.t('ex_Nasuprot_velikoj_bolnici_se_nalazi_pekara'),
+          sentenceParts: [
+            CaseSentencePart(displayValue: 'Nasuprot'),
+            CaseSentencePart(
+              isCorrectable: true,
+              actualObject: AdjectiveBankGeneral.velik.dativ!.feminine,
+              displayValue: AdjectiveBankGeneral.velik.dictionary,
+              correctValues: AdjectiveBankGeneral.velik.dativ!.feminine!.singular,
+              grammarType: GrammarTypes.adjective,
+            ),
+            CaseSentencePart(
+              isCorrectable: true,
+              actualObject: NounBankGeneral.bolnica.dativ!.singular,
+              displayValue: NounBankGeneral.bolnica.dictionary,
+              correctValues: NounBankGeneral.bolnica.dativ!.singular,
+              grammarType: GrammarTypes.noun,
+            ),
+            CaseSentencePart(displayValue: 'se nalazi'),
+            CaseSentencePart(
+              isCorrectable: true,
+              actualObject: NounBankGeneral.pekara.nominativ.singular,
+              displayValue: '',
+              correctValues: NounBankGeneral.pekara.nominativ.singular,
+              grammarType: GrammarTypes.noun,
+            ),
+          ],
+        ),
+        PANCombo(
+            caseType: caseType,
+            gender: NounBankGeneral.pas.gender,
+            isPlural: false,
+            sentenceParts: [
+              CaseSentencePart(displayValue: 'Nedostaje'),
+              CaseSentencePart(
+                isCorrectable: true,
+                actualObject: PersonalPronounWordBank.ja,
+                displayValue: PersonalPronounWordBank.ja.dictionary,
+                correctValues: ['mi'],
+                grammarType: GrammarTypes.personalPronoun,
+              ),
+              CaseSentencePart(displayValue: 'moj'),
+              CaseSentencePart(
+                isCorrectable: true,
+                actualObject:
+                    AdjectiveBankGeneral.prvi.nominativ!.masculine.singular,
+                displayValue: AdjectiveBankGeneral.prvi.dictionary,
+                correctValues:
+                    AdjectiveBankGeneral.prvi.nominativ!.masculine.singular,
+                grammarType: GrammarTypes.adjective,
+              ),
+              CaseSentencePart(
+                isCorrectable: true,
+                actualObject: NounBankGeneral.pas.nominativ.singular,
+                displayValue: NounBankGeneral.pas.dictionary,
+                correctValues: NounBankGeneral.pas.nominativ.singular,
+                grammarType: GrammarTypes.noun,
+              ),
+            ],
+            isAnimate: false,
+            translation: N.t('ex_Nedostaje_mi_moj_prvi_pas')),
         PANCombo(
             caseType: caseType,
             gender: Genders.Unspecific,

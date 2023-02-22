@@ -4,6 +4,51 @@ import 'package:navika/models/noun.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 
 class NounBankGeneral {
+  static final Noun caj = Noun(
+    dictionary: 'čaj',
+    tags: [],
+    gender: Genders.Masculine,
+    isAnimate: true,
+    nominativ: new DeclensionByCount(singular: ['čaj'], plural: ['čajevi']),
+    genitiv: new DeclensionByCount(singular: ['čaja'], plural: ['čajeva']),
+    dativ: new DeclensionByCount(singular: ['čaju'], plural: ['čajevima']),
+    akuzativ: new DeclensionByCount(singular: ['čaja'], plural: ['čajeve']),
+    lokativ: new DeclensionByCount(singular: ['čaju'], plural: ['čajevima']),
+    vokativ: new DeclensionByCount(singular: ['čaju'], plural: ['čajevi']),
+    instrumental:
+        new DeclensionByCount(singular: ['čajem'], plural: ['čajevima']),
+  );
+
+  static final Noun pekara = Noun(
+    dictionary: 'pekara',
+    tags: [Tags.Food, Tags.Portable],
+    gender: Genders.Feminine,
+    isAnimate: false,
+    nominativ: new DeclensionByCount(singular: ['pekara'], plural: ['pekare']),
+    genitiv: new DeclensionByCount(singular: ['pekare'], plural: ['pekara']),
+    dativ: new DeclensionByCount(singular: ['pekari'], plural: ['pekarama']),
+    akuzativ: new DeclensionByCount(singular: ['pekaru'], plural: ['pekare']),
+    lokativ: new DeclensionByCount(singular: ['pekari'], plural: ['pekarama']),
+    vokativ: new DeclensionByCount(singular: ['pekaro'], plural: ['pekare']),
+    instrumental:
+        new DeclensionByCount(singular: ['pekarom'], plural: ['pekarama']),
+  );
+
+  static final Noun zivot = Noun(
+    dictionary: 'život',
+    tags: [],
+    gender: Genders.Masculine,
+    isAnimate: true,
+    nominativ: new DeclensionByCount(singular: ['život'], plural: ['životi']),
+    genitiv: new DeclensionByCount(singular: ['života'], plural: ['života']),
+    dativ: new DeclensionByCount(singular: ['životu'], plural: ['životima']),
+    akuzativ: new DeclensionByCount(singular: ['života'], plural: ['živote']),
+    lokativ: new DeclensionByCount(singular: ['životu'], plural: ['životima']),
+    vokativ: new DeclensionByCount(singular: ['živote'], plural: ['životi']),
+    instrumental:
+        new DeclensionByCount(singular: ['životom'], plural: ['životima']),
+  );
+
   static final Noun torta = Noun(
     dictionary: 'torta',
     tags: [Tags.Food, Tags.Portable],
@@ -14,7 +59,7 @@ class NounBankGeneral {
     dativ: new DeclensionByCount(singular: ['torti'], plural: ['tortama']),
     akuzativ: new DeclensionByCount(singular: ['tortu'], plural: ['torte']),
     lokativ: new DeclensionByCount(singular: ['torti'], plural: ['tortama']),
-    vokativ: new DeclensionByCount(singular: ['torto'], plural: ['tortama']),
+    vokativ: new DeclensionByCount(singular: ['torto'], plural: ['torte']),
     instrumental:
         new DeclensionByCount(singular: ['tortom'], plural: ['tortama']),
   );
