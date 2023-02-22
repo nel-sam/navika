@@ -31,7 +31,7 @@ class DativExercises {
             CaseSentencePart(displayValue: 'Radujem se'),
             CaseSentencePart(
               isCorrectable: true,
-              actualObject: AdjectiveBankGeneral.vruc.dativ!.masculine,
+              actualObject: AdjectiveBankGeneral.vruc,
               displayValue: AdjectiveBankGeneral.vruc.dictionary,
               correctValues:
                   AdjectiveBankGeneral.vruc.dativ!.masculine.singular,
@@ -47,7 +47,7 @@ class DativExercises {
               correctValues: isCroatian
                   ? NounsIjekavian.ljeto.dativ!.singular
                   : NounsEkavian.leto.dativ!.singular,
-              grammarType: GrammarTypes.adjective,
+              grammarType: GrammarTypes.noun,
             ),
           ],
         ),
@@ -61,7 +61,7 @@ class DativExercises {
             CaseSentencePart(displayValue: 'Nasuprot'),
             CaseSentencePart(
               isCorrectable: true,
-              actualObject: AdjectiveBankGeneral.velik.dativ!.feminine,
+              actualObject: AdjectiveBankGeneral.velik,
               displayValue: AdjectiveBankGeneral.velik.dictionary,
               correctValues:
                   AdjectiveBankGeneral.velik.dativ!.feminine!.singular,
@@ -69,7 +69,7 @@ class DativExercises {
             ),
             CaseSentencePart(
               isCorrectable: true,
-              actualObject: NounBankGeneral.bolnica.dativ!.singular,
+              actualObject: NounBankGeneral.bolnica,
               displayValue: NounBankGeneral.bolnica.dictionary,
               correctValues: NounBankGeneral.bolnica.dativ!.singular,
               grammarType: GrammarTypes.noun,
@@ -87,7 +87,7 @@ class DativExercises {
             CaseSentencePart(displayValue: 'Što je u'),
             CaseSentencePart(
               isCorrectable: true,
-              actualObject: NounBankGeneral.zivot.dativ!.singular,
+              actualObject: NounBankGeneral.zivot,
               displayValue: NounBankGeneral.zivot.dictionary,
               correctValues: NounBankGeneral.zivot.dativ!.singular,
               grammarType: GrammarTypes.noun,
@@ -103,7 +103,7 @@ class DativExercises {
               CaseSentencePart(displayValue: 'Veselim se'),
               CaseSentencePart(
                 isCorrectable: true,
-                actualObject: NounBankGeneral.jesen.dativ!.singular,
+                actualObject: NounBankGeneral.jesen,
                 displayValue: NounBankGeneral.jesen.dictionary,
                 correctValues: NounBankGeneral.jesen.dativ!.singular,
                 grammarType: GrammarTypes.noun,

@@ -40,7 +40,7 @@ class GenitivExercises {
               ),
               CaseSentencePart(
               isCorrectable: true,
-              actualObject: NounBankGeneral.caj.genitiv.singular,
+              actualObject: NounBankGeneral.caj,
               displayValue: NounBankGeneral.caj.dictionary,
               correctValues: NounBankGeneral.caj.dativ!.singular,
               grammarType: GrammarTypes.noun,
@@ -58,14 +58,14 @@ class GenitivExercises {
             CaseSentencePart(displayValue: 'Nasuprot'),
             CaseSentencePart(
               isCorrectable: true,
-              actualObject: AdjectiveBankGeneral.velik.dativ!.feminine,
+              actualObject: AdjectiveBankGeneral.velik,
               displayValue: AdjectiveBankGeneral.velik.dictionary,
               correctValues: AdjectiveBankGeneral.velik.dativ!.feminine!.singular,
               grammarType: GrammarTypes.adjective,
             ),
             CaseSentencePart(
               isCorrectable: true,
-              actualObject: NounBankGeneral.bolnica.dativ!.singular,
+              actualObject: NounBankGeneral.bolnica,
               displayValue: NounBankGeneral.bolnica.dictionary,
               correctValues: NounBankGeneral.bolnica.dativ!.singular,
               grammarType: GrammarTypes.noun,
@@ -73,7 +73,7 @@ class GenitivExercises {
             CaseSentencePart(displayValue: 'se nalazi'),
             CaseSentencePart(
               isCorrectable: true,
-              actualObject: NounBankGeneral.pekara.nominativ.singular,
+              actualObject: NounBankGeneral.pekara,
               displayValue: '',
               correctValues: NounBankGeneral.pekara.nominativ.singular,
               grammarType: GrammarTypes.noun,
@@ -105,7 +105,7 @@ class GenitivExercises {
               ),
               CaseSentencePart(
                 isCorrectable: true,
-                actualObject: NounBankGeneral.pas.nominativ.singular,
+                actualObject: NounBankGeneral.pas,
                 displayValue: NounBankGeneral.pas.dictionary,
                 correctValues: NounBankGeneral.pas.nominativ.singular,
                 grammarType: GrammarTypes.noun,
