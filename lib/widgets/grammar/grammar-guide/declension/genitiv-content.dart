@@ -44,18 +44,6 @@ class GenitivGrammarGuideContent extends StatelessWidget {
                   style: Nrs.getTextStyle(context: context, isBold: true)),
             ]),
             NTextMulti([
-              TextSpan(text: 'Ja sam '),
-              TextSpan(
-                  text: 'kod zubara',
-                  style: Nrs.getTextStyle(context: context, isBold: true)),
-            ]),
-            NTextMulti([
-              TextSpan(text: 'Pas je mokar '),
-              TextSpan(
-                  text: 'zbog kiše',
-                  style: Nrs.getTextStyle(context: context, isBold: true)),
-            ]),
-            NTextMulti([
               TextSpan(text: 'Nema '),
               TextSpan(
                   text: 'problema',
@@ -70,14 +58,15 @@ class GenitivGrammarGuideContent extends StatelessWidget {
             PronounLine(
                 pronoun: PronounEnum.I,
                 text: NTextMulti([
-                  TextSpan(text: 'On pleše '),
+                  TextSpan(text: 'On plaši '),
                   TextSpan(
                       text: 'mene\n',
                       style: Nrs.getTextStyle(context: context, isBold: true)),
-                  TextSpan(text: 'Evo '),
+                  TextSpan(text: 'On '),
                   TextSpan(
                       text: 'me',
-                      style: Nrs.getTextStyle(context: context, isBold: true))
+                      style: Nrs.getTextStyle(context: context, isBold: true)),
+                  TextSpan(text: ' plaši'),
                 ])),
             PronounLine(
                 pronoun: PronounEnum.You,
@@ -100,9 +89,9 @@ class GenitivGrammarGuideContent extends StatelessWidget {
                       style: Nrs.getTextStyle(context: context, isBold: true)),
                   TextSpan(text: 'Nema '),
                   TextSpan(
-                      text: 'ga ',
+                      text: 'ga',
                       style: Nrs.getTextStyle(context: context, isBold: true)),
-                  TextSpan(text: 'tu'),
+                  TextSpan(text: ' tu'),
                 ])),
             PronounLine(
                 pronoun: PronounEnum.She,
@@ -136,11 +125,11 @@ class GenitivGrammarGuideContent extends StatelessWidget {
                   TextSpan(
                       text: 'njih\n',
                       style: Nrs.getTextStyle(context: context, isBold: true)),
-                  TextSpan(text: 'Ja se '),
+                  TextSpan(text: 'Ja '),
                   TextSpan(
-                      text: 'ih ',
+                      text: 'ih',
                       style: Nrs.getTextStyle(context: context, isBold: true)),
-                  TextSpan(text: 'ne bojim'),
+                  TextSpan(text: ' se ne bojim'),
                 ],
               ),
             ),

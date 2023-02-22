@@ -10,7 +10,12 @@ import 'package:nrs_flutter_lib/widgets/n_text_multi.dart';
 import 'package:nrs_flutter_lib/widgets/n_text_span.dart';
 
 class DativGrammarGuideContent extends StatelessWidget {
-  const DativGrammarGuideContent({Key? key}) : super(key: key);
+  final DialectType dialect;
+
+  const DativGrammarGuideContent({
+    Key? key,
+    required this.dialect,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,17 +31,18 @@ class DativGrammarGuideContent extends StatelessWidget {
                   style: Nrs.getTextStyle(context: context, isBold: true)),
             ]),
             NTextMulti([
-              TextSpan(text: 'Došao je na posao usprkos '),
+              TextSpan(text: 'Usprkos '),
               TextSpan(
                   text: 'bolesti',
                   style: Nrs.getTextStyle(context: context, isBold: true)),
+              TextSpan(text: ', došao je na posao'),
             ]),
             NTextMulti([
               TextSpan(text: 'Dao sam '),
               TextSpan(
-                  text: 'mami ',
+                  text: 'mami',
                   style: Nrs.getTextStyle(context: context, isBold: true)),
-              TextSpan(text: 'čaj'),
+              TextSpan(text: ' čaj'),
             ]),
           ],
         ),
@@ -61,16 +67,22 @@ class DativGrammarGuideContent extends StatelessWidget {
             PronounLine(
                 pronoun: PronounEnum.You,
                 text: NTextMulti([
-                  TextSpan(text: 'Ja ću pokazati '),
                   TextSpan(
-                      text: 'tebi ',
+                      text: dialect == DialectType.Serbia
+                          ? 'Ja trebao da pokažem'
+                          : 'Ja trebao pokazati '),
+                  TextSpan(
+                      text: 'tebi',
                       style: Nrs.getTextStyle(context: context, isBold: true)),
-                  TextSpan(text: 'nešto\n'),
+                  TextSpan(text: ' nešto\n'),
                   TextSpan(text: 'Ja '),
                   TextSpan(
-                      text: 'ti ',
+                      text: 'ti',
                       style: Nrs.getTextStyle(context: context, isBold: true)),
-                  TextSpan(text: 'ću pokazati nešto'),
+                  TextSpan(
+                      text: dialect == DialectType.Serbia
+                          ? ' trebao da pokažem nešto'
+                          : ' trebao pokazati nešto'),
                 ])),
             PronounLine(
                 pronoun: PronounEnum.He,
@@ -88,21 +100,22 @@ class DativGrammarGuideContent extends StatelessWidget {
             PronounLine(
                 pronoun: PronounEnum.She,
                 text: NTextMulti([
-                  TextSpan(text: 'On kazao '),
+                  TextSpan(text: 'On je rekao '),
                   TextSpan(
-                      text: 'njoj ',
+                      text: 'njoj',
                       style: Nrs.getTextStyle(context: context, isBold: true)),
-                  TextSpan(text: 'nešto\n'),
-                  TextSpan(text: 'On '),
+                  TextSpan(text: ' nešto\n'),
+
+                  TextSpan(text: 'Nešto '),
                   TextSpan(
-                      text: 'joj ',
+                      text: 'joj',
                       style: Nrs.getTextStyle(context: context, isBold: true)),
-                  TextSpan(text: 'nešto pokazao '),
+                  TextSpan(text: ' je rekao'),
                 ])),
             PronounLine(
                 pronoun: PronounEnum.We,
                 text: NTextMulti([
-                  TextSpan(text: 'Trabamo kupiti '),
+                  TextSpan(text: 'Trebamo kupiti '),
                   TextSpan(
                       text: 'nama ',
                       style: Nrs.getTextStyle(context: context, isBold: true)),

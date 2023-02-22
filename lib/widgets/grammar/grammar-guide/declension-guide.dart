@@ -114,7 +114,7 @@ class _DeclensionGuideState extends State<DeclensionGuide> {
                     ),
                     ContentSection(
                       text: N.getCaseLabel(Cases.Dat),
-                      content: DativGrammarGuideContent(),
+                      content: DativGrammarGuideContent(dialect: widget.dialect),
                     ),
                     ContentSection(
                       text: N.getCaseLabel(Cases.Aku),

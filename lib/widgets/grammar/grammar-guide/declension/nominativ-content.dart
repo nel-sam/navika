@@ -34,6 +34,7 @@ class NominativGrammarGuideContent extends StatelessWidget {
             YouTubeLink(RECOMMENDED_VIDEO_NOM)
           ],
         ),
+        // TODO: Correct all guide sentences
         ExampleSentences(
           sentences: [
             NTextMulti([
@@ -99,11 +100,10 @@ class NominativGrammarGuideContent extends StatelessWidget {
             PronounLine(
                 pronoun: PronounEnum.He,
                 text: NTextMulti([
-                  TextSpan(text: 'Trčim brže nego '),
                   TextSpan(
-                      text: 'on ',
+                      text: 'On ',
                       style: Nrs.getTextStyle(context: context, isBold: true)),
-                  TextSpan(text: 'i ti'),
+                  TextSpan(text: 'je Bosanac'),
                 ])),
             PronounLine(
                 pronoun: PronounEnum.She,
@@ -119,7 +119,7 @@ class NominativGrammarGuideContent extends StatelessWidget {
                   TextSpan(
                       text: 'Mi ',
                       style: Nrs.getTextStyle(context: context, isBold: true)),
-                  TextSpan(text: 'plivamo skoro kao vi'),
+                  TextSpan(text: 'plivamo'),
                 ])),
             PronounLine(
                 pronoun: PronounEnum.You_Plural,
