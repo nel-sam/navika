@@ -54,10 +54,10 @@ class LokativGrammarGuideContent extends StatelessWidget {
               TextSpan(text: 'ima mnogo'),
             ]),
             NTextMulti([
+              TextSpan(text: 'Idemo '),
               TextSpan(
-                  text: 'Idemo ',
+                  text: 'na ručak',
                   style: Nrs.getTextStyle(context: context, isBold: true)),
-              TextSpan(text: 'na ručak'),
             ]),
           ],
         ),

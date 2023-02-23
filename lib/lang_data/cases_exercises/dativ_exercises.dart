@@ -164,6 +164,23 @@ class DativExercises {
             gender: Genders.Unspecific,
             isPlural: false,
             sentenceParts: [
+              CaseSentencePart(displayValue: 'Treba'),
+              CaseSentencePart(
+                isCorrectable: true,
+                actualObject: PersonalPronounWordBank.ja,
+                displayValue: PersonalPronounWordBank.ja.dictionary,
+                correctValues: PersonalPronounWordBank.ja.dativ.forms,
+                grammarType: GrammarTypes.personalPronoun,
+              ),
+              CaseSentencePart(displayValue: 'pauza'),
+            ],
+            isAnimate: false,
+            translation: N.t('ex_Treba_mi_pauza')),
+        PANCombo(
+            caseType: caseType,
+            gender: Genders.Unspecific,
+            isPlural: false,
+            sentenceParts: [
               CaseSentencePart(displayValue: 'Nedostaje'),
               CaseSentencePart(
                 isCorrectable: true,
@@ -227,6 +244,57 @@ class DativExercises {
             ],
             isAnimate: false,
             translation: N.t('ex_Daj_joj_moj_broj_telefona')),
+        PANCombo(
+            caseType: caseType,
+            gender: Genders.Unspecific,
+            isPlural: false,
+            sentenceParts: [
+              CaseSentencePart(displayValue: 'Javni prijevoz'),
+              CaseSentencePart(
+                isCorrectable: true,
+                actualObject: PersonalPronounWordBank.mi,
+                displayValue: PersonalPronounWordBank.mi.dictionary,
+                correctValues: ['nam'],
+                grammarType: GrammarTypes.personalPronoun,
+              ),
+              CaseSentencePart(displayValue: 'je važan'),
+            ],
+            isAnimate: false,
+            translation: N.t('ex_Javni_prijevoz_nam_je_vazan')),
+        PANCombo(
+            caseType: caseType,
+            gender: Genders.Unspecific,
+            isPlural: false,
+            sentenceParts: [
+              CaseSentencePart(displayValue: 'Treba'),
+              CaseSentencePart(
+                isCorrectable: true,
+                actualObject: PersonalPronounWordBank.vi,
+                displayValue: PersonalPronounWordBank.vi.dictionary,
+                correctValues: ['vam'],
+                grammarType: GrammarTypes.personalPronoun,
+              ),
+              CaseSentencePart(displayValue: 'brza pomoć?'),
+            ],
+            isAnimate: false,
+            translation: N.t('ex_Treba_vam_brza_pomoc')),
+        PANCombo(
+            caseType: caseType,
+            gender: Genders.Unspecific,
+            isPlural: false,
+            sentenceParts: [
+              CaseSentencePart(displayValue: 'Je li'),
+              CaseSentencePart(
+                isCorrectable: true,
+                actualObject: PersonalPronounWordBank.oni,
+                displayValue: PersonalPronounWordBank.oni.dictionary,
+                correctValues: [''],
+                grammarType: GrammarTypes.personalPronoun,
+              ),
+              CaseSentencePart(displayValue: 'zdravlje važno?'),
+            ],
+            isAnimate: false,
+            translation: N.t('ex_Je_li_im_zdravlje_vazno')),
       ];
 
   List<PANCombo> get premium => [];

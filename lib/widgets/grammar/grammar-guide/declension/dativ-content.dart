@@ -105,7 +105,6 @@ class DativGrammarGuideContent extends StatelessWidget {
                       text: 'njoj',
                       style: Nrs.getTextStyle(context: context, isBold: true)),
                   TextSpan(text: ' nešto\n'),
-
                   TextSpan(text: 'Nešto '),
                   TextSpan(
                       text: 'joj',
@@ -129,15 +128,15 @@ class DativGrammarGuideContent extends StatelessWidget {
             PronounLine(
                 pronoun: PronounEnum.You_Plural,
                 text: NTextMulti([
+                  TextSpan(text: 'Pokažat ćemo grad '),
+                  TextSpan(
+                      text: 'vama\n',
+                      style: Nrs.getTextStyle(context: context, isBold: true)),
                   TextSpan(text: 'Pokažat ćemo '),
                   TextSpan(
                       text: 'vam ',
                       style: Nrs.getTextStyle(context: context, isBold: true)),
-                  TextSpan(text: 'grad\n'),
-                  TextSpan(text: 'Pokažat ćemo grad '),
-                  TextSpan(
-                      text: 'vama',
-                      style: Nrs.getTextStyle(context: context, isBold: true)),
+                  TextSpan(text: 'grad'),
                 ])),
             PronounLine(
                 pronoun: PronounEnum.They_Ungendered,
@@ -155,15 +154,15 @@ class DativGrammarGuideContent extends StatelessWidget {
             PronounLine(
                 pronoun: PronounEnum.Oneself,
                 text: NTextMulti([
+                  TextSpan(text: 'Napravi kavu '),
+                  TextSpan(
+                      text: 'sebi\n',
+                      style: Nrs.getTextStyle(context: context, isBold: true)),
                   TextSpan(text: 'Napravi '),
                   TextSpan(
                       text: 'si ',
                       style: Nrs.getTextStyle(context: context, isBold: true)),
-                  TextSpan(text: 'kavu\n'),
-                  TextSpan(text: 'Napravi kavu '),
-                  TextSpan(
-                      text: 'sebi',
-                      style: Nrs.getTextStyle(context: context, isBold: true)),
+                  TextSpan(text: 'kavu'),
                 ])),
           ],
         ),
