@@ -21,6 +21,7 @@ class AkuzativDeclensionTable extends StatelessWidget {
         N.declensionExampleTextSpan('og\n', color: MASCULINE_COLOR),
         N.declensionExampleTextSpan('konj'),
         N.declensionExampleTextSpan('a', color: MASCULINE_COLOR),
+        N.declensionExampleTextSpan('*'),
       ]),
       masculinePlural: DeclensionTableCell(
         isEqualItem: true,

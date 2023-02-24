@@ -23,7 +23,7 @@ class GenitivDeclensionTable extends StatelessWidget {
         ],
         highlightItem: true,
       ),
-      masculinePlural: DeclensionTableCell(children: [
+      masculinePlural: DeclensionTableCell(isEqualItem: true, children: [
         N.declensionExampleTextSpan('Slatk'),
         N.declensionExampleTextSpan('ih\n', color: MASCULINE_COLOR),
         N.declensionExampleTextSpan('pas'),
@@ -35,7 +35,7 @@ class GenitivDeclensionTable extends StatelessWidget {
         N.declensionExampleTextSpan('kuć'),
         N.declensionExampleTextSpan('e', color: FEMININE_COLOR),
       ]),
-      femininePlural: DeclensionTableCell(children: [
+      femininePlural: DeclensionTableCell(isEqualItem: true, children: [
         N.declensionExampleTextSpan('Moj'),
         N.declensionExampleTextSpan('ih\n', color: FEMININE_COLOR),
         N.declensionExampleTextSpan('kuć'),
@@ -50,7 +50,7 @@ class GenitivDeclensionTable extends StatelessWidget {
           N.declensionExampleTextSpan('a', color: NEUTER_COLOR),
         ],
       ),
-      neuterPlural: DeclensionTableCell(children: [
+      neuterPlural: DeclensionTableCell(isEqualItem: true, children: [
         N.declensionExampleTextSpan('Vruć'),
         N.declensionExampleTextSpan('ih\n', color: NEUTER_COLOR),
         N.declensionExampleTextSpan('mor'),

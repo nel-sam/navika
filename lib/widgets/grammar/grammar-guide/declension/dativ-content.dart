@@ -75,14 +75,17 @@ class DativGrammarGuideContent extends StatelessWidget {
                       text: 'tebi',
                       style: Nrs.getTextStyle(context: context, isBold: true)),
                   TextSpan(text: ' nešto\n'),
-                  TextSpan(text: 'Ja '),
+                  TextSpan(
+                      text: dialect == DialectType.Serbia
+                          ? 'Pokazaću '
+                          : 'Ja ću '),
                   TextSpan(
                       text: 'ti',
                       style: Nrs.getTextStyle(context: context, isBold: true)),
                   TextSpan(
                       text: dialect == DialectType.Serbia
-                          ? ' trebao da pokažem nešto'
-                          : ' trebao pokazati nešto'),
+                          ? ' nešto'
+                          : ' pokazati nešto'),
                 ])),
             PronounLine(
                 pronoun: PronounEnum.He,
@@ -128,11 +131,11 @@ class DativGrammarGuideContent extends StatelessWidget {
             PronounLine(
                 pronoun: PronounEnum.You_Plural,
                 text: NTextMulti([
-                  TextSpan(text: 'Pokažat ćemo grad '),
+                  TextSpan(text: 'Pokazat ćemo grad '),
                   TextSpan(
                       text: 'vama\n',
                       style: Nrs.getTextStyle(context: context, isBold: true)),
-                  TextSpan(text: 'Pokažat ćemo '),
+                  TextSpan(text: 'Pokazat ćemo '),
                   TextSpan(
                       text: 'vam ',
                       style: Nrs.getTextStyle(context: context, isBold: true)),

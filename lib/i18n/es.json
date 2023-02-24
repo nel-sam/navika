@@ -117,7 +117,7 @@
   "adjectives": "Adjetivos",
   "akuzativDescription": "Los objetos directos deberían estar en el caso acusativo. También se usa para indicar un destino cuando el sujeto está en movimiento",
   "animate": "Ser Vivo",
-  "animateAkuzativ": "Seres vivos masculinos en singular terminan en 'a', y sus adjetivos en og/eg. Las cosas no vivas en acusativo usan la misma declinación que en el nominativo",
+  "animateAkuzativ": "Seres vivos masculinos en singular se declinan como en genitivo. Las cosas no vivas en acusativo usan la misma declinación que en el nominativo",
   "appTitle": "Navika",
   "assibilation": "A ciertos sustantivos que terminan en k, g y h su letra final se omite y se agrega ci, zi o si",
   "chooseExerciseType": "Escoge un tipo de ejercicio",
@@ -208,5 +208,8 @@
   "level_1": "Nivel 1",
   "level_2": "Nivel 2",
   "level_3": "Nivel 3",
-  "level_4": "Nivel 4"
+  "level_4": "Nivel 4",
+  "fem": "Fem",
+  "masc": "Masc",
+  "neut": "Neut"
 }

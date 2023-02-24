@@ -23,6 +23,7 @@ class DativLokativDeclensionTable extends StatelessWidget {
           N.declensionExampleTextSpan('om\n', color: MASCULINE_COLOR),
           N.declensionExampleTextSpan('ps'),
           N.declensionExampleTextSpan('u', color: MASCULINE_COLOR),
+          N.declensionExampleTextSpan('**'),
         ],
       ),
       masculinePlural: DeclensionTableCell(
@@ -58,6 +59,7 @@ class DativLokativDeclensionTable extends StatelessWidget {
           N.declensionExampleTextSpan('em\n', color: NEUTER_COLOR),
           N.declensionExampleTextSpan('mor'),
           N.declensionExampleTextSpan('u', color: NEUTER_COLOR),
+          N.declensionExampleTextSpan('**'),
         ],
       ),
       neuterPlural: DeclensionTableCell(

@@ -116,7 +116,7 @@
   "adjectives": "Adjectives",
   "akuzativDescription": "Direct objects are in the accusative case. This case is also used to indicate a point of destination, when there is movement towards the destination.",
   "animate": "Animate",
-  "animateAkuzativ": "Alive/animate masculine nouns in singular get + a, and their adjectives + og/eg. Inanimate objects stay the same as Nominativ",
+  "animateAkuzativ": "Alive/animate masculine nouns in singular decline like in Genitive. Inanimate objects stay the same as Nominativ",
   "appTitle": "Navika",
   "assibilation": "Some nouns ending in k, g, and h drop their final letter and get ci, zi, or si",
   "chooseExerciseType": "Choose exercise type",
@@ -207,5 +207,8 @@
   "level_1": "Level 1",
   "level_2": "Level 2",
   "level_3": "Level 3",
-  "level_4": "Level 4"
+  "level_4": "Level 4",
+  "fem": "Fem",
+  "masc": "Masc",
+  "neut": "Neut"
 }

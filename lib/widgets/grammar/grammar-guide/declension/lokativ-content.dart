@@ -14,6 +14,7 @@ import 'package:nrs_flutter_lib/widgets/n_text_multi.dart';
 class LokativGrammarGuideContent extends StatelessWidget {
   const LokativGrammarGuideContent({Key? key}) : super(key: key);
 
+// TODO: Table spacing and overflow issues
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -51,12 +52,12 @@ class LokativGrammarGuideContent extends StatelessWidget {
               TextSpan(
                   text: 'U kuhinji ',
                   style: Nrs.getTextStyle(context: context, isBold: true)),
-              TextSpan(text: 'ima mnogo'),
+              TextSpan(text: 'ima mnogo hrane'),
             ]),
             NTextMulti([
-              TextSpan(text: 'Idemo '),
+              TextSpan(text: 'Mi smo '),
               TextSpan(
-                  text: 'na ručak',
+                  text: 'u restoranu',
                   style: Nrs.getTextStyle(context: context, isBold: true)),
             ]),
           ],
@@ -83,7 +84,7 @@ class LokativGrammarGuideContent extends StatelessWidget {
             PronounLine(
                 pronoun: PronounEnum.He,
                 text: NTextMulti([
-                  TextSpan(text: 'Ona se brini o '),
+                  TextSpan(text: 'Ona se brine o '),
                   TextSpan(
                       text: 'njemu',
                       style: Nrs.getTextStyle(context: context, isBold: true)),

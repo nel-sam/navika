@@ -35,7 +35,7 @@ class N {
     String text, {
     Color color = Colors.transparent,
   }) {
-    final fontSize = FONT_SIZE;
+    final fontSize = FONT_SIZE - 1;
 
     if (color != Colors.transparent) {
       return TextSpan(

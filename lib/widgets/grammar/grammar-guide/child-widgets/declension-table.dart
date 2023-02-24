@@ -64,19 +64,19 @@ class DeclensionTable extends StatelessWidget {
                     isHeader: true,
                     icon: Icon(N.getGenderIcon(Genders.Feminine),
                         color: FEMININE_COLOR),
-                    label: N.t('feminine'),
+                    label: N.t('fem'),
                   ),
                   ExplanationIconCell(
                     isHeader: true,
                     icon: Icon(N.getGenderIcon(Genders.Masculine),
                         color: MASCULINE_COLOR),
-                    label: N.t('masculine'),
+                    label: N.t('masc'),
                   ),
                   ExplanationIconCell(
                     isHeader: true,
                     icon: Icon(N.getGenderIcon(Genders.Neuter),
                         color: NEUTER_COLOR),
-                    label: N.t('neuter'),
+                    label: N.t('neut'),
                   ),
                 ]),
                 TableRow(children: [

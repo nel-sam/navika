@@ -96,7 +96,7 @@ class GenitivGrammarGuideContent extends StatelessWidget {
             PronounLine(
                 pronoun: PronounEnum.She,
                 text: NTextMulti([
-                  TextSpan(text: 'Ona stoji iza '),
+                  TextSpan(text: 'Josipa stoji iza '),
                   TextSpan(
                       text: 'nje',
                       style: Nrs.getTextStyle(context: context, isBold: true)),
@@ -112,7 +112,7 @@ class GenitivGrammarGuideContent extends StatelessWidget {
             PronounLine(
                 pronoun: PronounEnum.You_Plural,
                 text: NTextMulti([
-                  TextSpan(text: 'Moj brat stoji između nas i '),
+                  TextSpan(text: 'On stoji između nas i '),
                   TextSpan(
                       text: 'vas',
                       style: Nrs.getTextStyle(context: context, isBold: true))
