@@ -3,6 +3,20 @@ import 'package:navika/models/models.dart';
 import 'package:navika/models/noun.dart';
 
 class NounsIjekavian {
+  static final Noun kava = Noun(
+    dictionary: 'kava',
+    tags: [Tags.Food, Tags.Drink],
+    gender: Genders.Feminine,
+    isAnimate: false,
+    nominativ: new DeclensionByCount(singular: ['kava'], plural: ['kave']),
+    akuzativ: new DeclensionByCount(singular: ['kavu'], plural: ['kave']),
+    instrumental: new DeclensionByCount(singular: ['kavom'], plural: ['kavama']),
+    lokativ: new DeclensionByCount(singular: ['kavi'], plural: ['kavama']),
+    dativ: new DeclensionByCount(singular: ['kavi'], plural: ['kavama']),
+    genitiv: new DeclensionByCount(singular: ['kave'], plural: ['kava']),
+    vokativ: new DeclensionByCount(singular: ['kavo'], plural: ['kave']),
+  );
+
   // Što is not a noun but the Noun class best represents it
   static final Noun sto = Noun(
     dictionary: 'što',

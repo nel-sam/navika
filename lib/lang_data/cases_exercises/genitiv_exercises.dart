@@ -16,20 +16,37 @@ class GenitivExercises {
   }
 
   List<PANCombo> get general => [
-    PANCombo(
+
+        PANCombo(
+            caseType: caseType,
+            gender: Genders.Masculine,
+            isPlural: false,
+            sentenceParts: [
+              CaseSentencePart(displayValue: 'Idemo prema centru'),
+              CaseSentencePart(
+                isCorrectable: true,
+                actualObject: NounBankGeneral.grad,
+                displayValue: NounBankGeneral.grad.dictionary,
+                correctValues: NounBankGeneral.grad.genitiv.singular,
+                grammarType: GrammarTypes.noun,
+              ),
+            ],
+            isAnimate: false,
+            translation: N.t('ex_Idemo_prema_centru_grada')),
+        PANCombo(
             caseType: caseType,
             gender: NounBankGeneral.knjiga.gender,
             isPlural: true,
             sentenceParts: [
               CaseSentencePart(displayValue: 'Ovo mi je jedna od'),
               CaseSentencePart(
-              isCorrectable: true,
-              actualObject: AdjectiveBankGeneral.najbolji,
-              displayValue: AdjectiveBankGeneral.najbolji.dictionary,
-              correctValues:
-                  AdjectiveBankGeneral.najbolji.genitiv!.feminine!.plural,
-              grammarType: GrammarTypes.adjective,
-            ),
+                isCorrectable: true,
+                actualObject: AdjectiveBankGeneral.najbolji,
+                displayValue: AdjectiveBankGeneral.najbolji.dictionary,
+                correctValues:
+                    AdjectiveBankGeneral.najbolji.genitiv!.feminine!.plural,
+                grammarType: GrammarTypes.adjective,
+              ),
               CaseSentencePart(
                 isCorrectable: true,
                 actualObject: NounBankGeneral.knjiga,
@@ -47,13 +64,13 @@ class GenitivExercises {
             sentenceParts: [
               CaseSentencePart(displayValue: 'Kupit ću 3'),
               CaseSentencePart(
-              isCorrectable: true,
-              actualObject: AdjectiveBankGeneral.bolji,
-              displayValue: AdjectiveBankGeneral.bolji.dictionary,
-              correctValues:
-                  AdjectiveBankGeneral.bolji.genitiv!.masculine.plural,
-              grammarType: GrammarTypes.adjective,
-            ),
+                isCorrectable: true,
+                actualObject: AdjectiveBankGeneral.bolji,
+                displayValue: AdjectiveBankGeneral.bolji.dictionary,
+                correctValues:
+                    AdjectiveBankGeneral.bolji.genitiv!.masculine.plural,
+                grammarType: GrammarTypes.adjective,
+              ),
               CaseSentencePart(
                 isCorrectable: true,
                 actualObject: NounBankGeneral.telefon,

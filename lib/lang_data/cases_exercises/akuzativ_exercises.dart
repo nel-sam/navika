@@ -14,14 +14,16 @@ import 'package:nrs_flutter_lib/enums.dart';
 
 class AkuzativExercises {
   late bool isCroatian;
+  late bool isSerbian;
   final Cases caseType = Cases.Aku;
 
   AkuzativExercises(DialectType dialect) {
     this.isCroatian = dialect == DialectType.Croatia;
+    this.isSerbian = dialect == DialectType.Serbia;
   }
 
   List<PANCombo> get general => [
-    PANCombo(
+        PANCombo(
           caseType: caseType,
           gender: NounBankGeneral.bosna.gender,
           isPlural: false,
@@ -228,17 +230,17 @@ class AkuzativExercises {
           translation: N.t('ex_Zelim_kupiti_bijelu_macku'),
           sentenceParts: [
             CaseSentencePart(
-                displayValue: isCroatian ? 'Želim kupiti' : 'Želim da kupim'),
+                displayValue: !isSerbian ? 'Želim kupiti' : 'Želim da kupim'),
             CaseSentencePart(
-              displayValue: isCroatian
+              displayValue: !isSerbian
                   ? AdjectivesIjekavian.bijel.dictionary
                   : AdjectivesEkavian.bel.dictionary,
               isCorrectable: true,
-              actualObject: isCroatian
+              actualObject: !isSerbian
                   ? AdjectivesIjekavian.bijel
                   : AdjectivesEkavian.bel,
               grammarType: GrammarTypes.adjective,
-              correctValues: isCroatian
+              correctValues: !isSerbian
                   ? AdjectivesIjekavian.bijel.akuzativ!.feminine!.singular
                   : AdjectivesEkavian.bel.akuzativ!.feminine!.singular,
             ),
@@ -269,14 +271,14 @@ class AkuzativExercises {
                   AdjectiveBankGeneral.velik.genitiv!.masculine.singular,
             ),
             CaseSentencePart(
-              displayValue: isCroatian
+              displayValue: !isSerbian
                   ? NounsIjekavian.covjek.dictionary
                   : NounsEkavian.covek.dictionary,
               isCorrectable: true,
               actualObject:
-                  isCroatian ? NounsIjekavian.covjek : NounsEkavian.covek,
+                  !isSerbian ? NounsIjekavian.covjek : NounsEkavian.covek,
               grammarType: GrammarTypes.noun,
-              correctValues: isCroatian
+              correctValues: !isSerbian
                   ? NounsIjekavian.covjek.akuzativ.singular
                   : NounsEkavian.covek.akuzativ.singular,
             ),

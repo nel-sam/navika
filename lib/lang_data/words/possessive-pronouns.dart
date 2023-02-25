@@ -183,30 +183,30 @@ class PossessivePronounBank {
           new DeclensionByGender(singular: ['njegovo'], plural: ['njegova']),
     ),
     instrumental: new Declension(
-      masculine: new DeclensionByGender(
-          singular: ['njegovim'], plural: ['njegovima', 'njegovim']),
-      feminine: new DeclensionByGender(
-          singular: ['njegovom'], plural: ['njegovima', 'njegovim']),
-      neuter: new DeclensionByGender(
-          singular: ['njegovim'], plural: ['njegovima', 'njegovim']),
+      masculine:
+          new DeclensionByGender(singular: ['njegovim'], plural: ['njegovima']),
+      feminine:
+          new DeclensionByGender(singular: ['njegovom'], plural: ['njegovima']),
+      neuter:
+          new DeclensionByGender(singular: ['njegovim'], plural: ['njegovima']),
     ),
     lokativ: new Declension(
       masculine: new DeclensionByGender(
           singular: ['njegovu', 'njegovome', 'njegovomu', 'njegovom'],
-          plural: ['njegovima', 'njegovim']),
-      feminine: new DeclensionByGender(
-          singular: ['njegovoj'], plural: ['njegovima', 'njegovim']),
-      neuter: new DeclensionByGender(
-          singular: ['njegovu'], plural: ['njegovima', 'njegovim']),
+          plural: ['njegovima']),
+      feminine:
+          new DeclensionByGender(singular: ['njegovoj'], plural: ['njegovima']),
+      neuter:
+          new DeclensionByGender(singular: ['njegovu'], plural: ['njegovima']),
     ),
     dativ: new Declension(
       masculine: new DeclensionByGender(
           singular: ['njegovu', 'njegovome', 'njegovomu', 'njegovom'],
-          plural: ['njegovima', 'njegovim']),
-      feminine: new DeclensionByGender(
-          singular: ['njegovoj'], plural: ['njegovima', 'njegovim']),
-      neuter: new DeclensionByGender(
-          singular: ['njegovu'], plural: ['njegovima', 'njegovim']),
+          plural: ['njegovima']),
+      feminine:
+          new DeclensionByGender(singular: ['njegovoj'], plural: ['njegovima']),
+      neuter:
+          new DeclensionByGender(singular: ['njegovu'], plural: ['njegovima']),
     ),
     genitiv: new Declension(
       masculine: new DeclensionByGender(
@@ -245,39 +245,39 @@ class PossessivePronounBank {
           new DeclensionByGender(singular: ['njezino'], plural: ['njezina']),
     ),
     instrumental: new Declension(
-      masculine: new DeclensionByGender(
-          singular: ['njezinim'], plural: ['njezinima', 'njezinim']),
-      feminine: new DeclensionByGender(
-          singular: ['njenom'], plural: ['njezinima', 'njezinim']),
-      neuter: new DeclensionByGender(
-          singular: ['njezinim'], plural: ['njezinima', 'njezinim']),
+      masculine:
+          new DeclensionByGender(singular: ['njezinim'], plural: ['njezinima']),
+      feminine:
+          new DeclensionByGender(singular: ['njenom'], plural: ['njezinima']),
+      neuter:
+          new DeclensionByGender(singular: ['njezinim'], plural: ['njezinima']),
     ),
     lokativ: new Declension(
       masculine: new DeclensionByGender(
           singular: ['njezinome', 'njezinomu', 'njezinom', 'njezinu'],
-          plural: ['njezinima', 'njezinim']),
-      feminine: new DeclensionByGender(
-          singular: ['njezinoj'], plural: ['njezinima', 'njezinim']),
-      neuter: new DeclensionByGender(
-          singular: ['njezinu'], plural: ['njezinima', 'njezinim']),
+          plural: ['njezinima']),
+      feminine:
+          new DeclensionByGender(singular: ['njezinoj'], plural: ['njezinima']),
+      neuter:
+          new DeclensionByGender(singular: ['njezinu'], plural: ['njezinima']),
     ),
     dativ: new Declension(
       masculine: new DeclensionByGender(
           singular: ['njezinome', 'njezinomu', 'njezinom', 'njezinu'],
-          plural: ['njezinima', 'njezinim']),
-      feminine: new DeclensionByGender(
-          singular: ['njezinoj'], plural: ['njezinima', 'njezinim']),
-      neuter: new DeclensionByGender(
-          singular: ['njezinu'], plural: ['njezinima', 'njezinim']),
+          plural: ['njezinima']),
+      feminine:
+          new DeclensionByGender(singular: ['njezinoj'], plural: ['njezinima']),
+      neuter:
+          new DeclensionByGender(singular: ['njezinu'], plural: ['njezinima']),
     ),
     genitiv: new Declension(
       masculine: new DeclensionByGender(
           singular: ['njezinoga', 'njezinog', 'njezina'],
-          plural: ['njezinima', 'njezinim']),
-      feminine: new DeclensionByGender(
-          singular: ['njezine'], plural: ['njezinima', 'njezinim']),
-      neuter: new DeclensionByGender(
-          singular: ['njezina'], plural: ['njezinima', 'njezinim']),
+          plural: ['njezinima']),
+      feminine:
+          new DeclensionByGender(singular: ['njezine'], plural: ['njezinima']),
+      neuter:
+          new DeclensionByGender(singular: ['njezina'], plural: ['njezinima']),
     ),
     vokativ: new Declension(
       masculine:
@@ -308,30 +308,30 @@ class PossessivePronounBank {
           new DeclensionByGender(singular: ['njihovo'], plural: ['njihova']),
     ),
     instrumental: new Declension(
-      masculine: new DeclensionByGender(
-          singular: ['njihovim'], plural: ['njihovima', 'njihovim']),
-      feminine: new DeclensionByGender(
-          singular: ['njihovom'], plural: ['njihovima', 'njihovim']),
-      neuter: new DeclensionByGender(
-          singular: ['njihovim'], plural: ['njihovima', 'njihovim']),
+      masculine:
+          new DeclensionByGender(singular: ['njihovim'], plural: ['njihovima']),
+      feminine:
+          new DeclensionByGender(singular: ['njihovom'], plural: ['njihovima']),
+      neuter:
+          new DeclensionByGender(singular: ['njihovim'], plural: ['njihovima']),
     ),
     lokativ: new Declension(
       masculine: new DeclensionByGender(
           singular: ['njihovu', 'njihovome', 'njihovomu', 'njihovom'],
-          plural: ['njihovima', 'njihovim']),
-      feminine: new DeclensionByGender(
-          singular: ['njihovoj'], plural: ['njihovima', 'njihovim']),
-      neuter: new DeclensionByGender(
-          singular: ['njihovu'], plural: ['njihovima', 'njihovim']),
+          plural: ['njihovima']),
+      feminine:
+          new DeclensionByGender(singular: ['njihovoj'], plural: ['njihovima']),
+      neuter:
+          new DeclensionByGender(singular: ['njihovu'], plural: ['njihovima']),
     ),
     dativ: new Declension(
       masculine: new DeclensionByGender(
           singular: ['njihovome', 'njihovomu', 'njihovom', 'njihovu'],
-          plural: ['njihovima', 'njihovim']),
-      feminine: new DeclensionByGender(
-          singular: ['njihovoj'], plural: ['njihovima', 'njihovim']),
-      neuter: new DeclensionByGender(
-          singular: ['njihovu'], plural: ['njihovima', 'njihovim']),
+          plural: ['njihovima']),
+      feminine:
+          new DeclensionByGender(singular: ['njihovoj'], plural: ['njihovima']),
+      neuter:
+          new DeclensionByGender(singular: ['njihovu'], plural: ['njihovima']),
     ),
     genitiv: new Declension(
       masculine: new DeclensionByGender(
@@ -364,28 +364,24 @@ class PossessivePronounBank {
       neuter: new DeclensionByGender(singular: ['naše'], plural: ['naša']),
     ),
     instrumental: new Declension(
-      masculine: new DeclensionByGender(
-          singular: ['našim'], plural: ['našima', 'našim']),
-      feminine: new DeclensionByGender(
-          singular: ['našom'], plural: ['našima', 'našim']),
-      neuter: new DeclensionByGender(
-          singular: ['našim'], plural: ['našima', 'našim']),
+      masculine:
+          new DeclensionByGender(singular: ['našim'], plural: ['našima']),
+      feminine: new DeclensionByGender(singular: ['našom'], plural: ['našima']),
+      neuter: new DeclensionByGender(singular: ['našim'], plural: ['našima']),
     ),
     lokativ: new Declension(
       masculine: new DeclensionByGender(
-          singular: ['našemu', 'našem'], plural: ['našima', 'našim']),
-      feminine: new DeclensionByGender(
-          singular: ['našoj'], plural: ['našima', 'našim']),
+          singular: ['našemu', 'našem'], plural: ['našima']),
+      feminine: new DeclensionByGender(singular: ['našoj'], plural: ['našima']),
       neuter: new DeclensionByGender(
-          singular: ['našemu', 'našem'], plural: ['našima', 'našim']),
+          singular: ['našemu', 'našem'], plural: ['našima']),
     ),
     dativ: new Declension(
       masculine: new DeclensionByGender(
-          singular: ['našemu', 'našem'], plural: ['našima', 'našim']),
-      feminine: new DeclensionByGender(
-          singular: ['našoj'], plural: ['našima', 'našim']),
+          singular: ['našemu', 'našem'], plural: ['našima']),
+      feminine: new DeclensionByGender(singular: ['našoj'], plural: ['našima']),
       neuter: new DeclensionByGender(
-          singular: ['našemu', 'našem'], plural: ['našima', 'našim']),
+          singular: ['našemu', 'našem'], plural: ['našima']),
     ),
     genitiv: new Declension(
       masculine: new DeclensionByGender(
@@ -414,28 +410,24 @@ class PossessivePronounBank {
       neuter: new DeclensionByGender(singular: ['vaše'], plural: ['vaša']),
     ),
     instrumental: new Declension(
-      masculine: new DeclensionByGender(
-          singular: ['vašim'], plural: ['vašima', 'vašim']),
-      feminine: new DeclensionByGender(
-          singular: ['vašom'], plural: ['vašima', 'vašim']),
-      neuter: new DeclensionByGender(
-          singular: ['vašim'], plural: ['vašima', 'vašim']),
+      masculine:
+          new DeclensionByGender(singular: ['vašim'], plural: ['vašima']),
+      feminine: new DeclensionByGender(singular: ['vašom'], plural: ['vašima']),
+      neuter: new DeclensionByGender(singular: ['vašim'], plural: ['vašima']),
     ),
     lokativ: new Declension(
       masculine: new DeclensionByGender(
-          singular: ['vašemu', 'vašem'], plural: ['vašima', 'vašim']),
-      feminine: new DeclensionByGender(
-          singular: ['vašoj'], plural: ['vašima', 'vašim']),
+          singular: ['vašemu', 'vašem'], plural: ['vašima']),
+      feminine: new DeclensionByGender(singular: ['vašoj'], plural: ['vašima']),
       neuter: new DeclensionByGender(
-          singular: ['vašemu', 'vašem'], plural: ['vašima', 'vašim']),
+          singular: ['vašemu', 'vašem'], plural: ['vašima']),
     ),
     dativ: new Declension(
       masculine: new DeclensionByGender(
-          singular: ['vašemu', 'vašem'], plural: ['vašima', 'vašim']),
-      feminine: new DeclensionByGender(
-          singular: ['vašoj'], plural: ['vašima', 'vašim']),
+          singular: ['vašemu', 'vašem'], plural: ['vašima']),
+      feminine: new DeclensionByGender(singular: ['vašoj'], plural: ['vašima']),
       neuter: new DeclensionByGender(
-          singular: ['vašemu', 'vašem'], plural: ['vašima', 'vašim']),
+          singular: ['vašemu', 'vašem'], plural: ['vašima']),
     ),
     genitiv: new Declension(
       masculine: new DeclensionByGender(
@@ -464,25 +456,25 @@ class PossessivePronounBank {
       neuter: new DeclensionByGender(singular: ['ovo'], plural: ['ova']),
     ),
     instrumental: new Declension(
-      masculine:
-          new DeclensionByGender(singular: ['ovime', 'ovim'], plural: ['ovim']),
-      feminine: new DeclensionByGender(singular: ['ovom'], plural: ['ovim']),
-      neuter:
-          new DeclensionByGender(singular: ['ovime', 'ovim'], plural: ['ovim']),
+      masculine: new DeclensionByGender(
+          singular: ['ovime', 'ovim'], plural: ['ovima']),
+      feminine: new DeclensionByGender(singular: ['ovom'], plural: ['ovima']),
+      neuter: new DeclensionByGender(
+          singular: ['ovime', 'ovim'], plural: ['ovima']),
     ),
     lokativ: new Declension(
       masculine: new DeclensionByGender(
-          singular: ['ovome', 'ovomu', 'ovom'], plural: ['ovim']),
-      feminine: new DeclensionByGender(singular: ['ovoj'], plural: ['ovim']),
+          singular: ['ovome', 'ovomu', 'ovom'], plural: ['ovima']),
+      feminine: new DeclensionByGender(singular: ['ovoj'], plural: ['ovima']),
       neuter: new DeclensionByGender(
-          singular: ['ovome', 'ovomu', 'ovom'], plural: ['ovim']),
+          singular: ['ovome', 'ovomu', 'ovom'], plural: ['ovima']),
     ),
     dativ: new Declension(
       masculine: new DeclensionByGender(
-          singular: ['ovome', 'ovomu', 'ovom'], plural: ['ovim']),
-      feminine: new DeclensionByGender(singular: ['ovoj'], plural: ['ovim']),
+          singular: ['ovome', 'ovomu', 'ovom'], plural: ['ovima']),
+      feminine: new DeclensionByGender(singular: ['ovoj'], plural: ['ovima']),
       neuter: new DeclensionByGender(
-          singular: ['ovome', 'ovomu', 'ovom'], plural: ['ovim']),
+          singular: ['ovome', 'ovomu', 'ovom'], plural: ['ovima']),
     ),
     genitiv: new Declension(
       masculine:

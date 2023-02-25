@@ -11,14 +11,57 @@ import 'package:nrs_flutter_lib/enums.dart';
 
 class DativExercises {
   late bool isCroatian;
+  late bool isSerbian;
   final Cases caseType = Cases.Dat;
 
   DativExercises(DialectType dialect) {
     this.isCroatian = dialect == DialectType.Croatia;
+    this.isSerbian = dialect == DialectType.Serbia;
   }
 
   List<PANCombo> get general => [
         // TODO: Koji and adjective exerc
+        PANCombo(
+            caseType: caseType,
+            gender: Genders.Masculine,
+            isPlural: false,
+            sentenceParts: [
+              CaseSentencePart(displayValue: 'Nadam se'),
+              CaseSentencePart(
+                isCorrectable: true,
+                actualObject: AdjectiveBankGeneral.neki,
+                displayValue: AdjectiveBankGeneral.neki.dictionary,
+                correctValues:
+                    AdjectiveBankGeneral.neki.dativ!.masculine.singular,
+                grammarType: GrammarTypes.adjective,
+              ),
+              CaseSentencePart(
+                isCorrectable: true,
+                actualObject: NounBankGeneral.poklon,
+                displayValue: NounBankGeneral.poklon.dictionary,
+                correctValues: NounBankGeneral.poklon.dativ!.singular,
+                grammarType: GrammarTypes.noun,
+              ),
+            ],
+            isAnimate: false,
+            translation: N.t('ex_Nadam se_nekom_poklonu')),
+        PANCombo(
+            caseType: caseType,
+            gender: Genders.Masculine,
+            isPlural: false,
+            sentenceParts: [
+              CaseSentencePart(displayValue: 'Idemo prema'),
+              CaseSentencePart(
+                isCorrectable: true,
+                actualObject: NounBankGeneral.centar,
+                displayValue: NounBankGeneral.centar.dictionary,
+                correctValues: NounBankGeneral.centar.dativ!.singular,
+                grammarType: GrammarTypes.noun,
+              ),
+              CaseSentencePart(displayValue: 'grada'),
+            ],
+            isAnimate: false,
+            translation: N.t('ex_Idemo_prema_centru_grada')),
         PANCombo(
           caseType: caseType,
           gender: isCroatian
@@ -40,11 +83,11 @@ class DativExercises {
             CaseSentencePart(
               isCorrectable: true,
               actualObject:
-                  isCroatian ? NounsIjekavian.ljeto : NounsEkavian.leto,
-              displayValue: isCroatian
+                  !isSerbian ? NounsIjekavian.ljeto : NounsEkavian.leto,
+              displayValue: !isSerbian
                   ? NounsIjekavian.ljeto.dictionary
                   : NounsEkavian.leto.dictionary,
-              correctValues: isCroatian
+              correctValues: !isSerbian
                   ? NounsIjekavian.ljeto.dativ!.singular
                   : NounsEkavian.leto.dativ!.singular,
               grammarType: GrammarTypes.noun,

@@ -6,41 +6,31 @@ class AdjectivesEkavian {
     dictionary: 'bel',
     nominativ: new Declension(
       masculine:
-          new DeclensionByGender(singular: ['beo','beli'], plural: ['beli']),
-      feminine:
-          new DeclensionByGender(singular: ['bela'], plural: ['bele']),
+          new DeclensionByGender(singular: ['beo', 'beli'], plural: ['beli']),
+      feminine: new DeclensionByGender(singular: ['bela'], plural: ['bele']),
       neuter: new DeclensionByGender(singular: ['belo'], plural: ['bela']),
     ),
     akuzativ: new Declension(
-      masculine:
-          new DeclensionByGender(singular: ['beli'], plural: ['bele']),
-      feminine:
-          new DeclensionByGender(singular: ['belu'], plural: ['bele']),
+      masculine: new DeclensionByGender(singular: ['beli'], plural: ['bele']),
+      feminine: new DeclensionByGender(singular: ['belu'], plural: ['bele']),
       neuter: new DeclensionByGender(singular: ['belo'], plural: ['bela']),
     ),
     instrumental: new Declension(
       masculine:
-          new DeclensionByGender(singular: ['belim'], plural: ['belim']),
-      feminine:
-          new DeclensionByGender(singular: ['belom'], plural: ['belim']),
-      neuter:
-          new DeclensionByGender(singular: ['belim'], plural: ['belim']),
+          new DeclensionByGender(singular: ['belim'], plural: ['belima']),
+      feminine: new DeclensionByGender(singular: ['belom'], plural: ['belima']),
+      neuter: new DeclensionByGender(singular: ['belim'], plural: ['belima']),
     ),
     lokativ: new Declension(
       masculine:
-          new DeclensionByGender(singular: ['belom'], plural: ['belim']),
-      feminine:
-          new DeclensionByGender(singular: ['beloj'], plural: ['belim']),
-      neuter:
-          new DeclensionByGender(singular: ['belom'], plural: ['belim']),
+          new DeclensionByGender(singular: ['belom'], plural: ['belima']),
+      feminine: new DeclensionByGender(singular: ['beloj'], plural: ['belima']),
+      neuter: new DeclensionByGender(singular: ['belom'], plural: ['belima']),
     ),
     genitiv: new Declension(
-      masculine:
-          new DeclensionByGender(singular: ['belog'], plural: ['belih']),
-      feminine:
-          new DeclensionByGender(singular: ['bele'], plural: ['belih']),
-      neuter:
-          new DeclensionByGender(singular: ['belog'], plural: ['belih']),
+      masculine: new DeclensionByGender(singular: ['belog'], plural: ['belih']),
+      feminine: new DeclensionByGender(singular: ['bele'], plural: ['belih']),
+      neuter: new DeclensionByGender(singular: ['belog'], plural: ['belih']),
     ),
     vokativ: new Declension(
       masculine: new DeclensionByGender(singular: [''], plural: ['']),

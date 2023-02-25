@@ -4,6 +4,52 @@ import 'package:navika/models/noun.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 
 class NounBankGeneral {
+  static final Noun poklon = Noun(
+    dictionary: 'poklon',
+    tags: [],
+    gender: Genders.Masculine,
+    isAnimate: true,
+    nominativ: new DeclensionByCount(singular: ['poklon'], plural: ['pokloni']),
+    genitiv: new DeclensionByCount(singular: ['poklona'], plural: ['poklona']),
+    dativ: new DeclensionByCount(singular: ['poklonu'], plural: ['poklonima']),
+    akuzativ: new DeclensionByCount(singular: ['poklon'], plural: ['poklone']),
+    lokativ:
+        new DeclensionByCount(singular: ['poklonu'], plural: ['poklonima']),
+    vokativ: new DeclensionByCount(singular: ['poklone'], plural: ['pokloni']),
+    instrumental:
+        new DeclensionByCount(singular: ['poklonom'], plural: ['poklonima']),
+  );
+
+  static final Noun grad = Noun(
+    dictionary: 'grad',
+    tags: [],
+    gender: Genders.Masculine,
+    isAnimate: true,
+    nominativ: new DeclensionByCount(singular: ['grad'], plural: ['gradovi']),
+    genitiv: new DeclensionByCount(singular: ['grada'], plural: ['gradova']),
+    dativ: new DeclensionByCount(singular: ['gradu'], plural: ['gradovima']),
+    akuzativ: new DeclensionByCount(singular: ['grad'], plural: ['gradove']),
+    lokativ: new DeclensionByCount(singular: ['gradu'], plural: ['gradovima']),
+    vokativ: new DeclensionByCount(singular: ['grade'], plural: ['gradi']),
+    instrumental:
+        new DeclensionByCount(singular: ['gradom'], plural: ['gradovima']),
+  );
+
+  static final Noun centar = Noun(
+    dictionary: 'centar',
+    tags: [],
+    gender: Genders.Masculine,
+    isAnimate: true,
+    nominativ: new DeclensionByCount(singular: ['centar'], plural: ['centri']),
+    genitiv: new DeclensionByCount(singular: ['centra'], plural: ['centara']),
+    dativ: new DeclensionByCount(singular: ['centru'], plural: ['centrima']),
+    akuzativ: new DeclensionByCount(singular: ['centar'], plural: ['centre']),
+    lokativ: new DeclensionByCount(singular: ['centru'], plural: ['centrima']),
+    vokativ: new DeclensionByCount(singular: ['centre'], plural: ['centri']),
+    instrumental:
+        new DeclensionByCount(singular: ['centrom'], plural: ['centrima']),
+  );
+
   static final Noun caj = Noun(
     dictionary: 'čaj',
     tags: [],

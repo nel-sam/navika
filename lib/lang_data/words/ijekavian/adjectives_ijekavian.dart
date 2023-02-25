@@ -20,19 +20,19 @@ class AdjectivesIjekavian {
     ),
     instrumental: new Declension(
       masculine:
-          new DeclensionByGender(singular: ['bijelim'], plural: ['bijelim']),
+          new DeclensionByGender(singular: ['bijelim'], plural: ['bijelima']),
       feminine:
-          new DeclensionByGender(singular: ['bijelom'], plural: ['bijelim']),
+          new DeclensionByGender(singular: ['bijelom'], plural: ['bijelima']),
       neuter:
-          new DeclensionByGender(singular: ['bijelim'], plural: ['bijelim']),
+          new DeclensionByGender(singular: ['bijelim'], plural: ['bijelima']),
     ),
     lokativ: new Declension(
       masculine:
-          new DeclensionByGender(singular: ['bijelom'], plural: ['bijelim']),
+          new DeclensionByGender(singular: ['bijelom'], plural: ['bijelima']),
       feminine:
-          new DeclensionByGender(singular: ['bijeloj'], plural: ['bijelim']),
+          new DeclensionByGender(singular: ['bijeloj'], plural: ['bijelima']),
       neuter:
-          new DeclensionByGender(singular: ['bijelom'], plural: ['bijelim']),
+          new DeclensionByGender(singular: ['bijelom'], plural: ['bijelima']),
     ),
     genitiv: new Declension(
       masculine:

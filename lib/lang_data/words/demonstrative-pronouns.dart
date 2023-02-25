@@ -19,22 +19,25 @@ class DemonstrativePronouns {
       neuter: new DeclensionByGender(singular: ['koje'], plural: ['koja']),
     ),
     instrumental: new Declension(
-      masculine: new DeclensionByGender(singular: ['kojim'], plural: ['kojima']),
+      masculine:
+          new DeclensionByGender(singular: ['kojim'], plural: ['kojima']),
       feminine: new DeclensionByGender(singular: ['kojom'], plural: ['kojima']),
       neuter: new DeclensionByGender(singular: ['kojim'], plural: ['kojima']),
     ),
-    lokativ: new Declension( // TODO: Short or long forms?
-      masculine: new DeclensionByGender(singular: ['kojemu'], plural: ['kojima']),
+    lokativ: new Declension(
+      masculine:
+          new DeclensionByGender(singular: ['kojemu'], plural: ['kojima']),
       feminine: new DeclensionByGender(singular: ['kojoj'], plural: ['kojima']),
       neuter: new DeclensionByGender(singular: ['kojemu'], plural: ['kojima']),
     ),
     dativ: new Declension(
-      masculine: new DeclensionByGender(singular: ['kojem'], plural: ['tim']),
-      feminine: new DeclensionByGender(singular: ['kojoj'], plural: ['kojim']),
-      neuter: new DeclensionByGender(singular: ['kojem'], plural: ['kojim']),
+      masculine: new DeclensionByGender(singular: ['kojem'], plural: ['tima']),
+      feminine: new DeclensionByGender(singular: ['kojoj'], plural: ['kojima']),
+      neuter: new DeclensionByGender(singular: ['kojem'], plural: ['kojima']),
     ),
-    genitiv: new Declension( // TODO: Short or long forms?
-      masculine: new DeclensionByGender(singular: ['kojega'], plural: ['kojih']),
+    genitiv: new Declension(
+      masculine:
+          new DeclensionByGender(singular: ['kojega'], plural: ['kojih']),
       feminine: new DeclensionByGender(singular: ['koje'], plural: ['kojih']),
       neuter: new DeclensionByGender(singular: ['kojega'], plural: ['kojih']),
     ),
@@ -60,24 +63,24 @@ class DemonstrativePronouns {
     ),
     instrumental: new Declension(
       masculine:
-          new DeclensionByGender(singular: ['time', 'tim'], plural: ['tim']),
-      feminine: new DeclensionByGender(singular: ['tom'], plural: ['tim']),
+          new DeclensionByGender(singular: ['time', 'tim'], plural: ['tima']),
+      feminine: new DeclensionByGender(singular: ['tom'], plural: ['tima']),
       neuter:
-          new DeclensionByGender(singular: ['time', 'tim'], plural: ['tim']),
+          new DeclensionByGender(singular: ['time', 'tim'], plural: ['tima']),
     ),
     lokativ: new Declension(
       masculine: new DeclensionByGender(
-          singular: ['tomu', 'tome', 'tom'], plural: ['tim']),
-      feminine: new DeclensionByGender(singular: ['toj'], plural: ['tim']),
+          singular: ['tomu', 'tome', 'tom'], plural: ['tima']),
+      feminine: new DeclensionByGender(singular: ['toj'], plural: ['tima']),
       neuter: new DeclensionByGender(
-          singular: ['tomu', 'tome', 'tom'], plural: ['tim']),
+          singular: ['tomu', 'tome', 'tom'], plural: ['tima']),
     ),
     dativ: new Declension(
       masculine: new DeclensionByGender(
-          singular: ['tomu', 'tome', 'tom'], plural: ['tim']),
-      feminine: new DeclensionByGender(singular: ['toj'], plural: ['tim']),
+          singular: ['tomu', 'tome', 'tom'], plural: ['tima']),
+      feminine: new DeclensionByGender(singular: ['toj'], plural: ['tima']),
       neuter: new DeclensionByGender(
-          singular: ['tomu', 'tome', 'tom'], plural: ['tim']),
+          singular: ['tomu', 'tome', 'tom'], plural: ['tima']),
     ),
     genitiv: new Declension(
       masculine:
@@ -92,7 +95,7 @@ class DemonstrativePronouns {
       neuter: new DeclensionByGender(singular: [''], plural: ['']),
     ),
   );
-  
+
   static final Adjective onaj = Adjective(
     dictionary: 'onaj',
     toAvoid: [Tags.Season, Tags.Country],
@@ -107,25 +110,25 @@ class DemonstrativePronouns {
       neuter: new DeclensionByGender(singular: ['ono'], plural: ['ona']),
     ),
     instrumental: new Declension(
-      masculine:
-          new DeclensionByGender(singular: ['onime', 'onim'], plural: ['onim']),
-      feminine: new DeclensionByGender(singular: ['onom'], plural: ['onim']),
-      neuter:
-          new DeclensionByGender(singular: ['onime', 'onim'], plural: ['onim']),
+      masculine: new DeclensionByGender(
+          singular: ['onime', 'onim'], plural: ['onima']),
+      feminine: new DeclensionByGender(singular: ['onom'], plural: ['onima']),
+      neuter: new DeclensionByGender(
+          singular: ['onime', 'onim'], plural: ['onima']),
     ),
     lokativ: new Declension(
       masculine: new DeclensionByGender(
-          singular: ['onome', 'onomu', 'onom'], plural: ['onim']),
-      feminine: new DeclensionByGender(singular: ['onoj'], plural: ['onim']),
+          singular: ['onome', 'onomu', 'onom'], plural: ['onima']),
+      feminine: new DeclensionByGender(singular: ['onoj'], plural: ['onima']),
       neuter: new DeclensionByGender(
-          singular: ['onome', 'onomu', 'onom'], plural: ['onim']),
+          singular: ['onome', 'onomu', 'onom'], plural: ['onima']),
     ),
     dativ: new Declension(
       masculine: new DeclensionByGender(
-          singular: ['onome', 'onomu', 'onom'], plural: ['onim']),
-      feminine: new DeclensionByGender(singular: ['onoj'], plural: ['onim']),
+          singular: ['onome', 'onomu', 'onom'], plural: ['onima']),
+      feminine: new DeclensionByGender(singular: ['onoj'], plural: ['onima']),
       neuter: new DeclensionByGender(
-          singular: ['onome', 'onomu', 'onom'], plural: ['onim']),
+          singular: ['onome', 'onomu', 'onom'], plural: ['onima']),
     ),
     genitiv: new Declension(
       masculine:
@@ -156,24 +159,24 @@ class DemonstrativePronouns {
     ),
     instrumental: new Declension(
       masculine:
-          new DeclensionByGender(singular: ['svakim'], plural: ['svakim']),
+          new DeclensionByGender(singular: ['svakim'], plural: ['svakima']),
       feminine:
-          new DeclensionByGender(singular: ['svakom'], plural: ['svakim']),
-      neuter: new DeclensionByGender(singular: ['svakim'], plural: ['svakim']),
+          new DeclensionByGender(singular: ['svakom'], plural: ['svakima']),
+      neuter: new DeclensionByGender(singular: ['svakim'], plural: ['svakima']),
     ),
     lokativ: new Declension(
       masculine:
-          new DeclensionByGender(singular: ['svakim'], plural: ['svakim']),
+          new DeclensionByGender(singular: ['svakim'], plural: ['svakima']),
       feminine:
-          new DeclensionByGender(singular: ['svakoj'], plural: ['svakim']),
-      neuter: new DeclensionByGender(singular: ['svakim'], plural: ['svakim']),
+          new DeclensionByGender(singular: ['svakoj'], plural: ['svakima']),
+      neuter: new DeclensionByGender(singular: ['svakim'], plural: ['svakima']),
     ),
     dativ: new Declension(
       masculine:
-          new DeclensionByGender(singular: ['svakim'], plural: ['svakim']),
+          new DeclensionByGender(singular: ['svakim'], plural: ['svakima']),
       feminine:
-          new DeclensionByGender(singular: ['svakoj'], plural: ['svakim']),
-      neuter: new DeclensionByGender(singular: ['svakim'], plural: ['svakim']),
+          new DeclensionByGender(singular: ['svakoj'], plural: ['svakima']),
+      neuter: new DeclensionByGender(singular: ['svakim'], plural: ['svakima']),
     ),
     genitiv: new Declension(
       masculine: new DeclensionByGender(

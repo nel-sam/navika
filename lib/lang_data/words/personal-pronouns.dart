@@ -40,7 +40,7 @@ class PersonalPronounWordBank {
     akuzativ: new DeclensionPronoun(forms: ['njega', 'ga', 'nj']),
     lokativ: new DeclensionPronoun(forms: ['njemu']),
     vokativ: new DeclensionPronoun(forms: ['']),
-    instrumental: new DeclensionPronoun(forms: ['njime', 'njim']),
+    instrumental: new DeclensionPronoun(forms: ['njime', 'njima']),
   );
   static final ona = PersonalPronoun(
     dictionary: 'ona',
@@ -90,7 +90,7 @@ class PersonalPronounWordBank {
     gender: Genders.Unspecific,
     nominativ: new DeclensionPronoun(forms: ['oni']),
     genitiv: new DeclensionPronoun(forms: ['njih']), //, 'ih']),
-    dativ: new DeclensionPronoun(forms: ['njima', 'im']),
+    dativ: new DeclensionPronoun(forms: ['njima']),
     akuzativ: new DeclensionPronoun(forms: ['njih', 'ih']),
     lokativ: new DeclensionPronoun(forms: ['njima']),
     vokativ: new DeclensionPronoun(forms: ['']),

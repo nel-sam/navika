@@ -19,7 +19,35 @@ class NominativExercises {
   }
 
   List<PANCombo> get general => [
-            PANCombo(
+        PANCombo(
+            caseType: caseType,
+            gender: Genders.Feminine,
+            isPlural: false,
+            isAnimate: false,
+            translation: N.t('ex_Cija_je_kava'),
+            sentenceParts: [
+              CaseSentencePart(
+                isCorrectable: true,
+                actualObject: AdjectiveBankGeneral.ciji,
+                displayValue: '',
+                correctValues:
+                    AdjectiveBankGeneral.ciji.nominativ!.feminine!.singular,
+                grammarType: GrammarTypes.adjective,
+              ),
+              CaseSentencePart(displayValue: 'je'),
+              CaseSentencePart(
+                isCorrectable: true,
+                actualObject:
+                    isCroatian ? NounsIjekavian.kava : NounsEkavian.kafa,
+                displayValue: '',
+                correctValues: isCroatian
+                    ? NounsIjekavian.kava.getDeclensions(false, Cases.Nom)
+                    : NounsEkavian.kafa.getDeclensions(false, Cases.Nom),
+                grammarType: GrammarTypes.noun,
+              ),
+              CaseSentencePart(displayValue: '?'),
+            ]),
+        PANCombo(
             caseType: caseType,
             gender: Genders.Feminine,
             isPlural: false,
@@ -30,7 +58,8 @@ class NominativExercises {
                 isCorrectable: true,
                 actualObject: DemonstrativePronouns.koji,
                 displayValue: '',
-                correctValues: DemonstrativePronouns.koji.nominativ!.feminine!.singular,
+                correctValues:
+                    DemonstrativePronouns.koji.nominativ!.feminine!.singular,
                 grammarType: GrammarTypes.demonstrativePronoun,
               ),
               CaseSentencePart(displayValue: 'je najbolja sezona?'),
@@ -44,11 +73,12 @@ class NominativExercises {
             sentenceParts: [
               CaseSentencePart(
                 isCorrectable: true,
-                actualObject: isCroatian ? NounsIjekavian.sto : NounsEkavian.sta,
+                actualObject:
+                    isCroatian ? NounsIjekavian.sto : NounsEkavian.sta,
                 displayValue: '',
-                correctValues: isCroatian ?
-                    NounsIjekavian.sto.getDeclensions(false, Cases.Nom) :
-                    NounsEkavian.sta.getDeclensions(false, Cases.Nom),
+                correctValues: isCroatian
+                    ? NounsIjekavian.sto.getDeclensions(false, Cases.Nom)
+                    : NounsEkavian.sta.getDeclensions(false, Cases.Nom),
                 grammarType: GrammarTypes.noun,
               ),
               CaseSentencePart(displayValue: 'je to?'),

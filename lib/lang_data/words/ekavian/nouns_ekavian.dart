@@ -3,6 +3,21 @@ import 'package:navika/models/models.dart';
 import 'package:navika/models/noun.dart';
 
 class NounsEkavian {
+  static final Noun kafa = Noun(
+    dictionary: 'kafa',
+    tags: [Tags.Food, Tags.Drink],
+    gender: Genders.Feminine,
+    isAnimate: false,
+    nominativ: new DeclensionByCount(singular: ['kafa'], plural: ['kafe']),
+    akuzativ: new DeclensionByCount(singular: ['kafu'], plural: ['kafe']),
+    instrumental:
+        new DeclensionByCount(singular: ['kafom'], plural: ['kafama']),
+    lokativ: new DeclensionByCount(singular: ['kafi'], plural: ['kafama']),
+    dativ: new DeclensionByCount(singular: ['kafi'], plural: ['kafama']),
+    genitiv: new DeclensionByCount(singular: ['kafe'], plural: ['kafa']),
+    vokativ: new DeclensionByCount(singular: ['kafo'], plural: ['kafe']),
+  );
+
   // Šta is not a noun but the Noun class best represents it
   static final Noun sta = Noun(
     dictionary: 'šta',

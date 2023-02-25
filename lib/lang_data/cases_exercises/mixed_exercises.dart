@@ -22,6 +22,29 @@ class GenitivExercises {
             gender: Genders.Masculine,
             isPlural: false,
             sentenceParts: [
+              CaseSentencePart(displayValue: 'Idemo prema'),
+              CaseSentencePart(
+                isCorrectable: true,
+                actualObject: NounBankGeneral.centar,
+                displayValue: NounBankGeneral.centar.dictionary,
+                correctValues: NounBankGeneral.centar.dativ!.singular,
+                grammarType: GrammarTypes.noun,
+              ),
+              CaseSentencePart(
+                isCorrectable: true,
+                actualObject: NounBankGeneral.grad,
+                displayValue: NounBankGeneral.grad.dictionary,
+                correctValues: NounBankGeneral.grad.genitiv.singular,
+                grammarType: GrammarTypes.noun,
+              ),
+            ],
+            isAnimate: false,
+            translation: N.t('ex_Idemo_prema_centru_grada')),
+    PANCombo(
+            caseType: caseType,
+            gender: Genders.Masculine,
+            isPlural: false,
+            sentenceParts: [
               CaseSentencePart(displayValue: 'Molim te, daj'),
               CaseSentencePart(
                 isCorrectable: true,

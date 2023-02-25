@@ -24,7 +24,7 @@
   "trans_pada_kisa": "Está lloviendo hoy",
   "trans_najbolji_cevapi": "Esto es el mejor chevapi",
   "trans_srbija_je": "Serbia es un país balcánico",
-  "trans_plaza_nego_grad": "Me gusta más la playa que la cuidad",
+  "trans_plaza_nego_grad": "Me gusta más la playa que la ciudad",
   "trans_otici_na_rucak": "Es possible ir a almorzar mañana?",
   "trans_ne_koristi_mnogo": "El cirílico no se usa much en Croacia",
 
@@ -92,6 +92,9 @@
   "ex_Javni_prijevoz_nam_je_vazan": "El transporte público es importante para nosotros",
   "ex_Treba_vam_brza_pomoc": "¿Necesitan ustedes ayuda rápida?",
   "ex_Je_li_im_zdravlje_vazno": "¿La salud es importante para ellos?",
+  "ex_Cija_je_kava": "¿De quién es el café?",
+  "ex_Idemo_prema_centru_grada": "Vamos al centro de la ciudad",
+  "ex_Nadam se_nekom_poklonu": "Espero/deseo algún regalo",
 
   "extrainfo_brat": "Braća se usa para hablar de various hermanos. Braća se refiere a hombres pero tiene declinaciones como si fuera sustantivo femenino en singular",
   "extrainfo_all_ona_aku_ok": "En esta situación se puede usar cualquier forma acusativo de 'Ona' porque 'je' (del verbo 'biti') no sigue",
