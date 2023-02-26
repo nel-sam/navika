@@ -23,6 +23,8 @@ class AkuzativExercises {
   }
 
   List<PANCombo> get general => [
+        // TODO: Neut sing & pl, fem and masc pl etc...
+
         PANCombo(
           caseType: caseType,
           gender: NounBankGeneral.bosna.gender,

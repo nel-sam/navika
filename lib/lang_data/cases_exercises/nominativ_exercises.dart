@@ -19,6 +19,8 @@ class NominativExercises {
   }
 
   List<PANCombo> get general => [
+        // TODO: Neut sing & pl, fem and masc pl etc...
+
         PANCombo(
             caseType: caseType,
             gender: Genders.Feminine,

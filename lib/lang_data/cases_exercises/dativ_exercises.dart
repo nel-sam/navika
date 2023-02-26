@@ -20,7 +20,24 @@ class DativExercises {
   }
 
   List<PANCombo> get general => [
+    // TODO: Neut sing & pl, fem and masc pl etc...
         // TODO: Koji and adjective exerc
+        PANCombo(
+            caseType: caseType,
+            gender: Genders.Masculine,
+            isPlural: false,
+            sentenceParts: [
+              CaseSentencePart(
+                isCorrectable: true,
+                actualObject: NounBankGeneral.sin,
+                displayValue: NounBankGeneral.sin.dictionary,
+                correctValues: NounBankGeneral.sin.dativ!.singular,
+                grammarType: GrammarTypes.noun,
+              ),
+              CaseSentencePart(displayValue: 'je dosadno'),
+            ],
+            isAnimate: false,
+            translation: N.t('ex_Sinu_je_dosadno')),
         PANCombo(
             caseType: caseType,
             gender: Genders.Masculine,
@@ -331,13 +348,30 @@ class DativExercises {
                 isCorrectable: true,
                 actualObject: PersonalPronounWordBank.oni,
                 displayValue: PersonalPronounWordBank.oni.dictionary,
-                correctValues: [''],
+                correctValues: ['im'],
                 grammarType: GrammarTypes.personalPronoun,
               ),
               CaseSentencePart(displayValue: 'zdravlje važno?'),
             ],
             isAnimate: false,
             translation: N.t('ex_Je_li_im_zdravlje_vazno')),
+        PANCombo(
+            caseType: caseType,
+            gender: Genders.Unspecific,
+            isPlural: false,
+            extraInfo: N.t('extrainfo_long_form_of_pronouns'),
+            sentenceParts: [
+              CaseSentencePart(
+                isCorrectable: true,
+                actualObject: PersonalPronounWordBank.ja,
+                displayValue: PersonalPronounWordBank.ja.dictionary,
+                correctValues: ['meni'],
+                grammarType: GrammarTypes.personalPronoun,
+              ),
+              CaseSentencePart(displayValue: 'je dosadno'),
+            ],
+            isAnimate: false,
+            translation: N.t('ex_Meni_je_dosadno')),
       ];
 
   List<PANCombo> get premium => [];

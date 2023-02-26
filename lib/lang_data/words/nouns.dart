@@ -4,6 +4,36 @@ import 'package:navika/models/noun.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 
 class NounBankGeneral {
+  static final Noun ruka = Noun(
+    dictionary: 'ruka',
+    tags: [Tags.Food, Tags.Portable],
+    gender: Genders.Feminine,
+    isAnimate: false,
+    nominativ: new DeclensionByCount(singular: ['ruka'], plural: ['ruke']),
+    genitiv: new DeclensionByCount(singular: ['ruke'], plural: ['ruka']),
+    dativ: new DeclensionByCount(singular: ['ruci'], plural: ['rukama']),
+    akuzativ: new DeclensionByCount(singular: ['ruku'], plural: ['ruke']),
+    lokativ: new DeclensionByCount(singular: ['ruci'], plural: ['rukama']),
+    vokativ: new DeclensionByCount(singular: ['ruko'], plural: ['ruke']),
+    instrumental:
+        new DeclensionByCount(singular: ['rukom'], plural: ['rukama']),
+  );
+
+  static final Noun meso = Noun(
+    dictionary: 'meso',
+    tags: [Tags.Drink, Tags.Alcohol, Tags.Thing, Tags.Portable],
+    gender: Genders.Neuter,
+    isAnimate: false,
+    nominativ: new DeclensionByCount(singular: ['meso'], plural: ['mesa']),
+    genitiv: new DeclensionByCount(singular: ['mesa'], plural: ['mesa']),
+    dativ: new DeclensionByCount(singular: ['mesu'], plural: ['mesima']),
+    akuzativ: new DeclensionByCount(singular: ['meso'], plural: ['mesa']),
+    lokativ: new DeclensionByCount(singular: ['mesu'], plural: ['mesima']),
+    vokativ: new DeclensionByCount(singular: ['meso'], plural: ['mesa']),
+    instrumental:
+        new DeclensionByCount(singular: ['mesom'], plural: ['mesima']),
+  );
+
   static final Noun poklon = Noun(
     dictionary: 'poklon',
     tags: [],

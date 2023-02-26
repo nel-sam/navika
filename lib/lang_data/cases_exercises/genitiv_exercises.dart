@@ -16,10 +16,10 @@ class GenitivExercises {
   }
 
   List<PANCombo> get general => [
-
+    // TODO: Neut sing & pl, fem and masc pl
         PANCombo(
             caseType: caseType,
-            gender: Genders.Masculine,
+            gender: NounBankGeneral.grad.gender,
             isPlural: false,
             sentenceParts: [
               CaseSentencePart(displayValue: 'Idemo prema centru'),
