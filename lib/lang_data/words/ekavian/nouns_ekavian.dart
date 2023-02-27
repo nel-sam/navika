@@ -40,12 +40,12 @@ class NounsEkavian {
     isAnimate: true,
     nominativ: new DeclensionByCount(singular: ['čoveka'], plural: ['']),
     genitiv: new DeclensionByCount(singular: ['čoveka'], plural: ['']),
-    dativ: new DeclensionByCount(singular: ['čoveki'], plural: ['']),
-    akuzativ: new DeclensionByCount(singular: ['čoveku'], plural: ['']),
-    lokativ: new DeclensionByCount(singular: ['čoveki'], plural: ['']),
-    vokativ: new DeclensionByCount(singular: ['čoveko'], plural: ['']),
+    dativ: new DeclensionByCount(singular: ['čoveku'], plural: ['']),
+    akuzativ: new DeclensionByCount(singular: ['čoveka'], plural: ['']),
+    lokativ: new DeclensionByCount(singular: ['čoveku'], plural: ['']),
+    vokativ: new DeclensionByCount(singular: ['čoveče'], plural: ['']),
     instrumental:
-        new DeclensionByCount(singular: ['čovekom'], plural: ['čovekama']),
+        new DeclensionByCount(singular: ['čovekom'], plural: ['']),
   );
 
   static final Noun stol = Noun(

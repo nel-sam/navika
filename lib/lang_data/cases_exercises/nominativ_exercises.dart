@@ -1,6 +1,8 @@
 import 'package:navika/lang_data/words/adjectives.dart';
 import 'package:navika/lang_data/words/demonstrative-pronouns.dart';
+import 'package:navika/lang_data/words/ekavian/adjectives_ekavian.dart';
 import 'package:navika/lang_data/words/ekavian/nouns_ekavian.dart';
+import 'package:navika/lang_data/words/ijekavian/adjectives_ijekavian.dart';
 import 'package:navika/lang_data/words/ijekavian/nouns_ijekavian.dart';
 import 'package:navika/lang_data/words/nouns.dart';
 import 'package:navika/lang_data/words/personal-pronouns.dart';
@@ -19,11 +21,69 @@ class NominativExercises {
   }
 
   List<PANCombo> get general => [
-        // TODO: Neut sing & pl, fem and masc pl etc...
-
         PANCombo(
             caseType: caseType,
-            gender: Genders.Feminine,
+            gender: NounBankGeneral.grad.gender,
+            isPlural: true,
+            isAnimate: false,
+            translation: N.t('ex_Koji_su_najljepsi_gradovi_na_svijetu'),
+            sentenceParts: [
+              CaseSentencePart(
+                isCorrectable: true,
+                actualObject: DemonstrativePronouns.koji,
+                displayValue: '',
+                correctValues:
+                    DemonstrativePronouns.koji.nominativ!.neuter!.plural,
+                grammarType: GrammarTypes.demonstrativePronoun,
+              ),
+              CaseSentencePart(displayValue: 'su'),
+              CaseSentencePart(
+                isCorrectable: true,
+                actualObject: isCroatian
+                    ? AdjectivesIjekavian.najljepsi
+                    : AdjectivesEkavian.najlepsi,
+                displayValue: '',
+                correctValues: isCroatian
+                    ? AdjectivesIjekavian.najljepsi.nominativ!.neuter!.plural
+                    : AdjectivesEkavian.najlepsi.nominativ!.neuter!.plural,
+                grammarType: GrammarTypes.adjective,
+              ),
+              CaseSentencePart(
+                isCorrectable: true,
+                actualObject: NounBankGeneral.grad,
+                displayValue: '',
+                correctValues: NounBankGeneral.grad.nominativ.plural,
+                grammarType: GrammarTypes.noun,
+              ),
+              CaseSentencePart(displayValue: 'na svijetu?'),
+            ]),
+        PANCombo(
+            caseType: caseType,
+            gender: NounBankGeneral.jezero.gender,
+            isPlural: true,
+            isAnimate: false,
+            translation: N.t('ex_Mala_jezera_počela_su_se_povecavati'),
+            sentenceParts: [
+              CaseSentencePart(
+                isCorrectable: true,
+                actualObject: AdjectiveBankGeneral.mali,
+                displayValue: '',
+                correctValues:
+                    AdjectiveBankGeneral.mali.nominativ!.neuter!.plural,
+                grammarType: GrammarTypes.adjective,
+              ),
+              CaseSentencePart(
+                isCorrectable: true,
+                actualObject: NounBankGeneral.jezero,
+                displayValue: '',
+                correctValues: NounBankGeneral.jezero.nominativ.plural,
+                grammarType: GrammarTypes.noun,
+              ),
+              CaseSentencePart(displayValue: 'počela su se povećavati'),
+            ]),
+        PANCombo(
+            caseType: caseType,
+            gender: NounsIjekavian.kava.gender,
             isPlural: false,
             isAnimate: false,
             translation: N.t('ex_Cija_je_kava'),
@@ -43,8 +103,8 @@ class NominativExercises {
                     isCroatian ? NounsIjekavian.kava : NounsEkavian.kafa,
                 displayValue: '',
                 correctValues: isCroatian
-                    ? NounsIjekavian.kava.getDeclensions(false, Cases.Nom)
-                    : NounsEkavian.kafa.getDeclensions(false, Cases.Nom),
+                    ? NounsIjekavian.kava.nominativ.singular
+                    : NounsEkavian.kafa.nominativ.singular,
                 grammarType: GrammarTypes.noun,
               ),
               CaseSentencePart(displayValue: '?'),
@@ -68,7 +128,7 @@ class NominativExercises {
             ]),
         PANCombo(
             caseType: caseType,
-            gender: Genders.Unspecific,
+            gender: NounsIjekavian.sto.gender,
             isPlural: false,
             isAnimate: false,
             translation: N.t('ex_Sto_je_to'),
@@ -79,15 +139,17 @@ class NominativExercises {
                     isCroatian ? NounsIjekavian.sto : NounsEkavian.sta,
                 displayValue: '',
                 correctValues: isCroatian
-                    ? NounsIjekavian.sto.getDeclensions(false, Cases.Nom)
-                    : NounsEkavian.sta.getDeclensions(false, Cases.Nom),
+                    ? NounsIjekavian.sto.nominativ.singular
+                    : NounsEkavian.sta.nominativ.singular,
                 grammarType: GrammarTypes.noun,
               ),
               CaseSentencePart(displayValue: 'je to?'),
             ]),
         PANCombo(
             caseType: caseType,
-            gender: Genders.Masculine,
+            gender: isCroatian
+                ? NounsIjekavian.zrakoplov.gender
+                : NounsEkavian.avion.gender,
             isPlural: false,
             isAnimate: false,
             translation: N.t('ex_taj_stari_avion_ima_dva_krila'),
@@ -104,8 +166,8 @@ class NominativExercises {
                 isCorrectable: true,
                 actualObject: AdjectiveBankGeneral.star,
                 displayValue: '',
-                correctValues: AdjectiveBankGeneral.star
-                    .getDeclensions(Genders.Masculine, false, Cases.Nom, false),
+                correctValues:
+                    AdjectiveBankGeneral.star.nominativ!.masculine.singular,
                 grammarType: GrammarTypes.adjective,
               ),
               CaseSentencePart(
@@ -114,15 +176,15 @@ class NominativExercises {
                     isCroatian ? NounsIjekavian.zrakoplov : NounsEkavian.avion,
                 displayValue: '',
                 correctValues: isCroatian
-                    ? NounsIjekavian.zrakoplov.getDeclensions(false, Cases.Nom)
-                    : NounsEkavian.avion.getDeclensions(false, Cases.Nom),
+                    ? NounsIjekavian.zrakoplov.nominativ.singular
+                    : NounsEkavian.avion.nominativ.singular,
                 grammarType: GrammarTypes.noun,
               ),
               CaseSentencePart(displayValue: 'ima dva krila'),
             ]),
         PANCombo(
             caseType: caseType,
-            gender: Genders.Feminine,
+            gender: NounBankGeneral.francuska.gender,
             isPlural: false,
             isAnimate: false,
             translation: N.t('ex_francuska_ima_oko_61_milijun_stanovnika'),
@@ -131,15 +193,14 @@ class NominativExercises {
                 isCorrectable: true,
                 actualObject: NounBankGeneral.francuska,
                 displayValue: '',
-                correctValues:
-                    NounBankGeneral.francuska.getDeclensions(false, Cases.Nom),
+                correctValues: NounBankGeneral.francuska.nominativ.singular,
                 grammarType: GrammarTypes.noun,
               ),
               CaseSentencePart(displayValue: 'ima oko 61 milijun stanovnika'),
             ]),
         PANCombo(
             caseType: caseType,
-            gender: Genders.Feminine,
+            gender: NounBankGeneral.bosna.gender,
             isPlural: false,
             isAnimate: false,
             translation: N.t('ex_Bosna_i_Srbija_imaju_planine'),
@@ -148,8 +209,7 @@ class NominativExercises {
                 isCorrectable: true,
                 actualObject: NounBankGeneral.bosna,
                 displayValue: '',
-                correctValues:
-                    NounBankGeneral.bosna.getDeclensions(false, Cases.Nom),
+                correctValues: NounBankGeneral.bosna.nominativ.singular,
                 grammarType: GrammarTypes.noun,
               ),
               CaseSentencePart(displayValue: 'i'),
@@ -157,15 +217,14 @@ class NominativExercises {
                 isCorrectable: true,
                 actualObject: NounBankGeneral.srbija,
                 displayValue: '',
-                correctValues:
-                    NounBankGeneral.srbija.getDeclensions(false, Cases.Nom),
+                correctValues: NounBankGeneral.srbija.nominativ.singular,
                 grammarType: GrammarTypes.noun,
               ),
               CaseSentencePart(displayValue: 'imaju planine'),
             ]),
         PANCombo(
             caseType: caseType,
-            gender: Genders.Neuter,
+            gender: NounBankGeneral.lice.gender,
             isPlural: false,
             isAnimate: false,
             translation: N.t('ex_Lice_je_prednji_dio_glave'),
@@ -174,15 +233,14 @@ class NominativExercises {
                 isCorrectable: true,
                 actualObject: NounBankGeneral.lice,
                 displayValue: '',
-                correctValues:
-                    NounBankGeneral.lice.getDeclensions(false, Cases.Nom),
+                correctValues: NounBankGeneral.lice.nominativ.singular,
                 grammarType: GrammarTypes.noun,
               ),
               CaseSentencePart(displayValue: 'je prednji dio glave'),
             ]),
         PANCombo(
             caseType: caseType,
-            gender: Genders.Feminine,
+            gender: NounBankGeneral.majka.gender,
             isPlural: false,
             isAnimate: true,
             translation: N.t('ex_Njezina_majka_je_žena_koja_voli_putovati'),
@@ -191,16 +249,15 @@ class NominativExercises {
                 isCorrectable: true,
                 actualObject: PossessivePronounBank.njezin,
                 displayValue: '',
-                correctValues: PossessivePronounBank.njezin
-                    .getDeclensions(Genders.Feminine, false, Cases.Nom, true),
+                correctValues:
+                    PossessivePronounBank.njezin.nominativ!.feminine!.singular,
                 grammarType: GrammarTypes.possessivePronoun,
               ),
               CaseSentencePart(
                 isCorrectable: true,
                 actualObject: NounBankGeneral.majka,
                 displayValue: '',
-                correctValues:
-                    NounBankGeneral.majka.getDeclensions(false, Cases.Nom),
+                correctValues: NounBankGeneral.majka.nominativ.singular,
                 grammarType: GrammarTypes.noun,
               ),
               CaseSentencePart(displayValue: 'je'),
@@ -208,36 +265,34 @@ class NominativExercises {
                 isCorrectable: true,
                 actualObject: NounBankGeneral.zena,
                 displayValue: '',
-                correctValues:
-                    NounBankGeneral.zena.getDeclensions(false, Cases.Nom),
+                correctValues: NounBankGeneral.zena.nominativ.singular,
                 grammarType: GrammarTypes.noun,
               ),
               CaseSentencePart(displayValue: 'koja voli putovati'),
             ]),
         PANCombo(
             caseType: caseType,
-            gender: Genders.Feminine,
-            isPlural: false,
+            gender: NounBankGeneral.sestra.gender,
+            isPlural: true,
             isAnimate: true,
-            translation: N.t('ex_Moja_sestra_boji_se_biti_sama'),
+            translation: N.t('ex_Moja_sestra_boje_se_biti_same'),
             sentenceParts: [
               CaseSentencePart(
                 isCorrectable: true,
                 actualObject: PossessivePronounBank.moj,
                 displayValue: '',
-                correctValues: PossessivePronounBank.moj
-                    .getDeclensions(Genders.Feminine, false, Cases.Nom, true),
+                correctValues:
+                    PossessivePronounBank.moj.nominativ!.feminine!.plural,
                 grammarType: GrammarTypes.possessivePronoun,
               ),
               CaseSentencePart(
                 isCorrectable: true,
                 actualObject: NounBankGeneral.sestra,
                 displayValue: '',
-                correctValues:
-                    NounBankGeneral.sestra.getDeclensions(false, Cases.Nom),
+                correctValues: NounBankGeneral.sestra.nominativ.plural,
                 grammarType: GrammarTypes.noun,
               ),
-              CaseSentencePart(displayValue: 'boji se biti sama'),
+              CaseSentencePart(displayValue: 'boje se biti same'),
             ]),
       ];
 

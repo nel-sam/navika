@@ -39,12 +39,12 @@ class NounsIjekavian {
     isAnimate: true,
     nominativ: new DeclensionByCount(singular: ['čovjeka'], plural: ['']),
     genitiv: new DeclensionByCount(singular: ['čovjeka'], plural: ['']),
-    dativ: new DeclensionByCount(singular: ['čovjeki'], plural: ['']),
-    akuzativ: new DeclensionByCount(singular: ['čovjeku'], plural: ['']),
-    lokativ: new DeclensionByCount(singular: ['čovjeki'], plural: ['']),
-    vokativ: new DeclensionByCount(singular: ['čovjeko'], plural: ['']),
+    dativ: new DeclensionByCount(singular: ['čovjeku'], plural: ['']),
+    akuzativ: new DeclensionByCount(singular: ['čovjeka'], plural: ['']),
+    lokativ: new DeclensionByCount(singular: ['čovjeku'], plural: ['']),
+    vokativ: new DeclensionByCount(singular: ['čovječe'], plural: ['']),
     instrumental:
-        new DeclensionByCount(singular: ['čovjekom'], plural: ['čovjekama']),
+        new DeclensionByCount(singular: ['čovjekom'], plural: ['']),
   );
 
   static final Noun stol = Noun(

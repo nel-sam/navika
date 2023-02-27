@@ -131,23 +131,6 @@ class AkuzativExercises {
         ),
         PANCombo(
           caseType: caseType,
-          gender: NounBankGeneral.bolest.gender,
-          isPlural: false,
-          isAnimate: false,
-          translation: N.t('ex_Dobio_sam_bolest'),
-          sentenceParts: [
-            CaseSentencePart(displayValue: 'Dobio sam'),
-            CaseSentencePart(
-              displayValue: NounBankGeneral.bolest.dictionary,
-              isCorrectable: true,
-              actualObject: NounBankGeneral.bolest,
-              grammarType: GrammarTypes.noun,
-              correctValues: NounBankGeneral.bolest.akuzativ.singular,
-            ),
-          ],
-        ),
-        PANCombo(
-          caseType: caseType,
           gender: NounBankGeneral.bolnica.gender,
           isPlural: false,
           isAnimate: false,
@@ -201,9 +184,9 @@ class AkuzativExercises {
         PANCombo(
           caseType: caseType,
           gender: NounBankGeneral.torta.gender,
-          isPlural: false,
+          isPlural: true,
           isAnimate: false,
-          translation: N.t('ex_Ne_znas_koju_tortu_odabrati'),
+          translation: N.t('ex_Ne_znas_koje_torte_odabrati'),
           sentenceParts: [
             CaseSentencePart(displayValue: 'Ne znaš'),
             CaseSentencePart(
@@ -212,16 +195,16 @@ class AkuzativExercises {
               actualObject: DemonstrativePronouns.koji,
               grammarType: GrammarTypes.demonstrativePronoun,
               correctValues:
-                  DemonstrativePronouns.koji.akuzativ!.feminine!.singular,
+                  DemonstrativePronouns.koji.akuzativ!.feminine!.plural,
             ),
             CaseSentencePart(
               displayValue: NounBankGeneral.torta.dictionary,
               isCorrectable: true,
               actualObject: NounBankGeneral.torta,
               grammarType: GrammarTypes.noun,
-              correctValues: NounBankGeneral.torta.akuzativ.singular,
+              correctValues: NounBankGeneral.torta.akuzativ.plural,
             ),
-            CaseSentencePart(displayValue: 'tortu odabrati?'),
+            CaseSentencePart(displayValue: 'odabrati?'),
           ],
         ),
         PANCombo(
@@ -229,7 +212,7 @@ class AkuzativExercises {
           gender: NounBankGeneral.macka.gender,
           isPlural: false,
           isAnimate: true,
-          translation: N.t('ex_Zelim_kupiti_bijelu_macku'),
+          translation: N.t('ex_Zelim_kupiti_bijele_macke'),
           sentenceParts: [
             CaseSentencePart(
                 displayValue: !isSerbian ? 'Želim kupiti' : 'Želim da kupim'),
@@ -243,50 +226,99 @@ class AkuzativExercises {
                   : AdjectivesEkavian.bel,
               grammarType: GrammarTypes.adjective,
               correctValues: !isSerbian
-                  ? AdjectivesIjekavian.bijel.akuzativ!.feminine!.singular
-                  : AdjectivesEkavian.bel.akuzativ!.feminine!.singular,
+                  ? AdjectivesIjekavian.bijel.akuzativ!.feminine!.plural
+                  : AdjectivesEkavian.bel.akuzativ!.feminine!.plural,
             ),
             CaseSentencePart(
               displayValue: NounBankGeneral.macka.dictionary,
               isCorrectable: true,
               actualObject: NounBankGeneral.macka,
               grammarType: GrammarTypes.noun,
-              correctValues: NounBankGeneral.macka.akuzativ.singular,
+              correctValues: NounBankGeneral.macka.akuzativ.plural,
             ),
           ],
         ),
         PANCombo(
           caseType: caseType,
-          gender: NounsIjekavian.covjek.gender,
-          isPlural: false,
-          isAnimate: true,
-          translation: N.t('ex_Primijetio_sam_visokog_covjeka'),
-          extraInfo: N.t('extrainfo_akusativ_for_male_animate'),
+          gender: NounBankGeneral.jezero.gender,
+          isPlural: true,
+          isAnimate: false,
+          translation: N.t('ex_Vidio_sam_lijepa_jezera_u_Crnoj_Gori'),
           sentenceParts: [
-            CaseSentencePart(displayValue: 'Primijetio sam'),
             CaseSentencePart(
-              displayValue: AdjectiveBankGeneral.velik.dictionary,
-              isCorrectable: true,
-              actualObject: AdjectiveBankGeneral.velik,
-              grammarType: GrammarTypes.adjective,
-              correctValues:
-                  AdjectiveBankGeneral.velik.genitiv!.masculine.singular,
-            ),
+                displayValue: isCroatian ? 'Vidio sam' : 'Video sam'),
             CaseSentencePart(
               displayValue: !isSerbian
-                  ? NounsIjekavian.covjek.dictionary
-                  : NounsEkavian.covek.dictionary,
+                  ? AdjectivesIjekavian.lijep.dictionary
+                  : AdjectivesEkavian.lep.dictionary,
               isCorrectable: true,
-              actualObject:
-                  !isSerbian ? NounsIjekavian.covjek : NounsEkavian.covek,
-              grammarType: GrammarTypes.noun,
+              actualObject: !isSerbian
+                  ? AdjectivesIjekavian.lijep
+                  : AdjectivesEkavian.lep,
+              grammarType: GrammarTypes.adjective,
               correctValues: !isSerbian
-                  ? NounsIjekavian.covjek.akuzativ.singular
-                  : NounsEkavian.covek.akuzativ.singular,
+                  ? AdjectivesIjekavian.lijep.akuzativ!.feminine!.plural
+                  : AdjectivesEkavian.lep.akuzativ!.feminine!.plural,
+            ),
+            CaseSentencePart(
+              displayValue: NounBankGeneral.jezero.dictionary,
+              isCorrectable: true,
+              actualObject: NounBankGeneral.jezero,
+              grammarType: GrammarTypes.noun,
+              correctValues: NounBankGeneral.jezero.akuzativ.plural,
+            ),
+            CaseSentencePart(displayValue: 'u Crnoj Gori')
+          ],
+        ),
+        PANCombo(
+          caseType: caseType,
+          gender: NounBankGeneral.poklon.gender,
+          isPlural: true,
+          isAnimate: false,
+          translation: N.t('ex_Za_vas_smo_odabrali_najbolje_poklone'),
+          sentenceParts: [
+            CaseSentencePart(displayValue: 'Za vas smo odabrali'),
+            CaseSentencePart(
+              displayValue: AdjectiveBankGeneral.najbolji.dictionary,
+              isCorrectable: true,
+              actualObject: AdjectiveBankGeneral.najbolji,
+              grammarType: GrammarTypes.adjective,
+              correctValues: AdjectiveBankGeneral.najbolji.akuzativ!.masculine.plural,
+            ),
+            CaseSentencePart(
+              displayValue: NounBankGeneral.poklon.dictionary,
+              isCorrectable: true,
+              actualObject: NounBankGeneral.poklon,
+              grammarType: GrammarTypes.noun,
+              correctValues: NounBankGeneral.poklon.akuzativ.plural,
             ),
           ],
         ),
-        // TODO: Aku male animate
+        PANCombo(
+          caseType: caseType,
+          gender: NounBankGeneral..gender,
+          isPlural: true,
+          isAnimate: true,
+          translation: N.t('ex_'),
+          sentenceParts: [
+            CaseSentencePart(displayValue: ''),
+            CaseSentencePart(
+              displayValue: AdjectiveBankGeneral.najbolji.dictionary,
+              isCorrectable: true,
+              actualObject: AdjectiveBankGeneral.najbolji,
+              grammarType: GrammarTypes.adjective,
+              correctValues: AdjectiveBankGeneral.najbolji.akuzativ!.masculine.plural,
+            ),
+            CaseSentencePart(
+              displayValue: NounBankGeneral..dictionary,
+              isCorrectable: true,
+              actualObject: NounBankGeneral.,
+              grammarType: GrammarTypes.noun,
+              correctValues: NounBankGeneral..akuzativ.plural,
+            ),
+          ],
+        ),
+        // TODO: MSA, MPA
       ];
 
   List<PANCombo> get personalPronouns => [
@@ -454,5 +486,55 @@ class AkuzativExercises {
             translation: N.t('ex_Koja_je_vrsta_kreveta_prava_za_vas'))
       ];
 
-  List<PANCombo> get premium => [];
+  List<PANCombo> get premium => [
+        // Irregulars
+        PANCombo(
+          caseType: caseType,
+          gender: NounBankGeneral.bolest.gender,
+          isPlural: false,
+          isAnimate: false,
+          translation: N.t('ex_Dobio_sam_bolest'),
+          sentenceParts: [
+            CaseSentencePart(displayValue: 'Dobio sam'),
+            CaseSentencePart(
+              displayValue: NounBankGeneral.bolest.dictionary,
+              isCorrectable: true,
+              actualObject: NounBankGeneral.bolest,
+              grammarType: GrammarTypes.noun,
+              correctValues: NounBankGeneral.bolest.akuzativ.singular,
+            ),
+          ],
+        ),
+        PANCombo(
+          caseType: caseType,
+          gender: NounsIjekavian.covjek.gender,
+          isPlural: false,
+          isAnimate: true,
+          translation: N.t('ex_Primijetio_sam_visokog_covjeka'),
+          extraInfo: N.t('extrainfo_akusativ_for_male_animate'),
+          sentenceParts: [
+            CaseSentencePart(displayValue: 'Primijetio sam'),
+            CaseSentencePart(
+              displayValue: AdjectiveBankGeneral.velik.dictionary,
+              isCorrectable: true,
+              actualObject: AdjectiveBankGeneral.velik,
+              grammarType: GrammarTypes.adjective,
+              correctValues:
+                  AdjectiveBankGeneral.velik.genitiv!.masculine.singular,
+            ),
+            CaseSentencePart(
+              displayValue: !isSerbian
+                  ? NounsIjekavian.covjek.dictionary
+                  : NounsEkavian.covek.dictionary,
+              isCorrectable: true,
+              actualObject:
+                  !isSerbian ? NounsIjekavian.covjek : NounsEkavian.covek,
+              grammarType: GrammarTypes.noun,
+              correctValues: !isSerbian
+                  ? NounsIjekavian.covjek.akuzativ.singular
+                  : NounsEkavian.covek.akuzativ.singular,
+            ),
+          ],
+        ),
+      ];
 }

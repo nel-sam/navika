@@ -4,6 +4,21 @@ import 'package:navika/models/noun.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 
 class NounBankGeneral {
+  static final Noun jezero = Noun(
+    dictionary: 'jezero',
+    tags: [Tags.Location, Tags.NaturalFeature],
+    gender: Genders.Neuter,
+    isAnimate: false,
+    nominativ: new DeclensionByCount(singular: ['jezero'], plural: ['jezera']),
+    genitiv: new DeclensionByCount(singular: ['jezera'], plural: ['jezera']),
+    dativ: new DeclensionByCount(singular: ['jezeru'], plural: ['jezerima']),
+    akuzativ: new DeclensionByCount(singular: ['jezero'], plural: ['jezera']),
+    lokativ: new DeclensionByCount(singular: ['jezeru'], plural: ['jezerima']),
+    vokativ: new DeclensionByCount(singular: ['jezero'], plural: ['jezera']),
+    instrumental:
+        new DeclensionByCount(singular: ['jezerom'], plural: ['jezerima']),
+  );
+
   static final Noun ruka = Noun(
     dictionary: 'ruka',
     tags: [Tags.Food, Tags.Portable],

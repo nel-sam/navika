@@ -59,48 +59,6 @@ class Adjective {
     }
   }
 
-  List<String> getDeclensions(
-      Genders gender, bool isPlural, Cases caseType, bool isAnimate) {
-    Declension declension;
-
-    switch (caseType) {
-      case Cases.Aku:
-        declension = this.akuzativ!;
-        break;
-      case Cases.Dat:
-        declension = this.dativ!;
-        break;
-      case Cases.Gen:
-        declension = this.genitiv!;
-        break;
-      case Cases.Ins:
-        declension = this.instrumental!;
-        break;
-      case Cases.Lok:
-        declension = this.lokativ!;
-        break;
-      case Cases.Nom:
-      case Cases.All:
-        declension = this.nominativ!;
-        break;
-      case Cases.Vok:
-        declension = this.vokativ!;
-        break;
-    }
-
-    if (gender == Genders.Masculine) {
-      return isPlural
-          ? declension.masculine.plural
-          : declension.masculine.singular;
-    } else if (gender == Genders.Feminine) {
-      return isPlural
-          ? declension.feminine!.plural
-          : declension.feminine!.singular;
-    } else {
-      return isPlural ? declension.neuter!.plural : declension.neuter!.singular;
-    }
-  }
-
   List<String> getDeclensionsForCaseType(Cases caseType) {
     switch (caseType) {
       case Cases.Ins:

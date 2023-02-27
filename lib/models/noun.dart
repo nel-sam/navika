@@ -57,37 +57,6 @@ class Noun {
     }
   }
 
-  List<String> getDeclensions(bool isPlural, Cases caseType) {
-    DeclensionByCount declension;
-
-    switch (caseType) {
-      case Cases.Aku:
-        declension = this.akuzativ;
-        break;
-      case Cases.Dat:
-        declension = this.dativ!;
-        break;
-      case Cases.Gen:
-        declension = this.genitiv;
-        break;
-      case Cases.Ins:
-        declension = this.instrumental;
-        break;
-      case Cases.Lok:
-        declension = this.lokativ;
-        break;
-      case Cases.Nom:
-      case Cases.All:
-        declension = this.nominativ;
-        break;
-      case Cases.Vok:
-        declension = this.vokativ;
-        break;
-    }
-
-    return isPlural ? declension.plural : declension.singular;
-  }
-
   List<String> getDeclensionsForCaseType(Cases caseType) {
     switch (caseType) {
       case Cases.Ins:
