@@ -16,7 +16,6 @@ class GenitivExercises {
   }
 
   List<PANCombo> get general => [
-    // TODO: Neut sing & pl, fem and masc pl
         PANCombo(
             caseType: caseType,
             gender: NounBankGeneral.grad.gender,
@@ -147,6 +146,59 @@ class GenitivExercises {
           ],
           isAnimate: false,
           translation: N.t('ex_Mogu_li_dobiti_malo_te_slatke_torte'),
+        ),
+
+        PANCombo(
+          caseType: caseType,
+          gender: NounBankGeneral.pravilo.gender,
+          isPlural: true,
+          sentenceParts: [
+            CaseSentencePart(displayValue: "Ova škola nema stroga pravila"),
+            CaseSentencePart(
+              isCorrectable: true,
+              actualObject: AdjectiveBankGeneral.strogi,
+              displayValue: AdjectiveBankGeneral.strogi.dictionary,
+              correctValues:
+                  AdjectiveBankGeneral.strogi.genitiv!.neuter!.plural,
+              grammarType: GrammarTypes.adjective,
+            ),
+            CaseSentencePart(
+              isCorrectable: true,
+              actualObject: NounBankGeneral.pravilo,
+              displayValue: NounBankGeneral.pravilo.dictionary,
+              correctValues: NounBankGeneral.pravilo.genitiv.plural,
+              grammarType: GrammarTypes.noun,
+            ),
+            CaseSentencePart(displayValue: "?"),
+          ],
+          isAnimate: false,
+          translation: N.t('ex_Ova_skola_nema_stroga_pravila'),
+        ),
+
+        PANCombo(
+          caseType: caseType,
+          gender: NounBankGeneral.more.gender,
+          isPlural: true,
+          sentenceParts: [
+            CaseSentencePart(displayValue: "Pretvorilo se u jedno od"),
+            CaseSentencePart(
+              isCorrectable: true,
+              actualObject: AdjectiveBankGeneral.najveci,
+              displayValue: AdjectiveBankGeneral.najveci.dictionary,
+              correctValues:
+                  AdjectiveBankGeneral.najveci.genitiv!.neuter!.plural,
+              grammarType: GrammarTypes.adjective,
+            ),
+            CaseSentencePart(
+              isCorrectable: true,
+              actualObject: NounBankGeneral.more,
+              displayValue: NounBankGeneral.more.dictionary,
+              correctValues: NounBankGeneral.more.genitiv.singular,
+              grammarType: GrammarTypes.noun,
+            ),
+          ],
+          isAnimate: false,
+          translation: N.t('ex_Pretvorilo_se_u_jedno_od_najvecih_mora'),
         ),
       ];
 

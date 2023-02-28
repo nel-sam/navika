@@ -3,6 +3,21 @@ import 'package:navika/models/models.dart';
 import 'package:navika/models/noun.dart';
 
 class NounsEkavian {
+      static final Noun mesto = Noun(
+    dictionary: 'mesto',
+    tags: [Tags.Season, Tags.Weather],
+    gender: Genders.Neuter,
+    isAnimate: false,
+    nominativ: new DeclensionByCount(singular: ['mesto'], plural: ['mesta']),
+    genitiv: new DeclensionByCount(singular: ['mesta'], plural: ['mesta']),
+    dativ: new DeclensionByCount(singular: ['mestu'], plural: ['mestima']),
+    akuzativ: new DeclensionByCount(singular: ['mesto'], plural: ['mesta']),
+    lokativ: new DeclensionByCount(singular: ['mestu'], plural: ['mestima']),
+    vokativ: new DeclensionByCount(singular: ['mesto'], plural: ['mesta']),
+    instrumental:
+        new DeclensionByCount(singular: ['mestom'], plural: ['mestima']),
+  );
+
   static final Noun kafa = Noun(
     dictionary: 'kafa',
     tags: [Tags.Food, Tags.Drink],

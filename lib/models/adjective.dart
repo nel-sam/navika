@@ -11,7 +11,6 @@ class Adjective {
   late Declension? dativ;
   late Declension? genitiv;
   late Declension? vokativ;
-  late List<Tags> toAvoid;
 
   Adjective({
     required this.dictionary,
@@ -22,7 +21,6 @@ class Adjective {
     this.instrumental,
     this.vokativ,
     this.dativ,
-    this.toAvoid = const [],
   }) {
     if (this.nominativ == null) {
       this.nominativ = Declension(
@@ -134,18 +132,6 @@ class Adjective {
     ].toSet().toList().where((element) => element.length > 0).toList();
 
     return shuffle ? result.shuffleStrings() : result;
-  }
-
-  bool isCompatible(List<Tags> tags) {
-    if (tags.contains(Tags.Season) || tags.contains(Tags.Country)) {
-      return false;
-    }
-
-    final lists = [tags, toAvoid];
-    final commonElements = lists.fold<Set>(
-        lists.first.toSet(), (a, b) => a.intersection(b.toSet()));
-
-    return commonElements.isEmpty;
   }
 
   int longestForCase(Cases caseType) {

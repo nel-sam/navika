@@ -1,11 +1,9 @@
 import 'package:navika/models/adjective.dart';
-import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 
 class PossessivePronounBank {
   static final moj = Adjective(
     dictionary: 'moj',
-    toAvoid: [Tags.Season, Tags.Country],
     nominativ: new Declension(
       masculine: new DeclensionByGender(singular: ['moj'], plural: ['moji']),
       feminine: new DeclensionByGender(singular: ['moja'], plural: ['moje']),
@@ -59,7 +57,6 @@ class PossessivePronounBank {
   );
   static final tvoj = Adjective(
     dictionary: 'tvoj',
-    toAvoid: [Tags.Season, Tags.Country],
     nominativ: new Declension(
       masculine: new DeclensionByGender(singular: ['tvoj'], plural: ['tvoji']),
       feminine: new DeclensionByGender(singular: ['tvoja'], plural: ['tvoje']),
@@ -111,7 +108,6 @@ class PossessivePronounBank {
   );
   static final svoj = Adjective(
     dictionary: 'svoj',
-    toAvoid: [Tags.Season, Tags.Country],
     nominativ: new Declension(
       masculine: new DeclensionByGender(singular: ['svoj'], plural: ['svoji']),
       feminine: new DeclensionByGender(singular: ['svoja'], plural: ['svoje']),
@@ -165,7 +161,6 @@ class PossessivePronounBank {
   );
   static final njegov = Adjective(
     dictionary: 'njegov',
-    toAvoid: [Tags.Season, Tags.Country],
     nominativ: new Declension(
       masculine:
           new DeclensionByGender(singular: ['njegov'], plural: ['njegovi']),
@@ -227,7 +222,6 @@ class PossessivePronounBank {
   );
   static final njezin = Adjective(
     dictionary: 'njezin',
-    toAvoid: [Tags.Season, Tags.Country],
     nominativ: new Declension(
       masculine:
           new DeclensionByGender(singular: ['njezin'], plural: ['njezini']),
@@ -290,7 +284,6 @@ class PossessivePronounBank {
   );
   static final njihov = Adjective(
     dictionary: 'njihov',
-    toAvoid: [Tags.Season, Tags.Country],
     nominativ: new Declension(
       masculine:
           new DeclensionByGender(singular: ['njihov'], plural: ['njihovi']),
@@ -352,7 +345,6 @@ class PossessivePronounBank {
   );
   static final nas = Adjective(
     dictionary: 'naš',
-    toAvoid: [Tags.Season, Tags.Country, Tags.Weather],
     nominativ: new Declension(
       masculine: new DeclensionByGender(singular: ['naš'], plural: ['naši']),
       feminine: new DeclensionByGender(singular: ['naša'], plural: ['naše']),
@@ -398,7 +390,6 @@ class PossessivePronounBank {
   );
   static final vas = Adjective(
     dictionary: 'vaš',
-    toAvoid: [Tags.Season, Tags.Country],
     nominativ: new Declension(
       masculine: new DeclensionByGender(singular: ['vaš'], plural: ['vaši']),
       feminine: new DeclensionByGender(singular: ['vaša'], plural: ['vaše']),
@@ -444,7 +435,6 @@ class PossessivePronounBank {
   );
   static final ovaj = Adjective(
     dictionary: 'ovaj',
-    toAvoid: [Tags.Season, Tags.Country],
     nominativ: new Declension(
       masculine: new DeclensionByGender(singular: ['ovaj'], plural: ['ovi']),
       feminine: new DeclensionByGender(singular: ['ova'], plural: ['ove']),

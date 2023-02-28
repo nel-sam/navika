@@ -3,6 +3,21 @@ import 'package:navika/models/models.dart';
 import 'package:navika/models/noun.dart';
 
 class NounsIjekavian {
+    static final Noun mjesto = Noun(
+    dictionary: 'mjesto',
+    tags: [Tags.Season, Tags.Weather],
+    gender: Genders.Neuter,
+    isAnimate: false,
+    nominativ: new DeclensionByCount(singular: ['mjesto'], plural: ['mjesta']),
+    genitiv: new DeclensionByCount(singular: ['mjesta'], plural: ['mjesta']),
+    dativ: new DeclensionByCount(singular: ['mjestu'], plural: ['mjestima']),
+    akuzativ: new DeclensionByCount(singular: ['mjesto'], plural: ['mjesta']),
+    lokativ: new DeclensionByCount(singular: ['mjestu'], plural: ['mjestima']),
+    vokativ: new DeclensionByCount(singular: ['mjesto'], plural: ['mjesta']),
+    instrumental:
+        new DeclensionByCount(singular: ['mjestom'], plural: ['mjestima']),
+  );
+
   static final Noun kava = Noun(
     dictionary: 'kava',
     tags: [Tags.Food, Tags.Drink],
@@ -101,6 +116,7 @@ class NounsIjekavian {
     instrumental:
         new DeclensionByCount(singular: ['djevojkom'], plural: ['djevojkama']),
   );
+
   static final Noun ljeto = Noun(
     dictionary: 'ljeto',
     tags: [Tags.Season, Tags.Weather],
@@ -115,6 +131,7 @@ class NounsIjekavian {
     instrumental:
         new DeclensionByCount(singular: ['ljetom'], plural: ['ljetima']),
   );
+
   static final Noun obitelj = Noun(
     dictionary: 'obitelj',
     tags: [Tags.Human, Tags.Group],

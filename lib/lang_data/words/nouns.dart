@@ -4,6 +4,51 @@ import 'package:navika/models/noun.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 
 class NounBankGeneral {
+  static final Noun more = Noun(
+    dictionary: 'more',
+    tags: [Tags.Location, Tags.NaturalFeature],
+    gender: Genders.Neuter,
+    isAnimate: false,
+    nominativ: new DeclensionByCount(singular: ['more'], plural: ['mora']),
+    genitiv: new DeclensionByCount(singular: ['mora'], plural: ['mora']),
+    dativ: new DeclensionByCount(singular: ['moru'], plural: ['morima']),
+    akuzativ: new DeclensionByCount(singular: ['more'], plural: ['mora']),
+    lokativ: new DeclensionByCount(singular: ['moru'], plural: ['morima']),
+    vokativ: new DeclensionByCount(singular: ['moro'], plural: ['mora']),
+    instrumental:
+        new DeclensionByCount(singular: ['morem'], plural: ['morima']),
+  );
+
+  static final Noun pravilo = Noun(
+    dictionary: 'pravilo',
+    tags: [],
+    gender: Genders.Neuter,
+    isAnimate: false,
+    nominativ: new DeclensionByCount(singular: ['pravilo'], plural: ['pravila']),
+    genitiv: new DeclensionByCount(singular: ['pravila'], plural: ['pravila']),
+    dativ: new DeclensionByCount(singular: ['pravilu'], plural: ['pravilima']),
+    akuzativ: new DeclensionByCount(singular: ['pravilo'], plural: ['pravila']),
+    lokativ: new DeclensionByCount(singular: ['pravilu'], plural: ['pravilima']),
+    vokativ: new DeclensionByCount(singular: ['pravilo'], plural: ['pravila']),
+    instrumental:
+        new DeclensionByCount(singular: ['pravilom'], plural: ['pravilima']),
+  );
+
+  static final Noun slon = Noun(
+    dictionary: 'slon',
+    tags: [Tags.Animal],
+    gender: Genders.Masculine,
+    isAnimate: true,
+    nominativ: new DeclensionByCount(singular: ['slon'], plural: ['slonovi']),
+    genitiv: new DeclensionByCount(singular: ['slona'], plural: ['slona']),
+    dativ: new DeclensionByCount(singular: ['slonu'], plural: ['slonovima']),
+    akuzativ: new DeclensionByCount(singular: ['slon'], plural: ['slone']),
+    lokativ: new DeclensionByCount(singular: ['slonu'], plural: ['slonovima']),
+    vokativ: new DeclensionByCount(singular: ['slone'], plural: ['slonovi']),
+    instrumental:
+        new DeclensionByCount(singular: ['slonom'], plural: ['slonovima']),
+  );
+
   static final Noun jezero = Noun(
     dictionary: 'jezero',
     tags: [Tags.Location, Tags.NaturalFeature],
@@ -53,7 +98,7 @@ class NounBankGeneral {
     dictionary: 'poklon',
     tags: [],
     gender: Genders.Masculine,
-    isAnimate: true,
+    isAnimate: false,
     nominativ: new DeclensionByCount(singular: ['poklon'], plural: ['pokloni']),
     genitiv: new DeclensionByCount(singular: ['poklona'], plural: ['poklona']),
     dativ: new DeclensionByCount(singular: ['poklonu'], plural: ['poklonima']),
@@ -67,9 +112,9 @@ class NounBankGeneral {
 
   static final Noun grad = Noun(
     dictionary: 'grad',
-    tags: [],
+    tags: [Tags.Location],
     gender: Genders.Masculine,
-    isAnimate: true,
+    isAnimate: false,
     nominativ: new DeclensionByCount(singular: ['grad'], plural: ['gradovi']),
     genitiv: new DeclensionByCount(singular: ['grada'], plural: ['gradova']),
     dativ: new DeclensionByCount(singular: ['gradu'], plural: ['gradovima']),
@@ -84,7 +129,7 @@ class NounBankGeneral {
     dictionary: 'centar',
     tags: [],
     gender: Genders.Masculine,
-    isAnimate: true,
+    isAnimate: false,
     nominativ: new DeclensionByCount(singular: ['centar'], plural: ['centri']),
     genitiv: new DeclensionByCount(singular: ['centra'], plural: ['centara']),
     dativ: new DeclensionByCount(singular: ['centru'], plural: ['centrima']),
@@ -99,7 +144,7 @@ class NounBankGeneral {
     dictionary: 'čaj',
     tags: [],
     gender: Genders.Masculine,
-    isAnimate: true,
+    isAnimate: false,
     nominativ: new DeclensionByCount(singular: ['čaj'], plural: ['čajevi']),
     genitiv: new DeclensionByCount(singular: ['čaja'], plural: ['čajeva']),
     dativ: new DeclensionByCount(singular: ['čaju'], plural: ['čajevima']),
@@ -129,7 +174,7 @@ class NounBankGeneral {
     dictionary: 'život',
     tags: [],
     gender: Genders.Masculine,
-    isAnimate: true,
+    isAnimate: false,
     nominativ: new DeclensionByCount(singular: ['život'], plural: ['životi']),
     genitiv: new DeclensionByCount(singular: ['života'], plural: ['života']),
     dativ: new DeclensionByCount(singular: ['životu'], plural: ['životima']),

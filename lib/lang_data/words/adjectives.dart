@@ -1,11 +1,203 @@
 import 'package:navika/models/adjective.dart';
-import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 
 class AdjectiveBankGeneral {
+  static final Adjective najveci = Adjective(
+    dictionary: 'najveći',
+    nominativ: new Declension(
+      masculine:
+          new DeclensionByGender(singular: ['najveći'], plural: ['najveći']),
+      feminine:
+          new DeclensionByGender(singular: ['najveća'], plural: ['najveće']),
+      neuter:
+          new DeclensionByGender(singular: ['najvećo'], plural: ['najveća']),
+    ),
+    akuzativ: new Declension(
+      masculine:
+          new DeclensionByGender(singular: ['najveći'], plural: ['najveće']),
+      feminine:
+          new DeclensionByGender(singular: ['najveću'], plural: ['najveće']),
+      neuter:
+          new DeclensionByGender(singular: ['najvećo'], plural: ['najveća']),
+    ),
+    instrumental: new Declension(
+      masculine: new DeclensionByGender(
+          singular: ['najvećim'], plural: ['najvećim']),
+      feminine: new DeclensionByGender(
+          singular: ['najvećom'], plural: ['najvećim']),
+      neuter: new DeclensionByGender(
+          singular: ['najvećim'], plural: ['najvećim']),
+    ),
+    lokativ: new Declension(
+      masculine: new DeclensionByGender(
+          singular: ['najvećom'], plural: ['najvećim']),
+      feminine: new DeclensionByGender(
+          singular: ['najvećoj'], plural: ['najvećim']),
+      neuter: new DeclensionByGender(
+          singular: ['najvećom'], plural: ['najvećim']),
+    ),
+    genitiv: new Declension(
+      masculine: new DeclensionByGender(
+          singular: ['najvećeg'], plural: ['najvećih']),
+      feminine:
+          new DeclensionByGender(singular: ['najveće'], plural: ['najvećih']),
+      neuter: new DeclensionByGender(
+          singular: ['najvećeg'], plural: ['najvećih']),
+    ),
+    vokativ: new Declension(
+      masculine: new DeclensionByGender(singular: [''], plural: ['']),
+      feminine: new DeclensionByGender(singular: [''], plural: ['']),
+      neuter: new DeclensionByGender(singular: [''], plural: ['']),
+    ),
+  );
+
+  static final Adjective strogi = Adjective(
+    dictionary: 'strogi',
+    nominativ: new Declension(
+      masculine:
+          new DeclensionByGender(singular: ['strogi'], plural: ['strogi']),
+      feminine:
+          new DeclensionByGender(singular: ['stroga'], plural: ['stroge']),
+      neuter: new DeclensionByGender(singular: ['strogo'], plural: ['stroga']),
+    ),
+    akuzativ: new Declension(
+      masculine:
+          new DeclensionByGender(singular: ['strogi'], plural: ['stroge']),
+      feminine:
+          new DeclensionByGender(singular: ['strogu'], plural: ['stroge']),
+      neuter: new DeclensionByGender(singular: ['strogo'], plural: ['stroga']),
+    ),
+    instrumental: new Declension(
+      masculine:
+          new DeclensionByGender(singular: ['strogim'], plural: ['strogim']),
+      feminine:
+          new DeclensionByGender(singular: ['strogom'], plural: ['strogim']),
+      neuter:
+          new DeclensionByGender(singular: ['strogim'], plural: ['strogim']),
+    ),
+    lokativ: new Declension(
+      masculine:
+          new DeclensionByGender(singular: ['strogom'], plural: ['strogim']),
+      feminine:
+          new DeclensionByGender(singular: ['strogoj'], plural: ['strogim']),
+      neuter:
+          new DeclensionByGender(singular: ['strogom'], plural: ['strogim']),
+    ),
+    genitiv: new Declension(
+      masculine:
+          new DeclensionByGender(singular: ['strogog'], plural: ['strogih']),
+      feminine:
+          new DeclensionByGender(singular: ['stroge'], plural: ['strogih']),
+      neuter:
+          new DeclensionByGender(singular: ['strogog'], plural: ['strogih']),
+    ),
+    vokativ: new Declension(
+      masculine: new DeclensionByGender(singular: [''], plural: ['']),
+      feminine: new DeclensionByGender(singular: [''], plural: ['']),
+      neuter: new DeclensionByGender(singular: [''], plural: ['']),
+    ),
+  );
+
+  static final Adjective ljubazan = Adjective(
+    dictionary: 'ljubazan',
+    nominativ: new Declension(
+      masculine:
+          new DeclensionByGender(singular: ['ljubazni'], plural: ['ljubazni']),
+      feminine:
+          new DeclensionByGender(singular: ['ljubazna'], plural: ['ljubazne']),
+      neuter:
+          new DeclensionByGender(singular: ['ljubazno'], plural: ['ljubazna']),
+    ),
+    akuzativ: new Declension(
+      masculine:
+          new DeclensionByGender(singular: ['ljubazni'], plural: ['ljubazne']),
+      feminine:
+          new DeclensionByGender(singular: ['ljubaznu'], plural: ['ljubazne']),
+      neuter:
+          new DeclensionByGender(singular: ['ljubazno'], plural: ['ljubazna']),
+    ),
+    instrumental: new Declension(
+      masculine: new DeclensionByGender(
+          singular: ['ljubaznim'], plural: ['ljubaznim']),
+      feminine: new DeclensionByGender(
+          singular: ['ljubaznom'], plural: ['ljubaznim']),
+      neuter: new DeclensionByGender(
+          singular: ['ljubaznim'], plural: ['ljubaznim']),
+    ),
+    lokativ: new Declension(
+      masculine: new DeclensionByGender(
+          singular: ['ljubaznom'], plural: ['ljubaznim']),
+      feminine: new DeclensionByGender(
+          singular: ['ljubaznoj'], plural: ['ljubaznim']),
+      neuter: new DeclensionByGender(
+          singular: ['ljubaznom'], plural: ['ljubaznim']),
+    ),
+    genitiv: new Declension(
+      masculine: new DeclensionByGender(
+          singular: ['ljubaznog'], plural: ['ljubaznih']),
+      feminine:
+          new DeclensionByGender(singular: ['ljubazne'], plural: ['ljubaznih']),
+      neuter: new DeclensionByGender(
+          singular: ['ljubaznog'], plural: ['ljubaznih']),
+    ),
+    vokativ: new Declension(
+      masculine: new DeclensionByGender(singular: [''], plural: ['']),
+      feminine: new DeclensionByGender(singular: [''], plural: ['']),
+      neuter: new DeclensionByGender(singular: [''], plural: ['']),
+    ),
+  );
+
+  static final Adjective azijski = Adjective(
+    dictionary: 'azijski',
+    nominativ: new Declension(
+      masculine:
+          new DeclensionByGender(singular: ['azijski'], plural: ['azijski']),
+      feminine:
+          new DeclensionByGender(singular: ['azijska'], plural: ['azijske']),
+      neuter:
+          new DeclensionByGender(singular: ['azijsko'], plural: ['azijska']),
+    ),
+    akuzativ: new Declension(
+      masculine:
+          new DeclensionByGender(singular: ['azijski'], plural: ['azijske']),
+      feminine:
+          new DeclensionByGender(singular: ['azijsku'], plural: ['azijske']),
+      neuter:
+          new DeclensionByGender(singular: ['azijsko'], plural: ['azijska']),
+    ),
+    instrumental: new Declension(
+      masculine:
+          new DeclensionByGender(singular: ['azijskim'], plural: ['azijskim']),
+      feminine:
+          new DeclensionByGender(singular: ['azijskom'], plural: ['azijskim']),
+      neuter:
+          new DeclensionByGender(singular: ['azijskim'], plural: ['azijskim']),
+    ),
+    lokativ: new Declension(
+      masculine:
+          new DeclensionByGender(singular: ['azijskom'], plural: ['azijskim']),
+      feminine:
+          new DeclensionByGender(singular: ['azijskoj'], plural: ['azijskim']),
+      neuter:
+          new DeclensionByGender(singular: ['azijskom'], plural: ['azijskim']),
+    ),
+    genitiv: new Declension(
+      masculine:
+          new DeclensionByGender(singular: ['azijskog'], plural: ['azijskih']),
+      feminine:
+          new DeclensionByGender(singular: ['azijske'], plural: ['azijskih']),
+      neuter:
+          new DeclensionByGender(singular: ['azijskog'], plural: ['azijskih']),
+    ),
+    vokativ: new Declension(
+      masculine: new DeclensionByGender(singular: [''], plural: ['']),
+      feminine: new DeclensionByGender(singular: [''], plural: ['']),
+      neuter: new DeclensionByGender(singular: [''], plural: ['']),
+    ),
+  );
+
   static final Adjective mali = Adjective(
     dictionary: 'mali',
-    toAvoid: [Tags.Season],
     nominativ: new Declension(
       masculine: new DeclensionByGender(singular: ['mali'], plural: ['mali']),
       feminine: new DeclensionByGender(singular: ['mala'], plural: ['male']),
@@ -40,7 +232,6 @@ class AdjectiveBankGeneral {
 
   static final Adjective brzi = Adjective(
     dictionary: 'brzi',
-    toAvoid: [Tags.Season],
     nominativ: new Declension(
       masculine: new DeclensionByGender(singular: ['brzi'], plural: ['brzi']),
       feminine: new DeclensionByGender(singular: ['brza'], plural: ['brze']),
@@ -75,7 +266,6 @@ class AdjectiveBankGeneral {
 
   static final Adjective crni = Adjective(
     dictionary: 'crni',
-    toAvoid: [Tags.Season],
     nominativ: new Declension(
       masculine: new DeclensionByGender(singular: ['crni'], plural: ['crni']),
       feminine: new DeclensionByGender(singular: ['crna'], plural: ['crne']),
@@ -110,7 +300,6 @@ class AdjectiveBankGeneral {
 
   static final Adjective dobri = Adjective(
     dictionary: 'dobri',
-    toAvoid: [Tags.Season],
     nominativ: new Declension(
       masculine: new DeclensionByGender(singular: ['dobri'], plural: ['dobri']),
       feminine: new DeclensionByGender(singular: ['dobra'], plural: ['dobre']),
@@ -150,7 +339,6 @@ class AdjectiveBankGeneral {
 
   static final Adjective neki = Adjective(
     dictionary: 'neki',
-    toAvoid: [Tags.Season],
     nominativ: new Declension(
       masculine: new DeclensionByGender(singular: ['neki'], plural: ['neki']),
       feminine: new DeclensionByGender(singular: ['neka'], plural: ['neke']),
@@ -185,7 +373,6 @@ class AdjectiveBankGeneral {
 
   static final Adjective ciji = Adjective(
     dictionary: 'čiji',
-    toAvoid: [Tags.Season],
     nominativ: new Declension(
       masculine: new DeclensionByGender(singular: ['čiji'], plural: ['čiji']),
       feminine: new DeclensionByGender(singular: ['čija'], plural: ['čije']),
@@ -224,7 +411,6 @@ class AdjectiveBankGeneral {
 
   static final Adjective prvi = Adjective(
     dictionary: 'prvi',
-    toAvoid: [Tags.Season],
     nominativ: new Declension(
       masculine: new DeclensionByGender(singular: ['prvi'], plural: ['prvi']),
       feminine: new DeclensionByGender(singular: ['prva'], plural: ['prve']),
@@ -261,7 +447,6 @@ class AdjectiveBankGeneral {
 
   static final Adjective dugi = Adjective(
     dictionary: 'dug',
-    toAvoid: [Tags.Season],
     nominativ: new Declension(
       masculine: new DeclensionByGender(singular: ['dugi'], plural: ['dugi']),
       feminine: new DeclensionByGender(singular: ['duga'], plural: ['duge']),
@@ -296,7 +481,6 @@ class AdjectiveBankGeneral {
 
   static final Adjective velik = Adjective(
     dictionary: 'velik',
-    toAvoid: [Tags.Season],
     nominativ: new Declension(
       masculine:
           new DeclensionByGender(singular: ['veliki'], plural: ['veliki']),
@@ -344,7 +528,6 @@ class AdjectiveBankGeneral {
 
   static final Adjective nov = Adjective(
     dictionary: 'nov',
-    toAvoid: [Tags.Season],
     nominativ: new Declension(
       masculine: new DeclensionByGender(singular: ['novi'], plural: ['novi']),
       feminine: new DeclensionByGender(singular: ['nova'], plural: ['nove']),
@@ -384,7 +567,6 @@ class AdjectiveBankGeneral {
 
   static final Adjective star = Adjective(
     dictionary: 'star',
-    toAvoid: [Tags.Season],
     nominativ: new Declension(
       masculine: new DeclensionByGender(singular: ['stari'], plural: ['stari']),
       feminine: new DeclensionByGender(singular: ['stara'], plural: ['stare']),
@@ -426,7 +608,6 @@ class AdjectiveBankGeneral {
 
   static final Adjective hladan = Adjective(
     dictionary: 'hladan',
-    toAvoid: [Tags.Human, Tags.Animal],
     nominativ: new Declension(
       masculine:
           new DeclensionByGender(singular: ['hladni'], plural: ['hladni']),
@@ -469,7 +650,6 @@ class AdjectiveBankGeneral {
 
   static final Adjective vruc = Adjective(
     dictionary: 'vruć',
-    toAvoid: [Tags.Human, Tags.Animal],
     nominativ: new Declension(
       masculine: new DeclensionByGender(singular: ['vrući'], plural: ['vrući']),
       feminine: new DeclensionByGender(singular: ['vruća'], plural: ['vruće']),
@@ -538,16 +718,6 @@ class AdjectiveBankGeneral {
 
   static final Adjective skup = Adjective(
     dictionary: 'skup',
-    toAvoid: [
-      Tags.Human,
-      Tags.Animal,
-      Tags.Health,
-      Tags.Location,
-      Tags.Country,
-      Tags.Emotion,
-      Tags.Weather,
-      Tags.Season,
-    ],
     nominativ: new Declension(
       masculine: new DeclensionByGender(singular: ['skupi'], plural: ['skupi']),
       feminine: new DeclensionByGender(singular: ['skupa'], plural: ['skupe']),
@@ -582,7 +752,6 @@ class AdjectiveBankGeneral {
 
   static final Adjective tuzan = Adjective(
     dictionary: 'tužan',
-    toAvoid: [Tags.Thing, Tags.Emotion],
     nominativ: new Declension(
       masculine: new DeclensionByGender(singular: ['tužni'], plural: ['tužni']),
       feminine: new DeclensionByGender(singular: ['tužna'], plural: ['tužne']),
@@ -617,7 +786,6 @@ class AdjectiveBankGeneral {
 
   static final Adjective sretan = Adjective(
     dictionary: 'sretan',
-    toAvoid: [Tags.Thing, Tags.Emotion],
     nominativ: new Declension(
       masculine:
           new DeclensionByGender(singular: ['sretni'], plural: ['sretni']),
@@ -660,15 +828,6 @@ class AdjectiveBankGeneral {
 
   static final Adjective sladak = Adjective(
     dictionary: 'sladak',
-    toAvoid: [
-      Tags.BodyPart,
-      Tags.Country,
-      Tags.Emotion,
-      Tags.Furniture,
-      Tags.FlatSurface,
-      Tags.Activity,
-      Tags.Adult
-    ],
     nominativ: Declension(
         masculine:
             new DeclensionByGender(singular: ['slatki'], plural: ['slatki']),

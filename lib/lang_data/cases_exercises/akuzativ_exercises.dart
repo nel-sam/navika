@@ -23,8 +23,6 @@ class AkuzativExercises {
   }
 
   List<PANCombo> get general => [
-        // TODO: Neut sing & pl, fem and masc pl etc...
-
         PANCombo(
           caseType: caseType,
           gender: NounBankGeneral.bosna.gender,
@@ -283,7 +281,8 @@ class AkuzativExercises {
               isCorrectable: true,
               actualObject: AdjectiveBankGeneral.najbolji,
               grammarType: GrammarTypes.adjective,
-              correctValues: AdjectiveBankGeneral.najbolji.akuzativ!.masculine.plural,
+              correctValues:
+                  AdjectiveBankGeneral.najbolji.akuzativ!.masculine.plural,
             ),
             CaseSentencePart(
               displayValue: NounBankGeneral.poklon.dictionary,
@@ -296,29 +295,80 @@ class AkuzativExercises {
         ),
         PANCombo(
           caseType: caseType,
-          gender: NounBankGeneral..gender,
+          gender: isSerbian
+              ? NounsEkavian.covek.gender
+              : NounsIjekavian.covjek.gender,
           isPlural: true,
           isAnimate: true,
-          translation: N.t('ex_'),
+          translation: N.t('ex_Znate_li_tog_ljubaznog_covjeka'),
           sentenceParts: [
-            CaseSentencePart(displayValue: ''),
+            CaseSentencePart(displayValue: 'Znate li'),
             CaseSentencePart(
-              displayValue: AdjectiveBankGeneral.najbolji.dictionary,
+              displayValue: DemonstrativePronouns.taj.dictionary,
               isCorrectable: true,
-              actualObject: AdjectiveBankGeneral.najbolji,
-              grammarType: GrammarTypes.adjective,
-              correctValues: AdjectiveBankGeneral.najbolji.akuzativ!.masculine.plural,
+              actualObject: DemonstrativePronouns.taj,
+              grammarType: GrammarTypes.possessivePronoun,
+              correctValues:
+                  DemonstrativePronouns.taj.akuzativ!.masculine.singular,
             ),
             CaseSentencePart(
-              displayValue: NounBankGeneral..dictionary,
+              displayValue: AdjectiveBankGeneral.ljubazan.dictionary,
               isCorrectable: true,
-              actualObject: NounBankGeneral.,
+              actualObject: AdjectiveBankGeneral.ljubazan,
+              grammarType: GrammarTypes.adjective,
+              correctValues:
+                  AdjectiveBankGeneral.ljubazan.akuzativ!.masculine.singular,
+            ),
+            CaseSentencePart(
+              displayValue: isSerbian
+                  ? NounsEkavian.covek.dictionary
+                  : NounsIjekavian.covjek.dictionary,
+              isCorrectable: true,
+              actualObject:
+                  isSerbian ? NounsEkavian.covek : NounsIjekavian.covjek,
               grammarType: GrammarTypes.noun,
-              correctValues: NounBankGeneral..akuzativ.plural,
+              correctValues: isSerbian
+                  ? NounsEkavian.covek.akuzativ.singular
+                  : NounsIjekavian.covjek.akuzativ.singular,
+            ),
+            CaseSentencePart(displayValue: '?'),
+          ],
+        ),
+        PANCombo(
+          caseType: caseType,
+          gender: NounBankGeneral.slon.gender,
+          isPlural: true,
+          isAnimate: true,
+          translation: N.t('ex_Volim_hraniti_ove_azijske_slonove'),
+          sentenceParts: [
+            CaseSentencePart(
+                displayValue:
+                    isSerbian ? 'Volim da nahranili' : 'Volim hraniti'),
+            CaseSentencePart(
+              displayValue: PossessivePronounBank.svoj.dictionary,
+              isCorrectable: true,
+              actualObject: PossessivePronounBank.svoj,
+              grammarType: GrammarTypes.possessivePronoun,
+              correctValues:
+                  PossessivePronounBank.svoj.akuzativ!.masculine.plural,
+            ),
+            CaseSentencePart(
+              displayValue: AdjectiveBankGeneral.azijski.dictionary,
+              isCorrectable: true,
+              actualObject: AdjectiveBankGeneral.azijski,
+              grammarType: GrammarTypes.adjective,
+              correctValues:
+                  AdjectiveBankGeneral.azijski.akuzativ!.masculine.plural,
+            ),
+            CaseSentencePart(
+              displayValue: NounBankGeneral.slon.dictionary,
+              isCorrectable: true,
+              actualObject: NounBankGeneral.slon,
+              grammarType: GrammarTypes.noun,
+              correctValues: NounBankGeneral.slon.akuzativ.plural,
             ),
           ],
         ),
-        // TODO: MSA, MPA
       ];
 
   List<PANCombo> get personalPronouns => [

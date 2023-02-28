@@ -1,5 +1,4 @@
 import 'package:navika/models/adjective.dart';
-import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 
 // No short forms for genitive and locative
@@ -7,7 +6,6 @@ import 'package:navika/models/models.dart';
 class DemonstrativePronouns {
   static final Adjective koji = Adjective(
     dictionary: 'koji',
-    toAvoid: [Tags.Season, Tags.Country],
     nominativ: new Declension(
       masculine: new DeclensionByGender(singular: ['koji'], plural: ['koji']),
       feminine: new DeclensionByGender(singular: ['koja'], plural: ['koje']),
@@ -50,7 +48,6 @@ class DemonstrativePronouns {
 
   static final Adjective taj = Adjective(
     dictionary: 'taj',
-    toAvoid: [Tags.Season, Tags.Country],
     nominativ: new Declension(
       masculine: new DeclensionByGender(singular: ['taj'], plural: ['ti']),
       feminine: new DeclensionByGender(singular: ['ta'], plural: ['te']),
@@ -98,7 +95,6 @@ class DemonstrativePronouns {
 
   static final Adjective onaj = Adjective(
     dictionary: 'onaj',
-    toAvoid: [Tags.Season, Tags.Country],
     nominativ: new Declension(
       masculine: new DeclensionByGender(singular: ['onaj'], plural: ['oni']),
       feminine: new DeclensionByGender(singular: ['ona'], plural: ['one']),
@@ -146,7 +142,6 @@ class DemonstrativePronouns {
 
   static final Adjective svaki = Adjective(
     dictionary: 'svaki',
-    toAvoid: [Tags.Country],
     nominativ: new Declension(
       masculine: new DeclensionByGender(singular: ['svaki'], plural: ['svaki']),
       feminine: new DeclensionByGender(singular: ['svaka'], plural: ['svake']),
