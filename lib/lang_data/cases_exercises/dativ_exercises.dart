@@ -1,4 +1,5 @@
 import 'package:navika/lang_data/words/adjectives.dart';
+import 'package:navika/lang_data/words/demonstrative-pronouns.dart';
 import 'package:navika/lang_data/words/ekavian/nouns_ekavian.dart';
 import 'package:navika/lang_data/words/ijekavian/nouns_ijekavian.dart';
 import 'package:navika/lang_data/words/nouns.dart';
@@ -20,27 +21,91 @@ class DativExercises {
   }
 
   List<PANCombo> get general => [
-    // TODO: Neut sing & pl, fem and masc pl etc...
+        // TODO: Neut sing & pl, fem and masc pl etc...
         // TODO: Koji and adjective exerc
         PANCombo(
             caseType: caseType,
-            gender: Genders.Masculine,
+            gender: NounBankGeneral.pas.gender,
             isPlural: false,
             sentenceParts: [
               CaseSentencePart(
                 isCorrectable: true,
+                actualObject: DemonstrativePronouns.koji,
+                displayValue: DemonstrativePronouns.koji.dictionary,
+                correctValues:
+                    DemonstrativePronouns.koji.dativ!.masculine.singular,
+                grammarType: GrammarTypes.noun,
+              ),
+              CaseSentencePart(
+                isCorrectable: true,
+                actualObject: NounBankGeneral.pas,
+                displayValue: NounBankGeneral.pas.dictionary,
+                correctValues: NounBankGeneral.pas.dativ!.singular,
+                grammarType: GrammarTypes.noun,
+              ),
+              CaseSentencePart(displayValue: 'da dam igračku?'),
+            ],
+            isAnimate: false,
+            translation: N.t('ex_Kojem_psu_da_dam_igracku')),
+        PANCombo(
+            caseType: caseType,
+            gender: NounBankGeneral.macka.gender,
+            isPlural: false,
+            sentenceParts: [
+              CaseSentencePart(
+                isCorrectable: true,
+                actualObject: DemonstrativePronouns.koji,
+                displayValue: DemonstrativePronouns.koji.dictionary,
+                correctValues:
+                    DemonstrativePronouns.koji.dativ!.feminine!.singular,
+                grammarType: GrammarTypes.noun,
+              ),
+              CaseSentencePart(
+                isCorrectable: true,
+                actualObject: NounBankGeneral.macka,
+                displayValue: NounBankGeneral.macka.dictionary,
+                correctValues: NounBankGeneral.macka.dativ!.singular,
+                grammarType: GrammarTypes.noun,
+              ),
+              CaseSentencePart(displayValue: 'da dam hranu?'),
+            ],
+            isAnimate: false,
+            translation: N.t('ex_Kojoj_macki_da_dam_hranu')),
+        PANCombo(
+            caseType: caseType,
+            gender: NounBankGeneral.sin.gender,
+            isPlural: true,
+            sentenceParts: [
+              CaseSentencePart(
+                isCorrectable: true,
+                actualObject: PossessivePronounBank.moj,
+                displayValue: PossessivePronounBank.moj.dictionary,
+                correctValues:
+                    PossessivePronounBank.moj.dativ!.masculine.singular,
+                grammarType: GrammarTypes.possessivePronoun,
+              ),
+              CaseSentencePart(
+                isCorrectable: true,
+                actualObject: AdjectiveBankGeneral.mladi,
+                displayValue: AdjectiveBankGeneral.mladi.dictionary,
+                correctValues:
+                    AdjectiveBankGeneral.mladi.dativ!.masculine.singular,
+                grammarType: GrammarTypes.adjective,
+              ),
+              CaseSentencePart(
+                isCorrectable: true,
                 actualObject: NounBankGeneral.sin,
                 displayValue: NounBankGeneral.sin.dictionary,
-                correctValues: NounBankGeneral.sin.dativ!.singular,
+                correctValues: NounBankGeneral.sin.dativ!.plural,
                 grammarType: GrammarTypes.noun,
               ),
               CaseSentencePart(displayValue: 'je dosadno'),
             ],
             isAnimate: false,
-            translation: N.t('ex_Sinu_je_dosadno')),
+            translation: N.t('ex_Moji_mladim_sinovima_je_dosadno')),
         PANCombo(
             caseType: caseType,
-            gender: Genders.Masculine,
+            gender: NounBankGeneral.poklon.gender,
             isPlural: false,
             sentenceParts: [
               CaseSentencePart(displayValue: 'Nadam se'),
@@ -64,7 +129,7 @@ class DativExercises {
             translation: N.t('ex_Nadam se_nekom_poklonu')),
         PANCombo(
             caseType: caseType,
-            gender: Genders.Masculine,
+            gender: NounBankGeneral.centar.gender,
             isPlural: false,
             sentenceParts: [
               CaseSentencePart(displayValue: 'Idemo prema'),
@@ -79,6 +144,29 @@ class DativExercises {
             ],
             isAnimate: false,
             translation: N.t('ex_Idemo_prema_centru_grada')),
+            PANCombo(
+            caseType: caseType,
+            gender: NounBankGeneral.jezero.gender,
+            isPlural: true,
+            sentenceParts: [
+              CaseSentencePart(displayValue: 'Idem prema'),
+              CaseSentencePart(
+              isCorrectable: true,
+              actualObject: AdjectiveBankGeneral.velik,
+              displayValue: AdjectiveBankGeneral.velik.dictionary,
+              correctValues: AdjectiveBankGeneral.velik.dativ!.neuter!.plural,
+              grammarType: GrammarTypes.adjective,
+            ),
+              CaseSentencePart(
+                isCorrectable: true,
+                actualObject: NounBankGeneral.jezero,
+                displayValue: NounBankGeneral.jezero.dictionary,
+                correctValues: NounBankGeneral.jezero.dativ!.plural,
+                grammarType: GrammarTypes.noun,
+              ),
+            ],
+            isAnimate: false,
+            translation: N.t('ex_Idem_prema_velikim_jezerima')),
         PANCombo(
           caseType: caseType,
           gender: isCroatian
@@ -93,8 +181,7 @@ class DativExercises {
               isCorrectable: true,
               actualObject: AdjectiveBankGeneral.vruc,
               displayValue: AdjectiveBankGeneral.vruc.dictionary,
-              correctValues:
-                  AdjectiveBankGeneral.vruc.dativ!.masculine.singular,
+              correctValues: AdjectiveBankGeneral.vruc.dativ!.neuter!.singular,
               grammarType: GrammarTypes.adjective,
             ),
             CaseSentencePart(
@@ -216,6 +303,30 @@ class DativExercises {
             ],
             isAnimate: false,
             translation: N.t('ex_Poslao_sam_dugo_pismo_svojoj_majci')),
+        PANCombo(
+            caseType: caseType,
+            gender: NounBankGeneral.sestra.gender,
+            isPlural: true,
+            sentenceParts: [
+              CaseSentencePart(displayValue: 'Poslao sam poklone'),
+              CaseSentencePart(
+                isCorrectable: true,
+                actualObject: PossessivePronounBank.tvoj,
+                displayValue: PossessivePronounBank.tvoj.dictionary,
+                correctValues:
+                    PossessivePronounBank.tvoj.dativ!.feminine!.plural,
+                grammarType: GrammarTypes.possessivePronoun,
+              ),
+              CaseSentencePart(
+                isCorrectable: true,
+                actualObject: NounBankGeneral.sestra,
+                displayValue: NounBankGeneral.sestra.dictionary,
+                correctValues: NounBankGeneral.sestra.dativ!.plural,
+                grammarType: GrammarTypes.noun,
+              ),
+            ],
+            isAnimate: false,
+            translation: N.t('ex_Poslao_sam_poklone_tvojim_sestrama')),
       ];
 
   List<PANCombo> get personalPronouns => [

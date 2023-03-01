@@ -635,7 +635,7 @@ class NounBankGeneral {
     akuzativ: new DeclensionByCount(singular: ['mačku'], plural: ['mačke']),
     instrumental:
         new DeclensionByCount(singular: ['mačkom'], plural: ['mačkama']),
-    lokativ: new DeclensionByCount(singular: ['majci'], plural: ['mačkama']),
+    lokativ: new DeclensionByCount(singular: ['mački'], plural: ['mačkama']),
     genitiv:
         new DeclensionByCount(singular: ['mačke'], plural: ['mačaka', 'mački']),
     vokativ: new DeclensionByCount(singular: ['mačko'], plural: ['mačke']),

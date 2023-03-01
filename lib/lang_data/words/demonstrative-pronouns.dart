@@ -29,7 +29,8 @@ class DemonstrativePronouns {
       neuter: new DeclensionByGender(singular: ['kojemu'], plural: ['kojima']),
     ),
     dativ: new Declension(
-      masculine: new DeclensionByGender(singular: ['kojem'], plural: ['tima']),
+      masculine:
+          new DeclensionByGender(singular: ['kojem'], plural: ['kojima']),
       feminine: new DeclensionByGender(singular: ['kojoj'], plural: ['kojima']),
       neuter: new DeclensionByGender(singular: ['kojem'], plural: ['kojima']),
     ),

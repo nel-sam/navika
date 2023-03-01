@@ -95,7 +95,7 @@
   "ex_Cija_je_kava": "¿De quién es el café?",
   "ex_Idemo_prema_centru_grada": "Vamos al centro de la ciudad",
   "ex_Nadam se_nekom_poklonu": "Espero/deseo algún regalo",
-  "ex_Sinu_je_dosadno": "Mi hijo está aburrido (es aburrido para mi hijo)",
+  "ex_Moji_mladim_sinovima_je_dosadno": "Mis hijos jóvenes están aburrido (es aburrido para mis hijos jóvenes)",
   "ex_Meni_je_dosadno": "Yo estoy aburrido (es aburrido para mí)",
   "ex_Sviđa_mi_se_burek_s_dobrim_mesom": "Me gusta el burek con buena carne",
   "ex_Moram_ici_sa_svojom_sestrom": "Necesito que ir con mi hermana",
@@ -114,6 +114,9 @@
   "ex_Znate_li_tog_ljubaznog_covjeka": "¿Conoces a ese hombre amigable?",
   "ex_Ova_skola_nema_stroga_pravila": "Esta escuela no tiene reglas estrictas",
   "ex_Pretvorilo_se_u_jedno_od_najvecih_mora": "Se convirtió en uno de los mares más grandes",
+  "ex_Kojoj_macki_da_dajem_hranu": "¿A cuál gato debo darle comida?",
+  "ex_Kojem_psu_da_dam_igracku": "¿A cuál perro debo darle un juguete?",
+  "ex_Poslao_sam_poklone_tvojim_sestrama": "Envié regalos a tus hermanas",
 
   "extrainfo_brat": "Braća se usa para hablar de various hermanos. Braća se refiere a hombres pero tiene declinaciones como si fuera sustantivo femenino en singular",
   "extrainfo_all_ona_aku_ok": "En esta situación se puede usar cualquier forma acusativo de 'Ona' porque 'je' (del verbo 'biti') no sigue",

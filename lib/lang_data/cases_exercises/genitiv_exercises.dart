@@ -147,7 +147,6 @@ class GenitivExercises {
           isAnimate: false,
           translation: N.t('ex_Mogu_li_dobiti_malo_te_slatke_torte'),
         ),
-
         PANCombo(
           caseType: caseType,
           gender: NounBankGeneral.pravilo.gender,
@@ -174,7 +173,6 @@ class GenitivExercises {
           isAnimate: false,
           translation: N.t('ex_Ova_skola_nema_stroga_pravila'),
         ),
-
         PANCombo(
           caseType: caseType,
           gender: NounBankGeneral.more.gender,

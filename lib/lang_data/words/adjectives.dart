@@ -2,6 +2,45 @@ import 'package:navika/models/adjective.dart';
 import 'package:navika/models/models.dart';
 
 class AdjectiveBankGeneral {
+  static final Adjective mladi = Adjective(
+    dictionary: 'mladi',
+    nominativ: new Declension(
+      masculine: new DeclensionByGender(singular: ['mladi'], plural: ['mladi']),
+      feminine: new DeclensionByGender(singular: ['mlada'], plural: ['mlade']),
+      neuter: new DeclensionByGender(singular: ['mlado'], plural: ['mlada']),
+    ),
+    akuzativ: new Declension(
+      masculine: new DeclensionByGender(singular: ['mladi'], plural: ['mlade']),
+      feminine: new DeclensionByGender(singular: ['mladu'], plural: ['mlade']),
+      neuter: new DeclensionByGender(singular: ['mlado'], plural: ['mlada']),
+    ),
+    instrumental: new Declension(
+      masculine:
+          new DeclensionByGender(singular: ['mladim'], plural: ['mladim']),
+      feminine:
+          new DeclensionByGender(singular: ['mladom'], plural: ['mladim']),
+      neuter: new DeclensionByGender(singular: ['mladim'], plural: ['mladim']),
+    ),
+    lokativ: new Declension(
+      masculine:
+          new DeclensionByGender(singular: ['mladom'], plural: ['mladim']),
+      feminine:
+          new DeclensionByGender(singular: ['mladoj'], plural: ['mladim']),
+      neuter: new DeclensionByGender(singular: ['mladom'], plural: ['mladim']),
+    ),
+    genitiv: new Declension(
+      masculine:
+          new DeclensionByGender(singular: ['mladog'], plural: ['mladih']),
+      feminine: new DeclensionByGender(singular: ['mlade'], plural: ['mladih']),
+      neuter: new DeclensionByGender(singular: ['mladog'], plural: ['mladih']),
+    ),
+    vokativ: new Declension(
+      masculine: new DeclensionByGender(singular: [''], plural: ['']),
+      feminine: new DeclensionByGender(singular: [''], plural: ['']),
+      neuter: new DeclensionByGender(singular: [''], plural: ['']),
+    ),
+  );
+
   static final Adjective najveci = Adjective(
     dictionary: 'najveći',
     nominativ: new Declension(
@@ -21,28 +60,28 @@ class AdjectiveBankGeneral {
           new DeclensionByGender(singular: ['najvećo'], plural: ['najveća']),
     ),
     instrumental: new Declension(
-      masculine: new DeclensionByGender(
-          singular: ['najvećim'], plural: ['najvećim']),
-      feminine: new DeclensionByGender(
-          singular: ['najvećom'], plural: ['najvećim']),
-      neuter: new DeclensionByGender(
-          singular: ['najvećim'], plural: ['najvećim']),
+      masculine:
+          new DeclensionByGender(singular: ['najvećim'], plural: ['najvećim']),
+      feminine:
+          new DeclensionByGender(singular: ['najvećom'], plural: ['najvećim']),
+      neuter:
+          new DeclensionByGender(singular: ['najvećim'], plural: ['najvećim']),
     ),
     lokativ: new Declension(
-      masculine: new DeclensionByGender(
-          singular: ['najvećom'], plural: ['najvećim']),
-      feminine: new DeclensionByGender(
-          singular: ['najvećoj'], plural: ['najvećim']),
-      neuter: new DeclensionByGender(
-          singular: ['najvećom'], plural: ['najvećim']),
+      masculine:
+          new DeclensionByGender(singular: ['najvećom'], plural: ['najvećim']),
+      feminine:
+          new DeclensionByGender(singular: ['najvećoj'], plural: ['najvećim']),
+      neuter:
+          new DeclensionByGender(singular: ['najvećom'], plural: ['najvećim']),
     ),
     genitiv: new Declension(
-      masculine: new DeclensionByGender(
-          singular: ['najvećeg'], plural: ['najvećih']),
+      masculine:
+          new DeclensionByGender(singular: ['najvećeg'], plural: ['najvećih']),
       feminine:
           new DeclensionByGender(singular: ['najveće'], plural: ['najvećih']),
-      neuter: new DeclensionByGender(
-          singular: ['najvećeg'], plural: ['najvećih']),
+      neuter:
+          new DeclensionByGender(singular: ['najvećeg'], plural: ['najvećih']),
     ),
     vokativ: new Declension(
       masculine: new DeclensionByGender(singular: [''], plural: ['']),
