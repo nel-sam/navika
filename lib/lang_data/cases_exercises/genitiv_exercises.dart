@@ -1,5 +1,7 @@
 import 'package:navika/lang_data/words/adjectives.dart';
 import 'package:navika/lang_data/words/demonstrative-pronouns.dart';
+import 'package:navika/lang_data/words/ekavian/nouns_ekavian.dart';
+import 'package:navika/lang_data/words/ijekavian/nouns_ijekavian.dart';
 import 'package:navika/lang_data/words/nouns.dart';
 import 'package:navika/lang_data/words/personal-pronouns.dart';
 import 'package:navika/models/enums.dart';
@@ -16,6 +18,28 @@ class GenitivExercises {
   }
 
   List<PANCombo> get general => [
+        PANCombo(
+          caseType: caseType,
+          gender: Genders.Unspecific,
+          isPlural: false,
+          isAnimate: false,
+          translation: N.t('ex_Sport_je_jedino_bez_cega_ne_mozemo'),
+          sentenceParts: [
+            CaseSentencePart(displayValue: 'Sport je jedino bez'),
+            CaseSentencePart(
+              isCorrectable: true,
+              actualObject: isCroatian ? NounsIjekavian.sto : NounsEkavian.sta,
+              displayValue: isCroatian
+                  ? NounsIjekavian.sto.dictionary
+                  : NounsEkavian.sta.dictionary,
+              correctValues: isCroatian
+                  ? NounsIjekavian.sto.genitiv.singular
+                  : NounsEkavian.sta.genitiv.singular,
+              grammarType: GrammarTypes.noun,
+            ),
+            CaseSentencePart(displayValue: 'ne možemo'),
+          ],
+        ),
         PANCombo(
             caseType: caseType,
             gender: NounBankGeneral.grad.gender,

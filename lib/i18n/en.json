@@ -115,7 +115,10 @@
   "ex_Pretvorilo_se_u_jedno_od_najvecih_mora": "It became one of the largest seas",
   "ex_Kojoj_macki_da_dam_hranu": "To which cat should I give food?",
   "ex_Kojem_psu_da_dam_igracku": "To which dog should I give a toy?",
-   "ex_Poslao_sam_poklone_tvojim_sestrama": "I sent gifts to your sisters",
+  "ex_Poslao_sam_poklone_tvojim_sestrama": "I sent gifts to your sisters",
+  "ex_Sto_jedes": "What are you eating?",
+"ex_Sport_je_jedino_bez_cega_ne_mozemo": "Sport is the only thing we can't live without",
+"ex_Sa_cime_treba_uzimati_vitamine": "With what should you take vitamins?",
 
   "extrainfo_brat": "Braća is used when referring to multiple brothers. Braća refers to males, but declines like a singular feminine noun",
   "extrainfo_all_ona_aku_ok": "In this situation you can use any accusative form of 'Ona' because 'je' (from the verb 'biti') does not follow",

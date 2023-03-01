@@ -1,4 +1,6 @@
 import 'package:navika/lang_data/words/adjectives.dart';
+import 'package:navika/lang_data/words/ekavian/nouns_ekavian.dart';
+import 'package:navika/lang_data/words/ijekavian/nouns_ijekavian.dart';
 import 'package:navika/lang_data/words/nouns.dart';
 import 'package:navika/lang_data/words/personal-pronouns.dart';
 import 'package:navika/lang_data/words/possessive-pronouns.dart';
@@ -18,6 +20,28 @@ class InstrumentalExercises {
   }
 
   List<PANCombo> get general => [
+    PANCombo(
+          caseType: caseType,
+          gender: Genders.Unspecific,
+          isPlural: false,
+          isAnimate: false,
+          translation: N.t('ex_Sa_cime_treba_uzimati_vitamine'),
+          sentenceParts: [
+            CaseSentencePart(displayValue: 'Sa'),
+            CaseSentencePart(
+              isCorrectable: true,
+              actualObject: isCroatian ? NounsIjekavian.sto : NounsEkavian.sta,
+              displayValue: isCroatian
+                  ? NounsIjekavian.sto.dictionary
+                  : NounsEkavian.sta.dictionary,
+              correctValues: isCroatian
+                  ? NounsIjekavian.sto.instrumental.singular
+                  : NounsEkavian.sta.instrumental.singular,
+              grammarType: GrammarTypes.noun,
+            ),
+            CaseSentencePart(displayValue: 'treba uzimati vitamine?'),
+          ],
+        ),
         PANCombo(
             caseType: caseType,
             gender: NounBankGeneral.meso.gender,

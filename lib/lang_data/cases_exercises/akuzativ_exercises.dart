@@ -25,6 +25,28 @@ class AkuzativExercises {
   List<PANCombo> get general => [
         PANCombo(
           caseType: caseType,
+          gender: Genders.Unspecific,
+          isPlural: false,
+          isAnimate: false,
+          translation: N.t('ex_Sto_jedes'),
+          sentenceParts: [
+            CaseSentencePart(
+                isCorrectable: true,
+                actualObject:
+                    isCroatian ? NounsIjekavian.sto : NounsEkavian.sta,
+                displayValue: isCroatian
+                    ? NounsIjekavian.sto.dictionary
+                    : NounsEkavian.sta.dictionary,
+                correctValues: isCroatian
+                    ? NounsIjekavian.sto.akuzativ.singular
+                    : NounsEkavian.sta.akuzativ.singular,
+                grammarType: GrammarTypes.noun,
+              ),
+            CaseSentencePart(displayValue: 'jedeš?'),
+          ],
+        ),
+        PANCombo(
+          caseType: caseType,
           gender: NounBankGeneral.bosna.gender,
           isPlural: false,
           isAnimate: false,
