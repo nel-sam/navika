@@ -144,19 +144,19 @@ class DativExercises {
             ],
             isAnimate: false,
             translation: N.t('ex_Idemo_prema_centru_grada')),
-            PANCombo(
+        PANCombo(
             caseType: caseType,
             gender: NounBankGeneral.jezero.gender,
             isPlural: true,
             sentenceParts: [
               CaseSentencePart(displayValue: 'Idem prema'),
               CaseSentencePart(
-              isCorrectable: true,
-              actualObject: AdjectiveBankGeneral.velik,
-              displayValue: AdjectiveBankGeneral.velik.dictionary,
-              correctValues: AdjectiveBankGeneral.velik.dativ!.neuter!.plural,
-              grammarType: GrammarTypes.adjective,
-            ),
+                isCorrectable: true,
+                actualObject: AdjectiveBankGeneral.velik,
+                displayValue: AdjectiveBankGeneral.velik.dictionary,
+                correctValues: AdjectiveBankGeneral.velik.dativ!.neuter!.plural,
+                grammarType: GrammarTypes.adjective,
+              ),
               CaseSentencePart(
                 isCorrectable: true,
                 actualObject: NounBankGeneral.jezero,

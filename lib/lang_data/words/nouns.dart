@@ -4,6 +4,21 @@ import 'package:navika/models/noun.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 
 class NounBankGeneral {
+  static final Noun selo = Noun(
+    dictionary: 'selo',
+    tags: [Tags.Location, Tags.NaturalFeature],
+    gender: Genders.Neuter,
+    isAnimate: false,
+    nominativ: new DeclensionByCount(singular: ['selo'], plural: ['sela']),
+    genitiv: new DeclensionByCount(singular: ['sela'], plural: ['sela']),
+    dativ: new DeclensionByCount(singular: ['selu'], plural: ['selima']),
+    akuzativ: new DeclensionByCount(singular: ['selo'], plural: ['sela']),
+    lokativ: new DeclensionByCount(singular: ['selu'], plural: ['selima']),
+    vokativ: new DeclensionByCount(singular: ['selo'], plural: ['sela']),
+    instrumental:
+        new DeclensionByCount(singular: ['selom'], plural: ['selima']),
+  );
+
   static final Noun more = Noun(
     dictionary: 'more',
     tags: [Tags.Location, Tags.NaturalFeature],
@@ -24,11 +39,13 @@ class NounBankGeneral {
     tags: [],
     gender: Genders.Neuter,
     isAnimate: false,
-    nominativ: new DeclensionByCount(singular: ['pravilo'], plural: ['pravila']),
+    nominativ:
+        new DeclensionByCount(singular: ['pravilo'], plural: ['pravila']),
     genitiv: new DeclensionByCount(singular: ['pravila'], plural: ['pravila']),
     dativ: new DeclensionByCount(singular: ['pravilu'], plural: ['pravilima']),
     akuzativ: new DeclensionByCount(singular: ['pravilo'], plural: ['pravila']),
-    lokativ: new DeclensionByCount(singular: ['pravilu'], plural: ['pravilima']),
+    lokativ:
+        new DeclensionByCount(singular: ['pravilu'], plural: ['pravilima']),
     vokativ: new DeclensionByCount(singular: ['pravilo'], plural: ['pravila']),
     instrumental:
         new DeclensionByCount(singular: ['pravilom'], plural: ['pravilima']),

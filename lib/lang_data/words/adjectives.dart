@@ -2,6 +2,133 @@ import 'package:navika/models/adjective.dart';
 import 'package:navika/models/models.dart';
 
 class AdjectiveBankGeneral {
+  static final Adjective balkanski = Adjective(
+    dictionary: 'balkanski',
+    nominativ: new Declension(
+      masculine: new DeclensionByGender(
+          singular: ['balkanski'], plural: ['balkanski']),
+      feminine: new DeclensionByGender(
+          singular: ['balkanska'], plural: ['balkanske']),
+      neuter: new DeclensionByGender(
+          singular: ['balkansko'], plural: ['balkanska']),
+    ),
+    akuzativ: new Declension(
+      masculine: new DeclensionByGender(
+          singular: ['balkanski'], plural: ['balkanske']),
+      feminine: new DeclensionByGender(
+          singular: ['balkansku'], plural: ['balkanske']),
+      neuter: new DeclensionByGender(
+          singular: ['balkansko'], plural: ['balkanska']),
+    ),
+    instrumental: new Declension(
+      masculine: new DeclensionByGender(
+          singular: ['balkanskim'], plural: ['balkanskim']),
+      feminine: new DeclensionByGender(
+          singular: ['balkanskom'], plural: ['balkanskim']),
+      neuter: new DeclensionByGender(
+          singular: ['balkanskim'], plural: ['balkanskim']),
+    ),
+    lokativ: new Declension(
+      masculine: new DeclensionByGender(
+          singular: ['balkanskom'], plural: ['balkanskim']),
+      feminine: new DeclensionByGender(
+          singular: ['balkanskoj'], plural: ['balkanskim']),
+      neuter: new DeclensionByGender(
+          singular: ['balkanskom'], plural: ['balkanskim']),
+    ),
+    genitiv: new Declension(
+      masculine: new DeclensionByGender(
+          singular: ['balkanskog'], plural: ['balkanskih']),
+      feminine: new DeclensionByGender(
+          singular: ['balkanske'], plural: ['balkanskih']),
+      neuter: new DeclensionByGender(
+          singular: ['balkanskog'], plural: ['balkanskih']),
+    ),
+    vokativ: new Declension(
+      masculine: new DeclensionByGender(singular: [''], plural: ['']),
+      feminine: new DeclensionByGender(singular: [''], plural: ['']),
+      neuter: new DeclensionByGender(singular: [''], plural: ['']),
+    ),
+  );
+
+  static final Adjective desni = Adjective(
+    dictionary: 'desni',
+    nominativ: new Declension(
+      masculine: new DeclensionByGender(singular: ['desni'], plural: ['desni']),
+      feminine: new DeclensionByGender(singular: ['desna'], plural: ['desne']),
+      neuter: new DeclensionByGender(singular: ['desno'], plural: ['desna']),
+    ),
+    akuzativ: new Declension(
+      masculine: new DeclensionByGender(singular: ['desni'], plural: ['desne']),
+      feminine: new DeclensionByGender(singular: ['desnu'], plural: ['desne']),
+      neuter: new DeclensionByGender(singular: ['desno'], plural: ['desna']),
+    ),
+    instrumental: new Declension(
+      masculine:
+          new DeclensionByGender(singular: ['desnim'], plural: ['desnim']),
+      feminine:
+          new DeclensionByGender(singular: ['desnom'], plural: ['desnim']),
+      neuter: new DeclensionByGender(singular: ['desnim'], plural: ['desnim']),
+    ),
+    lokativ: new Declension(
+      masculine:
+          new DeclensionByGender(singular: ['desnom'], plural: ['desnim']),
+      feminine:
+          new DeclensionByGender(singular: ['desnoj'], plural: ['desnim']),
+      neuter: new DeclensionByGender(singular: ['desnom'], plural: ['desnim']),
+    ),
+    genitiv: new Declension(
+      masculine:
+          new DeclensionByGender(singular: ['desnog'], plural: ['desnih']),
+      feminine: new DeclensionByGender(singular: ['desne'], plural: ['desnih']),
+      neuter: new DeclensionByGender(singular: ['desnog'], plural: ['desnih']),
+    ),
+    vokativ: new Declension(
+      masculine: new DeclensionByGender(singular: [''], plural: ['']),
+      feminine: new DeclensionByGender(singular: [''], plural: ['']),
+      neuter: new DeclensionByGender(singular: [''], plural: ['']),
+    ),
+  );
+
+  static final Adjective topao = Adjective(
+    dictionary: 'topao',
+    nominativ: new Declension(
+      masculine: new DeclensionByGender(singular: ['topli'], plural: ['topli']),
+      feminine: new DeclensionByGender(singular: ['topla'], plural: ['tople']),
+      neuter: new DeclensionByGender(singular: ['toplo'], plural: ['topla']),
+    ),
+    akuzativ: new Declension(
+      masculine: new DeclensionByGender(singular: ['topli'], plural: ['tople']),
+      feminine: new DeclensionByGender(singular: ['toplu'], plural: ['tople']),
+      neuter: new DeclensionByGender(singular: ['toplo'], plural: ['topla']),
+    ),
+    instrumental: new Declension(
+      masculine:
+          new DeclensionByGender(singular: ['toplim'], plural: ['toplim']),
+      feminine:
+          new DeclensionByGender(singular: ['toplom'], plural: ['toplim']),
+      neuter: new DeclensionByGender(singular: ['toplim'], plural: ['toplim']),
+    ),
+    lokativ: new Declension(
+      masculine:
+          new DeclensionByGender(singular: ['toplom'], plural: ['toplim']),
+      feminine:
+          new DeclensionByGender(singular: ['toploj'], plural: ['toplim']),
+      neuter: new DeclensionByGender(singular: ['toplom'], plural: ['toplim']),
+    ),
+    genitiv: new Declension(
+      masculine:
+          new DeclensionByGender(singular: ['toplog'], plural: ['toplih']),
+      feminine: new DeclensionByGender(singular: ['tople'], plural: ['toplih']),
+      neuter: new DeclensionByGender(singular: ['toplog'], plural: ['toplih']),
+    ),
+    vokativ: new Declension(
+      masculine: new DeclensionByGender(singular: [''], plural: ['']),
+      feminine: new DeclensionByGender(singular: [''], plural: ['']),
+      neuter: new DeclensionByGender(singular: [''], plural: ['']),
+    ),
+  );
+
   static final Adjective mladi = Adjective(
     dictionary: 'mladi',
     nominativ: new Declension(
@@ -423,12 +550,9 @@ class AdjectiveBankGeneral {
       neuter: new DeclensionByGender(singular: ['čije'], plural: ['čija']),
     ),
     instrumental: new Declension(
-      masculine: new DeclensionByGender(
-          singular: ['čijim'], plural: ['čijim', 'čijima']),
-      feminine: new DeclensionByGender(
-          singular: ['čijom'], plural: ['čijim', 'čijima']),
-      neuter: new DeclensionByGender(
-          singular: ['čijim'], plural: ['čijim', 'čijima']),
+      masculine: new DeclensionByGender(singular: ['čijim'], plural: ['čijim']),
+      feminine: new DeclensionByGender(singular: ['čijom'], plural: ['čijim']),
+      neuter: new DeclensionByGender(singular: ['čijim'], plural: ['čijim']),
     ),
     lokativ: new Declension(
       masculine:
@@ -583,19 +707,15 @@ class AdjectiveBankGeneral {
       neuter: new DeclensionByGender(singular: ['novim'], plural: ['novim']),
     ),
     lokativ: new Declension(
-      masculine: new DeclensionByGender(
-          singular: ['novome', 'novomu', 'novom'], plural: ['novim']),
+      masculine: new DeclensionByGender(singular: ['novom'], plural: ['novim']),
       feminine:
           new DeclensionByGender(singular: ['novoj'], plural: ['novijoj']),
-      neuter: new DeclensionByGender(
-          singular: ['novome', 'novomu', 'novom'], plural: ['novim']),
+      neuter: new DeclensionByGender(singular: ['novom'], plural: ['novim']),
     ),
     genitiv: new Declension(
-      masculine: new DeclensionByGender(
-          singular: ['novoga', 'novog'], plural: ['novih']),
+      masculine: new DeclensionByGender(singular: ['novog'], plural: ['novih']),
       feminine: new DeclensionByGender(singular: ['nove'], plural: ['novih']),
-      neuter: new DeclensionByGender(
-          singular: ['novoga', 'novog'], plural: ['novih']),
+      neuter: new DeclensionByGender(singular: ['novog'], plural: ['novih']),
     ),
     vokativ: new Declension(
       masculine: new DeclensionByGender(singular: ['novi'], plural: ['novi']),
@@ -624,19 +744,17 @@ class AdjectiveBankGeneral {
       neuter: new DeclensionByGender(singular: ['starim'], plural: ['starim']),
     ),
     lokativ: new Declension(
-      masculine: new DeclensionByGender(
-          singular: ['starome', 'staromu', 'starom'], plural: ['starim']),
+      masculine:
+          new DeclensionByGender(singular: ['starom'], plural: ['starim']),
       feminine:
           new DeclensionByGender(singular: ['staroj'], plural: ['starijoj']),
-      neuter: new DeclensionByGender(
-          singular: ['starome', 'staromu', 'starom'], plural: ['starim']),
+      neuter: new DeclensionByGender(singular: ['starom'], plural: ['starim']),
     ),
     genitiv: new Declension(
-      masculine: new DeclensionByGender(
-          singular: ['staroga', 'starog'], plural: ['starih']),
+      masculine:
+          new DeclensionByGender(singular: ['starog'], plural: ['starih']),
       feminine: new DeclensionByGender(singular: ['stare'], plural: ['starih']),
-      neuter: new DeclensionByGender(
-          singular: ['staroga', 'starog'], plural: ['starih']),
+      neuter: new DeclensionByGender(singular: ['starog'], plural: ['starih']),
     ),
     vokativ: new Declension(
       masculine: new DeclensionByGender(singular: ['stari'], plural: ['stari']),
@@ -882,30 +1000,28 @@ class AdjectiveBankGeneral {
         neuter:
             new DeclensionByGender(singular: ['slatko'], plural: ['slatka'])),
     instrumental: Declension(
-      masculine: new DeclensionByGender(
-          singular: ['slatkim'], plural: ['slatkim', 'slatkim']),
-      feminine: new DeclensionByGender(
-          singular: ['slatkom'], plural: ['slatkim', 'slatkim']),
-      neuter: new DeclensionByGender(
-          singular: ['slatkim'], plural: ['slatkim', 'slatkim']),
+      masculine:
+          new DeclensionByGender(singular: ['slatkim'], plural: ['slatkim']),
+      feminine:
+          new DeclensionByGender(singular: ['slatkom'], plural: ['slatkim']),
+      neuter:
+          new DeclensionByGender(singular: ['slatkim'], plural: ['slatkim']),
     ),
     lokativ: Declension(
-      masculine: new DeclensionByGender(
-          singular: ['slatkom', 'slatkome', 'slatkomu'],
-          plural: ['slatkim', 'slatkim']),
-      feminine: new DeclensionByGender(
-          singular: ['slatkoj'], plural: ['slatkim', 'slatkim']),
-      neuter: new DeclensionByGender(
-          singular: ['slatkom', 'slatkome', 'slatkomu'],
-          plural: ['slatkim', 'slatkim']),
+      masculine:
+          new DeclensionByGender(singular: ['slatkom'], plural: ['slatkim']),
+      feminine:
+          new DeclensionByGender(singular: ['slatkoj'], plural: ['slatkim']),
+      neuter:
+          new DeclensionByGender(singular: ['slatkom'], plural: ['slatkim']),
     ),
     genitiv: Declension(
-      masculine: new DeclensionByGender(
-          singular: ['slatkog', 'slatkoga'], plural: ['slatkih']),
+      masculine:
+          new DeclensionByGender(singular: ['slatkog'], plural: ['slatkih']),
       feminine:
           new DeclensionByGender(singular: ['slatke'], plural: ['slatkih']),
-      neuter: new DeclensionByGender(
-          singular: ['slatkog', 'slatkoga'], plural: ['slatkih']),
+      neuter:
+          new DeclensionByGender(singular: ['slatkog'], plural: ['slatkih']),
     ),
   );
 
