@@ -20,7 +20,7 @@ class InstrumentalExercises {
   }
 
   List<PANCombo> get general => [
-    PANCombo(
+        PANCombo(
           caseType: caseType,
           gender: Genders.Unspecific,
           isPlural: false,
@@ -223,11 +223,11 @@ class InstrumentalExercises {
       ];
 
   List<PANCombo> get personalPronouns => [
-    PANCombo(
+        PANCombo(
           caseType: caseType,
           gender: Genders.Unspecific,
           isPlural: false,
-          isAnimate: true,
+          isAnimate: false,
           translation: N.t('ex_Pođi_sa_mnom'),
           sentenceParts: [
             CaseSentencePart(displayValue: 'Pođi sa'),
@@ -240,11 +240,11 @@ class InstrumentalExercises {
             ),
           ],
         ),
-         PANCombo(
+        PANCombo(
           caseType: caseType,
           gender: Genders.Unspecific,
           isPlural: false,
-          isAnimate: true,
+          isAnimate: false,
           translation: N.t('ex_Rucat_cu_s_tobom'),
           sentenceParts: [
             CaseSentencePart(displayValue: 'Ručat ću s'),
@@ -257,7 +257,92 @@ class InstrumentalExercises {
             ),
           ],
         ),
-        // TODO: Finish these
+        PANCombo(
+          caseType: caseType,
+          gender: Genders.Masculine,
+          isPlural: false,
+          isAnimate: false,
+          translation: N.t('ex_Imao_sam_osobno_jednu_situaciju_s_njim'),
+          sentenceParts: [
+            CaseSentencePart(displayValue: 'Imao sam osobno jednu situaciju s'),
+            CaseSentencePart(
+              isCorrectable: true,
+              actualObject: PersonalPronounWordBank.on,
+              displayValue: PersonalPronounWordBank.on.dictionary,
+              correctValues: PersonalPronounWordBank.on.instrumental.forms,
+              grammarType: GrammarTypes.personalPronoun,
+            ),
+          ],
+        ),
+        PANCombo(
+          caseType: caseType,
+          gender: Genders.Feminine,
+          isPlural: false,
+          isAnimate: false,
+          translation: N.t('ex_Dosla_je_nova_godina_a_s_njom_i_novi_trendovi'),
+          sentenceParts: [
+            CaseSentencePart(displayValue: 'Došla je nova godina, a s'),
+            CaseSentencePart(
+              isCorrectable: true,
+              actualObject: PersonalPronounWordBank.ona,
+              displayValue: PersonalPronounWordBank.ona.dictionary,
+              correctValues: PersonalPronounWordBank.ona.instrumental.forms,
+              grammarType: GrammarTypes.personalPronoun,
+            ),
+            CaseSentencePart(displayValue: 'i novi trendovi'),
+          ],
+        ),
+        PANCombo(
+          caseType: caseType,
+          gender: Genders.Unspecific,
+          isPlural: true,
+          isAnimate: false,
+          translation: N.t('ex_Razgovarajte_s_nama'),
+          sentenceParts: [
+            CaseSentencePart(displayValue: 'Razgovarajte s'),
+            CaseSentencePart(
+              isCorrectable: true,
+              actualObject: PersonalPronounWordBank.mi,
+              displayValue: PersonalPronounWordBank.mi.dictionary,
+              correctValues: PersonalPronounWordBank.mi.instrumental.forms,
+              grammarType: GrammarTypes.personalPronoun,
+            ),
+          ],
+        ),
+        PANCombo(
+          caseType: caseType,
+          gender: Genders.Unspecific,
+          isPlural: true,
+          isAnimate: false,
+          translation: N.t('ex_Sretan_sam_sto_sam_danas_s_vama'),
+          sentenceParts: [
+            CaseSentencePart(displayValue: 'Sretan sam što sam danas s'),
+            CaseSentencePart(
+              isCorrectable: true,
+              actualObject: PersonalPronounWordBank.vi,
+              displayValue: PersonalPronounWordBank.vi.dictionary,
+              correctValues: PersonalPronounWordBank.vi.instrumental.forms,
+              grammarType: GrammarTypes.personalPronoun,
+            ),
+          ],
+        ),
+        PANCombo(
+          caseType: caseType,
+          gender: Genders.Unspecific,
+          isPlural: true,
+          isAnimate: false,
+          translation: N.t('ex_Doznali_smo_sto_je_s_njima'),
+          sentenceParts: [
+            CaseSentencePart(displayValue: 'Doznali smo što je s'),
+            CaseSentencePart(
+              isCorrectable: true,
+              actualObject: PersonalPronounWordBank.oni,
+              displayValue: PersonalPronounWordBank.oni.dictionary,
+              correctValues: PersonalPronounWordBank.oni.instrumental.forms,
+              grammarType: GrammarTypes.personalPronoun,
+            ),
+          ],
+        ),
       ];
 
   List<PANCombo> get premium => [];

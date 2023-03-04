@@ -40,7 +40,7 @@ class PersonalPronounWordBank {
     akuzativ: new DeclensionPronoun(forms: ['njega', 'ga', 'nj']),
     lokativ: new DeclensionPronoun(forms: ['njemu']),
     vokativ: new DeclensionPronoun(forms: ['']),
-    instrumental: new DeclensionPronoun(forms: ['njime', 'njima']),
+    instrumental: new DeclensionPronoun(forms: ['njim']),
   );
   static final ona = PersonalPronoun(
     dictionary: 'ona',
@@ -53,7 +53,7 @@ class PersonalPronounWordBank {
     akuzativ: new DeclensionPronoun(forms: ['nju', 'ju', 'je']),
     lokativ: new DeclensionPronoun(forms: ['njoj']),
     vokativ: new DeclensionPronoun(forms: ['']),
-    instrumental: new DeclensionPronoun(forms: ['njome', 'njom']),
+    instrumental: new DeclensionPronoun(forms: ['njom']),
   );
   static final mi = PersonalPronoun(
     dictionary: 'mi',

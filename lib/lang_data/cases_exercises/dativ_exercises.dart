@@ -21,8 +21,6 @@ class DativExercises {
   }
 
   List<PANCombo> get general => [
-        // TODO: Neut sing & pl, fem and masc pl etc...
-        // TODO: Koji and adjective exerc
         PANCombo(
             caseType: caseType,
             gender: NounBankGeneral.pas.gender,
