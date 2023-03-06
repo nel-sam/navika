@@ -1,27 +1,25 @@
+import 'package:navika/extensions.dart';
+import 'package:navika/lang_data/cases_exercises/vokativ_exercises.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/state/cases/case-question-state.dart';
+import 'package:navika/utilities/navika-helpers.dart';
 
-class VokativGenerators {
+class VocativGenerators {
   static List<CaseQuestionState> createExercise(
     ExerciseTypes exerciseType,
     DialectType dialect,
     bool isPremium,
   ) {
-    PANCombo? c;
+    List<PANCombo> combos = VocativExercises(dialect).general;
 
-    // while (c == null || N.containsCaseQuestionState(toAvoid, c)) {
-    //   c = PanGenerator.getPANCombos(
-    //     caseType: Cases.Vok,
-    //     dialect: dialect,
-    //     bank: SentenceBankGenerator(dialect: dialect)
-    //         .sentencesBankData
-    //         .includeOnlyNounsByTags([Tags.Human]),
-    //     getPersonalPronounSentenceStaticParts:
-    //         getPersonalPronounSentenceStaticParts,
-    //     getStaticSentenceParts: getStaticSentenceParts,
-    //   );
-    // }
-    return [CaseQuestionState(combos: c!)];
+    for (int i = 0; i < combos.length; i++) {
+      N.convertToExerciseTypes(exerciseType, combos[i]);
+    }
+
+    return combos
+        .shufflePAN()
+        .map((e) => CaseQuestionState(combos: e))
+        .toList();
   }
 }

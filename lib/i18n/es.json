@@ -140,6 +140,10 @@
   "ex_Razgovarajte_s_nama": "Hable (usted) con nosotros",
   "ex_Sretan_sam_sto_sam_danas_s_vama": "Estoy feliz de estar hoy con ustedes",
   "ex_Doznali_smo_sto_je_s_njima": "Descubrimos lo que les pasó",
+  "ex_Prijatelju_moj": "Amigo mío",
+  "ex_Hvala_Vam_gospodine": "Gracias, señor",
+  "ex_Gospodice_molim_vas_udjite": "Señorita, por favor entre",
+  "ex_Karolina_budi_oprezna": "Carolina, ten cuidado",
 
   "extrainfo_brat": "Braća se usa para hablar de various hermanos. Braća se refiere a hombres pero tiene declinaciones como si fuera sustantivo femenino en singular",
   "extrainfo_all_ona_aku_ok": "En esta situación se puede usar cualquier forma acusativo de 'Ona' porque 'je' (del verbo 'biti') no sigue",
@@ -148,6 +152,8 @@
   "extrainfo_akusativ_for_male_animate": "El acusativo de los sustantivos masculinos animados/vivos (personas y animales) es el mismo que el genitivo. Para objetos inanimados el acusativo es lo mismo que el nominativo",
   "extrainfo_aku_for_movement": "Se usa el acusativo con la preposición 'u' cuando se trata de movimiento hacia un destino",
   "extrainfo_long_form_of_pronouns": "Las formas largas de preposiciones se usan al principio de frases, para agregar énfasis, y después de preposiciones",
+  "extrainfo_adj_after_noun_in_vokative": "Los adjetivos se ponen después del sustantivo en el caso vocativo",
+  "extrainfo_gospodin_is_very_irregular": "El sustantivo 'gospodin' es muy irregular",
 
   "nominativ": "Nominativo",
   "akuzativ": "Acusativo",

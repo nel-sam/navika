@@ -4,6 +4,98 @@ import 'package:navika/models/noun.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 
 class NounBankGeneral {
+  static final Noun karolina = Noun(
+    dictionary: 'Karolina',
+    tags: [Tags.Human, Tags.Name],
+    gender: Genders.Feminine,
+    isAnimate: false,
+    nominativ: new DeclensionByCount(singular: ['Karolina'], plural: ['Karoline']),
+    genitiv: new DeclensionByCount(singular: ['Karoline'], plural: ['Karolina']),
+    dativ: new DeclensionByCount(singular: ['Karolini'], plural: ['Karolinama']),
+    akuzativ: new DeclensionByCount(singular: ['ruku'], plural: ['ruke']),
+    lokativ: new DeclensionByCount(singular: ['Karolini'], plural: ['Karolinama']),
+    vokativ: new DeclensionByCount(singular: ['Karolino'], plural: ['Karoline']),
+    instrumental:
+        new DeclensionByCount(singular: ['Karolinom'], plural: ['Karolinama']),
+  );
+
+  static final Noun ivan = Noun(
+    dictionary: 'Ivan',
+    tags: [Tags.Human, Tags.Name],
+    gender: Genders.Masculine,
+    isAnimate: true,
+    nominativ: new DeclensionByCount(singular: ['Ivan'], plural: ['Ivanovi']),
+    genitiv: new DeclensionByCount(singular: ['Ivana'], plural: ['Ivana']),
+    dativ: new DeclensionByCount(singular: ['Ivanu'], plural: ['Ivanovima']),
+    akuzativ: new DeclensionByCount(singular: ['Ivan'], plural: ['Ivane']),
+    lokativ: new DeclensionByCount(singular: ['Ivanu'], plural: ['Ivanovima']),
+    vokativ: new DeclensionByCount(singular: ['Ivane'], plural: ['Ivanovi']),
+    instrumental:
+        new DeclensionByCount(singular: ['Ivanom'], plural: ['Ivanovima']),
+  );
+
+  static final Noun gospodica = Noun(
+    dictionary: 'gospođica',
+    tags: [Tags.Human],
+    gender: Genders.Feminine,
+    isAnimate: false,
+    nominativ:
+        new DeclensionByCount(singular: ['gospođica'], plural: ['gospođice']),
+    genitiv:
+        new DeclensionByCount(singular: ['gospođice'], plural: ['gospođica']),
+    dativ:
+        new DeclensionByCount(singular: ['gospođici'], plural: ['gospođicama']),
+    akuzativ:
+        new DeclensionByCount(singular: ['gospođicu'], plural: ['gospođice']),
+    lokativ:
+        new DeclensionByCount(singular: ['gospođici'], plural: ['gospođicama']),
+    vokativ:
+        new DeclensionByCount(singular: ['gospođice'], plural: ['gospođice']),
+    instrumental: new DeclensionByCount(
+        singular: ['gospođicom'], plural: ['gospođicama']),
+  );
+
+  static final Noun gospodin = Noun(
+    dictionary: 'gospodin',
+    tags: [Tags.Human],
+    gender: Genders.Masculine,
+    isAnimate: false,
+    nominativ:
+        new DeclensionByCount(singular: ['gospodin'], plural: ['gospoda']),
+    genitiv:
+        new DeclensionByCount(singular: ['gospodina'], plural: ['gospode']),
+    dativ: new DeclensionByCount(singular: ['gospodinu'], plural: ['gospodi']),
+    akuzativ:
+        new DeclensionByCount(singular: ['gospodina'], plural: ['gospodu']),
+    lokativ:
+        new DeclensionByCount(singular: ['gospodinu'], plural: ['gospodi']),
+    vokativ:
+        new DeclensionByCount(singular: ['gospodine'], plural: ['gospodo']),
+    instrumental:
+        new DeclensionByCount(singular: ['gospodinom'], plural: ['gospodom']),
+  );
+
+  static final Noun prijatelj = Noun(
+    dictionary: 'prijatelj',
+    tags: [Tags.Human],
+    gender: Genders.Masculine,
+    isAnimate: false,
+    nominativ:
+        new DeclensionByCount(singular: ['prijatelj'], plural: ['prijatelji']),
+    genitiv:
+        new DeclensionByCount(singular: ['prijatelja'], plural: ['prijatelja']),
+    dativ: new DeclensionByCount(
+        singular: ['prijatelju'], plural: ['prijateljima']),
+    akuzativ:
+        new DeclensionByCount(singular: ['prijatelja'], plural: ['prijatelje']),
+    lokativ: new DeclensionByCount(
+        singular: ['prijatelju'], plural: ['prijateljima']),
+    vokativ:
+        new DeclensionByCount(singular: ['prijatelju'], plural: ['prijatelji']),
+    instrumental: new DeclensionByCount(
+        singular: ['prijateljem'], plural: ['prijateljima']),
+  );
+
   static final Noun selo = Noun(
     dictionary: 'selo',
     tags: [Tags.Location, Tags.NaturalFeature],

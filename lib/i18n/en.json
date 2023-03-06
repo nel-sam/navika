@@ -139,6 +139,10 @@
   "ex_Razgovarajte_s_nama": "Talk to us",
   "ex_Sretan_sam_sto_sam_danas_s_vama": "I'm happy that I'm with you (all) today",
   "ex_Doznali_smo_sto_je_s_njima": "We found out what's wrong with them",
+  "ex_Prijatelju_moj": "My friend",
+  "ex_Hvala_Vam_gospodine": "Thank you sir",
+  "ex_Gospodice_molim_vas_udjite": "Miss, please come in",
+  "ex_Karolina_budi_oprezna": "Carolina, be careful!",
 
   "extrainfo_brat": "Braća is used when referring to multiple brothers. Braća refers to males, but declines like a singular feminine noun",
   "extrainfo_all_ona_aku_ok": "In this situation you can use any accusative form of 'Ona' because 'je' (from the verb 'biti') does not follow",
@@ -147,6 +151,8 @@
   "extrainfo_akusativ_for_male_animate": "The accusative for male animate/alive nouns (people and animals) is the same as the genitive. For inanimate objects the accusative is the same as the nominative",
   "extrainfo_aku_for_movement": "Accusative is used with the preposition 'u' with the meaning of movement towards something/somewhere",
   "extrainfo_long_form_of_pronouns": "Long form of pronouns are used at the beginning of a sentence, to add emphasis, and after prepositions",
+  "extrainfo_adj_after_noun_in_vokative": "Adjectives come after the noun in the vocative case",
+  "extrainfo_gospodin_is_very_irregular": "Gospodin is very irregular",
 
   "nominativ": "Nominative",
   "akuzativ": "Accusative",

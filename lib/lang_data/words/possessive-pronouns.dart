@@ -46,6 +46,7 @@ class PossessivePronounBank {
       neuter: new DeclensionByGender(singular: ['moje'], plural: ['moja']),
     ),
   );
+
   static final tvoj = Adjective(
     dictionary: 'tvoj',
     nominativ: new Declension(
