@@ -5,12 +5,12 @@ import 'package:navika/models/models.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:nrs_flutter_lib/enums.dart';
 
-class VocativExercises {
+class VokativExercises {
   late bool isCroatian;
   late bool isSerbian;
   final Cases caseType = Cases.Dat;
 
-  VocativExercises(DialectType dialect) {
+  VokativExercises(DialectType dialect) {
     this.isCroatian = dialect == DialectType.Croatia;
     this.isSerbian = dialect == DialectType.Serbia;
   }

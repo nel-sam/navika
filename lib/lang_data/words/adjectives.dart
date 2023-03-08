@@ -2,6 +2,288 @@ import 'package:navika/models/adjective.dart';
 import 'package:navika/models/models.dart';
 
 class AdjectiveBankGeneral {
+  static final Adjective sestrin = Adjective(
+    dictionary: 'sestrin',
+    nominativ: new Declension(
+      masculine:
+          new DeclensionByGender(singular: ['sestrin'], plural: ['sestrini']),
+      feminine:
+          new DeclensionByGender(singular: ['sestrina'], plural: ['sestrine']),
+      neuter:
+          new DeclensionByGender(singular: ['sestrino'], plural: ['sestrina']),
+    ),
+    akuzativ: new Declension(
+      masculine:
+          new DeclensionByGender(singular: ['sestrini'], plural: ['sestrine']),
+      feminine:
+          new DeclensionByGender(singular: ['sestrinu'], plural: ['sestrine']),
+      neuter:
+          new DeclensionByGender(singular: ['sestrino'], plural: ['sestrina']),
+    ),
+    instrumental: new Declension(
+      masculine: new DeclensionByGender(
+          singular: ['sestrinim'], plural: ['sestrinim']),
+      feminine: new DeclensionByGender(
+          singular: ['sestrinom'], plural: ['sestrinim']),
+      neuter: new DeclensionByGender(
+          singular: ['sestrinim'], plural: ['sestrinim']),
+    ),
+    lokativ: new Declension(
+      masculine: new DeclensionByGender(
+          singular: ['sestrinom'], plural: ['sestrinim']),
+      feminine: new DeclensionByGender(
+          singular: ['sestrinoj'], plural: ['sestrinim']),
+      neuter: new DeclensionByGender(
+          singular: ['sestrinom'], plural: ['sestrinim']),
+    ),
+    genitiv: new Declension(
+      masculine: new DeclensionByGender(
+          singular: ['sestrinog'], plural: ['sestrinih']),
+      feminine:
+          new DeclensionByGender(singular: ['sestrine'], plural: ['sestrinih']),
+      neuter: new DeclensionByGender(
+          singular: ['sestrinog'], plural: ['sestrinih']),
+    ),
+    vokativ: new Declension(
+      masculine: new DeclensionByGender(singular: [''], plural: ['']),
+      feminine: new DeclensionByGender(singular: [''], plural: ['']),
+      neuter: new DeclensionByGender(singular: [''], plural: ['']),
+    ),
+  );
+
+  static final Adjective bakin = Adjective(
+    dictionary: 'Bakin',
+    nominativ: new Declension(
+      masculine:
+          new DeclensionByGender(singular: ['Bakin'], plural: ['Bakini']),
+      feminine:
+          new DeclensionByGender(singular: ['Bakina'], plural: ['Bakine']),
+      neuter: new DeclensionByGender(singular: ['Bakino'], plural: ['Bakina']),
+    ),
+    akuzativ: new Declension(
+      masculine:
+          new DeclensionByGender(singular: ['Bakini'], plural: ['Bakine']),
+      feminine:
+          new DeclensionByGender(singular: ['Bakinu'], plural: ['Bakine']),
+      neuter: new DeclensionByGender(singular: ['Bakino'], plural: ['Bakina']),
+    ),
+    instrumental: new Declension(
+      masculine:
+          new DeclensionByGender(singular: ['Bakinim'], plural: ['Bakinim']),
+      feminine:
+          new DeclensionByGender(singular: ['Bakinom'], plural: ['Bakinim']),
+      neuter:
+          new DeclensionByGender(singular: ['Bakinim'], plural: ['Bakinim']),
+    ),
+    lokativ: new Declension(
+      masculine:
+          new DeclensionByGender(singular: ['Bakinom'], plural: ['Bakinim']),
+      feminine:
+          new DeclensionByGender(singular: ['Bakinoj'], plural: ['Bakinim']),
+      neuter:
+          new DeclensionByGender(singular: ['Bakinom'], plural: ['Bakinim']),
+    ),
+    genitiv: new Declension(
+      masculine:
+          new DeclensionByGender(singular: ['Bakinog'], plural: ['Bakinih']),
+      feminine:
+          new DeclensionByGender(singular: ['Bakine'], plural: ['Bakinih']),
+      neuter:
+          new DeclensionByGender(singular: ['Bakinog'], plural: ['Bakinih']),
+    ),
+    vokativ: new Declension(
+      masculine: new DeclensionByGender(singular: [''], plural: ['']),
+      feminine: new DeclensionByGender(singular: [''], plural: ['']),
+      neuter: new DeclensionByGender(singular: [''], plural: ['']),
+    ),
+  );
+
+  static final Adjective denisov = Adjective(
+    dictionary: 'Denisov',
+    nominativ: new Declension(
+      masculine:
+          new DeclensionByGender(singular: ['Denisov'], plural: ['Denisovi']),
+      feminine:
+          new DeclensionByGender(singular: ['Denisova'], plural: ['Denisove']),
+      neuter:
+          new DeclensionByGender(singular: ['Denisovo'], plural: ['Denisova']),
+    ),
+    akuzativ: new Declension(
+      masculine:
+          new DeclensionByGender(singular: ['Denisovi'], plural: ['Denisove']),
+      feminine:
+          new DeclensionByGender(singular: ['Denisovu'], plural: ['Denisove']),
+      neuter:
+          new DeclensionByGender(singular: ['Denisovo'], plural: ['Denisova']),
+    ),
+    instrumental: new Declension(
+      masculine: new DeclensionByGender(
+          singular: ['Denisovim'], plural: ['Denisovim']),
+      feminine: new DeclensionByGender(
+          singular: ['Denisovom'], plural: ['Denisovim']),
+      neuter: new DeclensionByGender(
+          singular: ['Denisovim'], plural: ['Denisovim']),
+    ),
+    lokativ: new Declension(
+      masculine: new DeclensionByGender(
+          singular: ['Denisovom'], plural: ['Denisovim']),
+      feminine: new DeclensionByGender(
+          singular: ['Denisovoj'], plural: ['Denisovim']),
+      neuter: new DeclensionByGender(
+          singular: ['Denisovom'], plural: ['Denisovim']),
+    ),
+    genitiv: new Declension(
+      masculine: new DeclensionByGender(
+          singular: ['Denisovog'], plural: ['Denisovih']),
+      feminine:
+          new DeclensionByGender(singular: ['Denisove'], plural: ['Denisovih']),
+      neuter: new DeclensionByGender(
+          singular: ['Denisovog'], plural: ['Denisovih']),
+    ),
+    vokativ: new Declension(
+      masculine: new DeclensionByGender(singular: [''], plural: ['']),
+      feminine: new DeclensionByGender(singular: [''], plural: ['']),
+      neuter: new DeclensionByGender(singular: [''], plural: ['']),
+    ),
+  );
+
+  static final Adjective marijin = Adjective(
+    dictionary: 'Marijin',
+    nominativ: new Declension(
+      masculine:
+          new DeclensionByGender(singular: ['Marijin'], plural: ['Marijini']),
+      feminine:
+          new DeclensionByGender(singular: ['Marijina'], plural: ['Marijine']),
+      neuter:
+          new DeclensionByGender(singular: ['Marijino'], plural: ['Marijina']),
+    ),
+    akuzativ: new Declension(
+      masculine:
+          new DeclensionByGender(singular: ['Marijini'], plural: ['Marijine']),
+      feminine:
+          new DeclensionByGender(singular: ['Marijinu'], plural: ['Marijine']),
+      neuter:
+          new DeclensionByGender(singular: ['Marijino'], plural: ['Marijina']),
+    ),
+    instrumental: new Declension(
+      masculine: new DeclensionByGender(
+          singular: ['Marijinim'], plural: ['Marijinim']),
+      feminine: new DeclensionByGender(
+          singular: ['Marijinom'], plural: ['Marijinim']),
+      neuter: new DeclensionByGender(
+          singular: ['Marijinim'], plural: ['Marijinim']),
+    ),
+    lokativ: new Declension(
+      masculine: new DeclensionByGender(
+          singular: ['Marijinom'], plural: ['Marijinim']),
+      feminine: new DeclensionByGender(
+          singular: ['Marijinoj'], plural: ['Marijinim']),
+      neuter: new DeclensionByGender(
+          singular: ['Marijinom'], plural: ['Marijinim']),
+    ),
+    genitiv: new Declension(
+      masculine: new DeclensionByGender(
+          singular: ['Marijinog'], plural: ['Marijinih']),
+      feminine:
+          new DeclensionByGender(singular: ['Marijine'], plural: ['Marijinih']),
+      neuter: new DeclensionByGender(
+          singular: ['Marijinog'], plural: ['Marijinih']),
+    ),
+    vokativ: new Declension(
+      masculine: new DeclensionByGender(singular: [''], plural: ['']),
+      feminine: new DeclensionByGender(singular: [''], plural: ['']),
+      neuter: new DeclensionByGender(singular: [''], plural: ['']),
+    ),
+  );
+
+  static final Adjective anin = Adjective(
+    dictionary: 'Anin',
+    nominativ: new Declension(
+      masculine: new DeclensionByGender(singular: ['Anin'], plural: ['Anini']),
+      feminine: new DeclensionByGender(singular: ['Anina'], plural: ['Anine']),
+      neuter: new DeclensionByGender(singular: ['Anino'], plural: ['Anina']),
+    ),
+    akuzativ: new Declension(
+      masculine: new DeclensionByGender(singular: ['Anini'], plural: ['Anine']),
+      feminine: new DeclensionByGender(singular: ['Aninu'], plural: ['Anine']),
+      neuter: new DeclensionByGender(singular: ['Anino'], plural: ['Anina']),
+    ),
+    instrumental: new Declension(
+      masculine:
+          new DeclensionByGender(singular: ['Aninim'], plural: ['Aninim']),
+      feminine:
+          new DeclensionByGender(singular: ['Aninom'], plural: ['Aninim']),
+      neuter: new DeclensionByGender(singular: ['Aninim'], plural: ['Aninim']),
+    ),
+    lokativ: new Declension(
+      masculine:
+          new DeclensionByGender(singular: ['Aninom'], plural: ['Aninim']),
+      feminine:
+          new DeclensionByGender(singular: ['Aninoj'], plural: ['Aninim']),
+      neuter: new DeclensionByGender(singular: ['Aninom'], plural: ['Aninim']),
+    ),
+    genitiv: new Declension(
+      masculine:
+          new DeclensionByGender(singular: ['Aninog'], plural: ['Aninih']),
+      feminine: new DeclensionByGender(singular: ['Anine'], plural: ['Aninih']),
+      neuter: new DeclensionByGender(singular: ['Aninog'], plural: ['Aninih']),
+    ),
+    vokativ: new Declension(
+      masculine: new DeclensionByGender(singular: [''], plural: ['']),
+      feminine: new DeclensionByGender(singular: [''], plural: ['']),
+      neuter: new DeclensionByGender(singular: [''], plural: ['']),
+    ),
+  );
+
+static final Adjective japanski = Adjective(
+    dictionary: 'japanski',
+    nominativ: new Declension(
+      masculine: new DeclensionByGender(
+          singular: ['japanski'], plural: ['japanski']),
+      feminine: new DeclensionByGender(
+          singular: ['japanska'], plural: ['japanske']),
+      neuter: new DeclensionByGender(
+          singular: ['japansko'], plural: ['japanska']),
+    ),
+    akuzativ: new Declension(
+      masculine: new DeclensionByGender(
+          singular: ['japanski'], plural: ['japanske']),
+      feminine: new DeclensionByGender(
+          singular: ['japansku'], plural: ['japanske']),
+      neuter: new DeclensionByGender(
+          singular: ['japansko'], plural: ['japanska']),
+    ),
+    instrumental: new Declension(
+      masculine: new DeclensionByGender(
+          singular: ['japanskim'], plural: ['japanskim']),
+      feminine: new DeclensionByGender(
+          singular: ['japanskom'], plural: ['japanskim']),
+      neuter: new DeclensionByGender(
+          singular: ['japanskim'], plural: ['japanskim']),
+    ),
+    lokativ: new Declension(
+      masculine: new DeclensionByGender(
+          singular: ['japanskom'], plural: ['japanskim']),
+      feminine: new DeclensionByGender(
+          singular: ['japanskoj'], plural: ['japanskim']),
+      neuter: new DeclensionByGender(
+          singular: ['japanskom'], plural: ['japanskim']),
+    ),
+    genitiv: new Declension(
+      masculine: new DeclensionByGender(
+          singular: ['japanskog'], plural: ['japanskih']),
+      feminine: new DeclensionByGender(
+          singular: ['japanske'], plural: ['japanskih']),
+      neuter: new DeclensionByGender(
+          singular: ['japanskog'], plural: ['japanskih']),
+    ),
+    vokativ: new Declension(
+      masculine: new DeclensionByGender(singular: [''], plural: ['']),
+      feminine: new DeclensionByGender(singular: [''], plural: ['']),
+      neuter: new DeclensionByGender(singular: [''], plural: ['']),
+    ),
+  );
+
   static final Adjective balkanski = Adjective(
     dictionary: 'balkanski',
     nominativ: new Declension(

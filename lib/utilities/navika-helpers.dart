@@ -12,25 +12,6 @@ import 'package:nrs_flutter_lib/enums.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
 class N {
-  static void convertToExerciseTypes(
-      ExerciseTypes exerciseType, PANCombo combo) {
-    if (exerciseType == ExerciseTypes.case_nouns) {
-      _filterByExerciseType(combo, [GrammarTypes.noun]);
-    } else if (exerciseType == ExerciseTypes.case_adjectives) {
-      _filterByExerciseType(
-          combo, [GrammarTypes.adjective, GrammarTypes.possessivePronoun]);
-    } else if (exerciseType == ExerciseTypes.case_nouns_and_adjectives) {
-      _filterByExerciseType(combo, [
-        GrammarTypes.noun,
-        GrammarTypes.adjective,
-        GrammarTypes.possessivePronoun,
-        GrammarTypes.demonstrativePronoun
-      ]);
-    } else if (exerciseType == ExerciseTypes.case_personal_pronouns) {
-      _filterByExerciseType(combo, [GrammarTypes.personalPronoun]);
-    }
-  }
-
   static TextSpan declensionExampleTextSpan(
     String text, {
     Color color = Colors.transparent,
@@ -61,6 +42,24 @@ class N {
     return matching;
   }
 
+  static void filterByExerciseType(ExerciseTypes exerciseType, PANCombo combo) {
+    if (exerciseType == ExerciseTypes.case_nouns) {
+      _filterByExerciseType(combo, [GrammarTypes.noun]);
+    } else if (exerciseType == ExerciseTypes.case_adjectives) {
+      _filterByExerciseType(
+          combo, [GrammarTypes.adjective, GrammarTypes.possessivePronoun]);
+    } else if (exerciseType == ExerciseTypes.case_nouns_and_adjectives) {
+      _filterByExerciseType(combo, [
+        GrammarTypes.noun,
+        GrammarTypes.adjective,
+        GrammarTypes.possessivePronoun,
+        GrammarTypes.demonstrativePronoun
+      ]);
+    } else if (exerciseType == ExerciseTypes.case_personal_pronouns) {
+      _filterByExerciseType(combo, [GrammarTypes.personalPronoun]);
+    }
+  }
+
   static String getBitiConjugation(String pronoun) {
     switch (pronoun) {
       case 'ja':
@@ -73,6 +72,7 @@ class N {
         return 'ste';
       case 'on':
       case 'ona':
+      case 'ono':
         return 'je';
       case 'oni':
       case 'one':

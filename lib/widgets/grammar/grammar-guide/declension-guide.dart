@@ -16,6 +16,9 @@ import 'package:nrs_flutter_lib/widgets/n_footer_button.dart';
 import 'package:nrs_flutter_lib/widgets/n_footer_menu.dart';
 import 'package:nrs_flutter_lib/widgets/n_progress_bar.dart';
 
+// TODO: Test on small screens
+// TODO: Overflow on instrumental
+
 const CasesInOrder = [
   Cases.Nom,
   Cases.Gen,

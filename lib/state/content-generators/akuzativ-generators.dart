@@ -32,7 +32,7 @@ class AkuzativGenerators {
     }
 
     for (int i = 0; i < combos.length; i++) {
-      N.convertToExerciseTypes(exerciseType, combos[i]);
+      N.filterByExerciseType(exerciseType, combos[i]);
     }
 
     return combos

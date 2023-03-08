@@ -1,5 +1,4 @@
 import 'package:navika/extensions.dart';
-import 'package:navika/lang_data/cases_exercises/genitiv_exercises.dart';
 import 'package:navika/lang_data/cases_exercises/instrumental_exercises.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
@@ -8,7 +7,7 @@ import 'package:navika/utilities/navika-helpers.dart';
 import 'package:nrs_flutter_lib/enums.dart';
 
 class InstrumentalGenerators {
-   static List<CaseQuestionState> createExercise(
+  static List<CaseQuestionState> createExercise(
     ExerciseTypes exerciseType,
     DialectType dialect,
     bool isPremium,
@@ -33,7 +32,7 @@ class InstrumentalGenerators {
     }
 
     for (int i = 0; i < combos.length; i++) {
-      N.convertToExerciseTypes(exerciseType, combos[i]);
+      N.filterByExerciseType(exerciseType, combos[i]);
     }
 
     return combos

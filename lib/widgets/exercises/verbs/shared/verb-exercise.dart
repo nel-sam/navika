@@ -14,6 +14,7 @@ import 'package:navika/widgets/shared/navigation-header-wrapper.dart';
 import 'package:nrs_flutter_lib/constants.dart';
 import 'package:provider/provider.dart';
 
+// TODO: This is crashing
 class VerbExercise extends StatelessWidget {
   final String title;
   final VerbTenses tense;
