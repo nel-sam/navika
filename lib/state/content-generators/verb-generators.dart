@@ -24,28 +24,12 @@ class VerbGenerators {
   }
 
   List<VerbQuestionStateItem> createExercises(
-      //List avoidList,
-      ExerciseTypes exerciseType,
-      DialectType dialect) {
+      ExerciseTypes exerciseType, DialectType dialect) {
     _verbBank.shuffle();
-
-    // var verb =
-    //     avoidList.length == 0 ? _verbBank[0] : _getFirstNewVerb(avoidList);
-
     return _verbBank.map((v) => VerbQuestionStateItem(verb: v)).toList();
   }
 
   int getMaxIndex() {
     return _verbBank.length;
-  }
-
-  _getFirstNewVerb(List avoidList) {
-    var toAvoid = avoidList.map((e) => e.verb.infinitive);
-
-    for (int i = 0; i < _verbBank.length; i++) {
-      if (!toAvoid.contains(_verbBank[i].infinitive)) {
-        return _verbBank[i];
-      }
-    }
   }
 }

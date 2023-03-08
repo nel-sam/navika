@@ -94,7 +94,7 @@
   "ex_Cija_je_kava": "Whose is the coffee?",
   "ex_Idemo_prema_centru_grada": "We are going to the city center",
   "ex_Nadam se_nekom_poklonu": "I'm hoping for some gift",
-  "ex_ex_Moji_mladim_sinovima_je_dosadno": "My young sons are bored (it's boring to my young sons)",
+  "ex_Moji_mladim_sinovima_je_dosadno": "My young sons are bored (it's boring to my young sons)",
   "ex_Meni_je_dosadno": "I am bored (it's boring to me)",
   "ex_Sviđa_mi_se_burek_s_dobrim_mesom": "I like burek with good meat",
   "ex_Moram_ici_sa_svojom_sestrom": "I need to go with my sister",
@@ -149,6 +149,7 @@
   "ex_Marijini_psi_nisu_dresirani": "Marija's dogs are not trained",
   "ex_Japanska_sela_su_lijepa": "Japanese villages are beautiful",
   "ex_Koje_je_najbolje_balkansko_jezero": "Which is the best Balkan lake?",
+  "ex_Idem_prema_velikim_jezerima": "I'm going towards big lakes",
 
   "extrainfo_brat": "Braća is used when referring to multiple brothers. Braća refers to males, but declines like a singular feminine noun",
   "extrainfo_all_ona_aku_ok": "In this situation you can use any accusative form of 'Ona' because 'je' (from the verb 'biti') does not follow",

@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
-import 'package:navika/state/cases/case-question-state.dart';
 import 'package:navika/state/content-generators/akuzativ-generators.dart';
 import 'package:navika/state/content-generators/dativ-generators.dart';
 import 'package:navika/state/content-generators/genitiv-generators.dart';
@@ -46,19 +45,16 @@ class ExerciseNavNotifier with ChangeNotifier {
     this._exerciseType = exerciseType;
   }
 
-  void addSingleExercise(
-      List<CaseQuestionState> outList, Function createExerciseFunc) {
-    if (outList.isEmpty)
-      outList = createExerciseFunc(_exerciseType, _dialect, isPremium);
+  dynamic addSingleExercise(int index, Function createExerciseFunc) {
+    List<dynamic> allExercises =
+        createExerciseFunc(_exerciseType, _dialect, isPremium);
 
-    int randomNumber = Nrs.getRandomNumber(max: outList.length);
-    int maxRetries = 10;
-
-    while (outList.contains(outList[randomNumber]) && maxRetries-- > 0) {
-      randomNumber = Nrs.getRandomNumber(max: outList.length);
+    // loop index if greater than length of allExercises
+    if (index >= allExercises.length) {
+      index = index % allExercises.length;
     }
 
-    _states.add(outList[randomNumber]);
+    return allExercises[index];
   }
 
   void clearInput() {
@@ -103,40 +99,34 @@ class ExerciseNavNotifier with ChangeNotifier {
     debouncedNotifyListeners();
   }
 
-  _getRandomCaseExec() {
-    while (_states.length < MAX_BATCH_COUNT) {
+  _getRandomCaseExercises() {
+    for (int i = 0; i < MAX_BATCH_COUNT; i++) {
       final random = Nrs.getRandomNumber(max: Cases.values.length);
       final caseType = Cases.values[random];
-      List<CaseQuestionState> nom = [],
-          aku = [],
-          dat = [],
-          ins = [],
-          gen = [],
-          lok = [],
-          vok = [];
 
       switch (caseType) {
         case Cases.Nom:
-          addSingleExercise(nom, NominativGenerators.createExercise);
+          _states.add(addSingleExercise(i, NominativGenerators.createExercise));
           break;
         case Cases.Aku:
-          addSingleExercise(aku, AkuzativGenerators.createExercise);
+          _states.add(addSingleExercise(i, AkuzativGenerators.createExercise));
           break;
         case Cases.Ins:
-          addSingleExercise(ins, InstrumentalGenerators.createExercise);
+          _states
+              .add(addSingleExercise(i, InstrumentalGenerators.createExercise));
           break;
         case Cases.Dat:
-          addSingleExercise(dat, DativGenerators.createExercise);
+          _states.add(addSingleExercise(i, DativGenerators.createExercise));
           break;
         case Cases.Lok:
-          addSingleExercise(lok, LokativGenerators.createExercise);
+          _states.add(addSingleExercise(i, LokativGenerators.createExercise));
           break;
         case Cases.All:
         case Cases.Gen:
-          addSingleExercise(gen, GenitivGenerators.createExercise);
+          _states.add(addSingleExercise(i, GenitivGenerators.createExercise));
           break;
         case Cases.Vok:
-          addSingleExercise(vok, VokativGenerators.createExercise);
+          _states.add(addSingleExercise(i, VokativGenerators.createExercise));
           break;
       }
     }
@@ -145,7 +135,7 @@ class ExerciseNavNotifier with ChangeNotifier {
   _setCaseStates(Cases caseType) {
     switch (caseType) {
       case Cases.All:
-        _states = _getRandomCaseExec();
+        _getRandomCaseExercises();
         break;
       case Cases.Nom:
         _states = NominativGenerators.createExercise(
