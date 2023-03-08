@@ -17,20 +17,22 @@ class VerbGenerators {
       ];
     } else {
       _verbBank = [
-        ..._verbBank,
+        ...verbWordBankGeneral,
         ...verbsIjekavian,
       ];
     }
   }
 
-  createExercise(
-      List avoidList, ExerciseTypes exerciseType, DialectType dialect) {
+  List<VerbQuestionStateItem> createExercises(
+      //List avoidList,
+      ExerciseTypes exerciseType,
+      DialectType dialect) {
     _verbBank.shuffle();
 
-    var verb =
-        avoidList.length == 0 ? _verbBank[0] : _getFirstNewVerb(avoidList);
+    // var verb =
+    //     avoidList.length == 0 ? _verbBank[0] : _getFirstNewVerb(avoidList);
 
-    return VerbQuestionStateItem(verb: verb);
+    return _verbBank.map((v) => VerbQuestionStateItem(verb: v)).toList();
   }
 
   int getMaxIndex() {

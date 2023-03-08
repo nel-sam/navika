@@ -345,5 +345,7 @@ class InstrumentalExercises {
         ),
       ];
 
-  List<PANCombo> get premium => [];
+  List<PANCombo> get premium => [
+        // TODO: Possesives
+      ];
 }

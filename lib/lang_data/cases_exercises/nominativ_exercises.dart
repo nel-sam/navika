@@ -419,5 +419,180 @@ class NominativExercises {
         ),
       ];
 
-  List<PANCombo> get premium => [];
+  List<PANCombo> get premium => [
+        PANCombo(
+          caseType: caseType,
+          gender: NounBankGeneral.bicikl.gender,
+          isPlural: false,
+          isAnimate: false,
+          translation: N.t('ex_To_je_sestrin_novi_bicikl'),
+          sentenceParts: [
+            CaseSentencePart(displayValue: 'To je'),
+            CaseSentencePart(
+              displayValue: '',
+              isCorrectable: true,
+              actualObject: AdjectiveBankGeneral.sestrin,
+              grammarType: GrammarTypes.personalPronoun,
+              correctValues:
+                  AdjectiveBankGeneral.sestrin.nominativ!.masculine.singular,
+            ),
+            CaseSentencePart(
+              displayValue: '',
+              isCorrectable: true,
+              actualObject: AdjectiveBankGeneral.nov,
+              grammarType: GrammarTypes.personalPronoun,
+              correctValues:
+                  AdjectiveBankGeneral.nov.nominativ!.masculine.singular,
+            ),
+            CaseSentencePart(
+              isCorrectable: true,
+              actualObject: NounBankGeneral.bicikl,
+              displayValue: '',
+              correctValues: NounBankGeneral.bicikl.nominativ.singular,
+              grammarType: GrammarTypes.noun,
+            ),
+          ],
+        ),
+        PANCombo(
+          caseType: caseType,
+          gender: NounBankGeneral.pas.gender,
+          isPlural: true,
+          isAnimate: false,
+          translation: N.t('ex_Marijini_psi_nisu_dresirani'),
+          sentenceParts: [
+            CaseSentencePart(
+              displayValue: '',
+              isCorrectable: true,
+              actualObject: AdjectiveBankGeneral.marijin,
+              grammarType: GrammarTypes.adjective,
+              correctValues:
+                  AdjectiveBankGeneral.marijin.nominativ!.masculine.plural,
+            ),
+            CaseSentencePart(
+              isCorrectable: true,
+              actualObject: NounBankGeneral.pas,
+              displayValue: '',
+              correctValues: NounBankGeneral.pas.nominativ.singular,
+              grammarType: GrammarTypes.noun,
+            ),
+            CaseSentencePart(displayValue: 'nisu dresirani'),
+          ],
+        ),
+        PANCombo(
+          caseType: caseType,
+          gender: NounBankGeneral.torta.gender,
+          isPlural: true,
+          isAnimate: false,
+          translation: N.t('ex_Bakine_torte_su_najbolje'),
+          sentenceParts: [
+            CaseSentencePart(
+              displayValue: '',
+              isCorrectable: true,
+              actualObject: AdjectiveBankGeneral.bakin,
+              grammarType: GrammarTypes.adjective,
+              correctValues:
+                  AdjectiveBankGeneral.bakin.nominativ!.feminine!.plural,
+            ),
+            CaseSentencePart(
+              isCorrectable: true,
+              actualObject: NounBankGeneral.torta,
+              displayValue: '',
+              correctValues: NounBankGeneral.torta.nominativ.singular,
+              grammarType: GrammarTypes.noun,
+            ),
+            CaseSentencePart(displayValue: 'su'),
+            CaseSentencePart(
+              displayValue: '',
+              isCorrectable: true,
+              actualObject: AdjectiveBankGeneral.najbolji,
+              grammarType: GrammarTypes.adjective,
+              correctValues:
+                  AdjectiveBankGeneral.najbolji.nominativ!.feminine!.plural,
+            ),
+          ],
+        ),
+        PANCombo(
+          caseType: caseType,
+          gender: NounBankGeneral.sestra.gender,
+          isPlural: false,
+          isAnimate: false,
+          translation: N.t('ex_Denisova_sestra_nedavno_se_udala'),
+          sentenceParts: [
+            CaseSentencePart(
+              displayValue: '',
+              isCorrectable: true,
+              actualObject: AdjectiveBankGeneral.denisov,
+              grammarType: GrammarTypes.adjective,
+              correctValues:
+                  AdjectiveBankGeneral.denisov.nominativ!.feminine!.singular,
+            ),
+            CaseSentencePart(
+              isCorrectable: true,
+              actualObject: NounBankGeneral.sestra,
+              displayValue: '',
+              correctValues: NounBankGeneral.sestra.nominativ.singular,
+              grammarType: GrammarTypes.noun,
+            ),
+            CaseSentencePart(displayValue: 'nedavno se udala'),
+          ],
+        ),
+        PANCombo(
+          caseType: caseType,
+          gender: NounBankGeneral.jezero.gender,
+          isPlural: false,
+          isAnimate: false,
+          sentenceParts: [
+            CaseSentencePart(
+              displayValue: '',
+              isCorrectable: true,
+              actualObject: DemonstrativePronouns.koji,
+              grammarType: GrammarTypes.demonstrativePronoun,
+              correctValues:
+                  DemonstrativePronouns.koji.nominativ!.neuter!.singular,
+            ),
+            CaseSentencePart(displayValue: 'je najbolje'),
+            CaseSentencePart(
+              displayValue: '',
+              isCorrectable: true,
+              actualObject: AdjectiveBankGeneral.balkanski,
+              grammarType: GrammarTypes.adjective,
+              correctValues:
+                  AdjectiveBankGeneral.balkanski.nominativ!.neuter!.singular,
+            ),
+            CaseSentencePart(
+              isCorrectable: true,
+              actualObject: NounBankGeneral.jezero,
+              displayValue: '',
+              correctValues: NounBankGeneral.jezero.nominativ.singular,
+              grammarType: GrammarTypes.noun,
+            ),
+            CaseSentencePart(displayValue: '?'),
+          ],
+          translation: N.t('ex_Koje_je_najbolje_balkansko_jezero'),
+        ),
+        PANCombo(
+          caseType: caseType,
+          gender: NounBankGeneral.selo.gender,
+          isPlural: true,
+          isAnimate: false,
+          sentenceParts: [
+            CaseSentencePart(
+              displayValue: '',
+              isCorrectable: true,
+              actualObject: AdjectiveBankGeneral.japanski,
+              grammarType: GrammarTypes.personalPronoun,
+              correctValues:
+                  AdjectiveBankGeneral.japanski.nominativ!.neuter!.plural,
+            ),
+            CaseSentencePart(
+              isCorrectable: true,
+              actualObject: NounBankGeneral.selo,
+              displayValue: '',
+              correctValues: NounBankGeneral.selo.nominativ.plural,
+              grammarType: GrammarTypes.noun,
+            ),
+          ],
+          translation: N.t('ex_Japanska_sela_su_lijepa'),
+        ),
+      ];
 }

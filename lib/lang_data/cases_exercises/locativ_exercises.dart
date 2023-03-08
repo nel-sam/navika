@@ -332,5 +332,7 @@ class LokativExercises {
             translation: N.t('ex_Zivotinje_su_svjesne_kretanja_prema_njima')),
       ];
 
-  List<PANCombo> get premium => [];
+  List<PANCombo> get premium => [
+        // TODO: Possesives
+      ];
 }

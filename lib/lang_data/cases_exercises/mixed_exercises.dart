@@ -59,7 +59,7 @@ class GenitivExercises {
                 actualObject: AdjectiveBankGeneral.vruc,
                 displayValue: AdjectiveBankGeneral.vruc.dictionary,
                 correctValues: AdjectiveBankGeneral.vruc.genitiv!.masculine.singular,
-                grammarType: GrammarTypes.personalPronoun,
+                grammarType: GrammarTypes.adjective,
               ),
               CaseSentencePart(
               isCorrectable: true,

@@ -483,5 +483,7 @@ class DativExercises {
             translation: N.t('ex_Meni_je_dosadno')),
       ];
 
-  List<PANCombo> get premium => [];
+  List<PANCombo> get premium => [
+        // TODO: Possesives
+      ];
 }

@@ -37,9 +37,10 @@ class ExerciseNavNotifier with ChangeNotifier {
     if (isVerb) {
       final verbGenerator = VerbGenerators(dialect: dialect);
       this._maxIndex = verbGenerator.getMaxIndex();
+      _states = verbGenerator.createExercises(exerciseType, dialect);
     } else {
       _maxIndex = MAX_BATCH_COUNT;
-      _setStates(caseType!);
+      _setCaseStates(caseType!);
     }
 
     this._exerciseType = exerciseType;
@@ -141,7 +142,7 @@ class ExerciseNavNotifier with ChangeNotifier {
     }
   }
 
-  _setStates(Cases caseType) {
+  _setCaseStates(Cases caseType) {
     switch (caseType) {
       case Cases.All:
         _states = _getRandomCaseExec();
