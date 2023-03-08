@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/utilities/navika-helpers.dart';
-import 'package:navika/widgets/exercises/declension/exercise-type-menus/declension-type-menu.dart';
+import 'package:navika/widgets/exercises/declension/shared/case-exercise.dart';
 
 class AllCases extends StatelessWidget {
   const AllCases({Key? key}) : super(key: key);
@@ -10,7 +10,7 @@ class AllCases extends StatelessWidget {
   Widget build(BuildContext context) {
     final title = N.t('allCases');
 
-    return DeclensionTypeMenu(
+    return CaseExercise(
       title: title,
       caseType: Cases.All,
       description: N.t('allCasesDesc'),
