@@ -334,5 +334,7 @@ class LokativExercises {
 
   List<PANCombo> get premium => [
         // TODO: Possesives
+
+// TODO: Nationality nouns
       ];
 }

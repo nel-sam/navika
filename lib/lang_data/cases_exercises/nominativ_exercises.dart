@@ -594,5 +594,8 @@ class NominativExercises {
           ],
           translation: N.t('ex_Japanska_sela_su_lijepa'),
         ),
+
+        // TODO: Ana je Mirijino i Denisovo dijete/dete
+        // ... More like this
       ];
 }

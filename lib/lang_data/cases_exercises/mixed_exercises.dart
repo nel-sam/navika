@@ -16,8 +16,11 @@ class GenitivExercises {
     this.isCroatian = dialect == DialectType.Croatia;
   }
 
+  // TODO: Use these for the "All cases" exercises
+  // Priority should be given to exercises from here and then
+  // use randoms from other cases to 'fill in' the rest of the exercises
   List<PANCombo> get general => [
-    PANCombo(
+        PANCombo(
             caseType: caseType,
             gender: Genders.Masculine,
             isPlural: false,
@@ -40,7 +43,7 @@ class GenitivExercises {
             ],
             isAnimate: false,
             translation: N.t('ex_Idemo_prema_centru_grada')),
-    PANCombo(
+        PANCombo(
             caseType: caseType,
             gender: Genders.Masculine,
             isPlural: false,
@@ -58,16 +61,17 @@ class GenitivExercises {
                 isCorrectable: true,
                 actualObject: AdjectiveBankGeneral.vruc,
                 displayValue: AdjectiveBankGeneral.vruc.dictionary,
-                correctValues: AdjectiveBankGeneral.vruc.genitiv!.masculine.singular,
+                correctValues:
+                    AdjectiveBankGeneral.vruc.genitiv!.masculine.singular,
                 grammarType: GrammarTypes.adjective,
               ),
               CaseSentencePart(
-              isCorrectable: true,
-              actualObject: NounBankGeneral.caj,
-              displayValue: NounBankGeneral.caj.dictionary,
-              correctValues: NounBankGeneral.caj.dativ!.singular,
-              grammarType: GrammarTypes.noun,
-            ),
+                isCorrectable: true,
+                actualObject: NounBankGeneral.caj,
+                displayValue: NounBankGeneral.caj.dictionary,
+                correctValues: NounBankGeneral.caj.dativ!.singular,
+                grammarType: GrammarTypes.noun,
+              ),
             ],
             isAnimate: false,
             translation: N.t('ex_Molim_te_daj_mu_malo_vruceg_caja')),
@@ -83,7 +87,8 @@ class GenitivExercises {
               isCorrectable: true,
               actualObject: AdjectiveBankGeneral.velik,
               displayValue: AdjectiveBankGeneral.velik.dictionary,
-              correctValues: AdjectiveBankGeneral.velik.dativ!.feminine!.singular,
+              correctValues:
+                  AdjectiveBankGeneral.velik.dativ!.feminine!.singular,
               grammarType: GrammarTypes.adjective,
             ),
             CaseSentencePart(

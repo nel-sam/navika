@@ -4,17 +4,43 @@ import 'package:navika/models/noun.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 
 class NounBankGeneral {
+  static final Noun balkanac = Noun(
+    dictionary: 'Balkanac',
+    tags: [Tags.Human],
+    gender: Genders.Masculine,
+    isAnimate: false,
+    nominativ:
+        new DeclensionByCount(singular: ['Balkanac'], plural: ['Balkanci']),
+    genitiv:
+        new DeclensionByCount(singular: ['Balkanca'], plural: ['Balkanaca']),
+    dativ:
+        new DeclensionByCount(singular: ['Balkancu'], plural: ['Balkancima']),
+    akuzativ:
+        new DeclensionByCount(singular: ['Balkancu'], plural: ['Balkance']),
+    lokativ:
+        new DeclensionByCount(singular: ['Balkancu'], plural: ['Balkancima']),
+    vokativ:
+        new DeclensionByCount(singular: ['Balkance'], plural: ['Balkanci']),
+    instrumental:
+        new DeclensionByCount(singular: ['Balkancem'], plural: ['Balkancima']),
+  );
+
   static final Noun karolina = Noun(
     dictionary: 'Karolina',
     tags: [Tags.Human, Tags.Name],
     gender: Genders.Feminine,
     isAnimate: false,
-    nominativ: new DeclensionByCount(singular: ['Karolina'], plural: ['Karoline']),
-    genitiv: new DeclensionByCount(singular: ['Karoline'], plural: ['Karolina']),
-    dativ: new DeclensionByCount(singular: ['Karolini'], plural: ['Karolinama']),
+    nominativ:
+        new DeclensionByCount(singular: ['Karolina'], plural: ['Karoline']),
+    genitiv:
+        new DeclensionByCount(singular: ['Karoline'], plural: ['Karolina']),
+    dativ:
+        new DeclensionByCount(singular: ['Karolini'], plural: ['Karolinama']),
     akuzativ: new DeclensionByCount(singular: ['ruku'], plural: ['ruke']),
-    lokativ: new DeclensionByCount(singular: ['Karolini'], plural: ['Karolinama']),
-    vokativ: new DeclensionByCount(singular: ['Karolino'], plural: ['Karoline']),
+    lokativ:
+        new DeclensionByCount(singular: ['Karolini'], plural: ['Karolinama']),
+    vokativ:
+        new DeclensionByCount(singular: ['Karolino'], plural: ['Karoline']),
     instrumental:
         new DeclensionByCount(singular: ['Karolinom'], plural: ['Karolinama']),
   );
