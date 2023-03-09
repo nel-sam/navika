@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/lang_data/cases_exercises/mixed_exercises.dart';
 import 'package:navika/models/enums.dart';
+import 'package:navika/state/cases/case-question-state.dart';
 import 'package:navika/state/content-generators/akuzativ-generators.dart';
 import 'package:navika/state/content-generators/dativ-generators.dart';
 import 'package:navika/state/content-generators/genitiv-generators.dart';
@@ -106,7 +107,7 @@ class ExerciseNavNotifier with ChangeNotifier {
 
     for (int i = 0; i < MAX_BATCH_COUNT; i++) {
       if (i < generalMixedBank.length) {
-        _states.add(generalMixedBank[i]);
+        _states.add(CaseQuestionState(combos: generalMixedBank[i]));
         continue;
       }
 

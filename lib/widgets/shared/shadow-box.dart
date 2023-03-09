@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:nrs_flutter_lib/constants.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
 class ShadowBox extends StatelessWidget {
@@ -16,16 +15,17 @@ class ShadowBox extends StatelessWidget {
         : Colors.white;
 
     return Container(
-      decoration: BoxDecoration(
-        color: bgColor,
-        boxShadow: [
-          BoxShadow(
-            color: this.isCorrect ? CORRECT_COLOR : WRONG_COLOR,
-            spreadRadius: 1,
-            blurRadius: 1,
-          ),
-        ],
-      ),
+      // TODO: Remove entire widget if not using
+      // decoration: BoxDecoration(
+      //   color: bgColor,
+      //   boxShadow: [
+      //     BoxShadow(
+      //       color: this.isCorrect ? CORRECT_COLOR : WRONG_COLOR,
+      //       spreadRadius: 1,
+      //       blurRadius: 1,
+      //     ),
+      //   ],
+      // ),
       child: child,
     );
   }

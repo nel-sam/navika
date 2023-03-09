@@ -36,6 +36,7 @@ class CaseExerciseRowCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenWidth = Nrs.getScreenWidth();
 
+    // TODO: Make this all look better
     return Container(
       height: 350,
       child: ShadowBox(

@@ -48,41 +48,49 @@ class CaseExercise extends StatelessWidget {
           builder: (context, navNotifier, child) {
             return Scaffold(
               appBar: N.navAppBar(title: SbcLabels.cases, context: context),
-              body: Center(
-                child: SingleChildScrollView(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      InfoBanner(
-                        label: title,
-                        description: description,
-                        youtubeLink: youtubeLink,
-                      ),
-                      const AdCard(),
-                      GestureDetector(
-                        onHorizontalDragUpdate: (details) {
-                          if (_debounce.isActive) {
-                            _debounce.cancel();
-                          }
+              body: SafeArea(
+                child: CustomScrollView(
+                  slivers: [
+                    SliverFillRemaining(
+                      hasScrollBody: false,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          InfoBanner(
+                            label: title,
+                            description: description,
+                            youtubeLink: youtubeLink,
+                          ),
+                          const AdCard(),
+                          Expanded(
+                            child: GestureDetector(
+                              onHorizontalDragUpdate: (details) {
+                                if (_debounce.isActive) {
+                                  _debounce.cancel();
+                                }
 
-                          _debounce = Timer(
-                              const Duration(milliseconds: DEBOUNCE_TIME), () {
-                            if (details.delta.dx > 0) {
-                              navNotifier.setPrevious();
-                            }
+                                _debounce = Timer(
+                                    const Duration(milliseconds: DEBOUNCE_TIME),
+                                    () {
+                                  if (details.delta.dx > 0) {
+                                    navNotifier.setPrevious();
+                                  }
 
-                            if (details.delta.dx < 0) {
-                              navNotifier.setNext();
-                            }
-                          });
-                        },
-                        child: CaseQuestionContent(
-                          stateItem: navNotifier.getActive(),
-                        ),
+                                  if (details.delta.dx < 0) {
+                                    navNotifier.setNext();
+                                  }
+                                });
+                              },
+                              child: CaseQuestionContent(
+                                stateItem: navNotifier.getActive(),
+                              ),
+                            ),
+                          ),
+                          NavigationHeaderWrapper(navNotifier: navNotifier),
+                        ],
                       ),
-                      NavigationHeaderWrapper(navNotifier: navNotifier),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
               persistentFooterButtons: [

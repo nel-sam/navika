@@ -72,38 +72,48 @@ class VerbExercise extends StatelessWidget {
                   }
                 });
               },
-              child: Center(
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      InfoBanner(
-                        label: title,
-                        description: description,
-                        youtubeLink: youtubeLink,
+              child: SafeArea(
+                child: CustomScrollView(
+                  slivers: [
+                    SliverFillRemaining(
+                      hasScrollBody: false,
+                      child: Column(
+                        children: [
+                          InfoBanner(
+                            label: title,
+                            description: description,
+                            youtubeLink: youtubeLink,
+                          ),
+                          const AdCard(),
+                          Container(
+                            child: this.tense == VerbTenses.PastPerfect
+                                ? PastTenseQuestionContent(
+                                    verb: stateITem.verb,
+                                    state: stateITem.userEntryState,
+                                    isAllCorrect: stateITem.isCorrect,
+                                    onChanged:
+                                        (String pronoun, String newValue) =>
+                                            stateITem.updateState(
+                                                pronoun.toString(),
+                                                newValue,
+                                                this.tense),
+                                  )
+                                : PresentTenseQuestionContent(
+                                    verb: stateITem.verb,
+                                    isAllCorrect: stateITem.isCorrect,
+                                    state: stateITem.userEntryState,
+                                    onChanged:
+                                        (String pronoun, String newValue) =>
+                                            stateITem.updateState(
+                                                pronoun, newValue, this.tense),
+                                  ),
+                          ),
+                          Expanded(child: Container()),
+                          NavigationHeaderWrapper(navNotifier: navNotifier),
+                        ],
                       ),
-                      const AdCard(),
-                      NavigationHeaderWrapper(navNotifier: navNotifier),
-                      Container(
-                        child: this.tense == VerbTenses.PastPerfect
-                            ? PastTenseQuestionContent(
-                                verb: stateITem.verb,
-                                state: stateITem.userEntryState,
-                                isAllCorrect: stateITem.isCorrect,
-                                onChanged: (String pronoun, String newValue) =>
-                                    stateITem.updateState(pronoun.toString(),
-                                        newValue, this.tense),
-                              )
-                            : PresentTenseQuestionContent(
-                                verb: stateITem.verb,
-                                isAllCorrect: stateITem.isCorrect,
-                                state: stateITem.userEntryState,
-                                onChanged: (String pronoun, String newValue) =>
-                                    stateITem.updateState(
-                                        pronoun, newValue, this.tense),
-                              ),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             );
