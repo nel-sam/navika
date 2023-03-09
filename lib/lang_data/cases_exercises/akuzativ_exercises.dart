@@ -31,17 +31,16 @@ class AkuzativExercises {
           translation: N.t('ex_Sto_jedes'),
           sentenceParts: [
             CaseSentencePart(
-                isCorrectable: true,
-                actualObject:
-                    isCroatian ? NounsIjekavian.sto : NounsEkavian.sta,
-                displayValue: isCroatian
-                    ? NounsIjekavian.sto.dictionary
-                    : NounsEkavian.sta.dictionary,
-                correctValues: isCroatian
-                    ? NounsIjekavian.sto.akuzativ.singular
-                    : NounsEkavian.sta.akuzativ.singular,
-                grammarType: GrammarTypes.noun,
-              ),
+              isCorrectable: true,
+              actualObject: isCroatian ? NounsIjekavian.sto : NounsEkavian.sta,
+              displayValue: isCroatian
+                  ? NounsIjekavian.sto.dictionary
+                  : NounsEkavian.sta.dictionary,
+              correctValues: isCroatian
+                  ? NounsIjekavian.sto.akuzativ.singular
+                  : NounsEkavian.sta.akuzativ.singular,
+              grammarType: GrammarTypes.noun,
+            ),
             CaseSentencePart(displayValue: 'jedeš?'),
           ],
         ),
@@ -606,6 +605,95 @@ class AkuzativExercises {
                   ? NounsIjekavian.covjek.akuzativ.singular
                   : NounsEkavian.covek.akuzativ.singular,
             ),
+          ],
+        ),
+        PANCombo(
+          caseType: caseType,
+          gender: NounBankGeneral.macka.gender,
+          isPlural: true,
+          isAnimate: true,
+          sentenceParts: [
+            CaseSentencePart(
+                displayValue: this.isCroatian ? 'Vidio sam' : 'Video sam'),
+            CaseSentencePart(
+              displayValue: AdjectiveBankGeneral.denisov.dictionary,
+              isCorrectable: true,
+              actualObject: AdjectiveBankGeneral.denisov,
+              grammarType: GrammarTypes.adjective,
+              correctValues:
+                  AdjectiveBankGeneral.denisov.akuzativ!.feminine!.plural,
+            ),
+            CaseSentencePart(
+              displayValue: AdjectiveBankGeneral.crni.dictionary,
+              isCorrectable: true,
+              actualObject: AdjectiveBankGeneral.crni,
+              grammarType: GrammarTypes.adjective,
+              correctValues:
+                  AdjectiveBankGeneral.crni.akuzativ!.feminine!.plural,
+            ),
+            CaseSentencePart(
+              displayValue: NounBankGeneral.macka.dictionary,
+              isCorrectable: true,
+              actualObject: NounBankGeneral.macka,
+              grammarType: GrammarTypes.noun,
+              correctValues: NounBankGeneral.macka.akuzativ.plural,
+            ),
+          ],
+          translation: N.t('ex_Video_sam_denisove_crne_macke'),
+        ),
+        PANCombo(
+          caseType: caseType,
+          translation: N.t('ex_To_je_poklon_za_Aninu_sestru'),
+          gender: NounBankGeneral.sestra.gender,
+          isPlural: false,
+          isAnimate: true,
+          sentenceParts: [
+            CaseSentencePart(displayValue: 'To je poklon za'),
+            CaseSentencePart(
+              displayValue: AdjectiveBankGeneral.anin.dictionary,
+              isCorrectable: true,
+              actualObject: AdjectiveBankGeneral.anin,
+              grammarType: GrammarTypes.adjective,
+              correctValues:
+                  AdjectiveBankGeneral.anin.akuzativ!.feminine!.singular,
+            ),
+            CaseSentencePart(
+              displayValue: NounBankGeneral.sestra.dictionary,
+              isCorrectable: true,
+              actualObject: NounBankGeneral.sestra,
+              grammarType: GrammarTypes.noun,
+              correctValues: NounBankGeneral.sestra.akuzativ.singular,
+            ),
+          ],
+        ),
+        PANCombo(
+          caseType: caseType,
+          translation: N.t('ex_Vidjeli_smo_lijepe_hrvatice_u_Hrvatskoj'),
+          gender: NounBankGeneral.hrvatica.gender,
+          isPlural: true,
+          isAnimate: true,
+          sentenceParts: [
+            CaseSentencePart(displayValue: 'Vidjeli smo'),
+            CaseSentencePart(
+              displayValue: isSerbian
+                  ? AdjectivesEkavian.lep.dictionary
+                  : AdjectivesIjekavian.lijep.dictionary,
+              isCorrectable: true,
+              actualObject:
+                  isSerbian ? AdjectivesEkavian.lep : AdjectivesIjekavian.lijep,
+              grammarType: GrammarTypes.adjective,
+              correctValues: isSerbian
+                  ? AdjectivesEkavian.lep.akuzativ!.feminine!.plural
+                  : AdjectivesIjekavian.lijep.akuzativ!.feminine!.plural,
+            ),
+            CaseSentencePart(
+              displayValue: NounBankGeneral.hrvatica.dictionary,
+              isCorrectable: true,
+              actualObject: NounBankGeneral.hrvatica,
+              grammarType: GrammarTypes.noun,
+              correctValues: NounBankGeneral.hrvatica.akuzativ.plural,
+            ),
+            CaseSentencePart(displayValue: 'u Hrvatskoj'),
           ],
         ),
       ];

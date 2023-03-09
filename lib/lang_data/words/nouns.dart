@@ -4,6 +4,90 @@ import 'package:navika/models/noun.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 
 class NounBankGeneral {
+  static final Noun srbijanka = Noun(
+    dictionary: 'Srbijanka',
+    tags: [Tags.Human],
+    gender: Genders.Feminine,
+    isAnimate: false,
+    nominativ:
+        new DeclensionByCount(singular: ['Srbijanka'], plural: ['Srbijanke']),
+    genitiv:
+        new DeclensionByCount(singular: ['Srbijanke'], plural: ['Srbijanka']),
+    dativ:
+        new DeclensionByCount(singular: ['Srbijanki'], plural: ['Srbijankama']),
+    akuzativ:
+        new DeclensionByCount(singular: ['Srbijanku'], plural: ['Srbijanke']),
+    lokativ:
+        new DeclensionByCount(singular: ['Srbijanki'], plural: ['Srbijankama']),
+    vokativ:
+        new DeclensionByCount(singular: ['Srbijanko'], plural: ['Srbijanke']),
+    instrumental:
+        new DeclensionByCount(singular: ['Srbijankom'], plural: ['Srbijankama']),
+  );
+
+  static final Noun srbin = Noun(
+    dictionary: 'Srbin',
+    tags: [Tags.Human],
+    gender: Genders.Masculine,
+    isAnimate: false,
+    nominativ:
+        new DeclensionByCount(singular: ['Srbin'], plural: ['Srbi']),
+    genitiv:
+        new DeclensionByCount(singular: ['Srbina'], plural: ['Srba']),
+    dativ:
+        new DeclensionByCount(singular: ['Srbinu'], plural: ['Srbima']),
+    akuzativ:
+        new DeclensionByCount(singular: ['Srbinu'], plural: ['Srbe']),
+    lokativ:
+        new DeclensionByCount(singular: ['Srbinu'], plural: ['Srbima']),
+    vokativ:
+        new DeclensionByCount(singular: ['Srbine'], plural: ['Srbi']),
+    instrumental:
+        new DeclensionByCount(singular: ['Srbinom'], plural: ['Srbima']),
+  );
+
+  static final Noun hrvatica = Noun(
+    dictionary: 'Hrvatica',
+    tags: [Tags.Human],
+    gender: Genders.Feminine,
+    isAnimate: false,
+    nominativ:
+        new DeclensionByCount(singular: ['Hrvatica'], plural: ['Hrvatice']),
+    genitiv:
+        new DeclensionByCount(singular: ['Hrvatice'], plural: ['Hrvatica']),
+    dativ:
+        new DeclensionByCount(singular: ['Hrvatici'], plural: ['Hrvaticama']),
+    akuzativ:
+        new DeclensionByCount(singular: ['Hrvaticu'], plural: ['Hrvatice']),
+    lokativ:
+        new DeclensionByCount(singular: ['Hrvaticu'], plural: ['Hrvaticama']),
+    vokativ:
+        new DeclensionByCount(singular: ['Hrvatice'], plural: ['Hrvatice']),
+    instrumental:
+        new DeclensionByCount(singular: ['Hrvaticom'], plural: ['Hrvaticama']),
+  );
+
+  static final Noun hrvat = Noun(
+    dictionary: 'Hrvat',
+    tags: [Tags.Human],
+    gender: Genders.Masculine,
+    isAnimate: false,
+    nominativ:
+        new DeclensionByCount(singular: ['Hrvat'], plural: ['Hrvati']),
+    genitiv:
+        new DeclensionByCount(singular: ['Hrvata'], plural: ['Hrvata']),
+    dativ:
+        new DeclensionByCount(singular: ['Hrvatu'], plural: ['Hrvatima']),
+    akuzativ:
+        new DeclensionByCount(singular: ['Hrvata'], plural: ['Hrvate']),
+    lokativ:
+        new DeclensionByCount(singular: ['Hrvatu'], plural: ['Hrvatima']),
+    vokativ:
+        new DeclensionByCount(singular: ['Hrvate'], plural: ['Hrvati']),
+    instrumental:
+        new DeclensionByCount(singular: ['Hrvatom'], plural: ['Hrvatima']),
+  );
+
   static final Noun balkanac = Noun(
     dictionary: 'Balkanac',
     tags: [Tags.Human],
@@ -16,7 +100,7 @@ class NounBankGeneral {
     dativ:
         new DeclensionByCount(singular: ['Balkancu'], plural: ['Balkancima']),
     akuzativ:
-        new DeclensionByCount(singular: ['Balkancu'], plural: ['Balkance']),
+        new DeclensionByCount(singular: ['Balkanca'], plural: ['Balkance']),
     lokativ:
         new DeclensionByCount(singular: ['Balkancu'], plural: ['Balkancima']),
     vokativ:
@@ -36,7 +120,7 @@ class NounBankGeneral {
         new DeclensionByCount(singular: ['Karoline'], plural: ['Karolina']),
     dativ:
         new DeclensionByCount(singular: ['Karolini'], plural: ['Karolinama']),
-    akuzativ: new DeclensionByCount(singular: ['ruku'], plural: ['ruke']),
+    akuzativ: new DeclensionByCount(singular: ['Karolinu'], plural: ['Karoline']),
     lokativ:
         new DeclensionByCount(singular: ['Karolini'], plural: ['Karolinama']),
     vokativ:

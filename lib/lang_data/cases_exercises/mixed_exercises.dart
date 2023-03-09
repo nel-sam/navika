@@ -1,5 +1,7 @@
 import 'package:navika/lang_data/words/adjectives.dart';
 import 'package:navika/lang_data/words/demonstrative-pronouns.dart';
+import 'package:navika/lang_data/words/ekavian/adjectives_ekavian.dart';
+import 'package:navika/lang_data/words/ijekavian/adjectives_ijekavian.dart';
 import 'package:navika/lang_data/words/nouns.dart';
 import 'package:navika/lang_data/words/personal-pronouns.dart';
 import 'package:navika/lang_data/words/possessive-pronouns.dart';
@@ -8,18 +10,18 @@ import 'package:navika/models/models.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:nrs_flutter_lib/enums.dart';
 
-class GenitivExercises {
+class MixedExercises {
   late bool isCroatian;
+  late bool isSerbian;
   final Cases caseType = Cases.All;
 
-  GenitivExercises(DialectType dialect) {
+  MixedExercises(DialectType dialect) {
     this.isCroatian = dialect == DialectType.Croatia;
+    this.isSerbian = dialect == DialectType.Serbia;
   }
 
-  // TODO: Use these for the "All cases" exercises
-  // Priority should be given to exercises from here and then
-  // use randoms from other cases to 'fill in' the rest of the exercises
-  List<PANCombo> get general => [
+  // TODO: Add more exercises
+  List<PANCombo> get all => [
         PANCombo(
             caseType: caseType,
             gender: Genders.Masculine,
@@ -287,5 +289,42 @@ class GenitivExercises {
             ],
             isAnimate: false,
             translation: N.t('ex_Otac_je_polako_otisao_od_kuce')),
+        PANCombo(
+          caseType: caseType,
+          translation: N.t('ex_Vidjeli_smo_lijepe_jezera_u_Bosni'),
+          gender: NounBankGeneral.hrvatica.gender,
+          isPlural: true,
+          isAnimate: true,
+          sentenceParts: [
+            CaseSentencePart(displayValue: 'Vidjeli smo'),
+            CaseSentencePart(
+              displayValue: isSerbian
+                  ? AdjectivesEkavian.lep.dictionary
+                  : AdjectivesIjekavian.lijep.dictionary,
+              isCorrectable: true,
+              actualObject:
+                  isSerbian ? AdjectivesEkavian.lep : AdjectivesIjekavian.lijep,
+              grammarType: GrammarTypes.adjective,
+              correctValues: isSerbian
+                  ? AdjectivesEkavian.lep.akuzativ!.neuter!.plural
+                  : AdjectivesIjekavian.lijep.akuzativ!.neuter!.plural,
+            ),
+            CaseSentencePart(
+              displayValue: NounBankGeneral.jezero.dictionary,
+              isCorrectable: true,
+              actualObject: NounBankGeneral.jezero,
+              grammarType: GrammarTypes.noun,
+              correctValues: NounBankGeneral.jezero.akuzativ.plural,
+            ),
+            CaseSentencePart(displayValue: 'u'),
+            CaseSentencePart(
+              displayValue: NounBankGeneral.bosna.dictionary,
+              isCorrectable: true,
+              actualObject: NounBankGeneral.bosna,
+              grammarType: GrammarTypes.noun,
+              correctValues: NounBankGeneral.bosna.lokativ.singular,
+            ),
+          ],
+        ),
       ];
 }

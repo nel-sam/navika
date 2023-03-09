@@ -14,10 +14,12 @@ import 'package:nrs_flutter_lib/enums.dart';
 
 class NominativExercises {
   late bool isCroatian;
+  late bool isSerbian;
   final Cases caseType = Cases.Nom;
 
   NominativExercises(DialectType dialect) {
     this.isCroatian = dialect == DialectType.Croatia;
+    this.isSerbian = dialect == DialectType.Serbia;
   }
 
   List<PANCombo> get general => [
@@ -580,7 +582,7 @@ class NominativExercises {
               displayValue: '',
               isCorrectable: true,
               actualObject: AdjectiveBankGeneral.japanski,
-              grammarType: GrammarTypes.personalPronoun,
+              grammarType: GrammarTypes.adjective,
               correctValues:
                   AdjectiveBankGeneral.japanski.nominativ!.neuter!.plural,
             ),
@@ -591,11 +593,69 @@ class NominativExercises {
               correctValues: NounBankGeneral.selo.nominativ.plural,
               grammarType: GrammarTypes.noun,
             ),
+            CaseSentencePart(displayValue: 'su lijepa'),
           ],
           translation: N.t('ex_Japanska_sela_su_lijepa'),
         ),
-
-        // TODO: Ana je Mirijino i Denisovo dijete/dete
-        // ... More like this
+        PANCombo(
+          caseType: caseType,
+          gender: NounBankGeneral.selo.gender,
+          isPlural: false,
+          isAnimate: false,
+          sentenceParts: [
+            CaseSentencePart(displayValue: 'Ana je'),
+            CaseSentencePart(
+              displayValue: '',
+              isCorrectable: true,
+              actualObject: AdjectiveBankGeneral.marijin,
+              grammarType: GrammarTypes.possessivePronoun,
+              correctValues:
+                  AdjectiveBankGeneral.marijin.nominativ!.masculine.singular,
+            ),
+            CaseSentencePart(displayValue: 'i'),
+            CaseSentencePart(
+              isCorrectable: true,
+              actualObject: AdjectiveBankGeneral.denisov,
+              displayValue: '',
+              correctValues:
+                  AdjectiveBankGeneral.denisov.nominativ!.masculine.singular,
+              grammarType: GrammarTypes.possessivePronoun,
+            ),
+            CaseSentencePart(displayValue: this.isSerbian ? 'dete' : 'dijete'),
+          ],
+          translation: N.t('ex_Ana_je_marijino_i_denisovo_dijete'),
+        ),
+        PANCombo(
+          caseType: caseType,
+          gender: NounBankGeneral.majka.gender,
+          isPlural: false,
+          isAnimate: false,
+          sentenceParts: [
+            CaseSentencePart(
+              displayValue: '',
+              isCorrectable: true,
+              actualObject: AdjectiveBankGeneral.anin,
+              grammarType: GrammarTypes.possessivePronoun,
+              correctValues:
+                  AdjectiveBankGeneral.anin.nominativ!.feminine!.singular,
+            ),
+            CaseSentencePart(
+              isCorrectable: true,
+              actualObject: NounBankGeneral.majka,
+              displayValue: '',
+              correctValues: NounBankGeneral.majka.nominativ.singular,
+              grammarType: GrammarTypes.noun,
+            ),
+            CaseSentencePart(displayValue: 'je'),
+            CaseSentencePart(
+              isCorrectable: true,
+              actualObject: NounBankGeneral.hrvatica,
+              displayValue: '',
+              correctValues: NounBankGeneral.hrvatica.nominativ.singular,
+              grammarType: GrammarTypes.noun,
+            ),
+          ],
+          translation: N.t('ex_Anina_majka_je_hrvatica'),
+        ),
       ];
 }

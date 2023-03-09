@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 import 'package:navika/constants.dart';
+import 'package:navika/lang_data/cases_exercises/mixed_exercises.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/state/content-generators/akuzativ-generators.dart';
 import 'package:navika/state/content-generators/dativ-generators.dart';
@@ -99,8 +100,16 @@ class ExerciseNavNotifier with ChangeNotifier {
     debouncedNotifyListeners();
   }
 
-  _getRandomCaseExercises() {
+  _getMixedCaseExercises() {
+    final generalMixedBank = MixedExercises(_dialect).all;
+    generalMixedBank.shuffle();
+
     for (int i = 0; i < MAX_BATCH_COUNT; i++) {
+      if (i < generalMixedBank.length) {
+        _states.add(generalMixedBank[i]);
+        continue;
+      }
+
       final random = Nrs.getRandomNumber(max: Cases.values.length);
       final caseType = Cases.values[random];
 
@@ -130,12 +139,14 @@ class ExerciseNavNotifier with ChangeNotifier {
           break;
       }
     }
+
+    _states.shuffle();
   }
 
   _setCaseStates(Cases caseType) {
     switch (caseType) {
       case Cases.All:
-        _getRandomCaseExercises();
+        _getMixedCaseExercises();
         break;
       case Cases.Nom:
         _states = NominativGenerators.createExercise(
