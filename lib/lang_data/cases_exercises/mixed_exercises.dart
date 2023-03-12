@@ -239,7 +239,7 @@ class MixedExercises {
             gender: Genders.Unspecific,
             isPlural: true,
             sentenceParts: [
-              CaseSentencePart(displayValue: 'Prije 16'),
+              CaseSentencePart(displayValue: isSerbian ? 'Pre 16' : 'Prije 16'),
               CaseSentencePart(
                 isCorrectable: true,
                 actualObject: NounBankGeneral.godina,

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 const String APP_NAME = 'navika';
+const String BUFFER_CHARS = 'ー';
+
 const CARD_PADDING = 10.0;
 
 const DECLINED_LETTER_STYLE =

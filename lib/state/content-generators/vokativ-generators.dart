@@ -14,8 +14,11 @@ class VokativGenerators {
     List<PANCombo> combos = VokativExercises(dialect).general;
 
     for (int i = 0; i < combos.length; i++) {
-      N.filterByExerciseType(exerciseType, combos[i]);
+      N.convertNonMatchingTypes(exerciseType, combos[i]);
     }
+
+    combos.removeWhere(
+        (element) => !element.sentenceParts.any((sp) => sp.isCorrectable));
 
     return combos
         .shufflePAN()

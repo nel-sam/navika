@@ -53,26 +53,26 @@ class CaseExerciseRowCard extends StatelessWidget {
                   isPlural: isPlural,
                   gender: gender,
                   isAnimate: isAnimate),
+              Padding(padding: EdgeInsets.only(top: FONT_SIZE * 2)),
               if (translation.length > 0)
-                Center(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      translation,
-                      style: TextStyle(
-                          fontStyle: FontStyle.italic, fontSize: FONT_SIZE),
-                    ),
-                  ),
+                Text(
+                  translation,
+                  style: TextStyle(
+                      fontSize: FONT_SIZE * 1.1, fontWeight: FontWeight.bold),
                 ),
+              Padding(padding: EdgeInsets.only(top: FONT_SIZE)),
               if (extraInfo.length > 0)
                 ExtraInfo(screenWidth: screenWidth, extraInfo: extraInfo),
-              Padding(padding: const EdgeInsets.all(14)),
               this.isAllCorrect
-                  ? Center(
-                      child: NTextMulti(N.getCorrectSentence(
-                          context, this.combos.sentenceParts)))
+                  ? Wrap(
+                      crossAxisAlignment: WrapCrossAlignment.start,
+                      children: [
+                          NTextMulti(N.getCorrectSentence(
+                              context, this.combos.sentenceParts))
+                        ])
                   : Wrap(
-                      crossAxisAlignment: WrapCrossAlignment.center,
+                      runSpacing: 4,
+                      crossAxisAlignment: WrapCrossAlignment.start,
                       children: children.map((c) => c).toList()),
               if (this.isAllCorrect)
                 Container(
@@ -82,7 +82,7 @@ class CaseExerciseRowCard extends StatelessWidget {
                     child: Icon(
                       Icons.check_circle_outline,
                       color: CORRECT_COLOR,
-                      size: 48,
+                      size: 52,
                     ),
                   )),
                 )

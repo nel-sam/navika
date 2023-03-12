@@ -62,6 +62,7 @@ class CaseExercise extends StatelessWidget {
                             youtubeLink: youtubeLink,
                           ),
                           const AdCard(),
+                          Divider(),
                           Expanded(
                             child: GestureDetector(
                               onHorizontalDragUpdate: (details) {

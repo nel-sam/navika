@@ -6,7 +6,6 @@ import 'package:nrs_flutter_lib/constants.dart';
 import 'package:nrs_flutter_lib/enums.dart';
 import 'package:nrs_flutter_lib/extensions.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
-import 'package:nrs_flutter_lib/widgets/n_answer_status_icon.dart';
 
 // TODO: Move to shared lib
 class NFreeFormEntry extends StatefulWidget {
@@ -47,21 +46,35 @@ class _NFreeFormEntryState extends State<NFreeFormEntry> {
         (widget.correctValues[0].length * FONT_SIZE) + (FONT_SIZE * 4);
 
     return Padding(
-      padding: const EdgeInsets.all(FONT_SIZE / 2),
+      padding: const EdgeInsets.fromLTRB(FONT_SIZE, 0, FONT_SIZE, 0),
       child: ConstrainedBox(
         constraints: BoxConstraints(minWidth: minWidth),
         child: IntrinsicWidth(
           child: TextField(
             key: widget.key,
             controller: _controller,
+            autocorrect: false,
             style: TextStyle(fontSize: EXERCISE_FONT_SIZE),
             keyboardType: TextInputType.text,
             decoration: InputDecoration(
               isDense: true,
-              labelText: labelText,
+              hintText: widget.state.userInput.length == 0 &&
+                      labelText.length > 0
+                  ? labelText
+                  : _getFillerString(
+                      widget.state.userInput, widget.correctValues[0].length),
+              contentPadding: EdgeInsets.fromLTRB(8, 2, 8, 2),
+              hintStyle: TextStyle(
+                  letterSpacing: 3,
+                  //color: Colors.black54,
+                  fontWeight: FontWeight.bold),
+              border: border,
               // enabledBorder: border,
-              focusedBorder: border,
-              suffixIcon: NAnswerStatusIcon(status: status),
+              // focusedBorder: border,
+
+              // suffixIcon: status != CorrectStatus.unstarted
+              //     ? NAnswerStatusIcon(status: status)
+              //     : null,
             ),
             onChanged: (String? newVal) {
               if (newVal == ' ') newVal = '';
@@ -98,28 +111,37 @@ class _NFreeFormEntryState extends State<NFreeFormEntry> {
   }
 
   OutlineInputBorder getBorder(BuildContext context, CorrectStatus status) {
-    var color = WRONG_COLOR;
-
     switch (status) {
       case CorrectStatus.correct:
-        color = CORRECT_COLOR;
-        break;
-      case CorrectStatus.wrong:
-        color = WRONG_COLOR;
-        break;
-      case CorrectStatus.unstarted:
-        color = Colors.grey;
-        break;
-      case CorrectStatus.inprogressCorrect:
-        color = Nrs.getPrimaryColor(context);
-        break;
-    }
+        return OutlineInputBorder(
+          borderRadius: BorderRadius.circular(5),
+          borderSide: BorderSide(
+            color: CORRECT_COLOR,
+          ),
+        );
 
-    return OutlineInputBorder(
-      borderSide: BorderSide(
-        color: color,
-      ),
-    );
+      case CorrectStatus.wrong:
+        return OutlineInputBorder(
+          borderRadius: BorderRadius.circular(0),
+          borderSide: BorderSide(
+            color: WRONG_COLOR,
+          ),
+        );
+      case CorrectStatus.unstarted:
+        return OutlineInputBorder(
+          borderRadius: BorderRadius.circular(5),
+          borderSide: BorderSide(
+            color: Colors.grey,
+          ),
+        );
+      case CorrectStatus.inprogressCorrect:
+        return OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide(
+            color: Nrs.getPrimaryColor(context),
+          ),
+        );
+    }
   }
 
   CorrectStatus getCorrectStatus(String userInput) {
@@ -131,7 +153,8 @@ class _NFreeFormEntryState extends State<NFreeFormEntry> {
       return CorrectStatus.correct;
     }
 
-    if (widget.correctValues.containsSubCaseInsensitive(userInput)) {
+    if (widget.correctValues
+        .containsSubCaseInsensitive(userInput.replaceAll(BUFFER_CHARS, ''))) {
       return CorrectStatus.inprogressCorrect;
     }
 
@@ -155,5 +178,15 @@ class _NFreeFormEntryState extends State<NFreeFormEntry> {
         widget.onChanged(widget.state.userInput);
       }
     });
+  }
+
+  // Function that takes a string and replaces chars with underscores up to a specified length
+  String _getFillerString(String str, int length) {
+    var buffer = '';
+
+    for (var i = 0; i < length; i++) {
+      buffer += BUFFER_CHARS;
+    }
+    return buffer;
   }
 }

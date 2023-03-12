@@ -12,6 +12,29 @@ import 'package:nrs_flutter_lib/enums.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
 class N {
+  static String capitalizeFirstLetter(String str) {
+    return '${str[0].toUpperCase()}${str.substring(1).toLowerCase()}';
+  }
+
+  static void convertNonMatchingTypes(
+      ExerciseTypes exerciseType, PANCombo combo) {
+    if (exerciseType == ExerciseTypes.case_nouns) {
+      _convertNonMatchingTypes(combo, [GrammarTypes.noun]);
+    } else if (exerciseType == ExerciseTypes.case_adjectives) {
+      _convertNonMatchingTypes(
+          combo, [GrammarTypes.adjective, GrammarTypes.possessivePronoun]);
+    } else if (exerciseType == ExerciseTypes.case_nouns_and_adjectives) {
+      _convertNonMatchingTypes(combo, [
+        GrammarTypes.noun,
+        GrammarTypes.adjective,
+        GrammarTypes.possessivePronoun,
+        GrammarTypes.demonstrativePronoun
+      ]);
+    } else if (exerciseType == ExerciseTypes.case_personal_pronouns) {
+      _convertNonMatchingTypes(combo, [GrammarTypes.personalPronoun]);
+    }
+  }
+
   static TextSpan declensionExampleTextSpan(
     String text, {
     Color color = Colors.transparent,
@@ -40,24 +63,6 @@ class N {
         .firstWhere((DialectType e) => e.name.toString() == strVal);
 
     return matching;
-  }
-
-  static void filterByExerciseType(ExerciseTypes exerciseType, PANCombo combo) {
-    if (exerciseType == ExerciseTypes.case_nouns) {
-      _filterByExerciseType(combo, [GrammarTypes.noun]);
-    } else if (exerciseType == ExerciseTypes.case_adjectives) {
-      _filterByExerciseType(
-          combo, [GrammarTypes.adjective, GrammarTypes.possessivePronoun]);
-    } else if (exerciseType == ExerciseTypes.case_nouns_and_adjectives) {
-      _filterByExerciseType(combo, [
-        GrammarTypes.noun,
-        GrammarTypes.adjective,
-        GrammarTypes.possessivePronoun,
-        GrammarTypes.demonstrativePronoun
-      ]);
-    } else if (exerciseType == ExerciseTypes.case_personal_pronouns) {
-      _filterByExerciseType(combo, [GrammarTypes.personalPronoun]);
-    }
   }
 
   static String getBitiConjugation(String pronoun) {
@@ -106,16 +111,33 @@ class N {
   static List<TextSpan> getCorrectSentence(
       BuildContext context, List<CaseSentencePart> sentenceParts) {
     return sentenceParts.map<TextSpan>((CaseSentencePart e) {
-      if (!e.isCorrectable)
+      var fontSize = FONT_SIZE * 1.1;
+
+      if (sentenceParts.first == e) {
+        e.displayValue = capitalizeFirstLetter(e.displayValue);
+      }
+
+      // If the previous element was correctable, add a space before this one
+      if (sentenceParts.indexOf(e) > 0 &&
+          sentenceParts[sentenceParts.indexOf(e) - 1].isCorrectable) {
+        e.displayValue = ' ${e.displayValue}';
+      }
+
+      // If the next element is correctable, add a space
+      if (sentenceParts.indexOf(e) < sentenceParts.length - 1 &&
+          sentenceParts[sentenceParts.indexOf(e) + 1].isCorrectable) {
+        e.displayValue += ' ';
+      }
+
+      if (!e.isCorrectable) {
         return TextSpan(
-            text: '${e.displayValue} ',
-            style: TextStyle(fontSize: FONT_SIZE * 1.1));
+            text: e.displayValue, style: TextStyle(fontSize: fontSize));
+      }
 
       return TextSpan(
-        text: '${e.correctValues.join('/')} ',
-        style: Nrs.getTextStyle(
-            context: context, isBold: true, fontSize: FONT_SIZE * 1.1),
-      );
+          text: '${e.correctValues.join('/')}',
+          style: Nrs.getTextStyle(
+              context: context, isBold: true, fontSize: fontSize));
     }).toList();
   }
 
@@ -197,14 +219,24 @@ class N {
     return key.i18n(inserts);
   }
 
-  static void _filterByExerciseType(
+  static void _convertNonMatchingTypes(
       PANCombo combo, List<GrammarTypes> allowedTypes) {
     for (int i = 0; i < combo.sentenceParts.length; i++) {
-      final element = combo.sentenceParts[i];
-      if (element.isCorrectable &&
-          !allowedTypes.contains(element.grammarType)) {
-        combo.sentenceParts[i] =
-            CaseSentencePart(displayValue: ' ${element.correctValues[0]}');
+      final current = combo.sentenceParts[i];
+      final isAllowedGrammarType = allowedTypes.contains(current.grammarType);
+
+      if (current.isCorrectable && !isAllowedGrammarType) {
+        var displayValue = i == 0
+            ? '${capitalizeFirstLetter(current.correctValues[0])}'
+            : ' ${current.correctValues[0]}';
+
+        // If the next element is correctable and not allowed grammar type, add a space
+        if (i < combo.sentenceParts.length - 1 &&
+            !combo.sentenceParts[i + 1].isCorrectable) {
+          displayValue += ' ';
+        }
+
+        combo.sentenceParts[i] = CaseSentencePart(displayValue: displayValue);
       }
     }
   }
