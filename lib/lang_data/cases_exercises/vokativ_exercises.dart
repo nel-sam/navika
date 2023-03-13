@@ -8,7 +8,7 @@ import 'package:nrs_flutter_lib/enums.dart';
 class VokativExercises {
   late bool isCroatian;
   late bool isSerbian;
-  final Cases caseType = Cases.Dat;
+  final Cases caseType = Cases.Vok;
 
   VokativExercises(DialectType dialect) {
     this.isCroatian = dialect == DialectType.Croatia;

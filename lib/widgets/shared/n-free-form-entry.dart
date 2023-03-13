@@ -45,7 +45,7 @@ class _NFreeFormEntryState extends State<NFreeFormEntry> {
     final width = (widget.correctValues[0].length * FONT_SIZE);
 
     return Padding(
-      padding: const EdgeInsets.fromLTRB(FONT_SIZE, 0, FONT_SIZE, 0),
+      padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
       child: ConstrainedBox(
         constraints: BoxConstraints(minWidth: width, maxWidth: width * 1.5),
         child: IntrinsicWidth(

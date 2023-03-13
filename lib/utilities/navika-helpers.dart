@@ -156,12 +156,12 @@ class N {
   static String getGenderString(BuildContext context, Genders gender) {
     switch (gender) {
       case Genders.Masculine:
-        return N.t('masculine');
+        return N.t('masc');
       case Genders.Feminine:
-        return N.t('feminine');
+        return N.t('fem');
       case Genders.Neuter:
       case Genders.Unspecific:
-        return N.t('neuter');
+        return N.t('neut');
     }
   }
 

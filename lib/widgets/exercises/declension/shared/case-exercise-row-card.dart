@@ -4,7 +4,6 @@ import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/exercises/declension/shared/case-exercise-help.dart';
-import 'package:navika/widgets/shared/shadow-box.dart';
 import 'package:nrs_flutter_lib/constants.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 import 'package:nrs_flutter_lib/widgets/n_icon_text_pair.dart';
@@ -34,60 +33,51 @@ class CaseExerciseRowCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = Nrs.getScreenWidth();
-
-    // TODO: Make this all look better
     return Container(
       height: 350,
-      child: ShadowBox(
-        isCorrect: this.isAllCorrect,
-        child: Padding(
-          padding: const EdgeInsets.all(10),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CaseExerciseRowCardHeader(
-                  combos: combos,
-                  isAllCorrect: isAllCorrect,
-                  isPlural: isPlural,
-                  gender: gender,
-                  isAnimate: isAnimate),
-              Padding(padding: EdgeInsets.only(top: FONT_SIZE * 2)),
-              if (translation.length > 0)
-                Text(
-                  translation,
-                  style: TextStyle(
-                      fontSize: FONT_SIZE * 1.1, fontWeight: FontWeight.bold),
-                ),
-              Padding(padding: EdgeInsets.only(top: FONT_SIZE)),
-              if (extraInfo.length > 0)
-                ExtraInfo(screenWidth: screenWidth, extraInfo: extraInfo),
-              this.isAllCorrect
-                  ? Wrap(
-                      crossAxisAlignment: WrapCrossAlignment.start,
-                      children: [
-                          NTextMulti(N.getCorrectSentence(
-                              context, this.combos.sentenceParts))
-                        ])
-                  : Wrap(
-                      runSpacing: 4,
-                      crossAxisAlignment: WrapCrossAlignment.start,
-                      children: children.map((c) => c).toList()),
-              if (this.isAllCorrect)
-                Container(
-                  child: Center(
-                      child: Padding(
-                    padding: const EdgeInsets.all(28),
-                    child: Icon(
-                      Icons.check_circle_outline,
-                      color: CORRECT_COLOR,
-                      size: 52,
-                    ),
-                  )),
-                )
-            ],
-          ),
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(18, 8, 18, 0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            CaseExerciseRowCardHeader(
+                combos: combos,
+                isAllCorrect: isAllCorrect,
+                isPlural: isPlural,
+                gender: gender,
+                isAnimate: isAnimate),
+            Padding(padding: EdgeInsets.only(top: FONT_SIZE * 2)),
+            if (translation.length > 0)
+              Text(
+                translation,
+                style: TextStyle(
+                    fontSize: FONT_SIZE * 1.1, fontWeight: FontWeight.bold),
+              ),
+            Padding(padding: EdgeInsets.only(top: FONT_SIZE * 1.2)),
+            this.isAllCorrect
+                ? Wrap(crossAxisAlignment: WrapCrossAlignment.start, children: [
+                    NTextMulti(N.getCorrectSentence(
+                        context, this.combos.sentenceParts))
+                  ])
+                : Wrap(
+                    runSpacing: 4,
+                    crossAxisAlignment: WrapCrossAlignment.start,
+                    children: children.map((c) => c).toList()),
+            if (this.isAllCorrect)
+              Container(
+                child: Center(
+                    child: Padding(
+                  padding: const EdgeInsets.all(28),
+                  child: Icon(
+                    Icons.check_circle_outline,
+                    color: CORRECT_COLOR,
+                    size: 52,
+                  ),
+                )),
+              ),
+            if (extraInfo.length > 0) ExtraInfo(extraInfo: extraInfo),
+          ],
         ),
       ),
     );
@@ -121,10 +111,11 @@ class CaseExerciseRowCardHeader extends StatelessWidget {
             icon: isPlural ? PLURAL_ICON : SINGULAR_ICON,
             text: isPlural ? N.t('plural') : N.t('singular'),
           ),
-          NIconTextPair(
-            icon: N.getGenderIcon(this.gender),
-            text: N.getGenderString(context, this.gender),
-          ),
+          if (this.gender != Genders.Unspecific)
+            NIconTextPair(
+              icon: N.getGenderIcon(this.gender),
+              text: N.getGenderString(context, this.gender),
+            ),
           if (isAnimate)
             NIconTextPair(
               icon: Icons.person,
@@ -150,27 +141,30 @@ class CaseExerciseRowCardHeader extends StatelessWidget {
 }
 
 class ExtraInfo extends StatelessWidget {
-  final double screenWidth;
-
   final String extraInfo;
   const ExtraInfo({
     Key? key,
-    required this.screenWidth,
     required this.extraInfo,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 18, right: 18),
-      child: Container(
-        width: screenWidth,
-        child: Text(
-          extraInfo,
-          style: TextStyle(
-            fontStyle: FontStyle.italic,
+      padding: const EdgeInsets.only(top: 24),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Icon(Icons.lightbulb, color: Colors.grey),
+          Expanded(
+            child: Text(
+              extraInfo,
+              style: TextStyle(
+                fontStyle: FontStyle.italic,
+              ),
+            ),
           ),
-        ),
+        ],
       ),
     );
   }

@@ -23,7 +23,7 @@ class ExplanationIconCell extends StatelessWidget {
       isHeader: this.isHeader,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
           icon,
           SizedBox(
@@ -37,6 +37,7 @@ class ExplanationIconCell extends StatelessWidget {
                 color:
                     isDarkTheme ? Colors.white : Colors.black.withOpacity(0.5)),
           ),
+          Padding(padding: EdgeInsets.only(bottom: 5))
         ],
       ),
     );

@@ -123,5 +123,4 @@ class NounsEkavian {
     instrumental:
         new DeclensionByCount(singular: ['letom'], plural: ['letima']),
   );
-  // TODO: Add porodica/familija
 }
