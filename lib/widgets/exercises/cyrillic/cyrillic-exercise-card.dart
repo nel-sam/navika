@@ -4,7 +4,6 @@ import 'package:navika/widgets/exercises/cyrillic/cyrillic-chart.dart';
 import 'package:navika/widgets/shared/n-free-form-entry.dart';
 import 'package:nrs_flutter_lib/constants.dart';
 import 'package:nrs_flutter_lib/extensions.dart';
-import 'package:nrs_flutter_lib/widgets/n_icon_text_pair.dart';
 
 class CyrillicExerciseCard extends StatelessWidget {
   final CyrillicStateItem state;
@@ -16,7 +15,7 @@ class CyrillicExerciseCard extends StatelessWidget {
     this.userInputsCyrillic = true,
   }) : super(key: key);
 
-// TODO: Make this look better
+  // TODO: Verify sentences are good
   @override
   Widget build(BuildContext context) {
     int progressIndex = getProgressIndex();
@@ -27,24 +26,52 @@ class CyrillicExerciseCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          getHeader(context),
           if (userInputsCyrillic)
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      highlightSub,
-                      style: TextStyle(
-                          color: CORRECT_COLOR,
-                          fontStyle: FontStyle.italic,
-                          fontWeight: FontWeight.bold),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(this.state.getTranslation(context),
+                            style: TextStyle(fontWeight: FontWeight.bold)),
+                        Row(
+                          children: [
+                            Text(
+                              highlightSub,
+                              style: TextStyle(
+                                  color: CORRECT_COLOR,
+                                  fontStyle: FontStyle.italic,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            Text(getSubString(this.state.latinString,
+                                progressIndex, this.state.latinString.length)),
+                          ],
+                        ),
+                      ],
                     ),
-                    Text(getSubString(this.state.latinString, progressIndex,
-                        this.state.latinString.length)),
+                    OutlinedButton(
+                      child: Icon(Icons.info),
+                      onPressed: () {
+                        final dest = CyrillicChart(
+                          cyrillicString: this.state.cyrillicString,
+                          latinString: this.state.latinString,
+                        );
+
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => dest,
+                          ),
+                        );
+                      },
+                    )
                   ],
                 ),
+                // TODO: Create width enum so we can always have the textbox be full width
                 NFreeFormEntry(
                   showHintString: false,
                   initialValue: this.state.userInput,
@@ -56,13 +83,6 @@ class CyrillicExerciseCard extends StatelessWidget {
                 ),
               ],
             ),
-          Padding(
-            padding: const EdgeInsets.only(top: 12.0),
-            child: NIconTextPair(
-              icon: Icons.translate,
-              text: this.state.getTranslation(context),
-            ),
-          ),
         ],
       ),
     );
@@ -78,30 +98,6 @@ class CyrillicExerciseCard extends StatelessWidget {
     }
 
     return foundCount;
-  }
-
-  Widget getHeader(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        OutlinedButton(
-          child: Icon(Icons.info),
-          onPressed: () {
-            final dest = CyrillicChart(
-              cyrillicString: this.state.cyrillicString,
-              latinString: this.state.latinString,
-            );
-
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => dest,
-              ),
-            );
-          },
-        )
-      ],
-    );
   }
 
   bool getIsAllCorrect(String userInput) {
