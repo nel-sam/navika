@@ -9,6 +9,7 @@ import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
 // TODO: Move to shared lib
 class NFreeFormEntry extends StatefulWidget {
+  final bool showHintString;
   final bool isHalfWidth;
   final String hintValue;
   final String initialValue;
@@ -23,6 +24,7 @@ class NFreeFormEntry extends StatefulWidget {
     required this.initialValue,
     required this.correctValues,
     this.isHalfWidth = false,
+    this.showHintString = true,
   }) : super(key: key);
 
   @override
@@ -45,7 +47,7 @@ class _NFreeFormEntryState extends State<NFreeFormEntry> {
     final width = (widget.correctValues[0].length * FONT_SIZE);
 
     return Padding(
-      padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
+      padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
       child: ConstrainedBox(
         constraints: BoxConstraints(minWidth: width, maxWidth: width * 1.5),
         child: IntrinsicWidth(
@@ -180,6 +182,8 @@ class _NFreeFormEntryState extends State<NFreeFormEntry> {
 
   // Function that takes a string and replaces chars with underscores up to a specified length
   String _getFillerString(String str, int length) {
+    if (!widget.showHintString) return '';
+
     var buffer = '';
 
     for (var i = 0; i < length; i++) {

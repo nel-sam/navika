@@ -5,7 +5,6 @@ import 'package:navika/models/enums.dart';
 import 'package:navika/models/verb.dart';
 import 'package:navika/widgets/exercises/verbs/shared/verb-free-form.dart';
 import 'package:navika/widgets/exercises/verbs/shared/verb-header.dart';
-import 'package:navika/widgets/shared/shadow-box.dart';
 
 class PastTenseQuestionContent extends StatelessWidget {
   final Verb verb;
@@ -23,14 +22,11 @@ class PastTenseQuestionContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ShadowBox(
-      isCorrect: isAllCorrect,
-      child: Column(
-        children: [
-          VerbHeader(verb: verb, isAllCorrect: this.isAllCorrect),
-          getBody(context),
-        ],
-      ),
+    return Column(
+      children: [
+        VerbHeader(verb: verb, isAllCorrect: this.isAllCorrect),
+        getBody(context),
+      ],
     );
   }
 

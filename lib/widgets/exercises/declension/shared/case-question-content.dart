@@ -43,21 +43,27 @@ class _CaseQuestionContentState extends State<CaseQuestionContent> {
       children: [
         ...widget.stateItem.combos.sentenceParts.map((e) {
           if (!e.isCorrectable) {
-            return Text(
-              e.displayValue,
-              style: TextStyle(fontSize: EXERCISE_FONT_SIZE),
+            return Padding(
+              padding: const EdgeInsets.only(right: 8),
+              child: Text(
+                e.displayValue,
+                style: TextStyle(fontSize: EXERCISE_FONT_SIZE),
+              ),
             );
           }
 
           final currentVal = widget.stateItem.getUserInput(e.correctValues[0]);
 
-          return NFreeFormEntry(
-            hintValue: e.displayValue,
-            initialValue: currentVal,
-            correctValues: e.correctValues,
-            onChanged: (String newVal) {
-              handleOnChange(newVal, e.correctValues);
-            },
+          return Padding(
+            padding: const EdgeInsets.only(right: 8),
+            child: NFreeFormEntry(
+              hintValue: e.displayValue,
+              initialValue: currentVal,
+              correctValues: e.correctValues,
+              onChanged: (String newVal) {
+                handleOnChange(newVal, e.correctValues);
+              },
+            ),
           );
         }).toList()
       ],

@@ -21,41 +21,36 @@ class VerbHelpGuide extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // TODO: Make this look better
     return Scaffold(
-      appBar: AppBar(
-        leading: Builder(builder: (BuildContext context) => BackButton()),
-        elevation: APPBAR_ELEVATION,
-        backgroundColor: Nrs.getAppBarColor(),
-        title: Text(verb.infinitive),
-      ),
-      body: Center(
-        child: SingleChildScrollView(
-          padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
+      appBar: N.navAppBar(
+          title: verb.infinitive, context: context, showSettingsButton: false),
+      body: SingleChildScrollView(
+        padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                NIconTextPair(
+                  text: verb.getTranslation(context),
+                  icon: Icons.translate,
+                ),
+                Text(
+                  perfectiveness,
+                  style: TextStyle(fontStyle: FontStyle.italic),
+                ),
+                if (this.verb.isIrregular)
                   NIconTextPair(
-                    text: verb.getTranslation(context),
-                    icon: Icons.translate,
+                    icon: Icons.error_outline,
+                    text: N.t('irregular'),
                   ),
-                  Text(
-                    perfectiveness,
-                    style: TextStyle(fontStyle: FontStyle.italic),
-                  ),
-                  if (this.verb.isIrregular)
-                    NIconTextPair(
-                      icon: Icons.error_outline,
-                      text: N.t('irregular'),
-                    ),
-                ],
-              ),
-              getPresentTenseChart(context),
-              getPastTenseChart(context, verb),
-              getFutureTenseChart(context),
-            ],
-          ),
+              ],
+            ),
+            getPresentTenseChart(context),
+            getPastTenseChart(context, verb),
+            getFutureTenseChart(context),
+          ],
         ),
       ),
     );

@@ -5,7 +5,6 @@ import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/exercises/verbs/shared/verb-help-guide.dart';
 import 'package:nrs_flutter_lib/constants.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
-import 'package:nrs_flutter_lib/widgets/n_icon_text_pair.dart';
 
 class VerbHeader extends StatelessWidget {
   final Verb verb;
@@ -24,7 +23,7 @@ class VerbHeader extends StatelessWidget {
 
     // TODO: Make this look better
     return Container(
-      padding: EdgeInsets.all(12),
+      padding: EdgeInsets.fromLTRB(12, 20, 12, 12),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -37,17 +36,23 @@ class VerbHeader extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          perfectiveness.toUpperCase(),
-                          style: Nrs.getTextStyle(
-                              context: context,
-                              isItalic: true,
-                              fontSize: FONT_SIZE - 4),
+                        Row(
+                          children: [
+                            Text(
+                              this.verb.isIrregular
+                                  ? '$perfectiveness, ${N.t('irregular')}'
+                                  : perfectiveness,
+                              style: Nrs.getTextStyle(
+                                  context: context,
+                                  isItalic: true,
+                                  fontSize: FONT_SIZE - 4),
+                            ),
+                          ],
                         ),
                         Padding(
                           padding: const EdgeInsets.only(top: 6),
                           child: Text(
-                            verb.infinitive.toUpperCase(),
+                            '${verb.infinitive.toUpperCase()} - $translation',
                             style: Nrs.getTextStyle(
                                 context: context,
                                 isBold: true,
@@ -63,20 +68,6 @@ class VerbHeader extends StatelessWidget {
                   ),
                 ],
               )
-            ],
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              NIconTextPair(
-                text: translation,
-                icon: Icons.translate,
-              ),
-              if (this.verb.isIrregular)
-                NIconTextPair(
-                  icon: Icons.error_outline,
-                  text: N.t('irregular'),
-                ),
             ],
           ),
           Column(
