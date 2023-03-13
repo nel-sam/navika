@@ -110,11 +110,13 @@ class N {
 
   static List<TextSpan> getCorrectSentence(
       BuildContext context, List<CaseSentencePart> sentenceParts) {
-    return sentenceParts.map<TextSpan>((CaseSentencePart e) {
-      var fontSize = FONT_SIZE * 1.1;
+    final fontSize = FONT_SIZE * 1.1;
 
+    return sentenceParts.map<TextSpan>((CaseSentencePart e) {
       if (sentenceParts.first == e) {
-        e.displayValue = capitalizeFirstLetter(e.displayValue);
+        final displayValue =
+            e.displayValue.length > 1 ? e.displayValue : e.correctValues.first;
+        e.displayValue = capitalizeFirstLetter(displayValue);
       }
 
       // If the previous element was correctable, add a space before this one

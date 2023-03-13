@@ -42,13 +42,12 @@ class _NFreeFormEntryState extends State<NFreeFormEntry> {
     var status = getCorrectStatus(widget.state.userInput);
     final border = getBorder(context, status);
     final labelText = status == CorrectStatus.correct ? '' : widget.hintValue;
-    final minWidth =
-        (widget.correctValues[0].length * FONT_SIZE) + (FONT_SIZE * 4);
+    final width = (widget.correctValues[0].length * FONT_SIZE);
 
     return Padding(
       padding: const EdgeInsets.fromLTRB(FONT_SIZE, 0, FONT_SIZE, 0),
       child: ConstrainedBox(
-        constraints: BoxConstraints(minWidth: minWidth),
+        constraints: BoxConstraints(minWidth: width, maxWidth: width * 1.5),
         child: IntrinsicWidth(
           child: TextField(
             key: widget.key,
@@ -64,13 +63,11 @@ class _NFreeFormEntryState extends State<NFreeFormEntry> {
                   : _getFillerString(
                       widget.state.userInput, widget.correctValues[0].length),
               contentPadding: EdgeInsets.fromLTRB(8, 2, 8, 2),
-              hintStyle: TextStyle(
-                  letterSpacing: 3,
-                  //color: Colors.black54,
-                  fontWeight: FontWeight.bold),
+              // hintStyle:
+              //     TextStyle(letterSpacing: 1, fontWeight: FontWeight.bold),
               border: border,
-              // enabledBorder: border,
-              // focusedBorder: border,
+              enabledBorder: border,
+              focusedBorder: border,
 
               // suffixIcon: status != CorrectStatus.unstarted
               //     ? NAnswerStatusIcon(status: status)
@@ -125,6 +122,7 @@ class _NFreeFormEntryState extends State<NFreeFormEntry> {
           borderRadius: BorderRadius.circular(0),
           borderSide: BorderSide(
             color: WRONG_COLOR,
+            width: 3,
           ),
         );
       case CorrectStatus.unstarted:
