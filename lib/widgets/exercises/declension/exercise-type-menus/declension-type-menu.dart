@@ -57,6 +57,7 @@ class DeclensionTypeMenu extends StatelessWidget {
                       destination: CaseExercise(
                         caseType: caseType,
                         description: description,
+                        youtubeLink: youtubeLink,
                         title: title,
                         exerciseType: ExerciseTypes.case_nouns,
                       ),
@@ -67,6 +68,7 @@ class DeclensionTypeMenu extends StatelessWidget {
                       destination: CaseExercise(
                         caseType: caseType,
                         description: description,
+                        youtubeLink: youtubeLink,
                         title: title,
                         exerciseType: ExerciseTypes.case_personal_pronouns,
                       ),
@@ -78,6 +80,7 @@ class DeclensionTypeMenu extends StatelessWidget {
                       destination: CaseExercise(
                         caseType: caseType,
                         description: description,
+                        youtubeLink: youtubeLink,
                         title: title,
                         exerciseType: ExerciseTypes.case_adjectives,
                       ),
@@ -89,6 +92,7 @@ class DeclensionTypeMenu extends StatelessWidget {
                             destination: CaseExercise(
                               caseType: caseType,
                               description: description,
+                              youtubeLink: youtubeLink,
                               title: title,
                               exerciseType:
                                   ExerciseTypes.case_nouns_and_adjectives,
