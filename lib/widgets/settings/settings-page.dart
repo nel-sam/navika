@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:navika/constants.dart';
 import 'package:navika/main.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/settings.dart';
@@ -83,10 +84,12 @@ class SettingsPage extends StatelessWidget {
                             model.resetSettings();
                             return NHomePage();
                           }),
-                      SettingsMenuButton(
-                          title: N.t('account'),
-                          icon: Icons.account_circle,
-                          redirectMethod: (context) => AccountPage()),
+                      FLAG_PREMIUM_FEATURE
+                          ? SettingsMenuButton(
+                              title: N.t('account'),
+                              icon: Icons.account_circle,
+                              redirectMethod: (context) => AccountPage())
+                          : Container(),
                     ],
                   );
                 } else {

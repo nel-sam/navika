@@ -55,7 +55,7 @@ class VerbFreeForm extends StatelessWidget {
               ],
             ),
             NFreeFormEntry(
-              isHalfWidth: true,
+              widthType: NFreeFormWidths.half,
               hintValue: this.verb.infinitive,
               onChanged: (String newValue) =>
                   this.onChanged(stateKey, newValue),

@@ -50,51 +50,57 @@ class CaseExercise extends StatelessWidget {
           builder: (context, navNotifier, child) {
             return Scaffold(
               appBar: N.navAppBar(title: SbcLabels.cases, context: context),
-              body: SafeArea(
-                child: CustomScrollView(
-                  slivers: [
-                    SliverFillRemaining(
-                      hasScrollBody: false,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          InfoBanner(
-                            label: title,
-                            description: description,
-                            youtubeLink: youtubeLink,
-                          ),
-                          const AdCard(),
-                          Divider(),
-                          Expanded(
-                            child: GestureDetector(
-                              onHorizontalDragUpdate: (details) {
-                                if (_debounce.isActive) {
-                                  _debounce.cancel();
-                                }
-
-                                _debounce = Timer(
-                                    const Duration(milliseconds: DEBOUNCE_TIME),
-                                    () {
-                                  if (details.delta.dx > 0) {
-                                    navNotifier.setPrevious();
-                                  }
-
-                                  if (details.delta.dx < 0) {
-                                    navNotifier.setNext();
-                                  }
-                                });
-                              },
-                              child: CaseQuestionContent(
-                                stateItem: navNotifier.getActive(),
-                                dialect: settings.dialectType,
+              body: Center(
+                child: SafeArea(
+                  child: SizedBox(
+                    width: N.getMaxScreenWidth(),
+                    child: CustomScrollView(
+                      slivers: [
+                        SliverFillRemaining(
+                          hasScrollBody: false,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              InfoBanner(
+                                label: title,
+                                description: description,
+                                youtubeLink: youtubeLink,
                               ),
-                            ),
+                              const AdCard(),
+                              Divider(),
+                              Expanded(
+                                child: GestureDetector(
+                                  onHorizontalDragUpdate: (details) {
+                                    if (_debounce.isActive) {
+                                      _debounce.cancel();
+                                    }
+
+                                    _debounce = Timer(
+                                        const Duration(
+                                            milliseconds: DEBOUNCE_TIME), () {
+                                      if (details.delta.dx > 0) {
+                                        navNotifier.setPrevious();
+                                      }
+
+                                      if (details.delta.dx < 0) {
+                                        navNotifier.setNext();
+                                      }
+                                    });
+                                  },
+                                  child: CaseQuestionContent(
+                                    stateItem: navNotifier.getActive(),
+                                    dialect: settings.dialectType,
+                                  ),
+                                ),
+                              ),
+                              ExerciseNavigationWrapper(
+                                  navNotifier: navNotifier),
+                            ],
                           ),
-                          ExerciseNavigationWrapper(navNotifier: navNotifier),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
               ),
               persistentFooterButtons: screenHeight > 700

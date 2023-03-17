@@ -71,9 +71,9 @@ class CyrillicExerciseCard extends StatelessWidget {
                     )
                   ],
                 ),
-                // TODO: Create width enum so we can always have the textbox be full width
                 NFreeFormEntry(
                   showHintString: false,
+                  widthType: NFreeFormWidths.full,
                   initialValue: this.state.userInput,
                   correctValues: [this.state.cyrillicString],
                   hintValue: '',

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
@@ -10,7 +11,7 @@ import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 // TODO: Move to shared lib
 class NFreeFormEntry extends StatefulWidget {
   final bool showHintString;
-  final bool isHalfWidth;
+  final NFreeFormWidths widthType;
   final String hintValue;
   final String initialValue;
   final List<String> correctValues;
@@ -23,13 +24,15 @@ class NFreeFormEntry extends StatefulWidget {
     required this.onChanged,
     required this.initialValue,
     required this.correctValues,
-    this.isHalfWidth = false,
+    this.widthType = NFreeFormWidths.unspecified,
     this.showHintString = true,
   }) : super(key: key);
 
   @override
   State<NFreeFormEntry> createState() => _NFreeFormEntryState();
 }
+
+enum NFreeFormWidths { full, half, unspecified }
 
 class StateObject {
   String userInput = '';
@@ -41,10 +44,10 @@ class _NFreeFormEntryState extends State<NFreeFormEntry> {
 
   @override
   Widget build(BuildContext context) {
-    var status = getCorrectStatus(widget.state.userInput);
+    var status = _getCorrectStatus(widget.state.userInput);
     final border = getBorder(context, status);
     final labelText = status == CorrectStatus.correct ? '' : widget.hintValue;
-    final width = (widget.correctValues[0].length * FONT_SIZE);
+    final width = _getNFreeFormWidth(context, widget.widthType);
 
     return Padding(
       padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
@@ -81,8 +84,8 @@ class _NFreeFormEntryState extends State<NFreeFormEntry> {
               if (newVal != null && newVal != '') {
                 setState(() {
                   widget.state.userInput = newVal!;
-                  status = getCorrectStatus(widget.state.userInput);
-                  updateState();
+                  status = _getCorrectStatus(widget.state.userInput);
+                  _updateState();
                 });
               }
             },
@@ -144,7 +147,14 @@ class _NFreeFormEntryState extends State<NFreeFormEntry> {
     }
   }
 
-  CorrectStatus getCorrectStatus(String userInput) {
+  @override
+  void initState() {
+    widget.state.userInput = widget.initialValue;
+    _controller.text = widget.state.userInput;
+    super.initState();
+  }
+
+  CorrectStatus _getCorrectStatus(String userInput) {
     if (userInput.isEmpty) {
       return CorrectStatus.unstarted;
     }
@@ -161,25 +171,6 @@ class _NFreeFormEntryState extends State<NFreeFormEntry> {
     return CorrectStatus.wrong;
   }
 
-  @override
-  void initState() {
-    widget.state.userInput = widget.initialValue;
-    _controller.text = widget.state.userInput;
-    super.initState();
-  }
-
-  updateState() {
-    if (_debounce.isActive) {
-      _debounce.cancel();
-    }
-
-    _debounce = Timer(const Duration(milliseconds: 600), () {
-      if (widget.state.userInput != widget.initialValue) {
-        widget.onChanged(widget.state.userInput);
-      }
-    });
-  }
-
   // Function that takes a string and replaces chars with underscores up to a specified length
   String _getFillerString(String str, int length) {
     if (!widget.showHintString) return '';
@@ -190,5 +181,28 @@ class _NFreeFormEntryState extends State<NFreeFormEntry> {
       buffer += BUFFER_CHARS;
     }
     return buffer;
+  }
+
+  double _getNFreeFormWidth(BuildContext context, NFreeFormWidths width) {
+    switch (width) {
+      case NFreeFormWidths.full:
+        return min(Nrs.getScreenWidth() - 20, 500);
+      case NFreeFormWidths.half:
+        return min((Nrs.getScreenWidth() - 20) / 2, 250);
+      case NFreeFormWidths.unspecified:
+        return widget.correctValues[0].length * FONT_SIZE;
+    }
+  }
+
+  _updateState() {
+    if (_debounce.isActive) {
+      _debounce.cancel();
+    }
+
+    _debounce = Timer(const Duration(milliseconds: 600), () {
+      if (widget.state.userInput != widget.initialValue) {
+        widget.onChanged(widget.state.userInput);
+      }
+    });
   }
 }

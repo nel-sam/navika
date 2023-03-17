@@ -40,7 +40,7 @@ class VerbHeader extends StatelessWidget {
                           children: [
                             Text(
                               this.verb.isIrregular
-                                  ? '$perfectiveness, ${N.t('irregular')}'
+                                  ? '$perfectiveness${perfectiveness == '' ? '' : ','} ${N.t('irregular')}'
                                   : perfectiveness,
                               style: Nrs.getTextStyle(
                                   context: context,
@@ -51,14 +51,29 @@ class VerbHeader extends StatelessWidget {
                         ),
                         Padding(
                           padding: const EdgeInsets.only(top: 6),
-                          child: Text(
-                            '${verb.infinitive.toUpperCase()} - $translation',
-                            style: Nrs.getTextStyle(
-                                context: context,
-                                isBold: true,
-                                fontSize: 16 * 1.3,
-                                color:
-                                    isAllCorrect ? CORRECT_COLOR : Colors.grey),
+                          child: Wrap(
+                            verticalDirection: VerticalDirection.up,
+                            children: [
+                              Text(
+                                '${verb.infinitive.toUpperCase()}',
+                                style: Nrs.getTextStyle(
+                                    context: context,
+                                    isBold: true,
+                                    fontSize: 16 * 1.3,
+                                    color: isAllCorrect
+                                        ? CORRECT_COLOR
+                                        : Colors.grey),
+                              ),
+                              Padding(padding: EdgeInsets.only(left: 8)),
+                              Text(
+                                '$translation',
+                                style: Nrs.getTextStyle(
+                                  context: context,
+                                  fontSize: FONT_SIZE,
+                                  isItalic: true,
+                                ),
+                              )
+                            ],
                           ),
                         ),
                         if (isAllCorrect)

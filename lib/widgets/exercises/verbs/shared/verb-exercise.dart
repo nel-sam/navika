@@ -9,8 +9,8 @@ import 'package:navika/widgets/exercises/verbs/past-tense/past-tense-question-co
 import 'package:navika/widgets/exercises/verbs/present-tense/present-tense-question-content.dart';
 import 'package:navika/widgets/sbc_labels.dart';
 import 'package:navika/widgets/shared/ad-card.dart';
-import 'package:navika/widgets/shared/info-banner.dart';
 import 'package:navika/widgets/shared/exercise-navigation-wrapper.dart';
+import 'package:navika/widgets/shared/info-banner.dart';
 import 'package:nrs_flutter_lib/constants.dart';
 import 'package:provider/provider.dart';
 
@@ -72,47 +72,53 @@ class VerbExercise extends StatelessWidget {
                 });
               },
               child: SafeArea(
-                child: CustomScrollView(
-                  slivers: [
-                    SliverFillRemaining(
-                      hasScrollBody: false,
-                      child: Column(
-                        children: [
-                          InfoBanner(
-                            label: title,
-                            description: description,
-                            youtubeLink: youtubeLink,
-                          ),
-                          const AdCard(),
-                          Container(
-                            child: this.tense == VerbTenses.PastPerfect
-                                ? PastTenseQuestionContent(
-                                    verb: stateITem.verb,
-                                    state: stateITem.userEntryState,
-                                    isAllCorrect: stateITem.isCorrect,
-                                    onChanged:
-                                        (String pronoun, String newValue) =>
-                                            stateITem.updateState(
-                                                pronoun.toString(),
-                                                newValue,
-                                                this.tense),
-                                  )
-                                : PresentTenseQuestionContent(
-                                    verb: stateITem.verb,
-                                    isAllCorrect: stateITem.isCorrect,
-                                    state: stateITem.userEntryState,
-                                    onChanged:
-                                        (String pronoun, String newValue) =>
-                                            stateITem.updateState(
+                child: Center(
+                  child: SizedBox(
+                    width: N.getMaxScreenWidth(),
+                    child: CustomScrollView(
+                      slivers: [
+                        SliverFillRemaining(
+                          hasScrollBody: false,
+                          child: Column(
+                            children: [
+                              InfoBanner(
+                                label: title,
+                                description: description,
+                                youtubeLink: youtubeLink,
+                              ),
+                              const AdCard(),
+                              Container(
+                                child: this.tense == VerbTenses.PastPerfect
+                                    ? PastTenseQuestionContent(
+                                        verb: stateITem.verb,
+                                        state: stateITem.userEntryState,
+                                        isAllCorrect: stateITem.isCorrect,
+                                        onChanged:
+                                            (String pronoun, String newValue) =>
+                                                stateITem._updateState(
+                                                    pronoun.toString(),
+                                                    newValue,
+                                                    this.tense),
+                                      )
+                                    : PresentTenseQuestionContent(
+                                        verb: stateITem.verb,
+                                        isAllCorrect: stateITem.isCorrect,
+                                        state: stateITem.userEntryState,
+                                        onChanged: (String pronoun,
+                                                String newValue) =>
+                                            stateITem._updateState(
                                                 pronoun, newValue, this.tense),
-                                  ),
+                                      ),
+                              ),
+                              Expanded(child: Container()),
+                              ExerciseNavigationWrapper(
+                                  navNotifier: navNotifier),
+                            ],
                           ),
-                          Expanded(child: Container()),
-                          ExerciseNavigationWrapper(navNotifier: navNotifier),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
               ),
             );

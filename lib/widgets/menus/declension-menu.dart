@@ -32,58 +32,61 @@ class DeclensionMenu extends StatelessWidget {
       resizeToAvoidBottomInset: false,
       appBar: N.navAppBar(context: context),
       body: Center(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              const AdCard(),
-              Column(children: [
-                NMenuHeader(
-                  icon: NavIcons.cases,
-                  transLabel: N.t('cases'),
-                  label: SbcLabels.cases,
-                ),
-                NMenuButton(
-                  destination: allCases,
-                  label: N.t('allCases'),
-                  transLabel: N.getCaseLabel(Cases.All),
-                ),
-                NMenuButton(
-                  destination: nom,
-                  transLabel: 'Nominativ',
-                  label: N.getCaseLabel(Cases.Nom),
-                ),
-                NMenuButton(
-                  destination: gen,
-                  label: N.t('genitiv'),
-                  transLabel: N.getCaseLabel(Cases.Gen),
-                ),
-                NMenuButton(
-                  destination: dat,
-                  label: N.t('dativ'),
-                  transLabel: N.getCaseLabel(Cases.Dat),
-                ),
-                NMenuButton(
-                  destination: aku,
-                  label: N.t('akuzativ'),
-                  transLabel: N.getCaseLabel(Cases.Aku),
-                ),
-                NMenuButton(
-                  destination: vok,
-                  label: N.t('vokativ'),
-                  transLabel: N.getCaseLabel(Cases.Vok),
-                ),
-                NMenuButton(
-                  destination: inst,
-                  label: N.t('instrumental'),
-                  transLabel: N.getCaseLabel(Cases.Ins),
-                ),
-                NMenuButton(
-                  destination: lok,
-                  label: N.t('lokativ'),
-                  transLabel: N.getCaseLabel(Cases.Lok),
-                ),
-              ])
-            ],
+        child: SizedBox(
+          width: N.getMaxScreenWidth(),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                const AdCard(),
+                Column(children: [
+                  NMenuHeader(
+                    icon: NavIcons.cases,
+                    transLabel: N.t('cases'),
+                    label: SbcLabels.cases,
+                  ),
+                  NMenuButton(
+                    destination: allCases,
+                    label: N.t('allCases'),
+                    transLabel: N.getCaseLabel(Cases.All),
+                  ),
+                  NMenuButton(
+                    destination: nom,
+                    transLabel: 'Nominativ',
+                    label: N.getCaseLabel(Cases.Nom),
+                  ),
+                  NMenuButton(
+                    destination: gen,
+                    label: N.t('genitiv'),
+                    transLabel: N.getCaseLabel(Cases.Gen),
+                  ),
+                  NMenuButton(
+                    destination: dat,
+                    label: N.t('dativ'),
+                    transLabel: N.getCaseLabel(Cases.Dat),
+                  ),
+                  NMenuButton(
+                    destination: aku,
+                    label: N.t('akuzativ'),
+                    transLabel: N.getCaseLabel(Cases.Aku),
+                  ),
+                  NMenuButton(
+                    destination: vok,
+                    label: N.t('vokativ'),
+                    transLabel: N.getCaseLabel(Cases.Vok),
+                  ),
+                  NMenuButton(
+                    destination: inst,
+                    label: N.t('instrumental'),
+                    transLabel: N.getCaseLabel(Cases.Ins),
+                  ),
+                  NMenuButton(
+                    destination: lok,
+                    label: N.t('lokativ'),
+                    transLabel: N.getCaseLabel(Cases.Lok),
+                  ),
+                ])
+              ],
+            ),
           ),
         ),
       ),

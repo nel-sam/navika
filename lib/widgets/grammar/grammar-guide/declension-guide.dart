@@ -15,7 +15,6 @@ import 'package:nrs_flutter_lib/widgets/n_footer_button.dart';
 import 'package:nrs_flutter_lib/widgets/n_footer_menu.dart';
 import 'package:nrs_flutter_lib/widgets/n_progress_bar.dart';
 
-// TODO: Test entire app on small screens
 // TODO: Test entire app on tablet screens
 
 List<CaseKey> caseKeys = [];
@@ -105,60 +104,66 @@ class _DeclensionGuideState extends State<DeclensionGuide> {
         transTitle: N.t('cases'),
         context: context,
       ),
-      body: Column(
-        children: [
-          const AdCard(),
-          NProgressBar(progressPercentage: this.progressPercentage),
-          Expanded(
-            child: SingleChildScrollView(
-              controller: controller,
-              padding: EdgeInsets.fromLTRB(FONT_SIZE, 0, FONT_SIZE, 0),
-              child: Column(
-                children: [
-                  ContentSection(
-                    text: N.getCaseLabel(Cases.Nom),
-                    key: _getCaseKey(Cases.Nom),
-                    content: NominativGrammarGuideContent(
-                      dialect: widget.dialect,
-                    ),
+      body: Center(
+        child: SizedBox(
+          width: N.getMaxScreenWidth(),
+          child: Column(
+            children: [
+              const AdCard(),
+              NProgressBar(progressPercentage: this.progressPercentage),
+              Expanded(
+                child: SingleChildScrollView(
+                  controller: controller,
+                  padding: EdgeInsets.fromLTRB(FONT_SIZE, 0, FONT_SIZE, 0),
+                  child: Column(
+                    children: [
+                      ContentSection(
+                        text: N.getCaseLabel(Cases.Nom),
+                        key: _getCaseKey(Cases.Nom),
+                        content: NominativGrammarGuideContent(
+                          dialect: widget.dialect,
+                        ),
+                      ),
+                      ContentSection(
+                        text: N.getCaseLabel(Cases.Gen),
+                        key: _getCaseKey(Cases.Gen),
+                        content: GenitivGrammarGuideContent(),
+                      ),
+                      ContentSection(
+                        text: N.getCaseLabel(Cases.Dat),
+                        key: _getCaseKey(Cases.Dat),
+                        content:
+                            DativGrammarGuideContent(dialect: widget.dialect),
+                      ),
+                      ContentSection(
+                        text: N.getCaseLabel(Cases.Aku),
+                        key: _getCaseKey(Cases.Aku),
+                        content: AkuzativGrammarGuideContent(
+                            dialect: widget.dialect),
+                      ),
+                      ContentSection(
+                        text: N.getCaseLabel(Cases.Vok),
+                        key: _getCaseKey(Cases.Vok),
+                        content:
+                            VokativGrammarGuideContent(dialect: widget.dialect),
+                      ),
+                      ContentSection(
+                        text: N.getCaseLabel(Cases.Ins),
+                        key: _getCaseKey(Cases.Ins),
+                        content: InstrumentalGrammarGuideContent(),
+                      ),
+                      ContentSection(
+                        text: N.getCaseLabel(Cases.Lok),
+                        key: _getCaseKey(Cases.Lok),
+                        content: LokativGrammarGuideContent(),
+                      ),
+                    ],
                   ),
-                  ContentSection(
-                    text: N.getCaseLabel(Cases.Gen),
-                    key: _getCaseKey(Cases.Gen),
-                    content: GenitivGrammarGuideContent(),
-                  ),
-                  ContentSection(
-                    text: N.getCaseLabel(Cases.Dat),
-                    key: _getCaseKey(Cases.Dat),
-                    content: DativGrammarGuideContent(dialect: widget.dialect),
-                  ),
-                  ContentSection(
-                    text: N.getCaseLabel(Cases.Aku),
-                    key: _getCaseKey(Cases.Aku),
-                    content:
-                        AkuzativGrammarGuideContent(dialect: widget.dialect),
-                  ),
-                  ContentSection(
-                    text: N.getCaseLabel(Cases.Vok),
-                    key: _getCaseKey(Cases.Vok),
-                    content:
-                        VokativGrammarGuideContent(dialect: widget.dialect),
-                  ),
-                  ContentSection(
-                    text: N.getCaseLabel(Cases.Ins),
-                    key: _getCaseKey(Cases.Ins),
-                    content: InstrumentalGrammarGuideContent(),
-                  ),
-                  ContentSection(
-                    text: N.getCaseLabel(Cases.Lok),
-                    key: _getCaseKey(Cases.Lok),
-                    content: LokativGrammarGuideContent(),
-                  ),
-                ],
+                ),
               ),
-            ),
+            ],
           ),
-        ],
+        ),
       ),
       persistentFooterButtons: [
         NFooterMenu(

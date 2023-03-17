@@ -24,7 +24,11 @@ class SettingsNotifier with ChangeNotifier {
     final key = SettingsKeys.dialectType.toString();
     final fromDisk = preferences.getString(key);
 
-    settings.dialectType = N.dialectTypeStrToEnum(fromDisk!);
+    if (fromDisk == null) {
+      settings.dialectType = DialectType.Croatia;
+    } else {
+      settings.dialectType = N.dialectTypeStrToEnum(fromDisk);
+    }
 
     return settings;
   }

@@ -14,6 +14,8 @@ import 'package:nrs_flutter_lib/widgets/n_menu_button.dart';
 class MainMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    bool isBigScreen = Nrs.getScreenHeight() > MAX_SCREEN_WIDTH;
+
     return Column(
       children: [
         Container(
@@ -44,6 +46,7 @@ class MainMenu extends StatelessWidget {
             ),
           ),
         ),
+        isBigScreen ? const SizedBox(height: FONT_SIZE * 4) : const SizedBox(),
         Expanded(
           child: SingleChildScrollView(
             child: Column(
