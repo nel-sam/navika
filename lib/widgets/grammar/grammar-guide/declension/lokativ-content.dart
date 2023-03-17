@@ -14,7 +14,6 @@ import 'package:nrs_flutter_lib/widgets/n_text_multi.dart';
 class LokativGrammarGuideContent extends StatelessWidget {
   const LokativGrammarGuideContent({Key? key}) : super(key: key);
 
-// TODO: Table spacing and overflow issues
   @override
   Widget build(BuildContext context) {
     return Column(

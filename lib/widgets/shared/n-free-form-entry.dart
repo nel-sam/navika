@@ -8,7 +8,6 @@ import 'package:nrs_flutter_lib/enums.dart';
 import 'package:nrs_flutter_lib/extensions.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
-// TODO: Move to shared lib
 class NFreeFormEntry extends StatefulWidget {
   final bool showHintString;
   final NFreeFormWidths widthType;

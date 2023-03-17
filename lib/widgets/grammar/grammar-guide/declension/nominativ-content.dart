@@ -34,7 +34,6 @@ class NominativGrammarGuideContent extends StatelessWidget {
             YouTubeLink(RECOMMENDED_VIDEO_NOM)
           ],
         ),
-        // TODO: Correct all guide sentences
         ExampleSentences(
           sentences: [
             NTextMulti([

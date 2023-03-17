@@ -15,7 +15,6 @@ class CyrillicExerciseCard extends StatelessWidget {
     this.userInputsCyrillic = true,
   }) : super(key: key);
 
-  // TODO: Verify sentences are good
   @override
   Widget build(BuildContext context) {
     int progressIndex = getProgressIndex();

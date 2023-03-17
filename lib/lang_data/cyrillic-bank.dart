@@ -8,8 +8,8 @@ List<CyrillicBankItem> cyrillicWordBank = [
       cyrillicString: 'Пада киша Данас',
       getTranslation: (BuildContext context) => N.t('trans_pada_kisa')),
   CyrillicBankItem(
-      latinString: 'Ovo su najbolji ćevapi',
-      cyrillicString: 'Ово су најбољи чевапи',
+      latinString: 'Gdje su u Zagrebu najbolji ćevapi?',
+      cyrillicString: 'Гдје су у Загребу најбољи чевапи?',
       getTranslation: (BuildContext context) => N.t('trans_najbolji_cevapi')),
   CyrillicBankItem(
       latinString: 'Srbija je balkanska zemlja',
@@ -20,8 +20,8 @@ List<CyrillicBankItem> cyrillicWordBank = [
       cyrillicString: 'Више ми се свиђа плажа него град',
       getTranslation: (BuildContext context) => N.t('trans_plaza_nego_grad')),
   CyrillicBankItem(
-      latinString: 'Može li se sutra otići na ručak?',
-      cyrillicString: 'Може ли се сутра отићи на ручак?',
+      latinString: 'Možemo li sutra ići na ručak?',
+      cyrillicString: 'Можемо ли сутра да идемо на ручак?',
       getTranslation: (BuildContext context) => N.t('trans_otici_na_rucak')),
   CyrillicBankItem(
       latinString: 'U Hrvatskoj se ćirilica ne koristi mnogo',
