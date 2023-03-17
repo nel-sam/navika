@@ -30,21 +30,24 @@ class CyrillicExercise extends StatelessWidget {
           child: Consumer<CyrillicNotifier>(
             builder: (context, model, child) => Center(
               child: SingleChildScrollView(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    InfoBanner(
-                      label: title,
-                      description: N.t('cyrillicDesc'),
-                      //youtubeLink: RECOMMENDED_VIDEO_CYRILLIC,
-                    ),
-                    const AdCard(),
-                    ...model.exerciseItems.map(
-                      (e) => CyrillicExerciseCard(
-                        state: e,
+                child: SizedBox(
+                  width: N.getMaxScreenWidth(),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      InfoBanner(
+                        label: title,
+                        description: N.t('cyrillicDesc'),
+                        //youtubeLink: RECOMMENDED_VIDEO_CYRILLIC,
                       ),
-                    ),
-                  ],
+                      const AdCard(),
+                      ...model.exerciseItems.map(
+                        (e) => CyrillicExerciseCard(
+                          state: e,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
