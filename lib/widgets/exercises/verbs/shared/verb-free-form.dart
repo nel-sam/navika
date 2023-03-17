@@ -29,9 +29,11 @@ class VerbFreeForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double screenWidth = N.getMaxScreenWidth();
+    double maxWidth =
+        screenWidth > 600 ? (screenWidth / 2) - 80 : (screenWidth / 2) - 14;
 
     return Container(
-      width: (screenWidth / 2) - 80,
+      width: maxWidth,
       child: Padding(
         padding: const EdgeInsets.all(18.0),
         child: Column(

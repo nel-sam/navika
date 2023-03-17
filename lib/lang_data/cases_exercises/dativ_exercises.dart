@@ -485,7 +485,6 @@ class DativExercises {
 
   List<PANCombo> get premium => [
         // TODO: Possesives
-
-// TODO: Nationality nouns
+        // TODO: Nationality nouns
       ];
 }

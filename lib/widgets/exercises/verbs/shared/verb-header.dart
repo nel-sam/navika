@@ -21,7 +21,6 @@ class VerbHeader extends StatelessWidget {
     var translation = verb.getTranslation(context);
     var perfectiveness = getPerfectiveness(context, verb.verbPerfectiveType);
 
-    // TODO: Make this look better
     return Container(
       padding: EdgeInsets.fromLTRB(12, 20, 12, 12),
       child: Row(

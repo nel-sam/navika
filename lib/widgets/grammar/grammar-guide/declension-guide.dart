@@ -15,8 +15,6 @@ import 'package:nrs_flutter_lib/widgets/n_footer_button.dart';
 import 'package:nrs_flutter_lib/widgets/n_footer_menu.dart';
 import 'package:nrs_flutter_lib/widgets/n_progress_bar.dart';
 
-// TODO: Test entire app on tablet screens
-
 List<CaseKey> caseKeys = [];
 
 class CaseKey {
