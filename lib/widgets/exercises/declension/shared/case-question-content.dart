@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
+import 'package:navika/models/enums.dart';
 import 'package:navika/state/cases/case-question-state.dart';
 import 'package:navika/widgets/exercises/declension/shared/case-exercise-row-card.dart';
 import 'package:navika/widgets/shared/n-free-form-entry.dart';
@@ -7,9 +8,11 @@ import 'package:nrs_flutter_lib/extensions.dart';
 
 class CaseQuestionContent extends StatefulWidget {
   final CaseQuestionState stateItem;
+  final DialectType dialect;
 
   CaseQuestionContent({
     required this.stateItem,
+    required this.dialect,
   });
 
   @override
@@ -40,6 +43,7 @@ class _CaseQuestionContentState extends State<CaseQuestionContent> {
       isAnimate: widget.stateItem.combos.isAnimate,
       extraInfo: widget.stateItem.combos.extraInfo,
       translation: trans,
+      dialect: widget.dialect,
       children: [
         ...widget.stateItem.combos.sentenceParts.map((e) {
           if (!e.isCorrectable) {

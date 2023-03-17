@@ -10,7 +10,7 @@ import 'package:navika/widgets/exercises/verbs/present-tense/present-tense-quest
 import 'package:navika/widgets/sbc_labels.dart';
 import 'package:navika/widgets/shared/ad-card.dart';
 import 'package:navika/widgets/shared/info-banner.dart';
-import 'package:navika/widgets/shared/navigation-header-wrapper.dart';
+import 'package:navika/widgets/shared/exercise-navigation-wrapper.dart';
 import 'package:nrs_flutter_lib/constants.dart';
 import 'package:provider/provider.dart';
 
@@ -108,7 +108,7 @@ class VerbExercise extends StatelessWidget {
                                   ),
                           ),
                           Expanded(child: Container()),
-                          NavigationHeaderWrapper(navNotifier: navNotifier),
+                          ExerciseNavigationWrapper(navNotifier: navNotifier),
                         ],
                       ),
                     ),

@@ -9,10 +9,11 @@ import 'package:navika/widgets/exercises/declension/shared/case-question-content
 import 'package:navika/widgets/grammar/grammar-guide/declension-guide.dart';
 import 'package:navika/widgets/sbc_labels.dart';
 import 'package:navika/widgets/shared/ad-card.dart';
+import 'package:navika/widgets/shared/exercise-navigation-wrapper.dart';
 import 'package:navika/widgets/shared/home-button-wrapper.dart';
 import 'package:navika/widgets/shared/info-banner.dart';
-import 'package:navika/widgets/shared/navigation-header-wrapper.dart';
 import 'package:nrs_flutter_lib/constants.dart';
+import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 import 'package:nrs_flutter_lib/widgets/n_footer_button.dart';
 import 'package:nrs_flutter_lib/widgets/n_footer_menu.dart';
 import 'package:provider/provider.dart';
@@ -36,6 +37,7 @@ class CaseExercise extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Timer _debounce = Timer(const Duration(milliseconds: 0), () {});
+    final screenHeight = Nrs.getScreenHeight();
 
     return SettingsConsumerWrapper(
       getChildWidget: (settings) => ChangeNotifierProvider<ExerciseNavNotifier>(
@@ -84,36 +86,39 @@ class CaseExercise extends StatelessWidget {
                               },
                               child: CaseQuestionContent(
                                 stateItem: navNotifier.getActive(),
+                                dialect: settings.dialectType,
                               ),
                             ),
                           ),
-                          NavigationHeaderWrapper(navNotifier: navNotifier),
+                          ExerciseNavigationWrapper(navNotifier: navNotifier),
                         ],
                       ),
                     ),
                   ],
                 ),
               ),
-              persistentFooterButtons: [
-                NFooterMenu(buttons: [
-                  HomeButtonWrapper(),
-                  NFooterButton(
-                    active: true,
-                    onPressed: () {
-                      final dest = DeclensionGuide(
-                        startingCase: caseType,
-                        dialect: settings.dialectType,
-                      );
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => dest),
-                      );
-                    },
-                    icon: Icons.help_center_outlined,
-                    text: N.t('grammar'),
-                  ),
-                ]),
-              ],
+              persistentFooterButtons: screenHeight > 700
+                  ? [
+                      NFooterMenu(buttons: [
+                        HomeButtonWrapper(),
+                        NFooterButton(
+                          active: true,
+                          onPressed: () {
+                            final dest = DeclensionGuide(
+                              startingCase: caseType,
+                              dialect: settings.dialectType,
+                            );
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => dest),
+                            );
+                          },
+                          icon: Icons.help_center_outlined,
+                          text: N.t('grammar'),
+                        ),
+                      ]),
+                    ]
+                  : [],
             );
           },
         ),

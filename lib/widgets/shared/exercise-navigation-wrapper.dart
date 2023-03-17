@@ -3,10 +3,10 @@ import 'package:navika/state/exercise-nav-notifier.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:nrs_flutter_lib/widgets/n_navigation_header.dart';
 
-class NavigationHeaderWrapper extends StatelessWidget {
+class ExerciseNavigationWrapper extends StatelessWidget {
   final ExerciseNavNotifier navNotifier;
 
-  const NavigationHeaderWrapper({
+  const ExerciseNavigationWrapper({
     Key? key,
     required this.navNotifier,
   }) : super(key: key);

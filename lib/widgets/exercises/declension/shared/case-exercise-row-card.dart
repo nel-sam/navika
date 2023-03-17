@@ -18,6 +18,7 @@ class CaseExerciseRowCard extends StatelessWidget {
   final Genders gender;
   final String extraInfo;
   final String translation;
+  final DialectType dialect;
 
   const CaseExerciseRowCard({
     Key? key,
@@ -29,6 +30,7 @@ class CaseExerciseRowCard extends StatelessWidget {
     required this.combos,
     required this.extraInfo,
     required this.translation,
+    required this.dialect,
   }) : super(key: key);
 
   @override
@@ -43,6 +45,7 @@ class CaseExerciseRowCard extends StatelessWidget {
           children: [
             CaseExerciseRowCardHeader(
                 combos: combos,
+                dialect: dialect,
                 isAllCorrect: isAllCorrect,
                 isPlural: isPlural,
                 gender: gender,
@@ -91,6 +94,8 @@ class CaseExerciseRowCardHeader extends StatelessWidget {
   final bool isPlural;
   final Genders gender;
   final bool isAnimate;
+  final DialectType dialect;
+
   const CaseExerciseRowCardHeader({
     Key? key,
     required this.isAllCorrect,
@@ -98,6 +103,7 @@ class CaseExerciseRowCardHeader extends StatelessWidget {
     required this.gender,
     required this.isAnimate,
     required this.combos,
+    required this.dialect,
   }) : super(key: key);
 
   @override
@@ -123,7 +129,8 @@ class CaseExerciseRowCardHeader extends StatelessWidget {
             ),
           IconButton(
               onPressed: () {
-                final dest = CaseExerciseHelp(combos: combos);
+                final dest =
+                    CaseExerciseHelp(combos: combos, dialect: this.dialect);
 
                 Navigator.push(
                   context,

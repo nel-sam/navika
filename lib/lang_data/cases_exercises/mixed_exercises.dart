@@ -126,8 +126,7 @@ class MixedExercises {
               CaseSentencePart(displayValue: 'moj'),
               CaseSentencePart(
                 isCorrectable: true,
-                actualObject:
-                    AdjectiveBankGeneral.prvi.nominativ!.masculine.singular,
+                actualObject: AdjectiveBankGeneral.prvi,
                 displayValue: AdjectiveBankGeneral.prvi.dictionary,
                 correctValues:
                     AdjectiveBankGeneral.prvi.nominativ!.masculine.singular,

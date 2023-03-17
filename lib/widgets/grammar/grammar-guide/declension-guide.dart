@@ -15,14 +15,14 @@ import 'package:nrs_flutter_lib/widgets/n_footer_button.dart';
 import 'package:nrs_flutter_lib/widgets/n_footer_menu.dart';
 import 'package:nrs_flutter_lib/widgets/n_progress_bar.dart';
 
-// TODO: Test on small screens
-// TODO: Test on tablet screens
+// TODO: Test entire app on small screens
+// TODO: Test entire app on tablet screens
 
 List<CaseKey> caseKeys = [];
 
 class CaseKey {
-  final Cases caseType;
   final GlobalKey key;
+  late Cases caseType;
   late double startPixel = 0;
   late double endPixel = 0;
   late double height = 0;
@@ -62,14 +62,18 @@ class ContentSection extends StatelessWidget {
 }
 
 class DeclensionGuide extends StatefulWidget {
-  final Cases startingCase;
+  late Cases startingCase;
   final DialectType dialect;
 
-  const DeclensionGuide({
+  DeclensionGuide({
     Key? key,
     this.startingCase = Cases.Nom,
     required this.dialect,
-  }) : super(key: key);
+  }) : super(key: key) {
+    if (startingCase == Cases.All) {
+      startingCase = Cases.Nom;
+    }
+  }
 
   @override
   _DeclensionGuideState createState() => _DeclensionGuideState();
@@ -86,7 +90,7 @@ class _DeclensionGuideState extends State<DeclensionGuide> {
     Cases.Lok,
   ];
 
-  late ScrollController controller;
+  late ScrollController controller = ScrollController();
   late bool isAtTop = true;
   late bool isAtBottom = false;
   late int startingIndex = casesInOrder.indexOf(widget.startingCase);
@@ -95,10 +99,6 @@ class _DeclensionGuideState extends State<DeclensionGuide> {
 
   @override
   Widget build(BuildContext context) {
-    caseKeys = casesInOrder.map((caseType) {
-      return CaseKey(caseType: caseType, key: GlobalKey());
-    }).toList();
-
     return Scaffold(
       appBar: N.navAppBar(
         title: SbcLabels.cases,
@@ -167,11 +167,11 @@ class _DeclensionGuideState extends State<DeclensionGuide> {
               active: !isAtTop,
               icon: Icons.arrow_upward,
               text: N.t('previous'),
-              onPressed: () => moveToPrev(),
+              onPressed: () => _moveToPrev(),
             ),
             NFooterButton(
               active: !isAtBottom,
-              onPressed: () => moveToNext(),
+              onPressed: () => _moveToNext(),
               icon: Icons.arrow_downward,
               text: N.t('next'),
             ),
@@ -183,23 +183,19 @@ class _DeclensionGuideState extends State<DeclensionGuide> {
 
   @override
   void initState() {
-    final startingPoint = _getScrollPoint(widget.startingCase);
-    controller = ScrollController(initialScrollOffset: startingPoint);
-    controller.addListener(scrollListener);
+    caseKeys = casesInOrder.map((caseType) {
+      return CaseKey(caseType: caseType, key: GlobalKey());
+    }).toList();
+
+    // addPostFrameCallback gets called after the build method is finished
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final startingPoint = _getScrollPoint(widget.startingCase);
+      controller.addListener(scrollListener);
+      _scrollTo(startingPoint, controller);
+    });
+
     super.initState();
   }
-
-  moveToNext() => setState(() {
-        if (isAtBottom) return;
-
-        scrollPrevOrNext(toNext: true);
-      });
-
-  moveToPrev() => setState(() {
-        if (isAtTop) return;
-
-        scrollPrevOrNext(toNext: false);
-      });
 
   scrollListener() => setState(() {
         if (controller.position.atEdge) {
@@ -221,17 +217,10 @@ class _DeclensionGuideState extends State<DeclensionGuide> {
         activeIndex = _getCaseTypeIndexFromCurrentPosition();
       });
 
-  scrollPrevOrNext({required bool toNext}) {
-    _setIndixesAndHeight();
-
-    activeIndex = toNext ? activeIndex + 1 : activeIndex - 1;
-    activeIndex = activeIndex < 0 ? 0 : activeIndex;
-    final scrollPoint = caseKeys[activeIndex].startPixel;
-    _scrollTo(scrollPoint, controller);
-  }
-
   GlobalKey<State<StatefulWidget>> _getCaseKey(Cases caseType) {
-    return caseKeys.firstWhere((caseKey) => caseKey.caseType == caseType).key;
+    final caseKey =
+        caseKeys.firstWhere((caseKey) => caseKey.caseType == caseType);
+    return caseKey.key;
   }
 
   int _getCaseTypeIndexFromCurrentPosition() {
@@ -260,11 +249,14 @@ class _DeclensionGuideState extends State<DeclensionGuide> {
   }
 
   double _getHeightFromCaseKey(Cases caseType) {
-    return _getCaseKey(caseType).currentContext!.size!.height;
+    final caseKey = _getCaseKey(caseType);
+    return caseKey.currentContext!.size!.height;
   }
 
   double _getScrollPoint(Cases caseType) {
     double scrollPoint = 0;
+
+    _setIndixesAndHeight();
 
     for (var i = 0; i < casesInOrder.length; i++) {
       if (casesInOrder[i] == caseType) return scrollPoint;
@@ -272,6 +264,27 @@ class _DeclensionGuideState extends State<DeclensionGuide> {
     }
 
     return scrollPoint;
+  }
+
+  _moveToNext() => setState(() {
+        if (isAtBottom) return;
+
+        _scrollPrevOrNext(toNext: true);
+      });
+
+  _moveToPrev() => setState(() {
+        if (isAtTop) return;
+
+        _scrollPrevOrNext(toNext: false);
+      });
+
+  _scrollPrevOrNext({required bool toNext}) {
+    _setIndixesAndHeight();
+
+    activeIndex = toNext ? activeIndex + 1 : activeIndex - 1;
+    activeIndex = activeIndex < 0 ? 0 : activeIndex;
+    final scrollPoint = caseKeys[activeIndex].startPixel;
+    _scrollTo(scrollPoint, controller);
   }
 
   void _setIndixesAndHeight() {

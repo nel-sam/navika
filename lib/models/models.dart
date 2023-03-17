@@ -1,4 +1,5 @@
 import 'package:navika/models/adjective.dart';
+import 'package:navika/models/noun.dart';
 import 'package:navika/models/personal-pronoun.dart';
 import 'package:nrs_flutter_lib/enums.dart';
 
@@ -17,7 +18,12 @@ class CaseSentencePart {
     this.correctValues = const [],
     this.isCorrectable = false,
     this.actualObject,
-  });
+  }) {
+    assert(this.actualObject is Adjective ||
+        this.actualObject is PersonalPronoun ||
+        this.actualObject is Noun ||
+        this.actualObject == null);
+  }
 }
 
 class Declension {

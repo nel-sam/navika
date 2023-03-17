@@ -7,9 +7,11 @@ import 'package:navika/models/personal-pronoun.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/declension-table-cell.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/declension-table.dart';
+import 'package:navika/widgets/grammar/grammar-guide/declension-guide.dart';
 import 'package:navika/widgets/shared/count_table_cells.dart';
 import 'package:nrs_flutter_lib/enums.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
+import 'package:nrs_flutter_lib/widgets/n_round_button.dart';
 import 'package:nrs_flutter_lib/widgets/n_sub_header.dart';
 import 'package:nrs_flutter_lib/widgets/n_text_multi.dart';
 import 'package:nrs_flutter_lib/widgets/n_text_span.dart';
@@ -17,10 +19,12 @@ import 'package:nrs_flutter_lib/widgets/n_text_span.dart';
 class CaseExerciseHelp extends StatelessWidget {
   final PANCombo combos;
   final String joinChar = '/';
+  final DialectType dialect;
 
   const CaseExerciseHelp({
     Key? key,
     required this.combos,
+    required this.dialect,
   }) : super(key: key);
 
   @override
@@ -39,6 +43,18 @@ class CaseExerciseHelp extends StatelessWidget {
               child: Column(
                 children: [
                   getCorrectSentence(context, combos),
+                  NRoundButton(
+                      title: N.t('go_to_declension_grammar_guide'),
+                      onPressed: () {
+                        final dest = DeclensionGuide(
+                          startingCase: combos.caseType,
+                          dialect: dialect,
+                        );
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => dest),
+                        );
+                      }),
                   ...combos.sentenceParts.map(
                     (CaseSentencePart e) {
                       if (!e.isCorrectable) return Container();
