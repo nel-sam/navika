@@ -39,6 +39,7 @@ class CaseExerciseHelp extends StatelessWidget {
               padding: const EdgeInsets.all(12.0),
               child: Column(
                 children: [
+<<<<<<< Updated upstream
                   getCorrectSentence(context, combos),
                   if (combos.possPronoun != null)
                     getAdjDeclensionTable(
@@ -67,6 +68,56 @@ class CaseExerciseHelp extends StatelessWidget {
                       combos.personalPronoun!,
                       combos.caseType,
                     ),
+=======
+                  getCorrectSentenceWidget(context, combos),
+                  NRoundButton(
+                      title: N.t('go_to_declension_grammar_guide'),
+                      onPressed: () {
+                        final dest = DeclensionGuide(
+                          startingCase: combos.caseType,
+                          dialect: dialect,
+                        );
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => dest),
+                        );
+                      }),
+                  ...combos.sentenceParts.map(
+                    (CaseSentencePart e) {
+                      if (!e.isCorrectable) return Container();
+
+                      if (e.grammarType == GrammarTypes.adjective ||
+                          e.grammarType == GrammarTypes.possessivePronoun ||
+                          e.grammarType == GrammarTypes.demonstrativePronoun) {
+                        return getAdjDeclensionTable(
+                          context,
+                          e.actualObject,
+                          combos.caseType,
+                          combos.isAnimate,
+                        );
+                      }
+
+                      if (e.grammarType == GrammarTypes.noun) {
+                        return getNounList(
+                          context,
+                          e.actualObject,
+                          combos.caseType,
+                          combos.isPlural,
+                        );
+                      }
+
+                      if (e.grammarType == GrammarTypes.personalPronoun) {
+                        return getPersonalPronounDeclensionList(
+                          context,
+                          e.actualObject,
+                          combos.caseType,
+                        );
+                      }
+
+                      return Container();
+                    },
+                  ),
+>>>>>>> Stashed changes
                 ],
               ),
             ),
@@ -117,6 +168,7 @@ class CaseExerciseHelp extends StatelessWidget {
     );
   }
 
+<<<<<<< Updated upstream
   getCorrectSentence(BuildContext context, PANCombo combo) {
     String sentence = getSentenceAsString(combo);
 
@@ -154,6 +206,20 @@ class CaseExerciseHelp extends StatelessWidget {
             TextSpan(text: ' ${combo.sentenceEnder}'),
         ]),
         TranslationLink(sentence: sentence),
+=======
+  getCorrectSentenceWidget(BuildContext context, PANCombo combo) {
+    final sentenceParts = N.getCorrectSentence(context, combo.sentenceParts);
+
+    return Column(
+      children: [
+        NSubHeader(N.t('correctAnswer')),
+        Wrap(
+          children: [
+            NTextMulti(sentenceParts),
+          ],
+        ),
+        NTextSpan(combo.translation)
+>>>>>>> Stashed changes
       ],
     );
   }

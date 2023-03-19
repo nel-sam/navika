@@ -91,6 +91,44 @@ class N {
     }
   }
 
+<<<<<<< Updated upstream
+=======
+  static List<TextSpan> getCorrectSentence(
+      BuildContext context, List<CaseSentencePart> sentenceParts) {
+    final fontSize = FONT_SIZE * 1.1;
+
+    return sentenceParts.map<TextSpan>((CaseSentencePart e) {
+      if (sentenceParts.first == e) {
+        final displayValue =
+            e.displayValue.length > 0 ? e.displayValue : e.correctValues.first;
+        e.displayValue = capitalizeFirstLetter(displayValue);
+      }
+
+      // If the previous element was correctable, add a space before this one
+      if (sentenceParts.indexOf(e) > 0 &&
+          sentenceParts[sentenceParts.indexOf(e) - 1].isCorrectable) {
+        e.displayValue = ' ${e.displayValue}';
+      }
+
+      // If the next element is correctable, add a space
+      if (sentenceParts.indexOf(e) < sentenceParts.length - 1 &&
+          sentenceParts[sentenceParts.indexOf(e) + 1].isCorrectable) {
+        e.displayValue += ' ';
+      }
+
+      if (!e.isCorrectable) {
+        return TextSpan(
+            text: e.displayValue, style: TextStyle(fontSize: fontSize));
+      }
+
+      return TextSpan(
+          text: '${e.correctValues.join('/')}',
+          style: Nrs.getTextStyle(
+              context: context, isBold: true, fontSize: fontSize));
+    }).toList();
+  }
+
+>>>>>>> Stashed changes
   static IconData getGenderIcon(Genders gender) {
     if (gender == Genders.Feminine) {
       return FEMININE_ICON;
