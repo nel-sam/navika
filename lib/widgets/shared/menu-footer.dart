@@ -7,6 +7,7 @@ import 'package:navika/widgets/exercises/cyrillic/cyrillic-exercise.dart';
 import 'package:navika/widgets/grammar/grammar-guide/declension-guide.dart';
 import 'package:navika/widgets/menus/declension-menu.dart';
 import 'package:navika/widgets/menus/verb-menu.dart';
+import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 import 'package:nrs_flutter_lib/widgets/n_footer_button.dart';
 import 'package:nrs_flutter_lib/widgets/n_footer_button_text_icon.dart';
 import 'package:nrs_flutter_lib/widgets/n_footer_menu.dart';
@@ -21,66 +22,76 @@ class MenuFooter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SettingsConsumerWrapper(
-      getChildWidget: (Settings settings) => NFooterMenu(
-        buttons: [
-          //HomeButtonWrapper(isActive: activeIndex == 0),
-          NFooterButton(
-            active: activeIndex == 1,
-            text: N.t(context).grammar,
-            icon: NavIcons.grammarGuides,
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  // builder: (context) => GrammarMenu(),
-                  builder: (context) =>
-                      DeclensionGuide(dialect: settings.dialectType),
-                ),
-              );
-            },
-          ),
-          NFooterButton(
-            active: activeIndex == 2,
-            text: N.t(context).cases,
-            icon: NavIcons.cases,
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => DeclensionMenu(),
-                ),
-              );
-            },
-          ),
-          NFooterButton(
-            active: activeIndex == 3,
-            text: N.t(context).verbs,
-            icon: NavIcons.verbs,
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => VerbMenu(),
-                ),
-              );
-            },
-          ),
-          NFooterButtonTextIcon(
-            active: activeIndex == 4,
-            text: N.t(context).cyrillic,
-            iconText: NavIcons.cyrillic,
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => CyrillicExercise(),
-                ),
-              );
-            },
-          ),
-        ],
+    double screenWidth = Nrs.getScreenWidth();
+
+    List<Widget> standardButtons = [
+      NFooterButton(
+        active: activeIndex == 2,
+        text: N.t('cases'),
+        icon: NavIcons.cases,
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => DeclensionMenu(),
+            ),
+          );
+        },
       ),
+      NFooterButton(
+        active: activeIndex == 3,
+        text: N.t('verbs'),
+        icon: NavIcons.verbs,
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => VerbMenu(),
+            ),
+          );
+        },
+      ),
+      NFooterButtonTextIcon(
+        active: activeIndex == 4,
+        text: N.t('cyrillic'),
+        iconText: NavIcons.cyrillic,
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => CyrillicExercise(),
+            ),
+          );
+        },
+      )
+    ];
+
+    return SettingsConsumerWrapper(
+      getChildWidget: (Settings settings) {
+        var buttons2 = screenWidth > 400
+            ? [
+                NFooterButton(
+                  active: activeIndex == 1,
+                  text: N.t('grammar'),
+                  icon: NavIcons.grammarGuides,
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            DeclensionGuide(dialect: settings.dialectType),
+                      ),
+                    );
+                  },
+                ),
+                ...standardButtons,
+              ]
+            : standardButtons;
+            
+        return NFooterMenu(
+          buttons: buttons2,
+        );
+      },
     );
   }
 }

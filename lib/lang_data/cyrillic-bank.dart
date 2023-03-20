@@ -6,31 +6,27 @@ List<CyrillicBankItem> cyrillicWordBank = [
   CyrillicBankItem(
       latinString: 'Pada kiša danas',
       cyrillicString: 'Пада киша Данас',
-      getTranslation: (BuildContext context) => N.t(context).trans_pada_kisa),
+      getTranslation: (BuildContext context) => N.t('trans_pada_kisa')),
   CyrillicBankItem(
-      latinString: 'Ovo su najbolji čevapi',
-      cyrillicString: 'Ово су најбољи чевапи',
-      getTranslation: (BuildContext context) =>
-          N.t(context).trans_najbolji_cevapi),
+      latinString: 'Gdje su u Zagrebu najbolji ćevapi?',
+      cyrillicString: 'Гдје су у Загребу најбољи чевапи?',
+      getTranslation: (BuildContext context) => N.t('trans_najbolji_cevapi')),
   CyrillicBankItem(
       latinString: 'Srbija je balkanska zemlja',
       cyrillicString: 'Србија је балканска земља',
-      getTranslation: (BuildContext context) => N.t(context).trans_srbija_je),
+      getTranslation: (BuildContext context) => N.t('trans_srbija_je')),
   CyrillicBankItem(
       latinString: 'Više mi se sviđa plaža nego grad',
       cyrillicString: 'Више ми се свиђа плажа него град',
-      getTranslation: (BuildContext context) =>
-          N.t(context).trans_plaza_nego_grad),
+      getTranslation: (BuildContext context) => N.t('trans_plaza_nego_grad')),
   CyrillicBankItem(
-      latinString: 'Može li se sutra otići na ručak?',
-      cyrillicString: 'Може ли се сутра отићи на ручак?',
-      getTranslation: (BuildContext context) =>
-          N.t(context).trans_otici_na_rucak),
+      latinString: 'Možemo li sutra ići na ručak?',
+      cyrillicString: 'Можемо ли сутра да идемо на ручак?',
+      getTranslation: (BuildContext context) => N.t('trans_otici_na_rucak')),
   CyrillicBankItem(
       latinString: 'U Hrvatskoj se ćirilica ne koristi mnogo',
       cyrillicString: 'У Хрватској се ћирилица не користи много',
-      getTranslation: (BuildContext context) =>
-          N.t(context).trans_ne_koristi_mnogo),
+      getTranslation: (BuildContext context) => N.t('trans_ne_koristi_mnogo')),
 ];
 
 Map<String, String> latinCyrillicMap = {

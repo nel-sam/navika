@@ -10,13 +10,18 @@ import 'package:nrs_flutter_lib/widgets/n_text_multi.dart';
 import 'package:nrs_flutter_lib/widgets/n_text_span.dart';
 
 class DativGrammarGuideContent extends StatelessWidget {
-  const DativGrammarGuideContent({Key? key}) : super(key: key);
+  final DialectType dialect;
+
+  const DativGrammarGuideContent({
+    Key? key,
+    required this.dialect,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        NTextSpan(N.t(context).dativDescription),
+        NTextSpan(N.t('dativDescription')),
         ExampleSentences(
           sentences: [
             NTextMulti([
@@ -26,22 +31,24 @@ class DativGrammarGuideContent extends StatelessWidget {
                   style: Nrs.getTextStyle(context: context, isBold: true)),
             ]),
             NTextMulti([
-              TextSpan(text: 'Došao je na posao usprkos '),
+              TextSpan(text: 'Usprkos '),
               TextSpan(
                   text: 'bolesti',
                   style: Nrs.getTextStyle(context: context, isBold: true)),
+              TextSpan(text: ', došao je na posao'),
             ]),
             NTextMulti([
               TextSpan(text: 'Dao sam '),
               TextSpan(
-                  text: 'mami ',
+                  text: 'mami',
                   style: Nrs.getTextStyle(context: context, isBold: true)),
-              TextSpan(text: 'čaj'),
+              TextSpan(text: ' čaj'),
             ]),
           ],
         ),
         DativLokativDeclensionTable(),
         PossessivePronounSection(
+          note: N.t('longShortFormDesc'),
           contents: [
             PronounLine(
                 pronoun: PronounEnum.I,
@@ -60,16 +67,25 @@ class DativGrammarGuideContent extends StatelessWidget {
             PronounLine(
                 pronoun: PronounEnum.You,
                 text: NTextMulti([
-                  TextSpan(text: 'Ja ću pokazati '),
                   TextSpan(
-                      text: 'tebi ',
-                      style: Nrs.getTextStyle(context: context, isBold: true)),
-                  TextSpan(text: 'nešto\n'),
-                  TextSpan(text: 'Ja '),
+                      text: dialect == DialectType.Serbia
+                          ? 'Ja trebao da pokažem'
+                          : 'Ja trebao pokazati '),
                   TextSpan(
-                      text: 'ti ',
+                      text: 'tebi',
                       style: Nrs.getTextStyle(context: context, isBold: true)),
-                  TextSpan(text: 'ću pokazati nešto'),
+                  TextSpan(text: ' nešto\n'),
+                  TextSpan(
+                      text: dialect == DialectType.Serbia
+                          ? 'Pokazaću '
+                          : 'Ja ću '),
+                  TextSpan(
+                      text: 'ti',
+                      style: Nrs.getTextStyle(context: context, isBold: true)),
+                  TextSpan(
+                      text: dialect == DialectType.Serbia
+                          ? ' nešto'
+                          : ' pokazati nešto'),
                 ])),
             PronounLine(
                 pronoun: PronounEnum.He,
@@ -87,21 +103,21 @@ class DativGrammarGuideContent extends StatelessWidget {
             PronounLine(
                 pronoun: PronounEnum.She,
                 text: NTextMulti([
-                  TextSpan(text: 'On kazao '),
+                  TextSpan(text: 'On je rekao '),
                   TextSpan(
-                      text: 'njoj ',
+                      text: 'njoj',
                       style: Nrs.getTextStyle(context: context, isBold: true)),
-                  TextSpan(text: 'nešto\n'),
-                  TextSpan(text: 'On '),
+                  TextSpan(text: ' nešto\n'),
+                  TextSpan(text: 'Nešto '),
                   TextSpan(
-                      text: 'joj ',
+                      text: 'joj',
                       style: Nrs.getTextStyle(context: context, isBold: true)),
-                  TextSpan(text: 'nešto pokazao '),
+                  TextSpan(text: ' je rekao'),
                 ])),
             PronounLine(
                 pronoun: PronounEnum.We,
                 text: NTextMulti([
-                  TextSpan(text: 'Trabamo kupiti '),
+                  TextSpan(text: 'Trebamo kupiti '),
                   TextSpan(
                       text: 'nama ',
                       style: Nrs.getTextStyle(context: context, isBold: true)),
@@ -115,15 +131,15 @@ class DativGrammarGuideContent extends StatelessWidget {
             PronounLine(
                 pronoun: PronounEnum.You_Plural,
                 text: NTextMulti([
-                  TextSpan(text: 'Pokažat ćemo '),
+                  TextSpan(text: 'Pokazat ćemo grad '),
+                  TextSpan(
+                      text: 'vama\n',
+                      style: Nrs.getTextStyle(context: context, isBold: true)),
+                  TextSpan(text: 'Pokazat ćemo '),
                   TextSpan(
                       text: 'vam ',
                       style: Nrs.getTextStyle(context: context, isBold: true)),
-                  TextSpan(text: 'grad\n'),
-                  TextSpan(text: 'Pokažat ćemo grad '),
-                  TextSpan(
-                      text: 'vama',
-                      style: Nrs.getTextStyle(context: context, isBold: true)),
+                  TextSpan(text: 'grad'),
                 ])),
             PronounLine(
                 pronoun: PronounEnum.They_Ungendered,
@@ -141,15 +157,15 @@ class DativGrammarGuideContent extends StatelessWidget {
             PronounLine(
                 pronoun: PronounEnum.Oneself,
                 text: NTextMulti([
+                  TextSpan(text: 'Napravi kavu '),
+                  TextSpan(
+                      text: 'sebi\n',
+                      style: Nrs.getTextStyle(context: context, isBold: true)),
                   TextSpan(text: 'Napravi '),
                   TextSpan(
                       text: 'si ',
                       style: Nrs.getTextStyle(context: context, isBold: true)),
-                  TextSpan(text: 'kavu\n'),
-                  TextSpan(text: 'Napravi kavu '),
-                  TextSpan(
-                      text: 'sebi',
-                      style: Nrs.getTextStyle(context: context, isBold: true)),
+                  TextSpan(text: 'kavu'),
                 ])),
           ],
         ),

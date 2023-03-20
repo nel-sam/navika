@@ -55,7 +55,7 @@ class _InfoBannerState extends State<InfoBanner> {
                       ),
                     ),
                     NTextSpan(
-                      N.t(context).expand_for_more,
+                      N.t('expand_for_more'),
                       textStyle:
                           Nrs.getTextStyle(context: context, fontSize: 12),
                     )
@@ -64,23 +64,25 @@ class _InfoBannerState extends State<InfoBanner> {
               );
             },
             isExpanded: state.isExpanded,
-            body: Container(
-              height: 420,
-              child: Padding(
-                padding: const EdgeInsets.all(10),
-                child: Column(
-                  children: [
-                    Text(
-                      widget.description,
-                      softWrap: true,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 15,
+            body: Expanded(
+              child: Container(
+                //height: 250,
+                child: Padding(
+                  padding: const EdgeInsets.all(18),
+                  child: Column(
+                    children: [
+                      Text(
+                        widget.description,
+                        softWrap: true,
+                        style: const TextStyle(
+                          //color: Colors.white,
+                          fontSize: 15,
+                        ),
                       ),
-                    ),
-                    if (state.hasYouTubeLink)
-                      YouTubeLink(this.widget.youtubeLink!)
-                  ],
+                      if (state.hasYouTubeLink)
+                        YouTubeLink(this.widget.youtubeLink!)
+                    ],
+                  ),
                 ),
               ),
             ))

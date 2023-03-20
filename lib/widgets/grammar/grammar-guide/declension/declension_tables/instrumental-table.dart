@@ -14,15 +14,16 @@ class InstrumentalDeclensionTable extends StatelessWidget {
     return DeclensionTable(
       showEqualItemNote: true,
       additionalEqualItemColor: secondEqualColor,
-      notes: [N.t(context).instrumentalFemSing],
-      borderedItemNote: N.t(context).sameAsLok,
+      notes: [N.t('instrumentalFemSing'), N.t('softLettersOgEg')],
+      borderedItemNote: N.t('sameAsLok'),
       masculineSingular: DeclensionTableCell(
         isEqualItem: true,
         children: [
           N.declensionExampleTextSpan('Brz'),
           N.declensionExampleTextSpan('im\n', color: MASCULINE_COLOR),
           N.declensionExampleTextSpan('ps'),
-          N.declensionExampleTextSpan('om', color: MASCULINE_COLOR)
+          N.declensionExampleTextSpan('om', color: MASCULINE_COLOR),
+          N.declensionExampleTextSpan('**'),
         ],
       ),
       masculinePlural: DeclensionTableCell(
@@ -59,6 +60,7 @@ class InstrumentalDeclensionTable extends StatelessWidget {
           N.declensionExampleTextSpan('im\n', color: NEUTER_COLOR),
           N.declensionExampleTextSpan('vin'),
           N.declensionExampleTextSpan('om', color: NEUTER_COLOR),
+          N.declensionExampleTextSpan('**'),
         ],
       ),
       neuterPlural: DeclensionTableCell(

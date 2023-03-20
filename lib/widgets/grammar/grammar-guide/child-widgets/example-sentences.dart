@@ -16,7 +16,7 @@ class ExampleSentences extends StatelessWidget {
       children: [
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [NSubHeader(N.t(context).exampleSentences), ...sentences],
+          children: [NSubHeader(N.t('exampleSentences')), ...sentences],
         ),
       ],
     );

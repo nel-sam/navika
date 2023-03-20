@@ -4,25 +4,9 @@ import 'package:navika/models/enums.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/declension-table-cell.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/explanation-icon-cell.dart';
+import 'package:navika/widgets/shared/count_table_cells.dart';
 import 'package:nrs_flutter_lib/constants.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
-
-class CountIcon extends StatelessWidget {
-  const CountIcon({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final isDarkTheme = Nrs.isDarkTheme(context);
-
-    return Icon(
-      Icons.circle,
-      size: FONT_SIZE - 6,
-      color: isDarkTheme ? Colors.white : Colors.black.withOpacity(0.6),
-    );
-  }
-}
 
 class DeclensionTable extends StatelessWidget {
   final DeclensionTableCell masculineSingular;
@@ -80,47 +64,29 @@ class DeclensionTable extends StatelessWidget {
                     isHeader: true,
                     icon: Icon(N.getGenderIcon(Genders.Feminine),
                         color: FEMININE_COLOR),
-                    label: N.t(context).feminine,
+                    label: N.t('fem'),
                   ),
                   ExplanationIconCell(
                     isHeader: true,
                     icon: Icon(N.getGenderIcon(Genders.Masculine),
                         color: MASCULINE_COLOR),
-                    label: N.t(context).masculine,
+                    label: N.t('masc'),
                   ),
                   ExplanationIconCell(
                     isHeader: true,
                     icon: Icon(N.getGenderIcon(Genders.Neuter),
                         color: NEUTER_COLOR),
-                    label: N.t(context).neuter,
+                    label: N.t('neut'),
                   ),
                 ]),
                 TableRow(children: [
-                  ExplanationIconCell(
-                    icon: CountIcon(),
-                    label: N.t(context).singular,
-                  ),
+                  SingularTableCell(),
                   TableCellWrapper(child: feminineSingular),
                   TableCellWrapper(child: masculineSingular),
                   TableCellWrapper(child: neuterSingular),
                 ]),
                 TableRow(children: [
-                  ExplanationIconCell(
-                    icon: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        CountIcon(),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            CountIcon(),
-                            CountIcon(),
-                          ],
-                        )
-                      ],
-                    ),
-                    label: N.t(context).plural,
-                  ),
+                  PluralTableCell(),
                   TableCellWrapper(child: femininePlural),
                   TableCellWrapper(child: masculinePlural),
                   TableCellWrapper(child: neuterPlural),
@@ -197,7 +163,7 @@ class DeclensionTable extends StatelessWidget {
                             : Colors.black),
                     children: [
                       TextSpan(
-                        text: N.t(context).equalDeclensions,
+                        text: N.t('equalDeclensions'),
                         style: DECLINED_LETTER_STYLE,
                       )
                     ],

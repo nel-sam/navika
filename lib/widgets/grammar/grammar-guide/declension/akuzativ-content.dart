@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:navika/models/enums.dart';
+import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/example-sentences.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/possessive-pronoun-section.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/pronoun-line.dart';
@@ -7,7 +8,6 @@ import 'package:navika/widgets/grammar/grammar-guide/declension/declension_table
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 import 'package:nrs_flutter_lib/widgets/n_text_multi.dart';
 import 'package:nrs_flutter_lib/widgets/n_text_span.dart';
-import 'package:navika/utilities/navika-helpers.dart';
 
 class AkuzativGrammarGuideContent extends StatelessWidget {
   final DialectType dialect;
@@ -19,11 +19,11 @@ class AkuzativGrammarGuideContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isSerbian = dialect == DialectType.Ekavian;
+    bool isSerbian = dialect == DialectType.Serbia;
 
     return Column(
       children: [
-        NTextSpan(N.t(context).akuzativDescription),
+        NTextSpan(N.t('akuzativDescription')),
         ExampleSentences(
           sentences: [
             NTextMulti([
@@ -49,6 +49,7 @@ class AkuzativGrammarGuideContent extends StatelessWidget {
         ),
         AkuzativDeclensionTable(),
         PossessivePronounSection(
+          note: N.t('longShortFormDesc'),
           contents: [
             PronounLine(
                 pronoun: PronounEnum.I,

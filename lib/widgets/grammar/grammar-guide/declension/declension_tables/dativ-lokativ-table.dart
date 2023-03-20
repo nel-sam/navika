@@ -11,11 +11,11 @@ class DativLokativDeclensionTable extends StatelessWidget {
   Widget build(BuildContext context) {
     return DeclensionTable(
       notes: [
-        N.t(context).assibilation,
-        N.t(context).softLettersOmEm,
+        N.t('assibilation'),
+        N.t('softLettersOmEm'),
       ],
       showEqualItemNote: true,
-      borderedItemNote: N.t(context).sameAsInst,
+      borderedItemNote: N.t('sameAsInst'),
       masculineSingular: DeclensionTableCell(
         isEqualItem: true,
         children: [
@@ -23,6 +23,7 @@ class DativLokativDeclensionTable extends StatelessWidget {
           N.declensionExampleTextSpan('om\n', color: MASCULINE_COLOR),
           N.declensionExampleTextSpan('ps'),
           N.declensionExampleTextSpan('u', color: MASCULINE_COLOR),
+          N.declensionExampleTextSpan('**'),
         ],
       ),
       masculinePlural: DeclensionTableCell(
@@ -58,6 +59,7 @@ class DativLokativDeclensionTable extends StatelessWidget {
           N.declensionExampleTextSpan('em\n', color: NEUTER_COLOR),
           N.declensionExampleTextSpan('mor'),
           N.declensionExampleTextSpan('u', color: NEUTER_COLOR),
+          N.declensionExampleTextSpan('**'),
         ],
       ),
       neuterPlural: DeclensionTableCell(

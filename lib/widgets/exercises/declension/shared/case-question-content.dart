@@ -1,123 +1,77 @@
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
+import 'package:navika/models/enums.dart';
 import 'package:navika/state/cases/case-question-state.dart';
 import 'package:navika/widgets/exercises/declension/shared/case-exercise-row-card.dart';
 import 'package:navika/widgets/shared/n-free-form-entry.dart';
-import 'package:nrs_flutter_lib/enums.dart';
-import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
+import 'package:nrs_flutter_lib/extensions.dart';
 
-class CaseQuestionContent extends StatelessWidget {
+class CaseQuestionContent extends StatefulWidget {
   final CaseQuestionState stateItem;
+  final DialectType dialect;
 
   CaseQuestionContent({
     required this.stateItem,
+    required this.dialect,
   });
 
   @override
-  Widget build(BuildContext context) {
-    final bool usePossPronouns = stateItem.combos.possPronoun != null;
-    final bool useAdj = stateItem.combos.adjective != null &&
-        stateItem.combos.adjective!.dictionary != '';
-    final bool useNoun = stateItem.combos.noun != null;
-    final bool usePersonalPronoun = stateItem.combos.personalPronoun != null;
-    final textFieldWidth = Nrs.getScreenWidth(reduction: 10);
+  State<CaseQuestionContent> createState() => _CaseQuestionContentState();
+}
 
-    // TODO: Incorporate this into widget
-    //  if (multipleCorrect)
-    //         Row(children: [
-    //           status == CorrectStatus.correct
-    //               ? NTextSpan(
-    //                   '${N.t(context).alsoCorrect}: ${widget.correctValues.join(',')}',
-    //                   textStyle: Nrs.getTextStyle(
-    //                       context: context, fontSize: FONT_SIZE - 3))
-    //               : NTextSpan(
-    //                   '${N.t(context).multipleCorrect}',
-    //                   textStyle: Nrs.getTextStyle(
-    //                       context: context, fontSize: FONT_SIZE - 3))
-    //         ]),
+class _CaseQuestionContentState extends State<CaseQuestionContent> {
+  @override
+  Widget build(BuildContext context) {
+    bool isAllCorrect = widget.stateItem.isCorrect;
+    final trans = widget.stateItem.combos.translation;
+
+    handleOnChange(String newValue, List<String> correctValues) {
+      final isCorrect = correctValues.containsCaseInsensitive(newValue);
+      widget.stateItem.updateUserInput(correctValues[0], newValue, isCorrect);
+
+      if (widget.stateItem.isCorrect) {
+        setState(() {
+          isAllCorrect = true;
+        });
+      }
+    }
 
     return CaseExerciseRowCard(
-      combos: stateItem.combos,
-      isAllCorrect: stateItem.isCorrect,
-      isPlural: stateItem.combos.isPlural,
-      isAnimate: stateItem.combos.noun == null
-          ? false
-          : stateItem.combos.noun!.isAnimate,
-      getExtraInfo: stateItem.combos.noun == null
-          ? (BuildContext context) => ''
-          : stateItem.combos.noun!.getExtraInfo,
+      combos: widget.stateItem.combos,
+      isAllCorrect: isAllCorrect,
+      isPlural: widget.stateItem.combos.isPlural,
+      isAnimate: widget.stateItem.combos.isAnimate,
+      extraInfo: widget.stateItem.combos.extraInfo,
+      translation: trans,
+      dialect: widget.dialect,
       children: [
-        if (stateItem.combos.sentenceStarter != '')
-          Container(
-            width: textFieldWidth,
-            child: Text(
-              stateItem.combos.sentenceStarter,
-              style: TextStyle(fontSize: EXERCISE_FONT_STYLE),
-            ),
-          ),
-        if (usePossPronouns)
-          NFreeFormEntry(
-            hintValue: stateItem.combos.possPronoun!.dictionary,
-            initialValue: stateItem.userPossPronResponse,
-            correctValues: stateItem.combos.correctPossPronouns,
-            onChanged: (String newVal) {
-              handleOnChange(GrammarTypes.possessivePronoun, newVal);
-            },
-          ),
-        if (useAdj)
-          NFreeFormEntry(
-            hintValue: stateItem.combos.adjective!.dictionary,
-            initialValue: stateItem.userAdjResponse,
-            correctValues: stateItem.combos.correctAdjectives,
-            onChanged: (String newVal) {
-              handleOnChange(GrammarTypes.adjective, newVal);
-            },
-          ),
-        if (useNoun)
-          NFreeFormEntry(
-            hintValue: stateItem.combos.noun!.dictionary,
-            initialValue: stateItem.userNounResponse,
-            correctValues: stateItem.combos.correctNouns,
-            onChanged: (String newVal) {
-              handleOnChange(GrammarTypes.noun, newVal);
-            },
-          ),
-        if (usePersonalPronoun)
-          NFreeFormEntry(
-            hintValue: stateItem.combos.personalPronoun!.dictionary,
-            initialValue: stateItem.userPersonalPronounResponse,
-            correctValues: stateItem.combos.correctPersonalPronouns,
-            onChanged: (String newVal) {
-              handleOnChange(GrammarTypes.personalPronoun, newVal);
-            },
-          ),
-        if (stateItem.combos.sentenceEnder != '')
-          Container(
-            width: textFieldWidth,
-            child: Text(
-              stateItem.combos.sentenceEnder,
-              style: TextStyle(fontSize: EXERCISE_FONT_STYLE),
-            ),
-          ),
-      ],
-      gender: stateItem.combos.gender,
-    );
-  }
+        ...widget.stateItem.combos.sentenceParts.map((e) {
+          if (!e.isCorrectable) {
+            return Padding(
+              padding: const EdgeInsets.only(right: 8),
+              child: Text(
+                e.displayValue,
+                style: TextStyle(fontSize: EXERCISE_FONT_SIZE),
+              ),
+            );
+          }
 
-  handleOnChange(GrammarTypes grammarType, String newValue) {
-    switch (grammarType) {
-      case GrammarTypes.noun:
-        stateItem.updateNoun(newValue);
-        break;
-      case GrammarTypes.personalPronoun:
-        stateItem.updatePersonalPronoun(newValue);
-        break;
-      case GrammarTypes.possessivePronoun:
-        stateItem.updatePossPronoun(newValue);
-        break;
-      case GrammarTypes.adjective:
-        stateItem.updateAdj(newValue);
-        break;
-    }
+          final currentVal = widget.stateItem.getUserInput(e.correctValues[0]);
+
+          return Padding(
+            padding: const EdgeInsets.only(right: 8),
+            child: NFreeFormEntry(
+              hintValue: e.displayValue,
+              initialValue: currentVal,
+              correctValues: e.correctValues,
+              onChanged: (String newVal) {
+                handleOnChange(newVal, e.correctValues);
+              },
+            ),
+          );
+        }).toList()
+      ],
+      gender: widget.stateItem.combos.gender,
+    );
   }
 }

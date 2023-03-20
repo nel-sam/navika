@@ -9,7 +9,7 @@ final List<Verb> verbWordBankGeneral = [
     isIrregular: true,
     isReflexive: true,
     verbPerfectiveType: VerbPerfectiveTypes.Unspecified,
-    getTranslation: (BuildContext context) => N.t(context).trans_biti,
+    getTranslation: (BuildContext context) => N.t('trans_biti'),
     present: ConjugationSet(
       ja: 'sam',
       ti: 'si',
@@ -32,7 +32,7 @@ final List<Verb> verbWordBankGeneral = [
     isIrregular: false,
     isReflexive: false,
     verbPerfectiveType: VerbPerfectiveTypes.Imperfective,
-    getTranslation: (BuildContext context) => N.t(context).trans_spavati,
+    getTranslation: (BuildContext context) => N.t('trans_spavati'),
     present: ConjugationSet(
       ja: 'spavam',
       ti: 'spavaš',
@@ -55,7 +55,7 @@ final List<Verb> verbWordBankGeneral = [
     isIrregular: false,
     isReflexive: false,
     verbPerfectiveType: VerbPerfectiveTypes.Perfective,
-    getTranslation: (BuildContext context) => N.t(context).trans_citati,
+    getTranslation: (BuildContext context) => N.t('trans_citati'),
     present: ConjugationSet(
       ja: 'pročitam',
       ti: 'pročitaš',
@@ -78,7 +78,7 @@ final List<Verb> verbWordBankGeneral = [
     isIrregular: false,
     isReflexive: false,
     verbPerfectiveType: VerbPerfectiveTypes.Imperfective,
-    getTranslation: (BuildContext context) => N.t(context).trans_citati,
+    getTranslation: (BuildContext context) => N.t('trans_citati'),
     present: ConjugationSet(
       ja: 'čitam',
       ti: 'čitaš',
@@ -101,7 +101,7 @@ final List<Verb> verbWordBankGeneral = [
     isIrregular: false,
     isReflexive: false,
     verbPerfectiveType: VerbPerfectiveTypes.Imperfective,
-    getTranslation: (BuildContext context) => N.t(context).trans_govoriti,
+    getTranslation: (BuildContext context) => N.t('trans_govoriti'),
     present: ConjugationSet(
       ja: 'govorim',
       ti: 'govoriš',
@@ -124,7 +124,7 @@ final List<Verb> verbWordBankGeneral = [
     isIrregular: true,
     isReflexive: false,
     verbPerfectiveType: VerbPerfectiveTypes.Imperfective,
-    getTranslation: (BuildContext context) => N.t(context).trans_putovati,
+    getTranslation: (BuildContext context) => N.t('trans_putovati'),
     present: ConjugationSet(
       ja: 'putujem',
       ti: 'putuješ',
@@ -147,7 +147,7 @@ final List<Verb> verbWordBankGeneral = [
     isIrregular: false,
     isReflexive: false,
     verbPerfectiveType: VerbPerfectiveTypes.Imperfective,
-    getTranslation: (BuildContext context) => N.t(context).trans_ici,
+    getTranslation: (BuildContext context) => N.t('trans_ici'),
     present: ConjugationSet(
       ja: 'idem',
       ti: 'ideš',
@@ -170,7 +170,7 @@ final List<Verb> verbWordBankGeneral = [
     isIrregular: false,
     isReflexive: false,
     verbPerfectiveType: VerbPerfectiveTypes.Perfective,
-    getTranslation: (BuildContext context) => N.t(context).trans_izaci,
+    getTranslation: (BuildContext context) => N.t('trans_izaci'),
     present: ConjugationSet(
       ja: 'izađem',
       ti: 'izađeš',
@@ -193,7 +193,7 @@ final List<Verb> verbWordBankGeneral = [
     isIrregular: true,
     isReflexive: false,
     verbPerfectiveType: VerbPerfectiveTypes.Imperfective,
-    getTranslation: (BuildContext context) => N.t(context).trans_piti,
+    getTranslation: (BuildContext context) => N.t('trans_piti'),
     present: ConjugationSet(
       ja: 'pijem',
       ti: 'piješ',
@@ -216,7 +216,7 @@ final List<Verb> verbWordBankGeneral = [
     isIrregular: true,
     isReflexive: false,
     verbPerfectiveType: VerbPerfectiveTypes.Perfective,
-    getTranslation: (BuildContext context) => N.t(context).trans_piti,
+    getTranslation: (BuildContext context) => N.t('trans_piti'),
     present: ConjugationSet(
       ja: 'popijem',
       ti: 'popiješ',
@@ -239,7 +239,7 @@ final List<Verb> verbWordBankGeneral = [
     isIrregular: false,
     isReflexive: false,
     verbPerfectiveType: VerbPerfectiveTypes.Imperfective,
-    getTranslation: (BuildContext context) => N.t(context).trans_pitati,
+    getTranslation: (BuildContext context) => N.t('trans_pitati'),
     present: ConjugationSet(
       ja: 'pitam',
       ti: 'pitaš',
@@ -262,7 +262,7 @@ final List<Verb> verbWordBankGeneral = [
     isIrregular: true,
     isReflexive: false,
     verbPerfectiveType: VerbPerfectiveTypes.Imperfective,
-    getTranslation: (BuildContext context) => N.t(context).trans_pisati,
+    getTranslation: (BuildContext context) => N.t('trans_pisati'),
     present: ConjugationSet(
       ja: 'pišem',
       ti: 'pišeš',
@@ -285,7 +285,7 @@ final List<Verb> verbWordBankGeneral = [
     isIrregular: true,
     isReflexive: false,
     verbPerfectiveType: VerbPerfectiveTypes.Perfective,
-    getTranslation: (BuildContext context) => N.t(context).trans_pisati,
+    getTranslation: (BuildContext context) => N.t('trans_pisati'),
     present: ConjugationSet(
       ja: 'napišem',
       ti: 'napišeš',
@@ -308,7 +308,7 @@ final List<Verb> verbWordBankGeneral = [
     isIrregular: false,
     isReflexive: false,
     verbPerfectiveType: VerbPerfectiveTypes.Imperfective,
-    getTranslation: (BuildContext context) => N.t(context).trans_uciti,
+    getTranslation: (BuildContext context) => N.t('trans_uciti'),
     present: ConjugationSet(
       ja: 'učim',
       ti: 'učiš',
@@ -331,7 +331,7 @@ final List<Verb> verbWordBankGeneral = [
     isIrregular: false,
     isReflexive: false,
     verbPerfectiveType: VerbPerfectiveTypes.Imperfective,
-    getTranslation: (BuildContext context) => N.t(context).trans_jesti,
+    getTranslation: (BuildContext context) => N.t('trans_jesti'),
     present: ConjugationSet(
       ja: 'jedem',
       ti: 'jedeš',
@@ -354,7 +354,7 @@ final List<Verb> verbWordBankGeneral = [
     isIrregular: false,
     isReflexive: false,
     verbPerfectiveType: VerbPerfectiveTypes.Perfective,
-    getTranslation: (BuildContext context) => N.t(context).trans_jesti,
+    getTranslation: (BuildContext context) => N.t('trans_jesti'),
     present: ConjugationSet(
       ja: 'pojedem',
       ti: 'pojedeš',
@@ -377,7 +377,7 @@ final List<Verb> verbWordBankGeneral = [
     isIrregular: true,
     isReflexive: false,
     verbPerfectiveType: VerbPerfectiveTypes.Imperfective,
-    getTranslation: (BuildContext context) => N.t(context).trans_prati,
+    getTranslation: (BuildContext context) => N.t('trans_prati'),
     present: ConjugationSet(
       ja: 'perem',
       ti: 'pereš',
@@ -400,7 +400,7 @@ final List<Verb> verbWordBankGeneral = [
     isIrregular: true,
     isReflexive: false,
     verbPerfectiveType: VerbPerfectiveTypes.Perfective,
-    getTranslation: (BuildContext context) => N.t(context).trans_prati,
+    getTranslation: (BuildContext context) => N.t('trans_prati'),
     present: ConjugationSet(
       ja: 'operem',
       ti: 'opereš',
@@ -423,7 +423,7 @@ final List<Verb> verbWordBankGeneral = [
     isIrregular: true,
     isReflexive: false,
     verbPerfectiveType: VerbPerfectiveTypes.Imperfective,
-    getTranslation: (BuildContext context) => N.t(context).trans_dati,
+    getTranslation: (BuildContext context) => N.t('trans_dati'),
     present: ConjugationSet(
       ja: 'dajem',
       ti: 'daješ',
@@ -446,7 +446,7 @@ final List<Verb> verbWordBankGeneral = [
     isIrregular: false,
     isReflexive: false,
     verbPerfectiveType: VerbPerfectiveTypes.Perfective,
-    getTranslation: (BuildContext context) => N.t(context).trans_dati,
+    getTranslation: (BuildContext context) => N.t('trans_dati'),
     present: ConjugationSet(
       ja: 'dam',
       ti: 'daš',
@@ -469,7 +469,7 @@ final List<Verb> verbWordBankGeneral = [
     isIrregular: false,
     isReflexive: false,
     verbPerfectiveType: VerbPerfectiveTypes.Perfective,
-    getTranslation: (BuildContext context) => N.t(context).trans_zatvoriti,
+    getTranslation: (BuildContext context) => N.t('trans_zatvoriti'),
     present: ConjugationSet(
       ja: 'zatvorim',
       ti: 'zatvoriš',
@@ -492,7 +492,7 @@ final List<Verb> verbWordBankGeneral = [
     isIrregular: true,
     isReflexive: false,
     verbPerfectiveType: VerbPerfectiveTypes.Perfective,
-    getTranslation: (BuildContext context) => N.t(context).trans_iznaci,
+    getTranslation: (BuildContext context) => N.t('trans_iznaci'),
     present: ConjugationSet(
       ja: 'izađem',
       ti: 'izađeš',
@@ -515,7 +515,7 @@ final List<Verb> verbWordBankGeneral = [
     isIrregular: false,
     isReflexive: false,
     verbPerfectiveType: VerbPerfectiveTypes.Imperfective,
-    getTranslation: (BuildContext context) => N.t(context).trans_gledati,
+    getTranslation: (BuildContext context) => N.t('trans_gledati'),
     present: ConjugationSet(
       ja: 'gledam',
       ti: 'gledaš',
@@ -538,7 +538,7 @@ final List<Verb> verbWordBankGeneral = [
     isIrregular: false,
     isReflexive: false,
     verbPerfectiveType: VerbPerfectiveTypes.Perfective,
-    getTranslation: (BuildContext context) => N.t(context).trans_gledati,
+    getTranslation: (BuildContext context) => N.t('trans_gledati'),
     present: ConjugationSet(
       ja: 'izgledam',
       ti: 'izgledaš',
@@ -561,7 +561,7 @@ final List<Verb> verbWordBankGeneral = [
     isIrregular: true,
     isReflexive: false,
     verbPerfectiveType: VerbPerfectiveTypes.Perfective,
-    getTranslation: (BuildContext context) => N.t(context).trans_pomoci,
+    getTranslation: (BuildContext context) => N.t('trans_pomoci'),
     present: ConjugationSet(
       ja: 'pomognem',
       ti: 'pomogneš',
@@ -584,7 +584,7 @@ final List<Verb> verbWordBankGeneral = [
     isIrregular: false,
     isReflexive: false,
     verbPerfectiveType: VerbPerfectiveTypes.Imperfective,
-    getTranslation: (BuildContext context) => N.t(context).trans_pozivati,
+    getTranslation: (BuildContext context) => N.t('trans_pozivati'),
     present: ConjugationSet(
       ja: 'pozivam',
       ti: 'pozivaš',
@@ -610,7 +610,7 @@ final List<Verb> verbWordBankGeneral = [
   //   isReflexive: ,
   //   verbPerfectiveType: VerbPerfectiveTypes.Imperfective,
   //   getTranslation: (BuildContext context) =>
-  //       N.t(context).trans_,
+  //       N.t('trans_'),
   //   present: ConjugationSet(
   //     ja: '',
   //     ti: '',

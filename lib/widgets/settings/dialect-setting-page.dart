@@ -19,8 +19,9 @@ class DialectSettingPage extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: N.navAppBar(
-        title: N.t(context).appTitle,
+        title: N.t('appTitle'),
         context: context,
+        showSettingsButton: false,
       ),
       body: ChangeNotifierProvider<SettingsNotifier>(
         create: (context) => SettingsNotifier(),
@@ -30,61 +31,77 @@ class DialectSettingPage extends StatelessWidget {
               future: model.getAllSettings(),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.done) {
-                  // TODO: Add text to lang files
-                  return Center(
-                    child: Padding(
-                      padding: const EdgeInsets.all(FONT_SIZE),
-                      child: Column(children: [
-                        Text(
-                          N.t(context).dialectTitle,
-                          style: TextStyle(fontSize: FONT_SIZE * 2.5),
+                  return SingleChildScrollView(
+                    child: SizedBox(
+                      width: N.getMaxScreenWidth(),
+                      child: Center(
+                        child: Padding(
+                          padding: const EdgeInsets.all(FONT_SIZE),
+                          child: Column(children: [
+                            Text(
+                              N.t('dialectTitle'),
+                              style: TextStyle(fontSize: FONT_SIZE * 2),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  top: FONT_SIZE, bottom: FONT_SIZE),
+                              child: Text(N.t('dialectDesc'),
+                                  style: TextStyle(
+                                      fontSize: FONT_SIZE,
+                                      color: Colors.grey,
+                                      fontWeight: FontWeight.bold)),
+                            ),
+                            NRoundButton(
+                                title: N.t('serbia'),
+                                onPressed: () {
+                                  model.setDialectType(DialectType.Serbia);
+                                  model.setBoolSetting(
+                                      SettingsKeys.isFirstTime, false);
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => NHomePage()),
+                                  );
+                                }),
+                            NRoundButton(
+                                title: N.t('croatia'),
+                                onPressed: () {
+                                  model.setDialectType(DialectType.Croatia);
+                                  model.setBoolSetting(
+                                      SettingsKeys.isFirstTime, false);
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => NHomePage()),
+                                  );
+                                }),
+                            NRoundButton(
+                                title: N.t('bosnia'),
+                                onPressed: () {
+                                  model.setDialectType(DialectType.Bosnia);
+                                  model.setBoolSetting(
+                                      SettingsKeys.isFirstTime, false);
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => NHomePage()),
+                                  );
+                                }),
+                            NTextLink(
+                                title: N.t('skip'),
+                                onPressed: () {
+                                  model.setDialectType(DialectType.Bosnia);
+                                  model.setBoolSetting(
+                                      SettingsKeys.isFirstTime, false);
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => NHomePage()),
+                                  );
+                                })
+                          ]),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(
-                              top: FONT_SIZE, bottom: FONT_SIZE),
-                          child: Text(N.t(context).dialectDesc,
-                              style: TextStyle(
-                                  fontSize: FONT_SIZE,
-                                  color: Colors.grey,
-                                  fontWeight: FontWeight.bold)),
-                        ),
-                        NRoundButton(
-                            title: N.t(context).serbian,
-                            onPressed: () {
-                              model.setDialectType(DialectType.Ekavian);
-                              model.setBoolSetting(
-                                  SettingsKeys.isFirstTime, false);
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => NHomePage()),
-                              );
-                            }),
-                        NRoundButton(
-                            title: N.t(context).nonSerbian,
-                            onPressed: () {
-                              model.setDialectType(DialectType.Ijekavian);
-                              model.setBoolSetting(
-                                  SettingsKeys.isFirstTime, false);
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => NHomePage()),
-                              );
-                            }),
-                        NTextLink(
-                            title: N.t(context).skip,
-                            onPressed: () {
-                              model.setDialectType(DialectType.Ijekavian);
-                              model.setBoolSetting(
-                                  SettingsKeys.isFirstTime, false);
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => NHomePage()),
-                              );
-                            })
-                      ]),
+                      ),
                     ),
                   );
                 } else {

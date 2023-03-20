@@ -13,13 +13,13 @@ class SbcLabels {
   SbcLabels(this.dialect);
 
   String get adjectives {
-    if (dialect == DialectType.Ekavian) return 'Pridevi';
+    if (dialect == DialectType.Serbia) return 'Pridevi';
 
     return 'Pridjevi';
   }
 
   String get exerciseType {
-    if (dialect == DialectType.Ekavian) return 'Vrsta vežbe';
+    if (dialect == DialectType.Serbia) return 'Vrsta vežbe';
     return 'Vrsta vježbe';
   }
 
@@ -27,8 +27,14 @@ class SbcLabels {
     return "$nouns i $adjectives";
   }
 
+  String get personalPronouns {
+    if (dialect == DialectType.Serbia) return 'Lične Zamenice';
+
+    return 'Osobne Zamjenice';
+  }
+
   String get wordOrder {
-    if (dialect == DialectType.Ekavian) return 'Red reči';
+    if (dialect == DialectType.Serbia) return 'Red reči';
 
     return 'Poredak riječi';
   }

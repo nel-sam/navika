@@ -9,8 +9,8 @@ import 'package:navika/widgets/exercises/verbs/past-tense/past-tense-question-co
 import 'package:navika/widgets/exercises/verbs/present-tense/present-tense-question-content.dart';
 import 'package:navika/widgets/sbc_labels.dart';
 import 'package:navika/widgets/shared/ad-card.dart';
+import 'package:navika/widgets/shared/exercise-navigation-wrapper.dart';
 import 'package:navika/widgets/shared/info-banner.dart';
-import 'package:navika/widgets/shared/navigation-header-wrapper.dart';
 import 'package:nrs_flutter_lib/constants.dart';
 import 'package:provider/provider.dart';
 
@@ -21,14 +21,18 @@ class VerbExercise extends StatelessWidget {
   final String imagePath;
   final String? youtubeLink;
   final DialectType dialect;
+  final ExerciseTypes exerciseType;
+  final bool isPremium;
 
   const VerbExercise({
     Key? key,
+    required this.isPremium,
     required this.tense,
     required this.title,
     required this.description,
     required this.imagePath,
     required this.dialect,
+    required this.exerciseType,
     this.youtubeLink,
   }) : super(key: key);
 
@@ -39,8 +43,12 @@ class VerbExercise extends StatelessWidget {
     return Scaffold(
       appBar: N.navAppBar(title: SbcLabels.verbs, context: context),
       body: ChangeNotifierProvider<ExerciseNavNotifier>(
-        create: (context) =>
-            ExerciseNavNotifier(isVerb: true, dialect: dialect),
+        create: (context) => ExerciseNavNotifier(
+          isPremium: this.isPremium,
+          isVerb: true,
+          dialect: dialect,
+          exerciseType: exerciseType,
+        ),
         child: Consumer<ExerciseNavNotifier>(
           builder: (context, navNotifier, child) {
             final stateITem = navNotifier.getActive();
@@ -63,37 +71,53 @@ class VerbExercise extends StatelessWidget {
                   }
                 });
               },
-              child: Center(
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      InfoBanner(
-                        label: title,
-                        description: description,
-                        youtubeLink: youtubeLink,
-                      ),
-                      const AdCard(),
-                      NavigationHeaderWrapper(navNotifier: navNotifier),
-                      Container(
-                        child: this.tense == VerbTenses.PastPerfect
-                            ? PastTenseQuestionContent(
-                                verb: stateITem.verb,
-                                state: stateITem.userEntryState,
-                                isAllCorrect: stateITem.isCorrect,
-                                onChanged: (String pronoun, String newValue) =>
-                                    stateITem.updateState(pronoun.toString(),
-                                        newValue, this.tense),
-                              )
-                            : PresentTenseQuestionContent(
-                                verb: stateITem.verb,
-                                isAllCorrect: stateITem.isCorrect,
-                                state: stateITem.userEntryState,
-                                onChanged: (String pronoun, String newValue) =>
-                                    stateITem.updateState(
-                                        pronoun, newValue, this.tense),
+              child: SafeArea(
+                child: Center(
+                  child: SizedBox(
+                    width: N.getMaxScreenWidth(),
+                    child: CustomScrollView(
+                      slivers: [
+                        SliverFillRemaining(
+                          hasScrollBody: false,
+                          child: Column(
+                            children: [
+                              InfoBanner(
+                                label: title,
+                                description: description,
+                                youtubeLink: youtubeLink,
                               ),
-                      ),
-                    ],
+                              const AdCard(),
+                              Container(
+                                child: this.tense == VerbTenses.PastPerfect
+                                    ? PastTenseQuestionContent(
+                                        verb: stateITem.verb,
+                                        state: stateITem.userEntryState,
+                                        isAllCorrect: stateITem.isCorrect,
+                                        onChanged:
+                                            (String pronoun, String newValue) =>
+                                                stateITem._updateState(
+                                                    pronoun.toString(),
+                                                    newValue,
+                                                    this.tense),
+                                      )
+                                    : PresentTenseQuestionContent(
+                                        verb: stateITem.verb,
+                                        isAllCorrect: stateITem.isCorrect,
+                                        state: stateITem.userEntryState,
+                                        onChanged: (String pronoun,
+                                                String newValue) =>
+                                            stateITem._updateState(
+                                                pronoun, newValue, this.tense),
+                                      ),
+                              ),
+                              Expanded(child: Container()),
+                              ExerciseNavigationWrapper(
+                                  navNotifier: navNotifier),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),

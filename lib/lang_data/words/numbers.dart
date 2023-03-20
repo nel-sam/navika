@@ -43,24 +43,27 @@ final List<Adjective> cardinalNumbersBank = [
   Adjective(
     dictionary: 'dva',
     nominativ: Declension(
-      masculine: DeclensionByGender(singular: ['dva']),
-      feminine: DeclensionByGender(singular: ['dve', 'dvije']),
-      neuter: DeclensionByGender(singular: ['dva']),
+      masculine: DeclensionByGender(singular: ['dva'], plural: ['dva']),
+      feminine: DeclensionByGender(
+          singular: ['dve', 'dvije'], plural: ['dve', 'dvije']),
+      neuter: DeclensionByGender(singular: ['dva'], plural: ['dva']),
     ),
     akuzativ: Declension(
-      masculine: DeclensionByGender(singular: ['dva']),
-      feminine: DeclensionByGender(singular: ['dve', 'dvije']),
-      neuter: DeclensionByGender(singular: ['dva']),
+      masculine: DeclensionByGender(singular: ['dva'], plural: ['dva']),
+      feminine: DeclensionByGender(
+          singular: ['dve', 'dvije'], plural: ['dve', 'dvije']),
+      neuter: DeclensionByGender(singular: ['dva'], plural: ['dva']),
     ),
     instrumental: Declension(
-      masculine: DeclensionByGender(singular: ['dvama']),
-      feminine: DeclensionByGender(singular: ['dvema', 'dvjema']),
-      neuter: DeclensionByGender(singular: ['dvama']),
+      masculine: DeclensionByGender(singular: ['dvama'], plural: ['dvama']),
+      feminine: DeclensionByGender(
+          singular: ['dvema', 'dvjema'], plural: ['dvema', 'dvjema']),
+      neuter: DeclensionByGender(singular: ['dvama'], plural: ['dvama']),
     ),
     genitiv: Declension(
-      masculine: DeclensionByGender(singular: ['dvaju']),
-      feminine: DeclensionByGender(singular: ['dviju']),
-      neuter: DeclensionByGender(singular: ['dvaju']),
+      masculine: DeclensionByGender(singular: ['dvaju'], plural: ['dvaju']),
+      feminine: DeclensionByGender(singular: ['dviju'], plural: ['dviju']),
+      neuter: DeclensionByGender(singular: ['dvaju'], plural: ['dvaju']),
     ),
   ),
   Adjective(dictionary: 'tri'),

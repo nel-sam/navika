@@ -7,13 +7,15 @@ import 'package:navika/widgets/grammar/grammar-guide/declension-guide.dart';
 import 'package:navika/widgets/sbc_labels.dart';
 import 'package:navika/widgets/shared/ad-card.dart';
 import 'package:navika/widgets/shared/menu-footer.dart';
+import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 import 'package:nrs_flutter_lib/widgets/n_menu_button.dart';
 import 'package:nrs_flutter_lib/widgets/n_menu_header.dart';
 
 class GrammarMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final transLabel = N.t(context).grammarGuides;
+    bool isBigScreen = Nrs.getScreenHeight() > MAX_SCREEN_WIDTH;
+    final transLabel = N.t('grammarGuides');
     final label = SbcLabels.grammarGuide;
     final icon = NavIcons.grammarGuides;
 
@@ -23,31 +25,30 @@ class GrammarMenu extends StatelessWidget {
         context: context,
       ),
       body: SettingsConsumerWrapper(
-        getChildWidget: (Settings settings) => Column(
-          children: [
-            const AdCard(),
-            NMenuHeader(
-              icon: icon,
-              transLabel: transLabel,
-              label: label,
-            ),
-            Expanded(
-              child: Column(
-                children: [
-                  NMenuButton(
-                    destination: DeclensionGuide(dialect: settings.dialectType),
-                    label: N.t(context).cases,
-                    transLabel: SbcLabels.cases,
-                  ),
-                  // NMenuButton(
-                  //   destination: Tables(),
-                  //   label: N.t(context).justCaseTables,
-                  //   transLabel: SbcLabels.justTables,
-                  // ),
-                ],
+        getChildWidget: (Settings settings) => SizedBox(
+          width: N.getMaxScreenWidth(),
+          child: Column(
+            children: [
+              const AdCard(),
+              NMenuHeader(
+                icon: icon,
+                transLabel: transLabel,
+                label: label,
               ),
-            ),
-          ],
+              Expanded(
+                child: Column(
+                  children: [
+                    NMenuButton(
+                      destination:
+                          DeclensionGuide(dialect: settings.dialectType),
+                      label: N.t('cases'),
+                      transLabel: SbcLabels.cases,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
       persistentFooterButtons: [MenuFooter(activeIndex: 1)],

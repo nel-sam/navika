@@ -12,7 +12,7 @@ class HomeButtonWrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final text = N.t(context).home;
+    final text = N.t('home');
     return NHomeButton(
       homeLabel: text,
       isActive: isActive,

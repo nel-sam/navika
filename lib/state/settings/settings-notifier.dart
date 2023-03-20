@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/settings.dart';
+import 'package:navika/utilities/navika-helpers.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SettingsNotifier with ChangeNotifier {
@@ -20,14 +21,23 @@ class SettingsNotifier with ChangeNotifier {
         (preferences.getBool(SettingsKeys.isPremium.toString()) ??
             settings.isPremium);
 
-    settings.dialectType = dialectTypeStrToEnum(preferences);
+    final key = SettingsKeys.dialectType.toString();
+    final fromDisk = preferences.getString(key);
+
+    if (fromDisk == null) {
+      settings.dialectType = DialectType.Croatia;
+    } else {
+      settings.dialectType = N.dialectTypeStrToEnum(fromDisk);
+    }
 
     return settings;
   }
 
   Future<DialectType> getDialect() async {
     final preferences = await getPreferencesInstance();
-    return dialectTypeStrToEnum(preferences);
+    final key = SettingsKeys.dialectType.toString();
+    final fromDisk = preferences.getString(key);
+    return N.dialectTypeStrToEnum(fromDisk!);
   }
 
   Future<SharedPreferences> getPreferencesInstance() async {
@@ -59,15 +69,5 @@ class SettingsNotifier with ChangeNotifier {
     final strVal = newVal.name;
     pref.setString(SettingsKeys.dialectType.toString(), strVal);
     notifyListeners();
-  }
-
-  static DialectType dialectTypeStrToEnum(SharedPreferences preferences) {
-    final key = SettingsKeys.dialectType.toString();
-    final fromDisk = preferences.getString(key);
-
-    final matching = DialectType.values
-        .firstWhere((DialectType e) => e.name.toString() == fromDisk);
-
-    return matching;
   }
 }

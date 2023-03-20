@@ -5,7 +5,6 @@ import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/exercises/verbs/shared/verb-help-guide.dart';
 import 'package:nrs_flutter_lib/constants.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
-import 'package:nrs_flutter_lib/widgets/n_icon_text_pair.dart';
 
 class VerbHeader extends StatelessWidget {
   final Verb verb;
@@ -23,7 +22,7 @@ class VerbHeader extends StatelessWidget {
     var perfectiveness = getPerfectiveness(context, verb.verbPerfectiveType);
 
     return Container(
-      padding: EdgeInsets.all(12),
+      padding: EdgeInsets.fromLTRB(12, 20, 12, 12),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -36,23 +35,44 @@ class VerbHeader extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          perfectiveness.toUpperCase(),
-                          style: Nrs.getTextStyle(
-                              context: context,
-                              isItalic: true,
-                              fontSize: FONT_SIZE - 4),
+                        Row(
+                          children: [
+                            Text(
+                              this.verb.isIrregular
+                                  ? '$perfectiveness${perfectiveness == '' ? '' : ','} ${N.t('irregular')}'
+                                  : perfectiveness,
+                              style: Nrs.getTextStyle(
+                                  context: context,
+                                  isItalic: true,
+                                  fontSize: FONT_SIZE - 4),
+                            ),
+                          ],
                         ),
                         Padding(
                           padding: const EdgeInsets.only(top: 6),
-                          child: Text(
-                            verb.infinitive.toUpperCase(),
-                            style: Nrs.getTextStyle(
-                                context: context,
-                                isBold: true,
-                                fontSize: 16 * 1.3,
-                                color:
-                                    isAllCorrect ? CORRECT_COLOR : Colors.grey),
+                          child: Wrap(
+                            verticalDirection: VerticalDirection.up,
+                            children: [
+                              Text(
+                                '${verb.infinitive.toUpperCase()}',
+                                style: Nrs.getTextStyle(
+                                    context: context,
+                                    isBold: true,
+                                    fontSize: 16 * 1.3,
+                                    color: isAllCorrect
+                                        ? CORRECT_COLOR
+                                        : Colors.grey),
+                              ),
+                              Padding(padding: EdgeInsets.only(left: 8)),
+                              Text(
+                                '$translation',
+                                style: Nrs.getTextStyle(
+                                  context: context,
+                                  fontSize: FONT_SIZE,
+                                  isItalic: true,
+                                ),
+                              )
+                            ],
                           ),
                         ),
                         if (isAllCorrect)
@@ -62,20 +82,6 @@ class VerbHeader extends StatelessWidget {
                   ),
                 ],
               )
-            ],
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              NIconTextPair(
-                text: translation,
-                icon: Icons.translate,
-              ),
-              if (this.verb.isIrregular)
-                NIconTextPair(
-                  icon: Icons.error_outline,
-                  text: N.t(context).irregular,
-                ),
             ],
           ),
           Column(
@@ -108,9 +114,9 @@ class VerbHeader extends StatelessWidget {
       BuildContext context, VerbPerfectiveTypes verbPerfectiveType) {
     switch (verbPerfectiveType) {
       case VerbPerfectiveTypes.Perfective:
-        return N.t(context).perfective;
+        return N.t('perfective');
       case VerbPerfectiveTypes.Imperfective:
-        return N.t(context).imperfective;
+        return N.t('imperfective');
       case VerbPerfectiveTypes.Unspecified:
         return '';
     }

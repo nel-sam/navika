@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:navika/state/cyrillic/cyrillic-state-item.dart';
 import 'package:navika/widgets/exercises/cyrillic/cyrillic-chart.dart';
 import 'package:navika/widgets/shared/n-free-form-entry.dart';
-import 'package:navika/widgets/shared/shadow-box.dart';
 import 'package:nrs_flutter_lib/constants.dart';
 import 'package:nrs_flutter_lib/extensions.dart';
-import 'package:nrs_flutter_lib/widgets/n_icon_text_pair.dart';
 
 class CyrillicExerciseCard extends StatelessWidget {
   final CyrillicStateItem state;
@@ -22,50 +20,69 @@ class CyrillicExerciseCard extends StatelessWidget {
     int progressIndex = getProgressIndex();
     var highlightSub = getSubString(this.state.latinString, 0, progressIndex);
 
-    return ShadowBox(
-      isCorrect: getIsAllCorrect(this.state.userInput),
-      child: Padding(
-        padding: const EdgeInsets.all(12.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            getHeader(context),
-            if (userInputsCyrillic)
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      Text(
-                        highlightSub,
-                        style: TextStyle(
-                            color: CORRECT_COLOR,
-                            fontStyle: FontStyle.italic,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      Text(getSubString(this.state.latinString, progressIndex,
-                          this.state.latinString.length)),
-                    ],
-                  ),
-                  NFreeFormEntry(
-                    initialValue: this.state.userInput,
-                    correctValues: [this.state.cyrillicString],
-                    hintValue: '',
-                    onChanged: (newVal) {
-                      this.state.updateInput(newVal);
-                    },
-                  ),
-                ],
-              ),
-            Padding(
-              padding: const EdgeInsets.only(top: 12.0),
-              child: NIconTextPair(
-                icon: Icons.translate,
-                text: this.state.getTranslation(context),
-              ),
+    return Padding(
+      padding: const EdgeInsets.all(12.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          if (userInputsCyrillic)
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(this.state.getTranslation(context),
+                            style: TextStyle(fontWeight: FontWeight.bold)),
+                        Row(
+                          children: [
+                            Text(
+                              highlightSub,
+                              style: TextStyle(
+                                  color: CORRECT_COLOR,
+                                  fontStyle: FontStyle.italic,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            Text(getSubString(this.state.latinString,
+                                progressIndex, this.state.latinString.length)),
+                          ],
+                        ),
+                      ],
+                    ),
+                    OutlinedButton(
+                      child: Icon(Icons.info),
+                      onPressed: () {
+                        final dest = CyrillicChart(
+                          cyrillicString: this.state.cyrillicString,
+                          latinString: this.state.latinString,
+                        );
+
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => dest,
+                          ),
+                        );
+                      },
+                    )
+                  ],
+                ),
+                NFreeFormEntry(
+                  showHintString: false,
+                  widthType: NFreeFormWidths.full,
+                  initialValue: this.state.userInput,
+                  correctValues: [this.state.cyrillicString],
+                  hintValue: '',
+                  onChanged: (newVal) {
+                    this.state.updateInput(newVal);
+                  },
+                ),
+              ],
             ),
-          ],
-        ),
+        ],
       ),
     );
   }
@@ -80,30 +97,6 @@ class CyrillicExerciseCard extends StatelessWidget {
     }
 
     return foundCount;
-  }
-
-  Widget getHeader(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        OutlinedButton(
-          child: Icon(Icons.info),
-          onPressed: () {
-            final dest = CyrillicChart(
-              cyrillicString: this.state.cyrillicString,
-              latinString: this.state.latinString,
-            );
-
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => dest,
-              ),
-            );
-          },
-        )
-      ],
-    );
   }
 
   bool getIsAllCorrect(String userInput) {

@@ -22,7 +22,7 @@ class CyrillicChart extends StatelessWidget {
     return Scaffold(
         appBar: N.navAppBar(
           title: SbcLabels.cyrillic,
-          transTitle: N.t(context).cyrillic,
+          transTitle: N.t('cyrillic'),
           context: context,
         ),
         body: Padding(

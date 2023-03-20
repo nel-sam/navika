@@ -1,5 +1,4 @@
 enum Cases {
-  All,
   Ins,
   Nom,
   Aku,
@@ -7,11 +6,13 @@ enum Cases {
   Lok,
   Gen,
   Dat,
+  All,
 }
 
 enum DialectType {
-  Ekavian,
-  Ijekavian,
+  Croatia,
+  Bosnia,
+  Serbia,
 }
 
 enum ExerciseTypes {
@@ -24,6 +25,7 @@ enum ExerciseTypes {
   case_nouns,
   case_adjectives,
   case_nouns_and_adjectives,
+  case_personal_pronouns,
 }
 
 enum Genders {
@@ -78,6 +80,9 @@ enum Tags {
   Group,
   Food,
   Pet,
+  Time,
+  Building,
+  Name,
 }
 
 enum VerbPerfectiveTypes {

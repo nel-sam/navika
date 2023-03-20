@@ -4,15 +4,13 @@ import 'package:nrs_flutter_lib/extensions.dart';
 
 class Adjective {
   final String dictionary;
-  late Declension? nominativ;
+  Declension? nominativ;
   late Declension? akuzativ;
-  late Declension akuzativAnimate;
   late Declension? instrumental;
   late Declension? lokativ;
   late Declension? dativ;
   late Declension? genitiv;
   late Declension? vokativ;
-  late List<Tags> toAvoid;
 
   Adjective({
     required this.dictionary,
@@ -23,11 +21,11 @@ class Adjective {
     this.instrumental,
     this.vokativ,
     this.dativ,
-    this.toAvoid = const [],
   }) {
     if (this.nominativ == null) {
       this.nominativ = Declension(
-        masculine: DeclensionByGender(singular: [this.dictionary]),
+        masculine:
+            DeclensionByGender(singular: [this.dictionary], plural: ['']),
       );
     }
 
@@ -37,15 +35,12 @@ class Adjective {
     if (this.dativ == null) this.dativ = this.lokativ;
     if (this.vokativ == null) this.vokativ = this.nominativ;
     if (this.genitiv == null) this.genitiv = this.nominativ;
-
-    this.akuzativAnimate = this.akuzativ!;
-    this.akuzativAnimate.masculine.singular = this.genitiv!.masculine.singular;
   }
 
   Declension getDeclensionObject(Cases caseType, bool isAnimate) {
     switch (caseType) {
       case Cases.Aku:
-        return isAnimate ? this.akuzativAnimate : this.akuzativ!;
+        return this.akuzativ!;
       case Cases.Dat:
         return this.dativ!;
       case Cases.Gen:
@@ -62,48 +57,6 @@ class Adjective {
     }
   }
 
-  List<String> getDeclensions(
-      Genders gender, bool isPlural, Cases caseType, bool isAnimate) {
-    Declension declension;
-
-    switch (caseType) {
-      case Cases.Aku:
-        declension = isAnimate ? this.akuzativAnimate : this.akuzativ!;
-        break;
-      case Cases.Dat:
-        declension = this.dativ!;
-        break;
-      case Cases.Gen:
-        declension = this.genitiv!;
-        break;
-      case Cases.Ins:
-        declension = this.instrumental!;
-        break;
-      case Cases.Lok:
-        declension = this.lokativ!;
-        break;
-      case Cases.Nom:
-      case Cases.All:
-        declension = this.nominativ!;
-        break;
-      case Cases.Vok:
-        declension = this.vokativ!;
-        break;
-    }
-
-    if (gender == Genders.Masculine) {
-      return isPlural
-          ? declension.masculine.plural
-          : declension.masculine.singular;
-    } else if (gender == Genders.Feminine) {
-      return isPlural
-          ? declension.feminine!.plural
-          : declension.feminine!.singular;
-    } else {
-      return isPlural ? declension.neuter!.plural : declension.neuter!.singular;
-    }
-  }
-
   List<String> getDeclensionsForCaseType(Cases caseType) {
     switch (caseType) {
       case Cases.Ins:
@@ -112,7 +65,7 @@ class Adjective {
       case Cases.All:
         return this.nominativ!.getAll();
       case Cases.Aku:
-        return [...this.akuzativ!.getAll(), ...this.akuzativAnimate.getAll()];
+        return [...this.akuzativ!.getAll()];
       case Cases.Vok:
         return this.vokativ!.getAll();
       case Cases.Lok:
@@ -140,9 +93,6 @@ class Adjective {
       ...this.akuzativ!.masculine.singular,
       ...this.akuzativ!.feminine!.singular,
       ...this.akuzativ!.neuter!.singular,
-      ...this.akuzativAnimate.masculine.singular,
-      ...this.akuzativAnimate.feminine!.singular,
-      ...this.akuzativAnimate.neuter!.singular,
       ...this.instrumental!.masculine.singular,
       ...this.instrumental!.feminine!.singular,
       ...this.instrumental!.neuter!.singular,
@@ -164,9 +114,6 @@ class Adjective {
       ...this.akuzativ!.masculine.plural,
       ...this.akuzativ!.feminine!.plural,
       ...this.akuzativ!.neuter!.plural,
-      ...this.akuzativAnimate.masculine.plural,
-      ...this.akuzativAnimate.feminine!.plural,
-      ...this.akuzativAnimate.neuter!.plural,
       ...this.instrumental!.masculine.plural,
       ...this.instrumental!.feminine!.plural,
       ...this.instrumental!.neuter!.plural,
@@ -185,18 +132,6 @@ class Adjective {
     ].toSet().toList().where((element) => element.length > 0).toList();
 
     return shuffle ? result.shuffleStrings() : result;
-  }
-
-  bool isCompatible(List<Tags> tags) {
-    if (tags.contains(Tags.Season) || tags.contains(Tags.Country)) {
-      return false;
-    }
-
-    final lists = [tags, toAvoid];
-    final commonElements = lists.fold<Set>(
-        lists.first.toSet(), (a, b) => a.intersection(b.toSet()));
-
-    return commonElements.isEmpty;
   }
 
   int longestForCase(Cases caseType) {

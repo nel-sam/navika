@@ -16,7 +16,7 @@ class CyrillicExercise extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var title = N.t(context).cyrillic;
+    var title = N.t('cyrillic');
 
     return Scaffold(
       appBar: N.navAppBar(
@@ -29,19 +29,27 @@ class CyrillicExercise extends StatelessWidget {
           create: (context) => CyrillicNotifier(),
           child: Consumer<CyrillicNotifier>(
             builder: (context, model, child) => Center(
-              child: SingleChildScrollView(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    InfoBanner(
-                      label: title,
-                      description: N.t(context).cyrillicDesc,
-                      //youtubeLink: RECOMMENDED_VIDEO_CYRILLIC,
-                    ),
-                    const AdCard(),
-                    ...model.exerciseItems.map(
-                      (e) => CyrillicExerciseCard(
-                        state: e,
+              child: SizedBox(
+                width: N.getMaxScreenWidth(),
+                child: CustomScrollView(
+                  slivers: [
+                    SliverFillRemaining(
+                      hasScrollBody: false,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          InfoBanner(
+                            label: title,
+                            description: N.t('cyrillicDesc'),
+                            //youtubeLink: RECOMMENDED_VIDEO_CYRILLIC,
+                          ),
+                          const AdCard(),
+                          ...model.exerciseItems.map(
+                            (e) => CyrillicExerciseCard(
+                              state: e,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ],
@@ -64,7 +72,7 @@ class CyrillicExercise extends StatelessWidget {
               );
             },
             icon: Icons.help_center_outlined,
-            text: N.t(context).cyrillic,
+            text: N.t('cyrillic'),
           )
         ])
       ],

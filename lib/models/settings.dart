@@ -6,10 +6,9 @@ class Settings {
   bool isPremium;
   DialectType dialectType;
 
-  Settings({
-    this.isFirstTime = true,
-    this.autoNextQuestion = true,
-    this.isPremium = false,
-    this.dialectType = DialectType.Ijekavian,
-  });
+  Settings(
+      {this.isFirstTime = true,
+      this.autoNextQuestion = true,
+      this.isPremium = false,
+      this.dialectType = DialectType.Bosnia});
 }

@@ -1,14 +1,16 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:navika/constants.dart';
 import 'package:nrs_flutter_lib/constants.dart';
 import 'package:nrs_flutter_lib/enums.dart';
 import 'package:nrs_flutter_lib/extensions.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
-import 'package:nrs_flutter_lib/widgets/n_answer_status_icon.dart';
 
 class NFreeFormEntry extends StatefulWidget {
-  final bool isHalfWidth;
+  final bool showHintString;
+  final NFreeFormWidths widthType;
   final String hintValue;
   final String initialValue;
   final List<String> correctValues;
@@ -21,12 +23,15 @@ class NFreeFormEntry extends StatefulWidget {
     required this.onChanged,
     required this.initialValue,
     required this.correctValues,
-    this.isHalfWidth = false,
+    this.widthType = NFreeFormWidths.unspecified,
+    this.showHintString = true,
   }) : super(key: key);
 
   @override
   State<NFreeFormEntry> createState() => _NFreeFormEntryState();
 }
+
+enum NFreeFormWidths { full, half, unspecified }
 
 class StateObject {
   String userInput = '';
@@ -38,48 +43,53 @@ class _NFreeFormEntryState extends State<NFreeFormEntry> {
 
   @override
   Widget build(BuildContext context) {
-    var status = getCorrectStatus(widget.state.userInput);
+    var status = _getCorrectStatus(widget.state.userInput);
     final border = getBorder(context, status);
     final labelText = status == CorrectStatus.correct ? '' : widget.hintValue;
+    final width = _getNFreeFormWidth(context, widget.widthType);
 
     return Padding(
-      padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-      child: Column(
-        children: [
-          Row(
-            children: [
-              SizedBox(
-                width: widget.isHalfWidth
-                    ? Nrs.getScreenWidth(halfWidth: true, reduction: 90)
-                    : Nrs.getScreenWidth(reduction: 100),
-                child: TextField(
-                  key: widget.key,
-                  controller: _controller,
-                  keyboardType: TextInputType.text,
-                  decoration: InputDecoration(
-                    isDense: true,
-                    contentPadding: const EdgeInsets.fromLTRB(4, 18, 0, 1),
-                    labelText: labelText,
-                    enabledBorder: border,
-                    focusedBorder: border,
-                  ),
-                  onChanged: (String? newVal) {
-                    if (newVal == ' ') newVal = '';
+      padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+      child: ConstrainedBox(
+        constraints: BoxConstraints(minWidth: width, maxWidth: width * 1.5),
+        child: IntrinsicWidth(
+          child: TextField(
+            key: widget.key,
+            controller: _controller,
+            autocorrect: false,
+            style: TextStyle(fontSize: EXERCISE_FONT_SIZE),
+            keyboardType: TextInputType.text,
+            decoration: InputDecoration(
+              isDense: true,
+              hintText: widget.state.userInput.length == 0 &&
+                      labelText.length > 0
+                  ? labelText
+                  : _getFillerString(
+                      widget.state.userInput, widget.correctValues[0].length),
+              contentPadding: EdgeInsets.fromLTRB(8, 2, 8, 2),
+              // hintStyle:
+              //     TextStyle(letterSpacing: 1, fontWeight: FontWeight.bold),
+              border: border,
+              enabledBorder: border,
+              focusedBorder: border,
 
-                    if (newVal != null && newVal != '') {
-                      setState(() {
-                        widget.state.userInput = newVal!;
-                        status = getCorrectStatus(widget.state.userInput);
-                        updateState();
-                      });
-                    }
-                  },
-                ),
-              ),
-              NAnswerStatusIcon(status: status),
-            ],
+              // suffixIcon: status != CorrectStatus.unstarted
+              //     ? NAnswerStatusIcon(status: status)
+              //     : null,
+            ),
+            onChanged: (String? newVal) {
+              if (newVal == ' ') newVal = '';
+
+              if (newVal != null && newVal != '') {
+                setState(() {
+                  widget.state.userInput = newVal!;
+                  status = _getCorrectStatus(widget.state.userInput);
+                  _updateState();
+                });
+              }
+            },
           ),
-        ],
+        ),
       ),
     );
   }
@@ -102,44 +112,38 @@ class _NFreeFormEntryState extends State<NFreeFormEntry> {
   }
 
   OutlineInputBorder getBorder(BuildContext context, CorrectStatus status) {
-    var color = WRONG_COLOR;
-
     switch (status) {
       case CorrectStatus.correct:
-        color = CORRECT_COLOR;
-        break;
+        return OutlineInputBorder(
+          borderRadius: BorderRadius.circular(5),
+          borderSide: BorderSide(
+            color: CORRECT_COLOR,
+          ),
+        );
+
       case CorrectStatus.wrong:
-        color = WRONG_COLOR;
-        break;
+        return OutlineInputBorder(
+          borderRadius: BorderRadius.circular(0),
+          borderSide: BorderSide(
+            color: WRONG_COLOR,
+            width: 3,
+          ),
+        );
       case CorrectStatus.unstarted:
-        color = Colors.grey;
-        break;
+        return OutlineInputBorder(
+          borderRadius: BorderRadius.circular(5),
+          borderSide: BorderSide(
+            color: Colors.grey,
+          ),
+        );
       case CorrectStatus.inprogressCorrect:
-        color = Nrs.getPrimaryColor(context);
-        break;
+        return OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide(
+            color: Nrs.getPrimaryColor(context),
+          ),
+        );
     }
-
-    return OutlineInputBorder(
-      borderSide: BorderSide(
-        color: color,
-      ),
-    );
-  }
-
-  CorrectStatus getCorrectStatus(String userInput) {
-    if (userInput.isEmpty) {
-      return CorrectStatus.unstarted;
-    }
-
-    if (widget.correctValues.containsCaseInsensitive(userInput)) {
-      return CorrectStatus.correct;
-    }
-
-    if (widget.correctValues.containsSubCaseInsensitive(userInput)) {
-      return CorrectStatus.inprogressCorrect;
-    }
-
-    return CorrectStatus.wrong;
   }
 
   @override
@@ -149,7 +153,47 @@ class _NFreeFormEntryState extends State<NFreeFormEntry> {
     super.initState();
   }
 
-  updateState() {
+  CorrectStatus _getCorrectStatus(String userInput) {
+    if (userInput.isEmpty) {
+      return CorrectStatus.unstarted;
+    }
+
+    if (widget.correctValues.containsCaseInsensitive(userInput)) {
+      return CorrectStatus.correct;
+    }
+
+    if (widget.correctValues
+        .containsSubCaseInsensitive(userInput.replaceAll(BUFFER_CHARS, ''))) {
+      return CorrectStatus.inprogressCorrect;
+    }
+
+    return CorrectStatus.wrong;
+  }
+
+  // Function that takes a string and replaces chars with underscores up to a specified length
+  String _getFillerString(String str, int length) {
+    if (!widget.showHintString) return '';
+
+    var buffer = '';
+
+    for (var i = 0; i < length; i++) {
+      buffer += BUFFER_CHARS;
+    }
+    return buffer;
+  }
+
+  double _getNFreeFormWidth(BuildContext context, NFreeFormWidths width) {
+    switch (width) {
+      case NFreeFormWidths.full:
+        return min(Nrs.getScreenWidth() - 20, 500);
+      case NFreeFormWidths.half:
+        return min((Nrs.getScreenWidth() - 20) / 2, 250);
+      case NFreeFormWidths.unspecified:
+        return widget.correctValues[0].length * FONT_SIZE;
+    }
+  }
+
+  _updateState() {
     if (_debounce.isActive) {
       _debounce.cancel();
     }

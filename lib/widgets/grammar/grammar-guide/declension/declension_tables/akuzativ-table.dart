@@ -10,17 +10,18 @@ class AkuzativDeclensionTable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DeclensionTable(
-      borderedItemNote: N.t(context).sameAsNom,
+      borderedItemNote: N.t('sameAsNom'),
       showEqualItemNote: true,
       notes: [
-        N.t(context).animateAkuzativ,
-        N.t(context).assibilation,
+        N.t('animateAkuzativ'),
+        N.t('assibilation'),
       ],
       masculineSingular: DeclensionTableCell(children: [
         N.declensionExampleTextSpan('Star'),
         N.declensionExampleTextSpan('og\n', color: MASCULINE_COLOR),
         N.declensionExampleTextSpan('konj'),
         N.declensionExampleTextSpan('a', color: MASCULINE_COLOR),
+        N.declensionExampleTextSpan('*'),
       ]),
       masculinePlural: DeclensionTableCell(
         isEqualItem: true,

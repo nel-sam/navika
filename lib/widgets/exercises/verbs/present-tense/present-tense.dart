@@ -7,22 +7,26 @@ import 'package:navika/widgets/exercises/verbs/shared/verb-exercise.dart';
 
 class PresentTense extends StatelessWidget {
   final DialectType dialect;
+  final bool isPremium;
 
   const PresentTense({
     Key? key,
     required this.dialect,
+    required this.isPremium,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final title = N.t(context).presentTense;
+    final title = N.t('presentTense');
 
     return VerbExercise(
+      isPremium: isPremium,
       title: title,
+      exerciseType: ExerciseTypes.verb_Present,
       tense: VerbTenses.Present,
       dialect: dialect,
       imagePath: 'assets/banners/hills.jpg',
-      description: N.t(context).presentTenseDesc,
+      description: N.t('presentTenseDesc'),
       youtubeLink: RECOMMENDED_VIDEO_PRESENT_SIMPLE,
     );
   }

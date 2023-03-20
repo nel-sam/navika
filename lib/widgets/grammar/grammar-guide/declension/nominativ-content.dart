@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
+import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/example-sentences.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/possessive-pronoun-section.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/pronoun-line.dart';
@@ -9,7 +10,6 @@ import 'package:navika/widgets/grammar/grammar-guide/declension/declension_table
 import 'package:nrs_flutter_lib/constants.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 import 'package:nrs_flutter_lib/widgets/n_text_multi.dart';
-import 'package:navika/utilities/navika-helpers.dart';
 
 class NominativGrammarGuideContent extends StatelessWidget {
   final DialectType dialect;
@@ -21,7 +21,7 @@ class NominativGrammarGuideContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isSerbian = dialect == DialectType.Ekavian;
+    final isSerbian = dialect == DialectType.Serbia;
 
     return Column(
       children: [
@@ -29,8 +29,7 @@ class NominativGrammarGuideContent extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.only(bottom: FONT_SIZE),
-              child: NTextMulti(
-                  [TextSpan(text: N.t(context).nominativDescription)]),
+              child: NTextMulti([TextSpan(text: N.t('nominativDescription'))]),
             ),
             YouTubeLink(RECOMMENDED_VIDEO_NOM)
           ],
@@ -62,13 +61,13 @@ class NominativGrammarGuideContent extends StatelessWidget {
                   style: Nrs.getTextStyle(context: context, isBold: true)),
               TextSpan(text: 'kao '),
               TextSpan(
-                  text: 'mlijeko',
+                  text: isSerbian ? 'mleko' : 'mlijeko',
                   style: Nrs.getTextStyle(context: context, isBold: true)),
             ]),
             NTextMulti(
               [
                 TextSpan(
-                    text: 'Mlijeko ',
+                    text: isSerbian ? 'Mleko' : 'Mlijeko ',
                     style: Nrs.getTextStyle(context: context, isBold: true)),
                 TextSpan(text: 'je ukusnije nego '),
                 TextSpan(
@@ -100,11 +99,10 @@ class NominativGrammarGuideContent extends StatelessWidget {
             PronounLine(
                 pronoun: PronounEnum.He,
                 text: NTextMulti([
-                  TextSpan(text: 'Trčim brže nego '),
                   TextSpan(
-                      text: 'on ',
+                      text: 'On ',
                       style: Nrs.getTextStyle(context: context, isBold: true)),
-                  TextSpan(text: 'i ti'),
+                  TextSpan(text: 'je Bosanac'),
                 ])),
             PronounLine(
                 pronoun: PronounEnum.She,
@@ -120,7 +118,7 @@ class NominativGrammarGuideContent extends StatelessWidget {
                   TextSpan(
                       text: 'Mi ',
                       style: Nrs.getTextStyle(context: context, isBold: true)),
-                  TextSpan(text: 'plivamo skoro kao vi'),
+                  TextSpan(text: 'plivamo'),
                 ])),
             PronounLine(
                 pronoun: PronounEnum.You_Plural,

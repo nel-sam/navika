@@ -14,6 +14,8 @@ import 'package:nrs_flutter_lib/widgets/n_menu_button.dart';
 class MainMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    bool isBigScreen = Nrs.getScreenHeight() > MAX_SCREEN_WIDTH;
+
     return Column(
       children: [
         Container(
@@ -44,28 +46,29 @@ class MainMenu extends StatelessWidget {
             ),
           ),
         ),
+        isBigScreen ? const SizedBox(height: FONT_SIZE * 4) : const SizedBox(),
         Expanded(
           child: SingleChildScrollView(
             child: Column(
               children: [
                 NMenuButton(
                   destination: GrammarMenu(),
-                  label: N.t(context).grammarGuides,
+                  label: N.t('grammarGuides'),
                   transLabel: SbcLabels.grammarGuide,
                 ),
                 NMenuButton(
                   destination: DeclensionMenu(),
-                  label: N.t(context).caseExercises,
+                  label: N.t('caseExercises'),
                   transLabel: SbcLabels.cases,
                 ),
                 NMenuButton(
                   destination: VerbMenu(),
-                  label: N.t(context).verbExercises,
+                  label: N.t('verbExercises'),
                   transLabel: SbcLabels.verbs,
                 ),
                 NMenuButton(
                   destination: CyrillicExercise(),
-                  label: N.t(context).cyrillic,
+                  label: N.t('cyrillic'),
                   transLabel: SbcLabels.cyrillic,
                 ),
               ],

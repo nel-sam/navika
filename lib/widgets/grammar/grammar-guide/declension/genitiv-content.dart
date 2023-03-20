@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:navika/models/enums.dart';
+import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/example-sentences.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/possessive-pronoun-section.dart';
 import 'package:navika/widgets/grammar/grammar-guide/child-widgets/pronoun-line.dart';
 import 'package:navika/widgets/grammar/grammar-guide/declension/declension_tables/genitiv-table.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
-import 'package:nrs_flutter_lib/widgets/n_sub_header.dart';
 import 'package:nrs_flutter_lib/widgets/n_text_multi.dart';
 import 'package:nrs_flutter_lib/widgets/n_text_span.dart';
-import 'package:navika/utilities/navika-helpers.dart';
 
 class GenitivGrammarGuideContent extends StatelessWidget {
   const GenitivGrammarGuideContent({Key? key}) : super(key: key);
@@ -17,10 +16,9 @@ class GenitivGrammarGuideContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        NTextSpan(N.t(context).genitiveDescription),
+        NTextSpan(N.t('genitiveDescription')),
         ExampleSentences(
           sentences: [
-            NSubHeader(N.t(context).exampleSentences),
             NTextMulti([
               TextSpan(text: 'Kraj '),
               TextSpan(
@@ -46,18 +44,6 @@ class GenitivGrammarGuideContent extends StatelessWidget {
                   style: Nrs.getTextStyle(context: context, isBold: true)),
             ]),
             NTextMulti([
-              TextSpan(text: 'Ja sam '),
-              TextSpan(
-                  text: 'kod zubara',
-                  style: Nrs.getTextStyle(context: context, isBold: true)),
-            ]),
-            NTextMulti([
-              TextSpan(text: 'Pas je mokar '),
-              TextSpan(
-                  text: 'zbog kiše',
-                  style: Nrs.getTextStyle(context: context, isBold: true)),
-            ]),
-            NTextMulti([
               TextSpan(text: 'Nema '),
               TextSpan(
                   text: 'problema',
@@ -67,18 +53,20 @@ class GenitivGrammarGuideContent extends StatelessWidget {
         ),
         GenitivDeclensionTable(),
         PossessivePronounSection(
+          note: N.t('longShortFormDesc'),
           contents: [
             PronounLine(
                 pronoun: PronounEnum.I,
                 text: NTextMulti([
-                  TextSpan(text: 'On pleše '),
+                  TextSpan(text: 'On plaši '),
                   TextSpan(
                       text: 'mene\n',
                       style: Nrs.getTextStyle(context: context, isBold: true)),
-                  TextSpan(text: 'Evo '),
+                  TextSpan(text: 'On '),
                   TextSpan(
                       text: 'me',
-                      style: Nrs.getTextStyle(context: context, isBold: true))
+                      style: Nrs.getTextStyle(context: context, isBold: true)),
+                  TextSpan(text: ' plaši'),
                 ])),
             PronounLine(
                 pronoun: PronounEnum.You,
@@ -101,14 +89,14 @@ class GenitivGrammarGuideContent extends StatelessWidget {
                       style: Nrs.getTextStyle(context: context, isBold: true)),
                   TextSpan(text: 'Nema '),
                   TextSpan(
-                      text: 'ga ',
+                      text: 'ga',
                       style: Nrs.getTextStyle(context: context, isBold: true)),
-                  TextSpan(text: 'tu'),
+                  TextSpan(text: ' tu'),
                 ])),
             PronounLine(
                 pronoun: PronounEnum.She,
                 text: NTextMulti([
-                  TextSpan(text: 'Ona stoji iza '),
+                  TextSpan(text: 'Josipa stoji iza '),
                   TextSpan(
                       text: 'nje',
                       style: Nrs.getTextStyle(context: context, isBold: true)),
@@ -124,7 +112,7 @@ class GenitivGrammarGuideContent extends StatelessWidget {
             PronounLine(
                 pronoun: PronounEnum.You_Plural,
                 text: NTextMulti([
-                  TextSpan(text: 'Moj brat stoji između nas i '),
+                  TextSpan(text: 'On stoji između nas i '),
                   TextSpan(
                       text: 'vas',
                       style: Nrs.getTextStyle(context: context, isBold: true))
@@ -137,11 +125,11 @@ class GenitivGrammarGuideContent extends StatelessWidget {
                   TextSpan(
                       text: 'njih\n',
                       style: Nrs.getTextStyle(context: context, isBold: true)),
-                  TextSpan(text: 'Ja se '),
+                  TextSpan(text: 'Ja '),
                   TextSpan(
-                      text: 'ih ',
+                      text: 'ih',
                       style: Nrs.getTextStyle(context: context, isBold: true)),
-                  TextSpan(text: 'ne bojim'),
+                  TextSpan(text: ' se ne bojim'),
                 ],
               ),
             ),

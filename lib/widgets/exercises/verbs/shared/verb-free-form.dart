@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/verb.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/shared/n-free-form-entry.dart';
-import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
+import 'package:nrs_flutter_lib/constants.dart';
 import 'package:nrs_flutter_lib/widgets/n_icon_text_pair.dart';
 
 class VerbFreeForm extends StatelessWidget {
@@ -29,10 +28,12 @@ class VerbFreeForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = Nrs.getScreenWidth();
+    double screenWidth = N.getMaxScreenWidth();
+    double maxWidth =
+        screenWidth > 600 ? (screenWidth / 2) - 80 : (screenWidth / 2) - 14;
 
     return Container(
-      width: (screenWidth / 2) - 14,
+      width: maxWidth,
       child: Padding(
         padding: const EdgeInsets.all(18.0),
         child: Column(
@@ -44,7 +45,7 @@ class VerbFreeForm extends StatelessWidget {
               children: [
                 Text(
                   this.startText,
-                  style: TextStyle(fontSize: EXERCISE_FONT_STYLE),
+                  style: TextStyle(fontSize: FONT_SIZE),
                 ),
                 if (this.gender != Genders.Unspecific)
                   NIconTextPair(
@@ -55,7 +56,7 @@ class VerbFreeForm extends StatelessWidget {
               ],
             ),
             NFreeFormEntry(
-              isHalfWidth: true,
+              widthType: NFreeFormWidths.half,
               hintValue: this.verb.infinitive,
               onChanged: (String newValue) =>
                   this.onChanged(stateKey, newValue),

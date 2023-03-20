@@ -9,7 +9,7 @@ final List<Verb> verbsEkavian = [
     verbPerfectiveType: VerbPerfectiveTypes.Unspecified,
     isIrregular: true,
     isReflexive: true,
-    getTranslation: (BuildContext context) => N.t(context).trans_vidjeti,
+    getTranslation: (BuildContext context) => N.t('trans_vidjeti'),
     present: ConjugationSet(
       ja: 'vidim',
       ti: 'vidiš',
@@ -32,7 +32,7 @@ final List<Verb> verbsEkavian = [
     isIrregular: false,
     isReflexive: false,
     verbPerfectiveType: VerbPerfectiveTypes.Imperfective,
-    getTranslation: (BuildContext context) => N.t(context).trans_razumjeti,
+    getTranslation: (BuildContext context) => N.t('trans_razumjeti'),
     present: ConjugationSet(
       ja: 'razumem',
       ti: 'razumeš',

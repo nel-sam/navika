@@ -20,37 +20,42 @@ class VerbMenu extends StatelessWidget {
       ),
       body: SettingsConsumerWrapper(
         getChildWidget: (settings) => Center(
-          child: Column(
-            children: [
-              const AdCard(),
-              NMenuHeader(
-                icon: NavIcons.verbs,
-                transLabel: N.t(context).verbs,
-                label: SbcLabels.verbs,
-              ),
-              Expanded(
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      NMenuButton(
-                        destination: PresentTense(
-                          dialect: settings.dialectType,
+          child: SizedBox(
+            width: N.getMaxScreenWidth(),
+            child: Column(
+              children: [
+                const AdCard(),
+                NMenuHeader(
+                  icon: NavIcons.verbs,
+                  transLabel: N.t('verbs'),
+                  label: SbcLabels.verbs,
+                ),
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        NMenuButton(
+                          destination: PresentTense(
+                            isPremium: settings.isPremium,
+                            dialect: settings.dialectType,
+                          ),
+                          label: N.t('presentTense'),
+                          transLabel: 'Sadašnje vrijeme',
                         ),
-                        label: N.t(context).presentTense,
-                        transLabel: 'Sadašnje vrijeme',
-                      ),
-                      NMenuButton(
-                        destination: PastTense(
-                          dialect: settings.dialectType,
+                        NMenuButton(
+                          destination: PastTense(
+                            isPremium: settings.isPremium,
+                            dialect: settings.dialectType,
+                          ),
+                          label: N.t('pastTense'),
+                          transLabel: 'Prošlo vrijeme',
                         ),
-                        label: N.t(context).pastTense,
-                        transLabel: 'Prošlo vrijeme',
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

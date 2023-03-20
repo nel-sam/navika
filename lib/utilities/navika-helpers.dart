@@ -1,7 +1,8 @@
+import 'dart:core';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:localization/localization.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
@@ -11,31 +12,34 @@ import 'package:nrs_flutter_lib/enums.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
 class N {
-  static bool containsCaseQuestionState(List list, PANCombo item) {
-    if (list.isEmpty) return false;
+  static String capitalizeFirstLetter(String str) {
+    return '${str[0].toUpperCase()}${str.substring(1).toLowerCase()}';
+  }
 
-    for (int i = 0; i < list.length; i++) {
-      var testItem = list[i].combos;
-
-      if (testItem.noun?.dictionary.toString() == item.noun?.dictionary &&
-          testItem.personalPronoun?.nominativ.forms[0].toString() ==
-              item.personalPronoun?.nominativ.forms[0] &&
-          testItem.possPronoun?.dictionary.toString() ==
-              item.possPronoun?.dictionary &&
-          testItem.adjective?.dictionary.toString() ==
-              item.adjective?.dictionary) {
-        return true;
-      }
+  static void convertNonMatchingTypes(
+      ExerciseTypes exerciseType, PANCombo combo) {
+    if (exerciseType == ExerciseTypes.case_nouns) {
+      _convertNonMatchingTypes(combo, [GrammarTypes.noun]);
+    } else if (exerciseType == ExerciseTypes.case_adjectives) {
+      _convertNonMatchingTypes(
+          combo, [GrammarTypes.adjective, GrammarTypes.possessivePronoun]);
+    } else if (exerciseType == ExerciseTypes.case_nouns_and_adjectives) {
+      _convertNonMatchingTypes(combo, [
+        GrammarTypes.noun,
+        GrammarTypes.adjective,
+        GrammarTypes.possessivePronoun,
+        GrammarTypes.demonstrativePronoun
+      ]);
+    } else if (exerciseType == ExerciseTypes.case_personal_pronouns) {
+      _convertNonMatchingTypes(combo, [GrammarTypes.personalPronoun]);
     }
-
-    return false;
   }
 
   static TextSpan declensionExampleTextSpan(
     String text, {
     Color color = Colors.transparent,
   }) {
-    final fontSize = FONT_SIZE;
+    final fontSize = FONT_SIZE - 1;
 
     if (color != Colors.transparent) {
       return TextSpan(
@@ -47,6 +51,18 @@ class N {
     }
 
     return TextSpan(text: text, style: TextStyle(fontSize: fontSize));
+  }
+
+  static DialectType dialectTypeStrToEnum(String strVal) {
+    // Legacy support
+    if (strVal.toLowerCase() == 'ekavian') {
+      return DialectType.Serbia;
+    } else if (strVal.toLowerCase() == 'ijekavian') return DialectType.Croatia;
+
+    final matching = DialectType.values
+        .firstWhere((DialectType e) => e.name.toString() == strVal);
+
+    return matching;
   }
 
   static String getBitiConjugation(String pronoun) {
@@ -61,6 +77,7 @@ class N {
         return 'ste';
       case 'on':
       case 'ona':
+      case 'ono':
         return 'je';
       case 'oni':
       case 'one':
@@ -91,8 +108,7 @@ class N {
     }
   }
 
-<<<<<<< Updated upstream
-=======
+
   static List<TextSpan> getCorrectSentence(
       BuildContext context, List<CaseSentencePart> sentenceParts) {
     final fontSize = FONT_SIZE * 1.1;
@@ -101,6 +117,7 @@ class N {
       if (sentenceParts.first == e) {
         final displayValue =
             e.displayValue.length > 0 ? e.displayValue : e.correctValues.first;
+
         e.displayValue = capitalizeFirstLetter(displayValue);
       }
 
@@ -128,7 +145,6 @@ class N {
     }).toList();
   }
 
->>>>>>> Stashed changes
   static IconData getGenderIcon(Genders gender) {
     if (gender == Genders.Feminine) {
       return FEMININE_ICON;
@@ -142,37 +158,48 @@ class N {
   static String getGenderString(BuildContext context, Genders gender) {
     switch (gender) {
       case Genders.Masculine:
-        return N.t(context).masculine;
+        return N.t('masc');
       case Genders.Feminine:
-        return N.t(context).feminine;
+        return N.t('fem');
       case Genders.Neuter:
       case Genders.Unspecific:
-        return N.t(context).neuter;
+        return N.t('neut');
     }
+  }
+
+  static double getMaxScreenWidth() {
+    final actualScreenWidth = Nrs.getScreenWidth();
+    final screenWidth = actualScreenWidth;
+
+    if (screenWidth > MAX_SCREEN_WIDTH) {
+      return MAX_SCREEN_WIDTH;
+    }
+
+    return screenWidth;
   }
 
   static String getPronounLabel(PronounEnum pronoun, context) {
     switch (pronoun) {
       case PronounEnum.I:
-        return N.t(context).pronouns_I;
+        return N.t('pronouns_I');
       case PronounEnum.You:
-        return N.t(context).pronouns_You;
+        return N.t('pronouns_You');
       case PronounEnum.He:
-        return N.t(context).pronouns_He;
+        return N.t('pronouns_He');
       case PronounEnum.She:
-        return N.t(context).pronouns_She;
+        return N.t('pronouns_She');
       case PronounEnum.We:
-        return N.t(context).pronouns_We;
+        return N.t('pronouns_We');
       case PronounEnum.You_Plural:
-        return N.t(context).pronouns_You_Pl;
+        return N.t('pronouns_You_Pl');
       case PronounEnum.They_Ungendered:
-        return N.t(context).pronouns_They;
+        return N.t('pronouns_They');
       case PronounEnum.They_Masc:
-        return N.t(context).pronouns_They_Mas;
+        return N.t('pronouns_They_Mas');
       case PronounEnum.They_Fem:
-        return N.t(context).pronouns_They_Fem;
+        return N.t('pronouns_They_Fem');
       case PronounEnum.Oneself:
-        return N.t(context).pronouns_oneself;
+        return N.t('pronouns_oneself');
     }
   }
 
@@ -203,7 +230,29 @@ class N {
         actions: [if (showSettingsButton) SettingsButton()]);
   }
 
-  static AppLocalizations t(BuildContext context) {
-    return AppLocalizations.of(context)!;
+  static String t(String key, {List<String> inserts = const []}) {
+    return key.i18n(inserts);
+  }
+
+  static void _convertNonMatchingTypes(
+      PANCombo combo, List<GrammarTypes> allowedTypes) {
+    for (int i = 0; i < combo.sentenceParts.length; i++) {
+      final current = combo.sentenceParts[i];
+      final isAllowedGrammarType = allowedTypes.contains(current.grammarType);
+
+      if (current.isCorrectable && !isAllowedGrammarType) {
+        var displayValue = i == 0
+            ? '${capitalizeFirstLetter(current.correctValues[0])}'
+            : ' ${current.correctValues[0]}';
+
+        // If the next element is correctable and not allowed grammar type, add a space
+        if (i < combo.sentenceParts.length - 1 &&
+            !combo.sentenceParts[i + 1].isCorrectable) {
+          displayValue += ' ';
+        }
+
+        combo.sentenceParts[i] = CaseSentencePart(displayValue: displayValue);
+      }
+    }
   }
 }

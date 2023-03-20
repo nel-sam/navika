@@ -1,8 +1,30 @@
 import 'package:navika/models/adjective.dart';
 import 'package:navika/models/noun.dart';
 import 'package:navika/models/personal-pronoun.dart';
+import 'package:nrs_flutter_lib/enums.dart';
 
 import 'enums.dart';
+
+class CaseSentencePart {
+  final bool isCorrectable;
+  String displayValue;
+  GrammarTypes grammarType;
+  List<String> correctValues;
+  dynamic actualObject;
+
+  CaseSentencePart({
+    required this.displayValue,
+    this.grammarType = GrammarTypes.noun,
+    this.correctValues = const [],
+    this.isCorrectable = false,
+    this.actualObject,
+  }) {
+    assert(this.actualObject is Adjective ||
+        this.actualObject is PersonalPronoun ||
+        this.actualObject is Noun ||
+        this.actualObject == null);
+  }
+}
 
 class Declension {
   final DeclensionByGender masculine;
@@ -51,8 +73,8 @@ class DeclensionByGender {
   List<String> plural;
 
   DeclensionByGender({
-    this.singular = const [],
-    this.plural = const [],
+    required this.singular,
+    required this.plural,
   });
 }
 
@@ -65,86 +87,27 @@ class DeclensionPronoun {
 }
 
 class PANCombo {
-  String sentenceStarter;
-  String sentenceEnder;
-
-  Noun? noun;
-  late List<String> correctNouns;
-  late String initialNounDropDownValue;
-
-  Adjective? possPronoun;
-  late List<String> correctPossPronouns;
-  late String initialPossPronDropDownValue;
-
-  Adjective? adjective;
-  late List<String> correctAdjectives;
-  late String initialAdjDropDownValue;
-
-  PersonalPronoun? personalPronoun;
-  late List<String> correctPersonalPronouns;
-  late String initialPersonalPronDropDownValue;
-
-  bool usePersonalPronounShortForm;
-  Cases caseType;
-  Genders gender;
-  bool isPlural;
+  String translation;
+  String extraInfo;
+  final List<CaseSentencePart> sentenceParts;
+  final Cases caseType;
+  final Genders gender;
+  final bool isPlural;
+  final bool isAnimate;
 
   PANCombo({
-    required this.sentenceStarter,
-    this.sentenceEnder = '',
-    this.noun,
-    this.possPronoun,
-    this.adjective,
-    this.personalPronoun,
+    this.translation = '',
+    this.extraInfo = '',
     required this.caseType,
     required this.gender,
     required this.isPlural,
-    this.usePersonalPronounShortForm = false,
-  }) {
-    this.correctNouns =
-        this.noun == null ? [] : this.noun!.getDeclensions(isPlural, caseType);
-
-    this.initialNounDropDownValue =
-        this.noun == null ? '' : this.noun!.getDropDownInitial(caseType);
-
-    this.correctAdjectives = this.adjective == null
-        ? []
-        : this
-            .adjective!
-            .getDeclensions(gender, isPlural, caseType, noun!.isAnimate);
-
-    this.initialAdjDropDownValue = this.adjective == null
-        ? ''
-        : this.adjective!.getDropDownInitial(caseType);
-
-    this.correctPossPronouns = this.possPronoun == null
-        ? []
-        : this
-            .possPronoun!
-            .getDeclensions(gender, isPlural, caseType, noun!.isAnimate);
-
-    this.initialPossPronDropDownValue = this.possPronoun == null
-        ? ''
-        : this.possPronoun!.getDropDownInitial(caseType);
-
-    this.correctPersonalPronouns = this.personalPronoun == null
-        ? []
-        : this.personalPronoun!.getDeclensions(caseType);
-    this.initialPersonalPronDropDownValue = this.personalPronoun == null
-        ? ''
-        : this.personalPronoun!.getDropDownInitial(caseType);
-  }
-}
-
-class StaticSentenceParts {
-  final String start;
-  final String end;
-
-  StaticSentenceParts({this.start = '', this.end = ''});
+    required this.sentenceParts,
+    required this.isAnimate,
+  });
 }
 
 class SentenceBank {
-  final  nouns;
+  final nouns;
   final List<Adjective> adjectives;
   final List<Adjective> possessivePronouns;
   final List<PersonalPronoun> personalPronouns;
@@ -221,4 +184,11 @@ class SentenceBank {
 
     return contains;
   }
+}
+
+class StaticSentenceParts {
+  final String start;
+  final String end;
+
+  StaticSentenceParts({this.start = '', this.end = ''});
 }

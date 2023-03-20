@@ -22,8 +22,7 @@ class LokativGrammarGuideContent extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.only(bottom: FONT_SIZE),
-              child:
-                  NTextMulti([TextSpan(text: N.t(context).lokativDescription)]),
+              child: NTextMulti([TextSpan(text: N.t('lokativDescription'))]),
             ),
             YouTubeLink(RECOMMENDED_VIDEO_LOK)
           ],
@@ -52,13 +51,13 @@ class LokativGrammarGuideContent extends StatelessWidget {
               TextSpan(
                   text: 'U kuhinji ',
                   style: Nrs.getTextStyle(context: context, isBold: true)),
-              TextSpan(text: 'ima mnogo'),
+              TextSpan(text: 'ima mnogo hrane'),
             ]),
             NTextMulti([
+              TextSpan(text: 'Mi smo '),
               TextSpan(
-                  text: 'Idemo ',
+                  text: 'u restoranu',
                   style: Nrs.getTextStyle(context: context, isBold: true)),
-              TextSpan(text: 'na ručak'),
             ]),
           ],
         ),
@@ -84,7 +83,7 @@ class LokativGrammarGuideContent extends StatelessWidget {
             PronounLine(
                 pronoun: PronounEnum.He,
                 text: NTextMulti([
-                  TextSpan(text: 'Ona se brini o '),
+                  TextSpan(text: 'Ona se brine o '),
                   TextSpan(
                       text: 'njemu',
                       style: Nrs.getTextStyle(context: context, isBold: true)),

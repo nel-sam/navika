@@ -2,7 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 import 'package:navika/constants.dart';
+import 'package:navika/lang_data/cases_exercises/mixed_exercises.dart';
 import 'package:navika/models/enums.dart';
+import 'package:navika/state/cases/case-question-state.dart';
 import 'package:navika/state/content-generators/akuzativ-generators.dart';
 import 'package:navika/state/content-generators/dativ-generators.dart';
 import 'package:navika/state/content-generators/genitiv-generators.dart';
@@ -17,31 +19,44 @@ import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 class ExerciseNavNotifier with ChangeNotifier {
   Timer _debounce = Timer(const Duration(milliseconds: 0), () {});
   List _states = [];
-  ExerciseTypes _exerciseType = ExerciseTypes.unspecified;
+  late ExerciseTypes _exerciseType;
   int _activeIndex = 0;
   int _maxIndex = 0;
   late DialectType _dialect;
-  late Function(List, ExerciseTypes, DialectType) createExercise;
+  final bool isPremium;
 
   ExerciseNavNotifier({
+    required this.isPremium,
     required DialectType dialect,
+    required ExerciseTypes exerciseType,
     Cases? caseType,
-    ExerciseTypes exerciseType = ExerciseTypes.unspecified,
     bool isVerb = false,
   }) {
+    _exerciseType = exerciseType;
     _dialect = dialect;
 
     if (isVerb) {
       final verbGenerator = VerbGenerators(dialect: dialect);
       this._maxIndex = verbGenerator.getMaxIndex();
-      createExercise = verbGenerator.createExercise;
+      _states = verbGenerator.createExercises(exerciseType, dialect);
     } else {
-      _maxIndex = BATCH_COUNT;
-      _setCaseGenerator(caseType!);
+      _maxIndex = MAX_BATCH_COUNT;
+      _setCaseStates(caseType!);
     }
 
-    _states.add(createExercise(_states, exerciseType, dialect));
     this._exerciseType = exerciseType;
+  }
+
+  dynamic addSingleExercise(int index, Function createExerciseFunc) {
+    List<dynamic> allExercises =
+        createExerciseFunc(_exerciseType, _dialect, isPremium);
+
+    // loop index if greater than length of allExercises
+    if (index >= allExercises.length) {
+      index = index % allExercises.length;
+    }
+
+    return allExercises[index];
   }
 
   void clearInput() {
@@ -73,10 +88,6 @@ class ExerciseNavNotifier with ChangeNotifier {
       _activeIndex++;
     }
 
-    if (_activeIndex > _states.length - 1) {
-      this._states.add(this.createExercise(_states, _exerciseType, _dialect));
-    }
-
     debouncedNotifyListeners();
   }
 
@@ -90,71 +101,88 @@ class ExerciseNavNotifier with ChangeNotifier {
     debouncedNotifyListeners();
   }
 
-  List shuffleAndClear({bool notify: true}) {
-    _states.shuffle();
-    _states.forEach((element) {
-      element.clear();
-    });
+  _getMixedCaseExercises() {
+    final generalMixedBank = MixedExercises(_dialect).all;
+    generalMixedBank.shuffle();
 
-    if (notify) debouncedNotifyListeners();
-    return _states;
-  }
+    for (int i = 0; i < MAX_BATCH_COUNT; i++) {
+      if (i < generalMixedBank.length) {
+        _states.add(CaseQuestionState(combos: generalMixedBank[i]));
+        continue;
+      }
 
-  _getRandomCaseExec(
-    List a,
-    ExerciseTypes exerciseType,
-    DialectType dialect,
-  ) {
-    final random = Nrs.getRandomNumber(max: Cases.values.length);
-    final caseType = Cases.values[random];
+      final random = Nrs.getRandomNumber(max: Cases.values.length);
+      final caseType = Cases.values[random];
 
-    switch (caseType) {
-      case Cases.Nom:
-        return NominativGenerators.createExercise(a, exerciseType, dialect);
-      case Cases.Aku:
-        return AkuzativGenerators.createExercise(a, exerciseType, dialect);
-      case Cases.Ins:
-        return InstrumentalGenerators.createExercise(a, exerciseType, dialect);
-      case Cases.Dat:
-        return DativGenerators.createExercise(a, exerciseType, dialect);
-      case Cases.Lok:
-        return LokativGenerators.createExercise(a, exerciseType, dialect);
-      case Cases.All:
-      case Cases.Gen:
-        return GenitivGenerators.createExercise(a, exerciseType, dialect);
-      case Cases.Vok:
-        return VokativGenerators.createExercise(a, exerciseType, dialect);
+      switch (caseType) {
+        case Cases.Nom:
+          _states.add(addSingleExercise(i, NominativGenerators.createExercise));
+          break;
+        case Cases.Aku:
+          _states.add(addSingleExercise(i, AkuzativGenerators.createExercise));
+          break;
+        case Cases.Ins:
+          _states
+              .add(addSingleExercise(i, InstrumentalGenerators.createExercise));
+          break;
+        case Cases.Dat:
+          _states.add(addSingleExercise(i, DativGenerators.createExercise));
+          break;
+        case Cases.Lok:
+          _states.add(addSingleExercise(i, LokativGenerators.createExercise));
+          break;
+        case Cases.All:
+        case Cases.Gen:
+          _states.add(addSingleExercise(i, GenitivGenerators.createExercise));
+          break;
+        case Cases.Vok:
+          _states.add(addSingleExercise(i, VokativGenerators.createExercise));
+          break;
+      }
     }
+
+    _states.shuffle();
   }
 
-  _setCaseGenerator(Cases caseType) {
+  _setCaseStates(Cases caseType) {
     switch (caseType) {
       case Cases.All:
-        createExercise = _getRandomCaseExec;
+        _getMixedCaseExercises();
         break;
       case Cases.Nom:
-        createExercise = NominativGenerators.createExercise;
+        _states = NominativGenerators.createExercise(
+            _exerciseType, _dialect, isPremium);
         break;
       case Cases.Aku:
-        createExercise = AkuzativGenerators.createExercise;
+        _states = AkuzativGenerators.createExercise(
+            _exerciseType, _dialect, isPremium);
         break;
       case Cases.Ins:
-        createExercise = InstrumentalGenerators.createExercise;
+        _states = InstrumentalGenerators.createExercise(
+            _exerciseType, _dialect, isPremium);
         break;
       case Cases.Dat:
-        createExercise = DativGenerators.createExercise;
+        _states =
+            DativGenerators.createExercise(_exerciseType, _dialect, isPremium);
         break;
       case Cases.Lok:
-        createExercise = LokativGenerators.createExercise;
+        _states = LokativGenerators.createExercise(
+            _exerciseType, _dialect, isPremium);
         break;
       case Cases.Gen:
-        createExercise = GenitivGenerators.createExercise;
+        _states = GenitivGenerators.createExercise(
+            _exerciseType, _dialect, isPremium);
         break;
       case Cases.Vok:
-        createExercise = VokativGenerators.createExercise;
+        _states = VokativGenerators.createExercise(
+            _exerciseType, _dialect, isPremium);
         break;
       default:
         break;
+    }
+
+    if (_states.length - 1 < _maxIndex) {
+      _maxIndex = _states.length;
     }
   }
 }
