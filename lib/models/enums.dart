@@ -6,7 +6,7 @@ enum Cases {
   Lok,
   Gen,
   Dat,
-  All,
+  All, Unspecified,
 }
 
 enum DialectType {

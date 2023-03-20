@@ -328,7 +328,7 @@ class AkuzativExercises {
               displayValue: DemonstrativePronouns.taj.dictionary,
               isCorrectable: true,
               actualObject: DemonstrativePronouns.taj,
-              grammarType: GrammarTypes.possessivePronoun,
+              grammarType: GrammarTypes.demonstrativePronoun,
               correctValues:
                   DemonstrativePronouns.taj.akuzativ!.masculine.singular,
             ),

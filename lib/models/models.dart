@@ -11,14 +11,15 @@ class CaseSentencePart {
   GrammarTypes grammarType;
   List<String> correctValues;
   dynamic actualObject;
+  Cases caseType;
 
-  CaseSentencePart({
-    required this.displayValue,
-    this.grammarType = GrammarTypes.noun,
-    this.correctValues = const [],
-    this.isCorrectable = false,
-    this.actualObject,
-  }) {
+  CaseSentencePart(
+      {required this.displayValue,
+      this.grammarType = GrammarTypes.noun,
+      this.correctValues = const [],
+      this.isCorrectable = false,
+      this.actualObject,
+      this.caseType = Cases.Unspecified}) {
     assert(this.actualObject is Adjective ||
         this.actualObject is PersonalPronoun ||
         this.actualObject is Noun ||

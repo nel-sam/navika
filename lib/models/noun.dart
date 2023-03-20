@@ -51,6 +51,7 @@ class Noun {
         return this.lokativ;
       case Cases.Nom:
       case Cases.All:
+      case Cases.Unspecified:
         return this.nominativ;
       case Cases.Vok:
         return this.vokativ;
@@ -63,6 +64,7 @@ class Noun {
         return this.instrumental.getAll();
       case Cases.Nom:
       case Cases.All:
+      case Cases.Unspecified:
         return this.nominativ.getAll();
       case Cases.Aku:
         return this.akuzativ.getAll();

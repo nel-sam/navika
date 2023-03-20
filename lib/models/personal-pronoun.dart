@@ -44,6 +44,7 @@ class PersonalPronoun {
         return this.lokativ;
       case Cases.Nom:
       case Cases.All:
+      case Cases.Unspecified:
         return this.nominativ;
       case Cases.Vok:
         return this.vokativ;
@@ -64,10 +65,18 @@ class PersonalPronoun {
         return this.lokativ.forms;
       case Cases.Nom:
       case Cases.All:
+      case Cases.Unspecified:
         return this.nominativ.forms;
       case Cases.Vok:
         return this.vokativ.forms;
     }
+  }
+
+  getDropDownInitial(Cases caseType) {
+    final toAvoid = getDeclensions(caseType);
+    final filtered = getUniqueDeclensions(shuffle: true);
+    filtered.removeWhere((element) => toAvoid.contains(element));
+    return filtered.last;
   }
 
   List<String> getUniqueDeclensions({bool shuffle = false}) {
@@ -95,12 +104,5 @@ class PersonalPronoun {
     });
 
     return longestFound;
-  }
-
-  getDropDownInitial(Cases caseType) {
-    final toAvoid = getDeclensions(caseType);
-    final filtered = getUniqueDeclensions(shuffle: true);
-    filtered.removeWhere((element) => toAvoid.contains(element));
-    return filtered.last;
   }
 }

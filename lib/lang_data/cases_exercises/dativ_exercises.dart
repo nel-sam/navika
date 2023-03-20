@@ -56,7 +56,7 @@ class DativExercises {
                 displayValue: DemonstrativePronouns.koji.dictionary,
                 correctValues:
                     DemonstrativePronouns.koji.dativ!.feminine!.singular,
-                grammarType: GrammarTypes.noun,
+                grammarType: GrammarTypes.demonstrativePronoun,
               ),
               CaseSentencePart(
                 isCorrectable: true,

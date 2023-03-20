@@ -37,7 +37,7 @@ void main() {
               displayValue: DemonstrativePronouns.koji.dictionary,
               correctValues:
                   DemonstrativePronouns.koji.dativ!.masculine.singular,
-              grammarType: GrammarTypes.noun,
+              grammarType: GrammarTypes.demonstrativePronoun,
             ),
             CaseSentencePart(
               isCorrectable: true,

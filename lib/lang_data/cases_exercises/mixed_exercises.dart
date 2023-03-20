@@ -13,7 +13,7 @@ import 'package:nrs_flutter_lib/enums.dart';
 class MixedExercises {
   late bool isCroatian;
   late bool isSerbian;
-  final Cases caseType = Cases.All;
+  final Cases caseType = Cases.Unspecified;
 
   MixedExercises(DialectType dialect) {
     this.isCroatian = dialect == DialectType.Croatia;
@@ -34,6 +34,7 @@ class MixedExercises {
                 displayValue: NounBankGeneral.centar.dictionary,
                 correctValues: NounBankGeneral.centar.dativ!.singular,
                 grammarType: GrammarTypes.noun,
+                caseType: Cases.Dat,
               ),
               CaseSentencePart(
                 isCorrectable: true,
@@ -41,6 +42,7 @@ class MixedExercises {
                 displayValue: NounBankGeneral.grad.dictionary,
                 correctValues: NounBankGeneral.grad.genitiv.singular,
                 grammarType: GrammarTypes.noun,
+                caseType: Cases.Gen,
               ),
             ],
             isAnimate: false,
@@ -57,6 +59,7 @@ class MixedExercises {
                 displayValue: PersonalPronounWordBank.on.dictionary,
                 correctValues: ['mu'],
                 grammarType: GrammarTypes.personalPronoun,
+                caseType: Cases.Dat,
               ),
               CaseSentencePart(displayValue: 'malo'),
               CaseSentencePart(
@@ -66,13 +69,15 @@ class MixedExercises {
                 correctValues:
                     AdjectiveBankGeneral.vruc.genitiv!.masculine.singular,
                 grammarType: GrammarTypes.adjective,
+                caseType: Cases.Gen,
               ),
               CaseSentencePart(
                 isCorrectable: true,
                 actualObject: NounBankGeneral.caj,
                 displayValue: NounBankGeneral.caj.dictionary,
-                correctValues: NounBankGeneral.caj.dativ!.singular,
+                correctValues: NounBankGeneral.caj.genitiv.singular,
                 grammarType: GrammarTypes.noun,
+                caseType: Cases.Gen,
               ),
             ],
             isAnimate: false,
@@ -92,6 +97,7 @@ class MixedExercises {
               correctValues:
                   AdjectiveBankGeneral.velik.dativ!.feminine!.singular,
               grammarType: GrammarTypes.adjective,
+              caseType: Cases.Dat,
             ),
             CaseSentencePart(
               isCorrectable: true,
@@ -99,6 +105,7 @@ class MixedExercises {
               displayValue: NounBankGeneral.bolnica.dictionary,
               correctValues: NounBankGeneral.bolnica.dativ!.singular,
               grammarType: GrammarTypes.noun,
+              caseType: Cases.Dat,
             ),
             CaseSentencePart(displayValue: 'se nalazi'),
             CaseSentencePart(
@@ -107,6 +114,7 @@ class MixedExercises {
               displayValue: '',
               correctValues: NounBankGeneral.pekara.nominativ.singular,
               grammarType: GrammarTypes.noun,
+              caseType: Cases.Nom,
             ),
           ],
         ),
@@ -122,6 +130,7 @@ class MixedExercises {
                 displayValue: PersonalPronounWordBank.ja.dictionary,
                 correctValues: ['mi'],
                 grammarType: GrammarTypes.personalPronoun,
+                caseType: Cases.Dat,
               ),
               CaseSentencePart(displayValue: 'moj'),
               CaseSentencePart(
@@ -131,6 +140,7 @@ class MixedExercises {
                 correctValues:
                     AdjectiveBankGeneral.prvi.nominativ!.masculine.singular,
                 grammarType: GrammarTypes.adjective,
+                caseType: Cases.Nom,
               ),
               CaseSentencePart(
                 isCorrectable: true,
@@ -138,6 +148,7 @@ class MixedExercises {
                 displayValue: NounBankGeneral.pas.dictionary,
                 correctValues: NounBankGeneral.pas.nominativ.singular,
                 grammarType: GrammarTypes.noun,
+                caseType: Cases.Nom,
               ),
             ],
             isAnimate: false,
@@ -147,7 +158,7 @@ class MixedExercises {
             gender: Genders.Unspecific,
             isPlural: false,
             sentenceParts: [
-              CaseSentencePart(displayValue: 'Poslao sam pismo'),
+              CaseSentencePart(displayValue: 'Poslao sam'),
               CaseSentencePart(
                 isCorrectable: true,
                 actualObject: AdjectiveBankGeneral.dugi,
@@ -155,7 +166,9 @@ class MixedExercises {
                 correctValues:
                     AdjectiveBankGeneral.dugi.akuzativ!.neuter!.singular,
                 grammarType: GrammarTypes.adjective,
+                caseType: Cases.Aku,
               ),
+              CaseSentencePart(displayValue: 'pismo'),
               CaseSentencePart(
                 isCorrectable: true,
                 actualObject: PossessivePronounBank.svoj,
@@ -163,6 +176,7 @@ class MixedExercises {
                 correctValues:
                     PossessivePronounBank.svoj.dativ!.feminine!.singular,
                 grammarType: GrammarTypes.possessivePronoun,
+                caseType: Cases.Dat,
               ),
               CaseSentencePart(
                 isCorrectable: true,
@@ -170,6 +184,7 @@ class MixedExercises {
                 displayValue: NounBankGeneral.majka.dictionary,
                 correctValues: NounBankGeneral.majka.dativ!.singular,
                 grammarType: GrammarTypes.noun,
+                caseType: Cases.Dat,
               ),
             ],
             isAnimate: false,
@@ -190,6 +205,7 @@ class MixedExercises {
               grammarType: GrammarTypes.adjective,
               correctValues:
                   AdjectiveBankGeneral.star.genitiv!.masculine.singular,
+              caseType: Cases.Aku,
             ),
             CaseSentencePart(
               displayValue: NounBankGeneral.pas.dictionary,
@@ -197,6 +213,7 @@ class MixedExercises {
               actualObject: NounBankGeneral.pas,
               grammarType: GrammarTypes.noun,
               correctValues: NounBankGeneral.pas.genitiv.singular,
+              caseType: Cases.Aku,
             ),
             CaseSentencePart(displayValue: 'sa ceste'),
           ],
@@ -213,6 +230,7 @@ class MixedExercises {
                 grammarType: GrammarTypes.demonstrativePronoun,
                 correctValues:
                     DemonstrativePronouns.koji.nominativ!.feminine!.singular,
+                caseType: Cases.Nom,
               ),
               CaseSentencePart(displayValue: 'je vrsta'),
               CaseSentencePart(
@@ -221,14 +239,17 @@ class MixedExercises {
                 displayValue: '',
                 correctValues: NounBankGeneral.krevet.genitiv.singular,
                 grammarType: GrammarTypes.noun,
+                caseType: Cases.Gen,
               ),
               CaseSentencePart(displayValue: 'prava za'),
               CaseSentencePart(
-                  isCorrectable: true,
-                  actualObject: PersonalPronounWordBank.vi,
-                  displayValue: '',
-                  correctValues: PersonalPronounWordBank.vi.akuzativ.forms,
-                  grammarType: GrammarTypes.personalPronoun),
+                isCorrectable: true,
+                actualObject: PersonalPronounWordBank.vi,
+                displayValue: '',
+                correctValues: PersonalPronounWordBank.vi.akuzativ.forms,
+                grammarType: GrammarTypes.personalPronoun,
+                caseType: Cases.Gen,
+              ),
               CaseSentencePart(displayValue: '?')
             ],
             isAnimate: false,
@@ -245,6 +266,7 @@ class MixedExercises {
                 displayValue: NounBankGeneral.godina.dictionary,
                 correctValues: NounBankGeneral.godina.genitiv.plural,
                 grammarType: GrammarTypes.noun,
+                caseType: Cases.Gen,
               ),
               CaseSentencePart(displayValue: 'udomio sam'),
               CaseSentencePart(
@@ -253,6 +275,7 @@ class MixedExercises {
                 displayValue: NounBankGeneral.pas.dictionary,
                 correctValues: NounBankGeneral.pas.akuzativ.plural,
                 grammarType: GrammarTypes.noun,
+                caseType: Cases.Aku,
               ),
               CaseSentencePart(displayValue: 'sa'),
               CaseSentencePart(
@@ -261,6 +284,7 @@ class MixedExercises {
                 displayValue: NounBankGeneral.cesta.dictionary,
                 correctValues: NounBankGeneral.cesta.akuzativ.singular,
                 grammarType: GrammarTypes.noun,
+                caseType: Cases.Aku,
               ),
             ],
             isAnimate: false,
@@ -276,6 +300,7 @@ class MixedExercises {
                 displayValue: NounBankGeneral.otac.dictionary,
                 correctValues: NounBankGeneral.otac.nominativ.singular,
                 grammarType: GrammarTypes.noun,
+                caseType: Cases.Nom,
               ),
               CaseSentencePart(displayValue: 'je polako otišao od'),
               CaseSentencePart(
@@ -284,6 +309,7 @@ class MixedExercises {
                 displayValue: NounBankGeneral.kuca.dictionary,
                 correctValues: NounBankGeneral.kuca.genitiv.singular,
                 grammarType: GrammarTypes.noun,
+                caseType: Cases.Gen,
               ),
             ],
             isAnimate: false,
@@ -291,7 +317,7 @@ class MixedExercises {
         PANCombo(
           caseType: caseType,
           translation: N.t('ex_Vidjeli_smo_lijepe_jezera_u_Bosni'),
-          gender: NounBankGeneral.hrvatica.gender,
+          gender: NounBankGeneral.jezero.gender,
           isPlural: true,
           isAnimate: true,
           sentenceParts: [
@@ -307,6 +333,7 @@ class MixedExercises {
               correctValues: isSerbian
                   ? AdjectivesEkavian.lep.akuzativ!.neuter!.plural
                   : AdjectivesIjekavian.lijep.akuzativ!.neuter!.plural,
+              caseType: Cases.Aku,
             ),
             CaseSentencePart(
               displayValue: NounBankGeneral.jezero.dictionary,
@@ -314,6 +341,7 @@ class MixedExercises {
               actualObject: NounBankGeneral.jezero,
               grammarType: GrammarTypes.noun,
               correctValues: NounBankGeneral.jezero.akuzativ.plural,
+              caseType: Cases.Aku,
             ),
             CaseSentencePart(displayValue: 'u'),
             CaseSentencePart(
@@ -322,6 +350,7 @@ class MixedExercises {
               actualObject: NounBankGeneral.bosna,
               grammarType: GrammarTypes.noun,
               correctValues: NounBankGeneral.bosna.lokativ.singular,
+              caseType: Cases.Lok,
             ),
           ],
         ),

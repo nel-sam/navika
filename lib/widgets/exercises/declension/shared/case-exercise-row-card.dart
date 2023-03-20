@@ -7,7 +7,6 @@ import 'package:navika/widgets/exercises/declension/shared/case-exercise-help.da
 import 'package:nrs_flutter_lib/constants.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 import 'package:nrs_flutter_lib/widgets/n_icon_text_pair.dart';
-import 'package:nrs_flutter_lib/widgets/n_text_multi.dart';
 
 class CaseExerciseRowCard extends StatelessWidget {
   final PANCombo combos;
@@ -59,10 +58,10 @@ class CaseExerciseRowCard extends StatelessWidget {
               ),
             Padding(padding: EdgeInsets.only(top: FONT_SIZE * 1.2)),
             this.isAllCorrect
-                ? Wrap(crossAxisAlignment: WrapCrossAlignment.start, children: [
-                    NTextMulti(N.getCorrectSentence(
+                ? Wrap(
+                    crossAxisAlignment: WrapCrossAlignment.start,
+                    children: N.getCorrectSentence(
                         context, this.combos.sentenceParts))
-                  ])
                 : Wrap(
                     runSpacing: 4,
                     crossAxisAlignment: WrapCrossAlignment.start,

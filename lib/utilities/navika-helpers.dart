@@ -105,15 +105,16 @@ class N {
         return 'Genitiv';
       case Cases.Dat:
         return 'Dativ';
+      case Cases.Unspecified:
+        return '';
     }
   }
 
-
-  static List<TextSpan> getCorrectSentence(
+  static List<Padding> getCorrectSentence(
       BuildContext context, List<CaseSentencePart> sentenceParts) {
     final fontSize = FONT_SIZE * 1.1;
 
-    return sentenceParts.map<TextSpan>((CaseSentencePart e) {
+    return sentenceParts.map<Padding>((CaseSentencePart e) {
       if (sentenceParts.first == e) {
         final displayValue =
             e.displayValue.length > 0 ? e.displayValue : e.correctValues.first;
@@ -121,27 +122,36 @@ class N {
         e.displayValue = capitalizeFirstLetter(displayValue);
       }
 
-      // If the previous element was correctable, add a space before this one
-      if (sentenceParts.indexOf(e) > 0 &&
-          sentenceParts[sentenceParts.indexOf(e) - 1].isCorrectable) {
-        e.displayValue = ' ${e.displayValue}';
-      }
+      // if (e.isCorrectable) {
+      //   e.displayValue = ' ${e.displayValue}';
 
-      // If the next element is correctable, add a space
-      if (sentenceParts.indexOf(e) < sentenceParts.length - 1 &&
-          sentenceParts[sentenceParts.indexOf(e) + 1].isCorrectable) {
-        e.displayValue += ' ';
-      }
+      //   // If the next element is not correctable, add a space after
+      //   if (sentenceParts.indexOf(e) < sentenceParts.length - 1 &&
+      //       !sentenceParts[sentenceParts.indexOf(e) + 1].isCorrectable) {
+      //     e.displayValue += ' ';
+      //   }
+      // }
 
       if (!e.isCorrectable) {
-        return TextSpan(
-            text: e.displayValue, style: TextStyle(fontSize: fontSize));
+        return Padding(
+            padding: const EdgeInsets.all(0),
+            child: Text(e.displayValue, style: TextStyle(fontSize: fontSize)));
       }
 
-      return TextSpan(
-          text: '${e.correctValues.join('/')}',
-          style: Nrs.getTextStyle(
-              context: context, isBold: true, fontSize: fontSize));
+      final padding = 6.0;
+      var rightPadding = padding;
+
+      // If the next element is correctable, add a space after
+      if (sentenceParts.indexOf(e) < sentenceParts.length - 1 &&
+          sentenceParts[sentenceParts.indexOf(e) + 1].isCorrectable) {
+        rightPadding = 0.0;
+      }
+
+      return Padding(
+          padding: EdgeInsets.only(left: padding, right: rightPadding),
+          child: Text('${e.correctValues.join('/')}',
+              style: Nrs.getTextStyle(
+                  context: context, isBold: true, fontSize: fontSize)));
     }).toList();
   }
 

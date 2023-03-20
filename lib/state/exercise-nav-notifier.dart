@@ -133,6 +133,7 @@ class ExerciseNavNotifier with ChangeNotifier {
           break;
         case Cases.All:
         case Cases.Gen:
+        case Cases.Unspecified:
           _states.add(addSingleExercise(i, GenitivGenerators.createExercise));
           break;
         case Cases.Vok:
