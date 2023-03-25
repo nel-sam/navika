@@ -12,7 +12,7 @@ import 'package:nrs_flutter_lib/enums.dart';
 class LokativExercises {
   late bool isCroatian;
   late bool isSerbian;
-  final Cases caseType = Cases.Dat;
+  final Cases caseType = Cases.Lok;
 
   LokativExercises(DialectType dialect) {
     this.isCroatian = dialect == DialectType.Croatia;
@@ -76,9 +76,9 @@ class LokativExercises {
               CaseSentencePart(
                 isCorrectable: true,
                 actualObject: AdjectiveBankGeneral.mali,
-                displayValue: AdjectiveBankGeneral.topao.dictionary,
+                displayValue: AdjectiveBankGeneral.mali.dictionary,
                 correctValues:
-                    AdjectiveBankGeneral.topao.lokativ!.neuter!.singular,
+                    AdjectiveBankGeneral.mali.lokativ!.neuter!.singular,
                 grammarType: GrammarTypes.adjective,
               ),
               CaseSentencePart(
