@@ -1,46 +1,47 @@
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/utilities/navika-helpers.dart';
-import 'package:navika/widgets/grammar/grammar-guide/child-widgets/declension-table-cell.dart';
-import 'package:navika/widgets/grammar/grammar-guide/child-widgets/declension-table.dart';
+import 'package:navika/widgets/grammar-guides/declension-guide/child-widgets/declension-table-cell.dart';
+import 'package:navika/widgets/grammar-guides/declension-guide/child-widgets/declension-table.dart';
 
-class DativLokativDeclensionTable extends StatelessWidget {
-  const DativLokativDeclensionTable({Key? key}) : super(key: key);
+class InstrumentalDeclensionTable extends StatelessWidget {
+  const InstrumentalDeclensionTable({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final secondEqualColor = Colors.red;
+
     return DeclensionTable(
-      notes: [
-        N.t('assibilation'),
-        N.t('softLettersOmEm'),
-      ],
       showEqualItemNote: true,
-      borderedItemNote: N.t('sameAsInst'),
+      additionalEqualItemColor: secondEqualColor,
+      notes: [N.t('instrumentalFemSing'), N.t('softLettersOgEg')],
+      borderedItemNote: N.t('sameAsLok'),
       masculineSingular: DeclensionTableCell(
         isEqualItem: true,
         children: [
           N.declensionExampleTextSpan('Brz'),
-          N.declensionExampleTextSpan('om\n', color: MASCULINE_COLOR),
+          N.declensionExampleTextSpan('im\n', color: MASCULINE_COLOR),
           N.declensionExampleTextSpan('ps'),
-          N.declensionExampleTextSpan('u', color: MASCULINE_COLOR),
+          N.declensionExampleTextSpan('om', color: MASCULINE_COLOR),
           N.declensionExampleTextSpan('**'),
         ],
       ),
       masculinePlural: DeclensionTableCell(
+        isEqualItem: true,
+        equalItemColor: secondEqualColor,
         children: [
-          N.declensionExampleTextSpan('Brz'),
+          N.declensionExampleTextSpan('Lijep'),
           N.declensionExampleTextSpan('im\n', color: MASCULINE_COLOR),
-          N.declensionExampleTextSpan('ps'),
+          N.declensionExampleTextSpan('jezic'),
           N.declensionExampleTextSpan('ima', color: MASCULINE_COLOR),
-          N.declensionExampleTextSpan('*'),
         ],
         highlightItem: true,
       ),
       feminineSingular: DeclensionTableCell(children: [
         N.declensionExampleTextSpan('Moj'),
-        N.declensionExampleTextSpan('oj\n', color: FEMININE_COLOR),
+        N.declensionExampleTextSpan('om\n', color: FEMININE_COLOR),
         N.declensionExampleTextSpan('kuć'),
-        N.declensionExampleTextSpan('i', color: FEMININE_COLOR),
+        N.declensionExampleTextSpan('om', color: FEMININE_COLOR),
         N.declensionExampleTextSpan('*'),
       ]),
       femininePlural: DeclensionTableCell(
@@ -56,17 +57,19 @@ class DativLokativDeclensionTable extends StatelessWidget {
         isEqualItem: true,
         children: [
           N.declensionExampleTextSpan('Vruć'),
-          N.declensionExampleTextSpan('em\n', color: NEUTER_COLOR),
-          N.declensionExampleTextSpan('mor'),
-          N.declensionExampleTextSpan('u', color: NEUTER_COLOR),
+          N.declensionExampleTextSpan('im\n', color: NEUTER_COLOR),
+          N.declensionExampleTextSpan('vin'),
+          N.declensionExampleTextSpan('om', color: NEUTER_COLOR),
           N.declensionExampleTextSpan('**'),
         ],
       ),
       neuterPlural: DeclensionTableCell(
+        isEqualItem: true,
+        equalItemColor: secondEqualColor,
         children: [
-          N.declensionExampleTextSpan('Crn'),
-          N.declensionExampleTextSpan('im\n', color: NEUTER_COLOR),
-          N.declensionExampleTextSpan('mor'),
+          N.declensionExampleTextSpan('Vruć'),
+          N.declensionExampleTextSpan('im \n', color: NEUTER_COLOR),
+          N.declensionExampleTextSpan('vin'),
           N.declensionExampleTextSpan('ima', color: NEUTER_COLOR),
         ],
         highlightItem: true,

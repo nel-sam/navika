@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:navika/utilities/navika-helpers.dart';
-import 'package:navika/widgets/grammar/grammar-guide/child-widgets/explanation-icon-cell.dart';
+import 'package:navika/widgets/grammar-guides/declension-guide/child-widgets/explanation-icon-cell.dart';
 import 'package:nrs_flutter_lib/constants.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 

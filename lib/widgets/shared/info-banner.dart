@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:navika/utilities/navika-helpers.dart';
-import 'package:navika/widgets/grammar/grammar-guide/child-widgets/youtube-link.dart';
+import 'package:navika/widgets/grammar-guides/declension-guide/child-widgets/youtube-link.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 import 'package:nrs_flutter_lib/widgets/n_text_span.dart';
 

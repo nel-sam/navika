@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:navika/widgets/grammar/grammar-guide/child-widgets/declension-table.dart';
+import 'package:navika/widgets/grammar-guides/declension-guide/child-widgets/declension-table.dart';
 import 'package:nrs_flutter_lib/constants.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 

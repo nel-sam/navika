@@ -3,7 +3,8 @@ import 'package:navika/constants.dart';
 import 'package:navika/models/settings.dart';
 import 'package:navika/state/settings/settings-consumer-wrapper.dart';
 import 'package:navika/utilities/navika-helpers.dart';
-import 'package:navika/widgets/grammar/grammar-guide/declension-guide.dart';
+import 'package:navika/widgets/grammar-guides/declension-guide/declension-guide.dart';
+import 'package:navika/widgets/grammar-guides/number-guide/number-guide.dart';
 import 'package:navika/widgets/sbc_labels.dart';
 import 'package:navika/widgets/shared/ad-card.dart';
 import 'package:navika/widgets/shared/menu-footer.dart';
@@ -43,6 +44,11 @@ class GrammarMenu extends StatelessWidget {
                           DeclensionGuide(dialect: settings.dialectType),
                       label: N.t('cases'),
                       transLabel: SbcLabels.cases,
+                    ),
+                    NMenuButton(
+                      destination: NumberGuide(dialect: settings.dialectType),
+                      label: N.t('numbers'),
+                      transLabel: SbcLabels.numbers,
                     ),
                   ],
                 ),

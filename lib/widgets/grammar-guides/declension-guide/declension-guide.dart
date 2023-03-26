@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/utilities/navika-helpers.dart';
-import 'package:navika/widgets/grammar/grammar-guide/declension/akuzativ-content.dart';
-import 'package:navika/widgets/grammar/grammar-guide/declension/dativ-content.dart';
-import 'package:navika/widgets/grammar/grammar-guide/declension/genitiv-content.dart';
-import 'package:navika/widgets/grammar/grammar-guide/declension/instrumental-content.dart';
-import 'package:navika/widgets/grammar/grammar-guide/declension/lokativ-content.dart';
-import 'package:navika/widgets/grammar/grammar-guide/declension/nominativ-content.dart';
-import 'package:navika/widgets/grammar/grammar-guide/declension/vokativ-content.dart';
+import 'package:navika/widgets/grammar-guides/declension-guide/content/akuzativ-content.dart';
+import 'package:navika/widgets/grammar-guides/declension-guide/content/dativ-content.dart';
+import 'package:navika/widgets/grammar-guides/declension-guide/content/genitiv-content.dart';
+import 'package:navika/widgets/grammar-guides/declension-guide/content/instrumental-content.dart';
+import 'package:navika/widgets/grammar-guides/declension-guide/content/lokativ-content.dart';
+import 'package:navika/widgets/grammar-guides/declension-guide/content/nominativ-content.dart';
+import 'package:navika/widgets/grammar-guides/declension-guide/content/vokativ-content.dart';
+import 'package:navika/widgets/grammar-guides/shared/content-section.dart';
 import 'package:navika/widgets/sbc_labels.dart';
 import 'package:navika/widgets/shared/ad-card.dart';
 import 'package:nrs_flutter_lib/constants.dart';
@@ -25,37 +26,6 @@ class CaseKey {
   late double height = 0;
 
   CaseKey({required this.caseType, required this.key});
-}
-
-class ContentSection extends StatelessWidget {
-  final String text;
-  final Widget content;
-
-  const ContentSection({Key? key, required this.text, required this.content})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: FONT_SIZE * 2.5),
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(bottom: FONT_SIZE),
-            child: Row(
-              children: [
-                Text(
-                  text,
-                  style: TextStyle(fontSize: FONT_SIZE * 2.5),
-                ),
-              ],
-            ),
-          ),
-          content,
-        ],
-      ),
-    );
-  }
 }
 
 class DeclensionGuide extends StatefulWidget {

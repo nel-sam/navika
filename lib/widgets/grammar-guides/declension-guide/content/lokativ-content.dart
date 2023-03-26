@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/utilities/navika-helpers.dart';
-import 'package:navika/widgets/grammar/grammar-guide/child-widgets/example-sentences.dart';
-import 'package:navika/widgets/grammar/grammar-guide/child-widgets/possessive-pronoun-section.dart';
-import 'package:navika/widgets/grammar/grammar-guide/child-widgets/pronoun-line.dart';
-import 'package:navika/widgets/grammar/grammar-guide/child-widgets/youtube-link.dart';
-import 'package:navika/widgets/grammar/grammar-guide/declension/declension_tables/instrumental-table.dart';
+import 'package:navika/widgets/grammar-guides/declension-guide/child-widgets/example-sentences.dart';
+import 'package:navika/widgets/grammar-guides/declension-guide/child-widgets/possessive-pronoun-section.dart';
+import 'package:navika/widgets/grammar-guides/declension-guide/child-widgets/pronoun-line.dart';
+import 'package:navika/widgets/grammar-guides/declension-guide/child-widgets/youtube-link.dart';
+import 'package:navika/widgets/grammar-guides/declension-guide/content/declension_tables/dativ-lokativ-table.dart';
 import 'package:nrs_flutter_lib/constants.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 import 'package:nrs_flutter_lib/widgets/n_text_multi.dart';
 
-class InstrumentalGrammarGuideContent extends StatelessWidget {
-  const InstrumentalGrammarGuideContent({Key? key}) : super(key: key);
+class LokativGrammarGuideContent extends StatelessWidget {
+  const LokativGrammarGuideContent({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,100 +22,92 @@ class InstrumentalGrammarGuideContent extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.only(bottom: FONT_SIZE),
-              child:
-                  NTextMulti([TextSpan(text: N.t('instrumentalDescription'))]),
+              child: NTextMulti([TextSpan(text: N.t('lokativDescription'))]),
             ),
-            YouTubeLink(RECOMMENDED_VIDEO_INST)
+            YouTubeLink(RECOMMENDED_VIDEO_LOK)
           ],
         ),
         ExampleSentences(
           sentences: [
             NTextMulti([
-              TextSpan(text: 'Juhu sam jeo '),
+              TextSpan(text: 'Ova priča govori '),
               TextSpan(
-                  text: 'žlicom',
+                  text: 'o njemu',
                   style: Nrs.getTextStyle(context: context, isBold: true)),
             ]),
             NTextMulti([
-              TextSpan(text: 'Na posao idem '),
+              TextSpan(text: 'On gleda film '),
               TextSpan(
-                  text: 'autom',
+                  text: 'u kinu',
                   style: Nrs.getTextStyle(context: context, isBold: true)),
             ]),
             NTextMulti([
-              TextSpan(text: 'Volim se baviti '),
+              TextSpan(text: 'Živim '),
               TextSpan(
-                  text: 'sportom',
+                  text: 'u gradu',
                   style: Nrs.getTextStyle(context: context, isBold: true)),
             ]),
             NTextMulti([
-              TextSpan(text: 'Razgovaram '),
               TextSpan(
-                  text: 's prijateljem',
+                  text: 'U kuhinji ',
                   style: Nrs.getTextStyle(context: context, isBold: true)),
+              TextSpan(text: 'ima mnogo hrane'),
             ]),
             NTextMulti([
-              TextSpan(text: 'Idem '),
+              TextSpan(text: 'Mi smo '),
               TextSpan(
-                  text: 'sa ženom',
-                  style: Nrs.getTextStyle(context: context, isBold: true)),
-            ]),
-            NTextMulti([
-              TextSpan(text: 'Putujem '),
-              TextSpan(
-                  text: 'noću',
+                  text: 'u restoranu',
                   style: Nrs.getTextStyle(context: context, isBold: true)),
             ]),
           ],
         ),
-        InstrumentalDeclensionTable(),
+        DativLokativDeclensionTable(),
         PossessivePronounSection(
-          note: N.t('saMnomDesc'),
           contents: [
             PronounLine(
                 pronoun: PronounEnum.I,
                 text: NTextMulti([
-                  TextSpan(text: 'Ti ideš sa '),
+                  TextSpan(text: 'Ova knjiga je o '),
                   TextSpan(
-                      text: 'mnom',
+                      text: 'meni',
                       style: Nrs.getTextStyle(context: context, isBold: true)),
                 ])),
             PronounLine(
                 pronoun: PronounEnum.You,
                 text: NTextMulti([
-                  TextSpan(text: 'Ja ću pjevati s '),
+                  TextSpan(text: 'Ja mislim o '),
                   TextSpan(
-                      text: 'tobom',
-                      style: Nrs.getTextStyle(context: context, isBold: true))
+                      text: 'tebi',
+                      style: Nrs.getTextStyle(context: context, isBold: true)),
                 ])),
             PronounLine(
                 pronoun: PronounEnum.He,
                 text: NTextMulti([
-                  TextSpan(text: 'Ja radim zajedno s '),
+                  TextSpan(text: 'Ona se brine o '),
                   TextSpan(
-                      text: 'njim',
-                      style: Nrs.getTextStyle(context: context, isBold: true))
+                      text: 'njemu',
+                      style: Nrs.getTextStyle(context: context, isBold: true)),
                 ])),
             PronounLine(
                 pronoun: PronounEnum.She,
                 text: NTextMulti([
-                  TextSpan(text: 'Josip će putovati s '),
+                  TextSpan(text: 'On samo priča o '),
                   TextSpan(
-                      text: 'njom',
-                      style: Nrs.getTextStyle(context: context, isBold: true))
+                      text: 'njoj',
+                      style: Nrs.getTextStyle(context: context, isBold: true)),
                 ])),
             PronounLine(
                 pronoun: PronounEnum.We,
                 text: NTextMulti([
-                  TextSpan(text: 'Treba ti da ideš s '),
+                  TextSpan(text: 'Ona kaže nešto o '),
                   TextSpan(
                       text: 'nama',
-                      style: Nrs.getTextStyle(context: context, isBold: true))
+                      style: Nrs.getTextStyle(context: context, isBold: true)),
                 ])),
             PronounLine(
                 pronoun: PronounEnum.You_Plural,
                 text: NTextMulti([
-                  TextSpan(text: 'Ivan mora pričati s '),
+                  TextSpan(text: 'Ja ne znam ništa o '),
                   TextSpan(
                       text: 'vama',
                       style: Nrs.getTextStyle(context: context, isBold: true)),
@@ -123,18 +115,19 @@ class InstrumentalGrammarGuideContent extends StatelessWidget {
             PronounLine(
                 pronoun: PronounEnum.They_Ungendered,
                 text: NTextMulti([
-                  TextSpan(text: 'Zoran želi ići s '),
+                  TextSpan(text: 'Hoćemo govoriti o '),
                   TextSpan(
                       text: 'njima',
-                      style: Nrs.getTextStyle(context: context, isBold: true))
+                      style: Nrs.getTextStyle(context: context, isBold: true)),
                 ])),
             PronounLine(
                 pronoun: PronounEnum.Oneself,
                 text: NTextMulti([
-                  TextSpan(text: 'Sa '),
+                  TextSpan(text: 'I o '),
                   TextSpan(
-                      text: 'sobom',
-                      style: Nrs.getTextStyle(context: context, isBold: true))
+                      text: 'sebi ',
+                      style: Nrs.getTextStyle(context: context, isBold: true)),
+                  TextSpan(text: 'isto'),
                 ])),
           ],
         ),

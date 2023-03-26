@@ -8,6 +8,7 @@ class SbcLabels {
   static String justTables = 'Tabele';
   static String grammarGuide = 'Vodič za gramatiku';
   static String nouns = 'Imenice';
+  static String numbers = 'Brojevi';
   final DialectType dialect;
 
   SbcLabels(this.dialect);

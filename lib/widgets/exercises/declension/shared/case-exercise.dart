@@ -6,7 +6,7 @@ import 'package:navika/state/exercise-nav-notifier.dart';
 import 'package:navika/state/settings/settings-consumer-wrapper.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/exercises/declension/shared/case-question-content.dart';
-import 'package:navika/widgets/grammar/grammar-guide/declension-guide.dart';
+import 'package:navika/widgets/grammar-guides/declension-guide/declension-guide.dart';
 import 'package:navika/widgets/sbc_labels.dart';
 import 'package:navika/widgets/shared/ad-card.dart';
 import 'package:navika/widgets/shared/exercise-navigation-wrapper.dart';

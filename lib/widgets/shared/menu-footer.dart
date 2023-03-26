@@ -4,7 +4,7 @@ import 'package:navika/models/settings.dart';
 import 'package:navika/state/settings/settings-consumer-wrapper.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/exercises/cyrillic/cyrillic-exercise.dart';
-import 'package:navika/widgets/grammar/grammar-guide/declension-guide.dart';
+import 'package:navika/widgets/grammar-guides/declension-guide/declension-guide.dart';
 import 'package:navika/widgets/menus/declension-menu.dart';
 import 'package:navika/widgets/menus/verb-menu.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
@@ -87,7 +87,7 @@ class MenuFooter extends StatelessWidget {
                 ...standardButtons,
               ]
             : standardButtons;
-            
+
         return NFooterMenu(
           buttons: buttons2,
         );

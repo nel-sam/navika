@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/utilities/navika-helpers.dart';
-import 'package:navika/widgets/grammar/grammar-guide/child-widgets/declension-table-cell.dart';
-import 'package:navika/widgets/grammar/grammar-guide/child-widgets/declension-table.dart';
+import 'package:navika/widgets/grammar-guides/declension-guide/child-widgets/declension-table-cell.dart';
+import 'package:navika/widgets/grammar-guides/declension-guide/child-widgets/declension-table.dart';
 
 class NominativDeclensionTable extends StatelessWidget {
   final DialectType dialect;
