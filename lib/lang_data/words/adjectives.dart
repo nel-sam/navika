@@ -235,23 +235,23 @@ class AdjectiveBankGeneral {
     ),
   );
 
-static final Adjective japanski = Adjective(
+  static final Adjective japanski = Adjective(
     dictionary: 'japanski',
     nominativ: new Declension(
-      masculine: new DeclensionByGender(
-          singular: ['japanski'], plural: ['japanski']),
-      feminine: new DeclensionByGender(
-          singular: ['japanska'], plural: ['japanske']),
-      neuter: new DeclensionByGender(
-          singular: ['japansko'], plural: ['japanska']),
+      masculine:
+          new DeclensionByGender(singular: ['japanski'], plural: ['japanski']),
+      feminine:
+          new DeclensionByGender(singular: ['japanska'], plural: ['japanske']),
+      neuter:
+          new DeclensionByGender(singular: ['japansko'], plural: ['japanska']),
     ),
     akuzativ: new Declension(
-      masculine: new DeclensionByGender(
-          singular: ['japanski'], plural: ['japanske']),
-      feminine: new DeclensionByGender(
-          singular: ['japansku'], plural: ['japanske']),
-      neuter: new DeclensionByGender(
-          singular: ['japansko'], plural: ['japanska']),
+      masculine:
+          new DeclensionByGender(singular: ['japanski'], plural: ['japanske']),
+      feminine:
+          new DeclensionByGender(singular: ['japansku'], plural: ['japanske']),
+      neuter:
+          new DeclensionByGender(singular: ['japansko'], plural: ['japanska']),
     ),
     instrumental: new Declension(
       masculine: new DeclensionByGender(
@@ -272,8 +272,8 @@ static final Adjective japanski = Adjective(
     genitiv: new Declension(
       masculine: new DeclensionByGender(
           singular: ['japanskog'], plural: ['japanskih']),
-      feminine: new DeclensionByGender(
-          singular: ['japanske'], plural: ['japanskih']),
+      feminine:
+          new DeclensionByGender(singular: ['japanske'], plural: ['japanskih']),
       neuter: new DeclensionByGender(
           singular: ['japanskog'], plural: ['japanskih']),
     ),
@@ -1115,7 +1115,7 @@ static final Adjective japanski = Adjective(
     ),
     genitiv: new Declension(
       masculine:
-          new DeclensionByGender(singular: ['vruća'], plural: ['vrućih']),
+          new DeclensionByGender(singular: ['vrućeg'], plural: ['vrućih']),
       feminine: new DeclensionByGender(singular: ['vruće'], plural: ['vrućih']),
       neuter: new DeclensionByGender(singular: ['vruća'], plural: ['vrućih']),
     ),

@@ -12,7 +12,7 @@ import 'package:nrs_flutter_lib/enums.dart';
 class InstrumentalExercises {
   late bool isCroatian;
   late bool isSerbian;
-  final Cases caseType = Cases.Dat;
+  final Cases caseType = Cases.Ins;
 
   InstrumentalExercises(DialectType dialect) {
     this.isCroatian = dialect == DialectType.Croatia;
@@ -152,7 +152,7 @@ class InstrumentalExercises {
             isPlural: true,
             sentenceParts: [
               CaseSentencePart(displayValue: isCroatian ? 'Što' : 'Šta'),
-              CaseSentencePart(displayValue: 'ti je s ?'),
+              CaseSentencePart(displayValue: 'ti je s'),
               CaseSentencePart(
                 isCorrectable: true,
                 actualObject: NounBankGeneral.ruka,
@@ -160,6 +160,7 @@ class InstrumentalExercises {
                 correctValues: NounBankGeneral.ruka.instrumental.plural,
                 grammarType: GrammarTypes.noun,
               ),
+              CaseSentencePart(displayValue: '?'),
             ],
             isAnimate: false,
             translation: N.t('ex_Sto_ti_je_s_rukama')),
@@ -168,8 +169,7 @@ class InstrumentalExercises {
             gender: NounBankGeneral.bicikl.gender,
             isPlural: false,
             sentenceParts: [
-              CaseSentencePart(
-                  displayValue: 'Na posao putujem svojim brzim biciklom'),
+              CaseSentencePart(displayValue: 'Na posao putujem'),
               CaseSentencePart(
                 isCorrectable: true,
                 actualObject: PossessivePronounBank.svoj,
@@ -201,7 +201,7 @@ class InstrumentalExercises {
             gender: NounBankGeneral.krevet.gender,
             isPlural: true,
             sentenceParts: [
-              CaseSentencePart(displayValue: 'Imaju sobu s malim krevetima'),
+              CaseSentencePart(displayValue: 'Imaju sobu s'),
               CaseSentencePart(
                 isCorrectable: true,
                 actualObject: AdjectiveBankGeneral.mali,

@@ -57,15 +57,11 @@ class CaseExerciseRowCard extends StatelessWidget {
                     fontSize: FONT_SIZE * 1.1, fontWeight: FontWeight.bold),
               ),
             Padding(padding: EdgeInsets.only(top: FONT_SIZE * 1.2)),
-            this.isAllCorrect
-                ? Wrap(
-                    crossAxisAlignment: WrapCrossAlignment.start,
-                    children: N.getCorrectSentence(
-                        context, this.combos.sentenceParts))
-                : Wrap(
-                    runSpacing: 4,
-                    crossAxisAlignment: WrapCrossAlignment.start,
-                    children: children.map((c) => c).toList()),
+            Wrap(
+                crossAxisAlignment: WrapCrossAlignment.start,
+                children: this.isAllCorrect
+                    ? N.getCorrectSentence(context, this.combos.sentenceParts)
+                    : children.map((c) => c).toList()),
             if (this.isAllCorrect)
               Container(
                 child: Center(

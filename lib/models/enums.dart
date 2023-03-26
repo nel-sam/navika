@@ -6,7 +6,8 @@ enum Cases {
   Lok,
   Gen,
   Dat,
-  All, Unspecified,
+  All,
+  Unspecified,
 }
 
 enum DialectType {
@@ -33,6 +34,12 @@ enum Genders {
   Feminine,
   Neuter,
   Unspecific,
+}
+
+enum Plurality {
+  Inherited,
+  Plural,
+  Singular,
 }
 
 enum PronounEnum {

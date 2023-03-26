@@ -132,7 +132,7 @@
   "ex_Jucer_su_pricali_o_tebi": "Ayer hablaron de ti",
   "ex_Po_njemu_isplati_kupit": "Según él, vale la pena comprar",
   "ex_Govorimo_o_njoj": "Hablamos de ella",
-  "ex_Ona_ide_prema_nam": "Ella viene hacia nosotros",
+  "ex_Ona_ide_prema_nama": "Ella viene hacia nosotros",
   "ex_Vas_pas_se_naginje_prema_vama": "Su perro se inclina hacia usted",
   "ex_Zivotinje_su_svjesne_kretanja_prema_njima": "Las animales son conscientes de los movimientos hacia ellos",
   "ex_Imao_sam_osobno_jednu_situaciju_s_njim": "Tuve una situación personal con él",
@@ -168,6 +168,8 @@
   "extrainfo_long_form_of_pronouns": "Las formas largas de preposiciones se usan al principio de frases, para agregar énfasis, y después de preposiciones",
   "extrainfo_adj_after_noun_in_vokative": "Los adjetivos se ponen después del sustantivo en el caso vocativo",
   "extrainfo_gospodin_is_very_irregular": "El sustantivo 'gospodin' es muy irregular",
+  "extrainfo_noun_seems_masc_but_declines_fem": "El sustantivo parece masculino pero se declina como sustantivo femenino irregular",
+  "extrainfo_most_short_nouns_get_ovi_suffix_in_plural": "La mayoría de los sustantivos cortos se convierten en plural con el sufijo '-ovi'",
 
   "nominativ": "Nominativo",
   "akuzativ": "Acusativo",

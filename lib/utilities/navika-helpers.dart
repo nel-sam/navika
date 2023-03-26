@@ -251,17 +251,18 @@ class N {
       final isAllowedGrammarType = allowedTypes.contains(current.grammarType);
 
       if (current.isCorrectable && !isAllowedGrammarType) {
-        var displayValue = i == 0
+        var newDisplayValue = i == 0
             ? '${capitalizeFirstLetter(current.correctValues[0])}'
             : ' ${current.correctValues[0]}';
 
         // If the next element is correctable and not allowed grammar type, add a space
         if (i < combo.sentenceParts.length - 1 &&
-            !combo.sentenceParts[i + 1].isCorrectable) {
-          displayValue += ' ';
+            !combo.sentenceParts[i + 1].isCorrectable &&
+            !allowedTypes.contains(combo.sentenceParts[i + 1].grammarType)) {
+          newDisplayValue += ' ';
         }
 
-        combo.sentenceParts[i] = CaseSentencePart(displayValue: displayValue);
+        combo.sentenceParts[i] = CaseSentencePart(displayValue: newDisplayValue);
       }
     }
   }

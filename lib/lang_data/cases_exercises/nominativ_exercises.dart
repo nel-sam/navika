@@ -28,6 +28,8 @@ class NominativExercises {
             gender: NounBankGeneral.grad.gender,
             isPlural: true,
             isAnimate: false,
+            extraInfo:
+                N.t('extrainfo_most_short_nouns_get_ovi_suffix_in_plural'),
             translation: N.t('ex_Koji_su_najljepsi_gradovi_na_svijetu'),
             sentenceParts: [
               CaseSentencePart(

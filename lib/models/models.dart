@@ -12,6 +12,7 @@ class CaseSentencePart {
   List<String> correctValues;
   dynamic actualObject;
   Cases caseType;
+  Plurality forcedPlurality;
 
   CaseSentencePart(
       {required this.displayValue,
@@ -19,7 +20,8 @@ class CaseSentencePart {
       this.correctValues = const [],
       this.isCorrectable = false,
       this.actualObject,
-      this.caseType = Cases.Unspecified}) {
+      this.caseType = Cases.Unspecified,
+      this.forcedPlurality = Plurality.Inherited}) {
     assert(this.actualObject is Adjective ||
         this.actualObject is PersonalPronoun ||
         this.actualObject is Noun ||

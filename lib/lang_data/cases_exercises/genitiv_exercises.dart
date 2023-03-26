@@ -176,7 +176,7 @@ class GenitivExercises {
           gender: NounBankGeneral.pravilo.gender,
           isPlural: true,
           sentenceParts: [
-            CaseSentencePart(displayValue: "Ova škola nema stroga pravila"),
+            CaseSentencePart(displayValue: "Ova škola nema"),
             CaseSentencePart(
               isCorrectable: true,
               actualObject: AdjectiveBankGeneral.strogi,
@@ -192,7 +192,6 @@ class GenitivExercises {
               correctValues: NounBankGeneral.pravilo.genitiv.plural,
               grammarType: GrammarTypes.noun,
             ),
-            CaseSentencePart(displayValue: "?"),
           ],
           isAnimate: false,
           translation: N.t('ex_Ova_skola_nema_stroga_pravila'),

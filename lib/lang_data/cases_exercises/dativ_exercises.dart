@@ -73,6 +73,7 @@ class DativExercises {
             caseType: caseType,
             gender: NounBankGeneral.sin.gender,
             isPlural: true,
+            extraInfo: N.t('extrainfo_most_short_nouns_get_ovi_suffix_in_plural'),
             sentenceParts: [
               CaseSentencePart(
                 isCorrectable: true,
@@ -237,13 +238,14 @@ class DativExercises {
               correctValues: NounBankGeneral.zivot.dativ!.singular,
               grammarType: GrammarTypes.noun,
             ),
-            CaseSentencePart(displayValue: 'važno'),
+            CaseSentencePart(displayValue: 'važno?'),
           ],
         ),
         PANCombo(
             caseType: caseType,
             gender: NounBankGeneral.jesen.gender,
             isPlural: false,
+            extraInfo: N.t('extrainfo_noun_seems_masc_but_declines_fem'),
             sentenceParts: [
               CaseSentencePart(displayValue: 'Veselim se'),
               CaseSentencePart(

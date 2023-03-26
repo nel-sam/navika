@@ -136,7 +136,7 @@ class MixedExercises {
               CaseSentencePart(
                 isCorrectable: true,
                 actualObject: AdjectiveBankGeneral.prvi,
-                displayValue: AdjectiveBankGeneral.prvi.dictionary,
+                displayValue: '',
                 correctValues:
                     AdjectiveBankGeneral.prvi.nominativ!.masculine.singular,
                 grammarType: GrammarTypes.adjective,
@@ -145,7 +145,7 @@ class MixedExercises {
               CaseSentencePart(
                 isCorrectable: true,
                 actualObject: NounBankGeneral.pas,
-                displayValue: NounBankGeneral.pas.dictionary,
+                displayValue: '',
                 correctValues: NounBankGeneral.pas.nominativ.singular,
                 grammarType: GrammarTypes.noun,
                 caseType: Cases.Nom,
@@ -282,9 +282,10 @@ class MixedExercises {
                 isCorrectable: true,
                 actualObject: NounBankGeneral.cesta,
                 displayValue: NounBankGeneral.cesta.dictionary,
-                correctValues: NounBankGeneral.cesta.akuzativ.singular,
+                correctValues: NounBankGeneral.cesta.genitiv.singular,
                 grammarType: GrammarTypes.noun,
-                caseType: Cases.Aku,
+                caseType: Cases.Gen,
+                forcedPlurality: Plurality.Singular,
               ),
             ],
             isAnimate: false,
@@ -297,7 +298,7 @@ class MixedExercises {
               CaseSentencePart(
                 isCorrectable: true,
                 actualObject: NounBankGeneral.otac,
-                displayValue: NounBankGeneral.otac.dictionary,
+                displayValue: '',
                 correctValues: NounBankGeneral.otac.nominativ.singular,
                 grammarType: GrammarTypes.noun,
                 caseType: Cases.Nom,

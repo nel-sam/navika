@@ -74,12 +74,18 @@ class CaseExerciseHelp extends StatelessWidget {
                         );
                       }
 
+                      var isPlural = combos.isPlural;
+
+                      if (e.forcedPlurality != Plurality.Inherited) {
+                        isPlural = e.forcedPlurality == Plurality.Plural;
+                      }
+
                       if (e.grammarType == GrammarTypes.noun) {
                         return getNounList(
                           context,
                           e.actualObject,
                           caseType,
-                          combos.isPlural,
+                          isPlural,
                         );
                       }
 
@@ -187,7 +193,10 @@ class CaseExerciseHelp extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.only(left: 8.0),
               child: NTextSpan(value,
-                  textStyle: Nrs.getTextStyle(context: context, isBold: true)),
+                  textStyle: Nrs.getTextStyle(
+                    context: context,
+                    isBold: isBold,
+                  )),
             ),
           )
         ],
@@ -366,20 +375,48 @@ class CaseExerciseHelp extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         NSubHeader('${pp.dictionary} - ${N.getCaseLabel(caseType)}'),
-        getDeclensionListItem(context, N.getCaseLabel(Cases.Nom),
-            pp.nominativ.forms.join(joinChar), caseType == Cases.Nom),
-        getDeclensionListItem(context, N.getCaseLabel(Cases.Aku),
-            pp.akuzativ.forms.join(joinChar), caseType == Cases.Aku),
-        getDeclensionListItem(context, N.getCaseLabel(Cases.Ins),
-            pp.instrumental.forms.join(joinChar), caseType == Cases.Ins),
-        getDeclensionListItem(context, N.getCaseLabel(Cases.Lok),
-            pp.lokativ.forms.join(joinChar), caseType == Cases.Lok),
-        getDeclensionListItem(context, N.getCaseLabel(Cases.Dat),
-            pp.dativ.forms.join(joinChar), caseType == Cases.Dat),
-        getDeclensionListItem(context, N.getCaseLabel(Cases.Gen),
-            pp.genitiv.forms.join(joinChar), caseType == Cases.Gen),
-        getDeclensionListItem(context, N.getCaseLabel(Cases.Vok),
-            pp.vokativ.forms.join(joinChar), caseType == Cases.Vok),
+        getDeclensionListItem(
+          context,
+          N.getCaseLabel(Cases.Nom),
+          pp.nominativ.forms.join(joinChar),
+          caseType == Cases.Nom,
+        ),
+        getDeclensionListItem(
+          context,
+          N.getCaseLabel(Cases.Aku),
+          pp.akuzativ.forms.join(joinChar),
+          caseType == Cases.Aku,
+        ),
+        getDeclensionListItem(
+          context,
+          N.getCaseLabel(Cases.Ins),
+          pp.instrumental.forms.join(joinChar),
+          caseType == Cases.Ins,
+        ),
+        getDeclensionListItem(
+          context,
+          N.getCaseLabel(Cases.Lok),
+          pp.lokativ.forms.join(joinChar),
+          caseType == Cases.Lok,
+        ),
+        getDeclensionListItem(
+          context,
+          N.getCaseLabel(Cases.Dat),
+          pp.dativ.forms.join(joinChar),
+          caseType == Cases.Dat,
+        ),
+        getDeclensionListItem(
+          context,
+          N.getCaseLabel(Cases.Gen),
+          pp.genitiv.forms.join(joinChar),
+          caseType == Cases.Gen,
+        ),
+        getDeclensionListItem(
+          context,
+          N.getCaseLabel(Cases.Vok),
+          pp.vokativ.forms.join(joinChar),
+          caseType == Cases.Vok,
+        ),
       ],
     );
   }
