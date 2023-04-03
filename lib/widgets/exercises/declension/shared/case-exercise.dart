@@ -111,9 +111,8 @@ class CaseExercise extends StatelessWidget {
                           active: true,
                           onPressed: () {
                             final dest = DeclensionGuide(
-                              startingCase: caseType,
-                              dialect: settings.dialectType,
-                            );
+                                startingCase: caseType,
+                                dialect: settings.dialectType);
                             Navigator.push(
                               context,
                               MaterialPageRoute(builder: (context) => dest),

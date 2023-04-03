@@ -3,7 +3,7 @@ import 'package:navika/constants.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/exercises/cyrillic/cyrillic-exercise.dart';
 import 'package:navika/widgets/menus/declension-menu.dart';
-import 'package:navika/widgets/menus/grammar-menu.dart';
+import 'package:navika/widgets/menus/number-menu.dart';
 import 'package:navika/widgets/menus/verb-menu.dart';
 import 'package:navika/widgets/sbc_labels.dart';
 import 'package:navika/widgets/shared/ad-card.dart';
@@ -52,11 +52,6 @@ class MainMenu extends StatelessWidget {
             child: Column(
               children: [
                 NMenuButton(
-                  destination: GrammarMenu(),
-                  label: N.t('grammarGuides'),
-                  transLabel: SbcLabels.grammarGuide,
-                ),
-                NMenuButton(
                   destination: DeclensionMenu(),
                   label: N.t('caseExercises'),
                   transLabel: SbcLabels.cases,
@@ -65,6 +60,11 @@ class MainMenu extends StatelessWidget {
                   destination: VerbMenu(),
                   label: N.t('verbExercises'),
                   transLabel: SbcLabels.verbs,
+                ),
+                NMenuButton(
+                  destination: NumberMenu(),
+                  label: N.t('numbers'),
+                  transLabel: SbcLabels.numbers,
                 ),
                 NMenuButton(
                   destination: CyrillicExercise(),

@@ -6,7 +6,6 @@ import 'package:navika/widgets/exercises/verbs/past-tense/past-tense.dart';
 import 'package:navika/widgets/exercises/verbs/present-tense/present-tense.dart';
 import 'package:navika/widgets/sbc_labels.dart';
 import 'package:navika/widgets/shared/ad-card.dart';
-import 'package:navika/widgets/shared/menu-footer.dart';
 import 'package:nrs_flutter_lib/widgets/n_menu_button.dart';
 import 'package:nrs_flutter_lib/widgets/n_menu_header.dart';
 
@@ -59,7 +58,7 @@ class VerbMenu extends StatelessWidget {
           ),
         ),
       ),
-      persistentFooterButtons: [MenuFooter(activeIndex: 3)],
+      //persistentFooterButtons: [MenuFooter(activeIndex: 3)],
     );
   }
 }

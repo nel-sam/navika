@@ -8,14 +8,12 @@ import 'package:navika/widgets/grammar-guides/number-guide/number-guide.dart';
 import 'package:navika/widgets/sbc_labels.dart';
 import 'package:navika/widgets/shared/ad-card.dart';
 import 'package:navika/widgets/shared/menu-footer.dart';
-import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 import 'package:nrs_flutter_lib/widgets/n_menu_button.dart';
 import 'package:nrs_flutter_lib/widgets/n_menu_header.dart';
 
 class GrammarMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    bool isBigScreen = Nrs.getScreenHeight() > MAX_SCREEN_WIDTH;
     final transLabel = N.t('grammarGuides');
     final label = SbcLabels.grammarGuide;
     final icon = NavIcons.grammarGuides;

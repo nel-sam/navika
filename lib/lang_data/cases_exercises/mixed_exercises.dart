@@ -248,7 +248,7 @@ class MixedExercises {
                 displayValue: '',
                 correctValues: PersonalPronounWordBank.vi.akuzativ.forms,
                 grammarType: GrammarTypes.personalPronoun,
-                caseType: Cases.Gen,
+                caseType: Cases.Aku,
               ),
               CaseSentencePart(displayValue: '?')
             ],
@@ -258,8 +258,10 @@ class MixedExercises {
             caseType: caseType,
             gender: Genders.Unspecific,
             isPlural: true,
+            extraInfo: N.t('extrainfo_use_genitiv_after_sa_when_saying_from_somewhere'),
             sentenceParts: [
-              CaseSentencePart(displayValue: isSerbian ? 'Pre 16' : 'Prije 16'),
+              CaseSentencePart(
+                  displayValue: '${isSerbian ? 'Pre' : 'Prije'} 16 (šesnaest)'),
               CaseSentencePart(
                 isCorrectable: true,
                 actualObject: NounBankGeneral.godina,

@@ -7,8 +7,11 @@ class SbcLabels {
   static String verbs = 'Glagoli';
   static String justTables = 'Tabele';
   static String grammarGuide = 'Vodič za gramatiku';
+  static String declensionGuide = 'Vodič za padeži';
   static String nouns = 'Imenice';
   static String numbers = 'Brojevi';
+  static String ordinalNumbers = 'Redni brojevi';
+  static String counting = 'Brojanje'; // TODO: Confirm this is correct
   final DialectType dialect;
 
   SbcLabels(this.dialect);

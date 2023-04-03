@@ -66,16 +66,16 @@ class OrdinalContent extends StatelessWidget {
 }
 
 class _NumberGuideState extends State<NumberGuide> {
+  final numbersGlobalKey = GlobalKey();
+  final countingGlobalKey = GlobalKey();
+  final ordinalGlobalKey = GlobalKey();
   late ScrollController controller = ScrollController();
   late int startingIndex = 0;
+  // TODO: Show progress in UI
   late double progressPercentage = (startingIndex / 2) * 100;
 
   @override
   Widget build(BuildContext context) {
-    final numbersGlobalKey = GlobalKey();
-    final countingGlobalKey = GlobalKey();
-    final ordinalGlobalKey = GlobalKey();
-
     return Scaffold(
       appBar: N.navAppBar(
         title: SbcLabels.numbers,
@@ -117,5 +117,26 @@ class _NumberGuideState extends State<NumberGuide> {
         ),
       ),
     );
+  }
+
+  scrollListener() => setState(() {
+        if (controller.position.atEdge) {
+          bool atTop = controller.position.pixels == 0;
+        }
+
+        double fullHeight = _getFullSizeGuideHeight();
+        double percentage = controller.position.pixels / fullHeight;
+        percentage = percentage < 0 ? 0 : percentage;
+        this.progressPercentage = percentage * 100;
+      });
+
+  double _getFullSizeGuideHeight() {
+    double totalSize = 0;
+
+    totalSize += numbersGlobalKey.currentContext!.size!.height;
+    totalSize += countingGlobalKey.currentContext!.size!.height;
+    totalSize += ordinalGlobalKey.currentContext!.size!.height;
+
+    return totalSize;
   }
 }

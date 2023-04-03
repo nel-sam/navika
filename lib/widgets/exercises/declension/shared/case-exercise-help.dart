@@ -4,6 +4,7 @@ import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/models/noun.dart';
 import 'package:navika/models/personal-pronoun.dart';
+import 'package:navika/state/settings/settings-consumer-wrapper.dart';
 import 'package:navika/utilities/navika-helpers.dart';
 import 'package:navika/widgets/grammar-guides/declension-guide/child-widgets/declension-table-cell.dart';
 import 'package:navika/widgets/grammar-guides/declension-guide/child-widgets/declension-table.dart';
@@ -34,73 +35,75 @@ class CaseExerciseHelp extends StatelessWidget {
     return Scaffold(
       appBar:
           N.navAppBar(title: N.getCaseLabel(combos.caseType), context: context),
-      body: Center(
-        child: Container(
-          width: screenWidth > 840 ? screenWidth / 2 : screenWidth,
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Column(
-                children: [
-                  getCorrectSentenceWidget(context, combos),
-                  NRoundButton(
-                      title: N.t('go_to_declension_grammar_guide'),
-                      onPressed: () {
-                        final dest = DeclensionGuide(
-                          startingCase: Cases.Nom,
-                          dialect: dialect,
-                        );
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => dest),
-                        );
-                      }),
-                  ...combos.sentenceParts.map(
-                    (CaseSentencePart e) {
-                      final caseType = combos.caseType == Cases.Unspecified
-                          ? e.caseType
-                          : combos.caseType;
+      body: SettingsConsumerWrapper(
+        getChildWidget: (settings) => Center(
+          child: Container(
+            width: screenWidth > 840 ? screenWidth / 2 : screenWidth,
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Column(
+                  children: [
+                    getCorrectSentenceWidget(context, combos),
+                    NRoundButton(
+                        title: N.t('go_to_declension_grammar_guide'),
+                        onPressed: () {
+                          final dest = DeclensionGuide(
+                              startingCase: Cases.Nom,
+                              dialect: settings.dialectType);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => dest),
+                          );
+                        }),
+                    ...combos.sentenceParts.map(
+                      (CaseSentencePart e) {
+                        final caseType = combos.caseType == Cases.Unspecified
+                            ? e.caseType
+                            : combos.caseType;
 
-                      if (!e.isCorrectable) return Container();
+                        if (!e.isCorrectable) return Container();
 
-                      if (e.grammarType == GrammarTypes.adjective ||
-                          e.grammarType == GrammarTypes.possessivePronoun ||
-                          e.grammarType == GrammarTypes.demonstrativePronoun) {
-                        return getAdjDeclensionTable(
-                          context,
-                          e.actualObject,
-                          caseType,
-                          combos.isAnimate,
-                        );
-                      }
+                        if (e.grammarType == GrammarTypes.adjective ||
+                            e.grammarType == GrammarTypes.possessivePronoun ||
+                            e.grammarType ==
+                                GrammarTypes.demonstrativePronoun) {
+                          return getAdjDeclensionTable(
+                            context,
+                            e.actualObject,
+                            caseType,
+                            combos.isAnimate,
+                          );
+                        }
 
-                      var isPlural = combos.isPlural;
+                        var isPlural = combos.isPlural;
 
-                      if (e.forcedPlurality != Plurality.Inherited) {
-                        isPlural = e.forcedPlurality == Plurality.Plural;
-                      }
+                        if (e.forcedPlurality != Plurality.Inherited) {
+                          isPlural = e.forcedPlurality == Plurality.Plural;
+                        }
 
-                      if (e.grammarType == GrammarTypes.noun) {
-                        return getNounList(
-                          context,
-                          e.actualObject,
-                          caseType,
-                          isPlural,
-                        );
-                      }
+                        if (e.grammarType == GrammarTypes.noun) {
+                          return getNounList(
+                            context,
+                            e.actualObject,
+                            caseType,
+                            isPlural,
+                          );
+                        }
 
-                      if (e.grammarType == GrammarTypes.personalPronoun) {
-                        return getPersonalPronounDeclensionList(
-                          context,
-                          e.actualObject,
-                          caseType,
-                        );
-                      }
+                        if (e.grammarType == GrammarTypes.personalPronoun) {
+                          return getPersonalPronounDeclensionList(
+                            context,
+                            e.actualObject,
+                            caseType,
+                          );
+                        }
 
-                      return Container();
-                    },
-                  ),
-                ],
+                        return Container();
+                      },
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

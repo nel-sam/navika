@@ -170,6 +170,7 @@
   "extrainfo_gospodin_is_very_irregular": "El sustantivo 'gospodin' es muy irregular",
   "extrainfo_noun_seems_masc_but_declines_fem": "El sustantivo parece masculino pero se declina como sustantivo femenino irregular",
   "extrainfo_most_short_nouns_get_ovi_suffix_in_plural": "La mayoría de los sustantivos cortos se convierten en plural con el sufijo '-ovi'",
+  "extrainfo_use_genitiv_after_sa_when_saying_from_somewhere": "Normalmente se usa el instrumental con 'sa', pero se usa el genitivo después de 'sa' cuando se habla de un lugar de origen.",
 
   "nominativ": "Nominativo",
   "akuzativ": "Acusativo",
@@ -201,6 +202,7 @@
   "genitiveDescription": "El caso genitivo se usa con preposiciones e indica posesión, origen o falta de algo (nema, bez). Si se usa sin preposiciones, puede indicar el material de lo cual está hecho algo. Es importante notar que el acento de la palabra se mueve una sílaba a la derecha, y la vocal de esa sílaba se dice más larga.",
   "grammar": "Gramática",
   "grammarGuides": "Guías de Gramática",
+  "declensionGuide": "Guía de Declinación",
   "cases": "Casos",
   "caseExercises": "Ejercicios de Declinación",
   "justCaseTables": "Tablas de Referencia",

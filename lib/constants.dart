@@ -44,6 +44,8 @@ class NavIcons {
   static IconData grammarGuides = Icons.menu_book;
   static IconData verbs = Icons.nordic_walking;
   static IconData cases = Icons.change_circle;
+  static IconData numbers =
+      Icons.numbers; // TODO: Make sure this is the right icon
   static IconData premium = Icons.workspace_premium_outlined;
   static String cyrillic = 'аБ';
 }
