@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:navika/models/enums.dart';
-import 'package:navika/utilities/navika-helpers.dart';
-import 'package:navika/widgets/exercises/declension/exercise-type-menus/declension-type-menu.dart';
+import 'package:navika/utilities/navika_helpers.dart';
+import 'package:navika/widgets/exercises/declension/exercise_type_menus/declension_type_menu.dart';
 
 class Dativ extends StatelessWidget {
   @override

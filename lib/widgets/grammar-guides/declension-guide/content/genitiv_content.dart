@@ -1,0 +1,141 @@
+import 'package:flutter/material.dart';
+import 'package:navika/models/enums.dart';
+import 'package:navika/utilities/navika_helpers.dart';
+import 'package:navika/widgets/grammar-guides/declension-guide/child_widgets/example_sentences.dart';
+import 'package:navika/widgets/grammar-guides/declension-guide/child_widgets/possessive_pronoun_section.dart';
+import 'package:navika/widgets/grammar-guides/declension-guide/child_widgets/pronoun_line.dart';
+import 'package:navika/widgets/grammar-guides/declension-guide/content/declension_tables/genitiv_table.dart';
+import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
+import 'package:nrs_flutter_lib/widgets/n_text_multi.dart';
+import 'package:nrs_flutter_lib/widgets/n_text_span.dart';
+
+class GenitivGrammarGuideContent extends StatelessWidget {
+  const GenitivGrammarGuideContent({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        NTextSpan(N.t('genitiveDescription')),
+        ExampleSentences(
+          sentences: [
+            NTextMulti([
+              TextSpan(text: 'Kraj '),
+              TextSpan(
+                  text: 'filma',
+                  style: Nrs.getTextStyle(context: context, isBold: true)),
+            ]),
+            NTextMulti([
+              TextSpan(text: 'Ne mogu živjeti '),
+              TextSpan(
+                  text: 'bez tebe',
+                  style: Nrs.getTextStyle(context: context, isBold: true)),
+            ]),
+            NTextMulti([
+              TextSpan(text: 'Vrh '),
+              TextSpan(
+                  text: 'planine',
+                  style: Nrs.getTextStyle(context: context, isBold: true)),
+            ]),
+            NTextMulti([
+              TextSpan(text: 'Broj '),
+              TextSpan(
+                  text: 'telefona',
+                  style: Nrs.getTextStyle(context: context, isBold: true)),
+            ]),
+            NTextMulti([
+              TextSpan(text: 'Nema '),
+              TextSpan(
+                  text: 'problema',
+                  style: Nrs.getTextStyle(context: context, isBold: true)),
+            ]),
+          ],
+        ),
+        GenitivDeclensionTable(),
+        PossessivePronounSection(
+          note: N.t('longShortFormDesc'),
+          contents: [
+            PronounLine(
+                pronoun: PronounEnum.I,
+                text: NTextMulti([
+                  TextSpan(text: 'On plaši '),
+                  TextSpan(
+                      text: 'mene\n',
+                      style: Nrs.getTextStyle(context: context, isBold: true)),
+                  TextSpan(text: 'On '),
+                  TextSpan(
+                      text: 'me',
+                      style: Nrs.getTextStyle(context: context, isBold: true)),
+                  TextSpan(text: ' plaši'),
+                ])),
+            PronounLine(
+                pronoun: PronounEnum.You,
+                text: NTextMulti([
+                  TextSpan(text: 'Nisam spavala zbog '),
+                  TextSpan(
+                      text: 'tebe\n',
+                      style: Nrs.getTextStyle(context: context, isBold: true)),
+                  TextSpan(text: 'Evo '),
+                  TextSpan(
+                      text: 'te',
+                      style: Nrs.getTextStyle(context: context, isBold: true))
+                ])),
+            PronounLine(
+                pronoun: PronounEnum.He,
+                text: NTextMulti([
+                  TextSpan(text: 'Ona stoji iza '),
+                  TextSpan(
+                      text: 'njega\n',
+                      style: Nrs.getTextStyle(context: context, isBold: true)),
+                  TextSpan(text: 'Nema '),
+                  TextSpan(
+                      text: 'ga',
+                      style: Nrs.getTextStyle(context: context, isBold: true)),
+                  TextSpan(text: ' tu'),
+                ])),
+            PronounLine(
+                pronoun: PronounEnum.She,
+                text: NTextMulti([
+                  TextSpan(text: 'Josipa stoji iza '),
+                  TextSpan(
+                      text: 'nje',
+                      style: Nrs.getTextStyle(context: context, isBold: true)),
+                ])),
+            PronounLine(
+                pronoun: PronounEnum.We,
+                text: NTextMulti([
+                  TextSpan(text: 'Oni su išli bez '),
+                  TextSpan(
+                      text: 'nas',
+                      style: Nrs.getTextStyle(context: context, isBold: true))
+                ])),
+            PronounLine(
+                pronoun: PronounEnum.You_Plural,
+                text: NTextMulti([
+                  TextSpan(text: 'On stoji između nas i '),
+                  TextSpan(
+                      text: 'vas',
+                      style: Nrs.getTextStyle(context: context, isBold: true))
+                ])),
+            PronounLine(
+              pronoun: PronounEnum.They_Ungendered,
+              text: NTextMulti(
+                [
+                  TextSpan(text: 'Bojim se '),
+                  TextSpan(
+                      text: 'njih\n',
+                      style: Nrs.getTextStyle(context: context, isBold: true)),
+                  TextSpan(text: 'Ja '),
+                  TextSpan(
+                      text: 'ih',
+                      style: Nrs.getTextStyle(context: context, isBold: true)),
+                  TextSpan(text: ' se ne bojim'),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+}

@@ -4,10 +4,10 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:localization/localization.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
-import 'package:navika/navika-theme.dart';
-import 'package:navika/widgets/menus/main-menu.dart';
-import 'package:navika/widgets/settings/dialect-setting-page.dart';
-import 'package:navika/widgets/shared/nav-spinner.dart';
+import 'package:navika/navika_theme.dart';
+import 'package:navika/widgets/menus/main_menu.dart';
+import 'package:navika/widgets/settings/dialect_setting_page.dart';
+import 'package:navika/widgets/shared/nav_spinner.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {

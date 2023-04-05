@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:navika/lang_data/words/demonstrative-pronouns.dart';
+import 'package:navika/lang_data/words/demonstrative_pronouns.dart';
 import 'package:navika/lang_data/words/nouns.dart';
 import 'package:navika/models/models.dart';
-import 'package:navika/utilities/navika-helpers.dart';
+import 'package:navika/utilities/navika_helpers.dart';
 import 'package:nrs_flutter_lib/enums.dart';
 
 void main() {

@@ -2,7 +2,7 @@ import 'package:navika/lang_data/words/nouns.dart';
 import 'package:navika/lang_data/words/possessive-pronouns.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
-import 'package:navika/utilities/navika-helpers.dart';
+import 'package:navika/utilities/navika_helpers.dart';
 import 'package:nrs_flutter_lib/enums.dart';
 
 class VokativExercises {

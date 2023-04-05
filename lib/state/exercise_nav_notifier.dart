@@ -1,0 +1,198 @@
+import 'dart:async';
+
+import 'package:flutter/foundation.dart';
+import 'package:navika/constants.dart';
+import 'package:navika/lang_data/cases_exercises/mixed_exercises.dart';
+import 'package:navika/models/enums.dart';
+import 'package:navika/state/cases/case_question_state.dart';
+import 'package:navika/state/content_generators/akuzativ_generators.dart';
+import 'package:navika/state/content_generators/dativ_generators.dart';
+import 'package:navika/state/content_generators/genitiv_generators.dart';
+import 'package:navika/state/content_generators/instrumental_generators.dart';
+import 'package:navika/state/content_generators/lokativ_generators.dart';
+import 'package:navika/state/content_generators/nominativ_generators.dart';
+import 'package:navika/state/content_generators/number_generators.dart';
+import 'package:navika/state/content_generators/verb_generators.dart';
+import 'package:navika/state/content_generators/vokativ_generators.dart';
+import 'package:nrs_flutter_lib/constants.dart';
+import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
+
+class ExerciseNavNotifier with ChangeNotifier {
+  Timer _debounce = Timer(const Duration(milliseconds: 0), () {});
+  List _states = [];
+  late ExerciseTypes _exerciseType;
+  int _activeIndex = 0;
+  int _maxIndex = 0;
+  late DialectType _dialect;
+  final bool isPremium;
+
+  ExerciseNavNotifier(
+      {required this.isPremium,
+      required DialectType dialect,
+      required ExerciseTypes exerciseType,
+      Cases? caseType}) {
+    _exerciseType = exerciseType;
+    _dialect = dialect;
+
+    bool isVerb = _exerciseType == ExerciseTypes.verb_Present ||
+        _exerciseType == ExerciseTypes.verb_Simple_Past ||
+        _exerciseType == ExerciseTypes.verb_Present_Irregular ||
+        _exerciseType == ExerciseTypes.verb_Simple_Past_Irregular ||
+        _exerciseType == ExerciseTypes.verb_reflexive;
+
+    if (isVerb) {
+      final verbGenerator = VerbGenerators(dialect: dialect);
+      this._maxIndex = verbGenerator.getMaxIndex();
+      _states = verbGenerator.createExercises(exerciseType, dialect);
+    } else if (_exerciseType == ExerciseTypes.numbers_counting) {
+      _states =
+          NumberGenerators.createExercise(exerciseType, dialect, isPremium);
+      this._maxIndex = _states.length;
+    } else {
+      _maxIndex = MAX_BATCH_COUNT;
+      _setCaseStates(caseType!);
+    }
+
+    this._exerciseType = exerciseType;
+  }
+
+  dynamic addSingleExercise(int index, Function createExerciseFunc) {
+    List<dynamic> allExercises =
+        createExerciseFunc(_exerciseType, _dialect, isPremium);
+
+    // loop index if greater than length of allExercises
+    if (index >= allExercises.length) {
+      index = index % allExercises.length;
+    }
+
+    return allExercises[index];
+  }
+
+  void clearInput() {
+    _states[_activeIndex].clear();
+    debouncedNotifyListeners();
+  }
+
+  debouncedNotifyListeners() {
+    if (_debounce.isActive) {
+      _debounce.cancel();
+    }
+
+    _debounce = Timer(
+        const Duration(milliseconds: DEBOUNCE_TIME), () => notifyListeners());
+  }
+
+  dynamic getActive() {
+    return _states[_activeIndex];
+  }
+
+  double getProgressPercentage() {
+    return (_activeIndex / _maxIndex) * 100;
+  }
+
+  setNext() {
+    if (_activeIndex >= _maxIndex - 1) {
+      _activeIndex = 0;
+    } else {
+      _activeIndex++;
+    }
+
+    debouncedNotifyListeners();
+  }
+
+  setPrevious() {
+    if (_activeIndex <= 0) {
+      _activeIndex = _states.length - 1;
+    } else {
+      _activeIndex--;
+    }
+
+    debouncedNotifyListeners();
+  }
+
+  _getMixedCaseExercises() {
+    final generalMixedBank = MixedExercises(_dialect).all;
+    generalMixedBank.shuffle();
+
+    for (int i = 0; i < MAX_BATCH_COUNT; i++) {
+      if (i < generalMixedBank.length) {
+        _states.add(CaseQuestionState(combos: generalMixedBank[i]));
+        continue;
+      }
+
+      final random = Nrs.getRandomNumber(max: Cases.values.length);
+      final caseType = Cases.values[random];
+
+      switch (caseType) {
+        case Cases.Nom:
+          _states.add(addSingleExercise(i, NominativGenerators.createExercise));
+          break;
+        case Cases.Aku:
+          _states.add(addSingleExercise(i, AkuzativGenerators.createExercise));
+          break;
+        case Cases.Ins:
+          _states
+              .add(addSingleExercise(i, InstrumentalGenerators.createExercise));
+          break;
+        case Cases.Dat:
+          _states.add(addSingleExercise(i, DativGenerators.createExercise));
+          break;
+        case Cases.Lok:
+          _states.add(addSingleExercise(i, LokativGenerators.createExercise));
+          break;
+        case Cases.All:
+        case Cases.Gen:
+        case Cases.Unspecified:
+          _states.add(addSingleExercise(i, GenitivGenerators.createExercise));
+          break;
+        case Cases.Vok:
+          _states.add(addSingleExercise(i, VokativGenerators.createExercise));
+          break;
+      }
+    }
+
+    _states.shuffle();
+  }
+
+  _setCaseStates(Cases caseType) {
+    switch (caseType) {
+      case Cases.All:
+        _getMixedCaseExercises();
+        break;
+      case Cases.Nom:
+        _states = NominativGenerators.createExercise(
+            _exerciseType, _dialect, isPremium);
+        break;
+      case Cases.Aku:
+        _states = AkuzativGenerators.createExercise(
+            _exerciseType, _dialect, isPremium);
+        break;
+      case Cases.Ins:
+        _states = InstrumentalGenerators.createExercise(
+            _exerciseType, _dialect, isPremium);
+        break;
+      case Cases.Dat:
+        _states =
+            DativGenerators.createExercise(_exerciseType, _dialect, isPremium);
+        break;
+      case Cases.Lok:
+        _states = LokativGenerators.createExercise(
+            _exerciseType, _dialect, isPremium);
+        break;
+      case Cases.Gen:
+        _states = GenitivGenerators.createExercise(
+            _exerciseType, _dialect, isPremium);
+        break;
+      case Cases.Vok:
+        _states = VokativGenerators.createExercise(
+            _exerciseType, _dialect, isPremium);
+        break;
+      default:
+        break;
+    }
+
+    if (_states.length - 1 < _maxIndex) {
+      _maxIndex = _states.length;
+    }
+  }
+}

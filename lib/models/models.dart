@@ -1,6 +1,6 @@
 import 'package:navika/models/adjective.dart';
 import 'package:navika/models/noun.dart';
-import 'package:navika/models/personal-pronoun.dart';
+import 'package:navika/models/personal_pronoun.dart';
 import 'package:nrs_flutter_lib/enums.dart';
 
 import 'enums.dart';

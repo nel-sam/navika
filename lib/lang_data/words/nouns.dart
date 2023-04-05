@@ -1,7 +1,7 @@
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 import 'package:navika/models/noun.dart';
-import 'package:navika/utilities/navika-helpers.dart';
+import 'package:navika/utilities/navika_helpers.dart';
 
 class NounBankGeneral {
   static final Noun srbijanka = Noun(

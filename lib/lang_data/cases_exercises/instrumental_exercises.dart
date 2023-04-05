@@ -2,11 +2,11 @@ import 'package:navika/lang_data/words/adjectives.dart';
 import 'package:navika/lang_data/words/ekavian/nouns_ekavian.dart';
 import 'package:navika/lang_data/words/ijekavian/nouns_ijekavian.dart';
 import 'package:navika/lang_data/words/nouns.dart';
-import 'package:navika/lang_data/words/personal-pronouns.dart';
+import 'package:navika/lang_data/words/personal_pronouns.dart';
 import 'package:navika/lang_data/words/possessive-pronouns.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
-import 'package:navika/utilities/navika-helpers.dart';
+import 'package:navika/utilities/navika_helpers.dart';
 import 'package:nrs_flutter_lib/enums.dart';
 
 class InstrumentalExercises {
