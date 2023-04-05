@@ -11,6 +11,7 @@ import 'package:navika/state/content-generators/genitiv-generators.dart';
 import 'package:navika/state/content-generators/instrumental-generators.dart';
 import 'package:navika/state/content-generators/lokativ-generators.dart';
 import 'package:navika/state/content-generators/nominativ-generators.dart';
+import 'package:navika/state/content-generators/number-generators.dart';
 import 'package:navika/state/content-generators/verb-generators.dart';
 import 'package:navika/state/content-generators/vokativ-generators.dart';
 import 'package:nrs_flutter_lib/constants.dart';
@@ -25,20 +26,28 @@ class ExerciseNavNotifier with ChangeNotifier {
   late DialectType _dialect;
   final bool isPremium;
 
-  ExerciseNavNotifier({
-    required this.isPremium,
-    required DialectType dialect,
-    required ExerciseTypes exerciseType,
-    Cases? caseType,
-    bool isVerb = false,
-  }) {
+  ExerciseNavNotifier(
+      {required this.isPremium,
+      required DialectType dialect,
+      required ExerciseTypes exerciseType,
+      Cases? caseType}) {
     _exerciseType = exerciseType;
     _dialect = dialect;
+
+    bool isVerb = _exerciseType == ExerciseTypes.verb_Present ||
+        _exerciseType == ExerciseTypes.verb_Simple_Past ||
+        _exerciseType == ExerciseTypes.verb_Present_Irregular ||
+        _exerciseType == ExerciseTypes.verb_Simple_Past_Irregular ||
+        _exerciseType == ExerciseTypes.verb_reflexive;
 
     if (isVerb) {
       final verbGenerator = VerbGenerators(dialect: dialect);
       this._maxIndex = verbGenerator.getMaxIndex();
       _states = verbGenerator.createExercises(exerciseType, dialect);
+    } else if (_exerciseType == ExerciseTypes.numbers_counting) {
+      _states =
+          NumberGenerators.createExercise(exerciseType, dialect, isPremium);
+      this._maxIndex = _states.length;
     } else {
       _maxIndex = MAX_BATCH_COUNT;
       _setCaseStates(caseType!);

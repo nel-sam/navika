@@ -101,11 +101,11 @@ class PANCombo {
   PANCombo({
     this.translation = '',
     this.extraInfo = '',
-    required this.caseType,
     required this.gender,
     required this.isPlural,
     required this.sentenceParts,
     required this.isAnimate,
+    this.caseType = Cases.Unspecified,
   });
 }
 

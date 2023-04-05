@@ -1,8 +1,8 @@
 import 'package:navika/models/adjective.dart';
 import 'package:navika/models/models.dart';
 
-final List<Adjective> cardinalNumbersBank = [
-  Adjective(
+class CardinalNumbersBank {
+  static final Adjective jedan = Adjective(
     dictionary: 'jedan',
     nominativ: Declension(
         masculine: DeclensionByGender(singular: ['jedni'], plural: ['jedni']),
@@ -39,8 +39,9 @@ final List<Adjective> cardinalNumbersBank = [
         masculine: DeclensionByGender(singular: ['jedni'], plural: ['jedni']),
         feminine: DeclensionByGender(singular: ['jedna'], plural: ['jedne']),
         neuter: DeclensionByGender(singular: ['jedno'], plural: ['jedna'])),
-  ),
-  Adjective(
+  );
+
+  static final Adjective dva = Adjective(
     dictionary: 'dva',
     nominativ: Declension(
       masculine: DeclensionByGender(singular: ['dva'], plural: ['dva']),
@@ -65,23 +66,24 @@ final List<Adjective> cardinalNumbersBank = [
       feminine: DeclensionByGender(singular: ['dviju'], plural: ['dviju']),
       neuter: DeclensionByGender(singular: ['dvaju'], plural: ['dvaju']),
     ),
-  ),
-  Adjective(dictionary: 'tri'),
-  Adjective(dictionary: 'četiri'),
-  Adjective(dictionary: 'pet'),
-  Adjective(dictionary: 'šest'),
-  Adjective(dictionary: 'sedam'),
-  Adjective(dictionary: 'osam'),
-  Adjective(dictionary: 'devet'),
-  Adjective(dictionary: 'deset'),
-  Adjective(dictionary: 'jedanaest'),
-  Adjective(dictionary: 'dvanaest'),
-  Adjective(dictionary: 'trinaest'),
-  Adjective(dictionary: 'četrnaest'),
-  Adjective(dictionary: 'petnaest'),
-  Adjective(dictionary: 'šesnaest'),
-  Adjective(dictionary: 'sedamnaest'),
-  Adjective(dictionary: 'osamnaest'),
-  Adjective(dictionary: 'devetnaest'),
+  );
+
+  static final Adjective tri = Adjective(dictionary: 'tri');
+  static final Adjective cetiri = Adjective(dictionary: 'četiri');
+  static final Adjective pet = Adjective(dictionary: 'pet');
+  static final Adjective sest = Adjective(dictionary: 'šest');
+  static final Adjective sedam = Adjective(dictionary: 'sedam');
+  static final Adjective osam = Adjective(dictionary: 'osam');
+  static final Adjective devet = Adjective(dictionary: 'devet');
+  static final Adjective deset = Adjective(dictionary: 'deset');
+  static final Adjective jedanaest = Adjective(dictionary: 'jedanaest');
+  static final Adjective dvanaest = Adjective(dictionary: 'dvanaest');
+  static final Adjective trinaest = Adjective(dictionary: 'trinaest');
+  static final Adjective cetrnaest = Adjective(dictionary: 'četrnaest');
+  static final Adjective petnaest = Adjective(dictionary: 'petnaest');
+  static final Adjective sesnaest = Adjective(dictionary: 'šesnaest');
+  static final Adjective sedamnaest = Adjective(dictionary: 'sedamnaest');
+  static final Adjective osamnaest = Adjective(dictionary: 'osamnaest');
+  static final Adjective devetnaest = Adjective(dictionary: 'devetnaest');
   // 20 and above auto generated
-];
+}

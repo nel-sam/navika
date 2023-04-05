@@ -45,7 +45,6 @@ class VerbExercise extends StatelessWidget {
       body: ChangeNotifierProvider<ExerciseNavNotifier>(
         create: (context) => ExerciseNavNotifier(
           isPremium: this.isPremium,
-          isVerb: true,
           dialect: dialect,
           exerciseType: exerciseType,
         ),
