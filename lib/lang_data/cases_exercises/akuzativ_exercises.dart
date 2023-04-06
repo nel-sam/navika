@@ -120,7 +120,7 @@ class AkuzativExercises {
           isAnimate: false,
           translation: N.t('ex_Jedeš_li_ananas'),
           sentenceParts: [
-            CaseSentencePart(displayValue: 'Jedeš li ananas'),
+            CaseSentencePart(displayValue: 'Jedeš li'),
             CaseSentencePart(
               displayValue: NounBankGeneral.ananas.dictionary,
               isCorrectable: true,

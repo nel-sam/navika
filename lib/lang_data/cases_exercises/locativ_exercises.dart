@@ -72,7 +72,7 @@ class LokativExercises {
             gender: NounBankGeneral.jezero.gender,
             isPlural: false,
             sentenceParts: [
-              CaseSentencePart(displayValue: 'Živite li'),
+              CaseSentencePart(displayValue: 'Živite li u'),
               CaseSentencePart(
                 isCorrectable: true,
                 actualObject: AdjectiveBankGeneral.mali,

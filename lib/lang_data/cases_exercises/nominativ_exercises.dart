@@ -296,7 +296,7 @@ class NominativExercises {
                 correctValues: NounBankGeneral.sestra.nominativ.plural,
                 grammarType: GrammarTypes.noun,
               ),
-              CaseSentencePart(displayValue: 'boje se biti same'),
+              CaseSentencePart(displayValue: 'se boje biti same'),
             ]),
       ];
 

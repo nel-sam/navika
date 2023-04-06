@@ -14,7 +14,7 @@ class NumberGenerators {
     DialectType dialect,
     bool isPremium,
   ) {
-    List<PANCombo> combos = NumberCountingExercises().general;
+    List<PANCombo> combos = NumberCountingExercises(dialect: dialect).general;
 
     return combos
         .shufflePAN()
