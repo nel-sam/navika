@@ -85,5 +85,6 @@ class CardinalNumbersBank {
   static final Adjective sedamnaest = Adjective(dictionary: 'sedamnaest');
   static final Adjective osamnaest = Adjective(dictionary: 'osamnaest');
   static final Adjective devetnaest = Adjective(dictionary: 'devetnaest');
-  // 20 and above auto generated
+  static final Adjective dvadeset = Adjective(dictionary: 'dvadeset');
+  static final Adjective dvadesetijedan = Adjective(dictionary: 'dvadeset i jedan');
 }

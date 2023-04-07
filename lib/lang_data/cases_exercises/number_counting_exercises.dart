@@ -13,8 +13,7 @@ class NumberCountingExercises {
     this.isSerbian = dialect == DialectType.Serbia;
   }
 
-  // TODO: The help guide needs modification or a new one for this exercise type
-  List<PANCombo> get general => [
+  List<PANCombo> get ages => [
         PANCombo(
           gender: NounBankGeneral.godina.gender,
           isPlural: false,
@@ -141,6 +140,115 @@ class NumberCountingExercises {
               caseType: Cases.Gen,
             ),
             CaseSentencePart(displayValue: 'ću se oženiti'),
+          ],
+        ),
+        PANCombo(
+          gender: NounBankGeneral.godina.gender,
+          isPlural: true,
+          isAnimate: false,
+          translation: N.t('ex_Prije_16_godina_udomio_sam_pse_sa_ceste'),
+          sentenceParts: [
+            CaseSentencePart(displayValue: isSerbian ? 'Pre' : 'Prije'),
+            CaseSentencePart(
+              isCorrectable: true,
+              actualObject: CardinalNumbersBank.sesnaest,
+              displayValue: '',
+              correctValues: [CardinalNumbersBank.sesnaest.dictionary],
+              grammarType: GrammarTypes.adjective,
+              caseType: Cases.Nom,
+            ),
+            CaseSentencePart(
+              isCorrectable: true,
+              actualObject: NounBankGeneral.godina,
+              displayValue: '',
+              correctValues: NounBankGeneral.godina.genitiv.plural,
+              grammarType: GrammarTypes.noun,
+              caseType: Cases.Gen,
+            ),
+            CaseSentencePart(displayValue: 'udomio sam pse sa ceste'),
+          ],
+        ),
+      ];
+
+  // TODO: The help guide needs modification or a new one for this exercise type
+  List<PANCombo> get countingThings => [
+        PANCombo(
+          gender: NounBankGeneral.godina.gender,
+          isPlural: true,
+          isAnimate: false,
+          translation: N.t('ex_Izmedu_njih_je_21_godina_razlike'),
+          sentenceParts: [
+            CaseSentencePart(displayValue: 'Između njih je'),
+            CaseSentencePart(
+              isCorrectable: true,
+              actualObject: CardinalNumbersBank.dvadesetijedan,
+              displayValue: '',
+              correctValues: [CardinalNumbersBank.dvadesetijedan.dictionary],
+              grammarType: GrammarTypes.adjective,
+              caseType: Cases.Nom,
+            ),
+            CaseSentencePart(
+              isCorrectable: true,
+              actualObject: NounBankGeneral.godina,
+              displayValue: '',
+              correctValues: NounBankGeneral.godina.genitiv.plural,
+              grammarType: GrammarTypes.noun,
+              caseType: Cases.Gen,
+            ),
+            CaseSentencePart(displayValue: 'razlike'),
+          ],
+        ),
+        PANCombo(
+          gender: NounBankGeneral.torta.gender,
+          isPlural: true,
+          isAnimate: false,
+          translation: N.t('ex_Vidio_sam_12_torta_u_pekari'),
+          sentenceParts: [
+            CaseSentencePart(displayValue: 'Vidio sam'),
+            CaseSentencePart(
+              isCorrectable: true,
+              actualObject: CardinalNumbersBank.dvanaest,
+              displayValue: '',
+              correctValues: [CardinalNumbersBank.dvanaest.dictionary],
+              grammarType: GrammarTypes.adjective,
+              caseType: Cases.Nom,
+            ),
+            CaseSentencePart(
+              isCorrectable: true,
+              actualObject: NounBankGeneral.torta,
+              displayValue: NounBankGeneral.torta.dictionary,
+              correctValues: NounBankGeneral.torta.genitiv.plural,
+              grammarType: GrammarTypes.noun,
+              caseType: Cases.Gen,
+            ),
+            CaseSentencePart(displayValue: 'u pekari'),
+          ],
+        ),
+        PANCombo(
+          gender: NounBankGeneral.jezero.gender,
+          isPlural: false,
+          isAnimate: false,
+          translation: N.t('ex_Ima_jedno_jezero_tamo'),
+          sentenceParts: [
+            CaseSentencePart(displayValue: 'Ima'),
+            CaseSentencePart(
+              isCorrectable: true,
+              actualObject: CardinalNumbersBank.jedan,
+              displayValue: '',
+              correctValues:
+                  CardinalNumbersBank.jedan.nominativ!.neuter!.singular,
+              grammarType: GrammarTypes.adjective,
+              caseType: Cases.Nom,
+            ),
+            CaseSentencePart(
+              isCorrectable: true,
+              actualObject: NounBankGeneral.jezero,
+              displayValue: '',
+              correctValues: NounBankGeneral.jezero.nominativ.singular,
+              grammarType: GrammarTypes.noun,
+              caseType: Cases.Gen,
+            ),
+            CaseSentencePart(displayValue: 'tamo'),
           ],
         ),
       ];
