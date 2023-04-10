@@ -39,7 +39,7 @@ class NumberMenu extends StatelessWidget {
                   children: [
                     NMenuButton(
                       destination: NumberGuide(dialect: settings.dialectType),
-                      label: N.t('grammarGuide'),
+                      label: N.t('numberGuide'),
                       transLabel: SbcLabels.grammarGuide,
                     ),
                     NMenuButton(

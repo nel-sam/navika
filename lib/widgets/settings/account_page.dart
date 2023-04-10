@@ -16,7 +16,6 @@ class AccountPage extends StatelessWidget {
       appBar: N.navAppBar(
         title: N.t('account'),
         context: context,
-        showSettingsButton: false,
       ),
       body: ChangeNotifierProvider<SettingsNotifier>(
         create: (context) => SettingsNotifier(),

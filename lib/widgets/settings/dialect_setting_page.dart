@@ -21,7 +21,6 @@ class DialectSettingPage extends StatelessWidget {
       appBar: N.navAppBar(
         title: N.t('appTitle'),
         context: context,
-        showSettingsButton: false,
       ),
       body: ChangeNotifierProvider<SettingsNotifier>(
         create: (context) => SettingsNotifier(),

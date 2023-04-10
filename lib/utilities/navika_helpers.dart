@@ -6,7 +6,6 @@ import 'package:localization/localization.dart';
 import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
-import 'package:navika/widgets/shared/settings_button.dart';
 import 'package:nrs_flutter_lib/constants.dart';
 import 'package:nrs_flutter_lib/enums.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
@@ -231,13 +230,9 @@ class N {
   static navAppBar(
       {required BuildContext context,
       String title = '',
-      String transTitle = '',
-      bool showSettingsButton = true}) {
+      String transTitle = ''}) {
     return Nrs.NrsAppBar(
-        context: context,
-        title: title,
-        transTitle: transTitle,
-        actions: [if (showSettingsButton) SettingsButton()]);
+        context: context, title: title, transTitle: transTitle, actions: []);
   }
 
   static String t(String key, {List<String> inserts = const []}) {
@@ -262,7 +257,8 @@ class N {
           newDisplayValue += ' ';
         }
 
-        combo.sentenceParts[i] = CaseSentencePart(displayValue: newDisplayValue);
+        combo.sentenceParts[i] =
+            CaseSentencePart(displayValue: newDisplayValue);
       }
     }
   }

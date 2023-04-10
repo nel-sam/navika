@@ -23,7 +23,7 @@ class VerbHelpGuide extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: N.navAppBar(
-          title: verb.infinitive, context: context, showSettingsButton: false),
+          title: verb.infinitive, context: context),
       body: SingleChildScrollView(
         padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
         child: Column(

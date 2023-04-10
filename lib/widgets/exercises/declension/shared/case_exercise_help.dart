@@ -6,8 +6,8 @@ import 'package:navika/models/noun.dart';
 import 'package:navika/models/personal_pronoun.dart';
 import 'package:navika/state/settings/settings_consumer_wrapper.dart';
 import 'package:navika/utilities/navika_helpers.dart';
-import 'package:navika/widgets/grammar-guides/declension-guide/child_widgets/declension_table_cell.dart';
 import 'package:navika/widgets/grammar-guides/declension-guide/child_widgets/declension_table.dart';
+import 'package:navika/widgets/grammar-guides/declension-guide/child_widgets/declension_table_cell.dart';
 import 'package:navika/widgets/grammar-guides/declension-guide/declension_guide.dart';
 import 'package:navika/widgets/shared/count_table_cells.dart';
 import 'package:nrs_flutter_lib/constants.dart';
@@ -58,6 +58,8 @@ class CaseExerciseHelp extends StatelessWidget {
                         }),
                     ...combos.sentenceParts.map(
                       (CaseSentencePart e) {
+                        if (!e.showTableInHelpGuide) return Container();
+
                         final caseType = combos.caseType == Cases.Unspecified
                             ? e.caseType
                             : combos.caseType;

@@ -14,6 +14,8 @@ class CaseSentencePart {
   Cases caseType;
   Plurality forcedPlurality;
 
+  bool showTableInHelpGuide;
+
   CaseSentencePart(
       {required this.displayValue,
       this.grammarType = GrammarTypes.noun,
@@ -21,7 +23,8 @@ class CaseSentencePart {
       this.isCorrectable = false,
       this.actualObject,
       this.caseType = Cases.Unspecified,
-      this.forcedPlurality = Plurality.Inherited}) {
+      this.forcedPlurality = Plurality.Inherited,
+      this.showTableInHelpGuide = true}) {
     assert(this.actualObject is Adjective ||
         this.actualObject is PersonalPronoun ||
         this.actualObject is Noun ||

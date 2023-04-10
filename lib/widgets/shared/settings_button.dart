@@ -10,7 +10,7 @@ class SettingsButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return NFooterButton(
-        //text: N.t('settings'),
+        active: true,
         onPressed: () {
           Navigator.push(
             context,

@@ -23,7 +23,6 @@ class SettingsPage extends StatelessWidget {
       appBar: N.navAppBar(
         title: N.t('settings'),
         context: context,
-        showSettingsButton: false,
       ),
       body: ChangeNotifierProvider<SettingsNotifier>(
         create: (context) => SettingsNotifier(),

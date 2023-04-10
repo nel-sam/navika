@@ -23,6 +23,7 @@ class NumberCountingExercises {
             CaseSentencePart(displayValue: 'Moj sin ima'),
             CaseSentencePart(
               isCorrectable: true,
+              showTableInHelpGuide: false,
               actualObject: CardinalNumbersBank.jedan,
               displayValue: '',
               correctValues:
@@ -49,6 +50,7 @@ class NumberCountingExercises {
             CaseSentencePart(displayValue: 'Njegov pas ima'),
             CaseSentencePart(
               isCorrectable: true,
+              showTableInHelpGuide: false,
               actualObject: CardinalNumbersBank.dva,
               displayValue: '',
               correctValues: [isSerbian ? 'dve' : 'dvije'],
@@ -74,6 +76,7 @@ class NumberCountingExercises {
             CaseSentencePart(displayValue: 'Kad sam imao'),
             CaseSentencePart(
               isCorrectable: true,
+              showTableInHelpGuide: false,
               actualObject: CardinalNumbersBank.tri,
               displayValue: '',
               correctValues: [CardinalNumbersBank.tri.dictionary],
@@ -100,6 +103,7 @@ class NumberCountingExercises {
             CaseSentencePart(displayValue: 'Živim ovdje već'),
             CaseSentencePart(
               isCorrectable: true,
+              showTableInHelpGuide: false,
               actualObject: CardinalNumbersBank.cetiri,
               displayValue: '',
               correctValues: [CardinalNumbersBank.cetiri.dictionary],
@@ -125,6 +129,7 @@ class NumberCountingExercises {
             CaseSentencePart(displayValue: 'Za'),
             CaseSentencePart(
               isCorrectable: true,
+              showTableInHelpGuide: false,
               actualObject: CardinalNumbersBank.pet,
               displayValue: '',
               correctValues: [CardinalNumbersBank.pet.dictionary],
@@ -151,6 +156,7 @@ class NumberCountingExercises {
             CaseSentencePart(displayValue: isSerbian ? 'Pre' : 'Prije'),
             CaseSentencePart(
               isCorrectable: true,
+              showTableInHelpGuide: false,
               actualObject: CardinalNumbersBank.sesnaest,
               displayValue: '',
               correctValues: [CardinalNumbersBank.sesnaest.dictionary],
@@ -170,8 +176,36 @@ class NumberCountingExercises {
         ),
       ];
 
-  // TODO: The help guide needs modification or a new one for this exercise type
   List<PANCombo> get countingThings => [
+
+        PANCombo(
+          gender: NounBankGeneral.jezero.gender,
+          isPlural: false,
+          isAnimate: false,
+          translation: N.t('ex_Ima_jedno_jezero_tamo'),
+          sentenceParts: [
+            CaseSentencePart(displayValue: 'Ima'),
+            CaseSentencePart(
+              isCorrectable: true,
+              showTableInHelpGuide: false,
+              actualObject: CardinalNumbersBank.jedan,
+              displayValue: '',
+              correctValues:
+                  CardinalNumbersBank.jedan.nominativ!.neuter!.singular,
+              grammarType: GrammarTypes.adjective,
+              caseType: Cases.Nom,
+            ),
+            CaseSentencePart(
+              isCorrectable: true,
+              actualObject: NounBankGeneral.jezero,
+              displayValue: '',
+              correctValues: NounBankGeneral.jezero.nominativ.singular,
+              grammarType: GrammarTypes.noun,
+              caseType: Cases.Gen,
+            ),
+            CaseSentencePart(displayValue: 'tamo'),
+          ],
+        ),
         PANCombo(
           gender: NounBankGeneral.godina.gender,
           isPlural: true,
@@ -181,6 +215,7 @@ class NumberCountingExercises {
             CaseSentencePart(displayValue: 'Između njih je'),
             CaseSentencePart(
               isCorrectable: true,
+              showTableInHelpGuide: false,
               actualObject: CardinalNumbersBank.dvadesetijedan,
               displayValue: '',
               correctValues: [CardinalNumbersBank.dvadesetijedan.dictionary],
@@ -207,6 +242,7 @@ class NumberCountingExercises {
             CaseSentencePart(displayValue: 'Vidio sam'),
             CaseSentencePart(
               isCorrectable: true,
+              showTableInHelpGuide: false,
               actualObject: CardinalNumbersBank.dvanaest,
               displayValue: '',
               correctValues: [CardinalNumbersBank.dvanaest.dictionary],
@@ -222,33 +258,6 @@ class NumberCountingExercises {
               caseType: Cases.Gen,
             ),
             CaseSentencePart(displayValue: 'u pekari'),
-          ],
-        ),
-        PANCombo(
-          gender: NounBankGeneral.jezero.gender,
-          isPlural: false,
-          isAnimate: false,
-          translation: N.t('ex_Ima_jedno_jezero_tamo'),
-          sentenceParts: [
-            CaseSentencePart(displayValue: 'Ima'),
-            CaseSentencePart(
-              isCorrectable: true,
-              actualObject: CardinalNumbersBank.jedan,
-              displayValue: '',
-              correctValues:
-                  CardinalNumbersBank.jedan.nominativ!.neuter!.singular,
-              grammarType: GrammarTypes.adjective,
-              caseType: Cases.Nom,
-            ),
-            CaseSentencePart(
-              isCorrectable: true,
-              actualObject: NounBankGeneral.jezero,
-              displayValue: '',
-              correctValues: NounBankGeneral.jezero.nominativ.singular,
-              grammarType: GrammarTypes.noun,
-              caseType: Cases.Gen,
-            ),
-            CaseSentencePart(displayValue: 'tamo'),
           ],
         ),
       ];
