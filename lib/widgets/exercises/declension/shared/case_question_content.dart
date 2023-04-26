@@ -3,8 +3,8 @@ import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/state/cases/case_question_state.dart';
 import 'package:navika/widgets/exercises/declension/shared/case_exercise_row_card.dart';
-import 'package:navika/widgets/shared/n_free_form_entry.dart';
 import 'package:nrs_flutter_lib/extensions.dart';
+import 'package:nrs_flutter_lib/widgets/n_free_form_entry.dart';
 
 class CaseQuestionContent extends StatefulWidget {
   final CaseQuestionState stateItem;

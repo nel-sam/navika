@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:navika/state/cyrillic/cyrillic_state_item.dart';
 import 'package:navika/widgets/exercises/cyrillic/cyrillic_chart.dart';
-import 'package:navika/widgets/shared/n_free_form_entry.dart';
 import 'package:nrs_flutter_lib/constants.dart';
 import 'package:nrs_flutter_lib/extensions.dart';
+import 'package:nrs_flutter_lib/widgets/n_free_form_entry.dart';
 
 class CyrillicExerciseCard extends StatelessWidget {
   final CyrillicStateItem state;
