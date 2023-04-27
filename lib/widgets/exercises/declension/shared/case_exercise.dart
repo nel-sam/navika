@@ -48,6 +48,7 @@ class CaseExercise extends StatelessWidget {
             dialect: settings.dialectType),
         child: Consumer<ExerciseNavNotifier>(
           builder: (context, navNotifier, child) {
+            
             return Scaffold(
               appBar: N.navAppBar(title: SbcLabels.cases, context: context),
               body: Center(

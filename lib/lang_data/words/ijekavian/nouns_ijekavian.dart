@@ -3,7 +3,7 @@ import 'package:navika/models/models.dart';
 import 'package:navika/models/noun.dart';
 
 class NounsIjekavian {
-    static final Noun mjesto = Noun(
+  static final Noun mjesto = Noun(
     dictionary: 'mjesto',
     tags: [Tags.Season, Tags.Weather],
     gender: Genders.Neuter,
@@ -25,7 +25,8 @@ class NounsIjekavian {
     isAnimate: false,
     nominativ: new DeclensionByCount(singular: ['kava'], plural: ['kave']),
     akuzativ: new DeclensionByCount(singular: ['kavu'], plural: ['kave']),
-    instrumental: new DeclensionByCount(singular: ['kavom'], plural: ['kavama']),
+    instrumental:
+        new DeclensionByCount(singular: ['kavom'], plural: ['kavama']),
     lokativ: new DeclensionByCount(singular: ['kavi'], plural: ['kavama']),
     dativ: new DeclensionByCount(singular: ['kavi'], plural: ['kavama']),
     genitiv: new DeclensionByCount(singular: ['kave'], plural: ['kava']),
@@ -58,8 +59,7 @@ class NounsIjekavian {
     akuzativ: new DeclensionByCount(singular: ['čovjeka'], plural: ['']),
     lokativ: new DeclensionByCount(singular: ['čovjeku'], plural: ['']),
     vokativ: new DeclensionByCount(singular: ['čovječe'], plural: ['']),
-    instrumental:
-        new DeclensionByCount(singular: ['čovjekom'], plural: ['']),
+    instrumental: new DeclensionByCount(singular: ['čovjekom'], plural: ['']),
   );
 
   static final Noun stol = Noun(
@@ -151,5 +151,20 @@ class NounsIjekavian {
         new DeclensionByCount(singular: ['obitelji'], plural: ['obitelji']),
     instrumental: new DeclensionByCount(
         singular: ['obitelji', 'obitelju'], plural: ['obitelju']),
+  );
+
+  static final Noun mjesec = Noun(
+    dictionary: 'mjesec',
+    tags: [Tags.Time, Tags.Concept],
+    gender: Genders.Masculine,
+    isAnimate: false,
+    nominativ: new DeclensionByCount(singular: ['mjesec'], plural: ['mjeseci']),
+    genitiv: new DeclensionByCount(singular: ['mjeseca'], plural: ['mjeseci']),
+    dativ: new DeclensionByCount(singular: ['mjesecu'], plural: ['mjesecima']),
+    akuzativ: new DeclensionByCount(singular: ['mjesec'], plural: ['mjeseci']),
+    lokativ: new DeclensionByCount(singular: ['mjesecu'], plural: ['mjesecima']),
+    vokativ: new DeclensionByCount(singular: ['mjesecu'], plural: ['mjeseci']),
+    instrumental:
+        new DeclensionByCount(singular: ['mjesecom'], plural: ['mjesecima']),
   );
 }

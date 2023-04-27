@@ -3,7 +3,7 @@ import 'package:navika/models/models.dart';
 import 'package:navika/models/noun.dart';
 
 class NounsEkavian {
-      static final Noun mesto = Noun(
+  static final Noun mesto = Noun(
     dictionary: 'mesto',
     tags: [Tags.Season, Tags.Weather],
     gender: Genders.Neuter,
@@ -59,8 +59,7 @@ class NounsEkavian {
     akuzativ: new DeclensionByCount(singular: ['čoveka'], plural: ['']),
     lokativ: new DeclensionByCount(singular: ['čoveku'], plural: ['']),
     vokativ: new DeclensionByCount(singular: ['čoveče'], plural: ['']),
-    instrumental:
-        new DeclensionByCount(singular: ['čovekom'], plural: ['']),
+    instrumental: new DeclensionByCount(singular: ['čovekom'], plural: ['']),
   );
 
   static final Noun stol = Noun(
@@ -109,6 +108,7 @@ class NounsEkavian {
     instrumental:
         new DeclensionByCount(singular: ['devojkom'], plural: ['devojkama']),
   );
+
   static final Noun leto = Noun(
     dictionary: 'leto',
     tags: [Tags.Season, Tags.Weather],
@@ -122,5 +122,20 @@ class NounsEkavian {
     vokativ: new DeclensionByCount(singular: ['leto'], plural: ['leta']),
     instrumental:
         new DeclensionByCount(singular: ['letom'], plural: ['letima']),
+  );
+
+  static final Noun mesec = Noun(
+    dictionary: 'mesec',
+    tags: [Tags.Time, Tags.Concept],
+    gender: Genders.Masculine,
+    isAnimate: false,
+    nominativ: new DeclensionByCount(singular: ['mesec'], plural: ['meseci']),
+    genitiv: new DeclensionByCount(singular: ['meseca'], plural: ['meseci']),
+    dativ: new DeclensionByCount(singular: ['mesecu'], plural: ['mesecima']),
+    akuzativ: new DeclensionByCount(singular: ['mesec'], plural: ['meseci']),
+    lokativ: new DeclensionByCount(singular: ['mesecu'], plural: ['mesecima']),
+    vokativ: new DeclensionByCount(singular: ['mesecu'], plural: ['meseci']),
+    instrumental:
+        new DeclensionByCount(singular: ['mesecom'], plural: ['mesecima']),
   );
 }

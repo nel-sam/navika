@@ -21,8 +21,8 @@ class NounBankGeneral {
         new DeclensionByCount(singular: ['Srbijanki'], plural: ['Srbijankama']),
     vokativ:
         new DeclensionByCount(singular: ['Srbijanko'], plural: ['Srbijanke']),
-    instrumental:
-        new DeclensionByCount(singular: ['Srbijankom'], plural: ['Srbijankama']),
+    instrumental: new DeclensionByCount(
+        singular: ['Srbijankom'], plural: ['Srbijankama']),
   );
 
   static final Noun srbin = Noun(
@@ -30,18 +30,12 @@ class NounBankGeneral {
     tags: [Tags.Human],
     gender: Genders.Masculine,
     isAnimate: false,
-    nominativ:
-        new DeclensionByCount(singular: ['Srbin'], plural: ['Srbi']),
-    genitiv:
-        new DeclensionByCount(singular: ['Srbina'], plural: ['Srba']),
-    dativ:
-        new DeclensionByCount(singular: ['Srbinu'], plural: ['Srbima']),
-    akuzativ:
-        new DeclensionByCount(singular: ['Srbinu'], plural: ['Srbe']),
-    lokativ:
-        new DeclensionByCount(singular: ['Srbinu'], plural: ['Srbima']),
-    vokativ:
-        new DeclensionByCount(singular: ['Srbine'], plural: ['Srbi']),
+    nominativ: new DeclensionByCount(singular: ['Srbin'], plural: ['Srbi']),
+    genitiv: new DeclensionByCount(singular: ['Srbina'], plural: ['Srba']),
+    dativ: new DeclensionByCount(singular: ['Srbinu'], plural: ['Srbima']),
+    akuzativ: new DeclensionByCount(singular: ['Srbinu'], plural: ['Srbe']),
+    lokativ: new DeclensionByCount(singular: ['Srbinu'], plural: ['Srbima']),
+    vokativ: new DeclensionByCount(singular: ['Srbine'], plural: ['Srbi']),
     instrumental:
         new DeclensionByCount(singular: ['Srbinom'], plural: ['Srbima']),
   );
@@ -72,18 +66,12 @@ class NounBankGeneral {
     tags: [Tags.Human],
     gender: Genders.Masculine,
     isAnimate: false,
-    nominativ:
-        new DeclensionByCount(singular: ['Hrvat'], plural: ['Hrvati']),
-    genitiv:
-        new DeclensionByCount(singular: ['Hrvata'], plural: ['Hrvata']),
-    dativ:
-        new DeclensionByCount(singular: ['Hrvatu'], plural: ['Hrvatima']),
-    akuzativ:
-        new DeclensionByCount(singular: ['Hrvata'], plural: ['Hrvate']),
-    lokativ:
-        new DeclensionByCount(singular: ['Hrvatu'], plural: ['Hrvatima']),
-    vokativ:
-        new DeclensionByCount(singular: ['Hrvate'], plural: ['Hrvati']),
+    nominativ: new DeclensionByCount(singular: ['Hrvat'], plural: ['Hrvati']),
+    genitiv: new DeclensionByCount(singular: ['Hrvata'], plural: ['Hrvata']),
+    dativ: new DeclensionByCount(singular: ['Hrvatu'], plural: ['Hrvatima']),
+    akuzativ: new DeclensionByCount(singular: ['Hrvata'], plural: ['Hrvate']),
+    lokativ: new DeclensionByCount(singular: ['Hrvatu'], plural: ['Hrvatima']),
+    vokativ: new DeclensionByCount(singular: ['Hrvate'], plural: ['Hrvati']),
     instrumental:
         new DeclensionByCount(singular: ['Hrvatom'], plural: ['Hrvatima']),
   );
@@ -120,7 +108,8 @@ class NounBankGeneral {
         new DeclensionByCount(singular: ['Karoline'], plural: ['Karolina']),
     dativ:
         new DeclensionByCount(singular: ['Karolini'], plural: ['Karolinama']),
-    akuzativ: new DeclensionByCount(singular: ['Karolinu'], plural: ['Karoline']),
+    akuzativ:
+        new DeclensionByCount(singular: ['Karolinu'], plural: ['Karoline']),
     lokativ:
         new DeclensionByCount(singular: ['Karolini'], plural: ['Karolinama']),
     vokativ:
@@ -873,5 +862,21 @@ class NounBankGeneral {
     vokativ: new DeclensionByCount(singular: ['cesto'], plural: ['ceste']),
     instrumental:
         new DeclensionByCount(singular: ['cestom'], plural: ['cestama']),
+  );
+
+  static final Noun razlog = Noun(
+    dictionary: 'razlog',
+    tags: [Tags.Concept],
+    gender: Genders.Masculine,
+    isAnimate: false,
+    nominativ: new DeclensionByCount(singular: ['razlog'], plural: ['razlozi']),
+    genitiv: new DeclensionByCount(singular: ['razloga'], plural: ['razloga']),
+    dativ: new DeclensionByCount(singular: ['razlogu'], plural: ['razlozima']),
+    akuzativ: new DeclensionByCount(singular: ['razlog'], plural: ['razloge']),
+    lokativ:
+        new DeclensionByCount(singular: ['razlogu'], plural: ['razlozima']),
+    vokativ: new DeclensionByCount(singular: ['razlog'], plural: ['razlozi']),
+    instrumental:
+        new DeclensionByCount(singular: ['razlogom'], plural: ['razlozima']),
   );
 }

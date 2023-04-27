@@ -1,3 +1,5 @@
+import 'package:navika/lang_data/words/ekavian/nouns_ekavian.dart';
+import 'package:navika/lang_data/words/ijekavian/nouns_ijekavian.dart';
 import 'package:navika/lang_data/words/nouns.dart';
 import 'package:navika/lang_data/words/numbers.dart';
 import 'package:navika/models/enums.dart';
@@ -16,6 +18,32 @@ class NumberCountingExercises {
   // TODO: Add extraninfos
 
   List<PANCombo> get ages => [
+        PANCombo(
+          gender: NounBankGeneral.godina.gender,
+          isPlural: true,
+          isAnimate: false,
+          translation: N.t('ex_Njegov_pas_ima_dve_godine'),
+          sentenceParts: [
+            CaseSentencePart(displayValue: 'Njegov pas ima'),
+            CaseSentencePart(
+              isCorrectable: true,
+              showTableInHelpGuide: false,
+              actualObject: CardinalNumbersBank.dva,
+              displayValue: '',
+              correctValues: [isSerbian ? 'dve' : 'dvije'],
+              grammarType: GrammarTypes.adjective,
+              caseType: Cases.Nom,
+            ),
+            CaseSentencePart(
+              isCorrectable: true,
+              actualObject: NounBankGeneral.godina,
+              displayValue: '',
+              correctValues: NounBankGeneral.godina.akuzativ.plural,
+              grammarType: GrammarTypes.noun,
+              caseType: Cases.Aku,
+            ),
+          ],
+        ),
         PANCombo(
           gender: NounBankGeneral.godina.gender,
           isPlural: false,
@@ -38,32 +66,6 @@ class NumberCountingExercises {
               actualObject: NounBankGeneral.godina,
               displayValue: '',
               correctValues: NounBankGeneral.godina.akuzativ.singular,
-              grammarType: GrammarTypes.noun,
-              caseType: Cases.Aku,
-            ),
-          ],
-        ),
-        PANCombo(
-          gender: NounBankGeneral.godina.gender,
-          isPlural: true,
-          isAnimate: false,
-          translation: N.t('ex_Njegov_pas_ima_dve_godine'),
-          sentenceParts: [
-            CaseSentencePart(displayValue: 'Njegov pas ima'),
-            CaseSentencePart(
-              isCorrectable: true,
-              showTableInHelpGuide: false,
-              actualObject: CardinalNumbersBank.dva,
-              displayValue: '',
-              correctValues: [isSerbian ? 'dve' : 'dvije'],
-              grammarType: GrammarTypes.adjective,
-              caseType: Cases.Nom,
-            ),
-            CaseSentencePart(
-              isCorrectable: true,
-              actualObject: NounBankGeneral.godina,
-              displayValue: '',
-              correctValues: NounBankGeneral.godina.akuzativ.plural,
               grammarType: GrammarTypes.noun,
               caseType: Cases.Aku,
             ),
@@ -179,6 +181,7 @@ class NumberCountingExercises {
       ];
 
   List<PANCombo> get countingThings => [
+        // 1 item
         PANCombo(
           gender: NounBankGeneral.jezero.gender,
           isPlural: false,
@@ -239,7 +242,6 @@ class NumberCountingExercises {
             CaseSentencePart(displayValue: 'u Hrvatskoj'),
           ],
         ),
-
         PANCombo(
           gender: NounBankGeneral.kuca.gender,
           isPlural: false,
@@ -269,7 +271,173 @@ class NumberCountingExercises {
             ),
           ],
         ),
+        // 2 items
+        PANCombo(
+          gender: NounBankGeneral.selo.gender,
+          isPlural: true,
+          isAnimate: false,
+          translation: N.t('ex_Na_slici_vidim_dva_sela'),
+          sentenceParts: [
+            CaseSentencePart(displayValue: 'Na slici vidim'),
+            CaseSentencePart(
+              isCorrectable: true,
+              showTableInHelpGuide: false,
+              actualObject: CardinalNumbersBank.dva,
+              displayValue: '',
+              correctValues: ['dve'],
+              grammarType: GrammarTypes.adjective,
+              caseType: Cases.Nom,
+            ),
+            CaseSentencePart(
+              isCorrectable: true,
+              actualObject: NounBankGeneral.selo,
+              displayValue: '',
+              correctValues: NounBankGeneral.selo.genitiv.singular,
+              grammarType: GrammarTypes.noun,
+              caseType: Cases.Gen,
+            ),
+          ],
+        ),
+        PANCombo(
+          gender: NounBankGeneral.pas.gender,
+          isPlural: true,
+          isAnimate: false,
+          translation: N.t('ex_Moj_otac_ima_dva_psa'),
+          sentenceParts: [
+            CaseSentencePart(displayValue: 'Moj otac ima'),
+            CaseSentencePart(
+              isCorrectable: true,
+              showTableInHelpGuide: false,
+              actualObject: CardinalNumbersBank.dva,
+              displayValue: '',
+              correctValues: ['dve'],
+              grammarType: GrammarTypes.adjective,
+              caseType: Cases.Nom,
+            ),
+            CaseSentencePart(
+              isCorrectable: true,
+              actualObject: NounBankGeneral.pas,
+              displayValue: '',
+              correctValues: NounBankGeneral.pas.genitiv.singular,
+              grammarType: GrammarTypes.noun,
+              caseType: Cases.Gen,
+            ),
+          ],
+        ),
+        PANCombo(
+          gender: NounBankGeneral.macka.gender,
+          isPlural: true,
+          isAnimate: false,
+          translation: N.t('ex_Neki_ljudi_imaju_dvije_macke'),
+          sentenceParts: [
+            CaseSentencePart(displayValue: 'Neki ljudi imaju'),
+            CaseSentencePart(
+              isCorrectable: true,
+              showTableInHelpGuide: false,
+              actualObject: CardinalNumbersBank.dva,
+              displayValue: '',
+              correctValues: [isSerbian ? 'dve' : 'dvije'],
+              grammarType: GrammarTypes.adjective,
+              caseType: Cases.Nom,
+            ),
+            CaseSentencePart(
+              isCorrectable: true,
+              actualObject: NounBankGeneral.macka,
+              displayValue: '',
+              correctValues: NounBankGeneral.macka.genitiv.singular,
+              grammarType: GrammarTypes.noun,
+              caseType: Cases.Gen,
+            ),
+          ],
+        ),
 
+        // 3-4
+        PANCombo(
+          gender: NounBankGeneral.jezero.gender,
+          isPlural: true,
+          isAnimate: false,
+          translation: N.t('ex_Dijele_se_na_tri_jezera'),
+          sentenceParts: [
+            CaseSentencePart(displayValue: 'Dijele se na'),
+            CaseSentencePart(
+              isCorrectable: true,
+              showTableInHelpGuide: false,
+              actualObject: CardinalNumbersBank.tri,
+              displayValue: '',
+              correctValues: [CardinalNumbersBank.tri.dictionary],
+              grammarType: GrammarTypes.adjective,
+              caseType: Cases.Nom,
+            ),
+            CaseSentencePart(
+              isCorrectable: true,
+              actualObject: NounBankGeneral.jezero,
+              displayValue: NounBankGeneral.jezero.dictionary,
+              correctValues: NounBankGeneral.jezero.genitiv.singular,
+              grammarType: GrammarTypes.noun,
+              caseType: Cases.Gen,
+            ),
+          ],
+        ),
+        PANCombo(
+          gender: this.isSerbian
+              ? NounsEkavian.mesec.gender
+              : NounsIjekavian.mjesec.gender,
+          isAnimate: false,
+          isPlural: true,
+          translation: N.t('ex_Trebam_biti_u_Londonu_cetiri_mjeseca'),
+          sentenceParts: [
+            CaseSentencePart(displayValue: 'Trebam biti u Londonu'),
+            CaseSentencePart(
+              isCorrectable: true,
+              showTableInHelpGuide: false,
+              actualObject: CardinalNumbersBank.cetiri,
+              displayValue: '',
+              correctValues: [CardinalNumbersBank.cetiri.dictionary],
+              grammarType: GrammarTypes.adjective,
+              caseType: Cases.Nom,
+            ),
+            CaseSentencePart(
+              isCorrectable: true,
+              actualObject:
+                  this.isSerbian ? NounsEkavian.mesec : NounsIjekavian.mjesec,
+              displayValue: this.isSerbian
+                  ? NounsEkavian.mesec.dictionary
+                  : NounsIjekavian.mjesec.dictionary,
+              correctValues: this.isSerbian
+                  ? NounsEkavian.mesec.genitiv.singular
+                  : NounsIjekavian.mjesec.genitiv.singular,
+              grammarType: GrammarTypes.noun,
+              caseType: Cases.Gen,
+            ),
+          ],
+        ),
+        PANCombo(
+          gender: NounBankGeneral.zena.gender,
+          isPlural: true,
+          isAnimate: false,
+          translation: N.t('ex_Vidim_tri_zene'),
+          sentenceParts: [
+            CaseSentencePart(displayValue: 'Vidim'),
+            CaseSentencePart(
+              isCorrectable: true,
+              showTableInHelpGuide: false,
+              actualObject: CardinalNumbersBank.tri,
+              displayValue: '',
+              correctValues: [CardinalNumbersBank.tri.dictionary],
+              grammarType: GrammarTypes.adjective,
+              caseType: Cases.Nom,
+            ),
+            CaseSentencePart(
+              isCorrectable: true,
+              actualObject: NounBankGeneral.zena,
+              displayValue: NounBankGeneral.zena.dictionary,
+              correctValues: NounBankGeneral.zena.genitiv.singular,
+              grammarType: GrammarTypes.noun,
+              caseType: Cases.Gen,
+            ),
+          ],
+        ),
+        // 5+
         PANCombo(
           gender: NounBankGeneral.godina.gender,
           isPlural: true,
@@ -300,29 +468,30 @@ class NumberCountingExercises {
           ],
         ),
         PANCombo(
-          gender: NounBankGeneral.jezero.gender,
+          gender: NounBankGeneral.selo.gender,
           isPlural: true,
           isAnimate: false,
-          translation: N.t('ex_Dijele_se_na_tri_jezera'),
+          translation: N.t('ex_od_pet_sela_koja_se_nalaze_na_obali_Italije'),
           sentenceParts: [
-            CaseSentencePart(displayValue: 'Dijele se na'),
+            CaseSentencePart(displayValue: '...od'),
             CaseSentencePart(
               isCorrectable: true,
               showTableInHelpGuide: false,
-              actualObject: CardinalNumbersBank.tri,
+              actualObject: CardinalNumbersBank.pet,
               displayValue: '',
-              correctValues: [CardinalNumbersBank.tri.dictionary],
+              correctValues: [CardinalNumbersBank.pet.dictionary],
               grammarType: GrammarTypes.adjective,
               caseType: Cases.Nom,
             ),
             CaseSentencePart(
               isCorrectable: true,
-              actualObject: NounBankGeneral.jezero,
-              displayValue: NounBankGeneral.jezero.dictionary,
-              correctValues: NounBankGeneral.jezero.genitiv.plural,
+              actualObject: NounBankGeneral.selo,
+              displayValue: NounBankGeneral.selo.dictionary,
+              correctValues: NounBankGeneral.selo.genitiv.plural,
               grammarType: GrammarTypes.noun,
               caseType: Cases.Gen,
             ),
+            CaseSentencePart(displayValue: 'koja se nalaze na obali Italije')
           ],
         ),
         PANCombo(
@@ -331,24 +500,24 @@ class NumberCountingExercises {
           isAnimate: false,
           translation: N.t('ex_Deset_razloga_za_vožnju_biciklom'),
           sentenceParts: [
-            CaseSentencePart(displayValue: ''),
             CaseSentencePart(
               isCorrectable: true,
               showTableInHelpGuide: false,
-              actualObject: CardinalNumbersBank.tri,
+              actualObject: CardinalNumbersBank.deset,
               displayValue: '',
-              correctValues: [CardinalNumbersBank.tri.dictionary],
+              correctValues: [CardinalNumbersBank.deset.dictionary],
               grammarType: GrammarTypes.adjective,
               caseType: Cases.Nom,
             ),
             CaseSentencePart(
               isCorrectable: true,
-              actualObject: NounBankGeneral.bicikl,
-              displayValue: NounBankGeneral.bicikl.dictionary,
-              correctValues: NounBankGeneral.bicikl.genitiv.plural,
+              actualObject: NounBankGeneral.razlog,
+              displayValue: NounBankGeneral.razlog.dictionary,
+              correctValues: NounBankGeneral.razlog.genitiv.plural,
               grammarType: GrammarTypes.noun,
               caseType: Cases.Gen,
             ),
+            CaseSentencePart(displayValue: 'za vožnju biciklom'),
           ],
         ),
         PANCombo(

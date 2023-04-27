@@ -89,7 +89,7 @@ enum Tags {
   Pet,
   Time,
   Building,
-  Name,
+  Name, Concept,
 }
 
 enum VerbPerfectiveTypes {
