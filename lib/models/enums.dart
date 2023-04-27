@@ -26,7 +26,7 @@ enum ExerciseTypes {
   case_nouns,
   case_adjectives,
   case_nouns_and_adjectives,
-  case_personal_pronouns, numbers_counting,
+  case_personal_pronouns, numbers_counting, numbers_ordinal,
 }
 
 enum Genders {
