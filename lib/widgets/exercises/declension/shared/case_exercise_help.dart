@@ -210,8 +210,6 @@ class CaseExerciseHelp extends StatelessWidget {
   }
 
   getNounList(BuildContext context, Noun noun, Cases caseType, bool isPlural) {
-    final double topRowHeight = 65;
-
     return Container(
       child: Padding(
         padding: const EdgeInsets.only(

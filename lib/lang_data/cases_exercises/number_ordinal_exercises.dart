@@ -1,5 +1,3 @@
-// TODO: NumberOrdinalExercises
-
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/models.dart';
 

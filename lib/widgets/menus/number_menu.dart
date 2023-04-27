@@ -4,6 +4,7 @@ import 'package:navika/models/settings.dart';
 import 'package:navika/state/settings/settings_consumer_wrapper.dart';
 import 'package:navika/utilities/navika_helpers.dart';
 import 'package:navika/widgets/exercises/numbers/counting/counting_exercise.dart';
+import 'package:navika/widgets/exercises/numbers/ordinal/ordinal_exercise.dart';
 import 'package:navika/widgets/grammar-guides/number_guide/number_guide.dart';
 import 'package:navika/widgets/sbc_labels.dart';
 import 'package:navika/widgets/shared/ad_card.dart';
@@ -46,12 +47,11 @@ class NumberMenu extends StatelessWidget {
                       label: N.t('counting'),
                       transLabel: SbcLabels.counting,
                     ),
-                    // TODO: Enable when ordinal numbers are ready
-                    // NMenuButton(
-                    //   destination: OrdinalExercise(),
-                    //   label: N.t('ordinals'),
-                    //   transLabel: SbcLabels.ordinalNumbers,
-                    // ),
+                    NMenuButton(
+                      destination: OrdinalExercise(),
+                      label: N.t('ordinals'),
+                      transLabel: SbcLabels.ordinalNumbers,
+                    ),
                   ],
                 ),
               ),

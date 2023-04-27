@@ -19,7 +19,7 @@ class SettingsMenuButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: OutlinedButton.styleFrom(
-        primary: Nrs.getPrimaryColor(context),
+        foregroundColor: Nrs.getPrimaryColor(context),
         backgroundColor: Nrs.getAppBarColor(),
         side: BorderSide(color: BORDER_COLOR.withOpacity(0.15), width: 1),
       ),

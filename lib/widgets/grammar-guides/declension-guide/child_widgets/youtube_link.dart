@@ -18,6 +18,7 @@ class YouTubeLink extends StatelessWidget {
     const IconData playIcon = Icons.smart_display_rounded;
     final buttonWidth =
         Nrs.getScreenWidth() > 500.0 ? 500.0 : Nrs.getScreenWidth() - 40;
+    final uri = Uri(path: this.url);
 
     return Padding(
       padding: const EdgeInsets.all(10),
@@ -35,8 +36,8 @@ class YouTubeLink extends StatelessWidget {
             ),
           ),
           onPressed: () async {
-            await canLaunch(url)
-                ? await launch(url)
+            await canLaunchUrl(uri)
+                ? await launchUrl(uri)
                 : throw 'Could not launch $url';
           },
           child: Padding(
