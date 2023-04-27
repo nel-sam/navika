@@ -284,7 +284,7 @@ class NumberCountingExercises {
               showTableInHelpGuide: false,
               actualObject: CardinalNumbersBank.dva,
               displayValue: '',
-              correctValues: ['dve'],
+              correctValues: ['dva'],
               grammarType: GrammarTypes.adjective,
               caseType: Cases.Nom,
             ),
