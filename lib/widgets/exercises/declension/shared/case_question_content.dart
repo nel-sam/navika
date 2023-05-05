@@ -64,7 +64,7 @@ class _CaseQuestionContentState extends State<CaseQuestionContent> {
               hintValue: e.displayValue,
               initialValue: currentVal,
               correctValues: e.correctValues,
-              onChanged: (String newVal) {
+              onSubmitted: (String newVal) {
                 handleOnChange(newVal, e.correctValues);
               },
             ),
