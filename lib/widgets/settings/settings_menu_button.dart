@@ -16,10 +16,9 @@ class SettingsMenuButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
+    return OutlinedButton(
       style: OutlinedButton.styleFrom(
         foregroundColor: Theme.of(context).colorScheme.primary,
-        backgroundColor: Colors.transparent, // TODO: Verify color
         side: BorderSide(color: BORDER_COLOR.withOpacity(0.15), width: 1),
       ),
       child: Padding(

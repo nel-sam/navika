@@ -58,16 +58,13 @@ class _CaseQuestionContentState extends State<CaseQuestionContent> {
 
           final currentVal = widget.stateItem.getUserInput(e.correctValues[0]);
 
-          return Padding(
-            padding: const EdgeInsets.only(right: 8),
-            child: NFreeFormEntry(
-              hintValue: e.displayValue,
-              initialValue: currentVal,
-              correctValues: e.correctValues,
-              onChanged: (String newVal) {
-                handleOnChange(newVal, e.correctValues);
-              },
-            ),
+          return NFreeFormEntry(
+            hintValue: e.displayValue,
+            initialValue: currentVal,
+            correctValues: e.correctValues,
+            onChanged: (String newVal) {
+              handleOnChange(newVal, e.correctValues);
+            },
           );
         }).toList()
       ],
