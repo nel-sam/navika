@@ -28,43 +28,35 @@ class VerbFreeForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = N.getMaxScreenWidth();
-    double maxWidth =
-        screenWidth > 600 ? (screenWidth / 2) - 80 : (screenWidth / 2) - 14;
-
-    return Container(
-      width: maxWidth,
-      child: Padding(
-        padding: const EdgeInsets.all(18.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  this.startText,
-                  style: TextStyle(fontSize: FONT_SIZE),
+    return Padding(
+      padding: const EdgeInsets.all(18.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                this.startText,
+                style: TextStyle(fontSize: FONT_SIZE),
+              ),
+              if (this.gender != Genders.Unspecific)
+                NIconTextPair(
+                  icon: N.getGenderIcon(gender),
+                  text:
+                      '${N.getGenderString(context, gender).substring(0, 3)}.',
                 ),
-                if (this.gender != Genders.Unspecific)
-                  NIconTextPair(
-                    icon: N.getGenderIcon(gender),
-                    text:
-                        '${N.getGenderString(context, gender).substring(0, 3)}.',
-                  ),
-              ],
-            ),
-            NFreeFormEntry(
-              widthType: NFreeFormWidths.half,
-              hintValue: this.verb.infinitive,
-              onSubmitted: (String newValue) =>
-                  this.onChanged(stateKey, newValue),
-              initialValue: this.activeValue,
-              correctValues: this.correctValues,
-            ),
-          ],
-        ),
+            ],
+          ),
+          NFreeFormEntry(
+            widthType: NFreeFormWidths.half,
+            hintValue: this.verb.infinitive,
+            onChanged: (String newValue) => this.onChanged(stateKey, newValue),
+            initialValue: this.activeValue,
+            correctValues: this.correctValues,
+          ),
+        ],
       ),
     );
   }

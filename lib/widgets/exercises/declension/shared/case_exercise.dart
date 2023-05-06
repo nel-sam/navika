@@ -13,7 +13,6 @@ import 'package:navika/widgets/shared/exercise_navigation_wrapper.dart';
 import 'package:navika/widgets/shared/home_button_wrapper.dart';
 import 'package:navika/widgets/shared/info_banner.dart';
 import 'package:nrs_flutter_lib/constants.dart';
-import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 import 'package:nrs_flutter_lib/widgets/n_footer_button.dart';
 import 'package:nrs_flutter_lib/widgets/n_footer_menu.dart';
 import 'package:provider/provider.dart';
@@ -37,7 +36,6 @@ class CaseExercise extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Timer _debounce = Timer(const Duration(milliseconds: 0), () {});
-    final screenHeight = Nrs.getScreenHeight();
 
     return SettingsConsumerWrapper(
       getChildWidget: (settings) => ChangeNotifierProvider<ExerciseNavNotifier>(
@@ -48,83 +46,77 @@ class CaseExercise extends StatelessWidget {
             dialect: settings.dialectType),
         child: Consumer<ExerciseNavNotifier>(
           builder: (context, navNotifier, child) {
-            
             return Scaffold(
               appBar: N.navAppBar(title: SbcLabels.cases, context: context),
               body: Center(
                 child: SafeArea(
-                  child: SizedBox(
-                    width: N.getMaxScreenWidth(),
-                    child: CustomScrollView(
-                      slivers: [
-                        SliverFillRemaining(
-                          hasScrollBody: false,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              InfoBanner(
-                                label: title,
-                                description: description,
-                                youtubeLink: youtubeLink,
-                              ),
-                              const AdCard(),
-                              Divider(),
-                              Expanded(
-                                child: GestureDetector(
-                                  onHorizontalDragUpdate: (details) {
-                                    if (_debounce.isActive) {
-                                      _debounce.cancel();
+                  child: CustomScrollView(
+                    slivers: [
+                      SliverFillRemaining(
+                        hasScrollBody: false,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            InfoBanner(
+                              label: title,
+                              description: description,
+                              youtubeLink: youtubeLink,
+                            ),
+                            const AdCard(),
+                            Divider(),
+                            Expanded(
+                              child: GestureDetector(
+                                onHorizontalDragUpdate: (details) {
+                                  if (_debounce.isActive) {
+                                    _debounce.cancel();
+                                  }
+
+                                  _debounce = Timer(
+                                      const Duration(
+                                          milliseconds: DEBOUNCE_TIME), () {
+                                    if (details.delta.dx > 0) {
+                                      navNotifier.setPrevious();
                                     }
 
-                                    _debounce = Timer(
-                                        const Duration(
-                                            milliseconds: DEBOUNCE_TIME), () {
-                                      if (details.delta.dx > 0) {
-                                        navNotifier.setPrevious();
-                                      }
-
-                                      if (details.delta.dx < 0) {
-                                        navNotifier.setNext();
-                                      }
-                                    });
-                                  },
-                                  child: CaseQuestionContent(
-                                    stateItem: navNotifier.getActive(),
-                                    dialect: settings.dialectType,
-                                  ),
+                                    if (details.delta.dx < 0) {
+                                      navNotifier.setNext();
+                                    }
+                                  });
+                                },
+                                child: CaseQuestionContent(
+                                  stateItem: navNotifier.getActive(),
+                                  dialect: settings.dialectType,
                                 ),
                               ),
-                              ExerciseNavigationWrapper(
-                                  navNotifier: navNotifier),
-                            ],
-                          ),
+                            ),
+                            ExerciseNavigationWrapper(navNotifier: navNotifier),
+                          ],
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
               ),
-              persistentFooterButtons: screenHeight > 700
-                  ? [
-                      NFooterMenu(buttons: [
-                        HomeButtonWrapper(),
-                        NFooterButton(
-                          active: true,
-                          onPressed: () {
-                            final dest = DeclensionGuide(
-                                startingCase: caseType,
-                                dialect: settings.dialectType);
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => dest),
-                            );
-                          },
-                          icon: Icons.help_center_outlined,
-                          text: N.t('grammar'),
-                        ),
-                      ]),
-                    ]
-                  : [],
+              persistentFooterButtons: [
+                // TODO: Small screens don't show this well. Test on small screens
+                NFooterMenu(buttons: [
+                  HomeButtonWrapper(),
+                  NFooterButton(
+                    active: true,
+                    onPressed: () {
+                      final dest = DeclensionGuide(
+                          startingCase: caseType,
+                          dialect: settings.dialectType);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => dest),
+                      );
+                    },
+                    icon: Icons.help_center_outlined,
+                    text: N.t('grammar'),
+                  ),
+                ]),
+              ],
             );
           },
         ),

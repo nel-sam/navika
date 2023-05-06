@@ -3,7 +3,6 @@ import 'package:navika/constants.dart';
 import 'package:navika/models/verb.dart';
 import 'package:navika/utilities/navika_helpers.dart';
 import 'package:nrs_flutter_lib/constants.dart';
-import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 import 'package:nrs_flutter_lib/widgets/n_icon_text_pair.dart';
 import 'package:nrs_flutter_lib/widgets/n_sub_header.dart';
 import 'package:nrs_flutter_lib/widgets/n_text_span.dart';
@@ -22,8 +21,7 @@ class VerbHelpGuide extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: N.navAppBar(
-          title: verb.infinitive, context: context),
+      appBar: N.navAppBar(title: verb.infinitive, context: context),
       body: SingleChildScrollView(
         padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
         child: Column(
@@ -80,10 +78,6 @@ class VerbHelpGuide extends StatelessWidget {
   }
 
   Widget getPastTenseChart(BuildContext context, Verb verb) {
-    final screenWidth = Nrs.getScreenWidth();
-    double iconPairContWidth = (screenWidth / 2) - 40;
-    bool showLongForm = screenWidth > 400;
-
     return Padding(
       padding: const EdgeInsets.only(top: 18),
       child: Column(
@@ -92,28 +86,22 @@ class VerbHelpGuide extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Container(
-                width: iconPairContWidth - 50,
-                child: NIconTextPair(
-                  alignment: MainAxisAlignment.end,
-                  icon: MASCULINE_ICON,
-                  color: MASCULINE_COLOR,
-                  text: N.t(showLongForm ? 'masculine' : 'masc'),
-                ),
+              NIconTextPair(
+                alignment: MainAxisAlignment.end,
+                icon: MASCULINE_ICON,
+                color: MASCULINE_COLOR,
+                text: N.t('masc'),
               ),
-              Container(
-                width: iconPairContWidth,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    NTextSpan('Ja sam ${verb.pastPerfect.singularMasc}'),
-                    NTextSpan('Ti si ${verb.pastPerfect.singularMasc}'),
-                    NTextSpan('On je ${verb.pastPerfect.singularMasc}'),
-                    NTextSpan('Mi smo ${verb.pastPerfect.pluralMasc}'),
-                    NTextSpan('Vi ste ${verb.pastPerfect.pluralMasc}'),
-                    NTextSpan('Oni ste ${verb.pastPerfect.pluralMasc}'),
-                  ],
-                ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  NTextSpan('Ja sam ${verb.pastPerfect.singularMasc}'),
+                  NTextSpan('Ti si ${verb.pastPerfect.singularMasc}'),
+                  NTextSpan('On je ${verb.pastPerfect.singularMasc}'),
+                  NTextSpan('Mi smo ${verb.pastPerfect.pluralMasc}'),
+                  NTextSpan('Vi ste ${verb.pastPerfect.pluralMasc}'),
+                  NTextSpan('Oni ste ${verb.pastPerfect.pluralMasc}'),
+                ],
               ),
             ],
           ),
@@ -122,28 +110,22 @@ class VerbHelpGuide extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Container(
-                  width: iconPairContWidth - 50,
-                  child: NIconTextPair(
-                    alignment: MainAxisAlignment.end,
-                    icon: FEMININE_ICON,
-                    color: FEMININE_COLOR,
-                    text: N.t(showLongForm ? 'feminine' : 'fem'),
-                  ),
+                NIconTextPair(
+                  alignment: MainAxisAlignment.end,
+                  icon: FEMININE_ICON,
+                  color: FEMININE_COLOR,
+                  text: N.t('fem'),
                 ),
-                Container(
-                  width: iconPairContWidth,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      NTextSpan('Ja sam ${verb.pastPerfect.singularFem}'),
-                      NTextSpan('Ti si ${verb.pastPerfect.singularFem}'),
-                      NTextSpan('Ona je ${verb.pastPerfect.singularFem}'),
-                      NTextSpan('Mi smo ${verb.pastPerfect.pluralFem}'),
-                      NTextSpan('Vi ste ${verb.pastPerfect.pluralFem}'),
-                      NTextSpan('One su ${verb.pastPerfect.pluralFem}'),
-                    ],
-                  ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    NTextSpan('Ja sam ${verb.pastPerfect.singularFem}'),
+                    NTextSpan('Ti si ${verb.pastPerfect.singularFem}'),
+                    NTextSpan('Ona je ${verb.pastPerfect.singularFem}'),
+                    NTextSpan('Mi smo ${verb.pastPerfect.pluralFem}'),
+                    NTextSpan('Vi ste ${verb.pastPerfect.pluralFem}'),
+                    NTextSpan('One su ${verb.pastPerfect.pluralFem}'),
+                  ],
                 ),
               ],
             ),
@@ -153,24 +135,18 @@ class VerbHelpGuide extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Container(
-                  width: iconPairContWidth - 50,
-                  child: NIconTextPair(
-                    alignment: MainAxisAlignment.end,
-                    icon: NEUTER_ICON,
-                    color: NEUTER_COLOR,
-                    text: N.t(showLongForm ? 'neuter' : 'neut'),
-                  ),
+                NIconTextPair(
+                  alignment: MainAxisAlignment.end,
+                  icon: NEUTER_ICON,
+                  color: NEUTER_COLOR,
+                  text: N.t('neut'),
                 ),
-                Container(
-                  width: iconPairContWidth,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      NTextSpan('Ono je ${verb.pastPerfect.ono}'),
-                      NTextSpan('Ona su ${verb.pastPerfect.onaPl}'),
-                    ],
-                  ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    NTextSpan('Ono je ${verb.pastPerfect.ono}'),
+                    NTextSpan('Ona su ${verb.pastPerfect.onaPl}'),
+                  ],
                 ),
               ],
             ),

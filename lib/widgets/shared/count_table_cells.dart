@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:navika/utilities/navika_helpers.dart';
 import 'package:navika/widgets/grammar-guides/declension-guide/child_widgets/explanation_icon_cell.dart';
 import 'package:nrs_flutter_lib/constants.dart';
-import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
 class CountIcon extends StatelessWidget {
   const CountIcon({
@@ -11,12 +10,9 @@ class CountIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDarkTheme = Nrs.isDarkTheme(context);
-
     return Icon(
       Icons.circle,
-      size: FONT_SIZE - 6,
-      color: isDarkTheme ? Colors.white : Colors.black.withOpacity(0.6),
+      size: FONT_SIZE - 6, // TODO: Verify this shows up correctly
     );
   }
 }

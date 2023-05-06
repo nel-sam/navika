@@ -176,17 +176,6 @@ class N {
     }
   }
 
-  static double getMaxScreenWidth() {
-    final actualScreenWidth = Nrs.getScreenWidth();
-    final screenWidth = actualScreenWidth;
-
-    if (screenWidth > MAX_SCREEN_WIDTH) {
-      return MAX_SCREEN_WIDTH;
-    }
-
-    return screenWidth;
-  }
-
   static String getPronounLabel(PronounEnum pronoun, context) {
     switch (pronoun) {
       case PronounEnum.I:

@@ -30,82 +30,76 @@ class CaseExerciseHelp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = Nrs.getScreenWidth();
-
     return Scaffold(
       appBar:
           N.navAppBar(title: N.getCaseLabel(combos.caseType), context: context),
       body: SettingsConsumerWrapper(
         getChildWidget: (settings) => Center(
-          child: Container(
-            width: screenWidth > 840 ? screenWidth / 2 : screenWidth,
-            child: SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: Column(
-                  children: [
-                    getCorrectSentenceWidget(context, combos),
-                    NRoundButton(
-                        title: N.t('go_to_declension_grammar_guide'),
-                        onPressed: () {
-                          final dest = DeclensionGuide(
-                              startingCase: Cases.Nom,
-                              dialect: settings.dialectType);
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => dest),
-                          );
-                        }),
-                    ...combos.sentenceParts.map(
-                      (CaseSentencePart e) {
-                        if (!e.showTableInHelpGuide) return Container();
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Column(
+                children: [
+                  getCorrectSentenceWidget(context, combos),
+                  NRoundButton(
+                      title: N.t('go_to_declension_grammar_guide'),
+                      onPressed: () {
+                        final dest = DeclensionGuide(
+                            startingCase: Cases.Nom,
+                            dialect: settings.dialectType);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => dest),
+                        );
+                      }),
+                  ...combos.sentenceParts.map(
+                    (CaseSentencePart e) {
+                      if (!e.showTableInHelpGuide) return Container();
 
-                        final caseType = combos.caseType == Cases.Unspecified
-                            ? e.caseType
-                            : combos.caseType;
+                      final caseType = combos.caseType == Cases.Unspecified
+                          ? e.caseType
+                          : combos.caseType;
 
-                        if (!e.isCorrectable) return Container();
+                      if (!e.isCorrectable) return Container();
 
-                        if (e.grammarType == GrammarTypes.adjective ||
-                            e.grammarType == GrammarTypes.possessivePronoun ||
-                            e.grammarType ==
-                                GrammarTypes.demonstrativePronoun) {
-                          return getAdjDeclensionTable(
-                            context,
-                            e.actualObject,
-                            caseType,
-                            combos.isAnimate,
-                          );
-                        }
+                      if (e.grammarType == GrammarTypes.adjective ||
+                          e.grammarType == GrammarTypes.possessivePronoun ||
+                          e.grammarType == GrammarTypes.demonstrativePronoun) {
+                        return getAdjDeclensionTable(
+                          context,
+                          e.actualObject,
+                          caseType,
+                          combos.isAnimate,
+                        );
+                      }
 
-                        var isPlural = combos.isPlural;
+                      var isPlural = combos.isPlural;
 
-                        if (e.forcedPlurality != Plurality.Inherited) {
-                          isPlural = e.forcedPlurality == Plurality.Plural;
-                        }
+                      if (e.forcedPlurality != Plurality.Inherited) {
+                        isPlural = e.forcedPlurality == Plurality.Plural;
+                      }
 
-                        if (e.grammarType == GrammarTypes.noun) {
-                          return getNounList(
-                            context,
-                            e.actualObject,
-                            caseType,
-                            isPlural,
-                          );
-                        }
+                      if (e.grammarType == GrammarTypes.noun) {
+                        return getNounList(
+                          context,
+                          e.actualObject,
+                          caseType,
+                          isPlural,
+                        );
+                      }
 
-                        if (e.grammarType == GrammarTypes.personalPronoun) {
-                          return getPersonalPronounDeclensionList(
-                            context,
-                            e.actualObject,
-                            caseType,
-                          );
-                        }
+                      if (e.grammarType == GrammarTypes.personalPronoun) {
+                        return getPersonalPronounDeclensionList(
+                          context,
+                          e.actualObject,
+                          caseType,
+                        );
+                      }
 
-                        return Container();
-                      },
-                    ),
-                  ],
-                ),
+                      return Container();
+                    },
+                  ),
+                ],
               ),
             ),
           ),

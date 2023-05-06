@@ -9,22 +9,17 @@ import 'package:navika/widgets/sbc_labels.dart';
 import 'package:navika/widgets/shared/ad_card.dart';
 import 'package:navika/widgets/shared/settings_button.dart';
 import 'package:nrs_flutter_lib/constants.dart';
-import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 import 'package:nrs_flutter_lib/widgets/n_menu_button.dart';
 
 class MainMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    bool isBigScreen = Nrs.getScreenHeight() > MAX_SCREEN_WIDTH;
-    final bannerHeight = Nrs.getScreenHeight() / 3.5;
-
     return Column(
       children: [
         Container(
-          height: bannerHeight,
+          height: 250,
           decoration: BoxDecoration(
             image: DecorationImage(
-              opacity: Nrs.isDarkTheme(context) ? 0.7 : 1,
               image: AssetImage(
                 'assets/banners/sea.jpg',
               ),
@@ -62,7 +57,8 @@ class MainMenu extends StatelessWidget {
             ],
           ),
         ),
-        isBigScreen ? const SizedBox(height: FONT_SIZE * 4) : const SizedBox(),
+        // TODO: What???
+        //isBigScreen ? const SizedBox(height: FONT_SIZE * 4) : const SizedBox(),
         Expanded(
           child: SingleChildScrollView(
             child: Column(

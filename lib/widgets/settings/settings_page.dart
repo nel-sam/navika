@@ -10,7 +10,6 @@ import 'package:navika/widgets/settings/account_page.dart';
 import 'package:navika/widgets/settings/settings_menu_button.dart';
 import 'package:navika/widgets/shared/nav_spinner.dart';
 import 'package:nrs_flutter_lib/constants.dart';
-import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 import 'package:provider/provider.dart';
 
 class SettingsPage extends StatelessWidget {
@@ -136,12 +135,11 @@ class SettingsSwitch extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            SizedBox(
-                width: Nrs.getScreenWidth() * 0.7,
-                child: Text(
-                  description,
-                  style: TextStyle(color: Colors.grey),
-                )),
+            // TODO: Verify this
+            Text(
+              description,
+              style: TextStyle(color: Colors.grey),
+            ),
             Switch(
               activeColor: navPalette,
               value: value,

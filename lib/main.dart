@@ -30,8 +30,6 @@ class NavikaApp extends StatelessWidget {
     final primaryColor = navPalette;
 
     return MaterialApp(
-      //showPerformanceOverlay: true,
-      //debugShowCheckedModeBanner: false,
       title: APP_NAME,
       localizationsDelegates: [
         LocalJsonLocalization.delegate,
@@ -40,8 +38,8 @@ class NavikaApp extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: [
-        const Locale('en', ''),
-        const Locale('es', ''),
+        const Locale('en', 'US'),
+        const Locale('es', 'MX'),
       ],
       theme: ThemeData(
         brightness: Brightness.light,
@@ -51,7 +49,8 @@ class NavikaApp extends StatelessWidget {
         primarySwatch: primaryColor,
         primaryColor: Colors.black,
         brightness: Brightness.dark,
-        colorScheme: ColorScheme.dark(background: const Color(0xFF212121)),
+        colorScheme: ColorScheme.dark(
+            background: const Color(0xFF212121), onPrimary: Colors.white),
         dividerColor: Colors.black12,
       ),
       themeMode: ThemeMode.system,

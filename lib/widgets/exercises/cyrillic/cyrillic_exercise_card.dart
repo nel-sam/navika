@@ -76,7 +76,7 @@ class CyrillicExerciseCard extends StatelessWidget {
                   initialValue: this.state.userInput,
                   correctValues: [this.state.cyrillicString],
                   hintValue: '',
-                  onSubmitted: (newVal) {
+                  onChanged: (newVal) {
                     this.state.updateInput(newVal);
                   },
                 ),

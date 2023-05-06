@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
 class AdCard extends StatelessWidget {
   const AdCard({Key? key}) : super(key: key);
@@ -37,7 +36,6 @@ class AdCard extends StatelessWidget {
       return Container(
         color: Colors.white,
         height: 40,
-        width: Nrs.getScreenWidth(),
       );
     }
   }

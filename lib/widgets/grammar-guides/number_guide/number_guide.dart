@@ -83,37 +83,34 @@ class _NumberGuideState extends State<NumberGuide> {
         context: context,
       ),
       body: Center(
-        child: SizedBox(
-          width: N.getMaxScreenWidth(),
-          child: Column(
-            children: [
-              const AdCard(),
-              NProgressBar(progressPercentage: this.progressPercentage),
-              Expanded(
-                child: SingleChildScrollView(
-                    controller: controller,
-                    padding: EdgeInsets.fromLTRB(FONT_SIZE, 0, FONT_SIZE, 0),
-                    child: Column(
-                      children: [
-                        ContentSection(
-                            text: N.t('numbers'),
-                            key: numbersGlobalKey,
-                            content: NumbersContent()),
-                        ContentSection(
-                          text: N.t('counting'),
-                          key: countingGlobalKey,
-                          content: CountingContent(),
-                        ),
-                        ContentSection(
-                          text: N.t('ordinals'),
-                          key: ordinalGlobalKey,
-                          content: OrdinalContent(),
-                        ),
-                      ],
-                    )),
-              ),
-            ],
-          ),
+        child: Column(
+          children: [
+            const AdCard(),
+            NProgressBar(progressPercentage: this.progressPercentage),
+            Expanded(
+              child: SingleChildScrollView(
+                  controller: controller,
+                  padding: EdgeInsets.fromLTRB(FONT_SIZE, 0, FONT_SIZE, 0),
+                  child: Column(
+                    children: [
+                      ContentSection(
+                          text: N.t('numbers'),
+                          key: numbersGlobalKey,
+                          content: NumbersContent()),
+                      ContentSection(
+                        text: N.t('counting'),
+                        key: countingGlobalKey,
+                        content: CountingContent(),
+                      ),
+                      ContentSection(
+                        text: N.t('ordinals'),
+                        key: ordinalGlobalKey,
+                        content: OrdinalContent(),
+                      ),
+                    ],
+                  )),
+            ),
+          ],
         ),
       ),
     );

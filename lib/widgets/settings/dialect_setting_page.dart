@@ -31,75 +31,72 @@ class DialectSettingPage extends StatelessWidget {
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.done) {
                   return SingleChildScrollView(
-                    child: SizedBox(
-                      width: N.getMaxScreenWidth(),
-                      child: Center(
-                        child: Padding(
-                          padding: const EdgeInsets.all(FONT_SIZE),
-                          child: Column(children: [
-                            Text(
-                              N.t('dialectTitle'),
-                              style: TextStyle(fontSize: FONT_SIZE * 2),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  top: FONT_SIZE, bottom: FONT_SIZE),
-                              child: Text(N.t('dialectDesc'),
-                                  style: TextStyle(
-                                      fontSize: FONT_SIZE,
-                                      color: Colors.grey,
-                                      fontWeight: FontWeight.bold)),
-                            ),
-                            NRoundButton(
-                                title: N.t('serbia'),
-                                onPressed: () {
-                                  model.setDialectType(DialectType.Serbia);
-                                  model.setBoolSetting(
-                                      SettingsKeys.isFirstTime, false);
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => NHomePage()),
-                                  );
-                                }),
-                            NRoundButton(
-                                title: N.t('croatia'),
-                                onPressed: () {
-                                  model.setDialectType(DialectType.Croatia);
-                                  model.setBoolSetting(
-                                      SettingsKeys.isFirstTime, false);
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => NHomePage()),
-                                  );
-                                }),
-                            NRoundButton(
-                                title: N.t('bosnia'),
-                                onPressed: () {
-                                  model.setDialectType(DialectType.Bosnia);
-                                  model.setBoolSetting(
-                                      SettingsKeys.isFirstTime, false);
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => NHomePage()),
-                                  );
-                                }),
-                            NTextLink(
-                                title: N.t('skip'),
-                                onPressed: () {
-                                  model.setDialectType(DialectType.Bosnia);
-                                  model.setBoolSetting(
-                                      SettingsKeys.isFirstTime, false);
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => NHomePage()),
-                                  );
-                                })
-                          ]),
-                        ),
+                    child: Center(
+                      child: Padding(
+                        padding: const EdgeInsets.all(FONT_SIZE),
+                        child: Column(children: [
+                          Text(
+                            N.t('dialectTitle'),
+                            style: TextStyle(fontSize: FONT_SIZE * 2),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                top: FONT_SIZE, bottom: FONT_SIZE),
+                            child: Text(N.t('dialectDesc'),
+                                style: TextStyle(
+                                    fontSize: FONT_SIZE,
+                                    color: Colors.grey,
+                                    fontWeight: FontWeight.bold)),
+                          ),
+                          NRoundButton(
+                              title: N.t('serbia'),
+                              onPressed: () {
+                                model.setDialectType(DialectType.Serbia);
+                                model.setBoolSetting(
+                                    SettingsKeys.isFirstTime, false);
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => NHomePage()),
+                                );
+                              }),
+                          NRoundButton(
+                              title: N.t('croatia'),
+                              onPressed: () {
+                                model.setDialectType(DialectType.Croatia);
+                                model.setBoolSetting(
+                                    SettingsKeys.isFirstTime, false);
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => NHomePage()),
+                                );
+                              }),
+                          NRoundButton(
+                              title: N.t('bosnia'),
+                              onPressed: () {
+                                model.setDialectType(DialectType.Bosnia);
+                                model.setBoolSetting(
+                                    SettingsKeys.isFirstTime, false);
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => NHomePage()),
+                                );
+                              }),
+                          NTextLink(
+                              title: N.t('skip'),
+                              onPressed: () {
+                                model.setDialectType(DialectType.Bosnia);
+                                model.setBoolSetting(
+                                    SettingsKeys.isFirstTime, false);
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => NHomePage()),
+                                );
+                              })
+                        ]),
                       ),
                     ),
                   );

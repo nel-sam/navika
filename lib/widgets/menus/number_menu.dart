@@ -24,39 +24,36 @@ class NumberMenu extends StatelessWidget {
         context: context,
       ),
       body: SettingsConsumerWrapper(
-        getChildWidget: (Settings settings) => SizedBox(
-          width: N.getMaxScreenWidth(),
-          child: Column(
-            children: [
-              const AdCard(),
-              NMenuHeader(
-                icon: icon,
-                transLabel: transLabel,
-                label: label,
+        getChildWidget: (Settings settings) => Column(
+          children: [
+            const AdCard(),
+            NMenuHeader(
+              icon: icon,
+              transLabel: transLabel,
+              label: label,
+            ),
+            Expanded(
+              child: Column(
+                children: [
+                  NMenuButton(
+                    destination: NumberGuide(dialect: settings.dialectType),
+                    label: N.t('numberGuide'),
+                    transLabel: SbcLabels.grammarGuide,
+                  ),
+                  NMenuButton(
+                    destination: CountingExercise(),
+                    label: N.t('counting'),
+                    transLabel: SbcLabels.counting,
+                  ),
+                  NMenuButton(
+                    destination: OrdinalExercise(),
+                    label: N.t('ordinals'),
+                    transLabel: SbcLabels.ordinalNumbers,
+                  ),
+                ],
               ),
-              Expanded(
-                child: Column(
-                  children: [
-                    NMenuButton(
-                      destination: NumberGuide(dialect: settings.dialectType),
-                      label: N.t('numberGuide'),
-                      transLabel: SbcLabels.grammarGuide,
-                    ),
-                    NMenuButton(
-                      destination: CountingExercise(),
-                      label: N.t('counting'),
-                      transLabel: SbcLabels.counting,
-                    ),
-                    NMenuButton(
-                      destination: OrdinalExercise(),
-                      label: N.t('ordinals'),
-                      transLabel: SbcLabels.ordinalNumbers,
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

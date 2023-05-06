@@ -3,7 +3,6 @@ import 'dart:collection';
 import 'package:flutter/material.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/models/verb.dart';
-import 'package:navika/utilities/navika_helpers.dart';
 import 'package:navika/widgets/exercises/verbs/shared/verb_free_form.dart';
 import 'package:navika/widgets/exercises/verbs/shared/verb_header.dart';
 
@@ -26,85 +25,65 @@ class PresentTenseQuestionContent extends StatelessWidget {
     return Column(
       children: [
         VerbHeader(verb: this.verb, isAllCorrect: this.isAllCorrect),
-        getBody(context),
+        Column(
+          children: [
+            VerbFreeForm(
+              startText: 'Ja',
+              activeValue: this.state[ConjPronounTypes.jaMasc.toString()] ?? '',
+              correctValues: [this.verb.present.ja],
+              gender: Genders.Unspecific,
+              verb: verb,
+              onChanged: onChanged,
+              stateKey: ConjPronounTypes.jaMasc.toString(),
+            ),
+            VerbFreeForm(
+              startText: 'Ti',
+              activeValue: this.state[ConjPronounTypes.tiMasc.toString()] ?? '',
+              correctValues: [this.verb.present.ti],
+              gender: Genders.Unspecific,
+              verb: verb,
+              onChanged: onChanged,
+              stateKey: ConjPronounTypes.tiMasc.toString(),
+            ),
+            VerbFreeForm(
+              startText: 'On/Ona/Ono',
+              activeValue: this.state[ConjPronounTypes.on.toString()] ?? '',
+              correctValues: [this.verb.present.on],
+              gender: Genders.Unspecific,
+              verb: verb,
+              onChanged: onChanged,
+              stateKey: ConjPronounTypes.on.toString(),
+            ),
+            VerbFreeForm(
+              startText: 'Mi',
+              activeValue: this.state[ConjPronounTypes.miMasc.toString()] ?? '',
+              correctValues: [this.verb.present.mi],
+              gender: Genders.Unspecific,
+              verb: verb,
+              onChanged: onChanged,
+              stateKey: ConjPronounTypes.miMasc.toString(),
+            ),
+            VerbFreeForm(
+              startText: 'Vi',
+              activeValue: this.state[ConjPronounTypes.viMasc.toString()] ?? '',
+              correctValues: [this.verb.present.vi],
+              gender: Genders.Unspecific,
+              verb: verb,
+              onChanged: onChanged,
+              stateKey: ConjPronounTypes.viMasc.toString(),
+            ),
+            VerbFreeForm(
+              startText: 'Oni/One/Ona (pl)',
+              activeValue: this.state[ConjPronounTypes.oni.toString()] ?? '',
+              correctValues: [this.verb.present.oni],
+              gender: Genders.Unspecific,
+              verb: verb,
+              onChanged: onChanged,
+              stateKey: ConjPronounTypes.oni.toString(),
+            ),
+          ],
+        ),
       ],
     );
-  }
-
-  Widget getBody(BuildContext context) {
-    final screenWidth = N.getMaxScreenWidth();
-
-    var children2 = [
-      Column(
-        children: [
-          VerbFreeForm(
-            startText: 'Ja',
-            activeValue: this.state[ConjPronounTypes.jaMasc.toString()] ?? '',
-            correctValues: [this.verb.present.ja],
-            gender: Genders.Unspecific,
-            verb: verb,
-            onChanged: onChanged,
-            stateKey: ConjPronounTypes.jaMasc.toString(),
-          ),
-          VerbFreeForm(
-            startText: 'Ti',
-            activeValue: this.state[ConjPronounTypes.tiMasc.toString()] ?? '',
-            correctValues: [this.verb.present.ti],
-            gender: Genders.Unspecific,
-            verb: verb,
-            onChanged: onChanged,
-            stateKey: ConjPronounTypes.tiMasc.toString(),
-          ),
-          VerbFreeForm(
-            startText: 'On/Ona/Ono',
-            activeValue: this.state[ConjPronounTypes.on.toString()] ?? '',
-            correctValues: [this.verb.present.on],
-            gender: Genders.Unspecific,
-            verb: verb,
-            onChanged: onChanged,
-            stateKey: ConjPronounTypes.on.toString(),
-          ),
-        ],
-      ),
-      Column(
-        children: [
-          VerbFreeForm(
-            startText: 'Mi',
-            activeValue: this.state[ConjPronounTypes.miMasc.toString()] ?? '',
-            correctValues: [this.verb.present.mi],
-            gender: Genders.Unspecific,
-            verb: verb,
-            onChanged: onChanged,
-            stateKey: ConjPronounTypes.miMasc.toString(),
-          ),
-          VerbFreeForm(
-            startText: 'Vi',
-            activeValue: this.state[ConjPronounTypes.viMasc.toString()] ?? '',
-            correctValues: [this.verb.present.vi],
-            gender: Genders.Unspecific,
-            verb: verb,
-            onChanged: onChanged,
-            stateKey: ConjPronounTypes.viMasc.toString(),
-          ),
-          VerbFreeForm(
-            startText: 'Oni/One/Ona (pl)',
-            activeValue: this.state[ConjPronounTypes.oni.toString()] ?? '',
-            correctValues: [this.verb.present.oni],
-            gender: Genders.Unspecific,
-            verb: verb,
-            onChanged: onChanged,
-            stateKey: ConjPronounTypes.oni.toString(),
-          ),
-        ],
-      ),
-    ];
-
-    return screenWidth > 600
-        ? Column(children: children2)
-        : Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: children2,
-          );
   }
 }

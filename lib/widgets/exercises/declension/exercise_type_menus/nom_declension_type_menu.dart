@@ -42,59 +42,56 @@ class NomDeclensionTypeMenu extends StatelessWidget {
       body: SettingsConsumerWrapper(
         getChildWidget: (Settings settings) => Center(
           child: SingleChildScrollView(
-            child: SizedBox(
-              width: N.getMaxScreenWidth(),
-              child: Column(
-                children: [
-                  const AdCard(),
-                  NMenuHeader(
-                    icon: icon,
-                    transLabel: transLabel,
-                    label: SbcLabels(settings.dialectType).exerciseType,
-                  ),
-                  Column(
-                    children: [
-                      NMenuButton(
-                        destination: CaseExercise(
-                          caseType: caseType,
-                          description: description,
-                          youtubeLink: youtubeLink,
-                          title: title,
-                          exerciseType: ExerciseTypes.case_personal_pronouns,
-                        ),
-                        label: '${N.t('level_1')}: ${N.t('personalPronouns')}',
-                        transLabel:
-                            SbcLabels(settings.dialectType).personalPronouns,
+            child: Column(
+              children: [
+                const AdCard(),
+                NMenuHeader(
+                  icon: icon,
+                  transLabel: transLabel,
+                  label: SbcLabels(settings.dialectType).exerciseType,
+                ),
+                Column(
+                  children: [
+                    NMenuButton(
+                      destination: CaseExercise(
+                        caseType: caseType,
+                        description: description,
+                        youtubeLink: youtubeLink,
+                        title: title,
+                        exerciseType: ExerciseTypes.case_personal_pronouns,
                       ),
-                      NMenuButton(
-                        destination: CaseExercise(
-                          caseType: caseType,
-                          description: description,
-                          youtubeLink: youtubeLink,
-                          title: title,
-                          exerciseType: ExerciseTypes.case_nouns,
-                        ),
-                        label: '${N.t('level_2')}: ${N.t('nouns')}',
-                        transLabel: SbcLabels.nouns,
+                      label: '${N.t('level_1')}: ${N.t('personalPronouns')}',
+                      transLabel:
+                          SbcLabels(settings.dialectType).personalPronouns,
+                    ),
+                    NMenuButton(
+                      destination: CaseExercise(
+                        caseType: caseType,
+                        description: description,
+                        youtubeLink: youtubeLink,
+                        title: title,
+                        exerciseType: ExerciseTypes.case_nouns,
                       ),
-                      NMenuButton(
-                        destination: CaseExercise(
-                          caseType: caseType,
-                          description: description,
-                          youtubeLink: youtubeLink,
-                          title: title,
-                          exerciseType: ExerciseTypes.case_adjectives,
-                        ),
-                        label: '${N.t('level_3')}: ${N.t('adjectives')}',
-                        transLabel: SbcLabels(settings.dialectType).adjectives,
+                      label: '${N.t('level_2')}: ${N.t('nouns')}',
+                      transLabel: SbcLabels.nouns,
+                    ),
+                    NMenuButton(
+                      destination: CaseExercise(
+                        caseType: caseType,
+                        description: description,
+                        youtubeLink: youtubeLink,
+                        title: title,
+                        exerciseType: ExerciseTypes.case_adjectives,
                       ),
-                      FLAG_PREMIUM_FEATURE
-                          ? nounsAndAdjs(settings, title)
-                          : Container(),
-                    ],
-                  ),
-                ],
-              ),
+                      label: '${N.t('level_3')}: ${N.t('adjectives')}',
+                      transLabel: SbcLabels(settings.dialectType).adjectives,
+                    ),
+                    FLAG_PREMIUM_FEATURE
+                        ? nounsAndAdjectives(settings, title)
+                        : Container(),
+                  ],
+                ),
+              ],
             ),
           ),
         ),
@@ -103,7 +100,7 @@ class NomDeclensionTypeMenu extends StatelessWidget {
     );
   }
 
-  NMenuButton nounsAndAdjs(Settings settings, String title) {
+  NMenuButton nounsAndAdjectives(Settings settings, String title) {
     return settings.isPremium
         ? NMenuButton(
             destination: CaseExercise(
