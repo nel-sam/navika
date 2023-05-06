@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:navika/utilities/navika_helpers.dart';
 import 'package:nrs_flutter_lib/constants.dart';
-import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class YouTubeLink extends StatelessWidget {
@@ -22,7 +21,7 @@ class YouTubeLink extends StatelessWidget {
       padding: const EdgeInsets.all(10),
       child: ElevatedButton(
         style: OutlinedButton.styleFrom(
-          foregroundColor: Nrs.getPrimaryColor(context),
+          foregroundColor: Theme.of(context).colorScheme.primary,
           elevation: 6,
           shadowColor: BORDER_COLOR.withOpacity(0.25),
           side: BorderSide(color: BORDER_COLOR.withOpacity(0.15), width: 2),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:nrs_flutter_lib/constants.dart';
-import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 import 'package:nrs_flutter_lib/widgets/n_action_arrow.dart';
 
 class SettingsMenuButton extends StatelessWidget {
@@ -19,7 +18,7 @@ class SettingsMenuButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: OutlinedButton.styleFrom(
-        foregroundColor: Nrs.getPrimaryColor(context),
+        foregroundColor: Theme.of(context).colorScheme.primary,
         backgroundColor: Colors.transparent, // TODO: Verify color
         side: BorderSide(color: BORDER_COLOR.withOpacity(0.15), width: 1),
       ),

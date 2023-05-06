@@ -88,7 +88,7 @@ class VerbHeader extends StatelessWidget {
             children: [
               IconButton(
                 icon: Icon(Icons.info),
-                color: Nrs.getPrimaryColor(context),
+                color: Theme.of(context).colorScheme.primary,
                 onPressed: () {
                   final dest = VerbHelpGuide(
                     verb: verb,

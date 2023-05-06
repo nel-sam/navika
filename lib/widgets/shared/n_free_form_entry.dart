@@ -140,7 +140,7 @@
 //         return OutlineInputBorder(
 //           borderRadius: BorderRadius.circular(10),
 //           borderSide: BorderSide(
-//             color: Nrs.getPrimaryColor(context),
+//             color: Theme.of(context).colorScheme.primary,
 //           ),
 //         );
 //     }

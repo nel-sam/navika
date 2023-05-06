@@ -46,11 +46,12 @@ class NavikaApp extends StatelessWidget {
         primarySwatch: primaryColor,
       ),
       darkTheme: ThemeData(
-        primarySwatch: primaryColor,
         primaryColor: Colors.black,
         brightness: Brightness.dark,
         colorScheme: ColorScheme.dark(
-            background: const Color(0xFF212121), onPrimary: Colors.white),
+            primary: primaryColor,
+            background: const Color(0xFF212121),
+            onPrimary: Colors.white),
         dividerColor: Colors.black12,
       ),
       themeMode: ThemeMode.system,

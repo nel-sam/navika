@@ -6,7 +6,6 @@ import 'package:navika/widgets/grammar-guides/declension-guide/child_widgets/dec
 import 'package:navika/widgets/grammar-guides/declension-guide/child_widgets/explanation_icon_cell.dart';
 import 'package:navika/widgets/shared/count_table_cells.dart';
 import 'package:nrs_flutter_lib/constants.dart';
-import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
 class DeclensionTable extends StatelessWidget {
   final DeclensionTableCell masculineSingular;
@@ -174,8 +173,8 @@ class DeclensionTable extends StatelessWidget {
                         width: 13,
                         height: 13,
                         decoration: BoxDecoration(
-                          border:
-                              Border.all(color: Nrs.getPrimaryColor(context)),
+                          border: Border.all(
+                              color: Theme.of(context).colorScheme.primary),
                           borderRadius: BorderRadius.circular(2),
                         ),
                       ),

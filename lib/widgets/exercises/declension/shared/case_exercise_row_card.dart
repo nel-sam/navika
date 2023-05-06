@@ -5,7 +5,6 @@ import 'package:navika/models/models.dart';
 import 'package:navika/utilities/navika_helpers.dart';
 import 'package:navika/widgets/exercises/declension/shared/case_exercise_help.dart';
 import 'package:nrs_flutter_lib/constants.dart';
-import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 import 'package:nrs_flutter_lib/widgets/n_icon_text_pair.dart';
 
 class CaseExerciseRowCard extends StatelessWidget {
@@ -134,7 +133,7 @@ class CaseExerciseRowCardHeader extends StatelessWidget {
                   ),
                 );
               },
-              color: Nrs.getPrimaryColor(context),
+              color: Theme.of(context).colorScheme.primary,
               icon: Icon(Icons.help)),
         ],
       ),

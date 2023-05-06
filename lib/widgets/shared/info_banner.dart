@@ -50,7 +50,7 @@ class _InfoBannerState extends State<InfoBanner> {
                     Text(
                       widget.label,
                       style: TextStyle(
-                        color: Nrs.getPrimaryColor(context),
+                        color: Theme.of(context).colorScheme.primary,
                         fontSize: 18,
                       ),
                     ),

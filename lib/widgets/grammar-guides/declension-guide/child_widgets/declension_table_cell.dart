@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:navika/constants.dart';
-import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 import 'package:nrs_flutter_lib/widgets/n_text_multi.dart';
 
 class DeclensionTableCell extends StatelessWidget {
@@ -41,7 +40,7 @@ class DeclensionTableCell extends StatelessWidget {
                 ? BoxDecoration(
                     border: Border.all(
                         width: borderWidth,
-                        color: Nrs.getPrimaryColor(context)),
+                        color: Theme.of(context).colorScheme.primary),
                     borderRadius: BorderRadius.circular(borderRadius),
                   )
                 : null,
