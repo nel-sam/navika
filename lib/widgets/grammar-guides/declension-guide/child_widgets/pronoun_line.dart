@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/utilities/navika_helpers.dart';
 import 'package:nrs_flutter_lib/widgets/n_text_multi.dart';
-import 'package:nrs_flutter_lib/widgets/n_text_span.dart';
 
 class PronounLine extends StatelessWidget {
   final PronounEnum pronoun;
@@ -33,17 +32,17 @@ class PronounLine extends StatelessWidget {
                   color: Colors.grey,
                 )),
               ),
-              width: 100,
+              width: 80,
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                padding: const EdgeInsets.only(right: 10),
                 child: Align(
                   alignment: Alignment.centerRight,
-                  child: NTextSpan(labelText),
+                  child: Wrap(children: [Text(labelText)]),
                 ),
               ),
             ),
           ),
-          text
+          Wrap(children: [text])
         ],
       ),
     );

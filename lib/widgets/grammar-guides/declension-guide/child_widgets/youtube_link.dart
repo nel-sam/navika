@@ -20,11 +20,7 @@ class YouTubeLink extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(10),
       child: ElevatedButton(
-        style: OutlinedButton.styleFrom(
-          foregroundColor: Theme.of(context).colorScheme.primary,
-          elevation: 6,
-          shadowColor: BORDER_COLOR.withOpacity(0.25),
-          side: BorderSide(color: BORDER_COLOR.withOpacity(0.15), width: 2),
+        style: ElevatedButton.styleFrom(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(radius),
           ),

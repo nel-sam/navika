@@ -3,11 +3,11 @@ import 'package:navika/utilities/navika_helpers.dart';
 import 'package:nrs_flutter_lib/widgets/n_sub_header.dart';
 import 'package:nrs_flutter_lib/widgets/n_text_span.dart';
 
-class PossessivePronounSection extends StatelessWidget {
+class PersonalPronounSection extends StatelessWidget {
   final List<Widget> contents;
   final String note;
 
-  PossessivePronounSection({
+  PersonalPronounSection({
     Key? key,
     required this.contents,
     this.note = '',

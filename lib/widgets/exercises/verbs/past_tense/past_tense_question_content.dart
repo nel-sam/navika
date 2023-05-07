@@ -99,10 +99,6 @@ class PastTenseQuestionContent extends StatelessWidget {
               verb: verb,
               onChanged: onChanged,
             ),
-          ],
-        ),
-        Column(
-          children: [
             VerbFreeForm(
               startText: 'Mi smo',
               gender: Genders.Masculine,

@@ -111,8 +111,6 @@ class N {
 
   static List<Padding> getCorrectSentence(
       BuildContext context, List<CaseSentencePart> sentenceParts) {
-    final fontSize = FONT_SIZE * 1.1;
-
     return sentenceParts.map<Padding>((CaseSentencePart e) {
       if (sentenceParts.first == e) {
         final displayValue =
@@ -133,8 +131,7 @@ class N {
 
       if (!e.isCorrectable) {
         return Padding(
-            padding: const EdgeInsets.all(0),
-            child: Text(e.displayValue, style: TextStyle(fontSize: fontSize)));
+            padding: const EdgeInsets.all(0), child: Text(e.displayValue));
       }
 
       final padding = 6.0;
@@ -149,8 +146,7 @@ class N {
       return Padding(
           padding: EdgeInsets.only(left: padding, right: rightPadding),
           child: Text('${e.correctValues.join('/')}',
-              style: Nrs.getTextStyle(
-                  context: context, isBold: true, fontSize: fontSize)));
+              style: Nrs.getTextStyle(context: context, isBold: true)));
     }).toList();
   }
 

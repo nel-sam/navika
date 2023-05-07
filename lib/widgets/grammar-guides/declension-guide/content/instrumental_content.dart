@@ -3,7 +3,7 @@ import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/utilities/navika_helpers.dart';
 import 'package:navika/widgets/grammar-guides/declension-guide/child_widgets/example_sentences.dart';
-import 'package:navika/widgets/grammar-guides/declension-guide/child_widgets/possessive_pronoun_section.dart';
+import 'package:navika/widgets/grammar-guides/declension-guide/child_widgets/personal_pronoun_section.dart';
 import 'package:navika/widgets/grammar-guides/declension-guide/child_widgets/pronoun_line.dart';
 import 'package:navika/widgets/grammar-guides/declension-guide/child_widgets/youtube_link.dart';
 import 'package:navika/widgets/grammar-guides/declension-guide/content/declension_tables/instrumental_table.dart';
@@ -69,7 +69,7 @@ class InstrumentalGrammarGuideContent extends StatelessWidget {
           ],
         ),
         InstrumentalDeclensionTable(),
-        PossessivePronounSection(
+        PersonalPronounSection(
           note: N.t('saMnomDesc'),
           contents: [
             PronounLine(

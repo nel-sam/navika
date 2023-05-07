@@ -13,7 +13,11 @@ class ExplanationTextCell extends StatelessWidget {
     return Container(
       child: RichText(
         text: TextSpan(
-          style: TextStyle(fontSize: 16), // TODO: Verify this shows up correctly
+          style: TextStyle(
+              fontSize: Theme.of(context)
+                  .textTheme
+                  .bodySmall!
+                  .fontSize), // TODO: Verify this shows up correctly
           children: children,
         ),
       ),

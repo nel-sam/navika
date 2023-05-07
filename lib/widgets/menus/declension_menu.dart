@@ -45,8 +45,7 @@ class DeclensionMenu extends StatelessWidget {
                     label: SbcLabels.cases,
                   ),
                   NMenuButton(
-                    destination:
-                        DeclensionGuide(dialect: settings.dialectType),
+                    destination: DeclensionGuide(dialect: settings.dialectType),
                     label: N.t('declensionGuide'),
                     transLabel: SbcLabels.declensionGuide,
                   ),

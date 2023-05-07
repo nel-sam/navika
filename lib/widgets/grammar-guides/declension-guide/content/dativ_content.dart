@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/utilities/navika_helpers.dart';
 import 'package:navika/widgets/grammar-guides/declension-guide/child_widgets/example_sentences.dart';
-import 'package:navika/widgets/grammar-guides/declension-guide/child_widgets/possessive_pronoun_section.dart';
+import 'package:navika/widgets/grammar-guides/declension-guide/child_widgets/personal_pronoun_section.dart';
 import 'package:navika/widgets/grammar-guides/declension-guide/child_widgets/pronoun_line.dart';
 import 'package:navika/widgets/grammar-guides/declension-guide/content/declension_tables/dativ_lokativ_table.dart';
 import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
@@ -47,7 +47,7 @@ class DativGrammarGuideContent extends StatelessWidget {
           ],
         ),
         DativLokativDeclensionTable(),
-        PossessivePronounSection(
+        PersonalPronounSection(
           note: N.t('longShortFormDesc'),
           contents: [
             PronounLine(
@@ -69,7 +69,7 @@ class DativGrammarGuideContent extends StatelessWidget {
                 text: NTextMulti([
                   TextSpan(
                       text: dialect == DialectType.Serbia
-                          ? 'Ja trebao da pokažem'
+                          ? 'Ja trebao da pokažem '
                           : 'Ja trebao pokazati '),
                   TextSpan(
                       text: 'tebi',

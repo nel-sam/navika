@@ -42,9 +42,7 @@ class VerbHeader extends StatelessWidget {
                                   ? '$perfectiveness${perfectiveness == '' ? '' : ','} ${N.t('irregular')}'
                                   : perfectiveness,
                               style: Nrs.getTextStyle(
-                                  context: context,
-                                  isItalic: true,
-                                  fontSize: FONT_SIZE - 4),
+                                  context: context, isItalic: true),
                             ),
                           ],
                         ),
@@ -55,10 +53,12 @@ class VerbHeader extends StatelessWidget {
                             children: [
                               Text(
                                 '${verb.infinitive.toUpperCase()}',
-                                style: Nrs.getTextStyle(
-                                    context: context,
-                                    isBold: true,
-                                    fontSize: 16 * 1.3,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: Theme.of(context)
+                                        .textTheme
+                                        .bodyLarge!
+                                        .fontSize,
                                     color: isAllCorrect
                                         ? CORRECT_COLOR
                                         : Colors.grey),
@@ -68,7 +68,6 @@ class VerbHeader extends StatelessWidget {
                                 '$translation',
                                 style: Nrs.getTextStyle(
                                   context: context,
-                                  fontSize: FONT_SIZE,
                                   isItalic: true,
                                 ),
                               )

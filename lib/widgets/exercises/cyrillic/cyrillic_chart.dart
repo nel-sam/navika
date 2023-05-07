@@ -74,8 +74,10 @@ class CyrillicChart extends StatelessWidget {
                 NTextSpan('${key.toUpperCase()} $key'),
                 NTextSpan(
                   '${value.toUpperCase()} $value',
-                  textStyle: Nrs.getTextStyle(
-                      context: context, isBold: true, fontSize: 20),
+                  textStyle: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize:
+                          Theme.of(context).textTheme.bodyLarge!.fontSize),
                 ),
               ],
             ),

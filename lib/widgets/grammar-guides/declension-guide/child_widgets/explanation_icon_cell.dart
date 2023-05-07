@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:navika/widgets/grammar-guides/declension-guide/child_widgets/declension_table.dart';
-import 'package:nrs_flutter_lib/constants.dart';
 
 class ExplanationIconCell extends StatelessWidget {
   final Widget icon;
@@ -20,7 +19,7 @@ class ExplanationIconCell extends StatelessWidget {
       isHeader: this.isHeader,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.end,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           icon,
           SizedBox(
@@ -30,7 +29,7 @@ class ExplanationIconCell extends StatelessWidget {
             label.toUpperCase(),
             textAlign: TextAlign.center,
             style: TextStyle(
-              fontSize: FONT_SIZE - 3, // TODO: Verify this shows up correctly
+              fontSize: Theme.of(context).textTheme.bodySmall!.fontSize,
             ),
           ),
         ],

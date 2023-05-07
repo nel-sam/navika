@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:navika/constants.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/state/cases/case_question_state.dart';
 import 'package:navika/widgets/exercises/declension/shared/case_exercise_row_card.dart';
@@ -47,11 +46,10 @@ class _CaseQuestionContentState extends State<CaseQuestionContent> {
       children: [
         ...widget.stateItem.combos.sentenceParts.map((e) {
           if (!e.isCorrectable) {
-            return Padding(
-              padding: const EdgeInsets.only(right: 8),
-              child: Text(
-                e.displayValue,
-                style: TextStyle(fontSize: EXERCISE_FONT_SIZE),
+            return Container(
+              child: Padding(
+                padding: const EdgeInsets.only(right: 8),
+                child: Text(e.displayValue),
               ),
             );
           }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:navika/utilities/navika_helpers.dart';
 import 'package:navika/widgets/grammar-guides/declension-guide/child_widgets/explanation_icon_cell.dart';
-import 'package:nrs_flutter_lib/constants.dart';
 
 class CountIcon extends StatelessWidget {
   const CountIcon({
@@ -12,7 +11,7 @@ class CountIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return Icon(
       Icons.circle,
-      size: FONT_SIZE - 6, // TODO: Verify this shows up correctly
+      size: Theme.of(context).textTheme.bodySmall!.fontSize! * 0.7,
     );
   }
 }

@@ -135,7 +135,6 @@ class SettingsSwitch extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            // TODO: Verify this
             Text(
               description,
               style: TextStyle(color: Colors.grey),

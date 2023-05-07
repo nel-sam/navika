@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:navika/utilities/navika_helpers.dart';
 import 'package:navika/widgets/grammar-guides/declension-guide/child_widgets/youtube_link.dart';
-import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 import 'package:nrs_flutter_lib/widgets/n_text_span.dart';
 
 class InfoBanner extends StatefulWidget {
@@ -56,8 +55,6 @@ class _InfoBannerState extends State<InfoBanner> {
                     ),
                     NTextSpan(
                       N.t('expand_for_more'),
-                      textStyle:
-                          Nrs.getTextStyle(context: context, fontSize: 12),
                     )
                   ],
                 ),

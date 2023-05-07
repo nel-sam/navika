@@ -29,6 +29,16 @@ class NavikaApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final primaryColor = navPalette;
 
+    // TODO: Apply this to other apps
+    final textTheme = TextTheme(
+      titleLarge: TextStyle(fontSize: 42.0),
+      titleMedium: TextStyle(fontSize: 39.0),
+      titleSmall: TextStyle(fontSize: 22.0),
+      bodyLarge: TextStyle(fontSize: 20.0),
+      bodyMedium: TextStyle(fontSize: 18.0),
+      bodySmall: TextStyle(fontSize: 16.0),
+    );
+
     return MaterialApp(
       title: APP_NAME,
       localizationsDelegates: [
@@ -44,6 +54,7 @@ class NavikaApp extends StatelessWidget {
       theme: ThemeData(
         brightness: Brightness.light,
         primarySwatch: primaryColor,
+        textTheme: textTheme,
       ),
       darkTheme: ThemeData(
         primaryColor: Colors.black,
@@ -53,6 +64,7 @@ class NavikaApp extends StatelessWidget {
             background: const Color(0xFF212121),
             onPrimary: Colors.white),
         dividerColor: Colors.black12,
+        textTheme: textTheme,
       ),
       themeMode: ThemeMode.system,
       home: NHomePage(),
