@@ -61,25 +61,18 @@ class _InfoBannerState extends State<InfoBanner> {
               );
             },
             isExpanded: state.isExpanded,
-            body: Expanded(
-              child: Container(
-                //height: 250,
-                child: Padding(
-                  padding: const EdgeInsets.all(18),
-                  child: Column(
-                    children: [
-                      Text(
-                        widget.description,
-                        softWrap: true,
-                        style: const TextStyle(
-                          //color: Colors.white,
-                          fontSize: 15,
-                        ),
-                      ),
-                      if (state.hasYouTubeLink)
-                        YouTubeLink(this.widget.youtubeLink!)
-                    ],
-                  ),
+            body: Container(
+              child: Padding(
+                padding: const EdgeInsets.all(18),
+                child: Column(
+                  children: [
+                    Text(
+                      widget.description,
+                      softWrap: true,
+                    ),
+                    if (state.hasYouTubeLink)
+                      YouTubeLink(this.widget.youtubeLink!)
+                  ],
                 ),
               ),
             ))
