@@ -8,8 +8,8 @@ import 'package:navika/state/settings/settings_notifier.dart';
 import 'package:navika/utilities/navika_helpers.dart';
 import 'package:navika/widgets/settings/account_page.dart';
 import 'package:navika/widgets/settings/settings_menu_button.dart';
-import 'package:navika/widgets/shared/nav_spinner.dart';
 import 'package:nrs_flutter_lib/constants.dart';
+import 'package:nrs_flutter_lib/widgets/n_spinner.dart';
 import 'package:provider/provider.dart';
 
 class SettingsPage extends StatelessWidget {
@@ -91,7 +91,7 @@ class SettingsPage extends StatelessWidget {
                     ],
                   );
                 } else {
-                  return NavSpinner();
+                  return NSpinner();
                 }
               },
             );

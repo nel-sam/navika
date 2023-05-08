@@ -7,7 +7,7 @@ import 'package:navika/models/enums.dart';
 import 'package:navika/navika_theme.dart';
 import 'package:navika/widgets/menus/main_menu.dart';
 import 'package:navika/widgets/settings/dialect_setting_page.dart';
-import 'package:navika/widgets/shared/nav_spinner.dart';
+import 'package:nrs_flutter_lib/widgets/n_spinner.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
@@ -90,7 +90,7 @@ class NHomePage extends StatelessWidget {
               );
             }
           } else {
-            return NavSpinner();
+            return NSpinner();
           }
         });
   }

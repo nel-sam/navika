@@ -15,7 +15,7 @@ class YouTubeLink extends StatelessWidget {
   Widget build(BuildContext context) {
     const double radius = 100;
     const IconData playIcon = Icons.smart_display_rounded;
-    final uri = Uri(path: this.url);
+    final uri = Uri.parse(this.url);
 
     return Padding(
       padding: const EdgeInsets.all(10),

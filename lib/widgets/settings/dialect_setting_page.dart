@@ -3,9 +3,9 @@ import 'package:navika/main.dart';
 import 'package:navika/models/enums.dart';
 import 'package:navika/state/settings/settings_notifier.dart';
 import 'package:navika/utilities/navika_helpers.dart';
-import 'package:navika/widgets/shared/nav_spinner.dart';
 import 'package:nrs_flutter_lib/constants.dart';
 import 'package:nrs_flutter_lib/widgets/n_round_button.dart';
+import 'package:nrs_flutter_lib/widgets/n_spinner.dart';
 import 'package:nrs_flutter_lib/widgets/n_text_link.dart';
 import 'package:provider/provider.dart';
 
@@ -101,7 +101,7 @@ class DialectSettingPage extends StatelessWidget {
                     ),
                   );
                 } else {
-                  return NavSpinner();
+                  return NSpinner();
                 }
               },
             );
