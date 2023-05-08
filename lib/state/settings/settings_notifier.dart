@@ -10,8 +10,7 @@ class SettingsNotifier with ChangeNotifier {
     final preferences = await getPreferencesInstance();
 
     settings.isFirstTime =
-        (preferences.getBool(SettingsKeys.isFirstTime.toString()) ??
-            settings.isFirstTime);
+        (preferences.getBool(SettingsKeys.isFirstTime.toString()) ?? true);
 
     settings.autoNextQuestion =
         (preferences.getBool(SettingsKeys.autoNextQuestion.toString()) ??

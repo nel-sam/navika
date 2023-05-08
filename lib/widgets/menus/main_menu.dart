@@ -14,42 +14,47 @@ import 'package:nrs_flutter_lib/widgets/n_menu_button.dart';
 class MainMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        NHeroBanner(
-            imagePath: 'assets/banners/sea.jpg',
-            appName: APP_NAME,
-            rightWidget: SettingsButton()),
-        Expanded(
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                NMenuButton(
-                  destination: DeclensionMenu(),
-                  label: N.t('caseExercises'),
-                  transLabel: SbcLabels.cases,
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      body: Center(
+        child: Column(
+          children: [
+            NHeroBanner(
+                imagePath: 'assets/banners/sea.jpg',
+                appName: APP_NAME,
+                rightWidget: SettingsButton()),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    NMenuButton(
+                      destination: DeclensionMenu(),
+                      label: N.t('caseExercises'),
+                      transLabel: SbcLabels.cases,
+                    ),
+                    NMenuButton(
+                      destination: VerbMenu(),
+                      label: N.t('verbExercises'),
+                      transLabel: SbcLabels.verbs,
+                    ),
+                    NMenuButton(
+                      destination: NumberMenu(),
+                      label: N.t('numbers'),
+                      transLabel: SbcLabels.numbers,
+                    ),
+                    NMenuButton(
+                      destination: CyrillicExercise(),
+                      label: N.t('cyrillic'),
+                      transLabel: SbcLabels.cyrillic,
+                    ),
+                  ],
                 ),
-                NMenuButton(
-                  destination: VerbMenu(),
-                  label: N.t('verbExercises'),
-                  transLabel: SbcLabels.verbs,
-                ),
-                NMenuButton(
-                  destination: NumberMenu(),
-                  label: N.t('numbers'),
-                  transLabel: SbcLabels.numbers,
-                ),
-                NMenuButton(
-                  destination: CyrillicExercise(),
-                  label: N.t('cyrillic'),
-                  transLabel: SbcLabels.cyrillic,
-                ),
-              ],
+              ),
             ),
-          ),
+            const AdCard(),
+          ],
         ),
-        const AdCard(),
-      ],
+      ),
     );
   }
 }

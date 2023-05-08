@@ -82,12 +82,8 @@ class NHomePage extends StatelessWidget {
             if ((snapshot.data as bool)) {
               return DialectSettingPage();
             } else {
-              return Scaffold(
-                resizeToAvoidBottomInset: false,
-                body: Center(
-                  child: MainMenu(),
-                ),
-              );
+              return MainMenu();
+               ;
             }
           } else {
             return NSpinner();

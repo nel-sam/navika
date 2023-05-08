@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:navika/main.dart';
 import 'package:navika/models/enums.dart';
+import 'package:navika/models/settings.dart';
 import 'package:navika/state/settings/settings_notifier.dart';
 import 'package:navika/utilities/navika_helpers.dart';
+import 'package:navika/widgets/menus/main_menu.dart';
 import 'package:nrs_flutter_lib/constants.dart';
+import 'package:nrs_flutter_lib/widgets/n_keyboard_message.dart';
 import 'package:nrs_flutter_lib/widgets/n_round_button.dart';
 import 'package:nrs_flutter_lib/widgets/n_spinner.dart';
 import 'package:nrs_flutter_lib/widgets/n_text_link.dart';
@@ -25,11 +27,13 @@ class DialectSettingPage extends StatelessWidget {
       body: ChangeNotifierProvider<SettingsNotifier>(
         create: (context) => SettingsNotifier(),
         child: Center(child: Consumer<SettingsNotifier>(
-          builder: (context, model, child) {
+          builder: (context, settings, child) {
             return FutureBuilder(
-              future: model.getAllSettings(),
+              future: settings.getAllSettings(),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.done) {
+                  final settingsSnapshot = snapshot.data as Settings;
+
                   return SingleChildScrollView(
                     child: Center(
                       child: Padding(
@@ -51,50 +55,38 @@ class DialectSettingPage extends StatelessWidget {
                           NRoundButton(
                               title: N.t('serbia'),
                               onPressed: () {
-                                model.setDialectType(DialectType.Serbia);
-                                model.setBoolSetting(
+                                settings.setDialectType(DialectType.Serbia);
+                                settings.setBoolSetting(
                                     SettingsKeys.isFirstTime, false);
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => NHomePage()),
-                                );
+                                navigateToNextPage(context, settings,
+                                    settingsSnapshot.isFirstTime);
                               }),
                           NRoundButton(
                               title: N.t('croatia'),
                               onPressed: () {
-                                model.setDialectType(DialectType.Croatia);
-                                model.setBoolSetting(
+                                settings.setDialectType(DialectType.Croatia);
+                                settings.setBoolSetting(
                                     SettingsKeys.isFirstTime, false);
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => NHomePage()),
-                                );
+                                navigateToNextPage(context, settings,
+                                    settingsSnapshot.isFirstTime);
                               }),
                           NRoundButton(
                               title: N.t('bosnia'),
                               onPressed: () {
-                                model.setDialectType(DialectType.Bosnia);
-                                model.setBoolSetting(
+                                settings.setDialectType(DialectType.Bosnia);
+                                settings.setBoolSetting(
                                     SettingsKeys.isFirstTime, false);
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => NHomePage()),
-                                );
+                                navigateToNextPage(context, settings,
+                                    settingsSnapshot.isFirstTime);
                               }),
                           NTextLink(
                               title: N.t('skip'),
                               onPressed: () {
-                                model.setDialectType(DialectType.Bosnia);
-                                model.setBoolSetting(
+                                settings.setDialectType(DialectType.Bosnia);
+                                settings.setBoolSetting(
                                     SettingsKeys.isFirstTime, false);
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => NHomePage()),
-                                );
+                                navigateToNextPage(context, settings,
+                                    settingsSnapshot.isFirstTime);
                               })
                         ]),
                       ),
@@ -108,6 +100,31 @@ class DialectSettingPage extends StatelessWidget {
           },
         )),
       ),
+    );
+  }
+
+  Future<dynamic> navigateToNextPage(
+      BuildContext context, SettingsNotifier settings, bool isFirstTime) async {
+    final route = isFirstTime
+        ? NKeyboardMessage(
+            welcomeText: 'Dobar dan',
+            detailsText: N.t('serbocroatian_keyboard_needed'),
+            instructionsButtonText: N.t('instructions'),
+            continueLinkText: N.t('continue'),
+            onContinue: () async {
+              await settings.setBoolSetting(SettingsKeys.isFirstTime, false);
+
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => MainMenu()),
+              );
+            },
+          )
+        : MainMenu();
+
+    return Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => route),
     );
   }
 }
