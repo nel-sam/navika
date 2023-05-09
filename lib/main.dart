@@ -14,6 +14,10 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   MobileAds.instance.initialize();
 
+  final RequestConfiguration requestConfiguration = RequestConfiguration(
+      tagForUnderAgeOfConsent: TagForUnderAgeOfConsent.yes);
+  MobileAds.instance.updateRequestConfiguration(requestConfiguration);
+
   runApp(new NavikaApp());
 }
 
@@ -83,7 +87,6 @@ class NHomePage extends StatelessWidget {
               return DialectSettingPage();
             } else {
               return MainMenu();
-               ;
             }
           } else {
             return NSpinner();
