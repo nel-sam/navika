@@ -111,6 +111,7 @@ class DialectSettingPage extends StatelessWidget {
             detailsText: N.t('serbocroatian_keyboard_needed'),
             instructionsButtonText: N.t('instructions'),
             continueLinkText: N.t('continue'),
+            imageUrl: 'assets/banners/keyboard.png',
             onContinue: () async {
               await settings.setBoolSetting(SettingsKeys.isFirstTime, false);
 
