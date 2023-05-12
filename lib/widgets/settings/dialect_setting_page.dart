@@ -107,7 +107,7 @@ class DialectSettingPage extends StatelessWidget {
       BuildContext context, SettingsNotifier settings, bool isFirstTime) async {
     final route = isFirstTime
         ? NKeyboardMessage(
-            welcomeText: 'Dobar dan',
+            welcomeText: 'Dobar dan!',
             detailsText: N.t('serbocroatian_keyboard_needed'),
             instructionsButtonText: N.t('instructions'),
             continueLinkText: N.t('continue'),
