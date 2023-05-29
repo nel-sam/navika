@@ -214,7 +214,7 @@ class GenitivExercises {
               isCorrectable: true,
               actualObject: NounBankGeneral.more,
               displayValue: NounBankGeneral.more.dictionary,
-              correctValues: NounBankGeneral.more.genitiv.singular,
+              correctValues: NounBankGeneral.more.genitiv.plural,
               grammarType: GrammarTypes.noun,
             ),
           ],

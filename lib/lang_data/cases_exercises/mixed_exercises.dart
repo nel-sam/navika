@@ -257,7 +257,7 @@ class MixedExercises {
         PANCombo(
             caseType: caseType,
             gender: Genders.Unspecific,
-            isPlural: true,
+            isPlural: false,
             extraInfo: N.t('extrainfo_use_genitiv_after_sa_when_saying_from_somewhere'),
             sentenceParts: [
               CaseSentencePart(
@@ -295,7 +295,7 @@ class MixedExercises {
         PANCombo(
             caseType: caseType,
             gender: Genders.Unspecific,
-            isPlural: true,
+            isPlural: false,
             sentenceParts: [
               CaseSentencePart(
                 isCorrectable: true,
@@ -321,7 +321,7 @@ class MixedExercises {
           caseType: caseType,
           translation: N.t('ex_Vidjeli_smo_lijepe_jezera_u_Bosni'),
           gender: NounBankGeneral.jezero.gender,
-          isPlural: true,
+          isPlural: false,
           isAnimate: true,
           sentenceParts: [
             CaseSentencePart(displayValue: 'Vidjeli smo'),

@@ -29,18 +29,14 @@ class CaseKey {
 }
 
 class DeclensionGuide extends StatefulWidget {
-  late Cases startingCase;
+  final Cases startingCase;
   final DialectType dialect;
 
   DeclensionGuide({
     Key? key,
     this.startingCase = Cases.Nom,
     required this.dialect,
-  }) : super(key: key) {
-    if (startingCase == Cases.All) {
-      startingCase = Cases.Nom;
-    }
-  }
+  }) : super(key: key);
 
   @override
   _DeclensionGuideState createState() => _DeclensionGuideState();
@@ -60,7 +56,8 @@ class _DeclensionGuideState extends State<DeclensionGuide> {
   late ScrollController controller = ScrollController();
   late bool isAtTop = true;
   late bool isAtBottom = false;
-  late int startingIndex = casesInOrder.indexOf(widget.startingCase);
+  late int startingIndex = getStartingIndex();
+
   late double progressPercentage = (startingIndex / casesInOrder.length) * 100;
   late int activeIndex = startingIndex;
 
@@ -104,8 +101,8 @@ class _DeclensionGuideState extends State<DeclensionGuide> {
                     ContentSection(
                       text: N.getCaseLabel(Cases.Aku),
                       key: _getCaseKey(Cases.Aku),
-                      content: AkuzativGrammarGuideContent(
-                          dialect: widget.dialect),
+                      content:
+                          AkuzativGrammarGuideContent(dialect: widget.dialect),
                     ),
                     ContentSection(
                       text: N.getCaseLabel(Cases.Vok),
@@ -151,6 +148,13 @@ class _DeclensionGuideState extends State<DeclensionGuide> {
     );
   }
 
+  int getStartingIndex() {
+    if (widget.startingCase == Cases.All)
+      return casesInOrder.indexOf(Cases.Nom);
+
+    return casesInOrder.indexOf(widget.startingCase);
+  }
+
   @override
   void initState() {
     caseKeys = casesInOrder.map((caseType) {
@@ -159,7 +163,10 @@ class _DeclensionGuideState extends State<DeclensionGuide> {
 
     // addPostFrameCallback gets called after the build method is finished
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      final startingPoint = _getScrollPoint(widget.startingCase);
+      final startingPoint = widget.startingCase == Cases.All
+          ? _getScrollPoint(Cases.Nom)
+          : _getScrollPoint(widget.startingCase);
+
       controller.addListener(scrollListener);
       _scrollTo(startingPoint, controller);
     });
@@ -179,8 +186,8 @@ class _DeclensionGuideState extends State<DeclensionGuide> {
           isAtTop = isAtBottom = false;
         }
 
-        double fullHeight = _getFullSizeGuideHeight();
-        double percentage = controller.position.pixels / fullHeight;
+        double percentage =
+            controller.position.pixels / controller.position.maxScrollExtent;
         percentage = percentage < 0 ? 0 : percentage;
         this.progressPercentage = percentage * 100;
 
@@ -194,7 +201,7 @@ class _DeclensionGuideState extends State<DeclensionGuide> {
   }
 
   int _getCaseTypeIndexFromCurrentPosition() {
-    _setIndixesAndHeight();
+    _setIndicesAndHeight();
     double currentPoint = controller.position.pixels;
     double scrollPoint = 0;
 
@@ -208,16 +215,6 @@ class _DeclensionGuideState extends State<DeclensionGuide> {
     return casesInOrder.length - 1;
   }
 
-  double _getFullSizeGuideHeight() {
-    double totalSize = 0;
-
-    for (var i = 0; i < casesInOrder.length; i++) {
-      totalSize += _getHeightFromCaseKey(casesInOrder[i]);
-    }
-
-    return totalSize;
-  }
-
   double _getHeightFromCaseKey(Cases caseType) {
     final caseKey = _getCaseKey(caseType);
     return caseKey.currentContext!.size!.height;
@@ -226,7 +223,7 @@ class _DeclensionGuideState extends State<DeclensionGuide> {
   double _getScrollPoint(Cases caseType) {
     double scrollPoint = 0;
 
-    _setIndixesAndHeight();
+    _setIndicesAndHeight();
 
     for (var i = 0; i < casesInOrder.length; i++) {
       if (casesInOrder[i] == caseType) return scrollPoint;
@@ -249,7 +246,7 @@ class _DeclensionGuideState extends State<DeclensionGuide> {
       });
 
   _scrollPrevOrNext({required bool toNext}) {
-    _setIndixesAndHeight();
+    _setIndicesAndHeight();
 
     activeIndex = toNext ? activeIndex + 1 : activeIndex - 1;
     activeIndex = activeIndex < 0 ? 0 : activeIndex;
@@ -257,7 +254,7 @@ class _DeclensionGuideState extends State<DeclensionGuide> {
     _scrollTo(scrollPoint, controller);
   }
 
-  void _setIndixesAndHeight() {
+  void _setIndicesAndHeight() {
     double scrollPoint = 0;
 
     for (var i = 0; i < caseKeys.length; i++) {

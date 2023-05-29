@@ -9,6 +9,6 @@ class Settings {
   Settings(
       {this.isFirstTime = true,
       this.autoNextQuestion = true,
-      this.isPremium = false,
+      this.isPremium = true,
       this.dialectType = DialectType.Bosnia});
 }

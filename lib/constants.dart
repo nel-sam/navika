@@ -13,7 +13,7 @@ const EdgeInsets EXERCISE_LIST_PADDING = const EdgeInsets.only(bottom: 10);
 const FEMININE_COLOR = Color(0xFFD6308A);
 
 const FEMININE_ICON = Icons.female;
-const FLAG_PREMIUM_FEATURE = false;
+const FLAG_PREMIUM_FEATURE = true;
 
 const MASCULINE_COLOR = Color(0xFF6C5CE7);
 const MASCULINE_ICON = Icons.male;

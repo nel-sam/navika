@@ -4,7 +4,6 @@ import 'package:navika/models/verb.dart';
 import 'package:navika/utilities/navika_helpers.dart';
 import 'package:navika/widgets/exercises/verbs/shared/verb_help_guide.dart';
 import 'package:nrs_flutter_lib/constants.dart';
-import 'package:nrs_flutter_lib/nrs_flutter_lib.dart';
 
 class VerbHeader extends StatelessWidget {
   final Verb verb;
@@ -28,58 +27,51 @@ class VerbHeader extends StatelessWidget {
         children: [
           Column(
             children: [
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 18.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+              Padding(
+                padding: const EdgeInsets.only(left: 18.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
                       children: [
-                        Row(
-                          children: [
-                            Text(
-                              this.verb.isIrregular
-                                  ? '$perfectiveness${perfectiveness == '' ? '' : ','} ${N.t('irregular')}'
-                                  : perfectiveness,
-                              style: Nrs.getTextStyle(
-                                  context: context, isItalic: true),
-                            ),
-                          ],
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 6),
-                          child: Wrap(
-                            verticalDirection: VerticalDirection.up,
-                            children: [
-                              Text(
-                                '${verb.infinitive.toUpperCase()}',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: Theme.of(context)
-                                        .textTheme
-                                        .bodyLarge!
-                                        .fontSize,
-                                    color: isAllCorrect
-                                        ? CORRECT_COLOR
-                                        : Colors.grey),
-                              ),
-                              Padding(padding: EdgeInsets.only(left: 8)),
-                              Text(
-                                '$translation',
-                                style: Nrs.getTextStyle(
-                                  context: context,
-                                  isItalic: true,
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                        if (isAllCorrect)
-                          Icon(CORRECT_ANSWER_ICON, color: CORRECT_COLOR)
+                        Text(this.verb.isIrregular
+                            ? '$perfectiveness${perfectiveness == '' ? '' : ','} ${N.t('irregular')}'
+                            : perfectiveness),
                       ],
                     ),
-                  ),
-                ],
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10),
+                      child: Wrap(
+                        verticalDirection: VerticalDirection.up,
+                        children: [
+                          Text(
+                            '${verb.infinitive.toUpperCase()} - ',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: Theme.of(context)
+                                    .textTheme
+                                    .bodyLarge!
+                                    .fontSize,
+                                color: isAllCorrect
+                                    ? CORRECT_COLOR
+                                    : Colors.black),
+                          ),
+                          Text(
+                            '$translation',
+                            style: TextStyle(
+                              fontSize: Theme.of(context)
+                                  .textTheme
+                                  .bodyLarge!
+                                  .fontSize,
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    if (isAllCorrect)
+                      Icon(CORRECT_ANSWER_ICON, color: CORRECT_COLOR)
+                  ],
+                ),
               )
             ],
           ),

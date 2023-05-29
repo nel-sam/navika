@@ -319,7 +319,7 @@ class AkuzativExercises {
           gender: isSerbian
               ? NounsEkavian.covek.gender
               : NounsIjekavian.covjek.gender,
-          isPlural: true,
+          isPlural: false,
           isAnimate: true,
           translation: N.t('ex_Znate_li_tog_ljubaznog_covjeka'),
           sentenceParts: [

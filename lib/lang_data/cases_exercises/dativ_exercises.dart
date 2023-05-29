@@ -80,7 +80,7 @@ class DativExercises {
                 actualObject: PossessivePronounBank.moj,
                 displayValue: PossessivePronounBank.moj.dictionary,
                 correctValues:
-                    PossessivePronounBank.moj.dativ!.masculine.singular,
+                    PossessivePronounBank.moj.dativ!.masculine.plural,
                 grammarType: GrammarTypes.possessivePronoun,
               ),
               CaseSentencePart(
@@ -88,7 +88,7 @@ class DativExercises {
                 actualObject: AdjectiveBankGeneral.mladi,
                 displayValue: AdjectiveBankGeneral.mladi.dictionary,
                 correctValues:
-                    AdjectiveBankGeneral.mladi.dativ!.masculine.singular,
+                    AdjectiveBankGeneral.mladi.dativ!.masculine.plural,
                 grammarType: GrammarTypes.adjective,
               ),
               CaseSentencePart(

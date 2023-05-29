@@ -84,6 +84,7 @@ class VerbExercise extends StatelessWidget {
                               youtubeLink: youtubeLink,
                             ),
                             const AdCard(),
+                            ExerciseNavigationWrapper(navNotifier: navNotifier),
                             Container(
                               child: this.tense == VerbTenses.PastPerfect
                                   ? PastTenseQuestionContent(
@@ -108,7 +109,6 @@ class VerbExercise extends StatelessWidget {
                                     ),
                             ),
                             Expanded(child: Container()),
-                            ExerciseNavigationWrapper(navNotifier: navNotifier),
                           ],
                         ),
                       ),

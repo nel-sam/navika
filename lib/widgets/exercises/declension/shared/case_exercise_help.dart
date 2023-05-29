@@ -45,7 +45,7 @@ class CaseExerciseHelp extends StatelessWidget {
                       title: N.t('go_to_declension_grammar_guide'),
                       onPressed: () {
                         final dest = DeclensionGuide(
-                            startingCase: Cases.Nom,
+                            startingCase: combos.caseType,
                             dialect: settings.dialectType);
                         Navigator.push(
                           context,

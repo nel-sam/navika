@@ -46,11 +46,17 @@ class _CaseQuestionContentState extends State<CaseQuestionContent> {
       children: [
         ...widget.stateItem.combos.sentenceParts.map((e) {
           if (!e.isCorrectable) {
-            return Container(
-              child: Padding(
-                padding: const EdgeInsets.only(right: 8),
-                child: Text(e.displayValue),
-              ),
+            return Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(right: 8, bottom: 24),
+                  child: Text(
+                    e.displayValue,
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ],
             );
           }
 

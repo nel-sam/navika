@@ -125,8 +125,10 @@ class CaseExerciseRowCardHeader extends StatelessWidget {
             ),
           IconButton(
               onPressed: () {
-                final dest =
-                    CaseExerciseHelp(combos: combos, dialect: this.dialect);
+                final dest = CaseExerciseHelp(
+                  combos: combos,
+                  dialect: this.dialect,
+                );
 
                 Navigator.push(
                   context,

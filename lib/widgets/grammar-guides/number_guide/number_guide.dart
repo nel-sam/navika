@@ -116,24 +116,25 @@ class _NumberGuideState extends State<NumberGuide> {
     );
   }
 
-  scrollListener() => setState(() {
-        if (controller.position.atEdge) {
-          bool atTop = controller.position.pixels == 0;
-        }
+  @override
+  void initState() {
+    // addPostFrameCallback gets called after the build method is finished
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      // final startingPoint = widget.startingCase == Cases.All
+      //     ? _getScrollPoint(Cases.Nom)
+      //     : _getScrollPoint(widget.startingCase);
 
-        double fullHeight = _getFullSizeGuideHeight();
-        double percentage = controller.position.pixels / fullHeight;
+      controller.addListener(scrollListener);
+      //_scrollTo(startingPoint, controller);
+    });
+
+    super.initState();
+  }
+
+  scrollListener() => setState(() {
+        double percentage =
+            controller.position.pixels / controller.position.maxScrollExtent;
         percentage = percentage < 0 ? 0 : percentage;
         this.progressPercentage = percentage * 100;
       });
-
-  double _getFullSizeGuideHeight() {
-    double totalSize = 0;
-
-    totalSize += numbersGlobalKey.currentContext!.size!.height;
-    totalSize += countingGlobalKey.currentContext!.size!.height;
-    totalSize += ordinalGlobalKey.currentContext!.size!.height;
-
-    return totalSize;
-  }
 }

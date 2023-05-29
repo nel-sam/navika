@@ -49,8 +49,9 @@ class ExerciseNavNotifier with ChangeNotifier {
           NumberGenerators.createExercise(exerciseType, dialect, isPremium);
       this._maxIndex = _states.length;
     } else {
-      _maxIndex = MAX_BATCH_COUNT;
       _setCaseStates(caseType!);
+      _maxIndex =
+          MAX_BATCH_COUNT > _states.length ? _states.length : MAX_BATCH_COUNT;
     }
 
     this._exerciseType = exerciseType;
@@ -91,7 +92,7 @@ class ExerciseNavNotifier with ChangeNotifier {
   }
 
   setNext() {
-    if (_activeIndex > _maxIndex - 1) {
+    if (_activeIndex + 1 > _maxIndex - 1) {
       _activeIndex = 0;
     } else {
       _activeIndex++;
