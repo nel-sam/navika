@@ -318,12 +318,12 @@ final List<Verb> verbWordBankGeneral = [
       oni: 'uče',
     ),
     pastPerfect: ParticipleSet(
-      singularMasc: '',
-      singularFem: '',
-      pluralMasc: '',
-      pluralFem: '',
-      ono: '',
-      onaPl: '',
+      singularMasc: 'učio',
+      singularFem: 'učila',
+      pluralMasc: 'učili',
+      pluralFem: 'učile',
+      ono: 'učilo',
+      onaPl: 'učila',
     ),
   ),
   Verb(
@@ -603,28 +603,3 @@ final List<Verb> verbWordBankGeneral = [
     ),
   ),
 ];
-
-  // Verb(
-  //   infinitive: '',
-  //   isIrregular: ,
-  //   isReflexive: ,
-  //   verbPerfectiveType: VerbPerfectiveTypes.Imperfective,
-  //   getTranslation: (BuildContext context) =>
-  //       N.t('trans_'),
-  //   present: ConjugationSet(
-  //     ja: '',
-  //     ti: '',
-  //     on: '',
-  //     mi: '',
-  //     vi: '',
-  //     oni: '',
-  //   ),
-  //   pastPerfect: ParticipleSet(
-  //     singularMasc: '',
-  //     singularFem: '',
-  //     ono: '',
-  //     pluralMasc: '',
-  //     pluralFem: '',
-  //     onaPl: '',
-  //   ),
-  // ),

@@ -54,7 +54,7 @@ class VerbHeader extends StatelessWidget {
                                     .fontSize,
                                 color: isAllCorrect
                                     ? CORRECT_COLOR
-                                    : Colors.black),
+                                    : Theme.of(context).colorScheme.onSurface),
                           ),
                           Text(
                             '$translation',
