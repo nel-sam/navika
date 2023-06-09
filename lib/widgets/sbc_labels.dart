@@ -7,7 +7,7 @@ class SbcLabels {
   static String verbs = 'Glagoli';
   static String justTables = 'Tabele';
   static String grammarGuide = 'Vodič za gramatiku';
-  static String declensionGuide = 'Vodič za padeži';
+  static String declensionGuide = 'Vodič za padeže';
   static String nouns = 'Imenice';
   static String numbers = 'Brojevi';
   static String ordinalNumbers = 'Redni brojevi';

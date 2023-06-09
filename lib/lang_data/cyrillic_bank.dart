@@ -10,7 +10,8 @@ List<CyrillicBankItem> cyrillicWordBank = [
   CyrillicBankItem(
       latinString: 'Gdje su u Zagrebu najbolji ćevapi?',
       cyrillicString: 'Гдје су у Загребу најбољи чевапи?',
-      getTranslation: (BuildContext context) => N.t('trans_najbolji_cevapi')),
+      getTranslation: (BuildContext context) =>
+          N.t('trans_Gdje_su_u_Zagrebu_najbolji_cevapi')),
   CyrillicBankItem(
       latinString: 'Srbija je balkanska zemlja',
       cyrillicString: 'Србија је балканска земља',
