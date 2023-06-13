@@ -93,7 +93,7 @@ class VerbExercise extends StatelessWidget {
                                       isAllCorrect: stateITem.isCorrect,
                                       onChanged:
                                           (String pronoun, String newValue) =>
-                                              stateITem._updateState(
+                                              stateITem.updateState(
                                                   pronoun.toString(),
                                                   newValue,
                                                   this.tense),
@@ -104,7 +104,7 @@ class VerbExercise extends StatelessWidget {
                                       state: stateITem.userEntryState,
                                       onChanged: (String pronoun,
                                               String newValue) =>
-                                          stateITem._updateState(
+                                          stateITem.updateState(
                                               pronoun, newValue, this.tense),
                                     ),
                             ),
