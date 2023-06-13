@@ -63,7 +63,7 @@ class _CaseQuestionContentState extends State<CaseQuestionContent> {
           final currentVal = widget.stateItem.getUserInput(e.correctValues[0]);
 
           return NFreeFormEntry(
-            hintValue: e.displayValue,
+            labelText: e.displayValue,
             initialValue: currentVal,
             correctValues: e.correctValues,
             onChanged: (String newVal) {

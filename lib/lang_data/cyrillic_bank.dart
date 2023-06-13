@@ -22,7 +22,7 @@ List<CyrillicBankItem> cyrillicWordBank = [
       getTranslation: (BuildContext context) => N.t('trans_plaza_nego_grad')),
   CyrillicBankItem(
       latinString: 'Možemo li sutra ići na ručak?',
-      cyrillicString: 'Можемо ли сутра да идемо на ручак?',
+      cyrillicString: 'Можемо ли сутра ићи на ручак?',
       getTranslation: (BuildContext context) => N.t('trans_otici_na_rucak')),
   CyrillicBankItem(
       latinString: 'U Hrvatskoj se ćirilica ne koristi mnogo',
