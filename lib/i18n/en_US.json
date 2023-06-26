@@ -293,7 +293,7 @@
   "resetSettings": "Reset settings",
   "skip": "I'm not sure",
   "dialectTitle": "Navika supports multiple Serbo-Croatian spellings and pronunciations",
-  "dialectDesc": "In Serbia they say 'lepo' (beautiful) and 'avion' (airplane). In Croatia they say 'lijepo' and 'zrakoplov'. In Bosnia it's 'lijepo'. Do you know which pronunciation you'd like to practice? It's OK if you don't know. You can set this later in the settings page.",
+  "dialectDesc": "In Serbia they say 'lepo' (beautiful) and 'avion' (airplane). In Croatia they say 'lijepo' and 'zrakoplov'. In Bosnia it's 'lijepo' and 'avion'. Do you know which pronunciation you'd like to practice? It's OK if you don't know. You can set this later in the settings page.",
   "mascSingVok": "Masculine singular adjectives always get an 'i', even when the adjective doesn't have a 'i' in Nominative",
   "vocativYouDesc": "The only personal pronoun used in vocative is 'you' as in 'hey, you!'.",
   "longShortFormDesc": "Normally you should use the short form of the pronouns. The long form is only used to emphasize, and the pronoun's position in the sentence changes if the long form is used.",
