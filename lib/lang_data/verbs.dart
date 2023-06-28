@@ -602,4 +602,27 @@ final List<Verb> verbWordBankGeneral = [
       onaPl: 'pozivala',
     ),
   ),
+  Verb(
+    infinitive: 'pričati',
+    isIrregular: false,
+    isReflexive: false,
+    verbPerfectiveType: VerbPerfectiveTypes.Imperfective,
+    getTranslation: (BuildContext context) => N.t('trans_pricati'),
+    present: ConjugationSet(
+      ja: 'pričam',
+      ti: 'pričaš',
+      on: 'priča',
+      mi: 'pričamo',
+      vi: 'pričate',
+      oni: 'pričaju',
+    ),
+    pastPerfect: ParticipleSet(
+      singularMasc: 'pričao',
+      singularFem: 'pričala',
+      pluralMasc: 'pričali',
+      pluralFem: 'pričale',
+      ono: 'pričalo',
+      onaPl: 'pričala',
+    ),
+  )
 ];
