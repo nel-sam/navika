@@ -75,7 +75,7 @@ class CyrillicExerciseCard extends StatelessWidget {
                   widthType: NFreeFormWidths.full,
                   initialValue: this.state.userInput,
                   correctValues: [this.state.cyrillicString],
-                  labelText: '',
+                  hintValue: '',
                   onChanged: (newVal) {
                     this.state.updateInput(newVal);
                   },
