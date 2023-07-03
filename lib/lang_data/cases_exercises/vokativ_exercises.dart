@@ -17,61 +17,67 @@ class VokativExercises {
 
   List<PANCombo> get general => [
         PANCombo(
-            caseType: caseType,
-            gender: NounBankGeneral.prijatelj.gender,
-            isPlural: false,
-            extraInfo: N.t('extrainfo_adj_after_noun_in_vokative'),
-            sentenceParts: [
-              CaseSentencePart(
-                isCorrectable: true,
-                actualObject: NounBankGeneral.prijatelj,
-                displayValue: NounBankGeneral.prijatelj.dictionary,
-                correctValues: NounBankGeneral.prijatelj.vokativ.singular,
-                grammarType: GrammarTypes.noun,
-              ),
-              CaseSentencePart(
-                isCorrectable: false,
-                actualObject: PossessivePronounBank.moj,
-                displayValue: PossessivePronounBank.moj.dictionary,
-                correctValues:
-                    PossessivePronounBank.moj.vokativ!.masculine.singular,
-                grammarType: GrammarTypes.adjective,
-              ),
-            ],
-            isAnimate: false,
-            translation: N.t('ex_Prijatelju_moj')),
+          caseType: caseType,
+          gender: NounBankGeneral.prijatelj.gender,
+          isPlural: false,
+          extraInfo: N.t('extrainfo_adj_after_noun_in_vokative'),
+          isAnimate: false,
+          translation: N.t('ex_Prijatelju_moj'),
+          // Prijatelju moj!
+          sentenceParts: [
+            CaseSentencePart(
+              isCorrectable: true,
+              actualObject: NounBankGeneral.prijatelj,
+              displayValue: NounBankGeneral.prijatelj.dictionary,
+              correctValues: NounBankGeneral.prijatelj.vokativ.singular,
+              grammarType: GrammarTypes.noun,
+            ),
+            CaseSentencePart(
+              isCorrectable: false,
+              actualObject: PossessivePronounBank.moj,
+              displayValue: PossessivePronounBank.moj.dictionary,
+              correctValues:
+                  PossessivePronounBank.moj.vokativ!.masculine.singular,
+              grammarType: GrammarTypes.adjective,
+            ),
+          ],
+        ),
         PANCombo(
-            caseType: caseType,
-            gender: NounBankGeneral.gospodin.gender,
-            isPlural: false,
-            extraInfo: N.t('extrainfo_gospodin_is_very_irregular'),
-            sentenceParts: [
-              CaseSentencePart(displayValue: 'Hvala Vam,'),
-              CaseSentencePart(
-                isCorrectable: true,
-                actualObject: NounBankGeneral.gospodin,
-                displayValue: NounBankGeneral.gospodin.dictionary,
-                correctValues: NounBankGeneral.gospodin.vokativ.singular,
-                grammarType: GrammarTypes.noun,
-              ),
-            ],
-            isAnimate: false,
-            translation: N.t('ex_Hvala_Vam_gospodine')),
+          caseType: caseType,
+          gender: NounBankGeneral.gospodin.gender,
+          isPlural: false,
+          extraInfo: N.t('extrainfo_gospodin_is_very_irregular'),
+          isAnimate: false,
+          translation: N.t('ex_Hvala_Vam_gospodine'),
+          // Hvala Vam, gospodine!
+          sentenceParts: [
+            CaseSentencePart(displayValue: 'Hvala Vam,'),
+            CaseSentencePart(
+              isCorrectable: true,
+              actualObject: NounBankGeneral.gospodin,
+              displayValue: NounBankGeneral.gospodin.dictionary,
+              correctValues: NounBankGeneral.gospodin.vokativ.singular,
+              grammarType: GrammarTypes.noun,
+            ),
+          ],
+        ),
         PANCombo(
-            caseType: caseType,
-            gender: NounBankGeneral.karolina.gender,
-            isPlural: false,
-            sentenceParts: [
-              CaseSentencePart(
-                isCorrectable: true,
-                actualObject: NounBankGeneral.karolina,
-                displayValue: NounBankGeneral.karolina.dictionary,
-                correctValues: NounBankGeneral.karolina.vokativ.singular,
-                grammarType: GrammarTypes.noun,
-              ),
-              CaseSentencePart(displayValue: ', budi oprezna!'),
-            ],
-            isAnimate: false,
-            translation: N.t('ex_Karolina_budi_oprezna')),
+          caseType: caseType,
+          gender: NounBankGeneral.karolina.gender,
+          isPlural: false,
+          isAnimate: false,
+          translation: N.t('ex_Karolina_budi_oprezna'),
+          // Karolina, budi oprezna!
+          sentenceParts: [
+            CaseSentencePart(
+              isCorrectable: true,
+              actualObject: NounBankGeneral.karolina,
+              displayValue: NounBankGeneral.karolina.dictionary,
+              correctValues: NounBankGeneral.karolina.vokativ.singular,
+              grammarType: GrammarTypes.noun,
+            ),
+            CaseSentencePart(displayValue: ', budi oprezna!'),
+          ],
+        ),
       ];
 }

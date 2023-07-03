@@ -24,6 +24,7 @@ class GenitivExercises {
           isPlural: false,
           isAnimate: false,
           translation: N.t('ex_Sport_je_jedino_bez_cega_ne_mozemo'),
+          // Sport je jedino bez čega ne možemo.
           sentenceParts: [
             CaseSentencePart(displayValue: 'Sport je jedino bez'),
             CaseSentencePart(
@@ -41,106 +42,119 @@ class GenitivExercises {
           ],
         ),
         PANCombo(
-            caseType: caseType,
-            gender: NounBankGeneral.grad.gender,
-            isPlural: false,
-            sentenceParts: [
-              CaseSentencePart(displayValue: 'Idemo prema centru'),
-              CaseSentencePart(
-                isCorrectable: true,
-                actualObject: NounBankGeneral.grad,
-                displayValue: NounBankGeneral.grad.dictionary,
-                correctValues: NounBankGeneral.grad.genitiv.singular,
-                grammarType: GrammarTypes.noun,
-              ),
-            ],
-            isAnimate: false,
-            translation: N.t('ex_Idemo_prema_centru_grada')),
+          caseType: caseType,
+          gender: NounBankGeneral.grad.gender,
+          isPlural: false,
+          translation: N.t('ex_Idemo_prema_centru_grada'),
+          // Idemo prema centru grada
+          sentenceParts: [
+            CaseSentencePart(displayValue: 'Idemo prema centru'),
+            CaseSentencePart(
+              isCorrectable: true,
+              actualObject: NounBankGeneral.grad,
+              displayValue: NounBankGeneral.grad.dictionary,
+              correctValues: NounBankGeneral.grad.genitiv.singular,
+              grammarType: GrammarTypes.noun,
+            ),
+          ],
+          isAnimate: false,
+        ),
         PANCombo(
-            caseType: caseType,
-            gender: NounBankGeneral.knjiga.gender,
-            isPlural: true,
-            sentenceParts: [
-              CaseSentencePart(displayValue: 'Ovo mi je jedna od'),
-              CaseSentencePart(
-                isCorrectable: true,
-                actualObject: AdjectiveBankGeneral.najbolji,
-                displayValue: AdjectiveBankGeneral.najbolji.dictionary,
-                correctValues:
-                    AdjectiveBankGeneral.najbolji.genitiv!.feminine!.plural,
-                grammarType: GrammarTypes.adjective,
-              ),
-              CaseSentencePart(
-                isCorrectable: true,
-                actualObject: NounBankGeneral.knjiga,
-                displayValue: NounBankGeneral.knjiga.dictionary,
-                correctValues: NounBankGeneral.knjiga.genitiv.plural,
-                grammarType: GrammarTypes.noun,
-              ),
-            ],
-            isAnimate: false,
-            translation: N.t('ex_Ovo_mi_je_jedna_od_najboljih_knjiga')),
+          caseType: caseType,
+          gender: NounBankGeneral.knjiga.gender,
+          isPlural: true,
+          isAnimate: false,
+          translation: N.t('ex_Ovo_mi_je_jedna_od_najboljih_knjiga'),
+          // Ovo mi je jedna od najboljih knjiga
+          sentenceParts: [
+            CaseSentencePart(displayValue: 'Ovo mi je jedna od'),
+            CaseSentencePart(
+              isCorrectable: true,
+              actualObject: AdjectiveBankGeneral.najbolji,
+              displayValue: AdjectiveBankGeneral.najbolji.dictionary,
+              correctValues:
+                  AdjectiveBankGeneral.najbolji.genitiv!.feminine!.plural,
+              grammarType: GrammarTypes.adjective,
+            ),
+            CaseSentencePart(
+              isCorrectable: true,
+              actualObject: NounBankGeneral.knjiga,
+              displayValue: NounBankGeneral.knjiga.dictionary,
+              correctValues: NounBankGeneral.knjiga.genitiv.plural,
+              grammarType: GrammarTypes.noun,
+            ),
+          ],
+        ),
         PANCombo(
-            caseType: caseType,
-            gender: NounBankGeneral.telefon.gender,
-            isPlural: true,
-            sentenceParts: [
-              CaseSentencePart(displayValue: 'Kupit ću 3'),
-              CaseSentencePart(
-                isCorrectable: true,
-                actualObject: AdjectiveBankGeneral.bolji,
-                displayValue: AdjectiveBankGeneral.bolji.dictionary,
-                correctValues:
-                    AdjectiveBankGeneral.bolji.genitiv!.masculine.plural,
-                grammarType: GrammarTypes.adjective,
-              ),
-              CaseSentencePart(
-                isCorrectable: true,
-                actualObject: NounBankGeneral.telefon,
-                displayValue: NounBankGeneral.telefon.dictionary,
-                correctValues: NounBankGeneral.telefon.genitiv.plural,
-                grammarType: GrammarTypes.noun,
-              ),
-            ],
-            isAnimate: false,
-            translation: N.t('ex_Kupit_cu_3_bolja_telefona')),
+          caseType: caseType,
+          gender: NounBankGeneral.telefon.gender,
+          isPlural: true,
+          isAnimate: false,
+          translation: N.t('ex_Kupit_cu_3_bolja_telefona'),
+          // Kupit ću 3 bolja telefona
+          sentenceParts: [
+            CaseSentencePart(displayValue: 'Kupit ću 3'),
+            CaseSentencePart(
+              isCorrectable: true,
+              actualObject: AdjectiveBankGeneral.bolji,
+              displayValue: AdjectiveBankGeneral.bolji.dictionary,
+              correctValues:
+                  AdjectiveBankGeneral.bolji.genitiv!.masculine.plural,
+              grammarType: GrammarTypes.adjective,
+            ),
+            CaseSentencePart(
+              isCorrectable: true,
+              actualObject: NounBankGeneral.telefon,
+              displayValue: NounBankGeneral.telefon.dictionary,
+              correctValues: NounBankGeneral.telefon.genitiv.plural,
+              grammarType: GrammarTypes.noun,
+            ),
+          ],
+        ),
         PANCombo(
-            caseType: caseType,
-            gender: NounBankGeneral.otac.gender,
-            isPlural: false,
-            sentenceParts: [
-              CaseSentencePart(displayValue: 'Ja sam iza'),
-              CaseSentencePart(
-                isCorrectable: true,
-                actualObject: NounBankGeneral.otac,
-                displayValue: NounBankGeneral.otac.dictionary,
-                correctValues: NounBankGeneral.otac.genitiv.singular,
-                grammarType: GrammarTypes.noun,
-              ),
-            ],
-            isAnimate: true,
-            translation: N.t('ex_Ja_sam_iza_otac')),
+          caseType: caseType,
+          gender: NounBankGeneral.otac.gender,
+          isPlural: false,
+          isAnimate: true,
+          translation: N.t('ex_Ja_sam_iza_oca'),
+          // Ja sam iza oca
+          sentenceParts: [
+            CaseSentencePart(displayValue: 'Ja sam iza'),
+            CaseSentencePart(
+              isCorrectable: true,
+              actualObject: NounBankGeneral.otac,
+              displayValue: NounBankGeneral.otac.dictionary,
+              correctValues: NounBankGeneral.otac.genitiv.singular,
+              grammarType: GrammarTypes.noun,
+            ),
+          ],
+        ),
         PANCombo(
-            caseType: caseType,
-            gender: NounBankGeneral.krevet.gender,
-            isPlural: false,
-            sentenceParts: [
-              CaseSentencePart(displayValue: 'Koja je vrsta'),
-              CaseSentencePart(
-                isCorrectable: true,
-                actualObject: NounBankGeneral.krevet,
-                displayValue: NounBankGeneral.krevet.dictionary,
-                correctValues: NounBankGeneral.krevet.genitiv.singular,
-                grammarType: GrammarTypes.noun,
-              ),
-              CaseSentencePart(displayValue: 'prava za vas?'),
-            ],
-            isAnimate: false,
-            translation: N.t('ex_Koja_je_vrsta_kreveta_prava_za_vas')),
+          caseType: caseType,
+          gender: NounBankGeneral.krevet.gender,
+          isPlural: false,
+          isAnimate: false,
+          translation: N.t('ex_Koja_je_vrsta_kreveta_prava_za_vas'),
+          // Koja je vrsta kreveta prava za vas?
+          sentenceParts: [
+            CaseSentencePart(displayValue: 'Koja je vrsta'),
+            CaseSentencePart(
+              isCorrectable: true,
+              actualObject: NounBankGeneral.krevet,
+              displayValue: NounBankGeneral.krevet.dictionary,
+              correctValues: NounBankGeneral.krevet.genitiv.singular,
+              grammarType: GrammarTypes.noun,
+            ),
+            CaseSentencePart(displayValue: 'prava za vas?'),
+          ],
+        ),
         PANCombo(
           caseType: caseType,
           gender: Genders.Feminine,
           isPlural: false,
+          isAnimate: false,
+          translation: N.t('ex_Mogu_li_dobiti_malo_te_slatke_torte'),
+          // Mogu li dobiti malo te slatke torte?
           sentenceParts: [
             CaseSentencePart(displayValue: "Mogu li dobiti malo"),
             CaseSentencePart(
@@ -168,13 +182,14 @@ class GenitivExercises {
             ),
             CaseSentencePart(displayValue: "?"),
           ],
-          isAnimate: false,
-          translation: N.t('ex_Mogu_li_dobiti_malo_te_slatke_torte'),
         ),
         PANCombo(
           caseType: caseType,
           gender: NounBankGeneral.pravilo.gender,
           isPlural: true,
+          isAnimate: false,
+          translation: N.t('ex_Ova_skola_nema_stroga_pravila'),
+          // Ova škola nema stroga pravila
           sentenceParts: [
             CaseSentencePart(displayValue: "Ova škola nema"),
             CaseSentencePart(
@@ -193,13 +208,14 @@ class GenitivExercises {
               grammarType: GrammarTypes.noun,
             ),
           ],
-          isAnimate: false,
-          translation: N.t('ex_Ova_skola_nema_stroga_pravila'),
         ),
         PANCombo(
           caseType: caseType,
           gender: NounBankGeneral.more.gender,
           isPlural: true,
+          isAnimate: false,
+          translation: N.t('ex_Pretvorilo_se_u_jedno_od_najvecih_mora'),
+          // Pretvorilo se u jedno od najvećih mora
           sentenceParts: [
             CaseSentencePart(displayValue: "Pretvorilo se u jedno od"),
             CaseSentencePart(
@@ -218,8 +234,6 @@ class GenitivExercises {
               grammarType: GrammarTypes.noun,
             ),
           ],
-          isAnimate: false,
-          translation: N.t('ex_Pretvorilo_se_u_jedno_od_najvecih_mora'),
         ),
       ];
 
@@ -230,6 +244,7 @@ class GenitivExercises {
           isPlural: false,
           isAnimate: true,
           translation: N.t('ex_Stani_iza_mene'),
+          // Stani iza mene!
           sentenceParts: [
             CaseSentencePart(displayValue: 'Stani iza'),
             CaseSentencePart(
@@ -248,6 +263,7 @@ class GenitivExercises {
           isPlural: false,
           isAnimate: true,
           translation: N.t('ex_S_tobom_ili_bez_tebe'),
+          // S tobom ili bez tebe
           sentenceParts: [
             CaseSentencePart(displayValue: 'S tobom ili bez'),
             CaseSentencePart(
@@ -265,6 +281,7 @@ class GenitivExercises {
           isPlural: false,
           isAnimate: true,
           translation: N.t('ex_Zbog_njega_sam_nosio_masku'),
+          // Zbog njega sam nosio masku
           sentenceParts: [
             CaseSentencePart(displayValue: 'Zbog'),
             CaseSentencePart(
@@ -283,6 +300,7 @@ class GenitivExercises {
           isPlural: false,
           isAnimate: true,
           translation: N.t('ex_Kako_cu_zivjeti_bez_nje'),
+          // Kako ću živjeti bez nje?
           sentenceParts: [
             CaseSentencePart(displayValue: 'Kako ću živjeti bez'),
             CaseSentencePart(
@@ -301,6 +319,7 @@ class GenitivExercises {
           isPlural: true,
           isAnimate: true,
           translation: N.t('ex_Svatko_od_nas_ima_nesto_dobro'),
+          // Svatko od nas ima nešto dobro
           sentenceParts: [
             CaseSentencePart(displayValue: 'Svatko od'),
             CaseSentencePart(
@@ -319,6 +338,7 @@ class GenitivExercises {
           isPlural: true,
           isAnimate: true,
           translation: N.t('ex_To_moze_biti_na_putu_do_vas'),
+          // To može biti na putu do vas
           sentenceParts: [
             CaseSentencePart(displayValue: 'To može biti na putu do'),
             CaseSentencePart(
@@ -336,6 +356,7 @@ class GenitivExercises {
           isPlural: true,
           isAnimate: true,
           translation: N.t('ex_Kod_njih_je_sve_obrnuto'),
+          // Kod njih je sve obrnuto
           sentenceParts: [
             CaseSentencePart(displayValue: 'Kod'),
             CaseSentencePart(
@@ -352,7 +373,6 @@ class GenitivExercises {
 
   List<PANCombo> get premium => [
         // TODO: Possesives
-
-// TODO: Nationality nouns
+        // TODO: Nationality nouns
       ];
 }

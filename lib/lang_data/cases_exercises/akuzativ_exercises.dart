@@ -29,6 +29,7 @@ class AkuzativExercises {
           isPlural: false,
           isAnimate: false,
           translation: N.t('ex_Sto_jedes'),
+          // Što/Šta jedeš?
           sentenceParts: [
             CaseSentencePart(
               isCorrectable: true,
@@ -50,6 +51,7 @@ class AkuzativExercises {
           isPlural: false,
           isAnimate: false,
           translation: N.t('ex_Idemo_u_Bosnu'),
+          // Idemo u Bosnu
           extraInfo: N.t('extrainfo_aku_for_movement'),
           sentenceParts: [
             CaseSentencePart(displayValue: 'Idemo u'),
@@ -68,6 +70,7 @@ class AkuzativExercises {
           isPlural: false,
           isAnimate: false,
           translation: N.t('ex_Slikao_sam_svoj_bicikl'),
+          // Slikao sam svoj bicikl
           sentenceParts: [
             CaseSentencePart(displayValue: 'Slikao sam'),
             CaseSentencePart(
@@ -93,6 +96,7 @@ class AkuzativExercises {
           isPlural: false,
           isAnimate: false,
           translation: N.t('ex_Jeste_li_kupili_novi_krevet'),
+          // Jeste li kupili novi krevet?
           sentenceParts: [
             CaseSentencePart(displayValue: 'Jeste li kupili'),
             CaseSentencePart(
@@ -119,6 +123,7 @@ class AkuzativExercises {
           isPlural: false,
           isAnimate: false,
           translation: N.t('ex_Jedeš_li_ananas'),
+          // Jedeš li ananas?
           sentenceParts: [
             CaseSentencePart(displayValue: 'Jedeš li'),
             CaseSentencePart(
@@ -137,6 +142,7 @@ class AkuzativExercises {
           isPlural: true,
           isAnimate: false,
           translation: N.t('ex_Mrzim_bolesti'),
+          // Mrzim bolesti
           sentenceParts: [
             CaseSentencePart(displayValue: 'Mrzim'),
             CaseSentencePart(
@@ -154,6 +160,7 @@ class AkuzativExercises {
           isPlural: false,
           isAnimate: false,
           translation: N.t('ex_Grad_je_izgradio_bolnicu'),
+          // Grad je izgradio bolnicu
           sentenceParts: [
             CaseSentencePart(displayValue: 'Grad je izgradio'),
             CaseSentencePart(
@@ -172,6 +179,7 @@ class AkuzativExercises {
           isAnimate: false,
           extraInfo: N.t('extrainfo_akuzativ_with_za'),
           translation: N.t('ex_Sviđa_mi_se_pjesme_za_bosnu'),
+          // Sviđa mi se pjesme za Bosnu
           sentenceParts: [
             CaseSentencePart(displayValue: 'Sviđa mi se pjesme za'),
             CaseSentencePart(
@@ -189,6 +197,7 @@ class AkuzativExercises {
           isPlural: false,
           isAnimate: false,
           translation: N.t('ex_Moram_pronaci_pivo'),
+          // Moram pronaći pivo
           sentenceParts: [
             CaseSentencePart(displayValue: 'Moram pronaći'),
             CaseSentencePart(
@@ -206,6 +215,7 @@ class AkuzativExercises {
           isPlural: true,
           isAnimate: false,
           translation: N.t('ex_Ne_znas_koje_torte_odabrati'),
+          // Ne znaš koje torte odabrati?
           sentenceParts: [
             CaseSentencePart(displayValue: 'Ne znaš'),
             CaseSentencePart(
@@ -232,6 +242,7 @@ class AkuzativExercises {
           isPlural: false,
           isAnimate: true,
           translation: N.t('ex_Zelim_kupiti_bijele_macke'),
+          // Želim kupiti bijele mačke
           sentenceParts: [
             CaseSentencePart(
                 displayValue: !isSerbian ? 'Želim kupiti' : 'Želim da kupim'),
@@ -263,6 +274,7 @@ class AkuzativExercises {
           isPlural: true,
           isAnimate: false,
           translation: N.t('ex_Vidio_sam_lijepa_jezera_u_Crnoj_Gori'),
+          // Vidio sam lijepa jezera u Crnoj Gori
           sentenceParts: [
             CaseSentencePart(
                 displayValue: isCroatian ? 'Vidio sam' : 'Video sam'),
@@ -295,6 +307,7 @@ class AkuzativExercises {
           isPlural: true,
           isAnimate: false,
           translation: N.t('ex_Za_vas_smo_odabrali_najbolje_poklone'),
+          // Za vas smo odabrali najbolje poklone
           sentenceParts: [
             CaseSentencePart(displayValue: 'Za vas smo odabrali'),
             CaseSentencePart(
@@ -322,6 +335,7 @@ class AkuzativExercises {
           isPlural: false,
           isAnimate: true,
           translation: N.t('ex_Znate_li_tog_ljubaznog_covjeka'),
+          // Znate li tog ljubaznog čovjeka?
           sentenceParts: [
             CaseSentencePart(displayValue: 'Znate li'),
             CaseSentencePart(
@@ -361,6 +375,7 @@ class AkuzativExercises {
           isPlural: true,
           isAnimate: true,
           translation: N.t('ex_Volim_hraniti_ove_azijske_slonove'),
+          // Volim hraniti ove azijske slonove
           sentenceParts: [
             CaseSentencePart(
                 displayValue:
@@ -417,6 +432,7 @@ class AkuzativExercises {
           isPlural: false,
           isAnimate: true,
           translation: N.t('ex_Volim_te_jako_puno'),
+          // Volim te jako puno
           sentenceParts: [
             CaseSentencePart(displayValue: 'Volim'),
             CaseSentencePart(
@@ -435,6 +451,7 @@ class AkuzativExercises {
           isPlural: false,
           isAnimate: true,
           translation: N.t('ex_Poznajete_li_ga'),
+          // Poznajete li ga?
           sentenceParts: [
             CaseSentencePart(displayValue: 'Poznajete li'),
             CaseSentencePart(
@@ -454,6 +471,7 @@ class AkuzativExercises {
           isAnimate: true,
           translation: N.t('ex_Jesi_li_je_vidio_jucer'),
           extraInfo: N.t('extrainfo_all_ona_aku_ok'),
+          // Jesi li je vidio jučer?
           sentenceParts: [
             CaseSentencePart(displayValue: 'Jesi li'),
             CaseSentencePart(
@@ -473,6 +491,7 @@ class AkuzativExercises {
           isPlural: false,
           isAnimate: true,
           translation: N.t('ex_Vidio_ju_je'),
+          // Vidio ju je
           extraInfo: N.t('extrainfo_ona_aku_je_not_ok'),
           sentenceParts: [
             CaseSentencePart(displayValue: isCroatian ? 'Vidio' : 'Video'),
@@ -492,6 +511,7 @@ class AkuzativExercises {
           isPlural: true,
           isAnimate: true,
           translation: N.t('ex_Ne_gledaj_nas'),
+          // Ne gledaj nas
           sentenceParts: [
             CaseSentencePart(displayValue: 'Ne gledaj'),
             CaseSentencePart(
@@ -508,7 +528,8 @@ class AkuzativExercises {
           gender: Genders.Unspecific,
           isPlural: true,
           isAnimate: true,
-          translation: N.t('ex_Ne_cujem'),
+          translation: N.t('ex_Ne_cujem_vas'),
+          // Ne čujem vas
           sentenceParts: [
             CaseSentencePart(displayValue: 'Ne čujem '),
             CaseSentencePart(
@@ -526,6 +547,7 @@ class AkuzativExercises {
           isPlural: true,
           isAnimate: true,
           translation: N.t('ex_Zelim_ih_kupiti'),
+          // Želim ih kupiti
           sentenceParts: [
             CaseSentencePart(displayValue: 'Želim'),
             CaseSentencePart(
@@ -539,22 +561,24 @@ class AkuzativExercises {
           ],
         ),
         PANCombo(
-            caseType: caseType,
-            gender: Genders.Unspecific,
-            isPlural: true,
-            isAnimate: true,
-            extraInfo: N.t('extrainfo_akuzativ_with_za'),
-            sentenceParts: [
-              CaseSentencePart(displayValue: 'Koja je vrsta kreveta prava za'),
-              CaseSentencePart(
-                  isCorrectable: true,
-                  actualObject: PersonalPronounWordBank.vi,
-                  displayValue: '',
-                  correctValues: PersonalPronounWordBank.vi.akuzativ.forms,
-                  grammarType: GrammarTypes.personalPronoun),
-              CaseSentencePart(displayValue: '?')
-            ],
-            translation: N.t('ex_Koja_je_vrsta_kreveta_prava_za_vas'))
+          caseType: caseType,
+          gender: Genders.Unspecific,
+          isPlural: true,
+          isAnimate: true,
+          extraInfo: N.t('extrainfo_akuzativ_with_za'),
+          translation: N.t('ex_Koja_je_vrsta_kreveta_prava_za_vas'),
+          // Koja je vrsta kreveta prava za vas?
+          sentenceParts: [
+            CaseSentencePart(displayValue: 'Koja je vrsta kreveta prava za'),
+            CaseSentencePart(
+                isCorrectable: true,
+                actualObject: PersonalPronounWordBank.vi,
+                displayValue: '',
+                correctValues: PersonalPronounWordBank.vi.akuzativ.forms,
+                grammarType: GrammarTypes.personalPronoun),
+            CaseSentencePart(displayValue: '?')
+          ],
+        )
       ];
 
   List<PANCombo> get premium => [
@@ -565,6 +589,7 @@ class AkuzativExercises {
           isPlural: false,
           isAnimate: false,
           translation: N.t('ex_Dobio_sam_bolest'),
+          // Dobio sam bolest
           sentenceParts: [
             CaseSentencePart(displayValue: 'Dobio sam'),
             CaseSentencePart(
@@ -582,6 +607,7 @@ class AkuzativExercises {
           isPlural: false,
           isAnimate: true,
           translation: N.t('ex_Primijetio_sam_visokog_covjeka'),
+          // Primijetio sam visokog čovjeka
           extraInfo: N.t('extrainfo_akusativ_for_male_animate'),
           sentenceParts: [
             CaseSentencePart(displayValue: 'Primijetio sam'),
@@ -612,6 +638,8 @@ class AkuzativExercises {
           gender: NounBankGeneral.macka.gender,
           isPlural: true,
           isAnimate: true,
+          translation: N.t('ex_Video_sam_denisove_crne_macke'),
+          // Vidio sam Denisove crne mačke
           sentenceParts: [
             CaseSentencePart(
                 displayValue: this.isCroatian ? 'Vidio sam' : 'Video sam'),
@@ -639,11 +667,11 @@ class AkuzativExercises {
               correctValues: NounBankGeneral.macka.akuzativ.plural,
             ),
           ],
-          translation: N.t('ex_Video_sam_denisove_crne_macke'),
         ),
         PANCombo(
           caseType: caseType,
           translation: N.t('ex_To_je_poklon_za_Aninu_sestru'),
+          // To je poklon za Aninu sestru
           gender: NounBankGeneral.sestra.gender,
           isPlural: false,
           isAnimate: true,
@@ -669,6 +697,7 @@ class AkuzativExercises {
         PANCombo(
           caseType: caseType,
           translation: N.t('ex_Vidjeli_smo_lijepe_hrvatice_u_Hrvatskoj'),
+          // Vidjeli smo lijepe Hrvatice u Hrvatskoj
           gender: NounBankGeneral.hrvatica.gender,
           isPlural: true,
           isAnimate: true,

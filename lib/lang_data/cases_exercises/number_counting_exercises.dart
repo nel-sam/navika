@@ -23,6 +23,7 @@ class NumberCountingExercises {
           isPlural: true,
           isAnimate: false,
           translation: N.t('ex_Njegov_pas_ima_dve_godine'),
+          // Njiegov pas ima dve godine
           sentenceParts: [
             CaseSentencePart(displayValue: 'Njegov pas ima'),
             CaseSentencePart(
@@ -49,6 +50,7 @@ class NumberCountingExercises {
           isPlural: false,
           isAnimate: false,
           translation: N.t('ex_Moj_sin_ima_jednu_godinu'),
+          // Moj sin ima jednu godinu
           sentenceParts: [
             CaseSentencePart(displayValue: 'Moj sin ima'),
             CaseSentencePart(
@@ -76,6 +78,7 @@ class NumberCountingExercises {
           isPlural: true,
           isAnimate: false,
           translation: N.t('ex_Kad_sam_imao_tri_godine_otisli_smo_u_Italiju'),
+          // Kad sam imao tri godine otišli smo u Italiju
           sentenceParts: [
             CaseSentencePart(displayValue: 'Kad sam imao'),
             CaseSentencePart(
@@ -103,6 +106,7 @@ class NumberCountingExercises {
           isPlural: true,
           isAnimate: false,
           translation: N.t('ex_Zivim_ovdje_vec_cetiri_godine'),
+          // Živim ovdje već četiri godine
           sentenceParts: [
             CaseSentencePart(displayValue: 'Živim ovdje već'),
             CaseSentencePart(
@@ -129,6 +133,7 @@ class NumberCountingExercises {
           isPlural: true,
           isAnimate: false,
           translation: N.t('ex_Za_pet_godina_cu_se_ozeniti'),
+          // Za pet godina ću se oženiti
           sentenceParts: [
             CaseSentencePart(displayValue: 'Za'),
             CaseSentencePart(
@@ -156,6 +161,7 @@ class NumberCountingExercises {
           isPlural: true,
           isAnimate: false,
           translation: N.t('ex_Prije_16_godina_udomio_sam_pse_sa_ceste'),
+          // Prije 16 godina udomio sam pse sa ceste
           sentenceParts: [
             CaseSentencePart(displayValue: isSerbian ? 'Pre' : 'Prije'),
             CaseSentencePart(
@@ -187,6 +193,7 @@ class NumberCountingExercises {
           isPlural: false,
           isAnimate: false,
           translation: N.t('ex_Ima_jedno_jezero_tamo'),
+          // Ima jedno jezero tamo
           extraInfo: N.t(
               'extrainfo_both_number_and_noun_decline_when_counting_a_single_thing'),
           sentenceParts: [
@@ -217,6 +224,7 @@ class NumberCountingExercises {
           isPlural: false,
           isAnimate: false,
           translation: N.t('ex_Zagreb_je_jedni_grad_u_Hrvatskoj'),
+          // Zagreb je jedini grad u Hrvatskoj
           extraInfo: N.t(
               'extrainfo_both_number_and_noun_decline_when_counting_a_single_thing'),
           sentenceParts: [
@@ -247,6 +255,7 @@ class NumberCountingExercises {
           isPlural: false,
           isAnimate: false,
           translation: N.t('ex_Zivim_samo_u_jednoj_kuci'),
+          // Živim samo u jednoj kući
           extraInfo: N.t(
               'extrainfo_both_number_and_noun_decline_when_counting_a_single_thing'),
           sentenceParts: [
@@ -277,6 +286,7 @@ class NumberCountingExercises {
           isPlural: true,
           isAnimate: false,
           translation: N.t('ex_Na_slici_vidim_dva_sela'),
+          // Na slici vidim dva sela
           sentenceParts: [
             CaseSentencePart(displayValue: 'Na slici vidim'),
             CaseSentencePart(
@@ -303,6 +313,7 @@ class NumberCountingExercises {
           isPlural: true,
           isAnimate: false,
           translation: N.t('ex_Moj_otac_ima_dva_psa'),
+          // Moj otac ima dva psa
           sentenceParts: [
             CaseSentencePart(displayValue: 'Moj otac ima'),
             CaseSentencePart(
@@ -329,6 +340,7 @@ class NumberCountingExercises {
           isPlural: true,
           isAnimate: false,
           translation: N.t('ex_Neki_ljudi_imaju_dvije_macke'),
+          // Neki ljudi imaju dvije mačke
           sentenceParts: [
             CaseSentencePart(displayValue: 'Neki ljudi imaju'),
             CaseSentencePart(
@@ -357,6 +369,7 @@ class NumberCountingExercises {
           isPlural: true,
           isAnimate: false,
           translation: N.t('ex_Dijele_se_na_tri_jezera'),
+          // Dijele se na tri jezera
           sentenceParts: [
             CaseSentencePart(displayValue: 'Dijele se na'),
             CaseSentencePart(
@@ -385,6 +398,7 @@ class NumberCountingExercises {
           isAnimate: false,
           isPlural: true,
           translation: N.t('ex_Trebam_biti_u_Londonu_cetiri_mjeseca'),
+          // Trebam biti u Londonu četiri mjeseca
           sentenceParts: [
             CaseSentencePart(displayValue: 'Trebam biti u Londonu'),
             CaseSentencePart(
@@ -416,6 +430,7 @@ class NumberCountingExercises {
           isPlural: true,
           isAnimate: false,
           translation: N.t('ex_Vidim_tri_zene'),
+          // Vidim tri žene
           sentenceParts: [
             CaseSentencePart(displayValue: 'Vidim'),
             CaseSentencePart(
@@ -443,6 +458,7 @@ class NumberCountingExercises {
           isPlural: true,
           isAnimate: false,
           translation: N.t('ex_Izmedu_njih_je_21_godina_razlike'),
+          // Između njih je 21 godina razlike
           extraInfo: N.t(
               'extrainfo_nouns_for_numbers_5_and_above_decline_in_genitive_plural'),
           sentenceParts: [
@@ -472,6 +488,7 @@ class NumberCountingExercises {
           isPlural: true,
           isAnimate: false,
           translation: N.t('ex_od_pet_sela_koja_se_nalaze_na_obali_Italije'),
+          // ...od pet sela koja se nalaze na obali Italije
           sentenceParts: [
             CaseSentencePart(displayValue: '...od'),
             CaseSentencePart(
@@ -499,6 +516,7 @@ class NumberCountingExercises {
           isPlural: true,
           isAnimate: false,
           translation: N.t('ex_Deset_razloga_za_vožnju_biciklom'),
+          // Deset razloga za vožnju biciklom
           sentenceParts: [
             CaseSentencePart(
               isCorrectable: true,
@@ -525,6 +543,7 @@ class NumberCountingExercises {
           isPlural: true,
           isAnimate: false,
           translation: N.t('ex_Vidio_sam_12_torta_u_pekari'),
+          // Vidio sam 12 torta u pekari
           sentenceParts: [
             CaseSentencePart(displayValue: 'Vidio sam'),
             CaseSentencePart(

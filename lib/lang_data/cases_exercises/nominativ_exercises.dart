@@ -31,6 +31,7 @@ class NominativExercises {
             extraInfo:
                 N.t('extrainfo_most_short_nouns_get_ovi_suffix_in_plural'),
             translation: N.t('ex_Koji_su_najljepsi_gradovi_na_svijetu'),
+            // TODO: Koji su najljepši gradovi na svijetu?
             sentenceParts: [
               CaseSentencePart(
                 isCorrectable: true,
@@ -67,6 +68,7 @@ class NominativExercises {
             isPlural: true,
             isAnimate: false,
             translation: N.t('ex_Mala_jezera_počela_su_se_povecavati'),
+            // Mala jezera počela su se povećavati
             sentenceParts: [
               CaseSentencePart(
                 isCorrectable: true,
@@ -91,6 +93,7 @@ class NominativExercises {
             isPlural: false,
             isAnimate: false,
             translation: N.t('ex_Cija_je_kava'),
+            // Čija je kava/kafa?
             sentenceParts: [
               CaseSentencePart(
                 isCorrectable: true,
@@ -119,6 +122,7 @@ class NominativExercises {
             isPlural: false,
             isAnimate: false,
             translation: N.t('ex_Koja_je_najbolja_sezona'),
+            // Koja je najbolja sezona?
             sentenceParts: [
               CaseSentencePart(
                 isCorrectable: true,
@@ -136,6 +140,7 @@ class NominativExercises {
             isPlural: false,
             isAnimate: false,
             translation: N.t('ex_Sto_je_to'),
+            // Što/Šta je to?
             sentenceParts: [
               CaseSentencePart(
                 isCorrectable: true,
@@ -157,6 +162,7 @@ class NominativExercises {
             isPlural: false,
             isAnimate: false,
             translation: N.t('ex_taj_stari_avion_ima_dva_krila'),
+            // Taj stari avion ima dva krila
             sentenceParts: [
               CaseSentencePart(
                 isCorrectable: true,
@@ -192,6 +198,7 @@ class NominativExercises {
             isPlural: false,
             isAnimate: false,
             translation: N.t('ex_francuska_ima_oko_61_milijun_stanovnika'),
+            // Francuska ima oko 61 milijun stanovnika
             sentenceParts: [
               CaseSentencePart(
                 isCorrectable: true,
@@ -208,6 +215,7 @@ class NominativExercises {
             isPlural: false,
             isAnimate: false,
             translation: N.t('ex_Bosna_i_Srbija_imaju_planine'),
+            // Bosna i Srbija imaju planine
             sentenceParts: [
               CaseSentencePart(
                 isCorrectable: true,
@@ -232,6 +240,7 @@ class NominativExercises {
             isPlural: false,
             isAnimate: false,
             translation: N.t('ex_Lice_je_prednji_dio_glave'),
+            // Lice je prednji dio glave
             sentenceParts: [
               CaseSentencePart(
                 isCorrectable: true,
@@ -248,6 +257,7 @@ class NominativExercises {
             isPlural: false,
             isAnimate: true,
             translation: N.t('ex_Njezina_majka_je_žena_koja_voli_putovati'),
+            // Njezina majka je žena koja voli putovati
             sentenceParts: [
               CaseSentencePart(
                 isCorrectable: true,
@@ -280,6 +290,7 @@ class NominativExercises {
             isPlural: true,
             isAnimate: true,
             translation: N.t('ex_Moja_sestra_boje_se_biti_same'),
+            // Moja sestra boje se biti same
             sentenceParts: [
               CaseSentencePart(
                 isCorrectable: true,
@@ -307,6 +318,7 @@ class NominativExercises {
           isPlural: false,
           isAnimate: true,
           translation: N.t('ex_Ja_volim_knjige'),
+          // Ja volim knjige
           sentenceParts: [
             CaseSentencePart(
               displayValue: '',
@@ -324,6 +336,7 @@ class NominativExercises {
           isPlural: false,
           isAnimate: true,
           translation: N.t('ex_Ti_si_ljubazni'),
+          // Ti si ljubazni
           sentenceParts: [
             CaseSentencePart(
               displayValue: '',
@@ -341,6 +354,7 @@ class NominativExercises {
           isPlural: false,
           isAnimate: true,
           translation: N.t('ex_Ali_on_je_pravi gospodin'),
+          // Ali on je pravi gospodin
           sentenceParts: [
             CaseSentencePart(displayValue: 'Ali'),
             CaseSentencePart(
@@ -359,6 +373,7 @@ class NominativExercises {
           isPlural: false,
           isAnimate: true,
           translation: N.t('ex_Ona_je_jela'),
+          // Ona je jela
           sentenceParts: [
             CaseSentencePart(
               displayValue: '',
@@ -376,6 +391,7 @@ class NominativExercises {
           isPlural: true,
           isAnimate: true,
           translation: N.t('ex_Mi_smo_braca'),
+          // Mi smo braća
           sentenceParts: [
             CaseSentencePart(
               displayValue: '',
@@ -393,6 +409,7 @@ class NominativExercises {
           isPlural: true,
           isAnimate: true,
           translation: N.t('ex_Vi_ste_prijatelji_moji'),
+          // Vi ste prijatelji moji
           sentenceParts: [
             CaseSentencePart(
               displayValue: '',
@@ -410,6 +427,7 @@ class NominativExercises {
           isPlural: true,
           isAnimate: true,
           translation: N.t('ex_Oni_idu_u_skolu'),
+          // Oni idu u školu
           sentenceParts: [
             CaseSentencePart(
               displayValue: '',
@@ -430,6 +448,7 @@ class NominativExercises {
           isPlural: false,
           isAnimate: false,
           translation: N.t('ex_To_je_sestrin_novi_bicikl'),
+          // To je sestrin novi bicikl
           sentenceParts: [
             CaseSentencePart(displayValue: 'To je'),
             CaseSentencePart(
@@ -463,6 +482,7 @@ class NominativExercises {
           isPlural: true,
           isAnimate: false,
           translation: N.t('ex_Marijini_psi_nisu_dresirani'),
+          // Marijini psi nisu dresirani
           sentenceParts: [
             CaseSentencePart(
               displayValue: '',
@@ -488,6 +508,7 @@ class NominativExercises {
           isPlural: true,
           isAnimate: false,
           translation: N.t('ex_Bakine_torte_su_najbolje'),
+          // Bakine torte su najbolje
           sentenceParts: [
             CaseSentencePart(
               displayValue: '',
@@ -521,6 +542,7 @@ class NominativExercises {
           isPlural: false,
           isAnimate: false,
           translation: N.t('ex_Denisova_sestra_nedavno_se_udala'),
+          // Denisova sestra nedavno se udala
           sentenceParts: [
             CaseSentencePart(
               displayValue: '',
@@ -545,6 +567,8 @@ class NominativExercises {
           gender: NounBankGeneral.jezero.gender,
           isPlural: false,
           isAnimate: false,
+          translation: N.t('ex_Koje_je_najbolje_balkansko_jezero'),
+          // Koje je najbolje balkansko jezero?
           sentenceParts: [
             CaseSentencePart(
               displayValue: '',
@@ -572,13 +596,14 @@ class NominativExercises {
             ),
             CaseSentencePart(displayValue: '?'),
           ],
-          translation: N.t('ex_Koje_je_najbolje_balkansko_jezero'),
         ),
         PANCombo(
           caseType: caseType,
           gender: NounBankGeneral.selo.gender,
           isPlural: true,
           isAnimate: false,
+          translation: N.t('ex_Japanska_sela_su_lijepa'),
+          // Japanska sela su lijepa
           sentenceParts: [
             CaseSentencePart(
               displayValue: '',
@@ -597,13 +622,14 @@ class NominativExercises {
             ),
             CaseSentencePart(displayValue: 'su lijepa'),
           ],
-          translation: N.t('ex_Japanska_sela_su_lijepa'),
         ),
         PANCombo(
           caseType: caseType,
           gender: NounBankGeneral.selo.gender,
           isPlural: false,
           isAnimate: false,
+          translation: N.t('ex_Ana_je_marijino_i_denisovo_dijete'),
+          // Ana je Marijino i Denisovo dijete/dete
           sentenceParts: [
             CaseSentencePart(displayValue: 'Ana je'),
             CaseSentencePart(
@@ -625,13 +651,14 @@ class NominativExercises {
             ),
             CaseSentencePart(displayValue: this.isSerbian ? 'dete' : 'dijete'),
           ],
-          translation: N.t('ex_Ana_je_marijino_i_denisovo_dijete'),
         ),
         PANCombo(
           caseType: caseType,
           gender: NounBankGeneral.majka.gender,
           isPlural: false,
           isAnimate: false,
+          translation: N.t('ex_Anina_majka_je_hrvatica'),
+          // Anina majka je hrvatica
           sentenceParts: [
             CaseSentencePart(
               displayValue: '',
@@ -657,7 +684,6 @@ class NominativExercises {
               grammarType: GrammarTypes.noun,
             ),
           ],
-          translation: N.t('ex_Anina_majka_je_hrvatica'),
         ),
       ];
 }
