@@ -78,8 +78,8 @@ class DativExercises {
           gender: NounBankGeneral.sin.gender,
           isPlural: true,
           extraInfo: N.t('extrainfo_most_short_nouns_get_ovi_suffix_in_plural'),
-          translation: N.t('ex_Moji_mladim_sinovima_je_dosadno'),
-          // Moji mladim sinovima je dosadno.
+          translation: N.t('ex_Mojim_mladim_sinovima_je_dosadno'),
+          // Mojim mladim sinovima je dosadno.
           sentenceParts: [
             CaseSentencePart(
               isCorrectable: true,
@@ -210,29 +210,28 @@ class DativExercises {
         ),
         PANCombo(
           caseType: caseType,
-          gender: NounBankGeneral.bolnica.gender,
+          gender: NounBankGeneral.zena.gender,
           isPlural: false,
           isAnimate: false,
-          translation: N.t('ex_Nasuprot_velikoj_bolnici_se_nalazi_pekara'),
-          // Nasuprot velikoj bolnici se nalazi pekara
+          translation: N.t('ex_Napravio_sam_doručak_svojoj_ženi'),
+          // Napravio sam doručak svojoj ženi
           sentenceParts: [
-            CaseSentencePart(displayValue: 'Nasuprot'),
+            CaseSentencePart(displayValue: 'Napravio sam doručak'),
             CaseSentencePart(
               isCorrectable: true,
-              actualObject: AdjectiveBankGeneral.velik,
-              displayValue: AdjectiveBankGeneral.velik.dictionary,
+              actualObject: PossessivePronounBank.svoj,
+              displayValue: PossessivePronounBank.svoj.dictionary,
               correctValues:
-                  AdjectiveBankGeneral.velik.dativ!.feminine!.singular,
-              grammarType: GrammarTypes.adjective,
+                  PossessivePronounBank.svoj.dativ!.feminine!.singular,
+              grammarType: GrammarTypes.possessivePronoun,
             ),
             CaseSentencePart(
               isCorrectable: true,
-              actualObject: NounBankGeneral.bolnica,
-              displayValue: NounBankGeneral.bolnica.dictionary,
-              correctValues: NounBankGeneral.bolnica.dativ!.singular,
+              actualObject: NounBankGeneral.zena,
+              displayValue: NounBankGeneral.zena.dictionary,
+              correctValues: NounBankGeneral.zena.dativ!.singular,
               grammarType: GrammarTypes.noun,
             ),
-            CaseSentencePart(displayValue: 'se nalazi pekara'),
           ],
         ),
         PANCombo(

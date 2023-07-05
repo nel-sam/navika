@@ -88,43 +88,6 @@ class MixedExercises {
         ),
         PANCombo(
           caseType: caseType,
-          gender: NounBankGeneral.bolnica.gender,
-          isPlural: false,
-          isAnimate: false,
-          translation: N.t('ex_Nasuprot_velikoj_bolnici_se_nalazi_pekara'),
-          // Nasuprot velikoj bolnici se nalazi pekara
-          sentenceParts: [
-            CaseSentencePart(displayValue: 'Nasuprot'),
-            CaseSentencePart(
-              isCorrectable: true,
-              actualObject: AdjectiveBankGeneral.velik,
-              displayValue: AdjectiveBankGeneral.velik.dictionary,
-              correctValues:
-                  AdjectiveBankGeneral.velik.dativ!.feminine!.singular,
-              grammarType: GrammarTypes.adjective,
-              caseType: Cases.Dat,
-            ),
-            CaseSentencePart(
-              isCorrectable: true,
-              actualObject: NounBankGeneral.bolnica,
-              displayValue: NounBankGeneral.bolnica.dictionary,
-              correctValues: NounBankGeneral.bolnica.dativ!.singular,
-              grammarType: GrammarTypes.noun,
-              caseType: Cases.Dat,
-            ),
-            CaseSentencePart(displayValue: 'se nalazi'),
-            CaseSentencePart(
-              isCorrectable: true,
-              actualObject: NounBankGeneral.pekara,
-              displayValue: '',
-              correctValues: NounBankGeneral.pekara.nominativ.singular,
-              grammarType: GrammarTypes.noun,
-              caseType: Cases.Nom,
-            ),
-          ],
-        ),
-        PANCombo(
-          caseType: caseType,
           gender: NounBankGeneral.pas.gender,
           isPlural: false,
           isAnimate: false,
@@ -336,8 +299,8 @@ class MixedExercises {
         ),
         PANCombo(
           caseType: caseType,
-          translation: N.t('ex_Vidjeli_smo_lijepe_jezera_u_Bosni'),
-          // Vidjeli smo lijepe jezera u Bosni
+          translation: N.t('ex_Vidjeli_smo_lijepa_jezera_u_Bosni'),
+          // Vidjeli smo lijepa jezera u Bosni
           gender: NounBankGeneral.jezero.gender,
           isPlural: false,
           isAnimate: true,

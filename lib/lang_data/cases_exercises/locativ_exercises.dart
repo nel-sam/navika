@@ -272,8 +272,8 @@ class LokativExercises {
           gender: Genders.Masculine,
           isPlural: false,
           isAnimate: false,
-          translation: N.t('ex_Po_njemu_isplati_kupit'),
-          // Po njemu se isplati kupit
+          translation: N.t('Po njemu se isplati kupiti'),
+          // Po njemu se isplati kupiti
           sentenceParts: [
             CaseSentencePart(displayValue: 'Po'),
             CaseSentencePart(
@@ -283,7 +283,7 @@ class LokativExercises {
               correctValues: PersonalPronounWordBank.on.lokativ.forms,
               grammarType: GrammarTypes.personalPronoun,
             ),
-            CaseSentencePart(displayValue: 'isplati kupit'),
+            CaseSentencePart(displayValue: 'isplati kupiti'),
           ],
         ),
         PANCombo(

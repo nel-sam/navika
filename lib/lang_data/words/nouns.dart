@@ -399,7 +399,7 @@ class NounBankGeneral {
     gender: Genders.Feminine,
     isAnimate: false,
     nominativ: new DeclensionByCount(singular: ['torta'], plural: ['torte']),
-    genitiv: new DeclensionByCount(singular: ['torte'], plural: ['torta']),
+    genitiv: new DeclensionByCount(singular: ['torte'], plural: ['torti']),
     dativ: new DeclensionByCount(singular: ['torti'], plural: ['tortama']),
     akuzativ: new DeclensionByCount(singular: ['tortu'], plural: ['torte']),
     lokativ: new DeclensionByCount(singular: ['torti'], plural: ['tortama']),

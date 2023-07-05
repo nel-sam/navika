@@ -214,10 +214,10 @@ class GenitivExercises {
           gender: NounBankGeneral.more.gender,
           isPlural: true,
           isAnimate: false,
-          translation: N.t('ex_Pretvorilo_se_u_jedno_od_najvecih_mora'),
-          // Pretvorilo se u jedno od najvećih mora
+          translation: N.t('ex_Pretvorilo_se_jedno_od_najvecih_mora'),
+          // Pretvorilo se jedno od najvećih mora
           sentenceParts: [
-            CaseSentencePart(displayValue: "Pretvorilo se u jedno od"),
+            CaseSentencePart(displayValue: "Pretvorilo se jedno od"),
             CaseSentencePart(
               isCorrectable: true,
               actualObject: AdjectiveBankGeneral.najveci,

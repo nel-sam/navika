@@ -23,7 +23,7 @@ class NumberCountingExercises {
           isPlural: true,
           isAnimate: false,
           translation: N.t('ex_Njegov_pas_ima_dve_godine'),
-          // Njiegov pas ima dve godine
+          // Njegov pas ima dvije/dve godine
           sentenceParts: [
             CaseSentencePart(displayValue: 'Njegov pas ima'),
             CaseSentencePart(
@@ -542,8 +542,8 @@ class NumberCountingExercises {
           gender: NounBankGeneral.torta.gender,
           isPlural: true,
           isAnimate: false,
-          translation: N.t('ex_Vidio_sam_12_torta_u_pekari'),
-          // Vidio sam 12 torta u pekari
+          translation: N.t('ex_Vidio_sam_12_torti_u_pekari'),
+          // Vidio sam 12 torti u pekari
           sentenceParts: [
             CaseSentencePart(displayValue: 'Vidio sam'),
             CaseSentencePart(

@@ -174,20 +174,28 @@ class AkuzativExercises {
         ),
         PANCombo(
           caseType: caseType,
-          gender: NounBankGeneral.bosna.gender,
+          gender: NounBankGeneral.zena.gender,
           isPlural: false,
           isAnimate: false,
           extraInfo: N.t('extrainfo_akuzativ_with_za'),
-          translation: N.t('ex_Sviđa_mi_se_pjesme_za_bosnu'),
-          // Sviđa mi se pjesme za Bosnu
+          translation: N.t('ex_Napisao_je_pjesmu_za_svoju_ženu'),
+          // Napisao je pjesmu za svoju ženu
           sentenceParts: [
             CaseSentencePart(displayValue: 'Sviđa mi se pjesme za'),
-            CaseSentencePart(
-              displayValue: NounBankGeneral.bosna.dictionary,
+             CaseSentencePart(
+              displayValue: PossessivePronounBank.svoj.dictionary,
               isCorrectable: true,
-              actualObject: NounBankGeneral.bosna,
+              actualObject: PossessivePronounBank.svoj,
+              grammarType: GrammarTypes.possessivePronoun,
+              correctValues:
+                  PossessivePronounBank.svoj.akuzativ!.feminine!.singular,
+            ),
+            CaseSentencePart(
+              displayValue: NounBankGeneral.zena.dictionary,
+              isCorrectable: true,
+              actualObject: NounBankGeneral.zena,
               grammarType: GrammarTypes.noun,
-              correctValues: NounBankGeneral.bosna.akuzativ.singular,
+              correctValues: NounBankGeneral.zena.akuzativ.singular,
             ),
           ],
         ),
