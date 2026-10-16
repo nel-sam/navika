@@ -1,4 +1,6 @@
 {
+  "startupSettingsError": "Unable to load your settings. Please try again.",
+  "retry": "Retry",
   "trans_biti": "To be",
   "trans_vidjeti": "To see",
   "trans_spavati": "To sleep",

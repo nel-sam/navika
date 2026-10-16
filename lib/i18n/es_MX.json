@@ -1,4 +1,6 @@
 {
+  "startupSettingsError": "No se pudo cargar la configuraci\u00f3n. Int\u00e9ntalo de nuevo.",
+  "retry": "Reintentar",
   "trans_biti": "Ser/Estar",
   "trans_vidjeti": "Ver",
   "trans_spavati": "Dormir",

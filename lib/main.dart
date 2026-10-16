@@ -67,21 +67,63 @@ class NavikaApp extends StatelessWidget {
   }
 }
 
-class NHomePage extends StatelessWidget {
+class NHomePage extends StatefulWidget {
+  @override
+  State<NHomePage> createState() => _NHomePageState();
+}
+
+class _NHomePageState extends State<NHomePage> {
+  late Future<bool> _isFirstTime;
+
+  @override
+  void initState() {
+    super.initState();
+    _isFirstTime = _loadIsFirstTime();
+  }
+
+  Future<bool> _loadIsFirstTime() async {
+    try {
+      return await getIsFirstTimeSetting();
+    } catch (error, stackTrace) {
+      FlutterError.reportError(FlutterErrorDetails(
+        exception: error,
+        stack: stackTrace,
+        library: 'navika',
+        context: ErrorDescription('while loading startup preferences'),
+      ));
+      rethrow;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-        future: getIsFirstTimeSetting(),
+    return FutureBuilder<bool>(
+        future: _isFirstTime,
         builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.done) {
-            if ((snapshot.data as bool)) {
-              return DialectSettingPage();
-            } else {
-              return MainMenu();
-            }
-          } else {
+          if (snapshot.connectionState != ConnectionState.done) {
             return NSpinner();
           }
+          if (snapshot.hasError) {
+            return Scaffold(
+              body: Center(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text('startupSettingsError'.i18n()),
+                    TextButton(
+                      onPressed: () {
+                        setState(() {
+                          _isFirstTime = _loadIsFirstTime();
+                        });
+                      },
+                      child: Text('retry'.i18n()),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          }
+          return snapshot.requireData ? DialectSettingPage() : MainMenu();
         });
   }
 }
