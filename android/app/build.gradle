@@ -43,7 +43,7 @@ android {
 
     defaultConfig {
         applicationId "com.nrsdev.navika"
-        minSdkVersion 31
+        minSdkVersion 36
         targetSdkVersion 36
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
