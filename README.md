@@ -6,7 +6,7 @@ This is one of the apps from my suite of Language apps; [nalelu](https://github.
 
 [Android Play store listing](https://play.google.com/store/apps/details?id=com.nrsdev.navika&hl=en)
 
-<img src="https://github.com/nel-sam/cgame/blob/master/marketing-assets/screenshot.png" height="400px" />
+<img src="https://github.com/nel-sam/navika/blob/master/marketing-assets/screenshot.png" height="400px" />
 
 ## History and why I built the language apps
 
